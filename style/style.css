@@ -12,16 +12,17 @@ html, body {
 h1 {
   font-size: 60pt;
   font-weight: normal;
-  margin: 0px;
+  padding-left: 40px;
 }
 
 h2 {
   font-size: 36pt;
   font-weight: normal;
-  margin: 0px;
+  padding-left: 40px;
 }
 
 a {
   color: #0b0b0b;
+  padding-left: 40px;
 }
 
