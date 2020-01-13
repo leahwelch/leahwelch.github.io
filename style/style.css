@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0px;
+  padding: 0px;
+  height: 100vh;
+  font-family: "Gill Sans",'Arial Narrow', sans-serif;
+}
+
+h1 {
+  font-size: 60pt;
+  font-weight: normal;
+  margin: 0px;
+}
+
+h2 {
+  font-size: 36pt;
+  font-weight: normal;
+  margin: 0px;
+}
+
+a {
+  color: #0b0b0b;
+}
+
