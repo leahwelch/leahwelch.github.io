@@ -13,12 +13,14 @@ h1 {
   font-size: 60pt;
   font-weight: normal;
   padding-left: 40px;
+  margin: 0px;
 }
 
 h2 {
   font-size: 36pt;
   font-weight: normal;
   padding-left: 40px;
+  margin: 0px;
 }
 
 a {
