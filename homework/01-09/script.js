@@ -8,7 +8,7 @@ var svg = d3.select("#orionPics")
     .attr("height", height);
 
 var thirteen = svg.append("image")
-    .attr("xlink:href", "./pictures/13m.jpg")
+    .attr("xlink:href", "/pictures/13m.jpg")
     .attr("x", margin.left)
     .attr("y", margin.top)
     .style("width", "auto")
@@ -16,7 +16,7 @@ var thirteen = svg.append("image")
     .style("visibility", "visible");
 
 var twelve = svg.append("image")
-    .attr("xlink:href", "./pictures/12m.jpg")
+    .attr("xlink:href", "/pictures/12m.jpg")
     .attr("x", margin.left)
     .attr("y", margin.top)
     .style("width", "auto")
@@ -24,7 +24,7 @@ var twelve = svg.append("image")
     .style("visibility", "hidden");
 
 var eleven = svg.append("image")
-    .attr("xlink:href", "./pictures/11m.jpg")
+    .attr("xlink:href", "/pictures/11m.jpg")
     .attr("x", margin.left)
     .attr("y", margin.top)
     .style("width", "auto")
@@ -32,7 +32,7 @@ var eleven = svg.append("image")
     .style("visibility", "hidden");
 
 var ten = svg.append("image")
-    .attr("xlink:href", "./pictures/10m.jpg")
+    .attr("xlink:href", "/pictures/10m.jpg")
     .attr("x", margin.left)
     .attr("y", margin.top)
     .style("width", "auto")
@@ -40,7 +40,7 @@ var ten = svg.append("image")
     .style("visibility", "hidden");
 
 var nine = svg.append("image")
-    .attr("xlink:href", "./pictures/9m.jpg")
+    .attr("xlink:href", "/pictures/9m.jpg")
     .attr("x", margin.left)
     .attr("y", margin.top)
     .style("width", "auto")
@@ -48,7 +48,7 @@ var nine = svg.append("image")
     .style("visibility", "hidden");
 
 var eight = svg.append("image")
-    .attr("xlink:href", "./pictures/8m.jpg")
+    .attr("xlink:href", "/pictures/8m.jpg")
     .attr("x", margin.left)
     .attr("y", margin.top)
     .style("width", "auto")
@@ -56,7 +56,7 @@ var eight = svg.append("image")
     .style("visibility", "hidden");
 
 var seven = svg.append("image")
-    .attr("xlink:href", "./pictures/7m.jpg")
+    .attr("xlink:href", "/pictures/7m.jpg")
     .attr("x", margin.left)
     .attr("y", margin.top)
     .style("width", "auto")
@@ -64,7 +64,7 @@ var seven = svg.append("image")
     .style("visibility", "hidden");
 
 var six = svg.append("image")
-    .attr("xlink:href", "./pictures/6m.jpg")
+    .attr("xlink:href", "/pictures/6m.jpg")
     .attr("x", margin.left)
     .attr("y", margin.top)
     .style("width", "auto")
@@ -72,7 +72,7 @@ var six = svg.append("image")
     .style("visibility", "hidden");
 
 var five = svg.append("image")
-    .attr("xlink:href", "./pictures/5m.jpg")
+    .attr("xlink:href", "/pictures/5m.jpg")
     .attr("x", margin.left)
     .attr("y", margin.top)
     .style("width", "auto")
@@ -80,7 +80,7 @@ var five = svg.append("image")
     .style("visibility", "hidden");
 
 var four = svg.append("image")
-    .attr("xlink:href", "./pictures/4m.jpg")
+    .attr("xlink:href", "/pictures/4m.jpg")
     .attr("x", margin.left)
     .attr("y", margin.top)
     .style("width", "auto")
@@ -88,7 +88,7 @@ var four = svg.append("image")
     .style("visibility", "hidden");
 
 var three = svg.append("image")
-    .attr("xlink:href", "./pictures/3m.jpg")
+    .attr("xlink:href", "/pictures/3m.jpg")
     .attr("x", margin.left)
     .attr("y", margin.top)
     .style("width", "auto")
@@ -96,7 +96,7 @@ var three = svg.append("image")
     .style("visibility", "hidden");
 
 var two = svg.append("image")
-    .attr("xlink:href", "./pictures/2m.jpg")
+    .attr("xlink:href", "/pictures/2m.jpg")
     .attr("x", margin.left)
     .attr("y", margin.top)
     .style("width", "auto")
@@ -104,7 +104,7 @@ var two = svg.append("image")
     .style("visibility", "hidden");
 
 var one = svg.append("image")
-    .attr("xlink:href", "./pictures/1m.jpg")
+    .attr("xlink:href", "/pictures/1m.jpg")
     .attr("x", margin.left)
     .attr("y", margin.top)
     .style("width", "auto")
@@ -112,7 +112,7 @@ var one = svg.append("image")
     .style("visibility", "hidden");
 
 var zero = svg.append("image")
-    .attr("xlink:href", "./pictures/0m.jpg")
+    .attr("xlink:href", "/pictures/0m.jpg")
     .attr("x", margin.left)
     .attr("y", margin.top)
     .style("width", "auto")
