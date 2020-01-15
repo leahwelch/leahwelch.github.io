@@ -55,6 +55,7 @@ button {
   width: 41px;
   height: 41px;
   display: block;
+  cursor: pointer;
 }
 
 #thirteen {
