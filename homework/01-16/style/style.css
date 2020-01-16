@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0px;
+  padding: 0px;
+  height: 100vh;
+  background-color: #0B0B0B;
+  color: #FFFFFF;
+  font-family: "Gill Sans",'Arial Narrow', sans-serif;
+}
+
+h1 {
+  font-size: 84pt;
+  font-weight: normal;
+  margin: 0px;
+}
+
+a {
+  color: #FFFFFF;
+}
+
+#description {
+  font-size: 15pt;
+}
+
+#allText {
+  padding-left: 40px;
+  padding-right: 40px;
+  grid-area: text;
+}
+
+#orionPics {
+  grid-area: pics;
+  height:100%; 
+  width:auto;
+}
+
+#timeline {
+  grid-area: timeline;
+  height: 100%;
+}
+
+button {
+  font-family: "Gill Sans",'Arial Narrow', sans-serif;
+  background-color: #0B0B0B;
+  color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  outline: 0;
+  width: 41px;
+  height: 41px;
+  display: block;
+  cursor: pointer;
+}
+
+#thirteen {
+  background-color: #FFFFFF;
+  color: #0b0b0b;
+}
+
+#timeline {
+  grid-area: timeline;
+  height: 100%;
+}
+
+#container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: 
+    "text pics pics timeline"
+    "description pics pics timeline";
+}
+
+
