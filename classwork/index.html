@@ -6,12 +6,29 @@
         <script src="https://d3js.org/d3.v4.min.js"></script>
     </head>
     <body>
+        <h1 id="label">
+
+        </h1>
         <script>
         
-            d3.csv("data.csv", function(error, data) {
+            
+            function convert2numbers(d,i) {
+                d.value = +d.value;
+            }
+
+            function analyzeData(error, data) {
+  
+                data.forEach(convert2numbers);
+                
                 console.log("error:", error);
                 console.log("data:", data);
-            });
+
+                d3.select("#label").html(data[0].value);
+
+            }
+
+            d3.csv("data.csv", analyzeData);
+            d3.json("data.json", analyzeData);
 
         </script>
     </body>
