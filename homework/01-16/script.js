@@ -4,15 +4,16 @@ var frequency = 10 * 1000; //10 seconds
 function fetchData() {
     d3.json(realTimeURL, function(error,users) {
         console.log("users:", users);
-        d3.select("#users").html(users);
+        //d3.select("#users").html(users);
 
         var data=[]
-        data.push({value: users});
+        data.push(users);
         console.log(data);
 
-        function convert2numbers(d,i) {
-            d.value = +d.value;
-        }
+        /*function convert2numbers(d,i) {
+            users = +users;
+        }*/
+        console.log(users);
 
         var width = document.querySelector("#chart").clientWidth;
         var height = document.querySelector("#chart").clientHeight;
@@ -23,37 +24,42 @@ function fetchData() {
             .attr("width", width)
             .attr("height", height);
 
-        var lines = svg.selectAll(".myline")
+        var bar = svg.selectAll("rect")   
             .data(data)
             .enter()
-            .append("line")
-              .attr("x1", margin.left)
-              .attr("x2", function(data) { return (data.value*5); })
-              .attr("y1", height/2)
-              .attr("y2", height/2)
-              .attr("class", "myline")
-              .attr("stroke", "#A7A7A7")
-              .attr("stroke-width", 5);
+            .append("rect")
+                .attr("x", margin.left)
+                .attr("y", margin.top) 
+                .attr("width", users)
+                .attr("height", 20)
+                .attr("fill", "pink");
 
-        var newLines = svg.selectAll(".myline").data(data);
+        var b = svg.selectAll("rect")
+            .data(data);
 
-        newLines.enter().append("line")
-            .attr("x1", margin.left)
-            .attr("x2", function(data) { return (data.value*5); })
-            .attr("y1", height/2)
-            .attr("y2", height/2)
-        .merge(newLines)
+        b.enter().append("rect")
+            .attr("x", margin.left)
+            .attr("y", margin.top) 
+            .attr("width", 0)
+            .attr("height", 0)
+            .attr("fill", "pink")
+          .merge(b)
             .transition()
-                .attr("x1", margin.left)
-                .attr("x2", function(data) { return (data.value*5); })
-                .attr("y1", height/2)
-                .attr("y2", height/2)
-            .attr("stroke", "#A7A7A7")
-            .attr("stroke-width", 5);
-        
-        newLines.exit()
-            .transition()
-            .remove();
+            .duration(1500)
+            .delay(1000)
+            .attr("x", margin.left)
+            .attr("y", margin.top) 
+            .attr("width", 0)
+            .attr("height", 0)
+            .attr("fill", "pink"); 
+      
+          b.exit()
+              .transition()
+              .duration(1500)
+              .delay(1000)
+              .attr("width", 0)
+              .attr("height", 0)
+              .remove();
     });
 }
 
