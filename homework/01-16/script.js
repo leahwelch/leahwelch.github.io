@@ -1,56 +1,99 @@
-d3.csv("data/gapminder.csv").then(function(data) {
+var realTimeURL = "https://whiteboard.datawheel.us/api/google-analytics/realtime/111999474";
+var frequency = 10 * 1000; //10 seconds
 
-    console.log(data);
+function fetchData() {
+    d3.json(realTimeURL, function(error,users) {
+        console.log("users:", users);
+        d3.select("#users").html(users);
 
-    var width = document.querySelector("#chart").clientWidth;
-    var height = document.querySelector("#chart").clientHeight;
-    var margin = {top: 50, left: 150, right: 50, bottom: 150};
-    //Filtering the data to 2007//
-    var filtered_data2007 = data.filter(function(d) {
-        return d.year == 2007;
+        var data=[]
+        data.push({value: users});
+        console.log(data);
+
+        function convert2numbers(d,i) {
+            d.value = +d.value;
+        }
+
+        var width = document.querySelector("#chart").clientWidth;
+        var height = document.querySelector("#chart").clientHeight;
+        var margin = {top: 50, left: 150, right: 50, bottom: 150};
+
+        var svg = d3.select("#chart")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        var lines = svg.selectAll(".myline")
+            .data(data)
+            .enter()
+            .append("line")
+              .attr("x1", margin.left)
+              .attr("x2", function(data) { return (data.value*5); })
+              .attr("y1", 100)
+              .attr("y2", 100)
+              .attr("class", "myline")
+              .attr("stroke", "#A7A7A7")
+              .attr("stroke-width", 5);
+
+        var newLines = svg.selectAll(".myline").data(data);
+
+        newLines.enter().append("line")
+            .attr("x1", margin.left)
+            .attr("x2", function(data) { return (data.value*5); })
+            .attr("y1", 100)
+            .attr("y2", 100)
+        .merge(newLines)
+            .transition()
+                .attr("x1", margin.left)
+                .attr("x2", function(data) { return (data.value*5); })
+                .attr("y1", 100)
+                .attr("y2", 100)
+            .attr("stroke", "#A7A7A7")
+            .attr("stroke-width", 5);
+        
+        newLines.exit()
+            .transition()
+            .remove();
+
+        /*var points = svg.selectAll("circle")
+            .data(data/*, function(d) { return d.country; })
+            .enter()
+            .append("circle")
+                .attr("cx", width/2)
+                .attr("cy", 350)
+                .attr("r", function(d) { return d.value; })
+                .attr("fill", "red"/*function(d) { return colorScale(d.continent); });
+
+        var newPoints = svg.selectAll("circle")
+            .data(data);
+
+        newPoints.enter().append("circle")
+            .attr("cx", width/2)
+            .attr("cy", 350)
+            .attr("r", function(d) { return d.value; })
+            .attr("fill", "red")
+        .merge(newPoints)
+        .transition()
+        .duration(1000)
+        .delay(250)
+        .attr("cx", width/2)
+        .attr("cy", 350)
+        .attr("r", function(d) { return d.value; })
+        .attr("fill", "red");
+        newPoints.exit()
+            .transition()
+            .duration(1000)
+            .delay(250)
+            .attr("r", 0)
+            .remove();*/
     });
-    //Filtering the data for 1957//
-    var filtered_data1957 = data.filter(function(d) {
-        return d.year == 1957;
-    });
+}
+
+fetchData();
+setInterval(fetchData, frequency);
 
 
-    var svg = d3.select("#chart")
-        .append("svg")
-        .attr("width", width)
-        .attr("height", height);
-        //Adding the second min/max sets (1957) for each variable//
-    var lifeExp = {
-        min1957: d3.min(filtered_data1957, function(d) { return +d.lifeExp; }),
-        max1957: d3.max(filtered_data1957, function(d) { return +d.lifeExp; }),
-        min2007: d3.min(filtered_data2007, function(d) { return +d.lifeExp; }),
-        max2007: d3.max(filtered_data2007, function(d) { return +d.lifeExp; })
-    };
-
-    var gdpPercap = {
-        min1957: d3.min(filtered_data1957, function(d) { return +d.gdpPercap; }),
-        max1957: d3.max(filtered_data1957, function(d) { return +d.gdpPercap; }),
-        min2007: d3.min(filtered_data2007, function(d) { return +d.gdpPercap; }),
-        max2007: d3.max(filtered_data2007, function(d) { return +d.gdpPercap; })
-    };
-
-    var pop = {
-        min1957: d3.min(filtered_data1957, function(d) { return +d.pop; }),
-        max1957: d3.max(filtered_data1957, function(d) { return +d.pop; }),
-        min2007: d3.min(filtered_data2007, function(d) { return +d.pop; }),
-        max2007: d3.max(filtered_data2007, function(d) { return +d.pop; })
-    }
-
-    //updating the xScale, yScale, and rScale so 1957 is our starting point//
-    var xScale = d3.scaleLinear()
-        .domain([lifeExp.min1957, lifeExp.max1957])
-        .range([margin.left, width-margin.right]);
-
-    var yScale = d3.scaleLinear()
-        .domain([gdpPercap.min1957, gdpPercap.max1957])
-        .range([height-margin.bottom, margin.top]);
-
-    var rScale = d3.scaleSqrt()
+    /*var rScale = d3.scaleSqrt()
         .domain([pop.min1957, pop.max1957])
         .range([3, 25]);
 
@@ -129,4 +172,4 @@ d3.csv("data/gapminder.csv").then(function(data) {
         .delay(250)
         .call(d3.axisLeft().scale(yScale));
 
-});
+});*/
