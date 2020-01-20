@@ -32,8 +32,8 @@ function initialData(settings) {
             .append("rect")
                 .attr("x", margin.left)
                 .attr("y", margin.top)
-                .attr("width", users*2)
-                .attr("height", users*2)
+                .attr("width", users*3)
+                .attr("height", users*3)
                 .attr("fill", "red");
         });
     }
@@ -49,13 +49,13 @@ function updateData(settings) {
         newBar.enter().append("rect")
             .attr("x", margin.left)
             .attr("y", margin.top)
-            .attr("width", users*2)
-            .attr("height", users*2)
+            .attr("width", users*3)
+            .attr("height", users*3)
             .attr("fill", "red")
         .merge(newBar)
             .transition()
-            .attr("width", users*2)
-            .attr("height", users*2)
+            .attr("width", users*3)
+            .attr("height", users*3)
             .attr("fill", "red");
         newBar.exit()
             .transition()
