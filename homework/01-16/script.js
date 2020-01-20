@@ -34,7 +34,7 @@ function initialData(settings) {
                 .attr("y", margin.top)
                 .attr("width", users*2)
                 .attr("height", users*2)
-                .attr("fill", "pink");
+                .attr("fill", "red");
         });
     }
 
