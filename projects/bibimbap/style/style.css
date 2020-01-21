@@ -1,0 +1,222 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Futura",'Arial Narrow', sans-serif;
+}
+
+#maintitle {
+  font-family: "Futura", Arial, sans-serif;
+  font-size: 55pt;
+  margin: 0px;
+  padding-left: 10px;
+  grid-area: title;
+  display: block;
+}
+
+#titlePic {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  width: auto;
+  grid-area: titlePic;
+}
+
+#korean {
+  grid-area: korean;
+  margin-top: 20px;
+  display: block;
+}
+
+body {
+  background-color: #FFFFFF;
+  transition: 0.3s all;
+}
+
+section {
+  height: 100vh;
+}
+
+#titleContainer { 
+  width: auto;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 
+    "titlePic korean"
+    "titlePic title"
+} 
+
+p {
+  font-size: 11pt;
+}
+
+h1 {
+  font-weight: lighter;
+  font-size: 36pt;
+  margin-left: 5%;
+  margin-top: 1rem;
+}
+
+.number {
+  font-weight: bolder;
+  font-size: 24pt;
+  vertical-align: middle;
+}
+
+#carrot2 {
+  vertical-align: top;
+}
+
+#carrot3 {
+  vertical-align: top;
+}
+
+.imgContainer {
+  vertical-align: middle;
+}
+
+.ingredients {
+  background-color: #FFFFFF;
+}
+
+#ingredients {
+  margin-top: 15rem;
+}
+
+#upper {
+  background-color: rgba(255, 255, 255, 0.3);
+  grid-area: upper;
+}
+
+#lower {
+  background-color: rgba(255, 255, 255, 0.6);
+  grid-area: lower;
+}
+
+figure {
+  height: 15rem;
+  margin-left: 70%;
+  width: 25%;
+  position: sticky;
+  top: 30%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: 
+    "upper"
+    "lower"
+    "lower"
+}
+
+.dashText {
+  padding: 20px;
+}
+
+.carrots {
+  background-color: #F8AC67;
+  color: #DC6626;
+}
+
+#firstCarrot {
+  grid-area: first;
+}
+
+#secondCarrot {
+  grid-area: second;
+  padding-right: 15px;
+}
+
+#thirdCarrot {
+  grid-area: third;
+}
+
+#fourthCarrot {
+  grid-area: fourth;
+}
+
+#fifthCarrot {
+  grid-area: fifth;
+}
+
+#sixthCarrot {
+  grid-area: sixth;
+}
+
+#seventhCarrot {
+  grid-area: seventh;
+}
+
+#carrotContainer {
+  width: 60%;
+  height: 60%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 0%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "first first fourth fifth"
+    "second third sixth seventh"
+}
+
+.cucumbers {
+  background-color: #ADD7A2;
+  color: #2F5B2C;
+}
+
+.beef {
+  background-color: #5D3C15;
+  color: #F3DDC0;
+}
+
+.beef .dashText  {
+  color: #5D3C15;
+}
+
+.rice {
+  background-color: #F3DDC0;
+  color: #5D3C15;
+}
+
+.sauce {
+  background-color: #CC4128;
+  color: #F3DDC0;
+}
+
+.sauce .dashText  {
+  color: #CC4128;
+}
+
+.spinach {
+  background-color: #2F5B2C;
+  color: #ADD7A2;
+}
+
+.spinach .dashText  {
+  color: #2F5B2C;
+}
+
+.mushrooms {
+  background-color: #AE977A;
+  color: #5D3C15;
+}
+
+.egg {
+  background-color: #F6C75E;
+  color: #A4772B;
+}
+
+.combine {
+  background-color: #FFFFFF;
+}
+
+.combine .dashText  {
+  color: #FFFFFF;
+}
