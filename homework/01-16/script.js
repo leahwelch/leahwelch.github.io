@@ -1,4 +1,4 @@
-var realTimeURL = "https://whiteboard.datawheel.us/api/google-analytics/realtime/111999474";
+var realTimeURL = "https://whiteboard.datawheel.us/api/google-analytics/realtime/random";
 var frequency = 10 * 1000; //10 seconds
 
 
