@@ -1,14 +1,15 @@
-const colors = ['', 'ingredients', 'carrots', 'cucumbers', 'beef', 'rice', 'sauce', 'spinach', 'mushrooms', 'egg', 'combine']
+var colors = ['', 'ingredients', 'carrots', 'cucumbers', 'beef', 'rice', 'sauce', 'spinach', 'mushrooms', 'egg', 'combine']
 
-const sections = [...document.getElementsByTagName('section')]
+var sections = [...document.getElementsByTagName('section')]
 
 window.addEventListener('scroll', function () {
 
-  const scrollFromTop = window.pageYOffset
+  var scrollFromTop = window.pageYOffset;
 
-  for (let i = 0; sections.length > i; i++) {
+  for (var i = 0; sections.length > i; i++) {
 
-    if (scrollFromTop <= sections[i].offsetTop) {
+    if (scrollFromTop <= sections[i].offsetTop /*+ (window.innerHeight * 0.75)*/) {
+      console.log(i, colors[i]);
       document.body.className = colors[i] 
       break
     } 

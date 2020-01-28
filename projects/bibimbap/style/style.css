@@ -91,16 +91,17 @@ h1 {
 
 #upper {
   background-color: rgba(255, 255, 255, 0.3);
+  height: 5rem;
   grid-area: upper;
 }
 
 #lower {
   background-color: rgba(255, 255, 255, 0.6);
+  height: 10rem;
   grid-area: lower;
 }
 
 figure {
-  height: 15rem;
   margin-left: 70%;
   width: 25%;
   position: sticky;
@@ -218,5 +219,9 @@ figure {
 }
 
 .combine .dashText  {
+  color: #FFFFFF;
+}
+
+.ingredients .dashText  {
   color: #FFFFFF;
 }

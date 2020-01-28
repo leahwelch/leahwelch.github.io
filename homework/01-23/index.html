@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Loading Data</title>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <style>
+            body {
+                margin: 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <svg id="chart"></svg>
+        <script>
+        
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+
+        var svg = d3.select("#chart")
+            .attr("width", width)
+            .attr("height", height);
+        
+        var realTimeURL = "https://whiteboard.datawheel.us/api/google-analytics/realtime/random";
+        var frequency = 1000; //10 seconds
+        var dataMax = 20;
+        var data = [];
+
+        var barWidth = width / dataMax;
+        var x = d3.scaleLinear()
+            .domain([dataMax, 1])
+            .range([0, width-barWidth]);
+
+        
+
+        function fetchData() {
+            d3.json(realTimeURL, function(error,users) {
+                
+                var dataObject = {
+                    users: users,
+                    timestamp: new Date()
+                };
+                
+                data.unshift(dataObject);
+                if (data.length > dataMax) data.pop();
+                //console.log(data);
+
+                var max = d3.max(data, function(d) {
+                    return d.users;
+                })
+
+                var barHeight = d3.scaleLinear()
+                    .domain([0, max])
+                    .range([0, height]);
+
+                var bars = svg.selectAll(".bar")
+                    .data(data, function(d) {
+                        return d.timestamp;
+                    });
+
+                var labels = svg.selectAll(".label")
+                    .data(data, function(d) {
+                        return d.timestamp;
+                    });
+
+                var enter = bars.enter().append("rect")
+                    .attr("class", "bar")
+                    .attr("width", barWidth)
+                    .attr("height", 0)
+                    .attr("y", height)
+                    .attr("x", function(d, i) {
+                        return x(i + 1);
+                    })
+                    .attr("fill", "darkOrchid")
+                    .attr("stroke", "white");
+
+                bars.merge(enter)
+                    .transition()
+                    .duration(frequency/2)
+                    .attr("height", function(d) {
+                        return barHeight(d.users);
+                    })
+                    .attr("y", function(d, i) {
+                        var h = barHeight(d.users);
+                        return height - h;
+                    })
+                    .attr("x", function(d, i) {
+                        return x(i + 1);
+                    })
+                    .attr("fill", "darkOrchid")
+                    .attr("stroke", "white");
+
+                var labelEnter = labels.enter().append("text")
+                    .attr("class", "label")
+                    .text(function(d) {
+                        return d.users;
+                    })
+                    .attr("x", function(d, i) {
+                        return x(i + 1);
+                    })
+                    .attr("y", height)
+                
+                labels.merge(labelEnter)
+                    .transition()
+                    .duration(frequency/2)
+                    .text(function(d) {
+                        return d.users;
+                    })
+                    .attr("y", function(d, i) {
+                        var h = barHeight(d.users);
+                        return height - (h-20);
+                    })
+                    .attr("x", function(d, i) {
+                        return x(i + 1);
+                    })
+                    .attr("fill", "white");
+
+                bars.exit()
+                    .transition()
+                    .duration(frequency/2)
+                    .attr("height", 0)
+                    .attr("y", height)
+                    .remove();
+
+                labels.exit()
+                    .transition()
+                    .duration(frequency/2)
+                    .attr("y", height)
+                    .remove();
+
+            });
+        }
+    
+
+        fetchData();
+        setInterval(fetchData, frequency);
+
+
+        </script>
+    </body>
+</html>
