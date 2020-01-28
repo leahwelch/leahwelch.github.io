@@ -96,8 +96,9 @@
                         return d.users;
                     })
                     .attr("x", function(d, i) {
-                        return x(i + 1);
+                        return (x(i + 1))+(barWidth/2);
                     })
+                    .style("text-anchor", "middle")
                     .attr("y", height)
                 
                 labels.merge(labelEnter)
@@ -111,8 +112,9 @@
                         return height - (h-20);
                     })
                     .attr("x", function(d, i) {
-                        return x(i + 1);
+                        return (x(i + 1))+(barWidth/2);
                     })
+                    .style("text-anchor", "middle")
                     .attr("fill", "white");
 
                 bars.exit()
