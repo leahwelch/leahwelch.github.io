@@ -104,3 +104,15 @@
         </script>
     </body>
 </html>
+
+.text(function(d) { return "There are" + d.users; })
+.transition()
+.duration(frequency/2)
+.attr("y", function(d, i) {
+    var h = barHeight(d.users);
+    return height - (h-20);
+})
+.attr("x", function(d, i) {
+    return (x(i + 1))+(barWidth/2);
+})
+.style("text-anchor", "middle");
