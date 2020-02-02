@@ -8,7 +8,6 @@ html, body {
   font-family: "Futura",'Arial Narrow', sans-serif;
 }
 
-/* INTRO */
 #maintitle {
   font-family: "Futura", Arial, sans-serif;
   font-size: 55pt;
@@ -33,6 +32,15 @@ html, body {
   display: block;
 }
 
+body {
+  background-color: #FFFFFF;
+  transition: 0.3s all;
+}
+
+section {
+  height: 100vh;
+}
+
 #titleContainer { 
   width: auto;
   height: auto;
@@ -44,6 +52,10 @@ html, body {
     "titlePic title"
 } 
 
+p {
+  font-size: 11pt;
+}
+
 h1 {
   font-weight: lighter;
   font-size: 36pt;
@@ -51,7 +63,32 @@ h1 {
   margin-top: 1rem;
 }
 
-/* DASHBOARD */
+.number {
+  font-weight: bolder;
+  font-size: 24pt;
+  vertical-align: middle;
+}
+
+#carrot2 {
+  vertical-align: top;
+}
+
+#carrot3 {
+  vertical-align: top;
+}
+
+.imgContainer {
+  vertical-align: middle;
+}
+
+.ingredients {
+  background-color: #FFFFFF;
+}
+
+#ingredients {
+  margin-top: 15rem;
+}
+
 #upper {
   background-color: rgba(255, 255, 255, 0.3);
   height: 5rem;
@@ -64,12 +101,11 @@ h1 {
   grid-area: lower;
 }
 
-#dashboard {
-  opacity: 0;
+figure {
   margin-left: 70%;
   width: 25%;
-  position: fixed;
-  top: 10%;
+  position: sticky;
+  top: 30%;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -83,82 +119,109 @@ h1 {
   padding: 20px;
 }
 
-/* RECIPE SECTIONS */
-
 .carrots {
+  background-color: #F8AC67;
   color: #DC6626;
 }
 
-#carrots {
-  grid-area: carrots;
-  background-color: #F8AC67;
+#firstCarrot {
+  grid-area: first;
+}
+
+#secondCarrot {
+  grid-area: second;
+  padding-right: 15px;
+}
+
+#thirdCarrot {
+  grid-area: third;
+}
+
+#fourthCarrot {
+  grid-area: fourth;
+}
+
+#fifthCarrot {
+  grid-area: fifth;
+}
+
+#sixthCarrot {
+  grid-area: sixth;
+}
+
+#seventhCarrot {
+  grid-area: seventh;
+}
+
+#carrotContainer {
+  width: 60%;
+  height: 60%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 0%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "first first fourth fifth"
+    "second third sixth seventh"
 }
 
 .cucumbers {
+  background-color: #ADD7A2;
   color: #2F5B2C;
 }
 
-#cucumbers {
-  grid-area: cucumbers;
-  background-color: #ADD7A2;
-}
-
 .beef {
-  grid-area: beef;
   background-color: #5D3C15;
   color: #F3DDC0;
 }
 
+.beef .dashText  {
+  color: #5D3C15;
+}
+
 .rice {
-  grid-area: rice;
   background-color: #F3DDC0;
   color: #5D3C15;
 }
 
 .sauce {
-  grid-area: sauce;
   background-color: #CC4128;
   color: #F3DDC0;
 }
 
+.sauce .dashText  {
+  color: #CC4128;
+}
+
 .spinach {
-  grid-area: spinach;
   background-color: #2F5B2C;
   color: #ADD7A2;
 }
 
+.spinach .dashText  {
+  color: #2F5B2C;
+}
+
 .mushrooms {
-  grid-area: mushrooms;
   background-color: #AE977A;
   color: #5D3C15;
 }
 
 .egg {
-  grid-area: egg;
   background-color: #F6C75E;
   color: #A4772B;
 }
 
 .combine {
-  grid-area: combine;
   background-color: #FFFFFF;
 }
 
-#recipe {
-  width: 100%;
-  height: 2400vh;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 4fr 4fr 4fr 2fr 2fr 4fr 2fr 1fr 1fr;
-  grid-template-areas:
-    "carrots"
-    "cucumbers"
-    "beef"
-    "rice"
-    "sauce"
-    "spinach"
-    "mushrooms"
-    "egg"
-    "combine"
+.combine .dashText  {
+  color: #FFFFFF;
 }
 
+.ingredients .dashText  {
+  color: #FFFFFF;
+}

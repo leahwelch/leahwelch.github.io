@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <style>
+            body {
+                margin: 10px;
+            }
+
+            .box {
+                fill: transparent;
+                stroke: red;
+                stroke-width: 2px;
+            }
+
+            tspan {
+                baseline-shift: -100%;
+            }
+        </style>
+    </head>
+    <body>
+        <svg id="chart" width="100%" height="100vh"></svg>
+        <script>
+            var svg = d3.select("#chart");
+            
+            var data1 = [
+                "Hello, my name is O",
+                "And I work in a Button Factory (Factory!)",
+                "I've got a wife (oh yeah!), two kids, and a dog (and a dog)"
+            ];
+
+            var data2 = [
+                "I'm a bun"
+            ];
+
+            var columnWidth = 100;
+
+            function drawBoxes(iceCream) {
+
+                var boxes = svg.selectAll(".box")
+                    .data(iceCream);
+                
+                boxes.enter().append("rect")
+                    .attr("class", "box")
+                    .attr("x", function(datum,index) {
+                        console.log(this);
+                        console.log(datum);
+                        return index * columnWidth;
+                    })
+                    .attr("y", 0)
+                    .attr("width", columnWidth)
+                    .attr("height", 200);
+
+                boxes.exit().remove();
+
+                var labels = svg.selectAll(".label")
+                    .data(iceCream);
+
+                var fontSize = 20;
+
+                var enterLabels = labels.enter().append("text")
+                    .attr("class", "label")
+                    .attr("font-size", fontSize)
+                    .attr("x", function(datum,index) {
+                        return index * columnWidth;
+                    })
+                    .attr("y", 0)
+                    .attr("width", columnWidth)
+                    .attr("height", 200);
+
+                labels.merge(enterLabels)
+                    .each(function(d, i) {
+                        
+                        var textElement = d3.select(this);
+                        textElement.text("");
+
+                        var words = d.split(" ");
+                        var tspan = textElement.append("tspan");
+                        var line = 0;
+
+                        words.forEach(function(word) {
+                            var text = tspan.text();
+                            tspan.text(text + " " + word);
+                            
+                            var domElement = tspan.node();
+                            var tspanWidth = domElement.getBoundingClientRect().width;
+
+                            if (tspanWidth > columnWidth) {
+                                line++;
+                                tspan.text(text);
+                                tspan = textElement.append("tspan")
+                                .attr("y", line * fontSize) 
+                                .attr("x", (columnWidth * i))   
+                                .text(word);
+                            }
+                        });
+
+                    });
+
+                labels.exit().remove();
+            }
+            drawBoxes(data1);
+        </script>
+    </body>
+</html>
