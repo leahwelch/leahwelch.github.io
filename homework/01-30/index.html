@@ -62,6 +62,33 @@
                 var labels = svg.selectAll(".label")
                     .data(data, function(d) {
                         return d.timestamp;
+                    })
+                    .each(function(d, i) {
+                        
+                        var textElement = d3.select(this);
+                        textElement.text("");
+    
+                        var words = textElement.text().split(" ");
+                        var tspan = textElement.text(null).append("tspan");
+                        var line = 0;
+    
+                        words.forEach(function(word) {
+                            var text = tspan.text();
+                            tspan.text(text + " " + word);
+                            
+                            var domElement = tspan.node();
+                            var tspanWidth = domElement.getBoundingClientRect().width;
+    
+                            if (tspanWidth > barWidth) {
+                                line++;
+                                tspan.text(text);
+                                tspan = textElement.append("tspan")
+                                .attr("y", line * fontSize) 
+                                .attr("x", (barWidth * i))   
+                                .text(word);
+                            }
+                        });
+    
                     });
 
                 var enter = bars.enter().append("rect")
@@ -115,7 +142,6 @@
                         return (x(i + 1))+(barWidth/2);
                     })
                     .text(function(d) { return "There are " + d.users + " people on this site"; })
-                    .call(wrap)
                     .style("text-anchor", "middle");
 
                 bars.exit()
@@ -131,7 +157,7 @@
                     .attr("y", height)
                     .remove();
                     
-                function wrap(text, width) {
+                /*function wrap(text, width) {
                     text.each(function(d, i) {
                         
                     var textElement = d3.select(this);
@@ -160,7 +186,7 @@
 
                 });
 
-            }
+            }*/
                 
         });
     }
