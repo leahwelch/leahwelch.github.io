@@ -35,8 +35,6 @@
             .domain([dataMax, 1])
             .range([0, width-barWidth]);
 
-        
-
         function fetchData() {
             d3.json(realTimeURL, function(error,users) {
                 
@@ -45,14 +43,8 @@
                     timestamp: new Date()
                 };
 
-                /*function statement(d) {
-                        return "There are" + d.users + "users on our imaginary site";
-                    }*/
-                
-                
                 data.unshift(dataObject);
                 if (data.length > dataMax) data.pop();
-                //console.log(data);
 
                 var max = d3.max(data, function(d) {
                     return d.users;
@@ -99,8 +91,11 @@
                     .attr("fill", "darkOrchid")
                     .attr("stroke", "white");
 
+                var fontSize = 14;
+                
                 var labelEnter = labels.enter().append("text")
                     .attr("class", "label")
+                    .attr("font-size", fontSize)
                     .attr("x", function(d, i) {
                         return (x(i + 1))+(barWidth/2);
                     })
@@ -111,6 +106,7 @@
                 labels.merge(labelEnter)
                     .transition()
                     .duration(frequency/2)
+                    .attr("font-size", fontSize)
                     .attr("y", function(d, i) {
                         var h = barHeight(d.users);
                         return height - (h-20);
@@ -118,17 +114,31 @@
                     .attr("x", function(d, i) {
                         return (x(i + 1))+(barWidth/2);
                     })
-                    .text(function(d) { return "There are " + d.users; })
-                    .style("text-anchor", "middle")
-                    .call(wrap, barWidth)
+                    .text(function(d) { return "There are " + d.users + " people on this site"; })
+                    .call(wrap)
+                    .style("text-anchor", "middle");
+
+                bars.exit()
+                    .transition()
+                    .duration(frequency/2)
+                    .attr("height", 0)
+                    .attr("y", height)
+                    .remove();
+
+                labels.exit()
+                    .transition()
+                    .duration(frequency/2)
+                    .attr("y", height)
+                    .remove();
                     
                 function wrap(text, width) {
                     text.each(function(d, i) {
                         
-                    var text = d3.select(this);
+                    var textElement = d3.select(this);
+                    textElement.text("");
 
-                    var words = text.text().split(" ");
-                    var tspan = text.append("tspan");
+                    var words = textElement.text().split(" ");
+                    var tspan = textElement.text(null).append("tspan");
                     var line = 0;
 
                     words.forEach(function(word) {
@@ -141,7 +151,7 @@
                         if (tspanWidth > barWidth) {
                             line++;
                             tspan.text(text);
-                            tspan = text.append("tspan")
+                            tspan = textElement.append("tspan")
                             .attr("y", line * fontSize) 
                             .attr("x", (barWidth * i))   
                             .text(word);
@@ -150,20 +160,8 @@
 
                 });
 
-                    bars.exit()
-                        .transition()
-                        .duration(frequency/2)
-                        .attr("height", 0)
-                        .attr("y", height)
-                        .remove();
-
-                    labels.exit()
-                        .transition()
-                        .duration(frequency/2)
-                        .attr("y", height)
-                        .remove();
-
-                }
+            }
+                
         });
     }
     
