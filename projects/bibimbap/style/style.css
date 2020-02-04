@@ -104,39 +104,60 @@ h1 {
 }
 
 .beef {
+  color: #5D3C15;
+}
+
+#beef {
   grid-area: beef;
   background-color: #5D3C15;
   color: #F3DDC0;
 }
 
 .rice {
-  grid-area: rice;
-  background-color: #F3DDC0;
   color: #5D3C15;
 }
 
+#rice {
+  grid-area: rice;
+  background-color: #F3DDC0;
+}
+
 .sauce {
+  color: #CC4128;
+}
+
+#sauce {
   grid-area: sauce;
   background-color: #CC4128;
   color: #F3DDC0;
 }
 
 .spinach {
+  color: #2F5B2C;
+}
+
+#spinach {
   grid-area: spinach;
   background-color: #2F5B2C;
   color: #ADD7A2;
 }
 
 .mushrooms {
-  grid-area: mushrooms;
-  background-color: #AE977A;
   color: #5D3C15;
 }
 
+#mushrooms {
+  grid-area: mushrooms;
+  background-color: #AE977A;
+}
+
 .egg {
+  color: #A4772B;
+}
+
+#egg {
   grid-area: egg;
   background-color: #F6C75E;
-  color: #A4772B;
 }
 
 .combine {

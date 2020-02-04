@@ -59,38 +59,6 @@
                         return d.timestamp;
                     });
 
-                var labels = svg.selectAll(".label")
-                    .data(data, function(d) {
-                        return d.timestamp;
-                    })
-                    .each(function(d, i) {
-                        
-                        var textElement = d3.select(this);
-                        textElement.text("");
-    
-                        var words = textElement.text().split(" ");
-                        var tspan = textElement.text(null).append("tspan");
-                        var line = 0;
-    
-                        words.forEach(function(word) {
-                            var text = tspan.text();
-                            tspan.text(text + " " + word);
-                            
-                            var domElement = tspan.node();
-                            var tspanWidth = domElement.getBoundingClientRect().width;
-    
-                            if (tspanWidth > barWidth) {
-                                line++;
-                                tspan.text(text);
-                                tspan = textElement.append("tspan")
-                                .attr("y", line * fontSize) 
-                                .attr("x", (barWidth * i))   
-                                .text(word);
-                            }
-                        });
-    
-                    });
-
                 var enter = bars.enter().append("rect")
                     .attr("class", "bar")
                     .attr("width", barWidth)
@@ -118,6 +86,17 @@
                     .attr("fill", "darkOrchid")
                     .attr("stroke", "white");
 
+                bars.exit()
+                    .transition()
+                    .duration(frequency/2)
+                    .attr("height", 0)
+                    .attr("y", height)
+                    .remove();
+
+                var labels = svg.selectAll(".label")
+                    .data(data, function(d) {
+                        return d.timestamp; });
+
                 var fontSize = 14;
                 
                 var labelEnter = labels.enter().append("text")
@@ -128,65 +107,51 @@
                     })
                     .style("text-anchor", "middle")
                     .attr("y", height)
-                    .attr("fill", "white");
+                    .attr("fill", "black");
                 
                 labels.merge(labelEnter)
-                    .transition()
-                    .duration(frequency/2)
-                    .attr("font-size", fontSize)
-                    .attr("y", function(d, i) {
-                        var h = barHeight(d.users);
-                        return height - (h-20);
-                    })
-                    .attr("x", function(d, i) {
-                        return (x(i + 1))+(barWidth/2);
-                    })
-                    .text(function(d) { return "There are " + d.users + " people on this site"; })
-                    .style("text-anchor", "middle");
+                    .each(function(d, i) {
+                        
+                        var textElement = d3.select(this);
+                        textElement.text("");
+    
+                        var statement = "There are " + d.users + " people on this imaginary site";
+                        
+                        var words = statement.split(" ");
+                        var tspan = textElement.append("tspan");
+                        var line = 0;
+    
+                        words.forEach(function(word) {
+                            var statement = tspan.text();
+                            tspan.text(statement + " " + word);
+                            
+                            var domElement = tspan.node();
+                            var tspanWidth = domElement.getBoundingClientRect().width;
+    
+                            if (tspanWidth > barWidth) {
+                                line++;
+                                tspan.text(statement);
+                                tspan = textElement.append("tspan")
+                                .attr("y", function() {
+                                    var h = barHeight(d.users);
+                                    return (height - h) + (fontSize * line);
+                                }) 
+                                .attr("x",function() {
+                                    return (x(i + 1))+(barWidth/2);
+                                })
+                                .text(word);
+                            }
+                        });
+    
+                    });
+                    
 
-                bars.exit()
-                    .transition()
-                    .duration(frequency/2)
-                    .attr("height", 0)
-                    .attr("y", height)
-                    .remove();
 
                 labels.exit()
                     .transition()
                     .duration(frequency/2)
                     .attr("y", height)
                     .remove();
-                    
-                /*function wrap(text, width) {
-                    text.each(function(d, i) {
-                        
-                    var textElement = d3.select(this);
-                    textElement.text("");
-
-                    var words = textElement.text().split(" ");
-                    var tspan = textElement.text(null).append("tspan");
-                    var line = 0;
-
-                    words.forEach(function(word) {
-                        var text = tspan.text();
-                        tspan.text(text + " " + word);
-                        
-                        var domElement = tspan.node();
-                        var tspanWidth = domElement.getBoundingClientRect().width;
-
-                        if (tspanWidth > barWidth) {
-                            line++;
-                            tspan.text(text);
-                            tspan = textElement.append("tspan")
-                            .attr("y", line * fontSize) 
-                            .attr("x", (barWidth * i))   
-                            .text(word);
-                        }
-                    });
-
-                });
-
-            }*/
                 
         });
     }

@@ -28,8 +28,10 @@ var height = document.querySelector("#recipe").scrollHeight;
 
 var carrotContainer = document.getElementById("carrots");
 var carrotTop = carrotContainer.getBoundingClientRect().height;
+console.log(carrotTop);
 var cucumberContainer = document.getElementById("cucumbers");
 var cucumberTop = (.9 * sticky) + cucumberContainer.getBoundingClientRect().height;
+console.log(cucumberTop);
 
 //////////////////////////////////
     // LISTEN FOR SCROLL POSITION AND MAKE CHANGES
@@ -44,12 +46,23 @@ window.addEventListener("scroll", function() {
   makeSticky();
 
   //for (var i = 0; divs.length > i; i++) {
+    console.log(scrollTop);
 
     if (scrollTop > sticky && scrollTop < cucumberTop) {
       dashboard.className = ("carrots");
-    } else if (scrollTop >= cucumberTop) {
+    } else if (scrollTop >= cucumberTop && scrollTop < beefTop) {
       dashboard.className = ("cucumbers");
-    }
+    } else if (scrollTop >= beefTop && scrollTop < riceTop) {
+      dashboard.className = ("beef");
+    } else if (scrollTop >= riceTop && scrollTop < sauceTop) {
+      dashboard.className = ("rice");
+    } else if (scrollTop >= sauceTop && scrollTop < spinachTop) {
+      dashboard.className = ("sauce");
+    } else if (scrollTop >= spinachTop && scrollTop < mushroomTop) {
+      dashboard.className = ("spinach");
+    } else if (scrollTop >= mushroomTop) {
+      dashboard.className = ("mushrooms");
+    } 
 
 });
 
