@@ -8,9 +8,12 @@
     <body>
         <header id="intro">
             <div id="titleContainer">
-                <img src="./pictures/titlePic.png" height="550px" id="titlePic">
+                <img src="./pictures/titlePic.png" height="525px" id="titlePic">
                 <img src="./pictures/korean.png" height="200px" id="korean">
-                <h1 id="maintitle">Bibimbap: An Illustrated Guide</h1>
+                <div id="titleText">
+                    <h1 id="maintitle">Bibimbap:</h1>
+                    <h3 id="subtitle">An Illustrated Guide</h3>
+                </div>
             </div>
             <div class="ingredients">
                 <h1 class="sectionTitle" id="ingredients">Ingredients</h1>
@@ -19,46 +22,52 @@
 
         <div id="dashboard">
             <div id="upper">
-                <p class="dashText" >Prep Time: <span id="prepTime"></span></p>
+                <p class="dashText">Prep Time: <span id="prepTime"></span></p>
             </div>
             <div id="lower">
-                <p class="dashText" >Time until eating:</p>
+                <p class="dashText">Time until eating:</p>
                 <p id="timeToEat"></p>
             </div>
         </div>
 
         <div id="recipe">
             <div class="carrots" id="carrots">
-
+                <h2>carrots & radishes</h2>
+                <div class="ingredientContainer" id="carrotContainer">
+                    <div id="firstCarrot">
+                        <span class="number">1  </span>
+                        <span class="imgContainer"><img src="./pictures/firstCarrots.png" height="150px"></span> 
+                        <p id="firstCarrotText">julienne 1 radish and 1 carrot</p>
+                    </div>
+                </div>
             </div>
             <div class="cucumbers" id="cucumbers">
-
+                <h2>Cucumbers</h2>
             </div>
             <div class="beef" id="beef">
-
+                <h2>Beef</h2>
             </div>
             <div class="rice" id="rice">
-
+                <h2>Rice</h2>
             </div>
             <div class="sauce" id="sauce">
-
+                <h2>Bibimbap Sauce</h2>
             </div>
             <div class="spinach" id="spinach">
-
+                <h2>Spinach</h2>
             </div>
             <div class="mushrooms" id="mushrooms">
-
+                <h2>Mushrooms</h2>
             </div>
             <div class="egg" id="egg">
-
+                <h2>Egg</h2>
             </div>
             <div class="combine" id="combine">
-
+                <h2>Combine & Eat!</h2>
             </div>
         </div>
 
         <div id="footer">
-            <h1 class="eat">Combine & Eat!</h1>
         </div>
 
         <script src="./script.js"></script>

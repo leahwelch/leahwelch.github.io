@@ -10,7 +10,7 @@ var sticky = recipe.offsetTop;
 
 function makeSticky() {
 
-  if (window.pageYOffset > sticky ) {
+  if (window.pageYOffset > sticky - 50) {
   dashboard.style.opacity = 1;
   } else {
   dashboard.style.opacity = 0;
@@ -53,59 +53,53 @@ var preps = ["20 minutes", "1 hour 20 minutes", "15 minutes", "22 minutes", "10 
 window.addEventListener("scroll", function() { 
         
   scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  var prepTime = document.getElementById("prepTime");
+  var timeToEat = document.getElementById("timeToEat");
 
   makeSticky();
 
-  // DASHBOARD TEXT COLOR CHANGES //
+  // DASHBOARD TEXT COLOR CHANGES, PREP TIME UPDATES, TIME UNTIL EATING UPDATES //
     console.log(scrollTop);
 
-    if (scrollTop > sticky && scrollTop < cucumberTop) {
+    if (scrollTop > (sticky - 50) && scrollTop < cucumberTop) {
       dashboard.className = ("carrots");
+      prepTime.innerHTML = preps[0];
+      timeToEat.innerHTML = timeTos[0];
     } else if (scrollTop >= cucumberTop && scrollTop < beefTop) {
       dashboard.className = ("cucumbers");
+      prepTime.innerHTML = preps[1];
+      timeToEat.innerHTML = timeTos[1];
     } else if (scrollTop >= beefTop && scrollTop < riceTop) {
       dashboard.className = ("beef");
+      prepTime.innerHTML = preps[2];
+      timeToEat.innerHTML = timeTos[2];
     } else if (scrollTop >= riceTop && scrollTop < sauceTop) {
       dashboard.className = ("rice");
+      prepTime.innerHTML = preps[3];
+      timeToEat.innerHTML = timeTos[3];
     } else if (scrollTop >= sauceTop && scrollTop < spinachTop) {
       dashboard.className = ("sauce");
+      prepTime.innerHTML = preps[4];
+      timeToEat.innerHTML = timeTos[4];
     } else if (scrollTop >= spinachTop && scrollTop < mushroomTop) {
       dashboard.className = ("spinach");
+      prepTime.innerHTML = preps[5];
+      timeToEat.innerHTML = timeTos[5];
     } else if (scrollTop >= mushroomTop && scrollTop < eggTop) {
       dashboard.className = ("mushrooms");
+      prepTime.innerHTML = preps[6];
+      timeToEat.innerHTML = timeTos[6];
     } else if (scrollTop >= eggTop && scrollTop < combineTop) {
       dashboard.className = ("egg");
+      prepTime.innerHTML = preps[7];
+      timeToEat.innerHTML = timeTos[7];
     } else {
       dashboard.className = ("combine");
-    }
-
-    // PREP TIME TEXT UPDATES //
-
-    var prepTime = document.getElementById("prepTime");
-    
-    if (scrollTop > sticky && scrollTop < cucumberTop) {
-      prepTime.innerHTML = preps[0];
-    } else if (scrollTop >= cucumberTop && scrollTop < beefTop) {
-      prepTime.innerHTML = preps[1];
-    } else if (scrollTop >= beefTop && scrollTop < riceTop) {
-      prepTime.innerHTML = preps[2];
-    } else if (scrollTop >= riceTop && scrollTop < sauceTop) {
-      prepTime.innerHTML = preps[3];
-    } else if (scrollTop >= sauceTop && scrollTop < spinachTop) {
-      prepTime.innerHTML = preps[4];
-    } else if (scrollTop >= spinachTop && scrollTop < mushroomTop) {
-      prepTime.innerHTML = preps[5];
-    } else if (scrollTop >= mushroomTop && scrollTop < eggTop) {
-      prepTime.innerHTML = preps[6];
-    } else if (scrollTop >= eggTop && scrollTop < combineTop) {
-      prepTime.innerHTML = preps[7];
-    } else {
       prepTime.innerHTML = preps[8];
+      timeToEat.innerHTML = timeTos[8];
     }
 
-    // TIME UNTIL EATING TEXT UPDATES //
-
-    var timeToEat = document.getElementById("timeToEat");
+    /*var timeToEat = document.getElementById("timeToEat");
     
     if (scrollTop > sticky && scrollTop < cucumberTop) {
       timeToEat.innerHTML = timeTos[0];
@@ -125,7 +119,7 @@ window.addEventListener("scroll", function() {
       timeToEat.innerHTML = timeTos[7];
     } else {
       timeToEat.innerHTML = timeTos[8];
-    }
+    }*/
 
 });
 

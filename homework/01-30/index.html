@@ -118,7 +118,14 @@
                         var statement = "There are " + d.users + " people on this imaginary site";
                         
                         var words = statement.split(" ");
-                        var tspan = textElement.append("tspan");
+                        var tspan = textElement.append("tspan")
+                            .attr("y", function() {
+                                    var h = barHeight(d.users);
+                                    return (height - h) + (fontSize * line);
+                                }) 
+                            .attr("x",function() {
+                                    return (x(i + 1))+(barWidth/2);
+                                });
                         var line = 0;
     
                         words.forEach(function(word) {
