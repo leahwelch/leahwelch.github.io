@@ -70,9 +70,6 @@ h2 {
   margin: 10%;
   font-size: 40pt;
   font-weight: lighter;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 10%;
 }
 
 /* DASHBOARD */
@@ -222,18 +219,62 @@ h2 {
 
 .ingredientContainer {
   margin-left: 7%;
+  width: 60%;
+}
+
+.number {
+  font-size: 160pt;
+}
+
+.sectionTitleContainer {
+  margin: 0;
+  width: 70%;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10%;
 }
 
 /* INDIVIDUAL RECIPE ELEMENTS */
 
-.number {
-  /*font-weight: bolder;*/
-  font-size: 160pt;
+/* CARROTS & RADISHES */
+
+#carrotTitle {
+  padding: 10px 10px 10px 10px;
+}
+
+#carrotTitleContainer {
+  background-color: #F8AC67;
+}
+
+#carrotContainer {
+  height: 270vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas: 
+    "firstCarrot firstCarrot"
+    "secondCarrot thirdCarrot"
+    "fourthCarrot fifthCarrot"
+    "sixthCarrot seventhCarrot"
+}
+
+#firstCarrot {
+  height: 40vh;
+  grid-area: firstCarrot;
+  display: grid;
+  grid-template-columns: 1fr 8fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 
+    "carrotOne firstCarrotPic"
+    "carrotOne firstCarrotText"
+}
+
+#carrotOne {
   vertical-align: middle;
   grid-area: carrotOne;
 }
 
-.imgContainer {
+#firstCarrotPic {
   grid-area: firstCarrotPic;
 }
 
@@ -242,13 +283,74 @@ h2 {
   grid-area: firstCarrotText;
 }
 
-#firstCarrot {
+#secondCarrot {
+  height: 70vh;
+  grid-area: secondCarrot;
   display: grid;
-  grid-template-columns: 1fr 8fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 2fr;
   grid-template-areas: 
-    "carrotOne firstCarrotPic"
-    "carrotOne firstCarrotText"
+    "carrotTwo secondCarrotPic"
+    "secondCarrotText secondCarrotPic"
 }
+
+#carrotTwo {
+  grid-area: carrotTwo;
+  padding-left: 10px;
+}
+
+#secondCarrotText {
+  padding-left: 10px;
+  grid-area: secondCarrotText;
+}
+
+#secondCarrotPic {
+  padding-top: 30px;
+  grid-area: secondCarrotPic;
+}
+
+#thirdCarrot {
+  grid-area: thirdCarrot;
+  height: 70vh;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 2fr;
+  grid-template-areas: 
+    "carrotThree thirdCarrotPic"
+    "thirdCarrotText thirdCarrotPic"
+}
+
+#carrotThree {
+  grid-area: carrotThree;
+}
+
+#thirdCarrotText {
+  padding-left: 10px;
+  grid-area: thirdCarrotText;
+}
+
+#thirdCarrotPic {
+  padding-top: 30px;
+  padding-left: 10px;
+  grid-area: thirdCarrotPic;
+}
+
+#fourthCarrot {
+  grid-area: fourthCarrot;
+}
+
+#fifthCarrot {
+  grid-area: fifthCarrot;
+}
+
+#sixthCarrot {
+  grid-area: sixthCarrot;
+}
+
+#seventhCarrot {
+  grid-area: seventhCarrot;
+}
+
+
 
 
