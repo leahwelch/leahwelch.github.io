@@ -9,7 +9,7 @@ html, body {
 }
 
 p {
-  font-size: 16pt;
+  font-size: 14pt;
 }
 
 /* INTRO */
@@ -87,8 +87,8 @@ h2 {
 
 #dashboard {
   opacity: 0;
-  margin-left: 70%;
-  width: 15%;
+  margin-left: 75%;
+  width: 18%;
   position: fixed;
   top: 10%;
   display: grid;
@@ -282,7 +282,7 @@ h2 {
 }
 
 #secondCarrot {
-  height: 70vh;
+  height: 90vh;
   grid-area: secondCarrot;
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -304,12 +304,13 @@ h2 {
 
 #secondCarrotPic {
   padding-top: 30px;
+  padding-left: 20px;
   grid-area: secondCarrotPic;
 }
 
 #thirdCarrot {
   grid-area: thirdCarrot;
-  height: 70vh;
+  height: 90vh;
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-rows: 1fr 2fr;
@@ -335,7 +336,7 @@ h2 {
 
 #fourthCarrot {
   grid-area: fourthCarrot;
-  height: 70vh;
+  height: 90vh;
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-rows: 1fr 2fr;
@@ -354,14 +355,14 @@ h2 {
 }
 
 #fourthCarrotPic {
-  padding-top: 30px;
+  padding-top: 40px;
   padding-left: 20px;
   grid-area: fourthCarrotPic;
 }
 
 #fifthCarrot {
   grid-area: fifthCarrot;
-  height: 70vh;
+  height: 90vh;
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-rows: 1fr 2fr;
