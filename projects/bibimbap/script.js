@@ -47,8 +47,8 @@ var combineTop = eggTop + eggContainer.getBoundingClientRect().height;
     // LISTEN FOR SCROLL POSITION AND MAKE CHANGES
 //////////////////////////////////
 var scrollTop = [0];
-var timeTos = ["24 hours", "24 hours", "3 hours 15 minutes", "30 minutes", "20 minutes", "15 minutes", "10 minutes", "3 minutes", "0 seconds"];
-var preps = ["20 minutes", "1 hour 20 minutes", "15 minutes", "22 minutes", "10 minutes", "10 minutes", "8 minutes", "3 minutes", "30 seconds"];
+var timeTos = ["24 hours", "24 hours", "3.25 hours", "30 minutes", "20 minutes", "15 minutes", "10 minutes", "3 minutes", "0 seconds"];
+var preps = ["20 minutes", "1.25 hours", "15 minutes", "22 minutes", "10 minutes", "10 minutes", "8 minutes", "3 minutes", "30 seconds"];
 
 window.addEventListener("scroll", function() { 
         
