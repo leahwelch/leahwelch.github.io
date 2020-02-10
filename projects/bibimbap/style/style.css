@@ -329,16 +329,60 @@ h2 {
 
 #thirdCarrotPic {
   padding-top: 30px;
-  padding-left: 10px;
+  padding-left: 20px;
   grid-area: thirdCarrotPic;
 }
 
 #fourthCarrot {
   grid-area: fourthCarrot;
+  height: 70vh;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 2fr;
+  grid-template-areas: 
+    "carrotFour fourthCarrotPic"
+    "fourthCarrotText fourthCarrotPic"
+}
+
+#carrotFour {
+  grid-area: carrotFour;
+}
+
+#fourthCarrotText {
+  padding-left: 10px;
+  grid-area: fourthCarrotText;
+}
+
+#fourthCarrotPic {
+  padding-top: 30px;
+  padding-left: 20px;
+  grid-area: fourthCarrotPic;
 }
 
 #fifthCarrot {
   grid-area: fifthCarrot;
+  height: 70vh;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 2fr;
+  grid-template-areas: 
+    "carrotFive fifthCarrotPic"
+    "fifthCarrotText fifthCarrotPic"
+}
+
+#carrotFive {
+  grid-area: carrotFive;
+}
+
+#fifthCarrotText {
+  padding-left: 10px;
+  grid-area: fifthCarrotText;
+}
+
+#fifthCarrotPic {
+  padding-top: 30px;
+  padding-left: 20px;
+  grid-area: fifthCarrotPic;
 }
 
 #sixthCarrot {
