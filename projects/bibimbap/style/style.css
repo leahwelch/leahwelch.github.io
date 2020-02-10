@@ -199,7 +199,7 @@ h2 {
 
 #recipe {
   width: 100%;
-  height: 2400vh;
+  height: 2200vh;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 4fr 4fr 4fr 2fr 2fr 4fr 2fr 1fr 1fr;
@@ -248,7 +248,7 @@ h2 {
   height: 270vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 2fr 2fr 1fr;
   grid-template-areas: 
     "firstCarrot firstCarrot"
     "secondCarrot thirdCarrot"
@@ -388,10 +388,54 @@ h2 {
 
 #sixthCarrot {
   grid-area: sixthCarrot;
+  height: 60vh;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 2fr;
+  grid-template-areas: 
+    "carrotSix sixthCarrotPic"
+    "sixthCarrotText sixthCarrotPic"
+}
+
+#carrotSix {
+  grid-area: carrotSix;
+}
+
+#sixthCarrotText {
+  padding-left: 10px;
+  grid-area: sixthCarrotText;
+}
+
+#sixthCarrotPic {
+  padding-top: 30px;
+  padding-left: 20px;
+  grid-area: sixthCarrotPic;
 }
 
 #seventhCarrot {
   grid-area: seventhCarrot;
+  height: 60vh;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 2fr;
+  grid-template-areas: 
+    "carrotSeven seventhCarrotPic"
+    "seventhCarrotText seventhCarrotPic"
+}
+
+#carrotSeven {
+  grid-area: carrotSeven;
+}
+
+#seventhCarrotText {
+  padding-left: 10px;
+  grid-area: seventhCarrotText;
+}
+
+#seventhCarrotPic {
+  padding-top: 30px;
+  padding-left: 20px;
+  grid-area: seventhCarrotPic;
 }
 
 

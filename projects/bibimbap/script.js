@@ -99,28 +99,7 @@ window.addEventListener("scroll", function() {
       timeToEat.innerHTML = timeTos[8];
     }
 
-    /*var timeToEat = document.getElementById("timeToEat");
     
-    if (scrollTop > sticky && scrollTop < cucumberTop) {
-      timeToEat.innerHTML = timeTos[0];
-    } else if (scrollTop >= cucumberTop && scrollTop < beefTop) {
-      timeToEat.innerHTML = timeTos[1];
-    } else if (scrollTop >= beefTop && scrollTop < riceTop) {
-      timeToEat.innerHTML = timeTos[2];
-    } else if (scrollTop >= riceTop && scrollTop < sauceTop) {
-      timeToEat.innerHTML = timeTos[3];
-    } else if (scrollTop >= sauceTop && scrollTop < spinachTop) {
-      timeToEat.innerHTML = timeTos[4];
-    } else if (scrollTop >= spinachTop && scrollTop < mushroomTop) {
-      timeToEat.innerHTML = timeTos[5];
-    } else if (scrollTop >= mushroomTop && scrollTop < eggTop) {
-      timeToEat.innerHTML = timeTos[6];
-    } else if (scrollTop >= eggTop && scrollTop < combineTop) {
-      timeToEat.innerHTML = timeTos[7];
-    } else {
-      timeToEat.innerHTML = timeTos[8];
-    }*/
-
 });
 
 //////////////////////////////////
