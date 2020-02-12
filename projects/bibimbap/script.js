@@ -27,7 +27,7 @@ var viewHeight = document.querySelector("#recipe").clientHeight;
 var height = document.querySelector("#recipe").scrollHeight;
 
 var carrotContainer = document.getElementById("carrots");
-var cucumberTop = (.9* sticky) + carrotContainer.getBoundingClientRect().height;
+var cucumberTop = (.8* sticky) + carrotContainer.getBoundingClientRect().height;
 var cucumberContainer = document.getElementById("cucumbers");
 var beefTop = cucumberTop + cucumberContainer.getBoundingClientRect().height;
 var beefContainer = document.getElementById("beef");
