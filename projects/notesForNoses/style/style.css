@@ -11,10 +11,7 @@ html, body {
 .filter {
   cursor: pointer;
   font-size: 11pt;
-}
-
-.filter:hover {
-  text-decoration-line: underline;
+  text-decoration: underline;
 }
 
 .instructions {
@@ -30,38 +27,31 @@ html, body {
 
 #chart {
   width: 100%;
-  height: 90vh;
+  height: 80vh;
   grid-area: chart;
 }
 
 #intro {
   text-align: center;
-  font-size: 18pt;
+  font-size: 16pt;
   grid-area: intro;
-  padding-left: 300px;
-  padding-right: 300px;
+  padding-left: 250px;
+  padding-right: 250px;
 }
 
-#versus {
-  text-align: center;
-  font-size: 18pt;
-  grid-area: versus;
-  padding-left: 300px;
-  padding-right: 300px;
+#filters {
+  grid-area: filters;
+  height: 75%;
 }
 
 #container {
   width: 100%;
-  height: 80%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 3fr 1fr 4fr;
   grid-template-areas: 
     "intro"
-    "intro"
-    "versus"
-    "chart"
-    "chart"
+    "filters"
     "chart";
 }
 
