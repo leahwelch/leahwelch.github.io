@@ -38,7 +38,7 @@ Promise.all(promises).then(function(data) {
         .entries(coats)
         .sort(function(a, b) { return b.value - a.value; });
 
-    var filteredCoats = nestedCoats.slice(0,5); 
+    var filteredCoats = nestedCoats.slice(0,4); 
     console.log(filteredCoats);
 
     var nestedJackets = d3.nest()
@@ -47,7 +47,7 @@ Promise.all(promises).then(function(data) {
         .entries(jackets)
         .sort(function(a, b) { return b.value - a.value; });
 
-    var filteredJackets = nestedJackets.slice(0,5); 
+    var filteredJackets = nestedJackets.slice(0,4); 
 
     var nestedPants = d3.nest()
         .key(function(d){ return d.color; })
@@ -55,7 +55,7 @@ Promise.all(promises).then(function(data) {
         .entries(pants)
         .sort(function(a, b) { return b.value - a.value; });
 
-    var filteredPants = nestedPants.slice(0,5); 
+    var filteredPants = nestedPants.slice(0,4); 
 
     var nestedShirts = d3.nest()
         .key(function(d){ return d.color; })
@@ -63,7 +63,7 @@ Promise.all(promises).then(function(data) {
         .entries(shirts)
         .sort(function(a, b) { return b.value - a.value; });
 
-    var filteredShirts = nestedShirts.slice(0,5); 
+    var filteredShirts = nestedShirts.slice(0,4); 
 
     var nestedKnits = d3.nest()
         .key(function(d){ return d.color; })
@@ -71,7 +71,7 @@ Promise.all(promises).then(function(data) {
         .entries(knits)
         .sort(function(a, b) { return b.value - a.value; });
 
-    var filteredKnits = nestedKnits.slice(0,5); 
+    var filteredKnits = nestedKnits.slice(0,4); 
     
     var mens = [];
         for(var i = 0; i < filteredCoats.length; i++) {
@@ -137,7 +137,7 @@ Promise.all(promises).then(function(data) {
         .entries(coatsW)
         .sort(function(a, b) { return b.value - a.value; });
 
-    var filteredCoatsW = nestedCoatsW.slice(0,5); 
+    var filteredCoatsW = nestedCoatsW.slice(0,4); 
     console.log(filteredCoatsW);
 
     var nestedJacketsW = d3.nest()
@@ -146,7 +146,7 @@ Promise.all(promises).then(function(data) {
         .entries(jacketsW)
         .sort(function(a, b) { return b.value - a.value; });
 
-    var filteredJacketsW = nestedJacketsW.slice(0,5); 
+    var filteredJacketsW = nestedJacketsW.slice(0,4); 
 
     var nestedPantsW = d3.nest()
         .key(function(d){ return d.color; })
@@ -154,7 +154,7 @@ Promise.all(promises).then(function(data) {
         .entries(pantsW)
         .sort(function(a, b) { return b.value - a.value; });
 
-    var filteredPantsW = nestedPantsW.slice(0,5); 
+    var filteredPantsW = nestedPantsW.slice(0,4); 
 
     var nestedShirtsW = d3.nest()
         .key(function(d){ return d.color; })
@@ -162,7 +162,7 @@ Promise.all(promises).then(function(data) {
         .entries(shirtsW)
         .sort(function(a, b) { return b.value - a.value; });
 
-    var filteredShirtsW = nestedShirtsW.slice(0,5); 
+    var filteredShirtsW = nestedShirtsW.slice(0,4); 
 
     var nestedKnitsW = d3.nest()
         .key(function(d){ return d.color; })
@@ -170,7 +170,7 @@ Promise.all(promises).then(function(data) {
         .entries(knitsW)
         .sort(function(a, b) { return b.value - a.value; });
 
-    var filteredKnitsW = nestedKnitsW.slice(0,5); 
+    var filteredKnitsW = nestedKnitsW.slice(0,4); 
     
     var womens = [];
         for(var i = 0; i < filteredCoatsW.length; i++) {
