@@ -10,6 +10,12 @@ html, body {
 
 p {
   font-size: 14pt;
+  font-weight: normal;
+  line-height: 125%;
+}
+
+a {
+  color: #0b0b0b;
 }
 
 /* INTRO */
@@ -30,6 +36,7 @@ h3 {
   margin-top: 20px;
   padding-left: 5px;
   font-size: 36pt;
+  font-weight: normal;
 }
 
 #titlePic {
@@ -70,6 +77,94 @@ h2 {
   padding: 10px 10px 10px 10px;
   font-size: 40pt;
   font-weight: lighter;
+}
+
+/* EXPLANATION & SHOPPING LIST */
+
+.shoppingImg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.explanation {
+  text-align: center;
+  margin-left: 29%;
+  margin-right: 29%;
+  margin-top: 60px;
+  margin-bottom: 50px;
+}
+
+#explanation {
+  font-size: 24pt;
+}
+
+#shoppingTitle {
+  padding-left: 10px;
+  margin-left: 7%;
+}
+
+.shoppingTitle {
+  text-align: center;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: normal;
+  font-size: 30pt;
+}
+
+.shoppingList {
+  text-align: center;
+  display: grid;
+  height: 200vh;
+  margin-left: 200px;
+  margin-right: 200px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "produce produce produce produce produce produce"
+    "protein protein grains grains liquids liquids"
+    "oils oils oils condiments condiments condiments"
+    "spices spices spices spices spices spices"
+}
+
+#produce {
+  grid-area: produce;
+  margin: 10px;
+}
+
+#protein {
+  grid-area: protein;
+  margin: 10px;
+}
+
+#grains {
+  grid-area: grains;
+  margin: 10px;
+}
+
+#liquids {
+  grid-area: liquids;
+  margin: 10px;
+}
+
+#oils {
+  grid-area: oils;
+  margin: 10px;
+}
+
+#condiments {
+  grid-area: condiments;
+  margin: 10px;
+}
+
+#spices {
+  grid-area: spices;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 50px;
 }
 
 /* DASHBOARD */
@@ -677,6 +772,7 @@ h2 {
 #firstBeefText {
   padding-left: 10px;
   grid-area: firstBeefText;
+  font-weight: lighter;
 }
 
 #secondBeef {
@@ -684,7 +780,7 @@ h2 {
   grid-area: secondBeef;
   display: grid;
   grid-template-columns: 1fr 10fr;
-  grid-template-rows: 3fr 1fr;
+  grid-template-rows: 2fr 1fr;
   grid-template-areas: 
     "beefTwo secondBeefPic"
     "secondBeefText secondBeefText"
@@ -703,6 +799,7 @@ h2 {
 #secondBeefText {
   padding-left: 10px;
   grid-area: secondBeefText;
+  font-weight: lighter;
 }
 
 #thirdBeef {
@@ -724,6 +821,7 @@ h2 {
 #thirdBeefText {
   padding-left: 10px;
   grid-area: thirdBeefText;
+  font-weight: lighter;
 }
 
 #thirdBeefPic {
@@ -752,6 +850,7 @@ h2 {
 #fourthBeefText {
   padding-left: 20px;
   grid-area: fourthBeefText;
+  font-weight: lighter;
 }
 
 #fourthBeefPic {
@@ -779,6 +878,7 @@ h2 {
 #fifthBeefText {
   padding-left: 10px;
   grid-area: fifthBeefText;
+  font-weight: lighter;
 }
 
 #fifthBeefPic {
@@ -807,6 +907,7 @@ h2 {
 #sixthBeefText {
   padding-left: 20px;
   grid-area: sixthBeefText;
+  font-weight: lighter;
 }
 
 #sixthBeefPic {
@@ -951,6 +1052,7 @@ h2 {
 #firstSauceText {
   padding-left: 10px;
   grid-area: firstSauceText;
+  font-weight: lighter;
 }
 
 #secondSauce {
@@ -958,7 +1060,7 @@ h2 {
   grid-area: secondSauce;
   display: grid;
   grid-template-columns: 1fr 10fr;
-  grid-template-rows: 3fr 1fr;
+  grid-template-rows: 2fr 1fr;
   grid-template-areas: 
     "sauceTwo secondSaucePic"
     "secondSauceText secondSauceText"
@@ -977,6 +1079,7 @@ h2 {
 #secondSauceText {
   padding-left: 10px;
   grid-area: secondSauceText;
+  font-weight: lighter;
 }
 
 #thirdSauce {
@@ -998,6 +1101,7 @@ h2 {
 #thirdSauceText {
   padding-left: 10px;
   grid-area: thirdSauceText;
+  font-weight: lighter;
 }
 
 #thirdSaucePic {
@@ -1046,6 +1150,7 @@ h2 {
 #firstSpinachText {
   padding-left: 10px;
   grid-area: firstSpinachText;
+  font-weight: lighter;
 }
 
 #firstSpinachPic {
@@ -1074,6 +1179,7 @@ h2 {
 #secondSpinachText {
   padding-left: 20px;
   grid-area: secondSpinachText;
+  font-weight: lighter;
 }
 
 #secondSpinachPic {
@@ -1101,6 +1207,7 @@ h2 {
 #thirdSpinachText {
   padding-left: 10px;
   grid-area: thirdSpinachText;
+  font-weight: lighter;
 }
 
 #thirdSpinachPic {
@@ -1129,6 +1236,7 @@ h2 {
 #fourthSpinachText {
   padding-left: 20px;
   grid-area: fourthSpinachText;
+  font-weight: lighter;
 }
 
 #fourthSpinachPic {
@@ -1160,6 +1268,7 @@ h2 {
 #fifthSpinachText {
   padding-left: 10px;
   grid-area: fifthSpinachText;
+  font-weight: lighter;
 }
 
 #sixthSpinach {
@@ -1185,6 +1294,7 @@ h2 {
 #sixthSpinachText {
   padding-left: 10px;
   grid-area: sixthSpinachText;
+  font-weight: lighter;
 }
 
 #seventhSpinach {
@@ -1192,7 +1302,7 @@ h2 {
   grid-area: seventhSpinach;
   display: grid;
   grid-template-columns: 1fr 10fr;
-  grid-template-rows: 3fr 1fr;
+  grid-template-rows: 2fr 1fr;
   grid-template-areas: 
     "spinachSeven seventhSpinachPic"
     "seventhSpinachText seventhSpinachText"
@@ -1211,6 +1321,7 @@ h2 {
 #seventhSpinachText {
   padding-left: 10px;
   grid-area: seventhSpinachText;
+  font-weight: lighter;
 }
 
 #eighthSpinach {
@@ -1232,6 +1343,7 @@ h2 {
 #eighthSpinachText {
   padding-left: 10px;
   grid-area: eighthSpinachText;
+  font-weight: lighter;
 }
 
 #eighthSpinachPic {
@@ -1248,7 +1360,7 @@ h2 {
 }
 
 #mushroomContainer {
-  height: 180vh;
+  height: 160vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 2fr 2fr;
@@ -1259,7 +1371,7 @@ h2 {
 }
 
 #firstMushroom {
-  height: 50vh;
+  height: 40vh;
   width: 60%;
   grid-area: firstMushroom;
   display: grid;
@@ -1375,17 +1487,17 @@ h2 {
 }
 
 #eggContainer {
-  height: 140vh;
+  height: 120vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   grid-template-areas: 
     "firstEgg secondEgg"
-    "thirdEgg ."
+    "thirdEgg thirdEgg"
 }
 
 #firstEgg {
-  height: 80vh;
+  height: 60vh;
   grid-area: firstEgg;
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -1414,7 +1526,7 @@ h2 {
 
 #secondEgg {
   grid-area: secondEgg;
-  height: 80vh;
+  height: 60vh;
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-rows: 1fr 2fr;
@@ -1444,7 +1556,7 @@ h2 {
   grid-area: thirdEgg;
   display: grid;
   grid-template-columns: 1fr 10fr;
-  grid-template-rows: 3fr 1fr;
+  grid-template-rows: 2fr 1fr;
   grid-template-areas: 
     "eggThree thirdEggPic"
     "thirdEggText thirdEggText"
@@ -1455,7 +1567,7 @@ h2 {
   grid-area: eggThree;
 }
 
-#thirdEgg {
+#thirdEggPic {
   grid-area: thirdEggPic;
   padding-left: 20px;
 }
@@ -1472,14 +1584,26 @@ h2 {
 }
 
 #combineContainer {
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas: 
-    "firstEgg secondEgg"
-    "thirdEgg ."
+    height: 70vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+      "combineOne combineTwo"
 }
 
+#combineOne {
+  grid-area: combineOne;
+  padding-right: 30px;
+}
+
+#combineTwo {
+  grid-area: combineTwo;
+}
+
+#credits {
+  margin-left: 7%;
+  margin-bottom: 10px;
+}
 
 
