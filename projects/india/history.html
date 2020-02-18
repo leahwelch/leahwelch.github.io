@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="./style/style.css">
+        <script src="lib/d3.js"></script>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li id="navIndia">INDIA</li>
+                <li><a href="geography.html">GEOGRAPHY</a></li>
+                <li><a class="active" href="history.html">HISTORY</a></li>
+                <li><a href="population.html">POPULATION</a></li>
+                <li><a href="economy.html">ECONOMY</a></li>
+            </ul>
+        </nav>
+
+        <div class="timeline" id="ancient">
+            <div id="ancientContainer">
+                <h2 class="timelineHeader" id="ancientHeader">ANCIENT ORIGINS</h2>
+                <div id="leftAncient">
+                    <div id="indus">
+                        <h3>2300 BC – 1750 BC</h3>
+                        <p>Height of Indus Valley Civilization</p>
+                        <img src="pictures/indus.png" height="80px">
+                    </div>
+                    <div id="greek">
+                        <h3>327 BC – 325 BC</h3>
+                        <p>Alexander the Great establishes Greek colonies in the Indus Valley</p>
+                    </div>
+                </div>
+                <div id="ancientTime"></div>
+                <div id="rightAncient">
+                    <div id="sanskrit">
+                        <h3>2000 BC – 1000 BC</h3>
+                        <p>Indo-European tribes from Central Asia colonize northern India, which adopts their language (Sanskrit), their Vedic religion (the basis of Hinduism), and their social  hierarchy (the Brahmanic caste system)</p>
+                    </div>
+                    <div id="division">
+                        <h3>7th C – 12th C</h3>
+                        <p>Division of India into the Pallava and Chola dynasties in the South and the Arab–dominated Sind nation in the North</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline" id="muslim">
+            <div id="muslimContainer">
+                <h2 class="timelineHeader" id="muslimHeader">MUSLIM RULE</h2>
+                <div id="leftMuslim">
+                    <div id="mughal">
+                        <h3>1526 – 1857</h3>
+                        <p>Foundation and dominance of the Mughal dynasty</p>
+                        <img src="pictures/mughal.png" height="80px">
+                    </div>
+                </div>
+                <div id="muslimTime"></div>
+                <div id="rightMuslim">
+                    <div id="delhi">
+                        <h3>1206 – 1414</h3>
+                        <p>Creation of the Sultanate of Delhi under Muslim hegemony</p>
+                    </div>
+                    <div id="vasco">
+                        <h3>1497 – 1498</h3>
+                        <p>Vasco de Gama disocovers a sea route to India</p>
+                    </div>
+                    <div id="east">
+                        <h3>1600</h3>
+                        <p>Establishment of British East India Company</p>
+                        <img src="pictures/east.png" height="80px">
+                    </div>
+                    <div id="paris">
+                        <h3>1763</h3>
+                        <p>Treaty of Paris ends Seven Years’ War between France and Great Britain</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline" id="british">
+            <div id="britishContainer">
+                <h2 class="timelineHeader" id="britishHeader">BRITISH RULE</h2>
+                <div id="leftBritish">
+                    <div id="congress">
+                        <h3>1885</h3>
+                        <p>Establishment of Indian National Congress</p>
+                    </div>
+                    <div id="gandhi">
+                        <h3>1920 – 1922</h3>
+                        <p>Mahatma Gandhi launches a campaign of civil disobedience against Britain</p>
+                        <img src="pictures/gandhi.png" height="45px">
+                    </div>
+                </div>
+                <div id="britishTime"></div>
+                <div id="rightBritish">
+                    <div id="hastings">
+                        <h3>1772 – 1785</h3>
+                        <p>Warren Hastings serves as Governor General of Bengal and organizes its colonization</p>
+                    </div>
+                    <div id="south">
+                        <h3>1799 – 1819</h3>
+                        <p>Great Britain conquers Southern India, the Ganges Valley and Delhi, and defeats the Marathas</p>
+                    </div>
+                    <div id="rebellion">
+                        <h3>1857 – 1858</h3>
+                        <p>The Great Rebellion of 1857 and its suppression lead to direct British rule of India</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline" id="independence">
+            <div id="independenceContainer">
+                <h2 class="timelineHeader" id="independenceHeader">INDEPENDENCE</h2>
+                <div id="leftIndependence">
+                    <div id="kashmir">
+                        <h3>1947 – 1948</h3>
+                        <p>First Indo-Pakistani war over Kashmir</p>
+                    </div>
+                    <div id="constitution">
+                        <h3>1950</h3>
+                        <p>A new constitution establishes India as a federal, secular, and parliamentary state, organized on ethnic and linguistic grounds</p>
+                    </div>
+                    <div id="nuclear">
+                        <h3>2002</h3>
+                        <p>India successfully tests a missile with nuclear capability</p>
+                        <img src="pictures/rocket.png" height="80px">
+                    </div>
+                </div>
+                <div id="independenceTime"></div>
+                <div id="rightIndependence">
+                    <div id="commonwealth">
+                        <h3>1947</h3>
+                        <p>India becomes independent within the Commonwealth of Nations and is divided into two states: the Indian Union, with a Hindu majority, and Pakistan, with a Muslim majority</p>
+                    </div>
+                    <div id="war">
+                        <h3>1965</h3>
+                        <p>Second Indo-Pakistani war over Kashmir</p>
+                    </div>
+                    <div id="bangladesh">
+                        <h3>1971</h3>
+                        <p>A  third Indo-Pakistani war leads to the formation of East Pakistan as the nation of Bangladesh</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="./script.js"></script>
+    </body>
+</html>

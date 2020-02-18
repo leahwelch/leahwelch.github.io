@@ -1,0 +1,689 @@
+* {
+    box-sizing: border-box;
+  }
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Arial Narrow', Arial, sans-serif;
+  }
+
+/* INTRO */
+
+#titleContainer {
+    background-color: #450000;
+    color: #ffffff;
+    padding-bottom: 120px;
+}
+
+h1 {
+    font-size: 180pt;
+    margin: 0px;
+    padding-left: 50px;
+}
+
+h2 {
+    color: #7F1A01;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.byline {
+    font-size: 16pt;
+    padding-left: 50px;
+    padding-right: 950px;
+    font-weight: lighter;
+}
+
+/* NAVBAR */
+
+nav {
+    background-color: #450000;   
+    overflow: hidden;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 2px;
+    padding-bottom: 0px;
+    position: sticky;
+    top: 0;
+  }
+
+nav ul {
+    list-style: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+nav li {
+    display: inline-block;
+    margin-left: 150px;
+    position: relative;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #E53E25;
+}
+
+nav a::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 0%;
+    background-color: #E53E25;
+    margin-top: 6px;
+    transition: all ease-in-out 250ms;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+.active {
+    color: #E53E25; 
+}
+
+nav a.active::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: #E53E25;
+    margin-top: 6px;
+    transition: all ease-in-out 250ms;
+}
+
+#navIndia {
+    color: #E53E25;
+    font-weight: bolder;
+    font-size: 18pt;
+    margin-left: 40px;
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+/* GEOGRAPHY */
+
+.mapContainer {
+    margin: 10px;
+}
+
+#map1 {
+    padding-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+
+#mapAsia {
+    padding-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+
+#mapUS {
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+#usContainer {
+    display: grid;
+    height: 550px;
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+        "statesMap statsAll"
+}
+
+#statesMap {
+    grid-area: statesMap;
+}
+
+#statsAll {
+    grid-area: statsAll;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 9fr 1fr 1fr;
+    grid-template-areas: 
+        "states statesKM"
+        "total totalKM"
+        "indiaLabel indiaKM"
+}
+
+#states {
+    grid-area: states;
+    line-height: 11px;
+    font-size: 14pt;
+    text-align: right;
+    color: #0D5234;
+}
+
+#statesKM {
+    grid-area: statesKM;
+    color: #0D5234;
+    line-height: 11px;
+    font-size: 14pt;
+    font-weight: bolder;
+    padding-left: 20px;
+}
+
+#total {
+    grid-area: total;
+    line-height: 0rem;
+    font-size: 14pt;
+    text-align: right;
+    color: #0D5234;
+}
+
+#totalKM {
+    grid-area: totalKM;
+    color: #0D5234;
+    line-height: 0rem;
+    font-size: 14pt;
+    font-weight: bolder;
+    padding-left: 20px;
+}
+
+#indiaLabel {
+    grid-area: indiaLabel;
+    line-height: 0rem;
+    font-size: 14pt;
+    text-align: right;
+    color: #E53E25;
+}
+
+#indiaKM {
+    grid-area: indiaKM;
+    color: #E53E25;
+    line-height: 0rem;
+    font-size: 14pt;
+    font-weight: bolder;
+    padding-left: 20px;
+}
+
+/* HISTORY */
+
+.timelineHeader {
+    margin: 0px;
+    text-align: left;
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-size: 50px;
+}
+
+/* ANCIENT */
+
+#ancientHeader {
+    color: #EE9676;
+    grid-area: ancientHeader;
+
+}
+
+#ancientContainer {
+    color: #7F1A01;
+    padding-left: 50px;
+    padding-right: 100px;
+    padding-top: 50px;
+    display: grid;
+    grid-template-columns: 3fr 2fr 1fr 2fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+        "ancientHeader leftAncient ancientTime rightAncient"
+}
+
+#ancient {
+    background-color: #FAD9D3;
+    padding-bottom: 50px;
+}
+
+#ancientTime {
+    height: 100vh;
+    grid-area: ancientTime;
+    padding-top: 10px;
+}
+
+#leftAncient {
+    grid-area: leftAncient;
+    text-align: right;
+    padding-top: 10px;
+    padding-left: 30px;
+}
+
+
+#rightAncient {
+    grid-area: rightAncient;
+    text-align: left;
+    padding-top: 10px;
+    padding-right: 30px;
+}
+
+#ancientContainer p {
+    margin: 0px;
+    padding-bottom: 10px;
+}
+
+#ancientContainer h3 {
+    margin: 0px;
+}
+
+/* MUSLIM RULE */
+
+#muslimHeader {
+    color: #EF7E77;
+    grid-area: muslimHeader;
+}
+
+#muslimContainer {
+    color: #7F1A01;
+    padding-left: 50px;
+    padding-right: 100px;
+    padding-top: 50px;
+    display: grid;
+    grid-template-columns: 3fr 2fr 1fr 2fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+        "muslimHeader leftMuslim muslimTime rightMuslim"
+}
+
+#muslim {
+    background-color: #F6B2AA;
+    padding-bottom: 0px;
+}
+
+#muslimTime {
+    grid-area: muslimTime;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.svgMuslim {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+#leftMuslim {
+    grid-area: leftMuslim;
+    text-align: right;
+    padding-left: 30px;
+}
+
+#rightMuslim {
+    grid-area: rightMuslim;
+    text-align: left;
+    padding-right: 30px;
+}
+
+#muslimContainer p {
+    margin: 0px;
+    padding-bottom: 10px;
+}
+
+#muslimContainer h3 {
+    margin: 0px;
+}
+
+#paris p {
+    padding-bottom: 0px;
+}
+
+/* BRITISH RULE */
+
+#britishHeader {
+    color: #C56053;
+    grid-area: britishHeader;
+    padding-top: 40px;
+}
+
+#britishContainer {
+    color: #7F1A01;
+    padding-left: 50px;
+    padding-right: 100px;
+    padding-bottom: 10px;
+    display: grid;
+    grid-template-columns: 3fr 2fr 1fr 2fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+        "britishHeader leftBritish britishTime rightBritish"
+}
+
+#british {
+    background-color: #F28D81;
+    padding-bottom: 0px;
+}
+
+#britishTime {
+    height: 100vh;
+    grid-area: britishTime;
+}
+
+#leftBritish {
+    grid-area: leftBritish;
+    text-align: right;
+    padding-left: 30px;
+}
+
+#rightBritish {
+    grid-area: rightBritish;
+    text-align: left;
+    padding-right: 30px;
+}
+
+#britishContainer p {
+    margin: 0px;
+    padding-bottom: 10px;
+}
+
+#britishContainer h3 {
+    margin: 0px;
+}
+
+/* INDEPENDENCE */
+
+#independenceHeader {
+    color: #C04239;
+    grid-area: independenceHeader;
+    padding-top: 40px;
+}
+
+#independenceContainer {
+    color: #7F1A01;
+    padding-left: 50px;
+    padding-right: 100px;
+    padding-top: 0px;
+    display: grid;
+    grid-template-columns: 3fr 2fr 1fr 2fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+        "independenceHeader leftIndependence independenceTime rightIndependence"
+}
+
+#independence {
+    background-color: #EC6554;
+    padding-bottom: 50px;
+}
+
+#independenceTime {
+    height: 100vh;
+    grid-area: independenceTime;
+    padding-top: 10px;
+}
+
+#leftIndependence {
+    grid-area: leftIndependence;
+    text-align: right;
+    padding-top: 10px;
+    padding-left: 30px;
+}
+
+
+#rightIndependence {
+    grid-area: rightIndependence;
+    text-align: left;
+    padding-top: 10px;
+    padding-right: 30px;
+}
+
+#independenceContainer p {
+    margin: 0px;
+    padding-bottom: 10px;
+}
+
+#independenceContainer h3 {
+    margin: 0px;
+}
+
+/* POPULATION */
+
+.popContainer {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#popGrowth {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+        "growthHeader growthPic"
+}
+
+#growthHeader {
+    grid-area: growthHeader;
+    padding-top: 199%;
+    text-align: right;
+    padding-right: 20px;
+}
+
+#growthPic {
+    grid-area: growthPic;
+    padding-left: 100px;
+}
+
+#popNeighbors {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+        "neighborHeader neighborPic"
+}
+
+#neighborHeader {
+    grid-area: neighborHeader;
+    padding-top: 110%;
+    text-align: right;
+    padding-right: 20px;
+}
+
+#neighborPic {
+    grid-area: neighborPic;
+    padding-left: 30px;
+}
+
+#popDensity {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+        "densityHeader densityPic"
+}
+
+#densityHeader {
+    grid-area: densityHeader;
+    padding-top: 135%;
+    text-align: right;
+    padding-right: 20px;
+}
+
+#densityPic {
+    grid-area: densityPic;
+    padding-left: 100px;
+}
+
+#ageUrban {
+    margin-top: 50px;
+    margin-right: 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 4fr;
+    grid-template-areas: 
+        "ageHeader urbanHeader"
+        "agePic urbanPic"
+}
+
+#ageHeader {
+    grid-area: ageHeader;
+    text-align: center;
+}
+
+#agePic {
+    grid-area: agePic;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+
+#urbanHeader {
+    grid-area: urbanHeader;
+    text-align: center;
+}
+
+#urbanPic {
+    grid-area: urbanPic;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+
+#langReligion {
+    margin-top: 50px;
+    margin-right: 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 7fr;
+    grid-template-areas: 
+        "languageHeader religionHeader"
+        "languagePic religionPic"
+}
+
+#languageHeader {
+    grid-area: languageHeader;
+    text-align: center;
+}
+
+#languagePic {
+    grid-area: languagePic;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+
+#religionHeader {
+    grid-area: religionHeader;
+    text-align: center;
+}
+
+#religionPic {
+    grid-area: religionPic;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+
+#edu1 {
+    margin-top: 50px;
+    margin-right: 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 2fr;
+    grid-template-areas: 
+        "enrollmentHeader lifeExpHeader"
+        "enrollmentPic lifeExpPic"
+}
+
+#enrollmentHeader {
+    grid-area: enrollmentHeader;
+    text-align: center;
+}
+
+#enrollmentPic {
+    grid-area: enrollmentPic;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+
+#lifeExpHeader {
+    grid-area: lifeExpHeader;
+    text-align: center;
+}
+
+#lifeExpPic {
+    grid-area: lifeExpPic;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+#literacy {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 7fr;
+    grid-template-areas: 
+        "literacyHeader"
+        "literacyPic"
+}
+
+#literacyHeader {
+    grid-area: literacyHeader;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+#literacyPic {
+    grid-area: literacyPic;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center; 
+}
+
+#comm {
+    margin-top: 50px;
+    margin-left: 250px;
+    margin-right: 200px;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+        "commHeader commPic"
+}
+
+#commHeader {
+    grid-area: commHeader;
+    padding-top: 32%;
+    text-align: right;
+    padding-right: 20px;
+}
+
+#commPic {
+    grid-area: commPic;
+    padding-left: 30px;
+}
+
+/* ECONOMY */
+
+.econContainer h2  {
+    text-align: center;
+}
+
+.econContainer img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+
+
+
+
+
+
