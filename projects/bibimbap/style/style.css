@@ -136,17 +136,17 @@ h2 {
 
 #protein {
   grid-area: protein;
-  margin: 10px;
+  margin: 20px;
 }
 
 #grains {
   grid-area: grains;
-  margin: 10px;
+  margin: 20px;
 }
 
 #liquids {
   grid-area: liquids;
-  margin: 10px;
+  margin: 20px;
 }
 
 #oils {
