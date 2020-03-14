@@ -4,9 +4,20 @@ d3.csv("./data/themoviedb_2019.csv", function(data) {
     console.log(data);
 
     data.forEach(function(d){
-        d.year = d.year.substring(1); 
-        //console.log(d.year);
-    })
+        d.year = +d.year; 
+    });
+
+    var movies2019 = [];
+    for(var i = 0; i < data.length; i++) {
+        var movies = [data[i].title];
+        movies.forEach(function(val) {
+            if(movies2019.indexOf(val) < 0) {
+                movies2019.push(val);
+            }
+        }
+        )
+    }
+    console.log(movies2019);
     
 
 
