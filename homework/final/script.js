@@ -18,6 +18,18 @@ d3.csv("./data/themoviedb_2019.csv", function(data) {
         )
     }
     console.log(movies2019);
+
+    var stars = [];
+    for(var i = 0; i < data.length; i++) {
+        var name = [data[i].actor];
+        name.forEach(function(val) {
+            if(stars.indexOf(val) < 0) {
+                stars.push(val);
+            }
+        }
+        )
+    }
+    console.log(stars);
     
 
 
