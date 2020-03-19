@@ -1,7 +1,7 @@
 
-d3.csv("./data/themoviedb_2019.csv", function(data) {
+d3.csv("./data/themoviedb_2019_small.csv", function(data) {
     
-    console.log(data);
+    //console.log(data);
 
     data.forEach(function(d){
         d.year = +d.year; 
@@ -17,7 +17,7 @@ d3.csv("./data/themoviedb_2019.csv", function(data) {
         }
         )
     }
-    console.log(movies2019);
+    //console.log(movies2019);
 
     var stars = [];
     for(var i = 0; i < data.length; i++) {
@@ -30,6 +30,28 @@ d3.csv("./data/themoviedb_2019.csv", function(data) {
         )
     }
     console.log(stars);
+
+    /*var allShows = [];
+    for(var i = 0; i < data.length; i++) {
+        var show = [data[i].show];
+        show.forEach(function(val) {
+            if(allShows.indexOf(val) < 0) {
+                allShows.push(val);
+            }
+        }
+        )
+    }
+    console.log(allShows);*/
+    /*var shows = [];
+    for(var i = 0; i < data.length; i++) {
+        var actorA = data[i].actor;
+        var showA = data[i].show;
+        if(shows.indexOf(showA) < 0) {
+            shows.push({show: showA, actor: actorA});
+        }
+    }
+    console.log(shows);*/
+
     
 
 

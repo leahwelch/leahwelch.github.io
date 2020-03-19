@@ -19,7 +19,6 @@ Promise.all(promises).then(function(data) {
     var allFamilies = [];
         for(var i = 0; i < notelibrary.length; i++) {
             var families = [notelibrary[i].family];
-            console.log(families);
             families.forEach(function(val) {
                 if(allFamilies.indexOf(val) < 0) {
                     allFamilies.push(val);
