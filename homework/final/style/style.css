@@ -1,4 +1,38 @@
+@font-face {
+    font-family: 'Menlo';
+    src: url('fonts/Menlo-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Univers Light';
+    src: url('fonts/UniversNextPro-Light.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+body {
+    background-color: #023;
+    color: #fff;
+}
+
 h1 {
     font-size: 48pt;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Menlo', Consolas, Monaco,'Courier New', monospace;
+}
+
+p {
+    font-size: 15pt;
+    font-family: 'Univers Light', Arial, Helvetica, sans-serif;
+}
+
+#byline {
+    font-size: 12pt;
+}
+
+#intro {
+    text-align: center;
+    padding: 15vh 65vh;
+    color: #fff;
 }
