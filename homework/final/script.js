@@ -31,7 +31,7 @@ d3.csv("./data/themoviedb_2019_small.csv", function(data) {
     }
     console.log(stars);
 
-    /*var allShows = [];
+    var allShows = [];
     for(var i = 0; i < data.length; i++) {
         var show = [data[i].show];
         show.forEach(function(val) {
@@ -41,16 +41,8 @@ d3.csv("./data/themoviedb_2019_small.csv", function(data) {
         }
         )
     }
-    console.log(allShows);*/
-    /*var shows = [];
-    for(var i = 0; i < data.length; i++) {
-        var actorA = data[i].actor;
-        var showA = data[i].show;
-        if(shows.indexOf(showA) < 0) {
-            shows.push({show: showA, actor: actorA});
-        }
-    }
-    console.log(shows);*/
+    console.log(allShows);
+   
 
     
 
