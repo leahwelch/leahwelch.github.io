@@ -43,6 +43,7 @@ d3.csv("./data/themoviedb_2019_small.csv", function(data) {
     }
     console.log(allShows);
    
+    
 
     
 
