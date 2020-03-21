@@ -35,3 +35,8 @@ p {
     padding: 15vh 65vh;
     color: #fff;
 }
+
+#chart {
+    text-align: center;
+    padding: 15vh 40vh;
+}

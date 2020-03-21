@@ -25,11 +25,6 @@ d3.csv("./data/themoviedb_2019_small.csv", function(data) {
     }
 
     var uniqueArray = removeDuplicates(data, "show");
-    
-    var aaron = uniqueArray.filter(function(d){
-        return d.actor === "Aaron Paul";
-    });
-    console.log(aaron);
 
     var nodes = [];
         for(var i = 0; i < uniqueArray.length; i++) {
