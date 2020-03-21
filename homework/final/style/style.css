@@ -5,12 +5,7 @@
     font-style: normal;
   }
 
-  @font-face {
-    font-family: 'Univers Light';
-    src: url('fonts/UniversNextPro-Light.ttf');
-    font-weight: normal;
-    font-style: normal;
-  }
+  @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 body {
     background-color: #023;
@@ -18,21 +13,25 @@ body {
 }
 
 h1 {
-    font-size: 48pt;
+    font-size: 60pt;
     font-family: 'Menlo', Consolas, Monaco,'Courier New', monospace;
+    text-align: center;
 }
 
 p {
-    font-size: 15pt;
-    font-family: 'Univers Light', Arial, Helvetica, sans-serif;
+    font-size: 14pt;
+    font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
+    line-height: 150%;
 }
 
 #byline {
     font-size: 12pt;
+    text-align: center;
+    padding-bottom: 5vh;
 }
 
 #intro {
-    text-align: center;
     padding: 15vh 65vh;
     color: #fff;
 }

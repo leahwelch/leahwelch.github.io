@@ -1,48 +1,42 @@
 
 d3.csv("./data/themoviedb_2019_small.csv", function(data) {
-    
-    //console.log(data);
 
     data.forEach(function(d){
         d.year = +d.year; 
     });
 
-    var movies2019 = [];
-    for(var i = 0; i < data.length; i++) {
-        var movies = [data[i].title];
-        movies.forEach(function(val) {
-            if(movies2019.indexOf(val) < 0) {
-                movies2019.push(val);
-            }
-        }
-        )
-    }
-    //console.log(movies2019);
+    data.forEach(function(d){
+        d.episodes = +d.episodes; 
+    });
 
-    var stars = [];
-    for(var i = 0; i < data.length; i++) {
-        var name = [data[i].actor];
-        name.forEach(function(val) {
-            if(stars.indexOf(val) < 0) {
-                stars.push(val);
-            }
-        }
-        )
-    }
-    console.log(stars);
+    function removeDuplicates(originalData, prop) {
+        var newData = [];
+        var lookupObject = {};
 
-    var allShows = [];
-    for(var i = 0; i < data.length; i++) {
-        var show = [data[i].show];
-        show.forEach(function(val) {
-            if(allShows.indexOf(val) < 0) {
-                allShows.push(val);
-            }
-        }
-        )
+        for(var i in originalData) {
+            lookupObject[originalData[i][prop]] = originalData[i];
+         }
+    
+         for(i in lookupObject) {
+             newData.push(lookupObject[i]);
+         }
+          return newData;
+
     }
-    console.log(allShows);
-   
+
+    var uniqueArray = removeDuplicates(data, "show");
+    
+    var aaron = uniqueArray.filter(function(d){
+        return d.actor === "Aaron Paul";
+    });
+    console.log(aaron);
+
+    var nodes = [];
+        for(var i = 0; i < uniqueArray.length; i++) {
+            nodes.push({id: i, actor: uniqueArray[i].actor, show: uniqueArray[i].show, value: uniqueArray[i].episodes});
+        };
+    console.log(nodes);
+    
     
 
     
