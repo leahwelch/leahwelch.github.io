@@ -110,9 +110,9 @@ d3.csv("./data/themoviedb_2019_small.csv", function(data) {
 //OK, now I have to automate the various parts and then push each row into my matrix
 
         var newArray2 = [];
-        for(var i = 0; i < (shows.length + nodes[1].id); i++) { //nodes[1].id needs to become nodes[i].id where i=index of nodes, so nest this for loop inside of a for loop iterating over nodes?
+        for(var i = 0; i < (shows.length + nodes[1].id); i++) { //nodes[1].id needs to become nodes[i].id where i=index of shows, so nest this for loop inside of a for loop iterating over shows
             newArray2.push(0);
-        } 
+        }  
         for(var i = 0; i < stars.length; i++) {
             var starA = stars[i];
             if(starA === nodes[1].actor){
