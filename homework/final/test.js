@@ -21,6 +21,17 @@ var miniStars = [
     "Elle Fanning"
 ]
 
+var names = [];
+    for(var i = 0; i < miniShows.length; i++) {
+        var showA = miniShows[i];
+        names.push(showA);
+    };
+    for(var i = 0; i < miniStars.length; i++) {
+        var starA = miniStars[i];
+        names.push(starA);
+    };
+console.log(names);
+
 
 console.log(miniNodes);
 console.log(miniShows);
