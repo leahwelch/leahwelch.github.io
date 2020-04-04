@@ -1,5 +1,5 @@
 
-d3.csv("./data/themoviedb_2019_small.csv", function(data) {
+d3.csv("./data/oscars_shows.csv", function(data) {
 
 //////////////////////////////////
 //Converting date and quantity of episodes variables into numbers 

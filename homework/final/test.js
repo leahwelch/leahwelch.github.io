@@ -131,3 +131,55 @@ var matrix = [];
     }
     console.log(matrix);
 
+    var colors = [ "#ed1c24", "#fff100", "#00a550", "#ec008b", "#27a9e1", "#a1d7cb", "#ffffff", "#ffffff"]
+
+    var margin = {left: 50, top: 10, right: 50, bottom: 10};
+        var width = document.querySelector("#chart").clientWidth;
+        var height = document.querySelector("#chart").clientHeight;
+
+    var svg = d3.select("#chart").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    var wrapper = svg.append("g").attr("class", "chordWrapper")
+        .attr("transform", "translate(" + (width / 2) + "," + (height / 2) + ")");
+        
+    var outerRadius = Math.min(width, height) / 2,
+        innerRadius = outerRadius * 0.95,
+        opacityDefault = 0.7; //default opacity of chords
+
+    //Chord setup
+    var chord = d3.chord()
+        .padAngle(0.05)
+        .sortSubgroups(d3.descending) //sort the chords inside an arc from high to low
+        .sortChords(d3.descending) //which chord should be shown on top when chords cross. Now the biggest chord is at the bottom
+        (matrix);
+
+    var arc = wrapper.datum(chord)
+        .append("g")
+        .selectAll("g")
+        .data(function(d) { return d.groups; })
+        .enter()
+        .append("g")
+        .append("path")
+            .style("fill", function(d,i){ return colors[i] })
+            .attr("d", d3.arc()
+            .innerRadius(270)
+            .outerRadius(280)
+            );
+    
+    wrapper.datum(chord)
+        .append("g")
+        .selectAll("path")
+        .data(function(d) { return d; })
+        .enter()
+        .append("path")
+            .attr("d", d3.ribbon().radius(270))
+            .style("fill", function(d){ return(colors[d.source.index]) })
+            .style("opacity", .6);
+
+
+
+   
+
+
