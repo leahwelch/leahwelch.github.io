@@ -142,22 +142,18 @@ var matrix = [];
   var svg = d3.select("#chart").append("svg")
       .attr("width", width)
       .attr("height", height);
-
-  svg.append('text')
-      .attr('class', 'count-title')
-      .attr('x', width / 2)
-      .attr('y', (height / 3) + (height / 5))
-      .text('Filler Words');
-
-  svg.append('text')
+  
+  svg.append("image")
+      .attr("xlink:href", "./images/adam_driver.jpg")    
       .attr('class', 'adamPic')
-      .attr('x', width / 2)
-      .attr('y', (height / 3) + (height / 5))
-      .text("THIS IS A PLACEHOLDER")
-      .attr("opacity", 0);
+      .attr('x', margin.left)
+      .attr('y', margin.top)
+      .attr("opacity", 1);
 
-  var wrapper = svg.append("g").attr("class", "chordWrapper")
-      .attr("transform", "translate(" + (width / 2) + "," + (height / 2) + ")");
+  var wrapper = svg.append("g")
+      .attr("class", "chordWrapper")
+      .attr("transform", "translate(" + (width / 2) + "," + (height / 2) + ")")
+      .attr("opacity", 0);
       
   var outerRadius = Math.min(width, height) / 2,
       innerRadius = outerRadius * 0.95,
@@ -182,10 +178,9 @@ var matrix = [];
           .innerRadius(270)
           .outerRadius(280)
           )
-      .attr("class", "circle")
-      .attr("opacity", "0");
+      .attr("class", "circle");
   
-  wrapper.datum(chord)
+  var ribbons = wrapper.datum(chord)
       .append("g")
       .selectAll("path")
       .data(function(d) { return d; })
@@ -194,8 +189,7 @@ var matrix = [];
           .attr("d", d3.ribbon().radius(270))
           .style("fill", function(d){ return(colors[d.source.index]) })
           .style("opacity", .6)
-      .attr("class", "ribbons")
-      .attr("opacity", "0");
+      .attr("class", "ribbons");
         
 var setupSections = function () {
   activateFunctions[0] = showAdamPic;
@@ -214,6 +208,8 @@ function showAdamPic() {
     .transition()
     .duration(600)
     .attr('opacity', 1.0);
+
+    console.log("Show Adam Pic!");
 }
 
 function showChord() {
@@ -222,15 +218,12 @@ function showChord() {
       .duration(0)
       .attr('opacity', 0);
 
-  wrapper.selectAll(".circle")
-    .transition()
-    .duration(600)
-    .attr('opacity', 1.0);
-  
-  wrapper.selectAll(".ribbons")
-    .transition()
-    .duration(600)
-    .attr('opacity', 1.0);
+  svg.selectAll('.chordWrapper')
+      .transition()
+      .duration(600)
+      .attr('opacity', 1);
+
+    console.log("Show Chord Diagram!");
 
 }
 
@@ -272,8 +265,7 @@ function handleStepEnter(response) {
   });
 
   // update graphic based on step
-  var index = +d3.select("#chart").attr('data-index');
-    activateFunctions(index);
+    activateFunctions[response.index]();
 }
 
 function setupStickyfill() {

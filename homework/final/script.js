@@ -1,5 +1,6 @@
 
 d3.csv("./data/oscars_shows.csv", function(data) {
+d3.csv("./data/oscars_movies.csv", function(movieData) {
 
 //////////////////////////////////
 //Converting date and quantity of episodes variables into numbers 
@@ -65,7 +66,29 @@ d3.csv("./data/oscars_shows.csv", function(data) {
     }
 
     var uniqueArray = removeDuplicates(data, "show");
-    //console.log(uniqueArray);
+
+    var adamAll = movieData.filter(function(d){
+        return d.actor === "Adam Driver";
+    });
+    console.log(adamAll);
+
+    var adamTop = [];
+        for(var i = 0; i < adamAll.length; i++) {
+            var starA = adamAll[i].top_cast;
+            if(starA === "Adam Driver") {
+                adamTop.push({movie: adamAll[i].show, year: +adamAll[i].year});
+            }
+        }
+        console.log(adamTop);
+    
+    adamTop.sort(function(a, b) { return b.year - a.year; });
+    console.log(adamTop);
+
+    var adamMovieNum = document.getElementById("adamMovieNum");
+    adamMovieNum.innerHTML = adamTop.length;
+    
+    
+    
 
 //////////////////////////////////
 //Setting up actor/show relationships with quantity of episodes
@@ -209,7 +232,7 @@ d3.csv("./data/oscars_shows.csv", function(data) {
         opacityDefault = 0.7; //default opacity of chords
 
     //Chord setup
-    var chord = d3.chord()
+    /*var chord = d3.chord()
         .padAngle(0.05)
         .sortSubgroups(d3.descending) //sort the chords inside an arc from high to low
         .sortChords(d3.descending) //which chord should be shown on top when chords cross. Now the biggest chord is at the bottom
@@ -237,6 +260,6 @@ d3.csv("./data/oscars_shows.csv", function(data) {
         .append("path")
             .attr("d", d3.ribbon().radius(270))
             .style("fill", "pink")
-            .style("stroke", "white");
-
+            .style("stroke", "white");*/
+})
 });
