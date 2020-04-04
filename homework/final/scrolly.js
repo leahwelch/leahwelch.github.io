@@ -192,25 +192,10 @@ var matrix = [];
       .attr("class", "ribbons");
         
 var setupSections = function () {
-  activateFunctions[0] = showAdamPic;
-  activateFunctions[1] = showChord;
+  activateFunctions[0] = showChord;
 }
 
 setupSections();
-
-function showAdamPic() {
-  svg.selectAll(".count-title")
-    .transition()
-    .duration(0)
-    .attr('opacity', 0);
-
-  svg.selectAll('.adamPic')
-    .transition()
-    .duration(600)
-    .attr('opacity', 1.0);
-
-    console.log("Show Adam Pic!");
-}
 
 function showChord() {
   svg.selectAll('.adamPic')
