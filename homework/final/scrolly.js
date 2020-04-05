@@ -159,6 +159,13 @@ var matrix = [];
       .attr('y', margin.top)
       .attr("opacity", 1);
   
+  svg.append("image")
+      .attr("xlink:href", "./images/action_figure.png")    
+      .attr('class', 'actionFig')
+      .attr('x', margin.left)
+      .attr('y', margin.top)
+      .attr("opacity", 0);
+  
   svg.selectAll("myMovieLabels")
       .append("text")
       .data(miniNodes)
@@ -167,7 +174,6 @@ var matrix = [];
           .attr("x", width/2)
           .attr("y", height/2)    
           .text(function(d){ return(d.show)})
-          .attr("transform", function(d){ return( "translate(" + 0 + "," + (yScale(d.show)) + ")")})
           .style("fill", "#FFFFFF")
           .style("text-anchor", "middle")
       .attr("class", "movieList")
@@ -216,15 +222,58 @@ var matrix = [];
         
 var setupSections = function () {
   activateFunctions[0] = showMovieList;
-  activateFunctions[1] = showChord;
+  activateFunctions[1] = showActionFig;
+  activateFunctions[2] = showChord;
 }
 
 setupSections();
+
+function showAdamPic() {
+
+  svg.selectAll('.movieList')
+      .transition()
+      .duration(600)
+      .attr('opacity', 0);
+  
+  svg.selectAll('.adamPic')
+      .transition()
+      .duration(600)
+      .attr('opacity', 1);
+
+    console.log("Show Adam Pic!");
+
+}
+
+function showActionFig() {
+
+  svg.selectAll('.movieList')
+      .transition()
+      .duration(600)
+      .attr('opacity', 0);
+
+  svg.selectAll('.chordWrapper')
+      .transition()
+      .duration(600)
+      .attr('opacity', 0);
+  
+  svg.selectAll('.actionFig')
+      .transition()
+      .duration(600)
+      .attr('opacity', 1);
+
+    console.log("Show Action Figure!");
+
+}
 
 function showMovieList() {
   svg.selectAll('.adamPic')
       .transition()
       .duration(0)
+      .attr('opacity', 0);
+  
+  svg.selectAll('.chordWrapper')
+      .transition()
+      .duration(600)
       .attr('opacity', 0);
 
   svg.selectAll('.movieList')
@@ -232,7 +281,7 @@ function showMovieList() {
       .duration(600)
       .attr('opacity', 1);
 
-    console.log("Show Movie List!");
+  console.log("Show Movie List!");
 
 }
 
@@ -246,6 +295,11 @@ function showChord() {
       .transition()
       .duration(600)
       .attr('opacity', 1);
+
+  svg.selectAll('.actionFig')
+      .transition()
+      .duration(600)
+      .attr('opacity', 0);
 
     console.log("Show Chord Diagram!");
 

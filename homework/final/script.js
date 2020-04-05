@@ -215,7 +215,7 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
 
     //Set up SVG, Radii
 
-    var margin = {left: 50, top: 10, right: 50, bottom: 10};
+    /*var margin = {left: 50, top: 10, right: 50, bottom: 10};
         var width = document.querySelector("#chart").clientWidth;
         var height = document.querySelector("#chart").clientHeight;
 
@@ -229,7 +229,7 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
     
     var outerRadius = Math.min(width, height) / 2,
         innerRadius = outerRadius * 0.95,
-        opacityDefault = 0.7; //default opacity of chords
+        opacityDefault = 0.7; //default opacity of chords*/
 
     //Chord setup
     /*var chord = d3.chord()
