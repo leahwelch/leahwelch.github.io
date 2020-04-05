@@ -131,13 +131,22 @@ var matrix = [];
   }
   console.log(matrix);
 
-  var colors = [ "#ed1c24", "#fff100", "#00a550", "#ec008b", "#27a9e1", "#a1d7cb", "#ffffff", "#ffffff"]
+  var colors = [ "#ed1c24", "#fff100", "#00a550", "#ec008b", "#27a9e1", "#a1d7cb", "#ffffff", "#ffffff"];
 
   var activateFunctions = [];
 
   var margin = {left: 50, top: 10, right: 50, bottom: 10};
       var width = document.querySelector("#chart").clientWidth;
       var height = document.querySelector("#chart").clientHeight;
+
+  var yScale = d3.scaleLinear()
+      .domain(["The Path",
+      "Big Love",
+      "Truth Be Told",
+      "Beverly Hills, 90210",
+      "Bones",
+      "Criminal Minds"])
+      .range([margin.top, height-margin.bottom]);
 
   var svg = d3.select("#chart").append("svg")
       .attr("width", width)
@@ -149,6 +158,20 @@ var matrix = [];
       .attr('x', margin.left)
       .attr('y', margin.top)
       .attr("opacity", 1);
+  
+  svg.selectAll("myMovieLabels")
+      .append("text")
+      .data(miniNodes)
+      .enter()
+      .append("text")
+          .attr("x", width/2)
+          .attr("y", height/2)    
+          .text(function(d){ return(d.show)})
+          .attr("transform", function(d){ return( "translate(" + 0 + "," + (yScale(d.show)) + ")")})
+          .style("fill", "#FFFFFF")
+          .style("text-anchor", "middle")
+      .attr("class", "movieList")
+      .attr("opacity", 0);
 
   var wrapper = svg.append("g")
       .attr("class", "chordWrapper")
@@ -192,13 +215,29 @@ var matrix = [];
       .attr("class", "ribbons");
         
 var setupSections = function () {
-  activateFunctions[0] = showChord;
+  activateFunctions[0] = showMovieList;
+  activateFunctions[1] = showChord;
 }
 
 setupSections();
 
-function showChord() {
+function showMovieList() {
   svg.selectAll('.adamPic')
+      .transition()
+      .duration(0)
+      .attr('opacity', 0);
+
+  svg.selectAll('.movieList')
+      .transition()
+      .duration(600)
+      .attr('opacity', 1);
+
+    console.log("Show Movie List!");
+
+}
+
+function showChord() {
+  svg.selectAll('.movieList')
       .transition()
       .duration(0)
       .attr('opacity', 0);
@@ -211,6 +250,7 @@ function showChord() {
     console.log("Show Chord Diagram!");
 
 }
+
 
 
 // using d3 for convenience
