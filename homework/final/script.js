@@ -137,8 +137,8 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
     var colChunks = chunkArray(links, stars.length);
     // Split links for bottom half in groups, each with the length of the shows list
     var rowChunks = chunkArray(bottomLinks, shows.length);
-    //console.log(colChunks);
-    //console.log(rowChunks);
+    console.log(colChunks);
+    console.log(rowChunks);
 
     var matrix = [];
 
@@ -157,7 +157,7 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
             }
         matrix.push(row);
     }
-    //console.log(matrix);
+    console.log(matrix);
 
     // Bottom half of matrix, each row is the source-target values followed by the zero's
     for(var i = 0; i < stars.length; i++) {
@@ -175,7 +175,7 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
             }
         matrix.push(row);
     }
-    //console.log(matrix);
+    console.log(matrix);
 
     var names = [];
     for(var i = 0; i < shows.length; i++) {
@@ -255,14 +255,21 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
         var width = document.querySelector("#chart").clientWidth;
         var height = document.querySelector("#chart").clientHeight;
 
+        var widthChord = document.querySelector("#chord").clientWidth;
+        var heightChord = document.querySelector("#chord").clientHeight;
+
     var yScale = d3.scaleLinear()
       .range([margin.top, height-margin.bottom]);
     
-    //Set up SVG
+    //Set up SVGs
 
     var svg = d3.select("#chart").append("svg")
         .attr("width", width)
         .attr("height", height);
+
+    var svgChord = d3.select("#chord").append("svg")
+        .attr("width", widthChord)
+        .attr("height", heightChord);
     
     //Set up other visual elements
 
@@ -295,9 +302,9 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
 
     //Create Chord Diagram
     
-    var wrapper = svg.append("g").attr("class", "chordWrapper")
-        .attr("transform", "translate(" + (width / 2) + "," + (height / 2) + ")")
-        .attr("opacity", 0);
+    var wrapper = svgChord.append("g").attr("class", "chordWrapper")
+        .attr("transform", "translate(" + (width / 2) + "," + (height / 2) + ")");
+        //.attr("opacity", 0);
         
     var outerRadius = Math.min(width, height) / 2,
         innerRadius = outerRadius * 0.95,
@@ -323,6 +330,35 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
             .outerRadius(280)
             )
         .attr("class", "circle");
+
+    //Tooltip
+
+    var tooltip = d3.select("#chord")
+        .append("div")
+        .style("opacity", 0)
+        .attr("class", "tooltip")
+        .style("background-color", "#023")
+        .style("border", "solid")
+        .style("border-width", "1px")
+        .style("border-radius", "5px")
+        .style("padding", "10px");
+
+    var showTooltip = function(d) {
+        tooltip
+            .style("opacity", 1)
+            .html("Source: " + names[d.source.index] + "<br>Target: " + names[d.target.index])
+            .style("left", (d3.event.pageX + 15) + "px")
+            .style("top", (d3.event.pageY - 28) + "px")
+        }
+
+    var hideTooltip = function(d) {
+        tooltip
+            .transition()
+            .duration(1000)
+            .style("opacity", 0)
+        }
+
+    //Links
     
     var ribbons = wrapper.datum(chord)
         .append("g")
@@ -333,13 +369,23 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
             .attr("d", d3.ribbon().radius(270))
             .style("fill", function(d){ return(colors[d.source.index]) })
             .style("opacity", .6)
-        .attr("class", "ribbons");
+        .attr("class", "ribbons")
+        .on("mousemove", showTooltip);
+
+    var chordLabels = wrapper.selectAll("chordLabels")
+        .data(function(d) { return d; })
+        .enter()
+        .append("text")
+        .attr("dy", ".35em")
+        .attr("transform", function(d) { return d.angle > Math.PI ? "rotate(180) translate(-16)" : null; })
+        .attr("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
+        .style("fill", "#FFFFFF")
+        .text(function(d, i){ return names[i]; });
 
     //The Activate Functions List
     var setupSections = function () {
         activateFunctions[0] = showMovieList;
         activateFunctions[1] = showActionFig;
-        activateFunctions[2] = showChord;
       }
       
       setupSections();
@@ -360,14 +406,24 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
       
       }
       
-      function showActionFig() {
+      function showMovieList() {
+        svg.selectAll('.adamPic')
+            .transition()
+            .duration(0)
+            .attr('opacity', 0);
       
         svg.selectAll('.movieList')
             .transition()
             .duration(600)
-            .attr('opacity', 0);
+            .attr('opacity', 1);
       
-        svg.selectAll('.chordWrapper')
+        console.log("Show Movie List!");
+      
+      }
+      
+      function showActionFig() {
+      
+        svg.selectAll('.movieList')
             .transition()
             .duration(600)
             .attr('opacity', 0);
@@ -381,27 +437,8 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
       
       }
       
-      function showMovieList() {
-        svg.selectAll('.adamPic')
-            .transition()
-            .duration(0)
-            .attr('opacity', 0);
-        
-        svg.selectAll('.chordWrapper')
-            .transition()
-            .duration(600)
-            .attr('opacity', 0);
       
-        svg.selectAll('.movieList')
-            .transition()
-            .duration(600)
-            .attr('opacity', 1);
-      
-        console.log("Show Movie List!");
-      
-      }
-      
-      function showChord() {
+      /*function showChord() {
         svg.selectAll('.movieList')
             .transition()
             .duration(0)
@@ -419,7 +456,7 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
       
           console.log("Show Chord Diagram!");
       
-      }
+      }*/
 
     //Scrolling stuff
     // using d3 for convenience
