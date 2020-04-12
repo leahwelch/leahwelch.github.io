@@ -89,7 +89,6 @@ p {
 
 #chartExplanation {
   grid-area: explanation;
-  margin-top: 50px;
 }
 
 #chordContainer {

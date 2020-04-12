@@ -330,7 +330,7 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
     var showTooltip = function(d) {
         tooltip
             .style("opacity", 1)
-            .html("Actor: " + names[d.target.index] + "<br>Show: " + names[d.source.index-1] + "<br>Episodes: " + d.source.value)
+            .html("Actor: " + names[d.target.index] + "<br>Show: " + names[d.source.index] + "<br>Episodes: " + d.source.value)
             .style("left", (d3.mouse(this)[0]+20) + "px")
             .style("top", (d3.mouse(this)[1]) + "px")
         }
@@ -359,6 +359,7 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
 
     ribbons.on("mouseover", function(d) {
         d3.select(this).style("opacity", 1)
+        .raise()
     }).on("mouseout", function() {
         ribbons.style("opacity", .6)
     });
