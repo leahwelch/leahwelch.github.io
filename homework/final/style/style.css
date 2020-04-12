@@ -123,8 +123,9 @@ p {
 
 .tooltip {
   grid-area: tooltip;
-  font-size: 15pt;
+  font-size: 14pt;
   font-family: 'Roboto', sans-serif;
+  font-weight: lighter;
   line-height: 150%;
 }
 
@@ -168,7 +169,7 @@ p {
 }
 
 .girlsLabel {
-  fill: #e31a1c;
+  fill: #f98759;
   font-size: 10pt;
   font-family: 'Roboto', sans-serif;
   font-weight: lighter;

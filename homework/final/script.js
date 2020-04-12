@@ -251,27 +251,27 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
         for(var i = 0; i < nodes.length; i++) {
             var val = nodes[i].value;
             if(val >= 10 && val <= 19) {
-                colors.push("#88b9e2")
+                colors.push("#fff1de")
             }else if(val >= 20 && val <= 29) {
-                colors.push("#1f78b4")
+                colors.push("#fee0b5")
             }else if(val >= 30 && val <= 39) {
-                colors.push("#00b02c")
+                colors.push("#fdcb95")
             }else if(val >= 40 && val <= 49) {
-                colors.push("#6a3d9a")
+                colors.push("#feae79")
             }else if(val >= 50 && val <= 69) {
-                colors.push("#e31a1c")
+                colors.push("#f98759")
             }else if(val >= 70 && val <= 99) {
-                colors.push("#ff7f00")
+                colors.push("#ec6042")
             }else if(val >= 100 && val <= 199) {
-                colors.push("#fb9a99")
+                colors.push("#d53020")
             }else{
-                colors.push("#fcf7b9")
+                colors.push("#b20805")
             }
         }
         console.log(colors);
 
         stars.forEach(function() {
-            colors.push("#FFFFFF");
+            colors.push("#4c6470");
         })
         console.log(colors);
 
@@ -412,14 +412,14 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
     var legendSize = 20;
 
     var legendData = [
-        {value: "10-19", color: "#88b9e2"}, 
-        {value: "20-29", color: "#1f78b4"},
-        {value:"30-39", color: "#00b02c"},
-        {value: "40-49", color: "#6a3d9a"},
-        {value: "50-69", color: "#e31a1c"},
-        {value: "70-99", color: "#ff7f00"},
-        {value: "100-199", color: "#fb9a99"},
-        {value: "200+", color: "#fcf7b9"}
+        {value: "10-19", color: "#fff1de"}, 
+        {value: "20-29", color: "#fee0b5"},
+        {value:"30-39", color: "#fdcb95"},
+        {value: "40-49", color: "#feae79"},
+        {value: "50-69", color: "#f98759"},
+        {value: "70-99", color: "#ec6042"},
+        {value: "100-199", color: "#d53020"},
+        {value: "200+", color: "#b20805"}
              ];
 
     var legendRects = legend.selectAll("rect")
@@ -486,11 +486,6 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
         };
         console.log(runTime);
     
-        var budget = {
-            min: d3.min(data, function(d){ return +d.budget; }),
-            max: d3.max(data, function(d){ return +d.budget; })       
-        };
-    
         var revenue = {
             min: d3.min(data, function(d){ return +d.revenue; }),
             max: d3.max(data, function(d){ return +d.revenue; })       
@@ -510,8 +505,6 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
         var rScale = d3.scaleSqrt()
             .domain([5000, 2100000000])
             .range([5, 25]);
-    
-        var colors = ["#264351", "#4c6470", "#809199", "#b3bdc2", "#ffffff"];
 
         var tooltip2 = d3.select("#secondaryContainer")
             .append("div")
@@ -580,7 +573,7 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
                 return xScale("2012")
             })
             .attr('y2', height-margin.bottom)
-            .attr('stroke', "#e31a1c")
+            .attr('stroke', "#f98759")
             .attr("stroke-dasharray", 4);
 
         var girlsLabel = svg.append("text").attr("class", "girlsLabel")
