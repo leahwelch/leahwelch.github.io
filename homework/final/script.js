@@ -204,6 +204,11 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
     //Other Data - Just for Adam Driver
     //////////////////////////////////
 
+    var adamShow = uniqueArray.filter(function(d) {
+        return d.actor === "Adam Driver";
+    });
+    //console.log(adamShow);
+    
     var adamAll = movieData.filter(function(d){
         return d.actor === "Adam Driver";
     });
@@ -449,6 +454,20 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
         .attr("y", legendY - 175)
         .text("# of Episodes");
 
+    /*svgChord.append('line')
+        .attr('x1', chartWidth - 142)
+        .attr('y1', legendY + 20)
+        .attr('x2', chartWidth - 114)
+        .attr('y2', legendY + 20)
+        .attr('stroke', '#e31a1c')
+        .attr("stroke-dasharray", 4);
+
+    svgChord.append('text')
+        .attr('x', chartWidth - 144)
+        .attr('y', legendY + 12)
+        .attr('class', 'girlsLabel')
+        .text("Girls");*/
+
     //secondary Vis just for Adam Driver!
     d3.csv("./data/adam_movie_details.csv", function(data) {
 
@@ -557,7 +576,32 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
             .style("text-anchor", "middle")
             .attr("y",margin.left/2 -20)
             .text("Run Time (minutes)");
+
+        svg.append("text").attr("class", "chartTitle")
+            .attr("x", (width/2))
+            .attr("y", margin.top-30)
+            .attr("text-anchor", "middle")
+            .text("Adam Driver's Film Credits by Budget, Revenue & Run Time")
     
+        var girlsLine = svg.append('line')
+            .attr('x1', function() {
+                return xScale("2012")
+            })
+            .attr('y1', margin.top + 10)
+            .attr('x2', function() {
+                return xScale("2012")
+            })
+            .attr('y2', height-margin.bottom)
+            .attr('stroke', "#e31a1c")
+            .attr("stroke-dasharray", 4);
+
+        var girlsLabel = svg.append("text").attr("class", "girlsLabel")
+            .attr("x", function() {
+                return (xScale("2012")) + 5
+            })
+            .attr("y", margin.top+50)
+            .text("'Girls' Season 1");
+        
         var points = svg.selectAll("circle")
             .data(data)
             .enter()
@@ -581,10 +625,12 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
                 .attr("stroke", "#023")
             .on("mouseover", function(d) {
                 d3.select(this)
-                    .attr("r", function(d) { return rScale(d.budget) + 5; })    
+                    .attr("r", function(d) { return rScale(d.budget) + 5; })
+                    .attr("stroke", "white")    
                     .raise();
             }).on("mouseleave", function(d) {
-                points.attr("r", function(d) { return rScale(d.budget); });
+                points.attr("r", function(d) { return rScale(d.budget); })
+                .attr("stroke", "#023");
             })
         
         points.on("mousemove", showTooltip2)

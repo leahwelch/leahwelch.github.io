@@ -75,6 +75,12 @@ p {
   grid-area: chart;
 }
 
+.chartTitle {
+  fill: #ffffff;
+  font-size: 15pt;
+  font-family: 'Roboto', sans-serif;
+}
+
 .section1top {
     margin: 0;
     padding: 0 30%;
@@ -154,4 +160,11 @@ p {
   fill: #ffffff;
   font-size: 15pt;
   font-family: 'Roboto', sans-serif;
+}
+
+.girlsLabel {
+  fill: #e31a1c;
+  font-size: 10pt;
+  font-family: 'Roboto', sans-serif;
+  font-weight: lighter;
 }
