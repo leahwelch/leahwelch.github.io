@@ -55,7 +55,7 @@ p {
   margin: 0 8vh;
   display: grid;
   grid-template-columns: 2fr 6fr;
-  grid-template-rows: 3fr 1fr;
+  grid-template-rows: 5fr 2fr;
   grid-template-areas:
     "info chart"
     "tooltip2 chart"

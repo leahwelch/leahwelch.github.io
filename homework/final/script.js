@@ -398,7 +398,7 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
     var chartWidth = widthChord - margin.left - margin.right;
     var chartHeight = heightChord - margin.top - margin.bottom;
 
-    var legendX = margin.left + chartWidth - 40;
+    var legendX = margin.left + chartWidth - 50;
     var legendY = chartHeight/4;
 
     var legend = svgChord.select("#legend")
@@ -447,7 +447,7 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
         .attr("class", "legendTitle")
         .attr("x", 0)
         .attr("y", legendY - 175)
-        .text("Episodes");
+        .text("# of Episodes");
 
     //secondary Vis just for Adam Driver!
     d3.csv("./data/adam_movie_details.csv", function(data) {
@@ -460,58 +460,6 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
             .append("svg")
             .attr("width", width)
             .attr("height", height);
-
-        /*svg.append("g").attr("id", "legend");
-            var chartWidth = width - margin.left - margin.right;
-            var chartHeight = height - margin.top - margin.bottom;
-        
-            var legendX = margin.left + chartWidth - 40;
-            var legendY = chartHeight/4;
-        
-            var legend = svg.select("#legend")
-                .attr("transform", "translate(" + legendX + ", " + legendY + ")");
-        
-            var legendSize = 20;
-        
-            var legendData = [
-                {value: "< $7,000 (or unknown)", color: "#264351"}, 
-                {value: "$7,000-$7.9 million", color: "#4c6470"},
-                {value:"$8 million - $49.9 million", color: "#809199"},
-                {value: "$50 million - $1.9 billion", color: "#b3bdc2"},
-                {value: "> $2 billion", color: "#FFFFFF"}
-                     ];
-        
-            var legendRects = legend.selectAll("rect")
-                .data(legendData)
-                .enter()
-                .append("rect")
-                .attr("x", 0)
-                    .attr("y", function(d, i) {
-                        return i * legendSize + i * 10;
-                    })
-                    .attr("fill", function(d) {return d.color})
-                    .attr("width", legendSize)
-                    .attr("height", legendSize);
-        
-            var legendTexts = legend.selectAll(".legendTexts")
-                .data(legendData)
-                .enter()
-                .append("text")
-                .attr("baseline-shift", "-100%")
-                .attr("class", "legendTexts")
-                .attr("x", legendSize + 5)
-                .attr("y", function(d, i) {
-                    return i * legendSize + i * 10;
-                })
-                .text(function(d) {
-                    return d.value;
-                });
-        
-            var legendTitle = legend.append("text")
-                .attr("class", "legendTitle")
-                .attr("x", 0)
-                .attr("y", legendY - 175)
-                .text("Episodes");*/
     
         var runTime = {
             min: d3.min(data, function(d){ return +d.runTime; }),
@@ -537,7 +485,7 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
             .padding(1); 
     
         var yScale = d3.scaleLinear()
-            .domain([8, 180])
+            .domain([0, 180])
             .range([height-margin.bottom, margin.top]);
         
         var rScale = d3.scaleSqrt()
@@ -633,8 +581,11 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
                 .attr("stroke", "#023")
             .on("mouseover", function(d) {
                 d3.select(this)
+                    .attr("r", function(d) { return rScale(d.budget) + 5; })    
                     .raise();
-            });
+            }).on("mouseleave", function(d) {
+                points.attr("r", function(d) { return rScale(d.budget); });
+            })
         
         points.on("mousemove", showTooltip2)
             .on("mouseout", hideTooltip2);
