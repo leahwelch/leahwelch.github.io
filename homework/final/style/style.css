@@ -35,72 +35,113 @@ p {
     padding: 15vh 30%;
 }
 
-#chart {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 60%;
-    height: 90vh;
+#section1 img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-#scrolly {
-    position: relative;
-  }
+#secondaryContainer {
+  margin: 0 8vh;
+  display: grid;
+  grid-template-columns: 2fr 6fr;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    "info chart"
+}
 
-.scrollyTop {
+.infoText {
+  margin-left: 15%;
+  padding-right: 40px;
+  padding-top: 25%;
+  grid-area: info;
+}
+
+#chart {
+  width: 100%;
+  height: 90vh;
+  vertical-align: middle;
+  grid-area: chart;
+}
+
+.section1top {
+    margin: 0;
     padding: 0 30%;
     font-size: 18pt;
 }
 
-article {
-    position: relative;
-    padding: 0;
-    max-width: 20rem;
-    margin: 0 auto;
-  }
-
-figure {
-    position: -webkit-sticky;
-    position: sticky;
-    left: 0;
-    width: 100%;
-    margin: 0;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    z-index: 0;
-  }
-
-.step {
-    margin: 0 auto 2rem auto;
-    color: #fff;
-  }
-
-.step:last-child {
-    margin-bottom: 0;
-  }
-
-.step.is-active p {
-    background-color: goldenrod;
-    color: teal;
-  }
-
-.step p {
-    text-align: center;
-    padding: 1rem;
-    font-size: 1.5rem;
-    background-color: teal;
-  }
-
-.movieList {
-    color: #fff;
-    font-size: 15pt;
+.leadup {
+  padding: 0 30%;
+  font-size: 18pt;
+  text-align: center;
 }
 
-#chord {
+#chartExplanation {
+  grid-area: explanation;
+  margin-top: 50px;
+}
+
+#chordContainer {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 60%;
-    height: 90vh;
+    width: 80%;
+    height: 95vh;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 4fr 1fr;
+    grid-template-areas:
+      "explanation chord"
+      "tooltip chord" 
+}
+
+#chord {
+    grid-area: chord;
+}
+
+.tooltip {
+  grid-area: tooltip;
+  font-size: 12pt;
+  font-family: 'Roboto', sans-serif;
+  font-weight: lighter;
+  line-height: 150%;
+}
+
+.axis line {
+  stroke: #ffffff;
+}
+
+.axis path {
+  stroke: #ffffff;
+}
+
+.axis text {
+  fill: #ffffff;
+}  
+
+.axisLabel {
+  fill: #ffffff;
+  font-size: 12pt;
+  font-family: 'Roboto', sans-serif;
+  font-weight: lighter;
+}
+
+.legendTexts {
+  fill: #ffffff;
+  font-size: 10pt;
+  font-family: 'Roboto', sans-serif;
+  font-weight: lighter;
+}
+
+.legendTitle {
+  fill: #ffffff;
+  font-size: 12pt;
+  font-family: 'Roboto', sans-serif;
+  font-weight: lighter;
+}
+
+.chordTitle {
+  fill: #ffffff;
+  font-size: 15pt;
+  font-family: 'Roboto', sans-serif;
 }

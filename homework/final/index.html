@@ -14,31 +14,28 @@
             <p>Movie stars are part of that spectacle: larger-than-life figures whose presence in hit movies with high production value aid in the transportative experience of going to the cinema. Even if actors appearing in critically acclaimed series provide better performances of more compelling dialogue, it is hard to detach the notion of "stardom" from top-billed actors in blockbuster films.</p>
             <p>Every movie star had to get their start somewhere, and television roles figure prominently in many stars' early careers. While many of those instances feature roles that the actors would sooner not relive, some television roles were so critical to an actor's exposure that they actually launched that person's entire film career. Suddenly they're everywhere.</p> 
         </section>
-        <div id="scrolly">
-            <p class="scrollyTop">Consider Adam Driver.</p>
-            <figure>
-                <div id="chart"></div>
-            </figure>
-            <article id="sections">
-                <section class="step" data-index="0">
+        <div id="section1">
+            <p class="section1top">Consider Adam Driver.</p>
+            <img src="./images/adam_driver.jpg" height="600px">
+            <div id="secondaryContainer">
+                <div class="infoText">
                     <p>In the past 10 years, Adam Driver has been among the top-billed cast of <span id="adamMovieNum"></span> movies.</p>
-                </section>
-                <section class="step" data-index="1">
-                    <p>He's an action figure.</p>
-                </section>
-                <section>
-                    <p>He was also nominated for 2 Academy Awards in the past 2 years for his performances in "BlacKkKlansman" and "Marriage Story".</p>
-                </section>
-                <!--section>
-                    <p>X other actors have been nominated for Academy Awards for the first time in the past X years.</p>
-                </section-->
-            </article>
+                    <p>His first leading role in a full-length film was in 2013, two years after first appearing opposite Lena Dunham in "Girls".</p>
+                </div>
+                <div id="chart"></div>
+            </div>
+            <p class="leadup">Now he's an action figure...</p>
+            <img src="./images/action_figure.png" height="600px">
+            <p class="leadup">...and he's been nominated for 2 Academy Awards in the past 2 years for his performances in "BlacKkKlansman" and "Marriage Story".</p>
         </div>
-        <div id="chord"></div>
-        <script src="https://unpkg.com/intersection-observer"></script>
-        <script src="https://unpkg.com/scrollama"></script>
-        <!--script src="./test.js"></script-->
-        <!--script src="./scrolly.js"></script-->
+        <div id="chordContainer">
+            <div id="chartExplanation">
+                <p><span id="oscarActorNum"></span> other actors have been nominated for Academy Awards for the first time in the past 5 years.</p>
+                <p><span id="showActorNum"></span> of them had recurring television roles before the release of their Oscar-nominated movie.</p>
+                <p>Let's explore those TV roles in more detail.</p>
+            </div>
+            <div id="chord"></div>
+        </div>
         <script src="./script.js"></script>
     </body>
 </html>

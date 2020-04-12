@@ -30,6 +30,18 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
         }
     console.log(stars);
 
+    var allStars = [];
+        for(var i = 0; i < movieData.length; i++) {
+            var actors = [movieData[i].actor];
+            actors.forEach(function(val) {
+                if(allStars.indexOf(val) < 0) {
+                    allStars.push(val);
+                }
+            }
+            )
+        }
+    console.log(allStars);
+
 //////////////////////////////////
     //List of shows
 //////////////////////////////////
@@ -209,8 +221,17 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
     adamTop.sort(function(a, b) { return b.year - a.year; });
     console.log(adamTop);
 
+
+    //Dynamically filling in text spans with data!
+
     var adamMovieNum = document.getElementById("adamMovieNum");
     adamMovieNum.innerHTML = adamTop.length;
+
+    var oscarActorNum = document.getElementById("oscarActorNum");
+    oscarActorNum.innerHTML = allStars.length;
+
+    var showActorNum = document.getElementById("showActorNum");
+    showActorNum.innerHTML = stars.length;
     
 
     //////////////////////////////////
@@ -232,9 +253,9 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
                 colors.push("#00b02c")
             }else if(val >= 40 && val <= 49) {
                 colors.push("#6a3d9a")
-            }else if(val >= 50 && val <= 79) {
+            }else if(val >= 50 && val <= 69) {
                 colors.push("#e31a1c")
-            }else if(val >= 80 && val <= 99) {
+            }else if(val >= 70 && val <= 99) {
                 colors.push("#ff7f00")
             }else if(val >= 100 && val <= 199) {
                 colors.push("#fb9a99")
@@ -249,8 +270,6 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
         })
         console.log(colors);
 
-    var activateFunctions = [];
-
     var margin = {left: 50, top: 10, right: 50, bottom: 10};
         var width = document.querySelector("#chart").clientWidth;
         var height = document.querySelector("#chart").clientHeight;
@@ -261,52 +280,21 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
     var yScale = d3.scaleLinear()
       .range([margin.top, height-margin.bottom]);
     
-    //Set up SVGs
-
-    var svg = d3.select("#chart").append("svg")
-        .attr("width", width)
-        .attr("height", height);
+    //Set up SVG for Chord Diagram
 
     var svgChord = d3.select("#chord").append("svg")
         .attr("width", widthChord)
         .attr("height", heightChord);
-    
-    //Set up other visual elements
-
-    svg.append("image")
-      .attr("xlink:href", "./images/adam_driver.jpg")    
-      .attr('class', 'adamPic')
-      .attr('x', margin.left)
-      .attr('y', margin.top)
-      .attr("opacity", 1);
-  
-  svg.append("image")
-      .attr("xlink:href", "./images/action_figure.png")    
-      .attr('class', 'actionFig')
-      .attr('x', margin.left)
-      .attr('y', margin.top)
-      .attr("opacity", 0);
-  
-  svg.selectAll("myMovieLabels")
-      .append("text")
-      .data(nodes)
-      .enter()
-      .append("text")
-          .attr("x", width/2)
-          .attr("y", height/2)    
-          .text(function(d){ return(d.show)})
-          .style("fill", "#FFFFFF")
-          .style("text-anchor", "middle")
-      .attr("class", "movieList")
-      .attr("opacity", 0);
 
     //Create Chord Diagram
     
     var wrapper = svgChord.append("g").attr("class", "chordWrapper")
-        .attr("transform", "translate(" + (width / 2) + "," + (height / 2) + ")");
+        .attr("width", widthChord/2)
+        .attr("height", heightChord/2)
+        .attr("transform", "translate(" + ((widthChord / 2) - 50) + "," + ((heightChord / 2) + 30) + ")");
         //.attr("opacity", 0);
         
-    var outerRadius = Math.min(width, height) / 2,
+    var outerRadius = Math.min(widthChord, heightChord) / 2,
         innerRadius = outerRadius * 0.95,
         opacityDefault = 0.7; //default opacity of chords
 
@@ -326,29 +314,25 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
         .append("path")
             .style("fill", function(d,i){ return colors[i] })
             .attr("d", d3.arc()
-            .innerRadius(270)
-            .outerRadius(280)
+            .innerRadius(250)
+            .outerRadius(260)
             )
         .attr("class", "circle");
 
     //Tooltip
 
-    var tooltip = d3.select("#chord")
+    var tooltip = d3.select("#chordContainer")
         .append("div")
         .style("opacity", 0)
         .attr("class", "tooltip")
-        .style("background-color", "#023")
-        .style("border", "solid")
-        .style("border-width", "1px")
-        .style("border-radius", "5px")
-        .style("padding", "10px");
+        .style("background-color", "#023");
 
     var showTooltip = function(d) {
         tooltip
             .style("opacity", 1)
-            .html("Source: " + names[d.source.index] + "<br>Target: " + names[d.target.index])
-            .style("left", (d3.event.pageX + 15) + "px")
-            .style("top", (d3.event.pageY - 28) + "px")
+            .html("Actor: " + names[d.target.index] + "<br>Show: " + names[d.source.index-1] + "<br>Episodes: " + d.source.value)
+            .style("left", (d3.mouse(this)[0]+20) + "px")
+            .style("top", (d3.mouse(this)[1]) + "px")
         }
 
     var hideTooltip = function(d) {
@@ -366,168 +350,300 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
         .data(function(d) { return d; })
         .enter()
         .append("path")
-            .attr("d", d3.ribbon().radius(270))
+            .attr("d", d3.ribbon().radius(251))
             .style("fill", function(d){ return(colors[d.source.index]) })
             .style("opacity", .6)
         .attr("class", "ribbons")
         .on("mousemove", showTooltip);
+        //.on("mouseout", hideTooltip);
 
-    var chordLabels = wrapper.selectAll("chordLabels")
-        .data(function(d) { return d; })
+    ribbons.on("mouseover", function(d) {
+        d3.select(this).style("opacity", 1)
+    }).on("mouseout", function() {
+        ribbons.style("opacity", .6)
+    });
+
+    var arc = wrapper.datum(chord)
+        .append("g")
+        .selectAll("g")
+        .data(function(d) { return d.groups; })
+        .enter()
+        .append("g")
+        .append("path")
+            .style("fill", function(d,i){ return colors[i] })
+            .attr("d", d3.arc()
+            .innerRadius(250)
+            .outerRadius(260)
+            )
+        .attr("class", "circle");
+
+
+    svgChord.append("text").attr("class", "chordTitle")
+        .attr("x", (widthChord-margin.left-margin.right)/2)
+        .attr("y", margin.top + 30)
+        .attr("text-anchor", "middle")
+        .text("Oscar-Nominated Actors & Their TV Credits")
+
+    svgChord.append('line')
+        .attr('x1', 50)
+        .attr('y1', margin.top + 10)
+        .attr('x2', 50)
+        .attr('y2', heightChord - 10)
+        .attr('stroke', 'white')
+        .attr("opacity", .5);
+
+    //Legend
+    svgChord.append("g").attr("id", "legend");
+    var chartWidth = widthChord - margin.left - margin.right;
+    var chartHeight = heightChord - margin.top - margin.bottom;
+
+    var legendX = margin.left + chartWidth - 40;
+    var legendY = chartHeight/4;
+
+    var legend = svgChord.select("#legend")
+        .attr("transform", "translate(" + legendX + ", " + legendY + ")");
+
+    var legendSize = 20;
+
+    var legendData = [
+        {value: "10-19", color: "#88b9e2"}, 
+        {value: "20-29", color: "#1f78b4"},
+        {value:"30-39", color: "#00b02c"},
+        {value: "40-49", color: "#6a3d9a"},
+        {value: "50-69", color: "#e31a1c"},
+        {value: "70-99", color: "#ff7f00"},
+        {value: "100-199", color: "#fb9a99"},
+        {value: "200+", color: "#fcf7b9"}
+             ];
+
+    var legendRects = legend.selectAll("rect")
+        .data(legendData)
+        .enter()
+        .append("rect")
+        .attr("x", 0)
+            .attr("y", function(d, i) {
+                return i * legendSize + i * 10;
+            })
+            .attr("fill", function(d) {return d.color})
+            .attr("width", legendSize)
+            .attr("height", legendSize);
+
+    var legendTexts = legend.selectAll(".legendTexts")
+        .data(legendData)
         .enter()
         .append("text")
-        .attr("dy", ".35em")
-        .attr("transform", function(d) { return d.angle > Math.PI ? "rotate(180) translate(-16)" : null; })
-        .attr("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
-        .style("fill", "#FFFFFF")
-        .text(function(d, i){ return names[i]; });
+        .attr("baseline-shift", "-100%")
+        .attr("class", "legendTexts")
+        .attr("x", legendSize + 5)
+        .attr("y", function(d, i) {
+            return i * legendSize + i * 10;
+        })
+        .text(function(d) {
+            return d.value;
+        });
 
-    //The Activate Functions List
-    var setupSections = function () {
-        activateFunctions[0] = showMovieList;
-        activateFunctions[1] = showActionFig;
-      }
-      
-      setupSections();
-      
-      function showAdamPic() {
-      
-        svg.selectAll('.movieList')
-            .transition()
-            .duration(600)
-            .attr('opacity', 0);
+    var legendTitle = legend.append("text")
+        .attr("class", "legendTitle")
+        .attr("x", 0)
+        .attr("y", legendY - 175)
+        .text("Episodes");
+
+    //secondary Vis just for Adam Driver!
+    d3.csv("./data/adam_movie_details.csv", function(data) {
+
+        var width = document.querySelector("#chart").clientWidth;
+        var height = document.querySelector("#chart").clientHeight;
+        var margin = {left: 100, top: 100, right: 100, bottom: 100};
         
-        svg.selectAll('.adamPic')
-            .transition()
-            .duration(600)
-            .attr('opacity', 1);
-      
-          console.log("Show Adam Pic!");
-      
-      }
-      
-      function showMovieList() {
-        svg.selectAll('.adamPic')
-            .transition()
-            .duration(0)
-            .attr('opacity', 0);
-      
-        svg.selectAll('.movieList')
-            .transition()
-            .duration(600)
-            .attr('opacity', 1);
-      
-        console.log("Show Movie List!");
-      
-      }
-      
-      function showActionFig() {
-      
-        svg.selectAll('.movieList')
-            .transition()
-            .duration(600)
-            .attr('opacity', 0);
+        var svg = d3.select("#chart")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        /*svg.append("g").attr("id", "legend");
+            var chartWidth = width - margin.left - margin.right;
+            var chartHeight = height - margin.top - margin.bottom;
         
-        svg.selectAll('.actionFig')
-            .transition()
-            .duration(600)
-            .attr('opacity', 1);
-      
-          console.log("Show Action Figure!");
-      
-      }
-      
-      
-      /*function showChord() {
-        svg.selectAll('.movieList')
-            .transition()
-            .duration(0)
-            .attr('opacity', 0);
-      
-        svg.selectAll('.chordWrapper')
-            .transition()
-            .duration(600)
-            .attr('opacity', 1);
-      
-        svg.selectAll('.actionFig')
-            .transition()
-            .duration(600)
-            .attr('opacity', 0);
-      
-          console.log("Show Chord Diagram!");
-      
-      }*/
+            var legendX = margin.left + chartWidth - 40;
+            var legendY = chartHeight/4;
+        
+            var legend = svg.select("#legend")
+                .attr("transform", "translate(" + legendX + ", " + legendY + ")");
+        
+            var legendSize = 20;
+        
+            var legendData = [
+                {value: "< $7,000 (or unknown)", color: "#264351"}, 
+                {value: "$7,000-$7.9 million", color: "#4c6470"},
+                {value:"$8 million - $49.9 million", color: "#809199"},
+                {value: "$50 million - $1.9 billion", color: "#b3bdc2"},
+                {value: "> $2 billion", color: "#FFFFFF"}
+                     ];
+        
+            var legendRects = legend.selectAll("rect")
+                .data(legendData)
+                .enter()
+                .append("rect")
+                .attr("x", 0)
+                    .attr("y", function(d, i) {
+                        return i * legendSize + i * 10;
+                    })
+                    .attr("fill", function(d) {return d.color})
+                    .attr("width", legendSize)
+                    .attr("height", legendSize);
+        
+            var legendTexts = legend.selectAll(".legendTexts")
+                .data(legendData)
+                .enter()
+                .append("text")
+                .attr("baseline-shift", "-100%")
+                .attr("class", "legendTexts")
+                .attr("x", legendSize + 5)
+                .attr("y", function(d, i) {
+                    return i * legendSize + i * 10;
+                })
+                .text(function(d) {
+                    return d.value;
+                });
+        
+            var legendTitle = legend.append("text")
+                .attr("class", "legendTitle")
+                .attr("x", 0)
+                .attr("y", legendY - 175)
+                .text("Episodes");*/
+    
+        var runTime = {
+            min: d3.min(data, function(d){ return +d.runTime; }),
+            max: d3.max(data, function(d){ return +d.runTime; })       
+        };
+        console.log(runTime);
+    
+        var budget = {
+            min: d3.min(data, function(d){ return +d.budget; }),
+            max: d3.max(data, function(d){ return +d.budget; })       
+        };
+    
+        var revenue = {
+            min: d3.min(data, function(d){ return +d.revenue; }),
+            max: d3.max(data, function(d){ return +d.revenue; })       
+        };
+        console.log(revenue);
+        console.log(data);
+    
+        var xScale = d3.scaleBand()
+            .domain(["2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019"])
+            .range([margin.left, width-margin.right])  
+            .padding(1); 
+    
+        var yScale = d3.scaleLinear()
+            .domain([8, 180])
+            .range([height-margin.bottom, margin.top]);
+        
+        var rScale = d3.scaleSqrt()
+            .domain([1000, 250000000])
+            .range([5, 25]);
+    
+        var colors = ["#264351", "#4c6470", "#809199", "#b3bdc2", "#ffffff"];
 
-    //Scrolling stuff
-    // using d3 for convenience
-var scrolly = d3.select("#scrolly");
-var figure = scrolly.select("figure");
-var article = scrolly.select("article");
-var step = article.selectAll(".step");
+        var tooltip2 = d3.select("#chart")
+        .append("div")
+        .style("opacity", 0)
+        .attr("class", "tooltip2")
+        .style("background-color", "#023");
 
-// initialize the scrollama
-var scroller = scrollama();
+        var showTooltip2 = function(d) {
+            if(d.budget>0 && d.revenue>0) {
+            tooltip2
+                .style("opacity", 1)
+                .html(d.title + "<br>Run Time: " + d.runTime + " minutes<br>Budget: $" + d.budget + "<br>Revenue: $" + d.revenue)
+                .style("left", (d3.mouse(this)[0]+20) + "px")
+                .style("top", (d3.mouse(this)[1]) + "px")
+            } else if (d.budget == 0 && d.revenue > 0) {
+                tooltip2
+                .style("opacity", 1)
+                .html(d.title + "<br>Run Time: " + d.runTime + " minutes<br>Budget: Unknown<br>Revenue: $" + d.revenue)
+                .style("left", (d3.mouse(this)[0]+20) + "px")
+                .style("top", (d3.mouse(this)[1]) + "px")
+            } else if (d.budget>0 && d.revenue == 0) {
+                tooltip2
+                .style("opacity", 1)
+                .html(d.title + "<br>Run Time: " + d.runTime + " minutes<br>Budget: $" + d.budget + "<br>Revenue: Unknown")
+                .style("left", (d3.mouse(this)[0]+20) + "px")
+                .style("top", (d3.mouse(this)[1]) + "px")
+            } else {
+                tooltip2
+                .style("opacity", 1)
+                .html(d.title + "<br>Run Time: " + d.runTime + " minutes<br>Budget: Unknown<br>Revenue: Unknown ")
+                .style("left", (d3.mouse(this)[0]+20) + "px")
+                .style("top", (d3.mouse(this)[1]) + "px")
+            }
+    }
 
-// generic window resize listener event
-function handleResize() {
-  // 1. update height of step elements
-  var stepH = Math.floor(window.innerHeight * 0.75);
-  step.style("height", stepH + "px");
+        var hideTooltip2 = function(d) {
+            tooltip2
+                .style("opacity", 0)
+            }
+    
+        var xAxis = svg.append("g")
+            .attr("transform", `translate(0, ${height-margin.bottom})`)
+            .attr("class", "axis")
+            .call(d3.axisBottom().scale(xScale));
+    
+        var yAxis = svg.append("g")
+            .attr("transform", `translate(${margin.left}, 0)`)
+            .attr("class", "axis")
+            .call(d3.axisLeft().scale(yScale));
+    
+        var xAxisLabel = svg.append("text")
+            .attr("class","axisLabel")
+            .attr("x", width/2)
+            .attr("y", height-margin.bottom/2)
+            .style("text-anchor", "middle")
+            .text("Year");
+    
+        var yAxisLabel = svg.append("text")
+            .attr("class","axisLabel")
+            .attr("transform","rotate(-90)")
+            .attr("x",-height/2)
+            .style("text-anchor", "middle")
+            .attr("y",margin.left/2 -20)
+            .text("Run Time (minutes)");
+    
+        var points = svg.selectAll("circle")
+            .data(data)
+            .enter()
+            .append("circle")
+                .attr("cx", function(d) { return xScale(d.year); }) 
+                .attr("cy", function(d) { return yScale(d.runTime); })
+                .attr("r", function(d) { return rScale(d.budget); })
+                .attr("fill", function(d) { 
+                    if(d.revenue < 7000) {
+                        return colors[0];
+                    } else if(d.revenue >=7000 && d.revenue < 8000000 ) {
+                        return colors[1];
+                    } else if(d.revenue >= 8000000 && d.revenue < 50000000) {
+                        return colors[2];
+                    } else if(d.revenue >=50000000 && d.revenue < 2000000000) {
+                        return colors[3];
+                    } else {
+                        return colors[4];
+                    }
+                    })
+                .attr("stroke", "#023")
+            .on("mouseover", function(d) {
+                d3.select(this)
+                    .raise();
+            });
+        
+        points.on("mousemove", showTooltip2)
+            .on("mouseout", hideTooltip2);
+    
+        
+    
+    });
 
-  var figureHeight = window.innerHeight;
-  var figureMarginTop = (window.innerHeight - figureHeight) / 2;
 
-  figure
-    .style("height", figureHeight + "px")
-    .style("top", figureMarginTop + "px");
 
-  // 3. tell scrollama to update new element dimensions
-  scroller.resize();
-}
-
-// scrollama event handlers
-function handleStepEnter(response) {
-  console.log(response);
-  // response = { element, direction, index }
-
-  // add color to current step only
-  step.classed("is-active", function(d, i) {
-    return i === response.index;
-  });
-
-  // update graphic based on step
-    activateFunctions[response.index]();
-}
-
-function setupStickyfill() {
-  d3.selectAll(".sticky").each(function() {
-    Stickyfill.add(this);
-  });
-}
-
-function init() {
-  setupStickyfill();
-
-  // 1. force a resize on load to ensure proper dimensions are sent to scrollama
-  handleResize();
-
-  // 2. setup the scroller passing options
-  // 		this will also initialize trigger observations
-  // 3. bind scrollama event handlers (this can be chained like below)
-  scroller
-    .setup({
-      step: "#scrolly article .step",
-      offset: 0.33,
-      debug: false
-    })
-    .onStepEnter(handleStepEnter);
-
-  // setup resize event
-  window.addEventListener("resize", handleResize);
-}
-
-// kick things off
-init();
     
     
 })
