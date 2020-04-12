@@ -41,19 +41,30 @@ p {
   margin-right: auto;
 }
 
+.tooltip2 {
+  grid-area: tooltip2;
+  margin-left: 10%;
+  padding-right: 40px;
+  font-size: 12pt;
+  font-family: 'Roboto', sans-serif;
+  font-weight: lighter;
+  line-height: 150%;
+}
+
 #secondaryContainer {
   margin: 0 8vh;
   display: grid;
   grid-template-columns: 2fr 6fr;
-  grid-template-rows: 1fr;
+  grid-template-rows: 3fr 1fr;
   grid-template-areas:
     "info chart"
+    "tooltip2 chart"
 }
 
 .infoText {
-  margin-left: 15%;
+  margin-left: 10%;
   padding-right: 40px;
-  padding-top: 25%;
+  padding-top: 15%;
   grid-area: info;
 }
 

@@ -545,35 +545,35 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
     
         var colors = ["#264351", "#4c6470", "#809199", "#b3bdc2", "#ffffff"];
 
-        var tooltip2 = d3.select("#chart")
-        .append("div")
-        .style("opacity", 0)
-        .attr("class", "tooltip2")
-        .style("background-color", "#023");
+        var tooltip2 = d3.select("#secondaryContainer")
+            .append("div")
+            .style("opacity", 0)
+            .attr("class", "tooltip2")
+            .style("background-color", "#023");
 
         var showTooltip2 = function(d) {
             if(d.budget>0 && d.revenue>0) {
             tooltip2
                 .style("opacity", 1)
-                .html(d.title + "<br>Run Time: " + d.runTime + " minutes<br>Budget: $" + d.budget + "<br>Revenue: $" + d.revenue)
+                .html("Film: " + d.title + "<br>Run Time: " + d.runTime + " minutes<br>Budget: $" + d.budget + "<br>Revenue: $" + d.revenue)
                 .style("left", (d3.mouse(this)[0]+20) + "px")
                 .style("top", (d3.mouse(this)[1]) + "px")
             } else if (d.budget == 0 && d.revenue > 0) {
                 tooltip2
                 .style("opacity", 1)
-                .html(d.title + "<br>Run Time: " + d.runTime + " minutes<br>Budget: Unknown<br>Revenue: $" + d.revenue)
+                .html("Film: " + d.title + "<br>Run Time: " + d.runTime + " minutes<br>Budget: Unknown<br>Revenue: $" + d.revenue)
                 .style("left", (d3.mouse(this)[0]+20) + "px")
                 .style("top", (d3.mouse(this)[1]) + "px")
             } else if (d.budget>0 && d.revenue == 0) {
                 tooltip2
                 .style("opacity", 1)
-                .html(d.title + "<br>Run Time: " + d.runTime + " minutes<br>Budget: $" + d.budget + "<br>Revenue: Unknown")
+                .html("Film: " + d.title + "<br>Run Time: " + d.runTime + " minutes<br>Budget: $" + d.budget + "<br>Revenue: Unknown")
                 .style("left", (d3.mouse(this)[0]+20) + "px")
                 .style("top", (d3.mouse(this)[1]) + "px")
             } else {
                 tooltip2
                 .style("opacity", 1)
-                .html(d.title + "<br>Run Time: " + d.runTime + " minutes<br>Budget: Unknown<br>Revenue: Unknown ")
+                .html("Film: " + d.title + "<br>Run Time: " + d.runTime + " minutes<br>Budget: Unknown<br>Revenue: Unknown ")
                 .style("left", (d3.mouse(this)[0]+20) + "px")
                 .style("top", (d3.mouse(this)[1]) + "px")
             }
