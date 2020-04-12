@@ -508,7 +508,7 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
             .range([height-margin.bottom, margin.top]);
         
         var rScale = d3.scaleSqrt()
-            .domain([1000, 250000000])
+            .domain([5000, 2100000000])
             .range([5, 25]);
     
         var colors = ["#264351", "#4c6470", "#809199", "#b3bdc2", "#ffffff"];
@@ -520,28 +520,16 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
             .style("background-color", "#023");
 
         var showTooltip2 = function(d) {
-            if(d.budget>0 && d.revenue>0) {
+            if(d.revenue>0) {
             tooltip2
                 .style("opacity", 1)
-                .html("Film: " + d.title + "<br>Run Time: " + d.runTime + " minutes<br>Budget: $" + d.budget + "<br>Revenue: $" + d.revenue)
-                .style("left", (d3.mouse(this)[0]+20) + "px")
-                .style("top", (d3.mouse(this)[1]) + "px")
-            } else if (d.budget == 0 && d.revenue > 0) {
-                tooltip2
-                .style("opacity", 1)
-                .html("Film: " + d.title + "<br>Run Time: " + d.runTime + " minutes<br>Budget: Unknown<br>Revenue: $" + d.revenue)
-                .style("left", (d3.mouse(this)[0]+20) + "px")
-                .style("top", (d3.mouse(this)[1]) + "px")
-            } else if (d.budget>0 && d.revenue == 0) {
-                tooltip2
-                .style("opacity", 1)
-                .html("Film: " + d.title + "<br>Run Time: " + d.runTime + " minutes<br>Budget: $" + d.budget + "<br>Revenue: Unknown")
+                .html("Film: " + d.title + "<br>Run Time: " + d.runTime + " minutes<br>Revenue: $" + d.revenue)
                 .style("left", (d3.mouse(this)[0]+20) + "px")
                 .style("top", (d3.mouse(this)[1]) + "px")
             } else {
                 tooltip2
                 .style("opacity", 1)
-                .html("Film: " + d.title + "<br>Run Time: " + d.runTime + " minutes<br>Budget: Unknown<br>Revenue: Unknown ")
+                .html("Film: " + d.title + "<br>Run Time: " + d.runTime + " minutes<br>Revenue: Unknown")
                 .style("left", (d3.mouse(this)[0]+20) + "px")
                 .style("top", (d3.mouse(this)[1]) + "px")
             }
@@ -581,7 +569,7 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
             .attr("x", (width/2))
             .attr("y", margin.top-30)
             .attr("text-anchor", "middle")
-            .text("Adam Driver's Film Credits by Budget, Revenue & Run Time")
+            .text("Adam Driver's Film Credits by Revenue & Run Time")
     
         var girlsLine = svg.append('line')
             .attr('x1', function() {
@@ -608,29 +596,17 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
             .append("circle")
                 .attr("cx", function(d) { return xScale(d.year); }) 
                 .attr("cy", function(d) { return yScale(d.runTime); })
-                .attr("r", function(d) { return rScale(d.budget); })
-                .attr("fill", function(d) { 
-                    if(d.revenue < 7000) {
-                        return colors[0];
-                    } else if(d.revenue >=7000 && d.revenue < 8000000 ) {
-                        return colors[1];
-                    } else if(d.revenue >= 8000000 && d.revenue < 50000000) {
-                        return colors[2];
-                    } else if(d.revenue >=50000000 && d.revenue < 2000000000) {
-                        return colors[3];
-                    } else {
-                        return colors[4];
-                    }
-                    })
+                .attr("r", function(d) { return rScale(d.revenue); })
+                .attr("fill", "#4c6470")
                 .attr("stroke", "#023")
             .on("mouseover", function(d) {
                 d3.select(this)
-                    .attr("r", function(d) { return rScale(d.budget) + 5; })
-                    .attr("stroke", "white")    
+                    .attr("r", function(d) { return rScale(d.revenue) + 5; })
+                    .attr("fill", "white")    
                     .raise();
             }).on("mouseleave", function(d) {
-                points.attr("r", function(d) { return rScale(d.budget); })
-                .attr("stroke", "#023");
+                points.attr("r", function(d) { return rScale(d.revenue); })
+                .attr("fill", "#4c6470");
             })
         
         points.on("mousemove", showTooltip2)
