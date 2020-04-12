@@ -55,10 +55,10 @@ p {
   margin: 0 8vh;
   display: grid;
   grid-template-columns: 2fr 6fr;
-  grid-template-rows: 5fr 2fr;
+  grid-template-rows: 2fr 5fr;
   grid-template-areas:
-    "info chart"
     "tooltip2 chart"
+    "info chart"
 }
 
 .infoText {
@@ -105,10 +105,10 @@ p {
     height: 95vh;
     display: grid;
     grid-template-columns: 1fr 4fr;
-    grid-template-rows: 4fr 1fr;
+    grid-template-rows: 1fr 4fr;
     grid-template-areas:
-      "explanation chord"
-      "tooltip chord" 
+      "tooltip chord"
+      "explanation chord" 
 }
 
 #chord {

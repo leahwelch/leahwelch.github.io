@@ -473,7 +473,7 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
 
         var width = document.querySelector("#chart").clientWidth;
         var height = document.querySelector("#chart").clientHeight;
-        var margin = {left: 100, top: 100, right: 100, bottom: 100};
+        var margin = {left: 100, top: 50, right: 100, bottom: 100};
         
         var svg = d3.select("#chart")
             .append("svg")
