@@ -329,8 +329,7 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
     var tooltip = d3.select("#chordContainer")
         .append("div")
         .style("opacity", 0)
-        .attr("class", "tooltip")
-        .style("background-color", "#023");
+        .attr("class", "tooltip");
 
     var showTooltip = function(d) {
         tooltip
@@ -363,10 +362,16 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
         //.on("mouseout", hideTooltip);
 
     ribbons.on("mouseover", function(d) {
-        d3.select(this).style("opacity", 1)
+        d3.select(this)
+        .transition()
+        .duration(300)
+        .style("opacity", 1)
         .raise()
     }).on("mouseout", function() {
-        ribbons.style("opacity", .6)
+        ribbons
+        .transition()
+        .duration(300)
+        .style("opacity", .6)
     });
 
     var arc = wrapper.datum(chord)
@@ -454,20 +459,6 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
         .attr("y", legendY - 175)
         .text("# of Episodes");
 
-    /*svgChord.append('line')
-        .attr('x1', chartWidth - 142)
-        .attr('y1', legendY + 20)
-        .attr('x2', chartWidth - 114)
-        .attr('y2', legendY + 20)
-        .attr('stroke', '#e31a1c')
-        .attr("stroke-dasharray", 4);
-
-    svgChord.append('text')
-        .attr('x', chartWidth - 144)
-        .attr('y', legendY + 12)
-        .attr('class', 'girlsLabel')
-        .text("Girls");*/
-
     //secondary Vis just for Adam Driver!
     d3.csv("./data/adam_movie_details.csv", function(data) {
 
@@ -509,14 +500,13 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
         var tooltip2 = d3.select("#secondaryContainer")
             .append("div")
             .style("opacity", 0)
-            .attr("class", "tooltip2")
-            .style("background-color", "#023");
+            .attr("class", "tooltip2");
 
         var showTooltip2 = function(d) {
             if(d.revenue>0) {
             tooltip2
                 .style("opacity", 1)
-                .html("Film: " + d.title + "<br>Run Time: " + d.runTime + " minutes<br>Revenue: $" + d.revenue)
+                .html(d.title + "<br>Run Time: " + d.runTime + " minutes<br>Revenue: $" + d.revenue)
                 .style("left", (d3.mouse(this)[0]+20) + "px")
                 .style("top", (d3.mouse(this)[1]) + "px")
             } else {
@@ -553,9 +543,9 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
         var yAxisLabel = svg.append("text")
             .attr("class","axisLabel")
             .attr("transform","rotate(-90)")
-            .attr("x",-height/2)
+            .attr("x",-height/2 + 50)
             .style("text-anchor", "middle")
-            .attr("y",margin.left/2 -20)
+            .attr("y",margin.left/2 -10)
             .text("Run Time (minutes)");
 
         svg.append("text").attr("class", "chartTitle")
@@ -594,12 +584,16 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
                 .attr("stroke", "#023")
             .on("mouseover", function(d) {
                 d3.select(this)
+                    .transition()
+                    .duration(300)
                     .attr("r", function(d) { return rScale(d.revenue) + 5; })
-                    .attr("fill", "white")    
-                    .raise();
+                    .attr("fill", "white");
             }).on("mouseleave", function(d) {
-                points.attr("r", function(d) { return rScale(d.revenue); })
-                .attr("fill", "#4c6470");
+                points
+                    .transition()
+                    .duration(300)
+                    .attr("r", function(d) { return rScale(d.revenue); })
+                    .attr("fill", "#4c6470");
             })
         
         points.on("mousemove", showTooltip2)
