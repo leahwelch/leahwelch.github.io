@@ -63,6 +63,7 @@ p {
 #secondaryContainer {
   margin: 0 5vh;
   display: grid;
+  height: 90vh;
   grid-template-columns: 3fr 8fr;
   grid-template-rows: 1fr 1fr 5fr;
   grid-template-areas:
