@@ -1,15 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Rosario:wght@300&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 body {
     background-color: #f9edea;
     color: #602136;
-    font-family: 'Rosario', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     text-align: center;
 }
 
 h1 {
     font-size: 9vw;
-    font-weight: 500;
+    font-weight: 400;
     margin-bottom: 0;
     margin-top: 0;
 }
