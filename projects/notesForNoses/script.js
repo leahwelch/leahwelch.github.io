@@ -65,6 +65,7 @@ Promise.all(promises).then(function(data) {
             var familyA = filteredLib[i].family;
             nodes.push({id: allProducts.length + i, name: noteA, type: "note", family: familyA});
         };
+    console.log(nodes);
     
     var grasses = nodes.filter(function(d){
         return d.family === "GREENS, HERBS AND FOUGERES";
