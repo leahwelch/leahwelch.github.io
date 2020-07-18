@@ -48,6 +48,7 @@ Promise.all(promises).then(function(data) {
                 }
             }
         }
+    console.log(filteredLib);
    
     var allProducts = [];
         for(var i = 0; i < byredo.length; i++) {
