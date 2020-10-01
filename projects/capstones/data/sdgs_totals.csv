@@ -1,0 +1,142 @@
+industry,goal,totals,t_shirt
+Chemical & Treatment,6,3,1
+Chemical & Treatment,12,3,1
+Chemical & Treatment,13,1,1
+Chemical & Treatment,14,3,1
+Chemical & Treatment,15,2,1
+Chemical & Treatment,2,2,
+Chemical & Treatment,3,3,1
+Chemical & Treatment,7,1,1
+Chemical & Treatment,8,1,1
+Chemical & Treatment,9,1,1
+Chemical & Treatment,11,3,1
+Agriculture & Raw Materials,6,3,1
+Agriculture & Raw Materials,12,2,1
+Agriculture & Raw Materials,13,2,1
+Agriculture & Raw Materials,14,4,1
+Agriculture & Raw Materials,15,1,1
+Agriculture & Raw Materials,2,2,1
+Agriculture & Raw Materials,3,3,1
+Agriculture & Raw Materials,7,2,1
+Agriculture & Raw Materials,8,1,1
+Agriculture & Raw Materials,9,2,1
+Agriculture & Raw Materials,11,3,1
+Design & Innovation,6,2,
+Design & Innovation,12,3,1
+Design & Innovation,13,3,1
+Design & Innovation,14,2,1
+Design & Innovation,15,1,
+Design & Innovation,1,1,
+Design & Innovation,2,1,
+Design & Innovation,3,1,
+Design & Innovation,7,1,1
+Design & Innovation,8,2,1
+Design & Innovation,9,3,1
+Design & Innovation,11,3,
+Design & Innovation,17,1,1
+Manufacturing,1,3,1
+Manufacturing,2,3,1
+Manufacturing,3,2,1
+Manufacturing,6,2,1
+Manufacturing,7,2,1
+Manufacturing,8,3,1
+Manufacturing,9,5,1
+Manufacturing,10,2,
+Manufacturing,11,2,1
+Manufacturing,12,4,1
+Manufacturing,13,4,1
+Manufacturing,14,1,
+Manufacturing,15,3,1
+Social & Labor,6,1,
+Social & Labor,13,1,1
+Social & Labor,1,3,1
+Social & Labor,2,3,1
+Social & Labor,3,3,1
+Social & Labor,4,2,1
+Social & Labor,5,3,1
+Social & Labor,16,3,1
+Social & Labor,8,3,
+Social & Labor,9,2,
+Social & Labor,10,3,1
+Social & Labor,11,2,1
+Social & Labor,17,1,
+Transportation & Logistics,6,1,1
+Transportation & Logistics,12,1,1
+Transportation & Logistics,16,1,1
+Transportation & Logistics,7,1,1
+Transportation & Logistics,8,1,1
+Transportation & Logistics,9,1,1
+Retail & eCommerce,1,1,
+Retail & eCommerce,2,1,
+Retail & eCommerce,8,1,
+Retail & eCommerce,10,1,
+Packaging,6,1,
+Packaging,12,3,1
+Packaging,13,3,1
+Packaging,14,1,1
+Packaging,15,3,1
+Packaging,3,1,
+Packaging,9,3,1
+Packaging,11,2,
+Waste & Circular Living,6,4,1
+Waste & Circular Living,12,4,1
+Waste & Circular Living,13,5,1
+Waste & Circular Living,14,1,1
+Waste & Circular Living,15,4,1
+Waste & Circular Living,3,3,
+Waste & Circular Living,7,1,
+Waste & Circular Living,8,1,
+Waste & Circular Living,9,5,1
+Waste & Circular Living,11,5,1
+Marketing,,,
+Consumer Engagement,6,1,
+Consumer Engagement,12,1,
+Consumer Engagement,14,1,
+Consumer Engagement,15,1,
+Consumer Engagement,1,1,
+Consumer Engagement,2,2,
+Consumer Engagement,3,1,
+Consumer Engagement,8,1,
+Consumer Engagement,9,1,
+Consumer Engagement,10,1,
+Consumer Engagement,11,1,
+Stakeholder Well-Being,6,1,
+Stakeholder Well-Being,12,2,
+Stakeholder Well-Being,13,2,
+Stakeholder Well-Being,15,1,
+Stakeholder Well-Being,3,1,
+Stakeholder Well-Being,16,1,
+Stakeholder Well-Being,7,1,
+Stakeholder Well-Being,8,2,
+Stakeholder Well-Being,9,1,
+Stakeholder Well-Being,11,2,
+Stakeholder Well-Being,17,1,
+Transparency & Governance,4,1,1
+Transparency & Governance,5,1,
+Transparency & Governance,16,2,1
+Transparency & Governance,8,2,1
+Transparency & Governance,9,2,1
+Transparency & Governance,10,2,1
+Transparency & Governance,17,1,1
+Finance,12,2,
+Finance,13,1,
+Finance,1,3,
+Finance,2,2,
+Finance,3,1,
+Finance,5,1,
+Finance,7,1,
+Finance,8,3,
+Finance,9,3,
+Finance,10,1,
+Finance,11,1,
+Technology,6,2,
+Technology,12,4,
+Technology,13,2,
+Technology,14,2,
+Technology,15,2,
+Technology,1,1,
+Technology,2,1,
+Technology,3,2,
+Technology,8,1,
+Technology,9,4,
+Technology,11,4,

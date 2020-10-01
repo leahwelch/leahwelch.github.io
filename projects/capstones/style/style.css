@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0px;
+  padding: 0px;
+  background-color: #FFF8F6;
+  color: #443730;
+}
+
+#chart {
+  width: 100%;
+  height: 100vh;
+}
+
+.axisLabel {
+  font-family: 'Nunito', sans-serif;
+  font-size: 16pt;
+  font-weight: lighter;
+}
+
+.axis {
+  font-family: 'Nunito', sans-serif;
+  font-size: 12pt;
+}

@@ -111,7 +111,7 @@ d3.csv("./data/oscars_movies.csv", function(movieData) {
             }
         }
     }
-    //console.log(links);
+    console.log(links);
 
     //////////////////////////////////
     //Creating star/show relationships for bottom half of matrix
