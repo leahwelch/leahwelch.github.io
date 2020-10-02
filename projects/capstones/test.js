@@ -5,12 +5,14 @@ d3.csv("data/sdgs_totals.csv").then(function(data) {
     var width = document.querySelector("#chart").clientWidth;
     var height = document.querySelector("#chart").clientHeight;
     var margin = {top: 300, left: 50, right: 350, bottom: 100};
-    
-    // //Filtering the data for t-shirt only//
-    var tshirt_data = data.filter(function(d) {
-        return d.t_shirt == 1;
-    });
-    console.log(tshirt_data);
+    // //Filtering the data to 2007//
+    // var filtered_data2007 = data.filter(function(d) {
+    //     return d.year == 2007;
+    // });
+    // //Filtering the data for 1957//
+    // var filtered_data1957 = data.filter(function(d) {
+    //     return d.year == 1957;
+    // });
 
     // var goalNames = [
     //     "No Poverty",
@@ -50,9 +52,9 @@ d3.csv("data/sdgs_totals.csv").then(function(data) {
     var uniqueArray = removeDuplicates(data, "goalNames");  
     uniqueArray.pop();
     
-    var uniqueT = removeDuplicates(tshirt_data, "goalNames");  
-    
-    console.log(uniqueT);
+
+    uniqueArray.pop();
+    console.log(uniqueArray);
 
 
     var svg = d3.select("#chart")
@@ -66,17 +68,14 @@ d3.csv("data/sdgs_totals.csv").then(function(data) {
     };
 
     var totals = {
-        minAll: d3.min(data, function(d) { return +d.totals; }),
-        maxAll: d3.max(data, function(d) { return +d.totals; }),
-        minT: 1,
-        maxT: 1
+        min: d3.min(data, function(d) { return +d.totals; }),
+        max: d3.max(data, function(d) { return +d.totals; })
     };
-
 
     console.log(sdg.min);
     // xScale, yScale, and rScale//
     var xScale = d3.scaleBand()
-        .domain(tshirt_data.map(function(d) { return d.industry}))
+        .domain(data.map(function(d) { return d.industry}))
         .range([margin.left, width-margin.right])
         .padding(1);
 
@@ -84,9 +83,9 @@ d3.csv("data/sdgs_totals.csv").then(function(data) {
         .domain([sdg.max, 1])
         .range([height-margin.bottom, margin.top]);
 
-    // var rScale = d3.scaleLinear()
-    //     .domain([totals.minT, totals.maxT])
-    //     .range([5,5]);
+    var rScale = d3.scaleLinear()
+        .domain([totals.min, totals.max])
+        .range([3, 30]);
 
     // var colorScale = d3.scaleOrdinal(d3.schemeCategory10);
 
@@ -130,60 +129,57 @@ d3.csv("data/sdgs_totals.csv").then(function(data) {
     
         //Drawing points using the totals//
     var points = svg.selectAll("circle")
-        .data(tshirt_data)
+        .data(data)
         .enter()
         .append("circle")
             .attr("cx", function(d) { return xScale(d.industry); })
             .attr("cy", function(d) { return yScale(d.goal); })
-            .attr("r", 8)
+            .attr("r", function(d) { return rScale(d.totals); })
             .attr("fill", function(d) {
                 if(d.industry === "Marketing") {
                     return "#ffffff";
                 } else  {
                     return "#1F1F89";   
                 }
-            });
+            })
+            .attr("opacity", .3);
+
+    // var xAxisLabel = svg.append("text")
+    //     .attr("class","axisLabel")
+    //     .attr("x", width/2)
+    //     .attr("y", height-margin.bottom/2)
+    //     .text("Life Expectancy");
+
+    // var yAxisLabel = svg.append("text")
+    //     .attr("class","axisLabel")
+    //     .attr("transform","rotate(-90)")
+    //     .attr("x",-height/2)
+    //     .attr("y",margin.left/2)
+    //     .text("GDP Per Capita");
 
     //   // The data update //
-    //   //setting the new scales for all data//
-    //   xScale.domain(data.map(function(d) { return d.industry}));
-    //   var rScale = d3.scaleLinear()
-    //     .domain([totals.minAll, totals.maxAll])
-    //     .range([3,30]);
-      
-
+    //   //setting the new scales for 2007//
+    //   xScale.domain([lifeExp.min2007, lifeExp.max2007]);
+    //   yScale.domain([gdpPercap.min2007, gdpPercap.max2007]);
+    //   rScale.domain([pop.min2007, pop.max2007]);
     //   //grabbing all circles and assigning the filtered data set for 2007//
     //   var newPoints = svg.selectAll("circle")
-    //     .data(data);
+    //     .data(filtered_data2007, function(d) { return d.country; });
     //   //drawing circles for that new dataset//
     //   newPoints.enter().append("circle")
-    //     .attr("cx", function(d) { return xScale(d.industry); })
-    //     .attr("cy", function(d) { return yScale(d.goal); })
-    //     .attr("r", function(d) { return rScale(d.totals); })
-    //     .attr("fill", function(d) { 
-    //         if(d.industry === "Marketing") {
-    //             return "#ffffff";
-    //         } else  {
-    //             return "#1F1F89";   
-    //         }
-    //     })
-    //     .attr("opacity", .3)
+    //     .attr("cx", function(d) { return xScale(d.lifeExp); })
+    //     .attr("cy", function(d) { return yScale(d.gdpPercap); })
+    //     .attr("r", function(d) { return rScale(d.pop); })
+    //     .attr("fill", function(d) { return colorScale(d.continent); })
     //     //merge and transition of datapoints//
     //   .merge(newPoints)
     //     .transition()
     //     .duration(1000)
-    //     .delay(1000)
-    //     .attr("cx", function(d) { return xScale(d.industry); })
-    //     .attr("cy", function(d) { return yScale(d.goal); })
-    //     .attr("r", function(d) { return rScale(d.totals); })
-    //     .attr("fill", function(d) { 
-    //         if(d.industry === "Marketing") {
-    //             return "#ffffff";
-    //         } else  {
-    //             return "#1F1F89";   
-    //         }
-    //     })
-    //     .attr("opacity", .3);
+    //     .delay(250)
+    //     .attr("cx", function(d) { return xScale(d.lifeExp); })
+    //     .attr("cy", function(d) { return yScale(d.gdpPercap); })
+    //     .attr("r", function(d) { return rScale(d.pop); })
+    //     .attr("fill", function(d) { return colorScale(d.continent); });
     //   //exit method for new data points, remove the points that are no longer in the set//
     //   newPoints.exit()
     //     .transition()
@@ -195,11 +191,7 @@ d3.csv("data/sdgs_totals.csv").then(function(data) {
     //   xAxis.transition()
     //     .duration(1000)
     //     .delay(250)
-    //     .call(xAxisGenerator);
-    //   xAxis.selectAll(".tick text")
-    //     .attr("class", "topLabels")
-    //     .attr("transform", function(d){ return( "translate(0,-20)rotate(-45)")})
-    //     .style("text-anchor", "start");
+    //     .call(d3.axisBottom().scale(xScale));
 
     //   yAxis.transition()
     //     .duration(1000)

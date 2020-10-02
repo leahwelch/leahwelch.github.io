@@ -92,6 +92,21 @@ figure p {
   color: #fff;
 }
 
+#chart {
+  width: 100%;
+  height: 80vh;
+}
+
+.axisLabel {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16pt;
+  font-weight: bold;
+}
+
+.axis {
+  font-size: 12pt;
+}
+
 .step {
   margin: 0 auto 2rem auto;
   color: #fff;
