@@ -129,13 +129,14 @@ d3.csv("data/sdgs_totals.csv").then(function(data) {
         .style("font-family", "Nunito");
     
         //Drawing points using the totals//
-    var points = svg.selectAll("circle")
+    var points = svg.selectAll("dot")
         .data(tshirt_data)
         .enter()
         .append("circle")
             .attr("cx", function(d) { return xScale(d.industry); })
             .attr("cy", function(d) { return yScale(d.goal); })
             .attr("r", 8)
+            .attr("class", "point")
             .attr("fill", function(d) {
                 if(d.industry === "Marketing") {
                     return "#ffffff";
@@ -146,60 +147,67 @@ d3.csv("data/sdgs_totals.csv").then(function(data) {
 
     //   // The data update //
     //   //setting the new scales for all data//
-    //   xScale.domain(data.map(function(d) { return d.industry}));
-    //   var rScale = d3.scaleLinear()
-    //     .domain([totals.minAll, totals.maxAll])
-    //     .range([3,30]);
+      xScale.domain(data.map(function(d) { return d.industry}));
+      var rScale = d3.scaleLinear()
+        .domain([totals.minAll, totals.maxAll])
+        .range([3,30]);
+    
+      points.transition().duration(500)
+      .attr("r",0);
       
 
-    //   //grabbing all circles and assigning the filtered data set for 2007//
-    //   var newPoints = svg.selectAll("circle")
-    //     .data(data);
-    //   //drawing circles for that new dataset//
-    //   newPoints.enter().append("circle")
-    //     .attr("cx", function(d) { return xScale(d.industry); })
-    //     .attr("cy", function(d) { return yScale(d.goal); })
-    //     .attr("r", function(d) { return rScale(d.totals); })
-    //     .attr("fill", function(d) { 
-    //         if(d.industry === "Marketing") {
-    //             return "#ffffff";
-    //         } else  {
-    //             return "#1F1F89";   
-    //         }
-    //     })
-    //     .attr("opacity", .3)
-    //     //merge and transition of datapoints//
-    //   .merge(newPoints)
-    //     .transition()
-    //     .duration(1000)
-    //     .delay(1000)
-    //     .attr("cx", function(d) { return xScale(d.industry); })
-    //     .attr("cy", function(d) { return yScale(d.goal); })
-    //     .attr("r", function(d) { return rScale(d.totals); })
-    //     .attr("fill", function(d) { 
-    //         if(d.industry === "Marketing") {
-    //             return "#ffffff";
-    //         } else  {
-    //             return "#1F1F89";   
-    //         }
-    //     })
-    //     .attr("opacity", .3);
-    //   //exit method for new data points, remove the points that are no longer in the set//
-    //   newPoints.exit()
-    //     .transition()
-    //     .duration(1000)
-    //     .delay(250)
-    //     .attr("r", 0)
-    //     .remove();
-    //   //transition the axes//
-    //   xAxis.transition()
-    //     .duration(1000)
-    //     .delay(250)
-    //     .call(xAxisGenerator);
-    //   xAxis.selectAll(".tick text")
-    //     .attr("class", "topLabels")
-    //     .attr("transform", function(d){ return( "translate(0,-20)rotate(-45)")})
-    //     .style("text-anchor", "start");
+      //grabbing all circles and assigning the filtered data set for 2007//
+      var newPoints = svg.selectAll(".point")
+        .data(data);
+      //drawing circles for that new dataset//
+      newPoints.enter().append("circle")
+        .attr("cx", function(d) { return xScale(d.industry); })
+        .attr("cy", function(d) { return yScale(d.goal); })
+        .attr("r", 0)
+        .attr("class", "point")
+        .attr("fill", function(d) { 
+            if(d.industry === "Marketing") {
+                return "#ffffff";
+            } else  {
+                return "#1F1F89";   
+            }
+        })
+        .style("opacity", .3)
+        //merge and transition of datapoints//
+      .merge(newPoints)
+        .transition()
+        .duration(1000)
+        .delay(1000)
+        .attr("cx", function(d) { return xScale(d.industry); })
+        .attr("cy", function(d) { return yScale(d.goal); })
+        .attr("r", function(d) { return rScale(d.totals); })
+        .attr("fill", function(d) { 
+            if(d.industry === "Marketing") {
+                return "#ffffff";
+            } else  {
+                return "#1F1F89";   
+            }
+        })
+        .attr("opacity", .3);
+
+      
+      //exit method for new data points, remove the points that are no longer in the set//
+      newPoints.exit()
+        .transition()
+        .duration(1000)
+        .delay(1000)
+        .attr("r", 0)
+        .remove();
+
+      //transition the axes//
+      xAxis.transition()
+        .duration(1000)
+        .delay(250)
+        .call(xAxisGenerator);
+      xAxis.selectAll(".tick text")
+        .attr("class", "topLabels")
+        .attr("transform", function(d){ return( "translate(0,-20)rotate(-45)")})
+        .style("text-anchor", "start");
 
     //   yAxis.transition()
     //     .duration(1000)
