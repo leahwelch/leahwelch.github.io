@@ -26,3 +26,12 @@ html, body {
   font-family: 'Nunito', sans-serif;
   font-size: 12pt;
 }
+
+.axis line {
+  stroke: #443730;
+  opacity: 0.2;
+}
+
+.axis path {
+  visibility: hidden;
+}

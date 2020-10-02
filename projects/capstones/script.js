@@ -4,7 +4,7 @@ d3.csv("data/sdgs_totals.csv").then(function(data) {
 
     var width = document.querySelector("#chart").clientWidth;
     var height = document.querySelector("#chart").clientHeight;
-    var margin = {top: 200, left: 50, right: 150, bottom: 50};
+    var margin = {top: 300, left: 50, right: 250, bottom: 100};
     // //Filtering the data to 2007//
     // var filtered_data2007 = data.filter(function(d) {
     //     return d.year == 2007;
@@ -47,16 +47,35 @@ d3.csv("data/sdgs_totals.csv").then(function(data) {
 
     // var colorScale = d3.scaleOrdinal(d3.schemeCategory10);
 
-    var xAxis = svg.append("g")
+    let xAxisGenerator = d3.axisTop(xScale)
+        .tickSize(-height+margin.bottom+margin.top - 30);
+    
+    let xAxis =  svg.append("g")
         .attr("class","axis")
-        .attr("transform", `translate(0,${margin.top})`)
-        .call(d3.axisTop().scale(xScale));
+        .attr("transform", `translate(0,${margin.top - 30})`)
+        .call(xAxisGenerator);
 
-    var yAxis = svg.append("g")
+    xAxis.selectAll(".tick text")
+        .attr("class", "topLabels")
+        .attr("transform", function(d){ return( "translate(0,-20)rotate(-45)")})
+        .style("text-anchor", "start");
+
+    let yAxisGenerator = d3.axisRight(yScale)
+        .tickSize(-width+margin.left+margin.right + 100)
+        //.attr("transform", function(d){ return( "translate(-50,0)")})
+        .ticks(17);
+
+    let yAxis = svg.append("g")
         .attr("class","axis")
-        .attr("transform", `translate(${width-margin.right},0)`)
-        .call(d3.axisRight().scale(yScale));
-    //Drawing points using the totals//
+        .attr("transform", `translate(${width-margin.right-40},0)`)
+        .call(yAxisGenerator);
+
+    yAxis.selectAll(".tick text")
+        .attr("class", "sideLabels")
+        .attr("transform", function(d){ return( "translate(30,0)")})
+        .style("text-anchor", "middle");
+    
+        //Drawing points using the totals//
     var points = svg.selectAll("circle")
         .data(data)
         .enter()
