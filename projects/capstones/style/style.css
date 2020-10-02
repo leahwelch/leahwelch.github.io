@@ -24,7 +24,7 @@ html, body {
 
 .axis {
   font-family: 'Nunito', sans-serif;
-  font-size: 12pt;
+  font-size: 14pt;
 }
 
 .axis line {
@@ -34,4 +34,11 @@ html, body {
 
 .axis path {
   visibility: hidden;
+}
+
+.sideLabels {
+  font-family: 'Nunito', sans-serif;
+  font-size: 12pt;
+  font-weight: bolder;
+  color: #1F1F89;
 }

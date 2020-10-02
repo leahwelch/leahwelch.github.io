@@ -4,7 +4,7 @@ d3.csv("data/sdgs_totals.csv").then(function(data) {
 
     var width = document.querySelector("#chart").clientWidth;
     var height = document.querySelector("#chart").clientHeight;
-    var margin = {top: 300, left: 50, right: 250, bottom: 100};
+    var margin = {top: 300, left: 50, right: 350, bottom: 100};
     // //Filtering the data to 2007//
     // var filtered_data2007 = data.filter(function(d) {
     //     return d.year == 2007;
@@ -13,6 +13,48 @@ d3.csv("data/sdgs_totals.csv").then(function(data) {
     // var filtered_data1957 = data.filter(function(d) {
     //     return d.year == 1957;
     // });
+
+    // var goalNames = [
+    //     "No Poverty",
+    //     "Zero Hunger",
+    //     "Good Heath & Well-Being",
+    //     "Quality Education",
+    //     "Gender Equality",
+    //     "Clean Water & Sanitation",
+    //     "Affordable & Clean Energy",
+    //     "Decent Work & Economic Growth",
+    //     "Industry, Innovation & Infrastructure",
+    //     "Reduced Inequalities",
+    //     "Sustainable Cities & Communities",
+    //     "Responsible Consumption & Production",
+    //     "Climate Action",
+    //     "Life Below Water",
+    //     "Life On Land",
+    //     "Peace, Justice & Strong Institutions",
+    //     "Partnerships For The Goals"
+    // ];
+
+    function removeDuplicates(originalData, prop) {
+        var newData = [];
+        var lookupObject = {};
+
+        for(var i in originalData) {
+            lookupObject[originalData[i][prop]] = originalData[i];
+         }
+    
+         for(i in lookupObject) {
+             newData.push(lookupObject[i]);
+         }
+          return newData;
+
+    }
+
+    var uniqueArray = removeDuplicates(data, "goalNames");  
+    uniqueArray.pop();
+    
+
+    uniqueArray.pop();
+    console.log(uniqueArray);
 
 
     var svg = d3.select("#chart")
@@ -41,9 +83,9 @@ d3.csv("data/sdgs_totals.csv").then(function(data) {
         .domain([sdg.max, 1])
         .range([height-margin.bottom, margin.top]);
 
-    var rScale = d3.scaleSqrt()
+    var rScale = d3.scaleLinear()
         .domain([totals.min, totals.max])
-        .range([3, 25]);
+        .range([3, 30]);
 
     // var colorScale = d3.scaleOrdinal(d3.schemeCategory10);
 
@@ -62,7 +104,6 @@ d3.csv("data/sdgs_totals.csv").then(function(data) {
 
     let yAxisGenerator = d3.axisRight(yScale)
         .tickSize(-width+margin.left+margin.right + 100)
-        //.attr("transform", function(d){ return( "translate(-50,0)")})
         .ticks(17);
 
     let yAxis = svg.append("g")
@@ -74,6 +115,17 @@ d3.csv("data/sdgs_totals.csv").then(function(data) {
         .attr("class", "sideLabels")
         .attr("transform", function(d){ return( "translate(30,0)")})
         .style("text-anchor", "middle");
+
+    
+    let sdgLabels = svg.selectAll("mylabels")
+        .data(uniqueArray)
+        .enter()
+        .append("text")
+        .attr("x", width-margin.right + 20)
+        .attr("y", function(d){return yScale(d.goal) + 5})    
+        .text(function(d){ return(d.goalNames)})
+        .attr("fill","#1F1F89")
+        .style("font-family", "Nunito");
     
         //Drawing points using the totals//
     var points = svg.selectAll("circle")
