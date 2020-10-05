@@ -104,7 +104,8 @@ window.createGraphic = function(graphicSelector) {
                 yAxis.selectAll(".tick text")
                     .attr("class", "sideLabels")
                     .attr("transform", function(d){ return( "translate(30,0)")})
-                    .style("text-anchor", "middle");
+                    .style("text-anchor", "middle")
+                    .style("opacity", 1);;
 
                 var sdgLabels = svg.selectAll(".mylabels").data(uniqueArray) 
                 var labelEnter = sdgLabels.enter().append("text")
@@ -278,7 +279,10 @@ window.createGraphic = function(graphicSelector) {
                 yAxis.selectAll(".tick text")
                     .attr("class", "sideLabels")
                     .attr("transform", function(d){ return( "translate(30,0)")})
-                    .style("text-anchor", "middle");
+                    .style("text-anchor", "middle")
+                    .style("opacity", 1);
+
+                svg.selectAll(".colorLabels").style("opacity",0)
             });
         },
         function reorganize(settings) {
@@ -308,7 +312,41 @@ window.createGraphic = function(graphicSelector) {
                 yAxis.selectAll(".tick text")
                     .attr("class", "sideLabels")
                     .attr("transform", function(d){ return( "translate(30,0)")})
-                    .style("text-anchor", "middle");
+                    .style("text-anchor", "middle")
+                    .style("opacity", 0);
+
+                var colorLabels = svg.selectAll(".colorLabels").data(uniqueArray) 
+                var colorEnter = colorLabels.enter().append("text")
+                    .attr("class", "colorLabels")
+                    .attr("x", width-margin.right-9)
+                    .attr("y", function(d){return yScale(d.goal)})
+                    .text(function(d){ return(d.goal)});
+                colorLabels.merge(colorEnter)
+                    .transition()
+                    .duration(500)
+                    .attr("x", width-margin.right-9)
+                    .attr("y", function(d){return +yScale(d.goal) + 5})
+                    .text(function(d){ return(d.goal)}) 
+                    .attr("fill", function(d) {
+                        if(d.category == "Planet") {
+                            return "#46A76E";
+                        }else if(d.category == "People"){
+                            return "#ED7F2E";
+                        }else if(d.category == "Prosperity"){
+                            return "#6337AA";
+                        }else {
+                            return "#0065AA";
+                        }
+                    })
+                    .style("text-anchor", "middle")
+                    .style("font-family", "Nunito")
+                    .style("font-weight", "bold")
+                    .style("opacity", 1);
+                colorLabels.exit()
+                    .transition()
+                    .duration(500)
+                    .style("opacity", 0)
+                    .remove();
 
                 var sdgLabels = svg.selectAll(".mylabels").data(uniqueArray) 
                 var labelEnter = sdgLabels.enter().append("text")
