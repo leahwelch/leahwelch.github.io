@@ -81,7 +81,7 @@ d3.csv("data/sdgs_totals.csv").then(function(data) {
         .padding(1);
 
     var yScale = d3.scaleLinear()
-        .domain([sdg.max, 1])
+        .domain([17, 1])
         .range([height-margin.bottom, margin.top]);
 
     // var rScale = d3.scaleLinear()

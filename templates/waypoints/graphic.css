@@ -10,9 +10,12 @@
 
 .graphic__prose {
 	width: 100rem;
+	padding-top: 10%;
 	padding-left: 5%;
 	padding-right: 65%;
-	background-color: #FFFFFF; 
+	font-family: 'Volkhov', serif;
+	color: #1F1F89;
+	font-size: 15pt;
 }
 
 .graphic__prose .trigger {

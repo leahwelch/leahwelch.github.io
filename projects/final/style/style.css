@@ -1,11 +1,5 @@
-@font-face {
-    font-family: 'Menlo';
-    src: url('fonts/Menlo-Regular.ttf');
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Volkhov&display=swap');
 
 body {
     background-color: #023;

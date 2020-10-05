@@ -15,28 +15,29 @@ window.createGraphic = function(graphicSelector) {
     
     var xScale = d3.scaleBand()
 
-    var yScale = d3.scaleLinear()
-        .domain([17, 1])
-        .range([height-margin.bottom, margin.top]);
+    // var yScale = d3.scaleLinear()
+    //     .domain([17, 1])
+    //     .range([height-margin.bottom, margin.top]);
 
-    var yAxisGenerator = d3.axisRight(yScale)
-        .tickSize(-width+margin.left+margin.right + 100)
-        .ticks(17);
+    var yAxis = svg.append("g")
+        .attr("class","axis")
+        .attr("transform", `translate(${width-margin.right-40},0)`)
 
     var xAxis =  svg.append("g")
         .attr("class","axis")
         .attr("transform", `translate(0,${margin.top - 30})`)
 
-    var c = svg.enter().append("circle")
-    	.attr('cx', 0)
-        .attr('cy', 0)
-        .attr("r", 0)
-        .style("opacity", 0)
+    // var c = svg.enter().append("circle")
+    // 	.attr('cx', 0)
+    //     .attr('cy', 0)
+    //     .attr("r", 0)
+    //     .style("opacity", 0)
+    
 
     
 
     var settings = {
-        margin:margin, width:width, height:height, svg:svg, xScale: xScale, yScale: yScale, yAxisGenerator: yAxisGenerator
+        margin:margin, width:width, height:height, svg:svg, xScale: xScale, yAxis: yAxis, xAxis: xAxis
     }
 
     function removeDuplicates(originalData, prop) {
@@ -76,6 +77,14 @@ window.createGraphic = function(graphicSelector) {
                     .range([margin.left, width-margin.right])
                     .padding(1);
 
+                var yScale = d3.scaleLinear()
+                    .domain([17, 1])
+                    .range([height-margin.bottom, margin.top]);
+
+                var yAxisGenerator = d3.axisRight(yScale)
+                    .tickSize(-width+margin.left+margin.right + 100)
+                    .ticks(17);
+
                 let xAxisGenerator = d3.axisTop(xScale)
                     .tickSize(-height+margin.bottom+margin.top - 30);
                 
@@ -88,27 +97,39 @@ window.createGraphic = function(graphicSelector) {
                     .attr("transform", function(d){ return( "translate(0,-20)rotate(-45)")})
                     .style("text-anchor", "start");
 
-                let yAxis = svg.append("g")
-                    .attr("class","axis")
-                    .attr("transform", `translate(${width-margin.right-40},0)`)
-                    .call(yAxisGenerator);
+                yAxis.transition()
+                    .duration(1000)
+                    .delay(250).call(yAxisGenerator);
             
                 yAxis.selectAll(".tick text")
                     .attr("class", "sideLabels")
                     .attr("transform", function(d){ return( "translate(30,0)")})
                     .style("text-anchor", "middle");
 
-                let sdgLabels = svg.selectAll("mylabels")
-                    .data(uniqueArray)
-                    .enter()
-                    .append("text")
+                var sdgLabels = svg.selectAll(".mylabels").data(uniqueArray) 
+                var labelEnter = sdgLabels.enter().append("text")
+                    .attr("class", "mylabels")
                     .attr("x", width-margin.right + 20)
                     .attr("y", function(d){return yScale(d.goal) + 5})    
                     .text(function(d){ return(d.goalNames)})
                     .attr("fill","#1F1F89")
-                    .style("font-family", "Nunito");
-                
-                
+                    .style("font-family", "Nunito")
+                    .style("opacity", 0);
+                sdgLabels.merge(labelEnter)
+                    .transition()
+                    .duration(500)
+                    .attr("x", width-margin.right + 20)
+                    .attr("y", function(d){return yScale(d.goal) + 5})    
+                    .text(function(d){ return(d.goalNames)})
+                    .attr("fill","#1F1F89")
+                    .style("font-family", "Nunito")
+                    .style("opacity", 1);
+                sdgLabels.exit()
+                    .transition()
+                    .duration(500)
+                    .style("opacity", 0)
+                    .remove();
+                    
                 var points = svg.selectAll(".point").data(tshirt_data)
                 var enter = points.enter().append("circle")
                     .attr("class", "point")
@@ -144,34 +165,6 @@ window.createGraphic = function(graphicSelector) {
                     .remove();
 
 
-                // var points = svg.selectAll("circle")
-                //     .data(tshirt_data)
-                //     .enter().append("circle")
-                //         .attr("cx", function(d) { return xScale(d.industry); })
-                //         .attr("cy", function(d) { return yScale(d.goal); })
-                //         .attr("r", 0)
-                //     .merge(points)
-                //         .transition()
-                //         .duration(1000)
-                //         .delay(1000)
-                //         .attr("cx", function(d) { return xScale(d.industry); })
-                //         .attr("cy", function(d) { return yScale(d.goal); })
-                //         .attr("r", 8)
-                //         .attr("fill", function(d) {
-                //             if(d.industry === "Marketing") {
-                //                 return "#ffffff";
-                //             } else  {
-                //                 return "#1F1F89";   
-                //             }
-                //         }).style("opacity", 1)
-                //     points.exit()
-                //         .transition()
-                //         .duration(1000)
-                //         .delay(1000)
-                //         .attr("r", 0)
-                //         .remove();
-
-
             });
         },
         function showAll(settings) {
@@ -181,14 +174,19 @@ window.createGraphic = function(graphicSelector) {
                     max: d3.max(data, function(d) { return +d.totals; }),
                 };
 
+                var uniqueArray = removeDuplicates(data, "goalNames");  
+                uniqueArray.pop();
+
                 xScale.domain(data.map(function(d) { return d.industry}));
-                var rScale = d3.scaleLinear()
+                
+                var yScale = d3.scaleLinear()
+                    .domain([17, 1])
+                    .range([height-margin.bottom, margin.top]);
+                
+                    var rScale = d3.scaleLinear()
                     .domain([totals.min, totals.max])
                     .range([3,30]);
-                
-                // points.transition().duration(500)
-                // .attr("r",0);
-                
+
 
                 var newPoints = svg.selectAll(".point")
                     .data(data);
@@ -231,8 +229,37 @@ window.createGraphic = function(graphicSelector) {
                     .call(zeroState)
                     .remove();
 
+                var sdgLabels = svg.selectAll(".mylabels").data(uniqueArray) 
+                var labelEnter = sdgLabels.enter().append("text")
+                    .attr("class", "mylabels")
+                    .style("opacity", 0)
+                    .attr("x", width-margin.right + 20)
+                    .attr("y", function(d){return yScale(d.goal) + 5})    
+                    .text(function(d){ return(d.goalNames)})
+                    .attr("fill","#1F1F89")
+                    .style("font-family", "Nunito");
+                sdgLabels.merge(labelEnter)
+                    .transition()
+                    .duration(500)
+                    .attr("x", width-margin.right + 20)
+                    .attr("y", function(d){return yScale(d.goal) + 5})
+                    //.attr("transform", function(d){ return( "translate(0,-5)")})    
+                    .text(function(d){ return(d.goalNames)})
+                    .attr("fill","#1F1F89")
+                    .style("font-family", "Nunito")
+                    .style("opacity", 1);
+                sdgLabels.exit()
+                    .transition()
+                    .duration(500)
+                    .style("opacity", 0)
+                    .remove();
+
                 let xAxisGenerator = d3.axisTop(xScale)
                     .tickSize(-height+margin.bottom+margin.top - 30);
+
+                var yAxisGenerator = d3.axisRight(yScale)
+                    .tickSize(-width+margin.left+margin.right + 100)
+                    .ticks(17);
 
                 //transition the axes//
                 xAxis.transition()
@@ -243,10 +270,64 @@ window.createGraphic = function(graphicSelector) {
                     .attr("class", "topLabels")
                     .attr("transform", function(d){ return( "translate(0,-20)rotate(-45)")})
                     .style("text-anchor", "start");
+
+                yAxis.transition()
+                    .duration(1000)
+                    .delay(250).call(yAxisGenerator);
+            
+                yAxis.selectAll(".tick text")
+                    .attr("class", "sideLabels")
+                    .attr("transform", function(d){ return( "translate(30,0)")})
+                    .style("text-anchor", "middle");
             });
         },
         function reorganize(settings) {
-            console.log("step2");
+            d3.csv(dataLoc).then(function(data) {
+                var uniqueArray = removeDuplicates(data, "goalNames");  
+                uniqueArray.pop();
+                var yScale = d3.scaleBand()
+                    .domain([17, 11, 10, 9, 8, 7, 16, 5, 4, 3, 2, 1, 15, 14, 13, 12, 6])
+                    .range([height-margin.bottom, margin.top])
+                    .paddingOuter(0)
+                    .paddingInner(1);
+                var yAxisGenerator = d3.axisRight(yScale)
+                    .tickSize(-width+margin.left+margin.right + 100)
+                    .ticks(17);
+                yAxis.transition()
+                    .duration(1000)
+                    .delay(250)
+                    .call(yAxisGenerator);
+                yAxis.selectAll(".tick text")
+                    .attr("class", "sideLabels")
+                    .attr("transform", function(d){ return( "translate(30,0)")})
+                    .style("text-anchor", "middle");
+
+                var sdgLabels = svg.selectAll(".mylabels").data(uniqueArray) 
+                var labelEnter = sdgLabels.enter().append("text")
+                    .attr("class", "mylabels")
+                    .style("opacity", 0)
+                    .attr("x", width-margin.right + 20)
+                    .attr("y", function(d){return yScale(d.goal)})    
+                    .text(function(d){ return(d.goalNames)})
+                    .attr("fill","#1F1F89")
+                    .style("font-family", "Nunito");
+                sdgLabels.merge(labelEnter)
+                    .transition()
+                    .duration(500)
+                    .attr("x", width-margin.right + 20)
+                    .attr("y", function(d){return +yScale(d.goal) + 5})   
+                    .text(function(d){ return(d.goalNames)})
+                    .attr("fill","#1F1F89")
+                    .style("font-family", "Nunito")
+                    .style("opacity", 1);
+                sdgLabels.exit()
+                    .transition()
+                    .duration(500)
+                    .style("opacity", 0)
+                    .remove();
+
+
+            });
         },
         function topIndustries(settings) {
             console.log("step3");
@@ -304,7 +385,7 @@ window.createGraphic = function(graphicSelector) {
     }
     
     function init() {
-        setupCharts(settings)
+        //setupCharts(settings)
 		setupProse()
 		update(0)
 	}
