@@ -1,5 +1,5 @@
 window.createGraphic = function(graphicSelector) {
-    var dataLoc = "data/sdgs_totals.csv";
+    var dataLoc = "data/sdg_totals2.csv";
 
     var graphicEl = d3.select('.graphic')
 	var graphicVisEl = graphicEl.select('.graphic__vis')
@@ -285,6 +285,14 @@ window.createGraphic = function(graphicSelector) {
             d3.csv(dataLoc).then(function(data) {
                 var uniqueArray = removeDuplicates(data, "goalNames");  
                 uniqueArray.pop();
+                var totals = {
+                    min: d3.min(data, function(d) { return +d.totals; }),
+                    max: d3.max(data, function(d) { return +d.totals; }),
+                };
+
+                var rScale = d3.scaleLinear()
+                    .domain([totals.min, totals.max])
+                    .range([3,30]);
                 var yScale = d3.scaleBand()
                     .domain([17, 11, 10, 9, 8, 7, 16, 5, 4, 3, 2, 1, 15, 14, 13, 12, 6])
                     .range([height-margin.bottom, margin.top])
@@ -309,7 +317,7 @@ window.createGraphic = function(graphicSelector) {
                     .attr("x", width-margin.right + 20)
                     .attr("y", function(d){return yScale(d.goal)})    
                     .text(function(d){ return(d.goalNames)})
-                    .attr("fill","#1F1F89")
+                    //.attr("fill","#1F1F89")
                     .style("font-family", "Nunito");
                 sdgLabels.merge(labelEnter)
                     .transition()
@@ -317,13 +325,63 @@ window.createGraphic = function(graphicSelector) {
                     .attr("x", width-margin.right + 20)
                     .attr("y", function(d){return +yScale(d.goal) + 5})   
                     .text(function(d){ return(d.goalNames)})
-                    .attr("fill","#1F1F89")
+                    //.attr("fill","#1F1F89")
+                    .attr("fill", function(d) {
+                        if(d.category == "Planet") {
+                            return "#46A76E";
+                        }else if(d.category == "People"){
+                            return "#ED7F2E";
+                        }else if(d.category == "Prosperity"){
+                            return "#6337AA";
+                        }else {
+                            return "#0065AA";
+                        }
+                    })
                     .style("font-family", "Nunito")
                     .style("opacity", 1);
                 sdgLabels.exit()
                     .transition()
                     .duration(500)
                     .style("opacity", 0)
+                    .remove();
+
+                var newPoints = svg.selectAll(".point")
+                    .data(data);
+                //drawing circles for that new dataset//
+                var enter = newPoints.enter().append("circle")
+                    .attr("cx", function(d) { return xScale(d.industry); })
+                    .attr("cy", function(d) { return yScale(d.goal); })
+                    //.call(zeroState)
+                    .attr("class", "point")
+                    .style("opacity", .3)
+                    //merge and transition of datapoints//
+                newPoints.merge(enter)
+                    .transition()
+                    .duration(1000)
+                    .delay(1000)
+                    .attr("cx", function(d) { return xScale(d.industry); })
+                    .attr("cy", function(d) { return yScale(d.goal); })
+                    .attr("r", function(d) { return rScale(d.totals); })
+                    .attr("fill", function(d) {
+                        if(d.category == "Planet") {
+                            return "#46A76E";
+                        }else if(d.category == "People"){
+                            return "#ED7F2E";
+                        }else if(d.category == "Prosperity"){
+                            return "#6337AA";
+                        }else {
+                            return "#0065AA";
+                        }
+                    })
+                    .style("opacity", .3);
+
+                
+                //exit method for new data points, remove the points that are no longer in the set//
+                newPoints.exit()
+                    .transition()
+                    .duration(1000)
+                    .delay(1000)
+                    .call(zeroState)
                     .remove();
 
 

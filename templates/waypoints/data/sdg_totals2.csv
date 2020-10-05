@@ -1,0 +1,142 @@
+industry,goal,goalNames,totals,t_shirt,category
+Design & Innovation,1,No Poverty,1,,People
+Manufacturing,1,No Poverty,3,1,People
+Social & Labor,1,No Poverty,3,1,People
+Retail & eCommerce,1,No Poverty,1,,People
+Consumer Engagement,1,No Poverty,1,,People
+Finance,1,No Poverty,3,,People
+Technology,1,No Poverty,1,,People
+Chemical & Treatment,2,Zero Hunger,2,,People
+Agriculture & Raw Materials,2,Zero Hunger,2,1,People
+Design & Innovation,2,Zero Hunger,1,,People
+Manufacturing,2,Zero Hunger,3,1,People
+Social & Labor,2,Zero Hunger,3,1,People
+Retail & eCommerce,2,Zero Hunger,1,,People
+Consumer Engagement,2,Zero Hunger,2,,People
+Finance,2,Zero Hunger,2,,People
+Technology,2,Zero Hunger,1,,People
+Chemical & Treatment,3,Good Heath & Well-Being,3,1,People
+Agriculture & Raw Materials,3,Good Heath & Well-Being,3,1,People
+Design & Innovation,3,Good Heath & Well-Being,1,,People
+Manufacturing,3,Good Heath & Well-Being,2,1,People
+Social & Labor,3,Good Heath & Well-Being,3,1,People
+Packaging,3,Good Heath & Well-Being,1,,People
+Waste & Circular Living,3,Good Heath & Well-Being,3,,People
+Consumer Engagement,3,Good Heath & Well-Being,1,,People
+Stakeholder Well-Being,3,Good Heath & Well-Being,1,,People
+Finance,3,Good Heath & Well-Being,1,,People
+Technology,3,Good Heath & Well-Being,2,,People
+Social & Labor,4,Quality Education,2,1,People
+Transparency & Governance,4,Quality Education,1,1,People
+Social & Labor,5,Gender Equality,3,1,People
+Transparency & Governance,5,Gender Equality,1,,People
+Finance,5,Gender Equality,1,,People
+Chemical & Treatment,6,Clean Water & Sanitation,3,1,Planet
+Agriculture & Raw Materials,6,Clean Water & Sanitation,3,1,Planet
+Design & Innovation,6,Clean Water & Sanitation,2,,Planet
+Manufacturing,6,Clean Water & Sanitation,2,1,Planet
+Social & Labor,6,Clean Water & Sanitation,1,,Planet
+Transportation & Logistics,6,Clean Water & Sanitation,1,1,Planet
+Packaging,6,Clean Water & Sanitation,1,,Planet
+Waste & Circular Living,6,Clean Water & Sanitation,4,1,Planet
+Consumer Engagement,6,Clean Water & Sanitation,1,,Planet
+Stakeholder Well-Being,6,Clean Water & Sanitation,1,,Planet
+Technology,6,Clean Water & Sanitation,2,,Planet
+Chemical & Treatment,7,Affordable & Clean Energy,1,1,Prosperity
+Agriculture & Raw Materials,7,Affordable & Clean Energy,2,1,Prosperity
+Design & Innovation,7,Affordable & Clean Energy,1,1,Prosperity
+Manufacturing,7,Affordable & Clean Energy,2,1,Prosperity
+Transportation & Logistics,7,Affordable & Clean Energy,1,1,Prosperity
+Waste & Circular Living,7,Affordable & Clean Energy,1,,Prosperity
+Stakeholder Well-Being,7,Affordable & Clean Energy,1,,Prosperity
+Finance,7,Affordable & Clean Energy,1,,Prosperity
+Chemical & Treatment,8,Decent Work & Economic Growth,1,1,Prosperity
+Agriculture & Raw Materials,8,Decent Work & Economic Growth,1,1,Prosperity
+Design & Innovation,8,Decent Work & Economic Growth,2,1,Prosperity
+Manufacturing,8,Decent Work & Economic Growth,3,1,Prosperity
+Social & Labor,8,Decent Work & Economic Growth,3,,Prosperity
+Transportation & Logistics,8,Decent Work & Economic Growth,1,1,Prosperity
+Retail & eCommerce,8,Decent Work & Economic Growth,1,,Prosperity
+Waste & Circular Living,8,Decent Work & Economic Growth,1,,Prosperity
+Consumer Engagement,8,Decent Work & Economic Growth,1,,Prosperity
+Stakeholder Well-Being,8,Decent Work & Economic Growth,2,,Prosperity
+Transparency & Governance,8,Decent Work & Economic Growth,2,1,Prosperity
+Finance,8,Decent Work & Economic Growth,3,,Prosperity
+Technology,8,Decent Work & Economic Growth,1,,Prosperity
+Chemical & Treatment,9,"Industry, Innovation & Infrastructure",1,1,Prosperity
+Agriculture & Raw Materials,9,"Industry, Innovation & Infrastructure",2,1,Prosperity
+Design & Innovation,9,"Industry, Innovation & Infrastructure",3,1,Prosperity
+Manufacturing,9,"Industry, Innovation & Infrastructure",5,1,Prosperity
+Social & Labor,9,"Industry, Innovation & Infrastructure",2,,Prosperity
+Transportation & Logistics,9,"Industry, Innovation & Infrastructure",1,1,Prosperity
+Packaging,9,"Industry, Innovation & Infrastructure",3,1,Prosperity
+Waste & Circular Living,9,"Industry, Innovation & Infrastructure",5,1,Prosperity
+Consumer Engagement,9,"Industry, Innovation & Infrastructure",1,,Prosperity
+Stakeholder Well-Being,9,"Industry, Innovation & Infrastructure",1,,Prosperity
+Transparency & Governance,9,"Industry, Innovation & Infrastructure",2,1,Prosperity
+Finance,9,"Industry, Innovation & Infrastructure",3,,Prosperity
+Technology,9,"Industry, Innovation & Infrastructure",4,,Prosperity
+Manufacturing,10,Reduced Inequalities,2,,Prosperity
+Social & Labor,10,Reduced Inequalities,3,1,Prosperity
+Retail & eCommerce,10,Reduced Inequalities,1,,Prosperity
+Consumer Engagement,10,Reduced Inequalities,1,,Prosperity
+Transparency & Governance,10,Reduced Inequalities,2,1,Prosperity
+Finance,10,Reduced Inequalities,1,,Prosperity
+Chemical & Treatment,11,Sustainable Cities & Communities,3,1,Prosperity
+Agriculture & Raw Materials,11,Sustainable Cities & Communities,3,1,Prosperity
+Design & Innovation,11,Sustainable Cities & Communities,3,,Prosperity
+Manufacturing,11,Sustainable Cities & Communities,2,1,Prosperity
+Social & Labor,11,Sustainable Cities & Communities,2,1,Prosperity
+Packaging,11,Sustainable Cities & Communities,2,,Prosperity
+Waste & Circular Living,11,Sustainable Cities & Communities,5,1,Prosperity
+Consumer Engagement,11,Sustainable Cities & Communities,1,,Prosperity
+Stakeholder Well-Being,11,Sustainable Cities & Communities,2,,Prosperity
+Finance,11,Sustainable Cities & Communities,1,,Prosperity
+Technology,11,Sustainable Cities & Communities,4,,Prosperity
+Chemical & Treatment,12,Responsible Consumption & Production,3,1,Planet
+Agriculture & Raw Materials,12,Responsible Consumption & Production,2,1,Planet
+Design & Innovation,12,Responsible Consumption & Production,3,1,Planet
+Manufacturing,12,Responsible Consumption & Production,4,1,Planet
+Transportation & Logistics,12,Responsible Consumption & Production,1,1,Planet
+Packaging,12,Responsible Consumption & Production,3,1,Planet
+Waste & Circular Living,12,Responsible Consumption & Production,4,1,Planet
+Consumer Engagement,12,Responsible Consumption & Production,1,,Planet
+Stakeholder Well-Being,12,Responsible Consumption & Production,2,,Planet
+Finance,12,Responsible Consumption & Production,2,,Planet
+Technology,12,Responsible Consumption & Production,4,,Planet
+Chemical & Treatment,13,Climate Action,1,1,Planet
+Agriculture & Raw Materials,13,Climate Action,2,1,Planet
+Design & Innovation,13,Climate Action,3,1,Planet
+Manufacturing,13,Climate Action,4,1,Planet
+Social & Labor,13,Climate Action,1,1,Planet
+Packaging,13,Climate Action,3,1,Planet
+Waste & Circular Living,13,Climate Action,5,1,Planet
+Stakeholder Well-Being,13,Climate Action,2,,Planet
+Finance,13,Climate Action,1,,Planet
+Technology,13,Climate Action,2,,Planet
+Chemical & Treatment,14,Life Below Water,3,1,Planet
+Agriculture & Raw Materials,14,Life Below Water,4,1,Planet
+Design & Innovation,14,Life Below Water,2,1,Planet
+Manufacturing,14,Life Below Water,1,,Planet
+Packaging,14,Life Below Water,1,1,Planet
+Waste & Circular Living,14,Life Below Water,1,1,Planet
+Consumer Engagement,14,Life Below Water,1,,Planet
+Technology,14,Life Below Water,2,,Planet
+Chemical & Treatment,15,Life On Land,2,1,Planet
+Agriculture & Raw Materials,15,Life On Land,1,1,Planet
+Design & Innovation,15,Life On Land,1,,Planet
+Manufacturing,15,Life On Land,3,1,Planet
+Packaging,15,Life On Land,3,1,Planet
+Waste & Circular Living,15,Life On Land,4,1,Planet
+Consumer Engagement,15,Life On Land,1,,Planet
+Stakeholder Well-Being,15,Life On Land,1,,Planet
+Technology,15,Life On Land,2,,Planet
+Social & Labor,16,"Peace, Justice & Strong Institutions",3,1,People
+Transportation & Logistics,16,"Peace, Justice & Strong Institutions",1,1,People
+Stakeholder Well-Being,16,"Peace, Justice & Strong Institutions",1,,People
+Transparency & Governance,16,"Peace, Justice & Strong Institutions",2,1,People
+Design & Innovation,17,Partnerships For The Goals,1,1,Partnership
+Social & Labor,17,Partnerships For The Goals,1,,Partnership
+Stakeholder Well-Being,17,Partnerships For The Goals,1,,Partnership
+Transparency & Governance,17,Partnerships For The Goals,1,1,Partnership
+Marketing,,,,,
