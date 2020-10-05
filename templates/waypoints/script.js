@@ -396,7 +396,7 @@ window.createGraphic = function(graphicSelector) {
 			.attr("transform", function(d){ return( "translate(30,0)")})
 			.style("text-anchor", "middle");
 
-		let sdgLabels = item.selectAll("mylabels")
+		let sdgLabels = item.select("text")
 			.data(uniqueArray)
 			.enter()
 			.append("text")

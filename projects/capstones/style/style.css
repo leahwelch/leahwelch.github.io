@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Volkhov&display=swap');
 
 * {
   box-sizing: border-box;
@@ -9,6 +10,37 @@ html, body {
   padding: 0px;
   background-color: #FFF8F6;
   color: #443730;
+}
+
+#intro, #conclusion {
+  padding: 15vh 30%;
+  font-family: 'Volkhov', serif;
+  color: #1F1F89;
+}
+
+
+p {
+  font-size: 16pt;
+  line-height: 150%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+#credits, #byline {
+  font-size: 12pt;
+  text-align: center;
+  padding-bottom: 5vh;
+}
+
+a {
+  color: #1F1F89;
+}
+
+
+h1 {
+  font-size: 60pt;
+  text-align: center;
+  padding-bottom: 10vh;
 }
 
 #chart {

@@ -69,12 +69,12 @@ window.createGraphic = function(graphicSelector) {
 				.ease(d3.easeQuadInOut)
 			    
 
-			var item = graphicVisEl.selectAll('.item')
+			var chart = graphicVisEl.selectAll('.chart')
 			
-			item.transition(t)
+			chart.transition(t)
 				.attr('transform', translate(chartWidth / 2, chartHeight / 2))
 
-            var c = item.selectAll("circle")
+            var c = chart.selectAll("circle")
                 .data(fall2018, function(d) { return d.area; });
             
                 // c.enter().append("circle")
@@ -104,46 +104,46 @@ window.createGraphic = function(graphicSelector) {
 		},
 
 		function step1() {
-			var t = d3.transition()
-				.duration(500)
-				.ease(d3.easeQuadInOut)
+			// var t = d3.transition()
+			// 	.duration(500)
+			// 	.ease(d3.easeQuadInOut)
 			
-			// circles are positioned
-			var item = graphicVisEl.selectAll('.item')
+			// // circles are positioned
+			// var item = graphicVisEl.selectAll('.item')
 			
-			item.transition(t)
-			// 	.attr('transform', function(d, i) {
-			// 		return translate(scaleX(i), chartSize / 2)
-            //     })
+			// item.transition(t)
+			// // 	.attr('transform', function(d, i) {
+			// // 		return translate(scaleX(i), chartSize / 2)
+            // //     })
             
-            var c = item.selectAll("circle")
-                .data(spring2019, function(d) { return d.area; });
-                console.log(spring2019);
+            // var c = item.selectAll("circle")
+            //     .data(spring2019, function(d) { return d.area; });
+            //     console.log(spring2019);
 
-            // c.enter().append("circle")
-            c.attr("cx", function(d) { return scaleX(d.income); })
-                .attr("cy", function(d) { return scaleY(d.rent); })
-                .style("opacity", 0.3)
-                .attr("fill", "rgb(31,31,137")
-                .attr("r", 0)
+            // // c.enter().append("circle")
+            // c.attr("cx", function(d) { return scaleX(d.income); })
+            //     .attr("cy", function(d) { return scaleY(d.rent); })
+            //     .style("opacity", 0.3)
+            //     .attr("fill", "rgb(31,31,137")
+            //     .attr("r", 0)
                 
-            .merge(c)
-                .transition(t)
-                //.duration(500)
-                //.delay(500)
-                .attr("cx", function(d) { return scaleX(d.income); })
-                .attr("cy", function(d) { return scaleY(d.rent); })
-                .style("opacity", 0.3)
-                .attr("fill", "rgb(31,31,137")
+            // .merge(c)
+            //     .transition(t)
+            //     //.duration(500)
+            //     //.delay(500)
+            //     .attr("cx", function(d) { return scaleX(d.income); })
+            //     .attr("cy", function(d) { return scaleY(d.rent); })
+            //     .style("opacity", 0.3)
+            //     .attr("fill", "rgb(31,31,137")
                 
-                .attr("r", 10); 
+            //     .attr("r", 10); 
           
-              c.exit(t)
-                .transition()
-                //.duration(500)
-                //.delay(500)
-                .attr("r", 0)
-                .remove(); 
+            //   c.exit(t)
+            //     .transition()
+            //     //.duration(500)
+            //     //.delay(500)
+            //       .attr("r", 0)
+            //       .remove(); 
 
 			// item.select('circle')
 			// 	.transition(t)
@@ -192,7 +192,9 @@ window.createGraphic = function(graphicSelector) {
 			.attr('width', size.w + 'px')
 			.attr('height', size.h + 'px')
 		
-		var chart = svg.append('g')
+        var chart = svg.select("chart")
+            .data(fall2018)
+            .enter().append('g')
 			.classed('chart', true)
             //.attr('transform', translate(chartSize / 2, chartSize / 2))
             .attr('transform', 'translate(' + -chartWidth / 2 + ',' + -chartHeight/ 2 + ')')
@@ -214,30 +216,30 @@ window.createGraphic = function(graphicSelector) {
 		// 	.domain(extent)
 		// 	.range([minR, maxR])
 
-		var item = chart.selectAll('.item')
-			.data(fall2018)
-			.enter().append('g')
-				.classed('item', true)
-                .attr('transform', translate(chartWidth / 2, chartHeight / 2))
+		// var item = chart.selectAll('.item')
+		// 	.data(fall2018)
+		// 	.enter().append('g')
+		// 		.classed('item', true)
+        //         .attr('transform', translate(chartWidth / 2, chartHeight / 2))
                 
-        var xAxis = item.append("g")
+        var xAxis = chart.append("g")
             .attr("class","axis")
             .attr("transform",`translate(0, ${size.h-margin.bottom})`)
             .call(d3.axisBottom().scale(scaleX).tickFormat(d3.format("$")));
 
-        var yAxis = item.append("g")
+        var yAxis = chart.append("g")
             .attr("class","axis")
             .attr("transform",`translate(${margin.left},0)`)
             .call(d3.axisLeft().scale(scaleY).tickFormat(d3.format("$")));
 
-        var xAxisLabel = item.append("text")
+        var xAxisLabel = chart.append("text")
             .attr("class","axisLabel")
             .attr("x", size.w/2)
             .attr("y", size.h-margin.bottom/2)
             .attr("text-anchor","middle")
             .text("Median Income (Thousands)");
       
-        var yAxisLabel = item.append("text")
+        var yAxisLabel = chart.append("text")
             .attr("class","axisLabel")
             .attr("transform","rotate(-90)")
             .attr("x",-size.h/2)
@@ -245,7 +247,7 @@ window.createGraphic = function(graphicSelector) {
             .attr("text-anchor","middle")
             .text("Median Rent");
 		
-		item.append('circle')
+		chart.append('circle')
 			.attr('cx', 0)
             .attr('cy', 0)
             .attr("r", 0)

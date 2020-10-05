@@ -1,4 +1,8 @@
 /* GRAPHIC CODE */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Volkhov&display=swap');
+
 .graphic {
 	width: 100%;
 	position: relative;
@@ -6,7 +10,8 @@
 
 .graphic__prose {
 	width: 100rem;
-	padding-left: 70%;
+	padding-left: 5%;
+	padding-right: 65%;
 	background-color: #FFFFFF; 
 }
 
@@ -20,8 +25,8 @@
 .graphic__vis {
 	position: absolute;
 	top: 0;
-	margin-left: 10rem;
-	margin-right: 10rem;
+	/* margin-left: 10rem;
+	margin-right: 10rem; */
 	-webkit-transform: translate3d(0, 0, 0);
 	-moz-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0);
@@ -54,7 +59,7 @@
 	fill: #fff;
 } */
 
-.item circle {
+/* .item circle {
 	opacity: 0.3;
 }
 
@@ -62,9 +67,34 @@
 	fill: #666;
 	font-size: 12px;
 	text-anchor: middle;
-}
+} */
 
-
+.axisLabel {
+	font-family: 'Nunito', sans-serif;
+	font-size: 16pt;
+	font-weight: lighter;
+  }
+  
+  .axis {
+	font-family: 'Nunito', sans-serif;
+	font-size: 14pt;
+  }
+  
+  .axis line {
+	stroke: #443730;
+	opacity: 0.2;
+  }
+  
+  .axis path {
+	visibility: hidden;
+  }
+  
+  .sideLabels {
+	font-family: 'Nunito', sans-serif;
+	font-size: 12pt;
+	font-weight: bolder;
+	color: #1F1F89;
+  }
 
 /* graph-scroll.js version */
 .graphic__vis.graph-scroll-fixed {

@@ -1,0 +1,142 @@
+industry,goal,goalNames,totals,t_shirt
+Design & Innovation,1,No Poverty,1,
+Manufacturing,1,No Poverty,3,1
+Social & Labor,1,No Poverty,3,1
+Retail & eCommerce,1,No Poverty,1,
+Consumer Engagement,1,No Poverty,1,
+Finance,1,No Poverty,3,
+Technology,1,No Poverty,1,
+Chemical & Treatment,2,Zero Hunger,2,
+Agriculture & Raw Materials,2,Zero Hunger,2,1
+Design & Innovation,2,Zero Hunger,1,
+Manufacturing,2,Zero Hunger,3,1
+Social & Labor,2,Zero Hunger,3,1
+Retail & eCommerce,2,Zero Hunger,1,
+Consumer Engagement,2,Zero Hunger,2,
+Finance,2,Zero Hunger,2,
+Technology,2,Zero Hunger,1,
+Chemical & Treatment,3,Good Heath & Well-Being,3,1
+Agriculture & Raw Materials,3,Good Heath & Well-Being,3,1
+Design & Innovation,3,Good Heath & Well-Being,1,
+Manufacturing,3,Good Heath & Well-Being,2,1
+Social & Labor,3,Good Heath & Well-Being,3,1
+Packaging,3,Good Heath & Well-Being,1,
+Waste & Circular Living,3,Good Heath & Well-Being,3,
+Consumer Engagement,3,Good Heath & Well-Being,1,
+Stakeholder Well-Being,3,Good Heath & Well-Being,1,
+Finance,3,Good Heath & Well-Being,1,
+Technology,3,Good Heath & Well-Being,2,
+Social & Labor,4,Quality Education,2,1
+Transparency & Governance,4,Quality Education,1,1
+Social & Labor,5,Gender Equality,3,1
+Transparency & Governance,5,Gender Equality,1,
+Finance,5,Gender Equality,1,
+Chemical & Treatment,6,Clean Water & Sanitation,3,1
+Agriculture & Raw Materials,6,Clean Water & Sanitation,3,1
+Design & Innovation,6,Clean Water & Sanitation,2,
+Manufacturing,6,Clean Water & Sanitation,2,1
+Social & Labor,6,Clean Water & Sanitation,1,
+Transportation & Logistics,6,Clean Water & Sanitation,1,1
+Packaging,6,Clean Water & Sanitation,1,
+Waste & Circular Living,6,Clean Water & Sanitation,4,1
+Consumer Engagement,6,Clean Water & Sanitation,1,
+Stakeholder Well-Being,6,Clean Water & Sanitation,1,
+Technology,6,Clean Water & Sanitation,2,
+Chemical & Treatment,7,Affordable & Clean Energy,1,1
+Agriculture & Raw Materials,7,Affordable & Clean Energy,2,1
+Design & Innovation,7,Affordable & Clean Energy,1,1
+Manufacturing,7,Affordable & Clean Energy,2,1
+Transportation & Logistics,7,Affordable & Clean Energy,1,1
+Waste & Circular Living,7,Affordable & Clean Energy,1,
+Stakeholder Well-Being,7,Affordable & Clean Energy,1,
+Finance,7,Affordable & Clean Energy,1,
+Chemical & Treatment,8,Decent Work & Economic Growth,1,1
+Agriculture & Raw Materials,8,Decent Work & Economic Growth,1,1
+Design & Innovation,8,Decent Work & Economic Growth,2,1
+Manufacturing,8,Decent Work & Economic Growth,3,1
+Social & Labor,8,Decent Work & Economic Growth,3,
+Transportation & Logistics,8,Decent Work & Economic Growth,1,1
+Retail & eCommerce,8,Decent Work & Economic Growth,1,
+Waste & Circular Living,8,Decent Work & Economic Growth,1,
+Consumer Engagement,8,Decent Work & Economic Growth,1,
+Stakeholder Well-Being,8,Decent Work & Economic Growth,2,
+Transparency & Governance,8,Decent Work & Economic Growth,2,1
+Finance,8,Decent Work & Economic Growth,3,
+Technology,8,Decent Work & Economic Growth,1,
+Chemical & Treatment,9,"Industry, Innovation & Infrastructure",1,1
+Agriculture & Raw Materials,9,"Industry, Innovation & Infrastructure",2,1
+Design & Innovation,9,"Industry, Innovation & Infrastructure",3,1
+Manufacturing,9,"Industry, Innovation & Infrastructure",5,1
+Social & Labor,9,"Industry, Innovation & Infrastructure",2,
+Transportation & Logistics,9,"Industry, Innovation & Infrastructure",1,1
+Packaging,9,"Industry, Innovation & Infrastructure",3,1
+Waste & Circular Living,9,"Industry, Innovation & Infrastructure",5,1
+Consumer Engagement,9,"Industry, Innovation & Infrastructure",1,
+Stakeholder Well-Being,9,"Industry, Innovation & Infrastructure",1,
+Transparency & Governance,9,"Industry, Innovation & Infrastructure",2,1
+Finance,9,"Industry, Innovation & Infrastructure",3,
+Technology,9,"Industry, Innovation & Infrastructure",4,
+Manufacturing,10,Reduced Inequalities,2,
+Social & Labor,10,Reduced Inequalities,3,1
+Retail & eCommerce,10,Reduced Inequalities,1,
+Consumer Engagement,10,Reduced Inequalities,1,
+Transparency & Governance,10,Reduced Inequalities,2,1
+Finance,10,Reduced Inequalities,1,
+Chemical & Treatment,11,Sustainable Cities & Communities,3,1
+Agriculture & Raw Materials,11,Sustainable Cities & Communities,3,1
+Design & Innovation,11,Sustainable Cities & Communities,3,
+Manufacturing,11,Sustainable Cities & Communities,2,1
+Social & Labor,11,Sustainable Cities & Communities,2,1
+Packaging,11,Sustainable Cities & Communities,2,
+Waste & Circular Living,11,Sustainable Cities & Communities,5,1
+Consumer Engagement,11,Sustainable Cities & Communities,1,
+Stakeholder Well-Being,11,Sustainable Cities & Communities,2,
+Finance,11,Sustainable Cities & Communities,1,
+Technology,11,Sustainable Cities & Communities,4,
+Chemical & Treatment,12,Responsible Consumption & Production,3,1
+Agriculture & Raw Materials,12,Responsible Consumption & Production,2,1
+Design & Innovation,12,Responsible Consumption & Production,3,1
+Manufacturing,12,Responsible Consumption & Production,4,1
+Transportation & Logistics,12,Responsible Consumption & Production,1,1
+Packaging,12,Responsible Consumption & Production,3,1
+Waste & Circular Living,12,Responsible Consumption & Production,4,1
+Consumer Engagement,12,Responsible Consumption & Production,1,
+Stakeholder Well-Being,12,Responsible Consumption & Production,2,
+Finance,12,Responsible Consumption & Production,2,
+Technology,12,Responsible Consumption & Production,4,
+Chemical & Treatment,13,Climate Action,1,1
+Agriculture & Raw Materials,13,Climate Action,2,1
+Design & Innovation,13,Climate Action,3,1
+Manufacturing,13,Climate Action,4,1
+Social & Labor,13,Climate Action,1,1
+Packaging,13,Climate Action,3,1
+Waste & Circular Living,13,Climate Action,5,1
+Stakeholder Well-Being,13,Climate Action,2,
+Finance,13,Climate Action,1,
+Technology,13,Climate Action,2,
+Chemical & Treatment,14,Life Below Water,3,1
+Agriculture & Raw Materials,14,Life Below Water,4,1
+Design & Innovation,14,Life Below Water,2,1
+Manufacturing,14,Life Below Water,1,
+Packaging,14,Life Below Water,1,1
+Waste & Circular Living,14,Life Below Water,1,1
+Consumer Engagement,14,Life Below Water,1,
+Technology,14,Life Below Water,2,
+Chemical & Treatment,15,Life On Land,2,1
+Agriculture & Raw Materials,15,Life On Land,1,1
+Design & Innovation,15,Life On Land,1,
+Manufacturing,15,Life On Land,3,1
+Packaging,15,Life On Land,3,1
+Waste & Circular Living,15,Life On Land,4,1
+Consumer Engagement,15,Life On Land,1,
+Stakeholder Well-Being,15,Life On Land,1,
+Technology,15,Life On Land,2,
+Social & Labor,16,"Peace, Justice & Strong Institutions",3,1
+Transportation & Logistics,16,"Peace, Justice & Strong Institutions",1,1
+Stakeholder Well-Being,16,"Peace, Justice & Strong Institutions",1,
+Transparency & Governance,16,"Peace, Justice & Strong Institutions",2,1
+Design & Innovation,17,Partnerships For The Goals,1,1
+Social & Labor,17,Partnerships For The Goals,1,
+Stakeholder Well-Being,17,Partnerships For The Goals,1,
+Transparency & Governance,17,Partnerships For The Goals,1,1
+Marketing,,,,
