@@ -53,45 +53,44 @@ var sdg = {
     maxT: 1
   };
 
-  //updating the xScale, yScale, and rScale so 1957 is our starting point//
   var xScale = d3.scaleBand()
-        .domain(tshirt_data.map(function(d) { return d.industry}))
-        .range([margin.left, width-margin.right])
-        .padding(1);
+      .domain(tshirt_data.map(function(d) { return d.industry}))
+      .range([margin.left, width-margin.right])
+      .padding(1);
 
-  var yScale = d3.scaleLinear()
-        .domain([sdg.max, 1])
-        .range([height-margin.bottom, margin.top]);
+      var yScale = d3.scaleLinear()
+      .domain([sdg.max, 1])
+      .range([height-margin.bottom, margin.top]);
 
-  let xAxisGenerator = d3.axisTop(xScale)
+      let xAxisGenerator = d3.axisTop(xScale)
       .tickSize(-height+margin.bottom+margin.top - 30);
-  
-  let xAxis =  svg.append("g")
+
+      let xAxis =  svg.append("g")
       .attr("class","axis")
       .attr("transform", `translate(0,${margin.top - 30})`)
       .call(xAxisGenerator);
 
-  xAxis.selectAll(".tick text")
+      xAxis.selectAll(".tick text")
       .attr("class", "topLabels")
       .attr("transform", function(d){ return( "translate(0,-20)rotate(-45)")})
       .style("text-anchor", "start");
 
-  let yAxisGenerator = d3.axisRight(yScale)
+      let yAxisGenerator = d3.axisRight(yScale)
       .tickSize(-width+margin.left+margin.right + 100)
       .ticks(17);
 
-  let yAxis = svg.append("g")
+      let yAxis = svg.append("g")
       .attr("class","axis")
       .attr("transform", `translate(${width-margin.right-40},0)`)
       .call(yAxisGenerator);
 
-  yAxis.selectAll(".tick text")
+      yAxis.selectAll(".tick text")
       .attr("class", "sideLabels")
       .attr("transform", function(d){ return( "translate(30,0)")})
       .style("text-anchor", "middle");
 
-  
-  let sdgLabels = svg.selectAll("mylabels")
+
+      let sdgLabels = svg.selectAll("mylabels")
       .data(uniqueArray)
       .enter()
       .append("text")
@@ -101,24 +100,95 @@ var sdg = {
       .attr("fill","#1F1F89")
       .style("font-family", "Nunito");
 
-  
-  //Drawing points using the 1957 filtered data set//
-  var points = svg.selectAll("dot")
-        .data(tshirt_data)
-        .enter()
-        .append("circle")
-            .attr("cx", function(d) { return xScale(d.industry); })
-            .attr("cy", function(d) { return yScale(d.goal); })
-            .attr("r", 8)
-            .attr("class", "point")
-            .attr("fill", function(d) {
-                if(d.industry === "Marketing") {
-                    return "#ffffff";
-                } else  {
-                    return "#1F1F89";   
-                }
-            });
 
+      //Drawing points using the 1957 filtered data set//
+      var points = svg.selectAll("dot")
+      .data(tshirt_data)
+      .enter()
+      .append("circle")
+          .attr("cx", function(d) { return xScale(d.industry); })
+          .attr("cy", function(d) { return yScale(d.goal); })
+          .attr("r", 8)
+          .attr("class", "point")
+          .attr("fill", function(d) {
+              if(d.industry === "Marketing") {
+                  return "#ffffff";
+              } else  {
+                  return "#1F1F89";   
+              }
+          });
+
+  /////RIGHT HERE PUT THE ARRAY OF FUNCTION STEPS
+    // function step1() {
+    //   // The data update //
+    //   xScale.domain(data.map(function(d) { return d.industry}));
+    //   var rScale = d3.scaleLinear()
+    //     .domain([totals.minAll, totals.maxAll])
+    //     .range([3,30]);
+
+    //   points.transition().duration(500)
+    //   .attr("r",0);
+
+
+    //   //grabbing all circles and assigning the filtered data set for 2007//
+    //   var newPoints = svg.selectAll(".point")
+    //     .data(data);
+    //   //drawing circles for that new dataset//
+    //   newPoints.enter().append("circle")
+    //     .attr("cx", function(d) { return xScale(d.industry); })
+    //     .attr("cy", function(d) { return yScale(d.goal); })
+    //     .attr("r", 0)
+    //     .attr("class", "point")
+    //     .attr("fill", function(d) { 
+    //         if(d.industry === "Marketing") {
+    //             return "#ffffff";
+    //         } else  {
+    //             return "#1F1F89";   
+    //         }
+    //     })
+    //     .style("opacity", .3)
+    //     //merge and transition of datapoints//
+    //   .merge(newPoints)
+    //     .transition()
+    //     .duration(1000)
+    //     .delay(1000)
+    //     .attr("cx", function(d) { return xScale(d.industry); })
+    //     .attr("cy", function(d) { return yScale(d.goal); })
+    //     .attr("r", function(d) { return rScale(d.totals); })
+    //     .attr("fill", function(d) { 
+    //         if(d.industry === "Marketing") {
+    //             return "#ffffff";
+    //         } else  {
+    //             return "#1F1F89";   
+    //         }
+    //     })
+    //     .attr("opacity", .3);
+
+
+    //   //exit method for new data points, remove the points that are no longer in the set//
+    //   newPoints.exit()
+    //     .transition()
+    //     .duration(1000)
+    //     .delay(1000)
+    //     .attr("r", 0)
+    //     .remove();
+
+    //   //transition the axes//
+    //   xAxis.transition()
+    //     .duration(1000)
+    //     .delay(250)
+    //     .call(xAxisGenerator);
+    //   xAxis.selectAll(".tick text")
+    //     .attr("class", "topLabels")
+    //     .attr("transform", function(d){ return( "translate(0,-20)rotate(-45)")})
+    //     .style("text-anchor", "start");
+    // }
+
+
+  // function update(step) {
+	// 	steps[step].call()
+	// }
+  
     
 
       // using d3 for convenience
@@ -153,6 +223,7 @@ var sdg = {
 
     // 3. tell scrollama to update new element dimensions
     scroller.resize();
+
   }
 
   // scrollama event handlers
@@ -165,76 +236,15 @@ var sdg = {
       return i === response.index;
     });
 
-    // if(response.index == 2) {
-    //   figure.select("p").text(notes[response.index]);
-    // }
+    //update(response.index-1);
+
+    //steps[response.index-1]();
 
     // update graphic based on step
     //figure.select("p").text(response.index + 1);
-  if(response.index == 1) {
-      // The data update //
-      xScale.domain(data.map(function(d) { return d.industry}));
-      var rScale = d3.scaleLinear()
-        .domain([totals.minAll, totals.maxAll])
-        .range([3,30]);
-    
-      points.transition().duration(500)
-      .attr("r",0);
-      
+    if(response.index == 1) {
+      //step1();
 
-      //grabbing all circles and assigning the filtered data set for 2007//
-      var newPoints = svg.selectAll(".point")
-        .data(data);
-      //drawing circles for that new dataset//
-      newPoints.enter().append("circle")
-        .attr("cx", function(d) { return xScale(d.industry); })
-        .attr("cy", function(d) { return yScale(d.goal); })
-        .attr("r", 0)
-        .attr("class", "point")
-        .attr("fill", function(d) { 
-            if(d.industry === "Marketing") {
-                return "#ffffff";
-            } else  {
-                return "#1F1F89";   
-            }
-        })
-        .style("opacity", .3)
-        //merge and transition of datapoints//
-      .merge(newPoints)
-        .transition()
-        .duration(1000)
-        .delay(1000)
-        .attr("cx", function(d) { return xScale(d.industry); })
-        .attr("cy", function(d) { return yScale(d.goal); })
-        .attr("r", function(d) { return rScale(d.totals); })
-        .attr("fill", function(d) { 
-            if(d.industry === "Marketing") {
-                return "#ffffff";
-            } else  {
-                return "#1F1F89";   
-            }
-        })
-        .attr("opacity", .3);
-
-      
-      //exit method for new data points, remove the points that are no longer in the set//
-      newPoints.exit()
-        .transition()
-        .duration(1000)
-        .delay(1000)
-        .attr("r", 0)
-        .remove();
-
-      //transition the axes//
-      xAxis.transition()
-        .duration(1000)
-        .delay(250)
-        .call(xAxisGenerator);
-      xAxis.selectAll(".tick text")
-        .attr("class", "topLabels")
-        .attr("transform", function(d){ return( "translate(0,-20)rotate(-45)")})
-        .style("text-anchor", "start");
-      
     }
     
   }
