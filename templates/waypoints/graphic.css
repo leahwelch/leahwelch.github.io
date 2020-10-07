@@ -9,10 +9,11 @@
 }
 
 .graphic__prose {
-	width: 100rem;
-	padding-top: 10%;
+	/* width: 70rem; */
+	margin-right: 70%;
+	padding-top: 5%;
 	padding-left: 5%;
-	padding-right: 65%;
+	padding-right: 10%;
 	font-family: 'Volkhov', serif;
 	color: #1F1F89;
 	font-size: 15pt;
@@ -77,6 +78,12 @@
 	font-size: 16pt;
 	font-weight: lighter;
   }
+
+  /* .newTopLabels {
+	font-family: 'Nunito', sans-serif;
+	font-size: 15pt;
+	font-weight: lighter;
+  } */
   
   .axis {
 	font-family: 'Nunito', sans-serif;

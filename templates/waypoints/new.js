@@ -184,7 +184,7 @@ window.createGraphic = function(graphicSelector) {
                     .domain([17, 1])
                     .range([height-margin.bottom, margin.top]);
                 
-                    var rScale = d3.scaleLinear()
+                var rScale = d3.scaleLinear()
                     .domain([totals.min, totals.max])
                     .range([3,30]);
 
@@ -270,7 +270,8 @@ window.createGraphic = function(graphicSelector) {
                 xAxis.selectAll(".tick text")
                     .attr("class", "topLabels")
                     .attr("transform", function(d){ return( "translate(0,-20)rotate(-45)")})
-                    .style("text-anchor", "start");
+                    .style("text-anchor", "start")
+                    .style("opacity", 1);
 
                 yAxis.transition()
                     .duration(1000)
@@ -314,6 +315,21 @@ window.createGraphic = function(graphicSelector) {
                     .attr("transform", function(d){ return( "translate(30,0)")})
                     .style("text-anchor", "middle")
                     .style("opacity", 0);
+
+                let xAxisGenerator = d3.axisTop(xScale)
+                    .tickSize(-height+margin.bottom+margin.top - 30);
+                xAxis.transition()
+                    .duration(1000)
+                    .delay(250)
+                    .call(xAxisGenerator);
+                xAxis.selectAll(".tick text")
+                    .transition()
+                    .duration(1000)
+                    .delay(250)
+                    .attr("class", "topLabels")
+                    .attr("transform", function(d){ return( "translate(0,-20)rotate(-45)")})
+                    .style("text-anchor", "start")
+                    .style("opacity", 1);
 
                 var colorLabels = svg.selectAll(".colorLabels").data(uniqueArray) 
                 var colorEnter = colorLabels.enter().append("text")
@@ -396,7 +412,7 @@ window.createGraphic = function(graphicSelector) {
                 newPoints.merge(enter)
                     .transition()
                     .duration(1000)
-                    .delay(1000)
+                    .delay(250)
                     .attr("cx", function(d) { return xScale(d.industry); })
                     .attr("cy", function(d) { return yScale(d.goal); })
                     .attr("r", function(d) { return rScale(d.totals); })
@@ -411,7 +427,14 @@ window.createGraphic = function(graphicSelector) {
                             return "#0065AA";
                         }
                     })
-                    .style("opacity", .3);
+                    //.style("opacity", .3)
+                    .style("opacity", function(d) {
+                        if(d.industry === "Marketing") {
+                            return 0;
+                        } else {
+                            return 0.3;
+                        }
+                    });
 
                 
                 //exit method for new data points, remove the points that are no longer in the set//
@@ -422,11 +445,143 @@ window.createGraphic = function(graphicSelector) {
                     .call(zeroState)
                     .remove();
 
+                svg.selectAll(".newTopLabels").transition().duration(500).style("opacity",0)
+
 
             });
         },
         function topIndustries(settings) {
-            console.log("step3");
+            d3.csv(dataLoc).then(function(data) {
+                var manufacturing = data.filter(function(d){
+                    return d.industry === "Manufacturing";
+                });
+                var waste = data.filter(function(d){
+                    return d.industry === "Waste & Circular Living";
+                });
+                var social = data.filter(function(d){
+                    return d.industry === "Social & Labor";
+                });
+                var newPoints = svg.selectAll(".point")
+                    .data(data);
+
+                var uniqueArray = removeDuplicates(data, "goalNames");  
+                    uniqueArray.pop();
+
+                var uniqueIndustry = removeDuplicates(data, "industry");
+
+                var totals = {
+                    min: d3.min(data, function(d) { return +d.totals; }),
+                    max: d3.max(data, function(d) { return +d.totals; }),
+                };
+
+                var rScale = d3.scaleLinear()
+                    .domain([totals.min, totals.max])
+                    .range([3,30]);
+                var yScale = d3.scaleBand()
+                    .domain([17, 11, 10, 9, 8, 7, 16, 5, 4, 3, 2, 1, 15, 14, 13, 12, 6])
+                    .range([height-margin.bottom, margin.top])
+                    .paddingOuter(0)
+                    .paddingInner(1);
+                //drawing circles for that new dataset//
+                var enter = newPoints.enter().append("circle")
+                    .attr("cx", function(d) { return xScale(d.industry); })
+                    .attr("cy", function(d) { return yScale(d.goal); })
+                    //.call(zeroState)
+                    .attr("class", "point")
+                    .style("opacity", .3)
+                    //merge and transition of datapoints//
+                newPoints.merge(enter)
+                    .transition()
+                    .duration(1000)
+                    .delay(250)
+                    .attr("cx", function(d) { return xScale(d.industry); })
+                    .attr("cy", function(d) { return yScale(d.goal); })
+                    .attr("r", function(d) { return rScale(d.totals); })
+                    .attr("fill", function(d) {
+                        if(d.category == "Planet") {
+                            return "#46A76E";
+                        }else if(d.category == "People"){
+                            return "#ED7F2E";
+                        }else if(d.category == "Prosperity"){
+                            return "#6337AA";
+                        }else {
+                            return "#0065AA";
+                        }
+                    })
+                    .style("opacity", function(d) {
+                        if(d.industry === "Manufacturing" || d.industry === "Waste & Circular Living" || d.industry === "Social & Labor") {
+                            return 0.8;
+                        } else {
+                            return 0.1;
+                        }
+                    });
+                newPoints.exit()
+                    .transition()
+                    .duration(1000)
+                    .delay(1000)
+                    .call(zeroState)
+                    .remove();
+
+                let xAxisGenerator = d3.axisTop(xScale)
+                    .tickSize(-height+margin.bottom+margin.top - 30);
+
+                xAxis.transition()
+                    .duration(1000)
+                    .delay(250)
+                    .call(xAxisGenerator);
+                xAxis.selectAll(".tick text")
+                    .transition()
+                    .duration(1000)
+                    .delay(250)
+                    .attr("class", "topLabels")
+                    .attr("transform", function(d){ return( "translate(0,-20)rotate(-45)")})
+                    .style("text-anchor", "start")
+                    .style("opacity", 0);
+
+                var topLabels = svg.selectAll(".newTopLabels").data(uniqueIndustry) 
+                var topEnter = topLabels.enter().append("text")
+                    
+                    .attr("class", "newTopLabels")
+                    .attr("x", 0)
+                    .attr("y", 0)
+                    .attr("transform", function(d){ return( "translate(" + (+xScale(d.industry)) + "," + (margin.top-53) + ")rotate(-45)")})
+                    .text(function(d){ return(d.industry)})
+                    .style("text-anchor", "start")
+                    .style("font-family", "Nunito")
+                    .style("font-size", function(d) {
+                        if(d.industry === "Manufacturing" || d.industry === "Waste & Circular Living" || d.industry === "Social & Labor") {
+                            return 24;
+                        } else {
+                            return 12;
+                        }
+                    })
+                    .style("opacity",0)
+                    
+                topLabels.merge(topEnter)
+                    .transition()
+                    .delay(500)
+                    .duration(1000)
+                    .attr("x", 0)
+                    .attr("y", 0)
+                    .text(function(d){ return(d.industry)}) 
+                    .attr("fill", "#443730")
+                    .style("text-anchor", "start")
+                    .style("font-family", "Nunito")
+                    .style("font-weight", "light")
+                    .style("opacity", function(d) {
+                        if(d.industry === "Manufacturing" || d.industry === "Waste & Circular Living" || d.industry === "Social & Labor") {
+                            return 1;
+                        } else {
+                            return 0.3;
+                        }
+                    });
+                topLabels.exit()
+                    .transition()
+                    .duration(500)
+                    .style("opacity", 0)
+                    .remove();
+                
+            });
         },
         function bottomIndustries(settings) {
             console.log("step4");

@@ -420,12 +420,19 @@
   
   .library {
     padding: 1rem 0;
-    /* margin: 2rem auto; */
+    /* 
+    
+    
+    
+    
+    
+    
+    */
     /* max-width: 50rem; */
   }
   
-  .library__text {
-    margin: 0 auto;
+  /* .library__text {
+    margin: 0 0;
     max-width: 40rem;
   }
   
@@ -434,7 +441,7 @@
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 1rem;
-  }
+  } */
   
   
   .library__demo {
