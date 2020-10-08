@@ -180,7 +180,7 @@ window.createGraphic = function(graphicSelector) {
                     .attr("width", 300)
                     .attr("height", 70)
                     .attr("fill", "#FFF8F6")
-                    .style("opacity", 0.5)
+                    .style("opacity", 0.6)
                     .attr("stroke", "#443730")
                     .attr("stroke-width", 2)
 
