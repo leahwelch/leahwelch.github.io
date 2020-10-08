@@ -164,6 +164,41 @@ window.createGraphic = function(graphicSelector) {
                     .duration(500)
                     .call(zeroState)
                     .remove();
+                
+                // points.on("mouseover", function(d) {
+                //     points.style("opacity", .2)
+                //     d3.select(this).style("opacity", 1)
+                //         .attr("r", 12) 
+                //     // d3.selectAll(".point").each(function(d,i) {
+                //     //     console.log("The x position of the rect #" + i + " is " + d3.select(this).attr("cx"))
+                //     //     })
+                //     // if(d3.select(this).attr("cx") == d3.selectAll(".point").each(function(d,i) {d3.select(this).attr("cx")})) {
+
+                //     // }
+                //     // var cxs = d3.selectAll('.point').datum(function() {
+                //     //     return parseFloat(this.getAttribute('cx'));
+                //     //     });
+                //     // console.log(cxs)
+
+                //     // points.each(function(e) {
+                //     //     if(e.attr("cx") == d3.select(this).attr("cx")) {
+                //     //         e.style("opacity", 1)
+                //     //     }
+                //     // })
+                //     // points.filter(function(d) {
+                //     //     if(d.attr("cx") == d3.select(this).attr("cx")) {
+
+                //     //         d.style("opacity", 1)
+                //     //     }
+                //     // })
+                    
+                    
+                // }).on("mouseout", function() {
+                //     points.style("opacity",1).attr("r", 8) 
+                // });
+
+
+                
 
 
             });
@@ -454,6 +489,7 @@ window.createGraphic = function(graphicSelector) {
         },
         function topIndustries(settings) {
             d3.csv(dataLoc).then(function(data) {
+                svg.selectAll(".bottomLine").transition().duration(500).style("opacity",0)
                 
                 var uniqueArray = removeDuplicates(data, "goalNames");  
                     uniqueArray.pop();
@@ -622,23 +658,14 @@ window.createGraphic = function(graphicSelector) {
                     .style("opacity", 0)
                     .remove();
 
-                // var manLabel = svg.append("text").attr("class", "manLabel")
-                //     .attr("x", function() {
-                //         return (xScale("Manufacturing")) + 5
-                //     })
-                //     .attr("y", height-margin.bottom+30)
-                //     .attr("fill", "#443730")
-                //     .style("text-anchor", "middle")
-                //     .style("font-family", "Nunito")
-                //     .style("font-weight", "light")
-                //     .html("13<br>SDGs<br>impacted");
-
                 
             });
         },
         function bottomIndustries(settings) {
             d3.csv(dataLoc).then(function(data) {
                 svg.selectAll(".topLine").transition().duration(500).style("opacity",0)
+                svg.selectAll(".highlightline").transition().duration(500).style("opacity",0)
+
                 var uniqueArray = removeDuplicates(data, "goalNames");  
                     uniqueArray.pop();
 
@@ -714,7 +741,7 @@ window.createGraphic = function(graphicSelector) {
                     .style("text-anchor", "start")
                     .style("opacity", 0);
 
-                var topLabels = svg.selectAll(".newTopLabels").style("opacity", 0)
+                svg.selectAll(".newTopLabels").style("opacity", 0)
                 
                 var bottomLabels = svg.selectAll(".bottomLabels").data(uniqueIndustry)
                 var bottomEnter = bottomLabels.enter().append("text")
@@ -753,18 +780,57 @@ window.createGraphic = function(graphicSelector) {
                             return 0.3;
                         }
                     });
-                // topLabels.exit()
-                //     .transition()
-                //     .duration(250)
-                //     .style("opacity", 0)
-                //     .remove();
+                var bottomLine = svg.selectAll(".bottomline").data(uniqueIndustry)
+                var bottomLineEnter = bottomLine.enter().append("line")
+                    .attr("class", "bottomLine")
+                    .attr("x1", function(d) {
+                        return xScale(d.industry);
+                    })
+                    .attr("y1", margin.top-30)
+                    .attr("x2", function(d) {
+                        return xScale(d.industry);
+                    })
+                    .attr("y2", height-margin.bottom+20)
+                    .attr("stroke", "#443730")
+                    .attr("stroke-width", 2)
+                    .style("opacity", 0);
+
+                bottomLine.merge(bottomLineEnter)
+                    .transition()
+                    .delay(500)
+                    .duration(1000)
+                    .attr("class", "bottomLine")
+                    .attr("x1", function(d) {
+                        return xScale(d.industry);
+                    })
+                    .attr("y1", margin.top-30)
+                    .attr("x2", function(d) {
+                        return xScale(d.industry);
+                    })
+                    .attr("y2", height-margin.bottom+20)
+                    .attr("stroke", "#443730")
+                    .attr("stroke-width", 2)
+                    .style("opacity", function(d) {
+                        if(d.industry === "Transportation & Logistics" || d.industry === "Retail & eCommerce" || d.industry === "Marketing") {
+                            return 0.9;
+                        } else {
+                            return 0;
+                        }
+                    })
+                bottomLine.exit()
+                    .transition()
+                    .duration(500)
+                    .style("opacity", 0)
+                    .remove();
                     
-                svg.selectAll(".highlightLabels").style("opacity", 0);    
+                svg.selectAll(".highlightLabels").style("opacity", 0); 
+                   
                 
             });
         },
         function highlights(settings) {
             d3.csv(dataLoc).then(function(data) {
+                svg.selectAll(".bottomLine").style("opacity", 0)
                 var uniqueIndustry = removeDuplicates(data, "industry");
 
                 var totals = {
@@ -875,7 +941,50 @@ window.createGraphic = function(graphicSelector) {
                         }
                     });
                 
-                    svg.selectAll(".bottomLabels").transition().duration(500).style("opacity",0)
+                svg.selectAll(".bottomLabels").transition().duration(500).style("opacity",0)
+
+                var highlightLine = svg.selectAll(".highlightline").data(uniqueIndustry)
+                var highlightLineEnter = highlightLine.enter().append("line")
+                    .attr("class", "highlightline")
+                    .attr("x1", function(d) {
+                        return xScale(d.industry);
+                    })
+                    .attr("y1", margin.top-30)
+                    .attr("x2", function(d) {
+                        return xScale(d.industry);
+                    })
+                    .attr("y2", height-margin.bottom+20)
+                    .attr("stroke", "#443730")
+                    .attr("stroke-width", 2)
+                    .style("opacity", 0);
+
+                highlightLine.merge(highlightLineEnter)
+                    .transition()
+                    .delay(500)
+                    .duration(1000)
+                    .attr("class", "highlightline")
+                    .attr("x1", function(d) {
+                        return xScale(d.industry);
+                    })
+                    .attr("y1", margin.top-30)
+                    .attr("x2", function(d) {
+                        return xScale(d.industry);
+                    })
+                    .attr("y2", height-margin.bottom+20)
+                    .attr("stroke", "#443730")
+                    .attr("stroke-width", 2)
+                    .style("opacity", function(d) {
+                        if(d.industry === "Consumer Engagement" || d.industry === "Transparency & Governance") {
+                            return 0.9;
+                        } else {
+                            return 0;
+                        }
+                    })
+                highlightLine.exit()
+                    .transition()
+                    .duration(500)
+                    .style("opacity", 0)
+                    .remove();
             });
         }
     ]
