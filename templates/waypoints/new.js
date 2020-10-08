@@ -288,6 +288,9 @@ window.createGraphic = function(graphicSelector) {
         },
         function reorganize(settings) {
             d3.csv(dataLoc).then(function(data) {
+                svg.selectAll(".newTopLabels").transition().duration(500).style("opacity",0)
+                svg.selectAll(".topLine").transition().duration(500).style("opacity",0)
+                
                 var uniqueArray = removeDuplicates(data, "goalNames");  
                 uniqueArray.pop();
                 var totals = {
@@ -445,8 +448,7 @@ window.createGraphic = function(graphicSelector) {
                     .call(zeroState)
                     .remove();
 
-                svg.selectAll(".newTopLabels").transition().duration(500).style("opacity",0)
-
+                
 
             });
         },
@@ -575,12 +577,68 @@ window.createGraphic = function(graphicSelector) {
                     .remove();
 
                 svg.selectAll(".bottomLabels").transition().duration(500).style("opacity",0)
+
+                
+                var topLine = svg.selectAll(".topline").data(uniqueIndustry)
+                var topLineEnter = topLine.enter().append("line")
+                    .attr("class", "topLine")
+                    .attr("x1", function(d) {
+                        return xScale(d.industry);
+                    })
+                    .attr("y1", margin.top-30)
+                    .attr("x2", function(d) {
+                        return xScale(d.industry);
+                    })
+                    .attr("y2", height-margin.bottom+20)
+                    .attr("stroke", "#443730")
+                    .attr("stroke-width", 2)
+                    .style("opacity", 0);
+
+                topLine.merge(topLineEnter)
+                    .transition()
+                    .delay(500)
+                    .duration(1000)
+                    .attr("class", "topLine")
+                    .attr("x1", function(d) {
+                        return xScale(d.industry);
+                    })
+                    .attr("y1", margin.top-30)
+                    .attr("x2", function(d) {
+                        return xScale(d.industry);
+                    })
+                    .attr("y2", height-margin.bottom+20)
+                    .attr("stroke", "#443730")
+                    .attr("stroke-width", 2)
+                    .style("opacity", function(d) {
+                        if(d.industry === "Manufacturing" || d.industry === "Waste & Circular Living" || d.industry === "Social & Labor") {
+                            return 0.9;
+                        } else {
+                            return 0;
+                        }
+                    })
+                topLine.exit()
+                    .transition()
+                    .duration(500)
+                    .style("opacity", 0)
+                    .remove();
+
+                // var manLabel = svg.append("text").attr("class", "manLabel")
+                //     .attr("x", function() {
+                //         return (xScale("Manufacturing")) + 5
+                //     })
+                //     .attr("y", height-margin.bottom+30)
+                //     .attr("fill", "#443730")
+                //     .style("text-anchor", "middle")
+                //     .style("font-family", "Nunito")
+                //     .style("font-weight", "light")
+                //     .html("13<br>SDGs<br>impacted");
+
                 
             });
         },
         function bottomIndustries(settings) {
             d3.csv(dataLoc).then(function(data) {
-                
+                svg.selectAll(".topLine").transition().duration(500).style("opacity",0)
                 var uniqueArray = removeDuplicates(data, "goalNames");  
                     uniqueArray.pop();
 
