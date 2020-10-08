@@ -27,6 +27,10 @@ window.createGraphic = function(graphicSelector) {
         .attr("class","axis")
         .attr("transform", `translate(0,${margin.top - 30})`)
 
+    var annotation = svg.append("g")
+        .attr("class", "annotation")
+        .style("opacity", 1)
+
     // var c = svg.enter().append("circle")
     // 	.attr('cx', 0)
     //     .attr('cy', 0)
@@ -164,10 +168,69 @@ window.createGraphic = function(graphicSelector) {
                     .duration(500)
                     .call(zeroState)
                     .remove();
+
                 
-                // points.on("mouseover", function(d) {
-                //     points.style("opacity", .2)
-                //     d3.select(this).style("opacity", 1)
+                svg.selectAll(".annotation").append("rect")
+                    .attr("x", function() {
+                        return +xScale("Transportation & Logistics") + 20
+                    })
+                    .attr("y", function() {
+                        return + yScale("1") - 20
+                    })
+                    .attr("width", 300)
+                    .attr("height", 70)
+                    .attr("fill", "#FFF8F6")
+                    .style("opacity", 0.5)
+                    .attr("stroke", "#443730")
+                    .attr("stroke-width", 2)
+
+                svg.selectAll(".annotation").append("line")
+                    .attr("x1", function() {
+                        return xScale("Social & Labor")
+                    })
+                    .attr("y1", function() {
+                        return + yScale("1")
+                    })
+                    .attr("x2", function() {
+                        return +xScale("Transportation & Logistics") + 20
+                    })
+                    .attr("y2", function() {
+                        return + yScale("1")
+                    })
+                    .attr('stroke', "#443730")
+                    .attr("stroke-width", 2)
+                    .attr("stroke-dasharray", 4)
+                    .style("opacity", 1);
+
+                svg.selectAll(".annotation").append("text")
+                    .attr("x", function() {
+                        return +xScale("Transportation & Logistics") + 40
+                    })
+                    .attr("y", function() {
+                        return + yScale("1") + 8
+                    })
+                    .attr("fill","#443730")
+                    .style("font-family", "Nunito")
+                    .style("font-size", 15)
+                    .style("opacity", 1)
+                    .text("Only 1.8% of the cost of a white t-shirt")
+
+                svg.selectAll(".annotation").append("text")
+                    .attr("x", function() {
+                        return +xScale("Transportation & Logistics") + 40
+                    })
+                    .attr("y", function() {
+                        return + yScale("1") + 28
+                    })
+                    .attr("fill","#443730")
+                    .style("font-family", "Nunito")
+                    .style("font-size", 15)
+                    .style("opacity", 1)
+                    .text("is represented by workers’ earnings.")
+                    
+                    
+                
+                
                 //         .attr("r", 12) 
                 //     // d3.selectAll(".point").each(function(d,i) {
                 //     //     console.log("The x position of the rect #" + i + " is " + d3.select(this).attr("cx"))
@@ -205,6 +268,10 @@ window.createGraphic = function(graphicSelector) {
         },
         function showAll(settings) {
             d3.csv(dataLoc).then(function(data) {
+                annotation.selectAll("rect").style("opacity", 0)
+                annotation.selectAll("line").style("opacity", 0)
+                annotation.selectAll("text").style("opacity", 0)
+
                 var totals = {
                     min: d3.min(data, function(d) { return +d.totals; }),
                     max: d3.max(data, function(d) { return +d.totals; }),
@@ -243,7 +310,7 @@ window.createGraphic = function(graphicSelector) {
                 newPoints.merge(enter)
                     .transition()
                     .duration(1000)
-                    .delay(1000)
+                    .delay(250)
                     .attr("cx", function(d) { return xScale(d.industry); })
                     .attr("cy", function(d) { return yScale(d.goal); })
                     .attr("r", function(d) { return rScale(d.totals); })
@@ -256,7 +323,6 @@ window.createGraphic = function(graphicSelector) {
                     })
                     .style("opacity", .3);
 
-                
                 //exit method for new data points, remove the points that are no longer in the set//
                 newPoints.exit()
                     .transition()
