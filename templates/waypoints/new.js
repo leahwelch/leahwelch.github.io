@@ -15,10 +15,6 @@ window.createGraphic = function(graphicSelector) {
     
     var xScale = d3.scaleBand()
 
-    // var yScale = d3.scaleLinear()
-    //     .domain([17, 1])
-    //     .range([height-margin.bottom, margin.top]);
-
     var yAxis = svg.append("g")
         .attr("class","axis")
         .attr("transform", `translate(${width-margin.right-40},0)`)
@@ -30,11 +26,6 @@ window.createGraphic = function(graphicSelector) {
     var annotation = svg.append("g")
         .attr("class", "annotation")
         .style("opacity", 1)
- 
-
-    var settings = {
-        margin:margin, width:width, height:height, svg:svg, xScale: xScale, yAxis: yAxis, xAxis: xAxis
-    }
 
     function removeDuplicates(originalData, prop) {
         var newData = [];
@@ -58,16 +49,18 @@ window.createGraphic = function(graphicSelector) {
         }
 
     var steps = [
-        function showTshirt(settings) {
+        function showTshirt() {
             d3.csv(dataLoc).then(function(data) {
+                var t = d3.transition()
+                    .duration(800)
+                    .ease(d3.easeQuadInOut)
+
                 var tshirt_data = data.filter(function(d) {
                     return d.t_shirt == 1;
                 });
-                console.log(tshirt_data);
 
                 var uniqueArray = removeDuplicates(data, "goalNames");  
-                uniqueArray.pop();
-                var uniqueT = removeDuplicates(tshirt_data, "goalNames");  
+                uniqueArray.pop(); 
 
                 xScale.domain(tshirt_data.map(function(d) { return d.industry}))
                     .range([margin.left, width-margin.right])
@@ -81,21 +74,17 @@ window.createGraphic = function(graphicSelector) {
                     .tickSize(-width+margin.left+margin.right + 100)
                     .ticks(17);
 
-                let xAxisGenerator = d3.axisTop(xScale)
+                var xAxisGenerator = d3.axisTop(xScale)
                     .tickSize(-height+margin.bottom+margin.top - 30);
                 
-                xAxis.transition()
-                    .duration(1000)
-                    .delay(250).call(xAxisGenerator);
+                xAxis.transition(t).call(xAxisGenerator);
             
                 xAxis.selectAll(".tick text")
                     .attr("class", "topLabels")
                     .attr("transform", function(d){ return( "translate(0,-20)rotate(-45)")})
                     .style("text-anchor", "start");
 
-                yAxis.transition()
-                    .duration(1000)
-                    .delay(250).call(yAxisGenerator);
+                yAxis.transition(t).call(yAxisGenerator);
             
                 yAxis.selectAll(".tick text")
                     .attr("class", "sideLabels")
@@ -109,12 +98,9 @@ window.createGraphic = function(graphicSelector) {
                     .attr("x", width-margin.right + 20)
                     .attr("y", function(d){return yScale(d.goal) + 5})    
                     .text(function(d){ return(d.goalNames)})
-                    .attr("fill","#1F1F89")
-                    .style("font-family", "Nunito")
                     .style("opacity", 0);
                 sdgLabels.merge(labelEnter)
-                    .transition()
-                    .duration(500)
+                    .transition(t)
                     .attr("x", width-margin.right + 20)
                     .attr("y", function(d){return yScale(d.goal) + 5})    
                     .text(function(d){ return(d.goalNames)})
@@ -122,8 +108,7 @@ window.createGraphic = function(graphicSelector) {
                     .style("font-family", "Nunito")
                     .style("opacity", 1);
                 sdgLabels.exit()
-                    .transition()
-                    .duration(500)
+                    .transition(t)
                     .style("opacity", 0)
                     .remove();
                     
@@ -132,17 +117,9 @@ window.createGraphic = function(graphicSelector) {
                     .attr("class", "point")
                     .call(zeroState)
                     .attr("cx", function(d) { return xScale(d.industry); })
-                    .attr("cy", function(d) { return yScale(d.goal); })
-                    .attr("fill", function(d) {
-                        if(d.industry === "Marketing") {
-                            return "#ffffff";
-                        } else  {
-                            return "#1F1F89";   
-                        }
-                    });
+                    .attr("cy", function(d) { return yScale(d.goal); });
                 points.merge(enter)
-                    .transition()
-                    .duration(500)
+                    .transition(t)
                     .attr("cx", function(d) { return xScale(d.industry); })
                     .attr("cy", function(d) { return yScale(d.goal); })
                     .attr("r", 8)
@@ -156,12 +133,10 @@ window.createGraphic = function(graphicSelector) {
                     });
 
                 points.exit()
-                    .transition()
-                    .duration(500)
+                    .transition(t)
                     .call(zeroState)
                     .remove();
 
-                
                 svg.selectAll(".annotation").append("rect")
                     .attr("x", function() {
                         return +xScale("Transportation & Logistics") + 20
@@ -220,46 +195,14 @@ window.createGraphic = function(graphicSelector) {
                     .style("opacity", 1)
                     .text("is represented by workers’ earnings.")
                     
-                    
-                
-                
-                //         .attr("r", 12) 
-                //     // d3.selectAll(".point").each(function(d,i) {
-                //     //     console.log("The x position of the rect #" + i + " is " + d3.select(this).attr("cx"))
-                //     //     })
-                //     // if(d3.select(this).attr("cx") == d3.selectAll(".point").each(function(d,i) {d3.select(this).attr("cx")})) {
-
-                //     // }
-                //     // var cxs = d3.selectAll('.point').datum(function() {
-                //     //     return parseFloat(this.getAttribute('cx'));
-                //     //     });
-                //     // console.log(cxs)
-
-                //     // points.each(function(e) {
-                //     //     if(e.attr("cx") == d3.select(this).attr("cx")) {
-                //     //         e.style("opacity", 1)
-                //     //     }
-                //     // })
-                //     // points.filter(function(d) {
-                //     //     if(d.attr("cx") == d3.select(this).attr("cx")) {
-
-                //     //         d.style("opacity", 1)
-                //     //     }
-                //     // })
-                    
-                    
-                // }).on("mouseout", function() {
-                //     points.style("opacity",1).attr("r", 8) 
-                // });
-
-
-                
-
-
             });
         },
-        function showAll(settings) {
+        function showAll() {
             d3.csv(dataLoc).then(function(data) {
+                var t = d3.transition()
+                    .duration(800)
+                    .ease(d3.easeQuadInOut)
+
                 annotation.selectAll("rect").style("opacity", 0)
                 annotation.selectAll("line").style("opacity", 0)
                 annotation.selectAll("text").style("opacity", 0)
@@ -289,20 +232,10 @@ window.createGraphic = function(graphicSelector) {
                 var enter = newPoints.enter().append("circle")
                     .attr("cx", function(d) { return xScale(d.industry); })
                     .attr("cy", function(d) { return yScale(d.goal); })
-                    //.call(zeroState)
                     .attr("class", "point")
-                    .attr("fill", function(d) { 
-                        if(d.industry === "Marketing") {
-                            return "#ffffff";
-                        } else  {
-                            return "#1F1F89";   
-                        }
-                    }).style("opacity", 0.3)
                     //merge and transition of datapoints//
                 newPoints.merge(enter)
-                    .transition()
-                    .duration(1000)
-                    .delay(250)
+                    .transition(t)
                     .attr("cx", function(d) { return xScale(d.industry); })
                     .attr("cy", function(d) { return yScale(d.goal); })
                     .attr("r", function(d) { return rScale(d.totals); })
@@ -317,9 +250,7 @@ window.createGraphic = function(graphicSelector) {
 
                 //exit method for new data points, remove the points that are no longer in the set//
                 newPoints.exit()
-                    .transition()
-                    .duration(1000)
-                    .delay(1000)
+                    .transition(t)
                     .call(zeroState)
                     .remove();
 
@@ -329,22 +260,17 @@ window.createGraphic = function(graphicSelector) {
                     .style("opacity", 0)
                     .attr("x", width-margin.right + 20)
                     .attr("y", function(d){return yScale(d.goal) + 5})    
-                    .text(function(d){ return(d.goalNames)})
-                    .attr("fill","#1F1F89")
-                    .style("font-family", "Nunito");
+                    .text(function(d){ return(d.goalNames)});
                 sdgLabels.merge(labelEnter)
-                    .transition()
-                    .duration(500)
+                    .transition(t)
                     .attr("x", width-margin.right + 20)
-                    .attr("y", function(d){return yScale(d.goal) + 5})
-                    //.attr("transform", function(d){ return( "translate(0,-5)")})    
+                    .attr("y", function(d){return yScale(d.goal) + 5})  
                     .text(function(d){ return(d.goalNames)})
                     .attr("fill","#1F1F89")
                     .style("font-family", "Nunito")
                     .style("opacity", 1);
                 sdgLabels.exit()
-                    .transition()
-                    .duration(500)
+                    .transition(t)
                     .style("opacity", 0)
                     .remove();
 
@@ -356,19 +282,14 @@ window.createGraphic = function(graphicSelector) {
                     .ticks(17);
 
                 //transition the axes//
-                xAxis.transition()
-                    .duration(1000)
-                    .delay(250)
-                    .call(xAxisGenerator);
+                xAxis.transition(t).call(xAxisGenerator);
                 xAxis.selectAll(".tick text")
                     .attr("class", "topLabels")
                     .attr("transform", function(d){ return( "translate(0,-20)rotate(-45)")})
                     .style("text-anchor", "start")
                     .style("opacity", 1);
 
-                yAxis.transition()
-                    .duration(1000)
-                    .delay(250).call(yAxisGenerator);
+                yAxis.transition(t).call(yAxisGenerator);
             
                 yAxis.selectAll(".tick text")
                     .attr("class", "sideLabels")
@@ -376,12 +297,14 @@ window.createGraphic = function(graphicSelector) {
                     .style("text-anchor", "middle")
                     .style("opacity", 1);
 
-                svg.selectAll(".colorLabels").style("opacity",0)
+                svg.selectAll(".colorLabels").transition(t).style("opacity",0)
             });
         },
-        function showAllHighlighted(settings) {
+        function showAllHighlighted() {
             d3.csv(dataLoc).then(function(data) {
-
+                var t = d3.transition()
+                    .duration(800)
+                    .ease(d3.easeQuadInOut)
 
                 var totals = {
                     min: d3.min(data, function(d) { return +d.totals; }),
@@ -408,7 +331,6 @@ window.createGraphic = function(graphicSelector) {
                 var enter = newPoints.enter().append("circle")
                     .attr("cx", function(d) { return xScale(d.industry); })
                     .attr("cy", function(d) { return yScale(d.goal); })
-                    //.call(zeroState)
                     .attr("class", "point")
                     .attr("fill", function(d) { 
                         if(d.industry === "Marketing") {
@@ -419,9 +341,7 @@ window.createGraphic = function(graphicSelector) {
                     }).style("opacity", 0)
                     //merge and transition of datapoints//
                 newPoints.merge(enter)
-                    .transition()
-                    .duration(1000)
-                    .delay(250)
+                    .transition(t)
                     .attr("cx", function(d) { return xScale(d.industry); })
                     .attr("cy", function(d) { return yScale(d.goal); })
                     .attr("r", function(d) { return rScale(d.totals); })
@@ -444,9 +364,7 @@ window.createGraphic = function(graphicSelector) {
 
                 //exit method for new data points, remove the points that are no longer in the set//
                 newPoints.exit()
-                    .transition()
-                    .duration(1000)
-                    .delay(1000)
+                    .transition(t)
                     .call(zeroState)
                     .remove();
 
@@ -460,18 +378,15 @@ window.createGraphic = function(graphicSelector) {
                     .attr("fill","#1F1F89")
                     .style("font-family", "Nunito");
                 sdgLabels.merge(labelEnter)
-                    .transition()
-                    .duration(500)
+                    .transition(t)
                     .attr("x", width-margin.right + 20)
-                    .attr("y", function(d){return yScale(d.goal) + 5})
-                    //.attr("transform", function(d){ return( "translate(0,-5)")})    
+                    .attr("y", function(d){return yScale(d.goal) + 5})  
                     .text(function(d){ return(d.goalNames)})
                     .attr("fill","#1F1F89")
                     .style("font-family", "Nunito")
                     .style("opacity", 1);
                 sdgLabels.exit()
-                    .transition()
-                    .duration(500)
+                    .transition(t)
                     .style("opacity", 0)
                     .remove();
 
@@ -483,19 +398,14 @@ window.createGraphic = function(graphicSelector) {
                     .ticks(17);
 
                 //transition the axes//
-                xAxis.transition()
-                    .duration(1000)
-                    .delay(250)
-                    .call(xAxisGenerator);
+                xAxis.transition(t).call(xAxisGenerator);
                 xAxis.selectAll(".tick text")
                     .attr("class", "topLabels")
                     .attr("transform", function(d){ return( "translate(0,-20)rotate(-45)")})
                     .style("text-anchor", "start")
                     .style("opacity", 1);
 
-                yAxis.transition()
-                    .duration(1000)
-                    .delay(250).call(yAxisGenerator);
+                yAxis.transition(t).call(yAxisGenerator);
             
                 yAxis.selectAll(".tick text")
                     .attr("class", "sideLabels")
@@ -503,7 +413,7 @@ window.createGraphic = function(graphicSelector) {
                     .style("text-anchor", "middle")
                     .style("opacity", 1);
 
-                svg.selectAll(".colorLabels").style("opacity",0)
+                svg.selectAll(".colorLabels").transition(t).style("opacity",0)
 
                 svg.selectAll(".annotation").append("rect")
                     .attr("x", function() {
@@ -700,12 +610,10 @@ window.createGraphic = function(graphicSelector) {
                     .style("font-size", 14)
                     .style("opacity", 1)
                     .text("paid to waste generation")
-                
-
 
             });
         },
-        function reorganize(settings) {
+        function reorganize() {
             d3.csv(dataLoc).then(function(data) {
                 svg.selectAll(".newTopLabels").transition().duration(500).style("opacity",0)
                 svg.selectAll(".topLine").transition().duration(500).style("opacity",0)
@@ -831,7 +739,6 @@ window.createGraphic = function(graphicSelector) {
                 var enter = newPoints.enter().append("circle")
                     .attr("cx", function(d) { return xScale(d.industry); })
                     .attr("cy", function(d) { return yScale(d.goal); })
-                    //.call(zeroState)
                     .attr("class", "point")
                     .style("opacity", .3)
                     //merge and transition of datapoints//
@@ -853,7 +760,6 @@ window.createGraphic = function(graphicSelector) {
                             return "#0065AA";
                         }
                     })
-                    //.style("opacity", .3)
                     .style("opacity", function(d) {
                         if(d.industry === "Marketing") {
                             return 0;
@@ -875,7 +781,7 @@ window.createGraphic = function(graphicSelector) {
 
             });
         },
-        function topIndustries(settings) {
+        function topIndustries() {
             d3.csv(dataLoc).then(function(data) {
 
                 
@@ -908,7 +814,6 @@ window.createGraphic = function(graphicSelector) {
                 var enter = newPoints.enter().append("circle")
                     .attr("cx", function(d) { return xScale(d.industry); })
                     .attr("cy", function(d) { return yScale(d.goal); })
-                    //.call(zeroState)
                     .attr("class", "point")
                     .style("opacity", .3)
                     //merge and transition of datapoints//
@@ -1049,95 +954,9 @@ window.createGraphic = function(graphicSelector) {
                     .style("opacity", 0)
                     .remove();
 
-                
-                // var table = svg.append("g")
-                //     .attr("class", "table")
-                //     .style("opacity", 1);
-                
-                // table.append("rect")
-                //     .attr("x", function() {
-                //         return +xScale("Retail & eCommerce") - 20
-                //     })
-                //     .attr("y", function() {
-                //         return + yScale("13") + 20
-                //     })
-                //     .attr("width", 500)
-                //     .attr("height", 300)
-                //     .attr("fill", "#FFF8F6")
-                //     .style("opacity", 1)
-                //     .attr("stroke", "#443730")
-                //     .attr("stroke-width", 2)
-
-                // table.append("line")
-                //     .attr("x1", function() {
-                //         return xScale("Retail & eCommerce") + 20
-                //     })
-                //     .attr("y1", function() {
-                //         return +yScale("13") + 80
-                //     })
-                //     .attr("x2", function() {
-                //         return +xScale("Retail & eCommerce") + 420
-                //     })
-                //     .attr("y2", function() {
-                //         return +yScale("13") + 80
-                //     })
-                //     .attr('stroke', "#443730")
-                //     .attr("stroke-width", 1)
-                //     .style("opacity", 1);
-
-                // table.append("line")
-                //     .attr("x1", function() {
-                //         return xScale("Finance") + 20
-                //     })
-                //     .attr("y1", function() {
-                //         return +yScale("13") + 80
-                //     })
-                //     .attr("x2", function() {
-                //         return +xScale("Finance") + 20
-                //     })
-                //     .attr("y2", function() {
-                //         return +yScale("16") + 20
-                //     })
-                //     .attr('stroke', "#443730")
-                //     .attr("stroke-width", 1)
-                //     .style("opacity", 1);
-
-                // table.append("line")
-                //     .attr("x1", function() {
-                //         return xScale("Chemical & Treatment") - 20
-                //     })
-                //     .attr("y1", function() {
-                //         return +yScale("13") + 80
-                //     })
-                //     .attr("x2", function() {
-                //         return +xScale("Chemical & Treatment") - 20
-                //     })
-                //     .attr("y2", function() {
-                //         return +yScale("16") + 20
-                //     })
-                //     .attr('stroke', "#443730")
-                //     .attr("stroke-width", 1)
-                //     .style("opacity", 1);
-
-                // table.append("text")
-                //     .attr("x", function() {
-                //         return +xScale("Consumer Engagement") + 10
-                //     })
-                //     .attr("y", function() {
-                //         return + yScale("13") + 70
-                //     })
-                //     .attr("fill","#443730")
-                //     .style("font-family", "Nunito")
-                //     .style("font-size", 16)
-                //     .style("font-weight", "bold")
-                //     .style("opacity", 1)
-                //     .style("text-anchor", "middle")
-                //     .text("Industry")
-                    
-                
             });
         },
-        function bottomIndustries(settings) {
+        function bottomIndustries() {
             d3.csv(dataLoc).then(function(data) {
                 svg.selectAll(".topLine").transition().duration(500).style("opacity",0)
                 svg.selectAll(".highlightline").transition().duration(500).style("opacity",0)
@@ -1305,7 +1124,7 @@ window.createGraphic = function(graphicSelector) {
                 
             });
         },
-        function highlights(settings) {
+        function highlights() {
             d3.csv(dataLoc).then(function(data) {
                 svg.selectAll(".bottomLine").style("opacity", 0)
                 var uniqueIndustry = removeDuplicates(data, "industry");
@@ -1465,24 +1284,10 @@ window.createGraphic = function(graphicSelector) {
             });
         }
     ]
-    
-    function setupCharts(settings) {
-        d3.csv(dataLoc).then(function(data) {
-
-            var tshirt_data = data.filter(function(d) {
-                return d.t_shirt == 1;
-            });
-
-            xScale.domain(tshirt_data.map(function(d) { return d.industry}))
-                    .range([margin.left, width-margin.right])
-                    .padding(1);
-        });
-    }
 
     // update our chart
 	function update(step) {
         steps[step].call()
-        console.log("chart is updating");
     }
     
     function setupProse() {
@@ -1492,7 +1297,6 @@ window.createGraphic = function(graphicSelector) {
     }
     
     function init() {
-        //setupCharts(settings)
 		setupProse()
 		update(0)
 	}
