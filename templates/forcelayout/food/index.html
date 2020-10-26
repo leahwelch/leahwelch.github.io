@@ -45,11 +45,13 @@
               top: 0px;
               visibility: hidden;
               font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-              font-size: 16pt;
-              background-color:rgba(255,255,255,0.8);
-              padding: 2px;
+              font-size: 10pt;
+              background-color:#fcfcfa;
+              padding: 8px;
               pointer-events: none;
-              max-width: 200px;
+              max-width: 140px;
+              border-radius: 5px;
+              box-shadow: 2px 2px 5px #aaaaaa;
           }
       </style>
     </head>
@@ -61,7 +63,7 @@
           <p>Sed tempus enim pretium venenatis malesuada. Pellentesque eget felis semper, feugiat magna id, accumsan leo. Morbi aliquam diam at neque posuere placerat. Maecenas arcu enim, imperdiet in aliquam vitae, blandit nec leo. Donec blandit egestas magna, interdum molestie leo pellentesque ut. Cras efficitur at libero eget congue. Aenean in felis id elit sodales placerat et eget magna. Mauris mattis quis dolor non semper. Cras eget enim varius, iaculis velit quis, finibus sapien. Duis et tempus libero. Praesent quis suscipit ante. Fusce id elit porttitor, ultricies massa quis, tempor nunc.</p>
           <p>Cras vel odio mauris. Sed placerat pharetra risus, quis cursus metus aliquam ac. Aenean porta enim est. In rhoncus nec magna sed dignissim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac semper erat. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
         </div>
-        <iframe src="https://embed.kumu.io/117d4bff60d7ce95696c343eeb84b150" class = "kumuMap" frameborder="0"></iframe>
+        <iframe src="https://embed.kumu.io/fcba0658682c43694f7bdc7c3c524787" class = "kumuMap" frameborder="0"></iframe>
         <div id="chart"></div>
         <script>
 
@@ -76,7 +78,8 @@
 var nodes = [
     {
       "id": "Consumers' Risk of Obesity",
-      "category": "Consumer Impacts"
+      "category": "Consumer Impacts",
+      "filterId": 1
     },
     {
       "id": "Nutritional Value of Food",
@@ -84,7 +87,8 @@ var nodes = [
     },
     {
       "id": "Convenient Availability of Fresh Food",
-      "category": "Consumer Impacts"
+      "category": "Consumer Impacts",
+      "filterId": 1
     },
     {
       "id": "Taste of Food",
@@ -92,23 +96,28 @@ var nodes = [
     },
     {
       "id": "Cost of Fresh Food",
-      "category": "Consumer Impacts"
+      "category": "Consumer Impacts",
+      "filterId": 1
     },
     {
       "id": "Convenient Availability of Processed Food",
-      "category": "Consumer Impacts"
+      "category": "Consumer Impacts",
+      "filterId": 1
     },
     {
       "id": "Cost of Processed Food",
-      "category": "Consumer Impacts"
+      "category": "Consumer Impacts",
+      "filterId": 1
     },
     {
       "id": "Percentage of Population Facing Food Insecurity",
-      "category": "Consumer Impacts"
+      "category": "Consumer Impacts",
+      "filterId": 1
     },
     {
       "id": "Likelihood of Developing a Preference for Processed Food",
-      "category": "Consumer Impacts"
+      "category": "Consumer Impacts",
+      "filterId": 1
     },
     {
       "id": "Knowledge of Efficient Water Use",
@@ -212,7 +221,8 @@ var nodes = [
     },
     {
       "id": "Investment in the Development of Grocery Stores in Low-Income Communities",
-      "category": "Policy Examples"
+      "category": "Policy Examples",
+      "filterId": 1
     },
     {
       "id": "Investment in Blockchain Monitoring",
@@ -265,6 +275,16 @@ var nodes = [
     {
       "id": "Disparity Between Peak Ripeness & Actual Harvest Time",
       "category": "Smallholder Impacts"
+    }, 
+    {
+      "id": "Development of School Nutrition Programs",
+      "category": "Policy Examples",
+      "filterId": 1
+    },
+    {
+      "id": "Consumer Healthcare Costs",
+      "category": "Consumer Impacts",
+      "filterId": 1
     }
    ];
 
@@ -331,24 +351,41 @@ var links = [
     {source: "Amount of Pollutants in the Air", target: "Demand for Biofuel"},
     {source: "Demand for Biofuel", target: "Land Acquisition Policies"},
     {source: "Nutritional Value of Food", target: "Consumers' Risk of Obesity"},
-    {source: "Likelihood of Developing a Preference for Processed Food", target: "Consumers' Risk of Obesity"},
-    {source: "Convenient Availability of Fresh Food", target: "Consumers' Risk of Obesity"},
-    {source: "Convenient Availability of Processed Food", target: "Consumers' Risk of Obesity"},
-    {source: "Convenient Availability of Fresh Food", target: "Likelihood of Developing a Preference for Processed Food"},
-    {source: "Convenient Availability of Processed Food", target: "Likelihood of Developing a Preference for Processed Food"},
-    {source: "Cost of Fresh Food", target: "Likelihood of Developing a Preference for Processed Food"},
-    {source: "Cost of Processed Food", target: "Likelihood of Developing a Preference for Processed Food"},
-    {source: "Convenient Availability of Fresh Food", target: "Percentage of Population Facing Food Insecurity"},
-    {source: "Investment in the Development of Grocery Stores in Low-Income Communities", target: "Convenient Availability of Fresh Food"},
-    {source: "Convenient Availability of Processed Food", target: "Percentage of Population Facing Food Insecurity"},
-    {source: "Investment in the Development of Grocery Stores in Low-Income Communities", target: "Convenient Availability of Processed Food"},
+    {source: "Likelihood of Developing a Preference for Processed Food", target: "Consumers' Risk of Obesity", "filterId": 1},
+    {source: "Convenient Availability of Fresh Food", target: "Consumers' Risk of Obesity", "filterId": 1},
+    {source: "Convenient Availability of Processed Food", target: "Consumers' Risk of Obesity", "filterId": 1},
+    {source: "Convenient Availability of Fresh Food", target: "Likelihood of Developing a Preference for Processed Food", "filterId": 1},
+    {source: "Convenient Availability of Processed Food", target: "Likelihood of Developing a Preference for Processed Food", "filterId": 1},
+    {source: "Cost of Fresh Food", target: "Likelihood of Developing a Preference for Processed Food", "filterId": 1},
+    {source: "Cost of Processed Food", target: "Likelihood of Developing a Preference for Processed Food", "filterId": 1},
+    {source: "Convenient Availability of Fresh Food", target: "Percentage of Population Facing Food Insecurity", "filterId": 1},
+    {source: "Investment in the Development of Grocery Stores in Low-Income Communities", target: "Convenient Availability of Fresh Food", "filterId": 1},
+    {source: "Convenient Availability of Processed Food", target: "Percentage of Population Facing Food Insecurity", "filterId": 1},
+    {source: "Investment in the Development of Grocery Stores in Low-Income Communities", target: "Convenient Availability of Processed Food", "filterId": 1},
     {source: "Federal Agricultural Subsidies", target: "Convenient Availability of Processed Food"},
-    {source: "Cost of Fresh Food", target: "Percentage of Population Facing Food Insecurity"},
-    {source: "Cost of Processed Food", target: "Percentage of Population Facing Food Insecurity"},
+    {source: "Cost of Fresh Food", target: "Percentage of Population Facing Food Insecurity", "filterId": 1},
+    {source: "Cost of Processed Food", target: "Percentage of Population Facing Food Insecurity", "filterId": 1},
     {source: "Federal Agricultural Subsidies", target: "Cost of Processed Food"},
-    
+    {source: "Development of School Nutrition Programs", target: "Likelihood of Developing a Preference for Processed Food", "filterId": 1},
+    {source: "Development of School Nutrition Programs", target: "Convenient Availability of Fresh Food", "filterId": 1},
+    {source: "Development of School Nutrition Programs", target: "Percentage of Population Facing Food Insecurity", "filterId": 1},
+    {source: "Consumers' Risk of Obesity", target: "Consumer Healthcare Costs", "filterId": 1}
    
 ];
+            /* FILTER DATA */
+
+            var obesityN = nodes.filter(function(d) {
+                return d.filterId === 1;
+            });
+
+            //console.log(obesity);
+
+            var obesityL = links.filter(function(d) {
+                return d.filterId === 1;
+            });
+
+            console.log(obesityL);
+
 
             /*
             INITIALIZE FORCE SIMULATION
@@ -358,19 +395,33 @@ var links = [
 
             */
 
-            var simulation = d3.forceSimulation(nodes)
-                .force("link", d3.forceLink(links).id(function(d) { return d.id; }).distance(50).strength(1))
-                .force("charge", d3.forceManyBody().strength(-100))
+            // var simulation = d3.forceSimulation(nodes)
+            //     .force("link", d3.forceLink(links).id(function(d) { return d.id; }).distance(30).strength(1))
+            //     .force("charge", d3.forceManyBody().strength(-300))
+            //     .force("center", d3.forceCenter(width/2, height/2))
+            //     .force("collide", d3.forceCollide().radius(25));
+
+            var simulation = d3.forceSimulation(obesityN)
+                .force("link", d3.forceLink(obesityL).id(function(d) { return d.id; }).distance(50).strength(1))
+                .force("charge", d3.forceManyBody().strength(-400))
                 .force("center", d3.forceCenter(width/2, height/2))
-                .force("collide", d3.forceCollide().radius(25));
+                .force("collide", d3.forceCollide().radius(50));
 
 
 
             /* DRAW THE LINES FOR LINKS */
 
+            // var link = svg.append("g")
+            //     .selectAll("line")
+            //     .data(links)
+            //     .enter()
+            //     .append("line")
+            //         .attr("stroke", "#666666")
+            //         .attr("stroke-width", 2);
+
             var link = svg.append("g")
                 .selectAll("line")
-                .data(links)
+                .data(obesityL)
                 .enter()
                 .append("line")
                     .attr("stroke", "#666666")
@@ -385,9 +436,31 @@ var links = [
 
             */
 
+            // var node = svg.append("g")
+            //     .selectAll("circle")
+            //     .data(nodes)
+            //     .enter()
+            //     .append("circle")
+            //         .attr("stroke", "#ffffff")
+            //         .attr("stroke-width", 1)
+            //         .attr("r", 15)
+            //         .attr("fill", function(d) {
+            //             if(d.category === "Consumer Impacts") {
+            //                 return "#93560d";
+            //             } else if(d.category === "Environmental Impacts") {
+            //                 return "#487bba";
+            //             } else if(d.category === "Food Industry") {
+            //                 return "#d93e4a";
+            //             } else if(d.category === "Smallholder Impacts") {
+            //                 return "#046e66";
+            //             } else if(d.category === "Policy Examples") {
+            //                 return "#3f007d";
+            //             } 
+            //         });
+
             var node = svg.append("g")
                 .selectAll("circle")
-                .data(nodes)
+                .data(obesityN)
                 .enter()
                 .append("circle")
                     .attr("stroke", "#ffffff")
@@ -397,11 +470,11 @@ var links = [
                         if(d.category === "Consumer Impacts") {
                             return "#93560d";
                         } else if(d.category === "Environmental Impacts") {
-                            return "#046e66";
+                            return "#487bba";
                         } else if(d.category === "Food Industry") {
                             return "#d93e4a";
                         } else if(d.category === "Smallholder Impacts") {
-                            return "#fd9e43";
+                            return "#046e66";
                         } else if(d.category === "Policy Examples") {
                             return "#3f007d";
                         } 
@@ -429,8 +502,8 @@ var links = [
 
             });
 
-            console.log(nodes);
-            console.log(links);
+            // console.log(nodes);
+            // console.log(links);
 
             var tooltip = d3.select("#chart")
                 .append("div")
@@ -441,8 +514,8 @@ var links = [
                 var cy = d.y - 10;
 
                 tooltip.style("visibility", "visible")
-                    .style("left", cx + "px")
-                    .style("top", cy + "px")
+                    .style("left", cx  + "px")
+                    .style("top", cy  + "px")
                     .text(d.id);
 
                 node.attr("opacity",0.2);
