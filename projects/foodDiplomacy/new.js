@@ -31,6 +31,11 @@ var svg = d3.select("#graph")
             .remove();
         }
 
+    var tooltip = d3.select("#graph")
+            .append("div")
+            .attr("class", "tooltip")
+            .style("visibility", "hidden");
+
 
     function sec_1() {
         canvas_clear();
@@ -82,20 +87,9 @@ var svg = d3.select("#graph")
                 .attr("cy", function(d) { return d.y; });
 
         });
-
-        var tooltip = d3.select("#graph")
-                .append("div")
-                .attr("class", "tooltip");
             
-            node.on("mouseover", function(d) {
-                var cx = d.x + 20;
-                var cy = d.y - 10;
-
-                tooltip.style("visibility", "visible")
-                    .style("left", cx  + "px")
-                    .style("top", cy  + "px")
-                    .text(d.id);
-
+            node.on("mouseover, mousemove", function(d) {
+                
                 node.attr("opacity",0.2);
                 link.attr("opacity",0.2);
 
@@ -109,6 +103,14 @@ var svg = d3.select("#graph")
                     node.filter(function(f) {
                         return f.id === e.source.id || f.id === e.target.id;
                     }).attr("opacity",1);
+                
+                var cx = d.x + 20;
+                var cy = d.y - 10;
+
+                tooltip.style("visibility", "visible")
+                    .style("left", cx  + "px")
+                    .style("top", cy  + "px")
+                    .text(d.id);
         });
             }).on("mouseout", function() {
                 tooltip.style("visibility", "hidden");
@@ -177,12 +179,8 @@ var svg = d3.select("#graph")
                 .attr("cy", function(d) { return d.y; });
 
         });
-
-        var tooltip = d3.select("#graph")
-                .append("div")
-                .attr("class", "tooltip");
             
-            node.on("mouseover", function(d) {
+            node.on("mouseover, mousemove", function(d) {
                 var cx = d.x + 20;
                 var cy = d.y - 10;
 
@@ -269,12 +267,8 @@ var svg = d3.select("#graph")
                 .attr("cy", function(d) { return d.y; });
 
         });
-
-        var tooltip = d3.select("#graph")
-                .append("div")
-                .attr("class", "tooltip");
             
-            node.on("mouseover", function(d) {
+            node.on("mouseover, mousemove", function(d) {
                 var cx = d.x + 20;
                 var cy = d.y - 10;
 
@@ -362,12 +356,8 @@ var svg = d3.select("#graph")
                 .attr("cy", function(d) { return d.y; });
 
         });
-
-        var tooltip = d3.select("#graph")
-                .append("div")
-                .attr("class", "tooltip");
             
-            node.on("mouseover", function(d) {
+            node.on("mouseover, mousemove", function(d) {
                 var cx = d.x + 20;
                 var cy = d.y - 10;
 
