@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>#goals</title>
+	  
+	<link rel="stylesheet" type="text/css" href="https://cloud.typography.com/7124072/6351572/css/fonts.css" />
+
+	<link rel='stylesheet' href='css/style.css' />
+    <link rel='stylesheet' href='graphic.css' />
+	<script src='lib/d3.min.js'></script>
+	<script src="https://unpkg.com/d3"></script>
+	<script src="https://unpkg.com/d3fc"></script>
+
+</head>
+<body>
+	<section class="intro">
+		<h1>Food Diplomacy</h1>
+		<h2>Implications of Current Policies on Consumers & Farmers</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer hendrerit purus non lacus pellentesque, ac placerat odio iaculis. Cras sem augue, ultrices id auctor eget, euismod non magna. Pellentesque ligula nunc, sollicitudin eget purus quis, porttitor aliquam justo. Praesent porttitor odio nunc, et molestie turpis venenatis eu. Cras justo mi, condimentum at neque et, tincidunt lobortis dui. Vestibulum elementum elementum nisl, eget iaculis ante rutrum sed. Praesent egestas in felis sit amet varius. Nulla laoreet tortor sit amet purus aliquam euismod. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin at elit quis nisi imperdiet scelerisque in non risus. Quisque quis nulla vitae sem sodales venenatis eget in leo. Donec tempor bibendum urna id consectetur. Aliquam lacinia, ipsum quis egestas eleifend, arcu lacus tempus felis, ac placerat velit sem sed sapien. Integer ut convallis ante, eu vehicula sem. Ut eget eleifend diam. In hac habitasse platea dictumst.</p>
+		<p>Sed tempus enim pretium venenatis malesuada. Pellentesque eget felis semper, feugiat magna id, accumsan leo. Morbi aliquam diam at neque posuere placerat. Maecenas arcu enim, imperdiet in aliquam vitae, blandit nec leo. Donec blandit egestas magna, interdum molestie leo pellentesque ut. Cras efficitur at libero eget congue. Aenean in felis id elit sodales placerat et eget magna. Mauris mattis quis dolor non semper. Cras eget enim varius, iaculis velit quis, finibus sapien. Duis et tempus libero. Praesent quis suscipit ante. Fusce id elit porttitor, ultricies massa quis, tempor nunc.</p>
+		<p>Cras vel odio mauris. Sed placerat pharetra risus, quis cursus metus aliquam ac. Aenean porta enim est. In rhoncus nec magna sed dignissim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac semper erat. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+	</section>
+	<main>
+
+		<div class='library'>
+			
+			<div class='library__graphic graphic'>
+				<div class='graphic__vis'></div>
+				<div class='graphic__prose'>
+					<p class='trigger' data-step='0'>We reimagined this map as a force layout diagram, an abstract vision of the complexity of the food system.<br><br>From here, we can examine 3 themes that have emerged from our mapping: Acquired Taste & Consumer Health, Food Loss Prevention, and Farm Subsidies</p>
+					<p class='trigger' data-step='1'>The current food system in America has created a health apartheid driven by racial and class disparities.</p>
+				</div>
+				
+				
+			</div>
+		</div>
+
+		
+	</main>
+	
+
+	<!-- for the graphic -->
+	
+    <!-- <script src='graphic.js'></script> -->
+	<!-- <script src='script.js'></script> -->
+	<!-- <script src='test.js'></script> -->
+	<script src='new.js'></script>
+	<!-- <script src='basic.js'></script> -->
+
+	<!-- The scroll library -->
+	<!-- http://imakewebthings.com/waypoints/ -->
+	<script src='lib/noframework.waypoints.min.js'></script>
+	
+	
+	<script>
+		(function() {
+
+			// helper function so we can map over dom selection
+			function selectionToArray(selection) {
+				var len = selection.length
+				var result = []
+				for (var i = 0; i < len; i++) {
+					result.push(selection[i])
+				}
+				return result
+			}
+
+			function waypoints() {
+				// select elements
+				var graphicEl = document.querySelector('.graphic')
+				var graphicVisEl = graphicEl.querySelector('.graphic__vis')
+				var triggerEls = selectionToArray(graphicEl.querySelectorAll('.trigger'))
+
+				// viewport height
+				var viewportHeight = window.innerHeight
+				var halfViewportHeight = Math.floor(viewportHeight / 2)
+
+				// a global function creates and handles all the vis + updates
+				var graphic = createGraphic('.graphic')
+
+				// handle the fixed/static position of grahpic
+				var toggle = function(fixed, bottom) {
+					if (fixed) graphicVisEl.classList.add('is-fixed')
+					else graphicVisEl.classList.remove('is-fixed')
+
+					if (bottom) graphicVisEl.classList.add('is-bottom')
+					else graphicVisEl.classList.remove('is-bottom')
+				}
+				
+				// setup a waypoint trigger for each trigger element
+				var waypoints = triggerEls.map(function(el) {
+					
+					// get the step, cast as number					
+					var step = +el.getAttribute('data-step')
+
+					return new Waypoint({
+						element: el, // our trigger element
+						handler: function(direction) {
+							// if the direction is down then we use that number,
+							// else, we want to trigger the previous one
+							var nextStep = direction === 'down' ? step : Math.max(0, step - 1)
+							
+							// tell our graphic to update with a specific step
+							graphic.update(nextStep)
+						},
+						offset: '50%',  // trigger halfway up the viewport
+					})
+				})
+
+				// enter (top) / exit (bottom) graphic (toggle fixed position)
+				var enterWaypoint = new Waypoint({
+					element: graphicEl,
+					handler: function(direction) {
+						var fixed = direction === 'down'
+						var bottom = false
+						toggle(fixed, bottom)
+					},
+				})
+
+				var exitWaypoint = new Waypoint({
+					element: graphicEl,
+					handler: function(direction) {
+						var fixed = direction === 'up'
+						var bottom = !fixed
+						toggle(fixed, bottom)
+					},
+					offset: 'bottom-in-view', // waypoints convenience instead of a calculation
+				})
+			}
+
+			waypoints()
+
+		})()
+	</script>
+
+</body>
+</html>

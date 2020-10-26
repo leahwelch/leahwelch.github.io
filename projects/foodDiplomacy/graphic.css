@@ -1,0 +1,120 @@
+/* GRAPHIC CODE */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Volkhov&display=swap');
+
+.graphic {
+	width: 100%;
+	position: relative;
+}
+
+.graphic__prose {
+	/* width: 70rem; */
+	margin-right: 70%;
+	padding-top: 5%;
+	padding-left: 5%;
+	padding-right: 10%;
+	font-family: 'Montserrat', sans-serif;
+	color: #333333;
+	font-weight: 600;
+	font-size: 14pt;
+}
+
+.graphic__prose .trigger {
+	padding: 0;
+	margin: 0;
+	min-height: 100vh;
+	
+}
+
+.graphic__vis {
+	position: absolute;
+	top: 0;
+	/* margin-left: 10rem;
+	margin-right: 10rem; */
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	height: 100vh;
+	width: 100%; 
+}
+
+.graphic__vis.is-fixed {
+	position: fixed;
+}
+
+.graphic__vis.is-bottom {
+	top: auto;
+	bottom: 0;
+}
+
+.graphic__vis svg {
+	/* border: 1px dashed black; */
+	top: 50%;
+	position: relative;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	transform: translateY(-50%);
+
+}
+
+/* .item circle {
+	stroke: #666;
+	stroke-width: 1px;
+	fill: #fff;
+} */
+
+/* .item circle {
+	opacity: 0.3;
+}
+
+.item text {
+	fill: #666;
+	font-size: 12px;
+	text-anchor: middle;
+} */
+
+
+.axisLabel {
+	font-family: 'Nunito', sans-serif;
+	font-size: 16pt;
+	font-weight: lighter;
+  }
+
+  /* .newTopLabels {
+	font-family: 'Nunito', sans-serif;
+	font-size: 15pt;
+	font-weight: lighter;
+  } */
+  
+  .axis {
+	font-family: 'Nunito', sans-serif;
+	font-size: 14pt;
+  }
+  
+  .axis line {
+	stroke: #443730;
+	opacity: 0.2;
+  }
+  
+  .axis path {
+	visibility: hidden;
+  }
+  
+  .sideLabels {
+	font-family: 'Nunito', sans-serif;
+	font-size: 12pt;
+	font-weight: bolder;
+	color: #1F1F89;
+  }
+
+/* graph-scroll.js version */
+.graphic__vis.graph-scroll-fixed {
+	position: fixed;
+	right: auto;
+}
+
+.graphic__vis.graph-scroll-below {
+	top: auto;
+	bottom: 0;
+}

@@ -1,0 +1,212 @@
+[
+{
+    "id": "Consumers' Risk of Obesity",
+    "category": "Consumer Impacts",
+    "filterId": 1
+  },
+  {
+    "id": "Nutritional Value of Food",
+    "category": "Consumer Impacts"
+  },
+  {
+    "id": "Convenient Availability of Fresh Food",
+    "category": "Consumer Impacts",
+    "filterId": 1
+  },
+  {
+    "id": "Taste of Food",
+    "category": "Consumer Impacts"
+  },
+  {
+    "id": "Cost of Fresh Food",
+    "category": "Consumer Impacts",
+    "filterId": 1
+  },
+  {
+    "id": "Convenient Availability of Processed Food",
+    "category": "Consumer Impacts",
+    "filterId": 1
+  },
+  {
+    "id": "Cost of Processed Food",
+    "category": "Consumer Impacts",
+    "filterId": 1
+  },
+  {
+    "id": "Percentage of Population Facing Food Insecurity",
+    "category": "Consumer Impacts",
+    "filterId": 1
+  },
+  {
+    "id": "Likelihood of Developing a Preference for Processed Food",
+    "category": "Consumer Impacts",
+    "filterId": 1
+  },
+  {
+    "id": "Knowledge of Efficient Water Use",
+    "category": "Environmental Impacts"
+  },
+  {
+    "id": "Resource Competition",
+    "category": "Environmental Impacts"
+  },
+  {
+    "id": "Demand for Biofuel",
+    "category": "Environmental Impacts"
+  },
+  {
+    "id": "Amount of Pollutants in the Air",
+    "category": "Environmental Impacts"
+  },
+  {
+    "id": "Soil Quality",
+    "category": "Environmental Impacts"
+  },
+  {
+    "id": "Use of Synthetic Fertilizers",
+    "category": "Environmental Impacts"
+  },
+  {
+    "id": "Ground Water Levels",
+    "category": "Environmental Impacts"
+  },
+  {
+    "id": "Soil Dependence on Fertilizers",
+    "category": "Environmental Impacts"
+  },
+  {
+    "id": "Available Land",
+    "category": "Environmental Impacts"
+  },
+  {
+    "id": "Rural Water Scarcity",
+    "category": "Environmental Impacts"
+  },
+  {
+    "id": "Degree of Desertification",
+    "category": "Environmental Impacts"
+  },
+  {
+    "id": "Displacement & Climate Migration",
+    "category": "Environmental Impacts"
+  },
+  {
+    "id": "Vulnerability to Climate Shock",
+    "category": "Environmental Impacts"
+  },
+  {
+    "id": "Percentage of Earth Covered in Forests",
+    "category": "Environmental Impacts"
+  },
+  {
+    "id": "Fossil Fuel Consumption",
+    "category": "Environmental Impacts"
+  },
+  {
+    "id": "Degree of Acidification",
+    "category": "Environmental Impacts"
+  },
+  {
+    "id": "Length of Supply Chain",
+    "category": "Food Industry"
+  },
+  {
+    "id": "Quantity of Buyers",
+    "category": "Food Industry"
+  },
+  {
+    "id": "Demand for Efficient Land Use",
+    "category": "Food Industry"
+  },
+  {
+    "id": "Degree of Produce Standardization",
+    "category": "Food Industry"
+  },
+  {
+    "id": "Length of Shelf Life",
+    "category": "Food Industry"
+  },
+  {
+    "id": "Amount of Data About Production Levels",
+    "category": "Food Industry"
+  },
+  {
+    "id": "Size of Crop Yields",
+    "category": "Food Industry"
+  },
+  {
+    "id": "Speed of Crop Turnover",
+    "category": "Food Industry"
+  },
+  {
+    "id": "Amount of Data About Market Demands",
+    "category": "Food Industry"
+  },
+  {
+    "id": "Investment in the Development of Grocery Stores in Low-Income Communities",
+    "category": "Policy Examples",
+    "filterId": 1
+  },
+  {
+    "id": "Investment in Blockchain Monitoring",
+    "category": "Policy Examples"
+  },
+  {
+    "id": "Investment in Cold Chain Infrastructure",
+    "category": "Policy Examples"
+  },
+  {
+    "id": "Land Acquisition Policies",
+    "category": "Policy Examples"
+  },
+  {
+    "id": "Investment in Ugly Produce Initiatives",
+    "category": "Policy Examples"
+  },
+  {
+    "id": "Federal Agricultural Subsidies",
+    "category": "Policy Examples"
+  },
+  {
+    "id": "Ability of Smallholders' Production to Meet Industry Standards",
+    "category": "Smallholder Impacts"
+  },
+  {
+    "id": "Amount of Capital Needed to Implement Measures",
+    "category": "Smallholder Impacts"
+  },
+  {
+    "id": "Smallholder Farmers' Risk of Poverty",
+    "category": "Smallholder Impacts"
+  },
+  {
+    "id": "Overproduction",
+    "category": "Smallholder Impacts"
+  },
+  {
+    "id": "Degree of Connection Between Producer & Consumer",
+    "category": "Smallholder Impacts"
+  },
+  {
+    "id": "Postharvest Losses",
+    "category": "Smallholder Impacts"
+  },
+  {
+    "id": "Crop Variety",
+    "category": "Smallholder Impacts"
+  },
+  {
+    "id": "Disparity Between Peak Ripeness & Actual Harvest Time",
+    "category": "Smallholder Impacts"
+  }, 
+  {
+    "id": "Development of School Nutrition Programs",
+    "category": "Policy Examples",
+    "filterId": 1
+  },
+  {
+    "id": "Consumer Healthcare Costs",
+    "category": "Consumer Impacts",
+    "filterId": 1
+  }
+]
