@@ -92,7 +92,8 @@
   },
   {
     "id": "Vulnerability to Climate Shock",
-    "category": "Environmental Impacts"
+    "category": "Environmental Impacts",
+    "filterId": 2
   },
   {
     "id": "Percentage of Earth Covered in Forests",
@@ -128,7 +129,8 @@
   },
   {
     "id": "Amount of Data About Production Levels",
-    "category": "Food Industry"
+    "category": "Food Industry",
+    "filterId": 2
   },
   {
     "id": "Size of Crop Yields",
@@ -140,7 +142,8 @@
   },
   {
     "id": "Amount of Data About Market Demands",
-    "category": "Food Industry"
+    "category": "Food Industry",
+    "filterId": 2
   },
   {
     "id": "Investment in the Development of Grocery Stores in Low-Income Communities",
@@ -149,11 +152,13 @@
   },
   {
     "id": "Investment in Blockchain Monitoring",
-    "category": "Policy Examples"
+    "category": "Policy Examples",
+    "filterId": 2
   },
   {
     "id": "Investment in Cold Chain Infrastructure",
-    "category": "Policy Examples"
+    "category": "Policy Examples",
+    "filterId": 2
   },
   {
     "id": "Land Acquisition Policies",
@@ -161,7 +166,8 @@
   },
   {
     "id": "Investment in Ugly Produce Initiatives",
-    "category": "Policy Examples"
+    "category": "Policy Examples",
+    "filterId": 2
   },
   {
     "id": "Federal Agricultural Subsidies",
@@ -177,11 +183,13 @@
   },
   {
     "id": "Smallholder Farmers' Risk of Poverty",
-    "category": "Smallholder Impacts"
+    "category": "Smallholder Impacts",
+    "filterId": 2
   },
   {
     "id": "Overproduction",
-    "category": "Smallholder Impacts"
+    "category": "Smallholder Impacts",
+    "filterId": 2
   },
   {
     "id": "Degree of Connection Between Producer & Consumer",
@@ -189,7 +197,8 @@
   },
   {
     "id": "Postharvest Losses",
-    "category": "Smallholder Impacts"
+    "category": "Smallholder Impacts",
+    "filterId": 2
   },
   {
     "id": "Crop Variety",
