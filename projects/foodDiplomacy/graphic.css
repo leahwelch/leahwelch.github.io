@@ -3,13 +3,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Volkhov&display=swap');
 
-.graphic {
+/* GRAPHIC CODE */
+
+/* #container{
 	width: 100%;
 	position: relative;
-}
+  }
 
-.graphic__prose {
-	/* width: 70rem; */
+#sections{
+	width: auto;
+	margin: 0px auto;
+	font-size: 20px;
+	padding-bottom: 25vh;
+  }
+  
+  
+  #sections > div{
+
 	margin-right: 70%;
 	padding-top: 5%;
 	padding-left: 5%;
@@ -18,103 +28,115 @@
 	color: #333333;
 	font-weight: 600;
 	font-size: 14pt;
-}
+	margin-bottom: 90vh;
+  
+  
+  }
+  
+  #sections > div:last-child{
+	margin-bottom: 50px;
+  } */
+  
+  
+  /* #graph{
+	width: 70%;
+	height: 90vh;
+	position: -webkit-sticky;
+	position: sticky;
+	top:20px;
+	float: none;
+	transform: translate(-50%, 0);
+	margin-left: 50%;
+	top: 0px;
+	border: 3px solid red;
+  } */
 
-.graphic__prose .trigger {
-	padding: 0;
-	margin: 0;
-	min-height: 100vh;
-	
-}
-
-.graphic__vis {
+  /* #graph{
 	position: absolute;
 	top: 0;
-	/* margin-left: 10rem;
-	margin-right: 10rem; */
+	margin-left: 30rem;
 	-webkit-transform: translate3d(0, 0, 0);
 	-moz-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0);
-	height: 100vh;
-	width: 100%; 
-}
+	width: 70%;
+	height: 90vh;
+  }
 
-.graphic__vis.is-fixed {
-	position: fixed;
-}
-
-.graphic__vis.is-bottom {
-	top: auto;
-	bottom: 0;
-}
-
-.graphic__vis svg {
-	/* border: 1px dashed black; */
+  #graph svg {
+	border: 1px dashed black;
 	top: 50%;
 	position: relative;
 	-webkit-transform: translateY(-50%);
 	-moz-transform: translateY(-50%);
 	transform: translateY(-50%);
-
-}
-
-/* .item circle {
-	stroke: #666;
-	stroke-width: 1px;
-	fill: #fff;
-} */
-
-/* .item circle {
-	opacity: 0.3;
-}
-
-.item text {
-	fill: #666;
-	font-size: 12px;
-	text-anchor: middle;
-} */
-
-
-.axisLabel {
-	font-family: 'Nunito', sans-serif;
-	font-size: 16pt;
-	font-weight: lighter;
-  }
-
-  /* .newTopLabels {
-	font-family: 'Nunito', sans-serif;
-	font-size: 15pt;
-	font-weight: lighter;
   } */
+  #container{
+	position: relative;
+  }
   
-  .axis {
-	font-family: 'Nunito', sans-serif;
+  #sections{
+	/* // width: 340px; */
+	width: auto;
+	position: relative;
+	margin: 0px auto;
+	font-family: 'Montserrat', sans-serif;
+	color: #333333;
+	font-weight: 600;
 	font-size: 14pt;
+	/* top: 0px; */
+	padding-bottom: 25vh;
   }
   
-  .axis line {
-	stroke: #443730;
-	opacity: 0.2;
+  
+  #sections > div{
+	
+	margin-right: 70%;
+	padding-top: 5%;
+	padding-left: 5%;
+	padding-right: 10%;
+	margin-bottom: 50%; 
+  
+  
   }
   
-  .axis path {
+  #sections > div:last-child{
+	margin-bottom: 50px;
+  }
+  
+  
+  #graph{
+	/* margin-left: 40px; */
+	/* width: 500px; */
+	width: 100%;
+	height: 90vh;
+	position: -webkit-sticky;
+	position: sticky;
+	top:20px;
+	margin-left: 0px;
+	transform: translate(-50%, 0);
+	margin-left: 50%;
+	position: sticky;
+	top: 0px;
+	/* float: right;  */
+	/* border: 3px solid red; */
+  }
+
+  pre{
+	overflow: hidden;
+  }
+
+  .tooltip {
+	position: absolute;
+	left: 0px;
+	top: 0px;
 	visibility: hidden;
-  }
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 10pt;
+	background-color:#fcfcfa;
+	padding: 8px;
+	pointer-events: none;
+	max-width: 140px;
+	border-radius: 5px;
+	box-shadow: 2px 2px 5px #aaaaaa;
+}
   
-  .sideLabels {
-	font-family: 'Nunito', sans-serif;
-	font-size: 12pt;
-	font-weight: bolder;
-	color: #1F1F89;
-  }
-
-/* graph-scroll.js version */
-.graphic__vis.graph-scroll-fixed {
-	position: fixed;
-	right: auto;
-}
-
-.graphic__vis.graph-scroll-below {
-	top: auto;
-	bottom: 0;
-}
