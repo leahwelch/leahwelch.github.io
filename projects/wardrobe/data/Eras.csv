@@ -1,13 +1,13 @@
-Era,Era_Start,Era_End
-"Winnetka, IL",,"2006, 9"
-NYU,"2006, 9","2007, 05"
-"Freshman Year, Middlebury College","2007, 5","2008, 09"
-"Sophomore Year, Middlebury College","2008, 9","2009, 8"
-"Study Abroad, London","2009, 8","2010, 6"
-"Senior Year, Middlebury College","2010, 6","2011, 6"
-Los Angeles,"2011, 6","2014, 6"
-"Moved in with Steven, Nottingham","2014, 6","2014, 9"
-"Hangzhou, China","2014, 9","2016, 8"
-"The Orme School, Mayer, AZ","2016, 8","2019, 6"
-"Roslindale, MA","2019, 6","2020, 6"
-"Lawrence, MA","2020, 6","2020, 10"
+era,start,end
+"Winnetka, IL",1,3
+NYU,3,7
+"Freshman Year, Middlebury College",7,11
+"Sophomore Year, Middlebury College",11,15
+"Study Abroad, London",15,19
+"Senior Year, Middlebury College",19,23
+Los Angeles,23,34
+"Moved in with Steven, Nottingham",34,35
+"Hangzhou, China",35,43
+"The Orme School, Mayer, AZ",43,55
+"Roslindale, MA",55,59
+"Lawrence, MA",59,60

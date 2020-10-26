@@ -90,7 +90,7 @@ window.createGraphic = function(graphicSelector) {
                     .attr("class", "sideLabels")
                     .attr("transform", function(d){ return( "translate(30,0)")})
                     .style("text-anchor", "middle")
-                    .style("opacity", 1);;
+                    .style("opacity", 1);
 
                 var sdgLabels = svg.selectAll(".mylabels").data(uniqueArray) 
                 var labelEnter = sdgLabels.enter().append("text")

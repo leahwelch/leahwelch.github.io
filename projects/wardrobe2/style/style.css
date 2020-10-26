@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
 
 * {
     box-sizing: border-box;
@@ -23,7 +24,7 @@ body {
 
 .grid-container > #timeline {
     grid-area: timeline;
-    height: 90vh;
+    height: 200vh;
     margin: 30px;
 }
 
@@ -31,6 +32,9 @@ body {
     grid-area: chart;
     height: 90vh;
     margin: 30px 45px 30px 45px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 10%;
 }
 
 .axis line {
@@ -39,4 +43,29 @@ body {
   
 .axis path {
     visibility: hidden;
+}
+
+.timeline_flag {
+    display: block;
+    position: absolute;
+    width: 8px;
+    border: 2px solid #3d332a;
+    text-align: left;
+    background-color: #f9ede1;
+    border-radius: 4px;
+}
+
+.timeline_flag > .timeline_date {
+    color: #3d332a;
+    font-size: 9pt;
+    font-weight: bolder;
+    transform: translate(20px,-5px);
+}
+
+.timeline_flag > .timeline_loc {
+    color: #3d332a;
+    font-family: 'Noto Serif', serif;
+    font-size: 9pt;
+    transform: translate(20px,-7px);
+    width: 200px;
 }

@@ -55,7 +55,7 @@ Promise.all(promises).then(function(wardrobedata) {
 
     var widthT = document.querySelector("#timeline").clientWidth;
     var heightT = document.querySelector("#timeline").clientHeight;
-    var marginT = {top: 0, left: 0, right: 0, bottom: 0};
+    var marginT = {top: 0, left: 10, right: 0, bottom: 0};
     
     var svgT = d3.select("#timeline")
         .append("svg")
@@ -76,12 +76,12 @@ Promise.all(promises).then(function(wardrobedata) {
         .range([0, heightT]);
 
     var yAxisGenerator = d3.axisRight(yScaleT)
-        .tickSize(-20)
+        .tickSize(-14)
         .ticks(60);
 
     var yAxis = svgT.append("g")
         .attr("class","axis")
-        .attr("transform", `translate(${widthT/2+10},0)`)
+        .attr("transform", `translate(${marginT.left + 7},0)`)
         .call(yAxisGenerator);
 
     yAxis.selectAll(".tick text")
@@ -89,8 +89,8 @@ Promise.all(promises).then(function(wardrobedata) {
         .style("visibility", "hidden");
 
     var lineT = svgT.append("line")
-        .attr("x1", widthT/2)
-        .attr("x2", widthT/2)
+        .attr("x1", marginT.left)
+        .attr("x2", marginT.left)
         .attr("y1", function() {
             return yScaleT(1);
         })
@@ -98,6 +98,38 @@ Promise.all(promises).then(function(wardrobedata) {
             return yScaleT(60);
         })
         .attr("stroke", "#a08875");
+
+    d3.select("#timeline")
+        .selectAll(".timeline_flag")
+        .data(eras)
+        .join("div")
+        .attr("class", "timeline_flag")
+        .style("top", d => yScaleT(d.start) + 26 + "px")
+        .style("left", d => width + widthT/2 - 14 + "px")
+        .style("visibility", function(d) {
+            if(d.start == 1 || d.end == 60) {
+                return "hidden";
+            } else {
+                return "visible";
+            }
+        })
+        //.attr("transform", `translate(${marginT.left + 5},0)`)
+        .style(
+        "height", 8 + "px")
+        // d =>
+        //     (d.start >= d.end
+        //     ? 0
+        //     : yScaleT(d.end) - yScale(d.start)) +
+        //     2 +
+        //     "px"
+        // )
+        .html(
+            d => `<div class='timeline_date'>${d.start_year}</div>
+                  <div class='timeline_loc'>${d.location}</div>
+            `
+          
+        );
+          
 
     var topsG = svg.append("g").attr("class", "topsG")
 
