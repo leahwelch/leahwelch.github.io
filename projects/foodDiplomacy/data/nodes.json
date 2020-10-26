@@ -25,12 +25,14 @@
   {
     "id": "Convenient Availability of Processed Food",
     "category": "Consumer Impacts",
-    "filterId": 1
+    "filterId": 1,
+    "finalId": 3
   },
   {
     "id": "Cost of Processed Food",
     "category": "Consumer Impacts",
-    "filterId": 1
+    "filterId": 1,
+    "finalId": 3
   },
   {
     "id": "Percentage of Population Facing Food Insecurity",
@@ -56,15 +58,18 @@
   },
   {
     "id": "Amount of Pollutants in the Air",
-    "category": "Environmental Impacts"
+    "category": "Environmental Impacts",
+    "finalId": 3
   },
   {
     "id": "Soil Quality",
-    "category": "Environmental Impacts"
+    "category": "Environmental Impacts",
+    "finalId": 3
   },
   {
     "id": "Use of Synthetic Fertilizers",
-    "category": "Environmental Impacts"
+    "category": "Environmental Impacts",
+    "finalId": 3
   },
   {
     "id": "Ground Water Levels",
@@ -72,7 +77,8 @@
   },
   {
     "id": "Soil Dependence on Fertilizers",
-    "category": "Environmental Impacts"
+    "category": "Environmental Impacts",
+    "finalId": 3
   },
   {
     "id": "Available Land",
@@ -84,7 +90,8 @@
   },
   {
     "id": "Degree of Desertification",
-    "category": "Environmental Impacts"
+    "category": "Environmental Impacts",
+    "finalId": 3
   },
   {
     "id": "Displacement & Climate Migration",
@@ -101,11 +108,13 @@
   },
   {
     "id": "Fossil Fuel Consumption",
-    "category": "Environmental Impacts"
+    "category": "Environmental Impacts",
+    "finalId": 3
   },
   {
     "id": "Degree of Acidification",
-    "category": "Environmental Impacts"
+    "category": "Environmental Impacts",
+    "finalId": 3
   },
   {
     "id": "Length of Supply Chain",
@@ -134,7 +143,8 @@
   },
   {
     "id": "Size of Crop Yields",
-    "category": "Food Industry"
+    "category": "Food Industry",
+    "finalId": 3
   },
   {
     "id": "Speed of Crop Turnover",
@@ -171,7 +181,8 @@
   },
   {
     "id": "Federal Agricultural Subsidies",
-    "category": "Policy Examples"
+    "category": "Policy Examples",
+    "finalId": 3
   },
   {
     "id": "Ability of Smallholders' Production to Meet Industry Standards",
