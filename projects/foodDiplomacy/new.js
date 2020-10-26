@@ -14,6 +14,11 @@ var svg = d3.select("#graph")
   .attr("width", width)
   .attr("height", height);
 
+var tooltip = d3.select("#graph")
+        .append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+
 
   console.log("hello!");
   d3.queue()
@@ -31,10 +36,7 @@ var svg = d3.select("#graph")
             .remove();
         }
 
-    var tooltip = d3.select("#graph")
-            .append("div")
-            .attr("class", "tooltip")
-            .style("visibility", "hidden");
+    
 
 
     function sec_1() {
@@ -107,13 +109,13 @@ var svg = d3.select("#graph")
                 var cx = d.x + 20;
                 var cy = d.y - 10;
 
-                tooltip.style("visibility", "visible")
+                tooltip.style("opacity", 1)
                     .style("left", cx  + "px")
                     .style("top", cy  + "px")
                     .text(d.id);
         });
             }).on("mouseout", function() {
-                tooltip.style("visibility", "hidden");
+                tooltip.style("opacity", 0);
                 node.attr("opacity",1);
                 link.attr("opacity",1).attr("stroke-width", 2);
             });
@@ -184,7 +186,7 @@ var svg = d3.select("#graph")
                 var cx = d.x + 20;
                 var cy = d.y - 10;
 
-                tooltip.style("visibility", "visible")
+                tooltip.style("opacity", 1)
                     .style("left", cx  + "px")
                     .style("top", cy  + "px")
                     .text(d.id);
@@ -204,7 +206,7 @@ var svg = d3.select("#graph")
                     }).attr("opacity",1);
         });
             }).on("mouseout", function() {
-                tooltip.style("visibility", "hidden");
+                tooltip.style("opacity", 0);
                 node.attr("opacity",1);
                 link.attr("opacity",1).attr("stroke-width", 2);
             });
@@ -272,7 +274,7 @@ var svg = d3.select("#graph")
                 var cx = d.x + 20;
                 var cy = d.y - 10;
 
-                tooltip.style("visibility", "visible")
+                tooltip.style("opacity", 1)
                     .style("left", cx  + "px")
                     .style("top", cy  + "px")
                     .text(d.id);
@@ -292,7 +294,7 @@ var svg = d3.select("#graph")
                     }).attr("opacity",1);
         });
             }).on("mouseout", function() {
-                tooltip.style("visibility", "hidden");
+                tooltip.style("opacity", 0);
                 node.attr("opacity",1);
                 link.attr("opacity",1).attr("stroke-width", 2);
             });
@@ -361,7 +363,7 @@ var svg = d3.select("#graph")
                 var cx = d.x + 20;
                 var cy = d.y - 10;
 
-                tooltip.style("visibility", "visible")
+                tooltip.style("opacity", 1)
                     .style("left", cx  + "px")
                     .style("top", cy  + "px")
                     .text(d.id);
@@ -381,7 +383,7 @@ var svg = d3.select("#graph")
                     }).attr("opacity",1);
         });
             }).on("mouseout", function() {
-                tooltip.style("visibility", "hidden");
+                tooltip.style("opacity", 0);
                 node.attr("opacity",1);
                 link.attr("opacity",1).attr("stroke-width", 2);
             });
