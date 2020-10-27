@@ -13,7 +13,7 @@ body {
     background-color: #f9ede1;
 }
 
-.grid-container {
+.graphic {
     display: grid;
     grid-template-columns: 5fr 1fr;
     grid-template-rows: 1fr;
@@ -22,13 +22,13 @@ body {
     height: 100%;
   }
 
-.grid-container > #timeline {
+  .graphic__prose {
     grid-area: timeline;
     height: 200vh;
     margin: 30px;
 }
 
-.grid-container > #chartcontainer {
+.graphic__vis {
     grid-area: chart;
     height: 90vh;
     margin: 30px 45px 30px 45px;
@@ -45,7 +45,7 @@ body {
     visibility: hidden;
 }
 
-.timeline_flag {
+.trigger {
     display: block;
     position: absolute;
     width: 8px;
@@ -55,14 +55,14 @@ body {
     border-radius: 4px;
 }
 
-.timeline_flag > .timeline_date {
+.trigger > .timeline_date {
     color: #3d332a;
     font-size: 9pt;
     font-weight: bolder;
     transform: translate(20px,-5px);
 }
 
-.timeline_flag > .timeline_loc {
+.trigger > .timeline_loc {
     color: #3d332a;
     font-family: 'Noto Serif', serif;
     font-size: 9pt;
