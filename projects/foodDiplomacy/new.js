@@ -44,7 +44,7 @@ var tooltip = d3.select("#graph")
         console.log("first graph!");
         var simulation = d3.forceSimulation(nodes)
             .force("link", d3.forceLink(links).id(function(d) { return d.id; }).distance(30).strength(1))
-            .force("charge", d3.forceManyBody().strength(-200))
+            .force("charge", d3.forceManyBody().strength(-400))
             .force("center", d3.forceCenter(width/2, height/2))
             .force("collide", d3.forceCollide().radius(25));
 
