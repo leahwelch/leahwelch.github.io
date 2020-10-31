@@ -1,127 +1,115 @@
-window.createGraphic = function(graphicSelector) {
-    var dataLoc = "data/sdgs_totals.csv";
-    var data = [8]
+var width = document.querySelector("#graph").clientWidth;
 
-    var graphicEl = d3.select('.graphic')
-	var graphicVisEl = graphicEl.select('.graphic__vis')
-	var graphicProseEl = graphicEl.select('.graphic__prose')
+var height =  document.querySelector("#graph").clientHeight;
 
-    var width = document.querySelector('.graphic__vis').clientWidth;
-    var height = document.querySelector('.graphic__vis').clientHeight;
-    var margin = {top: 300, left: 20, right: 400, bottom: 100};
+// height = 500;
+var margin = {
+  top: 20,
+  right: 20,
+  bottom: 20,
+  left: 20
+};
 
-    var svg = graphicVisEl.append("svg")
-        .attr("width", width)
-        .attr("height", height);
-    
-    var xScale = d3.scaleBand()
+var svg = d3.select("#graph")
+  .append('svg')
+  .attr("width", width)
+  .attr("height", height);
 
-    var yScale = d3.scaleLinear()
-        .domain([17, 1])
-        .range([height-margin.bottom, margin.top]);
+var tooltip = d3.select("#graph")
+        .append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
 
-    var yAxisGenerator = d3.axisRight(yScale)
-        .tickSize(-width+margin.left+margin.right + 100)
-        .ticks(17);
 
-    var xAxis =  svg.append("g")
-        .attr("class","axis")
-        .attr("transform", `translate(0,${margin.top - 30})`)
+  console.log("hello!");
+  d3.queue()
+    .defer(d3.json, "data/nodes.json")
+    .defer(d3.json, "data/links.json")
+    .await(function(error, nodes, links) {
 
-    // var c = svg.enter().append("circle")
-    // 	.attr('cx', 0)
-    //     .attr('cy', 0)
-    //     .attr("r", 0)
-    //     .style("opacity", 0)
+        var subsidiesN = nodes.filter(function(d) {
+            return d.finalId === 3;
+        });
 
-    var settings = {
-        margin:margin, width:width, height:height, svg:svg, xScale: xScale, yScale: yScale, yAxisGenerator: yAxisGenerator
-    }
+        var subsidiesL = links.filter(function(d) {
+            return d.finalId === 3;
+        });
 
-    function removeDuplicates(originalData, prop) {
-        var newData = [];
-        var lookupObject = {};
+        var simulation = d3.forceSimulation(subsidiesN)
+            .force("link", d3.forceLink(subsidiesL).id(function(d) { return d.id; }).distance(50).strength(1))
+            .force("charge", d3.forceManyBody().strength(-200))
+            .force("center", d3.forceCenter(width/2, height/2))
+            .force("collide", d3.forceCollide().radius(50));
 
-        for(var i in originalData) {
-            lookupObject[originalData[i][prop]] = originalData[i];
-         }
-    
-         for(i in lookupObject) {
-             newData.push(lookupObject[i]);
-         }
-          return newData;
+        var link = svg.append("g")
+            .selectAll("line")
+            .data(subsidiesL)
+            .enter()
+            .append("line")
+                .attr("stroke", "#666666")
+                .attr("stroke-width", 2);
 
-    }
+        var node = svg.append("g")
+            .selectAll("circle")
+            .data(subsidiesN)
+            .enter()
+            .append("circle")
+                .attr("stroke", "#ffffff")
+                .attr("stroke-width", 1)
+                .attr("r", 15)
+                .attr("fill", function(d) {
+                    if(d.category === "Consumer Impacts") {
+                        return "#93560d";
+                    } else if(d.category === "Environmental Impacts") {
+                        return "#487bba";
+                    } else if(d.category === "Food Industry") {
+                        return "#d93e4a";
+                    } else if(d.category === "Smallholder Impacts") {
+                        return "#046e66";
+                    } else if(d.category === "Policy Examples") {
+                        return "#3f007d";
+                    } 
+                });
 
-    var steps = [
-        function showTshirt(settings) {
-            var bars = svg.selectAll(".bar")
-                .data(data);
+        simulation.on("tick", function() {
 
-            var enter = bars.enter().append("rect")
-                .attr("class", "bar")
-                .attr("x", width/2)
-                .attr("y",height/2)
-                .attr("width", 100)
-                .attr("height", 50)
+            link.attr("x1", function(d) { return d.source.x; })
+                .attr("y1", function(d) { return d.source.y; })
+                .attr("x2", function(d) { return d.target.x; })
+                .attr("y2", function(d) { return d.target.y; });
+            
+            node.attr("cx", function(d) { return d.x; })
+                .attr("cy", function(d) { return d.y; });
 
-            bars.merge(enter)
-            bars.exit()
-        },
-        function showAll(settings) {
-            var bars = svg.selectAll(".bar")
-                .data(data);
+        });
+            
+            node.on("mouseover, mousemove", function(d) {
+                var cx = d.x + 20;
+                var cy = d.y - 10;
 
-            var enter = bars.enter().append("rect")
-                .attr("class", "bar")
-                .attr("x", width/2)
-                .attr("y",height/2)
-                .attr("width", 100)
-                .attr("height", 50)
-                .attr("fill", "red")
+                tooltip.style("opacity", 1)
+                    .style("left", cx  + "px")
+                    .style("top", cy  + "px")
+                    .text(d.id);
 
-            bars.merge(enter)
-            bars.exit()
-        },
-        function reorganize(settings) {
-            console.log("step2");
-        },
-        function topIndustries(settings) {
-            console.log("step3");
-        },
-        function bottomIndustries(settings) {
-            console.log("step4");
-        },
-        function highlights(settings) {
-            console.log("step5");
-        }
-    ]
-    
-    function setupCharts(settings) {
+                node.attr("opacity",0.2);
+                link.attr("opacity",0.2);
 
-    }
+                d3.select(this).attr("opacity",1);
 
-    // update our chart
-	function update(step) {
-        steps[step].call()
-        console.log("chart is updating");
-    }
-    
-    function setupProse() {
-		var height = window.innerHeight * 0.5
-		graphicProseEl.selectAll('.trigger')
-			.style('height', height + 'px')
-    }
-    
-    function init() {
-        setupCharts(settings)
-		setupProse()
-		update(0)
-	}
-	
-	init()
-	
-	return {
-		update: update,
-	}
-}
+                var connected = link.filter(function(e) {
+                    return e.source.id === d.id || e.target.id === d.id;
+                });
+                connected.attr("opacity",1).attr("stroke-width", 4);
+                connected.each(function(e) {
+                    node.filter(function(f) {
+                        return f.id === e.source.id || f.id === e.target.id;
+                    }).attr("opacity",1);
+        });
+            }).on("mouseout", function() {
+                tooltip.style("opacity", 0);
+                node.attr("opacity",1);
+                link.attr("opacity",1).attr("stroke-width", 2);
+            });
+
+    });

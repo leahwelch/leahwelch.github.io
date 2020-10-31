@@ -65,54 +65,54 @@ Promise.all(promises).then(function(wardrobedata) {
     
 
     
-    d3.select(".graphic__prose")
-        .selectAll(".trigger")
-        .data(eras)
-        .join("div")
-        .attr("class", function(d) {
-            if(d.start == 1 || d.end == 60) {
-                return "notTrigger";
-            } else {
-                return "trigger";
-            }
-        })
-        .attr("id", function(d) {
-            return d.start;
-        })
-        .attr('data-step', function(d,i) {
-            if(d.start !== 1 && d.end !== 60) {
-                return i;
-            } 
+    // d3.select(".graphic__prose")
+    //     .selectAll(".trigger")
+    //     .data(eras)
+    //     .join("div")
+    //     .attr("class", function(d) {
+    //         if(d.start == 1 || d.end == 60) {
+    //             return "notTrigger";
+    //         } else {
+    //             return "trigger";
+    //         }
+    //     })
+    //     .attr("id", function(d) {
+    //         return d.start;
+    //     })
+    //     .attr('data-step', function(d,i) {
+    //         if(d.start !== 1 && d.end !== 60) {
+    //             return i;
+    //         } 
             
-        })
+    //     })
         
-        .style("top", function(d) { return yScaleT(d.start) + 26 + "px"; }) //this is the problem right here
-        .style("left", d => width + widthT/2 - 14 + "px")
-        .style("visibility", function(d) {
-            if(d.start == 1 || d.end == 60) {
-                return "hidden";
-            } else {
-                return "visible";
-            }
-        })
-        .style(
-        "height", 8 + "px")
-        // d =>
-        //     (d.start >= d.end
-        //     ? 0
-        //     : yScaleT(d.end) - yScale(d.start)) +
-        //     2 +
-        //     "px"
-        // )
-        .html(
-            d => `<div class='timeline_date'>${d.start_year}</div>
-                <div class='timeline_loc'>${d.location}</div>
-            `
+    //     .style("top", function(d) { return yScaleT(d.start) + 26 + "px"; }) //this is the problem right here
+    //     .style("left", d => width + widthT/2 - 14 + "px")
+    //     .style("visibility", function(d) {
+    //         if(d.start == 1 || d.end == 60) {
+    //             return "hidden";
+    //         } else {
+    //             return "visible";
+    //         }
+    //     })
+    //     .style(
+    //     "height", 8 + "px")
+    //     // d =>
+    //     //     (d.start >= d.end
+    //     //     ? 0
+    //     //     : yScaleT(d.end) - yScale(d.start)) +
+    //     //     2 +
+    //     //     "px"
+    //     // )
+    //     .html(
+    //         d => `<div class='timeline_date'>${d.start_year}</div>
+    //             <div class='timeline_loc'>${d.location}</div>
+    //         `
         
-        );
+    //     );
 
-        var nyu = document.getElementById("3");
-        var nyuTop = nyu.getBoundingClientRect().top;
+    //     var nyu = document.getElementById("3");
+    //     var nyuTop = nyu.getBoundingClientRect().top;
 
     console.log(wardrobe);
 
@@ -160,26 +160,36 @@ Promise.all(promises).then(function(wardrobedata) {
         .attr("width", width)
         .attr("height", height);
 
+    // var annotation = d3.select(".graphic__vis").append("div").attr("class", "annotation")
+    //     .style("top", height/2)
+    //     .style("left", margin.left)
+    //     .style("visibility", "visible")
+
     var xScale = d3.scaleBand()
         .domain(wardrobe.map(function(d) { return d.Category; }))
-        .range([width-margin.right, width/2])
+        .range([width-margin.right, margin.left])
         .padding(1);
     
     var yScale = d3.scaleLinear()
         .domain([0, maxItems])
-        .range([height-margin.bottom, margin.top]);
+        .range([height-margin.bottom-10, margin.top]);
 
+    var xAxisGenerator = d3.axisBottom(xScale)
+        .tickSize(-14)
+        .ticks(60);
+    
+    var xAxis = svg.append("g")
+        .attr("class","xaxis")
+        .attr("transform", `translate(20,${height-margin.bottom + 15})`)
+        .call(xAxisGenerator);
+    
+    xAxis.selectAll(".tick text")
+        .attr("class", "topLabels")
+        .attr("transform", function(d){ return( "translate(0,-20)rotate(45)")})
+        .style("text-anchor", "start");
 
-
-    // var triggerEls = [];
-    // for(i = 0; i < era_start.length; i++) {
-    //     var flagTop = document.getElementById(era_start[i])
-    //     triggerEls.push(flagTop.getBoundingClientRect().top);
-            
-    // }
-    // console.log(triggerEls);
+    var annotation = d3.select(".annotation")
           
-
     var topsG = svg.append("g").attr("class", "topsG")
 
     topsG.selectAll("rect").data(tops)
@@ -259,6 +269,29 @@ Promise.all(promises).then(function(wardrobedata) {
         .attr("rx", 2)								
 		.attr("ry", 2);
         //.style("opacity", 0.2);
+
+        svg.selectAll("rect").on("mouseover, mousemove", function(d) {
+            if(d.Vintage === "N"){
+                annotation.select(".brand").html(d.Brand);
+            } else {
+                annotation.select(".brand").html("Vintage");
+            }
+            if(d.Primary_Color === "#FFFFFF" || d.Primary_Color === "#f9f3ed"){
+                annotation.select(".swatch").style("color", "#3d332a");
+            } else {
+                annotation.select(".swatch").style("color", "#FFFFFF");
+            }
+            annotation.select(".item").html(d.Description + " " + d.Sub_Category);
+            annotation.select(".notes").html(d.Notes);
+            annotation.select(".swatch")
+                .style("background-color", d.Primary_Color)
+                .html(d.Primary_Color)
+            });
+                
+
+
+    
+
 
         var steps = [
             function step0() {

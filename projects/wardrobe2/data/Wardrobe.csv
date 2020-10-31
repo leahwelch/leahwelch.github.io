@@ -13,7 +13,7 @@ ypos,Brand,Primary_Color,Secondary_Color,Pattern,Category,Sub_Category,Descripti
 12,Madewell,#4d5266,,N,Bottoms,pants,Silk tie-belt,2019,"Roslindale, MA",Y,N,N,N,N,"June, 2019","June, 2020",Bought for an interview
 13,Cashmere in Love,#cc0d16,#000000,Y,Bottoms,shorts,High-waisted sweater,2020,"Roslindale, MA",Y,N,Y,N,Y,"June, 2019","June, 2020",Gift from Steven for Mother's Day
 14,Lett,#000000,,N,Bottoms,shorts,Ribbed bike,2020,"Roslindale, MA",N,N,Y,N,Y,"June, 2019","June, 2020",In the summer I wear these almost every day
-15,Agolde,#f9f3ed,,N,Bottoms,jeans,Wide-leg,2020,"Lawrence, MA",N,N,Y,N,Y,"June, 2020",and beyond,Every time I wear these these end up mysteriously stained
+15,Agolde,#f9f3ed,,N,Bottoms,jeans,Wide-leg,2020,"Lawrence, MA",N,N,Y,N,Y,"June, 2020",and beyond,Every time I wear these they end up mysteriously stained
 16,Madewell,#000000,,N,Bottoms,jeans,Wide-leg,2020,"Lawrence, MA",Y,N,Y,N,Y,"June, 2020",and beyond,New jeans! Still breaking them in
 17,The Reformation,#8f9eb5,,N,Bottoms,jeans,Saddle,2020,"Lawrence, MA",Y,N,Y,N,Y,"June, 2020",and beyond,These have a silly no-butt-pocket design that reminds me of middle school in the best way
 1,Yael Aflalo,#000000,,N,Dresses & Jumpsuits,dress,Silk cocktail,2007,"Freshman Year, Middlebury College",Y,N,Y,N,N,"September, 2006","May, 2008","Purchased for Homecoming, still wear to weddings"
@@ -73,8 +73,8 @@ ypos,Brand,Primary_Color,Secondary_Color,Pattern,Category,Sub_Category,Descripti
 18,,#a5a19f,,N,Tops,vest,sweater,2013,Los Angeles,N,Y,N,N,N,"June, 2011","June, 2014",This one always makes me think of Clueless; it's probably from the 90s
 19,,#FFFFFF,#7584a0,Y,Tops,shirt,Striped western-style,2014,"Moved in with Steven, Nottingham",N,Y,N,Y,N,"June, 2014","September, 2014",Steven found this in a vinatge shop in Glasgow
 20,Madewell,#4f4e4b,,N,Tops,sweatshirt,Quilted,2015,"Hangzhou, China",Y,N,N,Y,N,"September, 2014","July, 2016","Looks kind of like a taberd, but cozier"
-21,,#339966,#e9a413,Y,Tops,tee,Cal-Poly graphic ringer,2015,"Hangzhou, China",N,Y,N,Y,N,"September, 2014","July, 2016","Bought this in Portland, OR right before we got married"
-22,,#FFFFFF,#b8d8e8,Y,Tops,tee,California Raisins ringer,2015,"Hangzhou, China",N,Y,N,Y,N,"September, 2014","July, 2016","Bought this in Portland, OR right before we got married"
+21,,#339966,#e9a413,Y,Tops,tee,Cal-Poly graphic ringer,2015,"Hangzhou, China",N,Y,N,Y,N,"September, 2014","July, 2016","Bought this in Portland OR right before we got married"
+22,,#FFFFFF,#b8d8e8,Y,Tops,tee,California Raisins ringer,2015,"Hangzhou, China",N,Y,N,Y,N,"September, 2014","July, 2016","Bought this in Portland OR right before we got married"
 23,,#000000,#FFFFFF,Y,Tops,vest,Abstract-print sweater,2015,"Hangzhou, China",N,Y,N,Y,N,"September, 2014","July, 2016",Bought this in Claremont CA right after we got married
 24,Muji,#FFFFFF,#000000,Y,Tops,tank,Ribbed striped ,2016,"Hangzhou, China",N,N,N,Y,N,"September, 2014","July, 2016",From our pilgrimage to the Muji flagship store
 25,,#1b2278,#d02624,Y,Tops,vest,Striped sweater,2016,"Hangzhou, China",N,Y,N,Y,N,"September, 2014","July, 2016",To wear with my Marimekko overalls
@@ -89,16 +89,16 @@ ypos,Brand,Primary_Color,Secondary_Color,Pattern,Category,Sub_Category,Descripti
 34,,#c92d40,#af945d,Y,Tops,shirt,Striped,2019,"Roslindale, MA",N,Y,N,Y,N,"June, 2019","June, 2020","Steven calls this one my ""circus shirt"""
 35,Cupcakes & Cashmere,#f7decd,#5d698c,Y,Tops,sweater,Confetti-yarn,2019,"Roslindale, MA",Y,N,Y,N,N,"June, 2019","June, 2020",Replaced 3 or 4 moth-eaten sweaters with this one
 36,Sezane,#ac4437,#4f657a,Y,Tops,sweater,Color-block,2019,"Roslindale, MA",Y,N,Y,N,N,"June, 2019","June, 2020",There are buttons on the back!
-37,Target,#000000,#405d8b,Y,Tops,sweater,Stranger Things Graphic,2019,"Roslindale, MA",N,N,N,N,N,"June, 2019","June, 2020",Purchased for a Christmas sweater party
+37,Target,#000000,#405d8b,Y,Tops,sweater,Stranger Things graphic,2019,"Roslindale, MA",N,N,N,N,N,"June, 2019","June, 2020",Purchased for a Christmas sweater party
 38,,#FFFFFF,#3d678a,Y,Tops,tank,Floral sweater,2019,"Roslindale, MA",N,N,N,Y,N,"June, 2019","June, 2020",Got this right before we got on a 40-hour train ride from Flagstaff to Chicago
 39,The Reformation,#6d7d9e,#FFFFFF,Y,Tops,tee,Long-sleeved cathedral print mock-neck,2019,"Roslindale, MA",N,N,Y,N,N,"June, 2019","June, 2020",Surprisingly practical
 40,The Reformation,#92c7e4,#7e456c,Y,Tops,tee,Mesh tie-dye,2019,"Roslindale, MA",N,N,Y,N,N,"June, 2019","June, 2020",Trying to still dress playfully as a mom
-41,Yan Yan,#635743,#5b4156,Y,Tops,bra Top,Color-block sweater ,2020,"Roslindale, MA",N,N,Y,N,Y,"June, 2019","June, 2020",One day I will wear this beauty
+41,Yan Yan,#635743,#5b4156,Y,Tops,bra top,Color-block sweater ,2020,"Roslindale, MA",N,N,Y,N,Y,"June, 2019","June, 2020",One day I will wear this beauty
 42,Madewell,#65635a,#bcbab5,Y,Tops,sweater,Textured yarn,2020,"Roslindale, MA",Y,N,N,N,N,"June, 2019","June, 2020",Bought for an interview
 43,Uniqlo,#000000,,N,Tops,sweater,Ribbed turtleneck,2020,"Roslindale, MA",N,N,Y,N,N,"June, 2019","June, 2020",Bought to replace a black turtleneck that fell apart
 44,H & M,#FFFFFF,,N,Tops,tank,Ribbed halter,2020,"Roslindale, MA",N,N,Y,N,Y,"June, 2019","June, 2020",Cheap summer top
 45,Agnes B,#000000,#FFFFFF,Y,Tops,tee,Signature graphic,2020,"Roslindale, MA",N,Y,Y,N,Y,"June, 2019","June, 2020",First quarantine purchase; all I wanted to wear were long-sleeved tees
-46,Mango,#7a6658,,N,Tops,bra Top,sweater,2020,"Lawrence, MA",N,N,Y,N,Y,"June, 2020",and beyond,Learning to love my boobies
+46,Mango,#7a6658,,N,Tops,bra top,Sweater,2020,"Lawrence, MA",N,N,Y,N,Y,"June, 2020",and beyond,Learning to love my boobies
 47,Monogram,#000000,#FFFFFF,Y,Tops,sweatshirt,Club sandwich graphic,2020,"Lawrence, MA",N,N,Y,N,Y,"June, 2020",and beyond,WFH coziness
 48,The Reformation,#FFFFFF,#b4c0d1,Y,Tops,sweatshirt,Tie-dyed half-zip,2020,"Lawrence, MA",N,N,Y,N,Y,"June, 2020",and beyond,WFH coziness
 49,Flat File,#FFFFFF,#e56d13,Y,Tops,tee,Matisse graphic,2020,"Lawrence, MA",N,N,Y,N,Y,"June, 2020",and beyond,My brief foray into only wearing tee shirts and bike shorts
