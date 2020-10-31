@@ -13,36 +13,37 @@ body {
     background-color: #f9ede1;
 }
 
-.graphic {
+#container {
     display: grid;
     grid-template-columns: 3fr 2fr 1fr;
     grid-template-rows: 1fr;
     grid-template-areas: 
-        "annotation chart timeline";
+        "note_container chart timeline";
     height: 100%;
   }
 
-  .graphic__prose {
-    grid-area: timeline;
-    height: 200vh;
-    margin: 30px;
-}
-
-.graphic__vis {
-    grid-area: chart;
+.note_container {
+    position: fixed;
     height: 90vh;
-    margin: 30px 45px 30px 0px;
+    width: 100%;
     position: -webkit-sticky;
     position: sticky;
-    top: 10%;
+    top: 5%;
+    grid-area: note_container;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3fr 1fr;
+    grid-template-areas: 
+        "annotation"
+        "date_labels";
 }
 
-div.annotation {
+.annotation {
     grid-area: annotation;
-    position: -webkit-sticky;
-    position: sticky;
-    margin: 20% 30px 20% 100px;
+    margin: 10% 30px 50px 100px;
+    /* position: -webkit-sticky; */
     height: 40vh;
+    width: 70%;
     background-color: #ddd3ca;
     border-radius: 0px 50px;
     display: grid;
@@ -50,6 +51,76 @@ div.annotation {
     grid-template-rows: 1fr;
     grid-template-areas: 
         "image info";
+}
+
+.date_labels {
+    grid-area: date_labels;
+    /* position: -webkit-sticky; */
+    height: 30vh;
+    width: 100%;
+    margin: 10% 30px 50px 100px;
+}
+
+.graphic__prose {
+    grid-area: timeline;
+    height: 350vh;
+    margin: 30px 30px 30px 30px;
+}
+
+.spine {
+    background-color: #a08875;
+    height: 100%;
+    width: 1px;
+    margin-left: 3px;
+}
+
+#nyu {
+    top: 12vh;
+}
+
+#midd_fresh {
+    top: 28vh;
+}
+
+#london {
+    top: 60vh;
+}
+
+#midd_sr {
+    top: 76vh;
+}
+
+#la {
+    top: 92vh;
+}
+
+#nottingham {
+    top: 136vh;
+}
+
+#china {
+    top: 140vh;
+}
+
+#orme {
+    top: 172vh;
+}
+
+#roslindale {
+    top: 220vh;
+}
+
+#lawrence {
+    top: 236vh;
+}
+
+#graph {
+    grid-area: chart;
+    height: 90vh;
+    margin: 30px 45px 30px 0px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 10%;
 }
 
 .annotation_text {
@@ -81,6 +152,27 @@ div.annotation {
     font-style: italic;
 }
 
+.start_date {
+    font-size: 20pt;
+    color: #0b7c85;
+    margin: 0px;
+}
+
+.end_date {
+    font-size: 60pt;
+    font-weight: bold;
+    color: #a08875;
+    opacity: 0.4;
+    margin: 0px 50px;
+}
+
+.era_name {
+    font-size: 16pt;
+    color: #0b7c85;
+    font-family: 'Lilita One', cursive;
+    margin: 0px 50px;
+}
+
 .axis line {
     stroke: #a08875;
 }
@@ -106,6 +198,7 @@ div.annotation {
     display: block;
     position: absolute;
     width: 8px;
+    height: 8px;
     border: 2px solid #3d332a;
     text-align: left;
     background-color: #f9ede1;

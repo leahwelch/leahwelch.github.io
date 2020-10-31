@@ -10,18 +10,70 @@
     </head>
     <body>
         <div class='library'>
-            <div class="library__graphic graphic">
+            <div id = "container">
                 <div class='graphic__prose'>
+                    <div class="spine">
+
+                    </div>
+                    <div class="flags">
+                        <div class="trigger" id="nyu" data-step='1'>
+                            <div class='timeline_date'>09.2006</div>
+                            <div class='timeline_loc'>High School & NYU</div>
+                        </div>
+                        <div class="trigger" id="midd_fresh" data-step='2'>
+                            <div class='timeline_date'>9.2007</div>
+                            <div class='timeline_loc'>Middlebury, VT</div>
+                        </div>
+                        <div class="trigger" id="london" data-step='3'>
+                            <div class='timeline_date'>9.2009</div>
+                            <div class='timeline_loc'>London, England</div>
+                        </div>
+                        <div class="trigger" id="midd_sr" data-step='4'>
+                            <div class='timeline_date'>9.2010</div>
+                            <div class='timeline_loc'>Middlebury, VT</div>
+                        </div>
+                        <div class="trigger" id="la" data-step='5'>
+                            <div class='timeline_date'>6.2011</div>
+                            <div class='timeline_loc'>Los Angeles, CA</div>
+                        </div>
+                        <div class="trigger" id="nottingham" data-step='6'>
+                            <div class='timeline_date'>6.2014</div>
+                            <div class='timeline_loc'>Nottingham, England</div>
+                        </div>
+                        <div class="trigger" id="china" data-step='7'>
+                            <div class='timeline_date'>9.2014</div>
+                            <div class='timeline_loc'>Hangzhou, China</div>
+                        </div>
+                        <div class="trigger" id="orme" data-step='8'>
+                            <div class='timeline_date'>9.2016</div>
+                            <div class='timeline_loc'>Mayer, AZ</div>
+                        </div>
+                        <div class="trigger" id="roslindale" data-step='9'>
+                            <div class='timeline_date'>6.2019</div>
+                            <div class='timeline_loc'>Roslindale, MA</div>
+                        </div>
+                        <div class="trigger" id="lawrence" data-step='10'>
+                            <div class='timeline_date'>6.2020</div>
+                            <div class='timeline_loc'>Lawrence, MA</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="graphic__vis"></div>
-                <div class="annotation">
-                    <div class="annotation_text">
-                        <p class="brand"></p>
-                        <p class="item"></p>
-                        <p class="notes"></p>
-                        <div class = "swatch"></div>
-                        <p class="date_worn"></p>
-                        <p class="worn_with"></p>
+                <div id="graph"></div>
+                <div class="note_container">
+                    <div class="annotation">
+                        <div class="annotation_text">
+                            <p class="brand"></p>
+                            <p class="item"></p>
+                            <p class="notes"></p>
+                            <div class = "swatch"></div>
+                            <p class="date_worn"></p>
+                            <p class="worn_with"></p>
+                        </div>
+                    </div>
+                    <div class="date_labels">
+                        <p class="start_date"></p> 
+                        <p class="end_date"></p> 
+                        <p class="era_name"></p> 
                     </div>
                 </div>
                 
@@ -30,97 +82,8 @@
         
         
         <script src="script.js"></script>
-        <!-- <script src="lib/graph-scroll.js"></script> -->
-        <script src='lib/noframework.waypoints.min.js'></script>
-        <!-- <script src="timeline.js"></script> -->
-        <script>
-            (function() {
-    
+        <script src="lib/graph-scroll.js"></script>
 
-    // helper function so we can map over dom selection
-    function selectionToArray(selection) {
-        var len = selection.length
-        var result = []
-        for (var i = 0; i < len; i++) {
-            result.push(selection[i])
-        }
-        return result
-    }
-
-    function waypoints() {
-        // select elements
-        var graphicEl = document.querySelector('.graphic')
-        var graphicVisEl = graphicEl.querySelector('.graphic__vis')
-        var triggerEls = selectionToArray(graphicEl.querySelectorAll('.trigger'))
-
-        console.log(triggerEls);
-        // viewport height
-        var viewportHeight = window.innerHeight
-        var halfViewportHeight = Math.floor(viewportHeight / 2)
-
-        // a global function creates and handles all the vis + updates
-        var graphic = createGraphic('.graphic')
-
-        // handle the fixed/static position of grahpic
-        var toggle = function(fixed, bottom) {
-            if (fixed) graphicVisEl.classList.add('is-fixed')
-            else graphicVisEl.classList.remove('is-fixed')
-
-            if (bottom) graphicVisEl.classList.add('is-bottom')
-            else graphicVisEl.classList.remove('is-bottom')
-        }
-        
-        // setup a waypoint trigger for each trigger element
-        var waypoints = triggerEls.map(function(el) {
-            
-            // get the step, cast as number					
-            var step = +el.getAttribute('data-step')
-
-            return new Waypoint({
-                element: el, // our trigger element
-                handler: function(direction) {
-                    // if the direction is down then we use that number,
-                    // else, we want to trigger the previous one
-                    var nextStep = direction === 'down' ? step : Math.max(0, step - 1)
-                    
-                    // tell our graphic to update with a specific step
-                    graphic.update(nextStep)
-                },
-                offset: '50%',  // trigger halfway up the viewport
-            })
-        })
-
-        // enter (top) / exit (bottom) graphic (toggle fixed position)
-        var enterWaypoint = new Waypoint({
-            element: graphicEl,
-            handler: function(direction) {
-                var fixed = direction === 'down'
-                var bottom = false
-                toggle(fixed, bottom)
-            },
-        })
-
-        var exitWaypoint = new Waypoint({
-            element: graphicEl,
-            handler: function(direction) {
-                var fixed = direction === 'up'
-                var bottom = !fixed
-                toggle(fixed, bottom)
-            },
-            offset: 'bottom-in-view', // waypoints convenience instead of a calculation
-        })
-    }
-
-    waypoints()
-
-    })()
-
-        </script>
-        
-        
-        
-	
-	
 	
     </body>
 </html>
