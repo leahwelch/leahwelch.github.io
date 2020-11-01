@@ -152,6 +152,15 @@ body {
     font-style: italic;
 }
 
+.swatch2 {
+    width: 180px;
+    height: 30px;
+    text-align: right;
+    padding: 8px 10px 8px 10px;
+    font-size: 10pt;
+    font-style: italic;
+}
+
 .start_date {
     font-size: 20pt;
     color: #0b7c85;

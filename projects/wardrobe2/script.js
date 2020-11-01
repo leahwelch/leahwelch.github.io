@@ -114,7 +114,6 @@ Promise.all(promises).then(function(wardrobedata) {
                 .attr("height", 30)
                 .attr("patternUnits", "userSpaceOnUse")
             .append("svg:image")
-                //.attr("xlink:href", "./pattern/rainbow.png")
                 .attr("xlink:href", `./pattern/${i + 1}.svg`)
                 .attr("width", 30)
                 .attr("height", 30);
@@ -248,6 +247,18 @@ Promise.all(promises).then(function(wardrobedata) {
                 annotation.select(".swatch").style("color", "#3d332a");
             } else {
                 annotation.select(".swatch").style("color", "#FFFFFF");
+            }
+            if(d.Pattern === "N") {
+                annotation.select(".swatch2").style("visibility", "hidden");
+            } else {
+                annotation.select(".swatch2").style("visibility", "visible")
+                    .style("background-color", d.Secondary_Color)
+                    .html(d.Secondary_Color);
+            }
+            if(d.Secondary_Color === "#FFFFFF" || d.Secondary_Color === "#f3f4d0"){
+                annotation.select(".swatch2").style("color", "#3d332a");
+            } else {
+                annotation.select(".swatch2").style("color", "#FFFFFF");
             }
             annotation.select(".item").html(d.Description + " " + d.Sub_Category);
             annotation.select(".notes").html(d.Notes);
