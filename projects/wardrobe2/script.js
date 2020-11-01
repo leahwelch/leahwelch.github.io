@@ -103,6 +103,7 @@ Promise.all(promises).then(function(wardrobedata) {
         .attr("height", height);
 
     var patterns = [];
+    patterns[0] = "no value";
     for(i = 0; i < 57; i++) {
         svg.append("defs")
             .append("pattern")
@@ -286,7 +287,11 @@ Promise.all(promises).then(function(wardrobedata) {
         svg.selectAll("rect")
             .attr("fill", function(d) {
                 if(d.Era === "Freshman Year, Middlebury College" || d.Era == "Sophomore Year, Middlebury College") {
-                    return d.Primary_Color
+                    if(d.Pattern === "N") {
+                        return d.Primary_Color;
+                    } else {
+                        return patterns[d.Pattern_ID];
+                    } 
                 } else {
                     return "#ddd3ca";
                 }
@@ -313,7 +318,11 @@ Promise.all(promises).then(function(wardrobedata) {
         svg.selectAll("rect")
             .attr("fill", function(d) {
                 if(d.Era === "Study Abroad, London") {
-                    return d.Primary_Color
+                    if(d.Pattern === "N") {
+                        return d.Primary_Color;
+                    } else {
+                        return patterns[d.Pattern_ID];
+                    } 
                 } else {
                     return "#ddd3ca";
                 }
@@ -340,7 +349,11 @@ Promise.all(promises).then(function(wardrobedata) {
         svg.selectAll("rect")
             .attr("fill", function(d) {
                 if(d.Era === "Senior Year, Middlebury College") {
-                    return d.Primary_Color
+                    if(d.Pattern === "N") {
+                        return d.Primary_Color;
+                    } else {
+                        return patterns[d.Pattern_ID];
+                    } 
                 } else {
                     return "#ddd3ca";
                 }
@@ -367,7 +380,11 @@ Promise.all(promises).then(function(wardrobedata) {
         svg.selectAll("rect")
             .attr("fill", function(d) {
                 if(d.Era === "Los Angeles") {
-                    return d.Primary_Color
+                    if(d.Pattern === "N") {
+                        return d.Primary_Color;
+                    } else {
+                        return patterns[d.Pattern_ID];
+                    } 
                 } else {
                     return "#ddd3ca";
                 }
@@ -394,7 +411,11 @@ Promise.all(promises).then(function(wardrobedata) {
         svg.selectAll("rect")
             .attr("fill", function(d) {
                 if(d.Era === "Moved in with Steven, Nottingham") {
-                    return d.Primary_Color
+                    if(d.Pattern === "N") {
+                        return d.Primary_Color;
+                    } else {
+                        return patterns[d.Pattern_ID];
+                    } 
                 } else {
                     return "#ddd3ca";
                 }
@@ -421,7 +442,11 @@ Promise.all(promises).then(function(wardrobedata) {
         svg.selectAll("rect")
             .attr("fill", function(d) {
                 if(d.Era === "Hangzhou, China") {
-                    return d.Primary_Color
+                    if(d.Pattern === "N") {
+                        return d.Primary_Color;
+                    } else {
+                        return patterns[d.Pattern_ID];
+                    } 
                 } else {
                     return "#ddd3ca";
                 }
@@ -448,7 +473,11 @@ Promise.all(promises).then(function(wardrobedata) {
         svg.selectAll("rect")
             .attr("fill", function(d) {
                 if(d.Era === "The Orme School, Mayer, AZ") {
-                    return d.Primary_Color
+                    if(d.Pattern === "N") {
+                        return d.Primary_Color;
+                    } else {
+                        return patterns[d.Pattern_ID];
+                    } 
                 } else {
                     return "#ddd3ca";
                 }
@@ -475,7 +504,11 @@ Promise.all(promises).then(function(wardrobedata) {
         svg.selectAll("rect")
             .attr("fill", function(d) {
                 if(d.Era === "Roslindale, MA") {
-                    return d.Primary_Color
+                    if(d.Pattern === "N") {
+                        return d.Primary_Color;
+                    } else {
+                        return patterns[d.Pattern_ID];
+                    } 
                 } else {
                     return "#ddd3ca";
                 }
@@ -502,7 +535,11 @@ Promise.all(promises).then(function(wardrobedata) {
         svg.selectAll("rect")
             .attr("fill", function(d) {
                 if(d.Era === "Lawrence, MA") {
-                    return d.Primary_Color
+                    if(d.Pattern === "N") {
+                        return d.Primary_Color;
+                    } else {
+                        return patterns[d.Pattern_ID];
+                    } 
                 } else {
                     return "#ddd3ca";
                 }
