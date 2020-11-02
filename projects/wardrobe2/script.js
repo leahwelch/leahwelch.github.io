@@ -238,6 +238,7 @@ Promise.all(promises).then(function(wardrobedata) {
         //.style("opacity", 0.2);
 
         svg.selectAll("rect").on("mouseover, mousemove", function(d) {
+            annotation.select(".instructions").style("opacity", 0);
             if(d.Vintage === "N"){
                 annotation.select(".brand").html(d.Brand);
             } else {
@@ -268,6 +269,7 @@ Promise.all(promises).then(function(wardrobedata) {
             });
 
     function sec_1() {
+        annotation.select(".instructions").style("opacity", 1).html("Want to see the story of an item? Hover over it!");
         svg.selectAll("rect")
             .attr("fill", function(d) {
                 if(d.Era === "Winnetka, IL") {
@@ -578,7 +580,7 @@ Promise.all(promises).then(function(wardrobedata) {
         .container(d3.select('#container'))
         .graph(d3.selectAll('#graph'))
         .sections(d3.selectAll('.flags > div'))
-        // .offset(height)
+        //.offset(200)
         .eventId('uniqueId1')
         .on('active', function(i) {
 

@@ -1,16 +1,58 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
 
 * {
     box-sizing: border-box;
   }
 
 body {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     /*background-color: #f9f9f4;*/
     background-color: #f9ede1;
+}
+
+.intro {
+    width: 100%;
+    height: 90vh;
+}
+
+h1 {
+    width: 75%;
+    font-size: 60pt;
+    font-weight: 300;
+    padding-top: 50px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-style: italic;
+}
+
+.intro p {
+    width: 75%;
+    padding-top: 20px;
+}
+
+@media (min-width: 1200px) {
+.intro {
+    width: 1170px;
+    margin-left: 100px;
+}
+}
+@media (min-width: 992px){
+.intro  {
+    width: 970px;
+    margin-left: 100px;
+}
+}
+@media (min-width: 768px) {
+.intro  {
+    width: 750px;
+    margin-left: 100px;
+}
 }
 
 #container {
@@ -38,6 +80,7 @@ body {
         "date_labels";
 }
 
+
 .annotation {
     grid-area: annotation;
     margin: 10% 30px 50px 100px;
@@ -48,8 +91,9 @@ body {
     border-radius: 0px 50px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    grid-template-areas: 
+    grid-template-rows: 1fr 15fr;
+    grid-template-areas:
+        "default default" 
         "image info";
 }
 
@@ -75,43 +119,43 @@ body {
 }
 
 #nyu {
-    top: 12vh;
+    top: 102vh;
 }
 
 #midd_fresh {
-    top: 28vh;
+    top: 118vh;
 }
 
 #london {
-    top: 60vh;
+    top: 150vh;
 }
 
 #midd_sr {
-    top: 76vh;
+    top: 166vh;
 }
 
 #la {
-    top: 92vh;
+    top: 182vh;
 }
 
 #nottingham {
-    top: 136vh;
+    top: 226vh;
 }
 
 #china {
-    top: 140vh;
+    top: 230vh;
 }
 
 #orme {
-    top: 172vh;
+    top: 262vh;
 }
 
 #roslindale {
-    top: 220vh;
+    top: 310vh;
 }
 
 #lawrence {
-    top: 236vh;
+    top: 326vh;
 }
 
 #graph {
@@ -126,6 +170,14 @@ body {
 .annotation_text {
     grid-area: info;
     margin: 50px 80px 50px 30px;
+}
+
+.default {
+    grid-area: default;
+    margin: 10px 80px 10px 30px;
+    height: 20px;
+    width: 100%;
+    font-size: 16pt;
 }
 
 .brand {
@@ -172,7 +224,7 @@ body {
     font-weight: bold;
     color: #a08875;
     opacity: 0.4;
-    margin: 0px 50px;
+    margin: 10px 50px;
 }
 
 .era_name {
