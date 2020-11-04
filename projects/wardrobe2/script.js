@@ -145,7 +145,7 @@ Promise.all(promises).then(function(wardrobedata) {
     
     xAxis.selectAll(".tick text")
         .attr("class", "topLabels")
-        .attr("transform", function(d){ return( "translate(0,-20)rotate(45)")})
+        .attr("transform", function(d){ return( "translate(0,-20)rotate(30)")})
         .style("text-anchor", "start");
 
     var annotation = d3.select(".annotation")
@@ -160,8 +160,8 @@ Promise.all(promises).then(function(wardrobedata) {
             return xScale("Tops")
         })
         .attr("y", function(d) { return yScale(d.ypos); })
-        .attr("width", 40)
-        .attr("height", 10)
+        .attr("width", 70)
+        .attr("height", 12)
         .attr("fill", function(d) { 
             if(d.Pattern === "N") {
                 return d.Primary_Color; 
@@ -182,8 +182,8 @@ Promise.all(promises).then(function(wardrobedata) {
             return xScale("Bottoms")
         })
         .attr("y", function(d) { return yScale(d.ypos); })
-        .attr("width", 40)
-        .attr("height", 10)
+        .attr("width", 70)
+        .attr("height", 12)
         .attr("fill", function(d) { return d.Primary_Color; })
         .attr("rx", 2)								
 		.attr("ry", 2);
@@ -198,8 +198,8 @@ Promise.all(promises).then(function(wardrobedata) {
             return xScale("Dresses & Jumpsuits")
         })
         .attr("y", function(d) { return yScale(d.ypos); })
-        .attr("width", 40)
-        .attr("height", 10)
+        .attr("width", 70)
+        .attr("height", 12)
         .attr("fill", function(d) { return d.Primary_Color; })
         .attr("rx", 2)								
 		.attr("ry", 2);
@@ -214,8 +214,8 @@ Promise.all(promises).then(function(wardrobedata) {
             return xScale("Sets")
         })
         .attr("y", function(d) { return yScale(d.ypos); })
-        .attr("width", 40)
-        .attr("height", 10)
+        .attr("width", 70)
+        .attr("height", 12)
         .attr("fill", function(d) { return d.Primary_Color; })
         .attr("rx", 2)								
 		.attr("ry", 2);
@@ -230,8 +230,8 @@ Promise.all(promises).then(function(wardrobedata) {
             return xScale("Outwear")
         })
         .attr("y", function(d) { return yScale(d.ypos); })
-        .attr("width", 40)
-        .attr("height", 10)
+        .attr("width", 70)
+        .attr("height", 12)
         .attr("fill", function(d) { return d.Primary_Color; })
         .attr("rx", 2)								
 		.attr("ry", 2);
@@ -269,7 +269,7 @@ Promise.all(promises).then(function(wardrobedata) {
             });
 
     function sec_1() {
-        annotation.select(".instructions").style("opacity", 1).html("Want to see the story of an item? Hover over it!");
+        //annotation.select(".instructions").style("opacity", 1).html("Want to see the story of an item? Hover over it!");
         svg.selectAll("rect")
             .attr("fill", function(d) {
                 if(d.Era === "Winnetka, IL") {
