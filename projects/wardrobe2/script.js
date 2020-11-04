@@ -122,9 +122,6 @@ Promise.all(promises).then(function(wardrobedata) {
         }
     console.log(patterns);
 
-       
-
-
     var xScale = d3.scaleBand()
         .domain(wardrobe.map(function(d) { return d.Category; }))
         .range([width-margin.right, margin.left])
@@ -140,7 +137,7 @@ Promise.all(promises).then(function(wardrobedata) {
     
     var xAxis = svg.append("g")
         .attr("class","xaxis")
-        .attr("transform", `translate(20,${height-margin.bottom + 15})`)
+        .attr("transform", `translate(5,${height-margin.bottom + 15})`)
         .call(xAxisGenerator);
     
     xAxis.selectAll(".tick text")
@@ -162,13 +159,8 @@ Promise.all(promises).then(function(wardrobedata) {
         .attr("y", function(d) { return yScale(d.ypos); })
         .attr("width", 70)
         .attr("height", 12)
-        .attr("fill", function(d) { 
-            if(d.Pattern === "N") {
-                return d.Primary_Color; 
-            } else {
-                return patterns[d.Pattern_ID];
-            }
-            })
+        .attr("fill", function(d) { return d.Primary_Color; })
+        .attr("stroke", "none")
         .attr("rx", 2)								
 		.attr("ry", 2);
         //.style("opacity", 0.2);
@@ -237,36 +229,88 @@ Promise.all(promises).then(function(wardrobedata) {
 		.attr("ry", 2);
         //.style("opacity", 0.2);
 
-        svg.selectAll("rect").on("mouseover, mousemove", function(d) {
-            annotation.select(".instructions").style("opacity", 0);
-            if(d.Vintage === "N"){
-                annotation.select(".brand").html(d.Brand);
-            } else {
-                annotation.select(".brand").html("Vintage");
-            }
-            if(d.Primary_Color === "#FFFFFF" || d.Primary_Color === "#f9f3ed"){
-                annotation.select(".swatch").style("color", "#3d332a");
-            } else {
-                annotation.select(".swatch").style("color", "#FFFFFF");
-            }
-            if(d.Pattern === "N") {
-                annotation.select(".swatch2").style("visibility", "hidden");
-            } else {
-                annotation.select(".swatch2").style("visibility", "visible")
-                    .style("background-color", d.Secondary_Color)
-                    .html(d.Secondary_Color);
-            }
-            if(d.Secondary_Color === "#FFFFFF" || d.Secondary_Color === "#f3f4d0"){
-                annotation.select(".swatch2").style("color", "#3d332a");
-            } else {
-                annotation.select(".swatch2").style("color", "#FFFFFF");
-            }
-            annotation.select(".item").html(d.Description + " " + d.Sub_Category);
-            annotation.select(".notes").html(d.Notes);
-            annotation.select(".swatch")
-                .style("background-color", d.Primary_Color)
-                .html(d.Primary_Color)
-            });
+    var legend = d3.select(".sketch").append("svg")
+        .attr("width", 250)
+        .attr("height", 100)
+
+    legend.append("rect")
+        .attr("x", 2)
+        .attr("y", 20)
+        .attr("width", 90)
+        .attr("height", 18)
+        .attr("stroke", "#ddd3ca")
+        .attr("fill", "none")
+        .attr("rx", 2)								
+        .attr("ry", 2)
+        
+    legend.append("rect")
+        .attr("x", 2)
+        .attr("y", 46)
+        .attr("width", 90)
+        .attr("height", 18)
+        .attr("fill", "#000000")
+        .attr("rx", 2)								
+        .attr("ry", 2)
+        
+    legend.append("rect")
+        .attr("x", 2)
+        .attr("y", 72)
+        .attr("width", 90)
+        .attr("height", 18)
+        .attr("fill", "url(#1)")
+        .attr("rx", 2)								
+        .attr("ry", 2)
+        
+    legend.append("text")
+        .attr("x", 110)
+        .attr("y", 34)
+        .text("Off")
+
+    legend.append("text")
+        .attr("x", 110)
+        .attr("y", 60)
+        .text("On (solid color)")
+
+    legend.append("text")
+        .attr("x", 110)
+        .attr("y", 86)
+        .text("On (multi-color)")
+
+
+
+    svg.selectAll("rect").on("mouseover, mousemove", function(d) {
+        if(d.Vintage === "N"){
+            annotation.select(".brand").html(d.Brand);
+        } else {
+            annotation.select(".brand").html("Vintage");
+        }
+        if(d.Primary_Color === "#FFFFFF" || d.Primary_Color === "#f9f3ed" || d.Primary_Color === "#e5dfd6"){
+            annotation.select(".swatch").style("color", "#3d332a");
+        } else {
+            annotation.select(".swatch").style("color", "#FFFFFF");
+        }
+        if(d.Pattern === "N") {
+            annotation.select(".swatch2").style("visibility", "hidden");
+        } else {
+            annotation.select(".swatch2").style("visibility", "visible")
+                .style("background-color", d.Secondary_Color)
+                .html(d.Secondary_Color);
+        }
+        if(d.Secondary_Color === "#FFFFFF" || d.Secondary_Color === "#f3f4d0"){
+            annotation.select(".swatch2").style("color", "#3d332a");
+        } else {
+            annotation.select(".swatch2").style("color", "#FFFFFF");
+        }
+        annotation.select(".item").html(d.Description + " " + d.Sub_Category);
+        annotation.select(".notes").html(d.Notes);
+        annotation.select(".swatch")
+            .style("background-color", d.Primary_Color)
+            .html(d.Primary_Color)
+
+        // d3.select(".annotation_image").select(".sketch").select("svg").remove();
+        // annotationH.style("visibility", "hidden")
+        // instructions.style("visibility", "hidden")
+        });
 
     function sec_1() {
         //annotation.select(".instructions").style("opacity", 1).html("Want to see the story of an item? Hover over it!");
@@ -275,16 +319,23 @@ Promise.all(promises).then(function(wardrobedata) {
                 if(d.Era === "Winnetka, IL") {
                     return d.Primary_Color
                 } else {
+                    return "#f9ede1";
+                }
+            })
+            .attr("stroke", function(d) {
+                if(d.Era === "Winnetka, IL") {
+                    return "none"
+                } else {
                     return "#ddd3ca";
                 }
             })
-            .attr("opacity", function(d) {
-                if(d.Era === "Winnetka, IL") {
-                    return 1;
-                } else {
-                    return 0.3;
-                }
-            })
+            // .attr("opacity", function(d) {
+            //     if(d.Era === "Winnetka, IL") {
+            //         return 1;
+            //     } else {
+            //         return 0.3;
+            //     }
+            // })
             .attr("pointer-events", function(d) {
                 if(d.Era === "Winnetka, IL") {
                     return "all";
@@ -306,14 +357,14 @@ Promise.all(promises).then(function(wardrobedata) {
                         return patterns[d.Pattern_ID];
                     } 
                 } else {
-                    return "#ddd3ca";
+                    return "#f9ede1";
                 }
             })
-            .attr("opacity", function(d) {
+            .attr("stroke", function(d) {
                 if(d.Era === "Freshman Year, Middlebury College" || d.Era == "Sophomore Year, Middlebury College") {
-                    return 1;
+                    return "none"
                 } else {
-                    return 0.3;
+                    return "#ddd3ca";
                 }
             })
             .attr("pointer-events", function(d) {
@@ -337,14 +388,14 @@ Promise.all(promises).then(function(wardrobedata) {
                         return patterns[d.Pattern_ID];
                     } 
                 } else {
-                    return "#ddd3ca";
+                    return "#f9ede1";
                 }
             })
-            .attr("opacity", function(d) {
+            .attr("stroke", function(d) {
                 if(d.Era === "Study Abroad, London") {
-                    return 1;
+                    return "none"
                 } else {
-                    return 0.3;
+                    return "#ddd3ca";
                 }
             })
             .attr("pointer-events", function(d) {
@@ -368,14 +419,14 @@ Promise.all(promises).then(function(wardrobedata) {
                         return patterns[d.Pattern_ID];
                     } 
                 } else {
-                    return "#ddd3ca";
+                    return "#f9ede1";
                 }
             })
-            .attr("opacity", function(d) {
+            .attr("stroke", function(d) {
                 if(d.Era === "Senior Year, Middlebury College") {
-                    return 1;
+                    return "none"
                 } else {
-                    return 0.3;
+                    return "#ddd3ca";
                 }
             })
             .attr("pointer-events", function(d) {
@@ -399,14 +450,14 @@ Promise.all(promises).then(function(wardrobedata) {
                         return patterns[d.Pattern_ID];
                     } 
                 } else {
-                    return "#ddd3ca";
+                    return "#f9ede1";
                 }
             })
-            .attr("opacity", function(d) {
+            .attr("stroke", function(d) {
                 if(d.Era === "Los Angeles") {
-                    return 1;
+                    return "none"
                 } else {
-                    return 0.3;
+                    return "#ddd3ca";
                 }
             })
             .attr("pointer-events", function(d) {
@@ -430,14 +481,14 @@ Promise.all(promises).then(function(wardrobedata) {
                         return patterns[d.Pattern_ID];
                     } 
                 } else {
-                    return "#ddd3ca";
+                    return "#f9ede1";
                 }
             })
-            .attr("opacity", function(d) {
+            .attr("stroke", function(d) {
                 if(d.Era === "Moved in with Steven, Nottingham") {
-                    return 1;
+                    return "none"
                 } else {
-                    return 0.3;
+                    return "#ddd3ca";
                 }
             })
             .attr("pointer-events", function(d) {
@@ -461,14 +512,14 @@ Promise.all(promises).then(function(wardrobedata) {
                         return patterns[d.Pattern_ID];
                     } 
                 } else {
-                    return "#ddd3ca";
+                    return "#f9ede1";
                 }
             })
-            .attr("opacity", function(d) {
+            .attr("stroke", function(d) {
                 if(d.Era === "Hangzhou, China") {
-                    return 1;
+                    return "none"
                 } else {
-                    return 0.3;
+                    return "#ddd3ca";
                 }
             })
             .attr("pointer-events", function(d) {
@@ -492,14 +543,14 @@ Promise.all(promises).then(function(wardrobedata) {
                         return patterns[d.Pattern_ID];
                     } 
                 } else {
-                    return "#ddd3ca";
+                    return "#f9ede1";
                 }
             })
-            .attr("opacity", function(d) {
+            .attr("stroke", function(d) {
                 if(d.Era === "The Orme School, Mayer, AZ") {
-                    return 1;
+                    return "none"
                 } else {
-                    return 0.3;
+                    return "#ddd3ca";
                 }
             })
             .attr("pointer-events", function(d) {
@@ -523,14 +574,14 @@ Promise.all(promises).then(function(wardrobedata) {
                         return patterns[d.Pattern_ID];
                     } 
                 } else {
-                    return "#ddd3ca";
+                    return "#f9ede1";
                 }
             })
-            .attr("opacity", function(d) {
+            .attr("stroke", function(d) {
                 if(d.Era === "Roslindale, MA") {
-                    return 1;
+                    return "none"
                 } else {
-                    return 0.3;
+                    return "#ddd3ca";
                 }
             })
             .attr("pointer-events", function(d) {
@@ -554,14 +605,14 @@ Promise.all(promises).then(function(wardrobedata) {
                         return patterns[d.Pattern_ID];
                     } 
                 } else {
-                    return "#ddd3ca";
+                    return "#f9ede1";
                 }
             })
-            .attr("opacity", function(d) {
+            .attr("stroke", function(d) {
                 if(d.Era === "Lawrence, MA") {
-                    return 1;
+                    return "none"
                 } else {
-                    return 0.3;
+                    return "#ddd3ca";
                 }
             })
             .attr("pointer-events", function(d) {

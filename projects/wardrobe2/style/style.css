@@ -70,28 +70,38 @@ h2 {
     width: 100%;
     position: -webkit-sticky;
     position: sticky;
-    top: 5%;
+    top: 2%;
     grid-area: note_container;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 3fr 1fr;
+    grid-template-rows: 1fr 2fr 2fr;
     grid-template-areas: 
+        "instructions"    
         "annotation"
         "date_labels";
+}
+
+.instructions {
+    grid-area: instructions;
+    margin-left: 100px;
+    border-bottom: 1px solid #a08875;
+}
+
+.description {
+    width: 70%;
 }
 
 
 .annotation {
     grid-area: annotation;
-    margin: 10% 30px 50px 100px;
+    margin: 10px 30px 50px 100px;
     /* position: -webkit-sticky; */
     height: 40vh;
-    width: 70%;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 15fr;
+    grid-template-rows: 1fr;
     grid-template-areas:
-        "default default" 
         "image info";
 }
 
@@ -100,7 +110,7 @@ h2 {
     /* position: -webkit-sticky; */
     height: 30vh;
     width: 100%;
-    margin: 10% 30px 50px 100px;
+    margin: 0px 30px 50px 100px;
 }
 
 .graphic__prose {
@@ -167,7 +177,18 @@ h2 {
 
 .annotation_text {
     grid-area: info;
-    margin: 50px 80px 50px 30px;
+    margin: 0px 80px 50px 30px;
+    color: #3d332a;
+}
+
+.annotation_image {
+    grid-area: image;
+}
+
+.annotation_header {
+    font-family: 'Lilita One', cursive;
+    font-size: 20pt;
+    color: #3d332a;
 }
 
 .default {
