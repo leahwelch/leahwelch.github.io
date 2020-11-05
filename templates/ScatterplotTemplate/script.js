@@ -11,7 +11,7 @@ d3.csv("./data/deserts.csv").then(function(data) {
         .attr("height", height);
 
     var filtered_data = data.filter(function(d) {
-        return d.region == "West North Central";
+        return d.region == "South Atlantic";
     });
    
 /* filtered by column header */
