@@ -1,6 +1,7 @@
 
 var promises = [
     d3.csv("./data/eras.csv"), 
+    d3.csv("./data/smalls.csv"), 
     d3.csv("./data/Wardrobe.csv")
 ];
     
@@ -11,52 +12,22 @@ var promises = [
 Promise.all(promises).then(function(wardrobedata) {
 
     var eras = wardrobedata[0];
-    var wardrobe = wardrobedata[1];
+    var smallData = wardrobedata[1];
+    var wardrobe = wardrobedata[2];
 
         var era_start = [];
     for(i = 0; i < eras.length; i++) {
         era_start.push(eras[i].start);
     }
-    console.log(era_start);
-    var width = document.querySelector("#graph").clientWidth;
-    var widthT = document.querySelector(".graphic__prose").clientWidth;
-    var heightT = document.querySelector(".graphic__prose").clientHeight;
-    var marginT = {top: 0, left: 10, right: 0, bottom: 0};
-    
-    var svgT = d3.select(".graphic__prose")
-        .append("svg")
-        .attr("width", widthT)
-        .attr("height", heightT);
-    var yScaleT = d3.scaleLinear()
-        .domain([1, 60])
-        .range([0, heightT]);
-    
-    // var yAxisGenerator = d3.axisRight(yScaleT)
-    //     .tickSize(-14)
-    //     .ticks(60);
-    
-    // var yAxis = svgT.append("g")
-    //     .attr("class","axis")
-    //     .attr("transform", `translate(${marginT.left + 7},0)`)
-    //     .call(yAxisGenerator);
-    
-    // yAxis.selectAll(".tick text")
-    //     .attr("class", "sideLabels")
-    //     .style("visibility", "hidden");
-    
-    // var lineT = svgT.append("line")
-    //     .attr("x1", marginT.left)
-    //     .attr("x2", marginT.left)
-    //     .attr("y1", function() {
-    //         return yScaleT(1);
-    //     })
-    //     .attr("y2", function() {
-    //         return yScaleT(60);
-    //     })
-    //     .attr("stroke", "#a08875");
-    
 
-    console.log(wardrobe);
+    var nested = d3.nest() // nest function allows to group the calculation per level of a factor
+        .key(function(d) { return d.group;})
+        .entries(wardrobe);
+
+    console.log(nested);
+    // console.log([nested[0].values]);
+
+    var width = document.querySelector("#graph").clientWidth;
 
     var tops = wardrobe.filter(function(d) {
         return d.Category === "Tops";
@@ -101,6 +72,51 @@ Promise.all(promises).then(function(wardrobedata) {
         .append("svg")
         .attr("width", width)
         .attr("height", height);
+
+    var smallMargin = {top: 20, right: 20, bottom: 20, left: 20};
+    var smallWidth = 300 - smallMargin.left - smallMargin.right;
+    var smallHeight = 500 - smallMargin.top - smallMargin.bottom;
+
+    var yScaleSmall = d3.scaleBand()
+        .domain(wardrobe.map(function(d) { return d.group_y; }))
+        .range([smallHeight-smallMargin.bottom-10, smallMargin.top])
+        .padding(1);
+    
+
+    // Add an svg element for each group. The will be one beside each other and will go on the next row when no more room available
+  var smalls = d3.select("#smalls")
+    .selectAll(".uniqueChart")
+    .data(nested)
+    .enter()
+    .append("svg")
+        .attr("width", smallWidth + smallMargin.left + smallMargin.right)
+        .attr("height", smallHeight +smallMargin.top + smallMargin.bottom)
+        .attr("class", "uniqueChart")
+    .append("g")
+        .attr("transform",
+            "translate(" + smallMargin.left + "," + smallMargin.top + ")");
+
+    smalls.selectAll(".bar")
+      .data(function(d) {return d.values;})
+      .enter()
+      .append("rect")
+      .attr("class", "bar")
+      .attr("x", (smallWidth-smallMargin.left)/2)
+      .attr("width", 70)
+      .attr("y", function(d) { return yScaleSmall(d.group_y); })
+      .attr("height", 10)
+      .attr("fill", function(d) {return d.Primary_Color; })
+      .attr("rx", 2)								
+	  .attr("ry", 2);
+
+      smalls.append("text")
+      .attr('class','smalllabel')
+      .attr('x',(smallWidth-smallMargin.left)/2)
+      .attr('y', smallHeight)
+      .text( function(d) { return d.key; })
+      //.attr('text-anchor', 'middle')
+        
+
 
     var patterns = [];
     patterns[0] = "no value";
