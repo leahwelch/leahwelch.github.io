@@ -6,6 +6,7 @@ Promise.all(promises).then(function(data) {
 
     var byredo = data[0];
     var notelibrary = data[1];
+    console.log(byredo);
    
     var width = document.querySelector("#chart").clientWidth;
     var height = document.querySelector("#chart").clientHeight;
@@ -37,6 +38,7 @@ Promise.all(promises).then(function(data) {
             }
             )
         }
+        console.log(allNotes);
         
     
     var filteredLib = [];

@@ -1,39 +1,95 @@
 
 var promises = [
     d3.csv("./data/eras.csv"), 
-    d3.csv("./data/smalls.csv"), 
-    d3.csv("./data/Wardrobe.csv")
+    d3.csv("./data/Wardrobe.csv"),
+    d3.csv("./data/wearlog.csv")
 ];
     
     var graphicEl = d3.select('#container')
     var graphicVisEl = graphicEl.select('#graph')
     var graphicProseEl = graphicEl.select('.graphic__prose')
 
+    function removeDuplicates(originalData, prop) {
+        var newData = [];
+        var lookupObject = {};
+
+        for(var i in originalData) {
+            lookupObject[originalData[i][prop]] = originalData[i];
+         }
+    
+         for(i in lookupObject) {
+             newData.push(lookupObject[i]);
+         }
+          return newData;
+
+    }
+
 Promise.all(promises).then(function(wardrobedata) {
 
     var eras = wardrobedata[0];
-    var smallData = wardrobedata[1];
-    var wardrobe = wardrobedata[2];
+    var wardrobe = wardrobedata[1];
+    var wearlog = wardrobedata[2]; 
 
-        var era_start = [];
+    console.log(wearlog);
+
+    var itemsWorn = [];
+    for(var i = 0; i < wearlog.length; i++) {
+        itemsWorn.push({item: wearlog[i].Description, group: wearlog[i].group})
+    }
+
+    var uniqueArray = removeDuplicates(itemsWorn, "item"); 
+    console.log(uniqueArray);
+
+    var era_start = [];
     for(i = 0; i < eras.length; i++) {
         era_start.push(eras[i].start);
     }
 
-    var nested = d3.nest() // nest function allows to group the calculation per level of a factor
-        .key(function(d) { return d.group;})
-        //.rollup(function(d) { return d.length;})
-        .entries(wardrobe);
-
-        // var nested = d3.nest()
-        // .key(function(d) { return d.OFFENSE_CODE_GROUP; })
-        // //.key(function(d) { return d.DAY_OF_WEEK; })
-        // .rollup(function(d) { return d.length;})
-        // .entries(data)
-        // .sort(function(a,b) { return b.value - a.value; });
+    var nested = d3.nest()
+        .key(function(d) { return d.group; })
+        .entries(wardrobe)
 
     console.log(nested);
-    // console.log([nested[0].values]);
+    
+    var groupVals = d3.nest()
+        .key(function(d) { return d.group; })
+        .rollup(function(v) { return v.length;})
+        .entries(wardrobe)
+        //.sort(function(a,b) { return b.value - a.value; });
+
+    console.log(groupVals);
+
+    var wornVals = d3.nest()
+        .key(function(d) { return d.group; })
+        .rollup(function(v) { return v.length;})
+        .entries(uniqueArray)
+        //.sort(function(a,b) { return b.value - a.value; });
+
+    console.log(wornVals[0].key);
+    console.log(wornVals);
+
+    var efficiencies = [];
+    var percentages = [];
+    // for(i = 0; i < groupVals.length; i++) {
+    //     for(j = 0; j < wornVals.length; j++) {
+    //         var groupA = wornVals[j].key;
+    //         if(groupA === groupVals[i].key) {
+    //             efficiencies.push({group: groupA, efficiency: wornVals[j].value/groupVals[i].value})
+    //         } 
+    //     }
+    // }
+    for(i = 0; i < groupVals.length; i++) {
+        for(j = 0; j < wornVals.length; j++) {
+            var groupA = groupVals[i].key;
+            if(groupA === wornVals[j].key) {
+                efficiencies.push({group: groupA, efficiency: wornVals[j].value/groupVals[i].value})
+            } else if(groupA === "Dresses" ) {
+                efficiencies.push({group: groupA, efficiency: 0}) 
+            }
+        }
+    }
+    console.log(efficiencies);
+
 
     var width = document.querySelector("#graph").clientWidth;
 
@@ -41,36 +97,25 @@ Promise.all(promises).then(function(wardrobedata) {
         return d.Category === "Tops";
     });
 
-    console.log(tops);
-
     var maxItems = tops.length;
-    console.log(maxItems);
 
     var bottoms = wardrobe.filter(function(d) {
         return d.Category === "Bottoms";
     });
 
-    console.log(bottoms);
-
     var dresses = wardrobe.filter(function(d) {
         return d.Category === "Dresses & Jumpsuits";
     });
 
-    console.log(dresses);
 
     var outerwear = wardrobe.filter(function(d) {
         return d.Category === "Outwear";
     });
 
-    console.log(outerwear);
-
     var sets = wardrobe.filter(function(d) {
         return d.Category === "Sets";
     });
 
-    console.log(sets);
-
-    
 
     var width = document.querySelector("#graph").clientWidth;
     var height = document.querySelector("#graph").clientHeight;
@@ -81,9 +126,9 @@ Promise.all(promises).then(function(wardrobedata) {
         .attr("width", width)
         .attr("height", height);
 
-    var smallMargin = {top: 20, right: 20, bottom: 20, left: 20};
+    var smallMargin = {top: 0, right: 20, bottom: 20, left: 20};
     var smallWidth = 300 - smallMargin.left - smallMargin.right;
-    var smallHeight = 450 - smallMargin.top - smallMargin.bottom;
+    var smallHeight = 400 - smallMargin.top - smallMargin.bottom;
 
     var yScaleSmall = d3.scaleBand()
         .domain(wardrobe.map(function(d) { return d.group_y; }))
@@ -111,7 +156,6 @@ Promise.all(promises).then(function(wardrobedata) {
 
         patterns.push(`url(#${i+1})`)
         }
-    console.log(patterns);
 
     var xScale = d3.scaleBand()
         .domain(wardrobe.map(function(d) { return d.Category; }))
@@ -140,16 +184,16 @@ Promise.all(promises).then(function(wardrobedata) {
     var date_labels = d3.select(".date_labels")
 
     var smalls = d3.select("#smalls")
-    .selectAll(".uniqueChart")
-    .data(nested)
-    .enter()
-    .append("svg")
-        .attr("width", smallWidth + smallMargin.left + smallMargin.right)
-        .attr("height", smallHeight +smallMargin.top + smallMargin.bottom)
-        .attr("class", "uniqueChart")
-    .append("g")
-        .attr("transform",
-            "translate(" + smallMargin.left + "," + smallMargin.top + ")");
+        .selectAll(".uniqueChart")
+        .data(nested)
+        .enter()
+        .append("svg")
+            .attr("width", smallWidth + smallMargin.left + smallMargin.right)
+            .attr("height", smallHeight +smallMargin.top + smallMargin.bottom)
+            .attr("class", "uniqueChart")
+        .append("g")
+            .attr("transform",
+                "translate(" + smallMargin.left + "," + smallMargin.top + ")");
 
     smalls.selectAll(".bar")
       .data(function(d) {return d.values;})
@@ -174,8 +218,28 @@ Promise.all(promises).then(function(wardrobedata) {
       .attr('class','smalllabel')
       .attr('x',(smallWidth-smallMargin.left)/2)
       .attr('y', smallHeight)
+      .style("font-size", "12pt")
       .text( function(d) { return d.key; })
-      //.attr('text-anchor', 'middle')
+
+    // var percentage = smalls.append("text")
+    //   .attr('class','efficiencyLabel')
+    //   .attr('x',(smallWidth-smallMargin.left)/2)
+    //   .attr('y', smallHeight + 20)
+
+    // for(i = 0; i < nested.length; i++) {
+    //     for(j = 0; j < efficiencies.length; j++) {
+    //         var groupA = efficiencies[j].group;
+    //         console.log(nested[i].key);
+    //         if(groupA === nested[i].key){
+    //             percentage.text(efficiencies[j].efficiency);
+    //         } else {
+    //             percentage.text("0%");
+    //         }
+    //     }
+    // }
+      
+      
+
           
     var topsG = svg.append("g").attr("class", "topsG")
 

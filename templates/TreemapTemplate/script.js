@@ -1,4 +1,5 @@
-d3.csv("data/crops.csv").then(function(data) {
+// d3.csv("data/2018-boston-crimes.csv").then(function(data) {
+    d3.csv("data/Wardrobe.csv").then(function(data) {
     /*
     BOSTON CRIME DATA from the BOSTON POLICE DEPARTMENT, 2018
     Adapted from:
@@ -23,12 +24,14 @@ d3.csv("data/crops.csv").then(function(data) {
     for the top 10 (by frequency) offense code groups in 2018.
     We can use the function d3.nest() to count the number of incidents of each unique offense code group:
     */
-    var nested = data
-        //.key(function(d) { return d.OFFENSE_CODE_GROUP; })
+    var nested = d3.nest()
+        .key(function(d) { return d.group; })
         //.key(function(d) { return d.DAY_OF_WEEK; })
-        //.rollup(function(d) { return d.indemnities;})
-       // .entries(data)
-        .sort(function(a,b) { return b.indemnities - a.indemnities; });
+        .rollup(function(v) { return v.length;})
+        .entries(data)
+        .sort(function(a,b) { return b.value - a.value; });
+
+        console.log(nested);
 
 
 
@@ -66,7 +69,7 @@ d3.csv("data/crops.csv").then(function(data) {
     */
 
    var hierarchy = d3.hierarchy({values: nested}, function(d) { return d.values; })
-        .sum(function(d) { return d.indemnities; });
+        .sum(function(d) { return d.value; });
 
 
     /*
@@ -76,7 +79,7 @@ d3.csv("data/crops.csv").then(function(data) {
     */
 
    var root = treemap(hierarchy);
-   console.log(root.leaves());
+   console.log(root);
 
 
     /*
@@ -94,7 +97,7 @@ d3.csv("data/crops.csv").then(function(data) {
             .attr("y", function(d) { return d.y0; })
             .attr("width", function(d) { return d.x1 - d.x0; })
             .attr("height", function(d) { return d.y1 - d.y0; })
-            .attr("fill", function(d) { return color(d.data.values); })
+            .attr("fill", function(d) { return color(d.data.key); })
             .attr("stroke", "#FFFFFF");
 
 
@@ -125,14 +128,14 @@ d3.csv("data/crops.csv").then(function(data) {
     to generate text labels for the rectangles
     */
 
-    // svg.selectAll("text")
-    //     .data(root.leaves())
-    //     .enter()
-    //     .append("text")
-    //         .attr("x", function(d) { return d.x0+10; })
-    //         .attr("y", function(d) { return d.y0+20; })
-    //         .attr("fill", "#FFFFFF")
-    //         .text(function(d,i) {return d[i]; });
+    svg.selectAll("text")
+        .data(root.leaves())
+        .enter()
+        .append("text")
+            .attr("x", function(d) { return d.x0+10; })
+            .attr("y", function(d) { return d.y0+20; })
+            .attr("fill", "#FFFFFF")
+            .text(function(d) {return d.data.key; });
 
 
 
