@@ -23,6 +23,10 @@ body {
     margin-bottom: 40px;
 }
 
+#smalls {
+    margin: 20px 50px 20px 150px;
+}
+
 h1 {
     width: 75%;
     font-size: 60pt;
@@ -302,4 +306,18 @@ h2 {
     font-size: 9pt;
     transform: translate(20px,-7px);
     width: 200px;
+}
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    margin: 5px;
+    width: auto;
+    padding: 8px;
+    font-size: 12pt;
+    background-color:#3d332a;
+    color: #ffffff;
+    border: 1px solid #f9ede1;
+    border-radius: 3px;
+    pointer-events: none;
 }

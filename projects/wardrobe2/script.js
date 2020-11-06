@@ -70,25 +70,26 @@ Promise.all(promises).then(function(wardrobedata) {
 
     var efficiencies = [];
     var percentages = [];
-    // for(i = 0; i < groupVals.length; i++) {
-    //     for(j = 0; j < wornVals.length; j++) {
-    //         var groupA = wornVals[j].key;
-    //         if(groupA === groupVals[i].key) {
-    //             efficiencies.push({group: groupA, efficiency: wornVals[j].value/groupVals[i].value})
-    //         } 
-    //     }
-    // }
     for(i = 0; i < groupVals.length; i++) {
         for(j = 0; j < wornVals.length; j++) {
             var groupA = groupVals[i].key;
             if(groupA === wornVals[j].key) {
                 efficiencies.push({group: groupA, efficiency: wornVals[j].value/groupVals[i].value})
-            } else if(groupA === "Dresses" ) {
-                efficiencies.push({group: groupA, efficiency: 0}) 
-            }
+                percentages.push(wornVals[j].value/groupVals[i].value)
+            } 
         }
     }
     console.log(efficiencies);
+
+    for(i = 0; i < percentages.length; i++) {
+        percentages[i] = (percentages[i] * 100).toFixed(0);
+    }
+    console.log(percentages);
+
+    var tooltip = d3.select("#smalls")
+        .append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
 
 
     var width = document.querySelector("#graph").clientWidth;
@@ -126,7 +127,7 @@ Promise.all(promises).then(function(wardrobedata) {
         .attr("width", width)
         .attr("height", height);
 
-    var smallMargin = {top: 0, right: 20, bottom: 20, left: 20};
+    var smallMargin = {top: 0, right: 0, bottom: 20, left: 0};
     var smallWidth = 300 - smallMargin.left - smallMargin.right;
     var smallHeight = 400 - smallMargin.top - smallMargin.bottom;
 
@@ -200,7 +201,7 @@ Promise.all(promises).then(function(wardrobedata) {
       .enter()
       .append("rect")
       .attr("class", "bar")
-      .attr("x", (smallWidth-smallMargin.left)/2)
+      .attr("x", smallMargin.left)
       .attr("width", 70)
       .attr("y", function(d) { return yScaleSmall(d.group_y); })
       .attr("height", 10)
@@ -212,33 +213,41 @@ Promise.all(promises).then(function(wardrobedata) {
         } 
        })
       .attr("rx", 2)								
-	  .attr("ry", 2);
+	  .attr("ry", 2).on("mouseover, mousemove", function(d) {
+
+        tooltip.style("opacity", 1)
+            .style("left", (d3.event.pageX) + "px")		
+            .style("top", (d3.event.pageY - 28) + "px")
+            .text(function() {
+                if(d.Vintage === "N") {
+                    return d.Brand + " " + d.Description + " " + d.Sub_Category;
+                } else {
+                    return "Vintage " + d.Description + " " + d.Sub_Category;
+                } 
+            })  
+      }).on("mouseout", function() {
+        tooltip.style("opacity", 0);
+    });
 
     smalls.append("text")
       .attr('class','smalllabel')
-      .attr('x',(smallWidth-smallMargin.left)/2)
-      .attr('y', smallHeight)
-      .style("font-size", "12pt")
+      .attr('x', smallMargin.left)
+      .attr('y', smallHeight - 10)
+      .style("font-size", "10pt")
       .text( function(d) { return d.key; })
 
-    // var percentage = smalls.append("text")
-    //   .attr('class','efficiencyLabel')
-    //   .attr('x',(smallWidth-smallMargin.left)/2)
-    //   .attr('y', smallHeight + 20)
-
-    // for(i = 0; i < nested.length; i++) {
-    //     for(j = 0; j < efficiencies.length; j++) {
-    //         var groupA = efficiencies[j].group;
-    //         console.log(nested[i].key);
-    //         if(groupA === nested[i].key){
-    //             percentage.text(efficiencies[j].efficiency);
-    //         } else {
-    //             percentage.text("0%");
-    //         }
-    //     }
-    // }
-      
-      
+    smalls.selectAll(".efficiencyLabel").data(function(d) {return d.values;}).enter().append("text")
+        .attr('class','efficiencyLabel')
+        .attr('x',smallMargin.left)
+        .attr('y', smallHeight + 10)
+        .style("font-size", "10pt")
+        .text(function(d) {
+            if (d.group === "Dresses" || d.group === "Shorts & Skirts" || d.group === "Sets") {
+                return "0% worn in the past month";
+            } else {
+                return percentages[d.group_ID-1] + "% worn in the past month";
+            }
+        })
 
           
     var topsG = svg.append("g").attr("class", "topsG")
