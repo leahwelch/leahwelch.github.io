@@ -75,7 +75,7 @@ Promise.all(promises).then(function(wardrobedata) {
 
     var smallMargin = {top: 20, right: 20, bottom: 20, left: 20};
     var smallWidth = 300 - smallMargin.left - smallMargin.right;
-    var smallHeight = 500 - smallMargin.top - smallMargin.bottom;
+    var smallHeight = 450 - smallMargin.top - smallMargin.bottom;
 
     var yScaleSmall = d3.scaleBand()
         .domain(wardrobe.map(function(d) { return d.group_y; }))
@@ -84,39 +84,6 @@ Promise.all(promises).then(function(wardrobedata) {
     
 
     // Add an svg element for each group. The will be one beside each other and will go on the next row when no more room available
-  var smalls = d3.select("#smalls")
-    .selectAll(".uniqueChart")
-    .data(nested)
-    .enter()
-    .append("svg")
-        .attr("width", smallWidth + smallMargin.left + smallMargin.right)
-        .attr("height", smallHeight +smallMargin.top + smallMargin.bottom)
-        .attr("class", "uniqueChart")
-    .append("g")
-        .attr("transform",
-            "translate(" + smallMargin.left + "," + smallMargin.top + ")");
-
-    smalls.selectAll(".bar")
-      .data(function(d) {return d.values;})
-      .enter()
-      .append("rect")
-      .attr("class", "bar")
-      .attr("x", (smallWidth-smallMargin.left)/2)
-      .attr("width", 70)
-      .attr("y", function(d) { return yScaleSmall(d.group_y); })
-      .attr("height", 10)
-      .attr("fill", function(d) {return d.Primary_Color; })
-      .attr("rx", 2)								
-	  .attr("ry", 2);
-
-      smalls.append("text")
-      .attr('class','smalllabel')
-      .attr('x',(smallWidth-smallMargin.left)/2)
-      .attr('y', smallHeight)
-      .text( function(d) { return d.key; })
-      //.attr('text-anchor', 'middle')
-        
-
 
     var patterns = [];
     patterns[0] = "no value";
@@ -163,6 +130,44 @@ Promise.all(promises).then(function(wardrobedata) {
 
     var annotation = d3.select(".annotation")
     var date_labels = d3.select(".date_labels")
+
+    var smalls = d3.select("#smalls")
+    .selectAll(".uniqueChart")
+    .data(nested)
+    .enter()
+    .append("svg")
+        .attr("width", smallWidth + smallMargin.left + smallMargin.right)
+        .attr("height", smallHeight +smallMargin.top + smallMargin.bottom)
+        .attr("class", "uniqueChart")
+    .append("g")
+        .attr("transform",
+            "translate(" + smallMargin.left + "," + smallMargin.top + ")");
+
+    smalls.selectAll(".bar")
+      .data(function(d) {return d.values;})
+      .enter()
+      .append("rect")
+      .attr("class", "bar")
+      .attr("x", (smallWidth-smallMargin.left)/2)
+      .attr("width", 70)
+      .attr("y", function(d) { return yScaleSmall(d.group_y); })
+      .attr("height", 10)
+      .attr("fill", function(d) {
+        if(d.Pattern === "N") {
+            return d.Primary_Color;
+        } else {
+            return patterns[d.Pattern_ID];
+        } 
+       })
+      .attr("rx", 2)								
+	  .attr("ry", 2);
+
+    smalls.append("text")
+      .attr('class','smalllabel')
+      .attr('x',(smallWidth-smallMargin.left)/2)
+      .attr('y', smallHeight)
+      .text( function(d) { return d.key; })
+      //.attr('text-anchor', 'middle')
           
     var topsG = svg.append("g").attr("class", "topsG")
 
@@ -323,9 +328,6 @@ Promise.all(promises).then(function(wardrobedata) {
             .style("background-color", d.Primary_Color)
             .html(d.Primary_Color)
 
-        // d3.select(".annotation_image").select(".sketch").select("svg").remove();
-        // annotationH.style("visibility", "hidden")
-        // instructions.style("visibility", "hidden")
         });
 
     function sec_1() {
@@ -345,13 +347,6 @@ Promise.all(promises).then(function(wardrobedata) {
                     return "#ddd3ca";
                 }
             })
-            // .attr("opacity", function(d) {
-            //     if(d.Era === "Winnetka, IL") {
-            //         return 1;
-            //     } else {
-            //         return 0.3;
-            //     }
-            // })
             .attr("pointer-events", function(d) {
                 if(d.Era === "Winnetka, IL") {
                     return "all";
