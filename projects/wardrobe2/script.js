@@ -22,7 +22,15 @@ Promise.all(promises).then(function(wardrobedata) {
 
     var nested = d3.nest() // nest function allows to group the calculation per level of a factor
         .key(function(d) { return d.group;})
+        //.rollup(function(d) { return d.length;})
         .entries(wardrobe);
+
+        // var nested = d3.nest()
+        // .key(function(d) { return d.OFFENSE_CODE_GROUP; })
+        // //.key(function(d) { return d.DAY_OF_WEEK; })
+        // .rollup(function(d) { return d.length;})
+        // .entries(data)
+        // .sort(function(a,b) { return b.value - a.value; });
 
     console.log(nested);
     // console.log([nested[0].values]);
