@@ -45,7 +45,16 @@ Promise.all(promises).then(function(wardrobedata) {
     for(i = 0; i < uniqueArray.length; i++) {
         capsule.push(uniqueArray[i].item);
     }
-    console.log(capsule);
+    console.log(capsule.length);
+    console.log(wardrobe.length);
+
+    
+
+    d3.select(".totalWorn").html(capsule.length);
+    d3.select(".totalItems").html(wardrobe.length);
+    d3.select(".efficiencyP").html(((capsule.length/wardrobe.length) * 100).toFixed(0) + "%");
+    
+    
 
     var era_start = [];
     for(i = 0; i < eras.length; i++) {
@@ -57,6 +66,13 @@ Promise.all(promises).then(function(wardrobedata) {
         .entries(wardrobe)
 
     console.log(nested);
+
+    var nestedItems = d3.nest()
+        .key(function(d) { return d.Description; })
+        .rollup(function(v) { return v.length;})
+        .entries(wearlog)
+
+    console.log(nestedItems);
     
     var groupVals = d3.nest()
         .key(function(d) { return d.group; })
@@ -93,10 +109,10 @@ Promise.all(promises).then(function(wardrobedata) {
     }
     console.log(percentages);
 
-    var tooltip = d3.select("#smalls")
-        .append("div")
-        .attr("class", "tooltip")
-        .style("opacity", 0);
+    var tooltip = d3.select("#tooltip");
+    //     .append("div")
+    //     .attr("class", "tooltip")
+    //     .style("opacity", 0);
 
 
     var width = document.querySelector("#graph").clientWidth;
@@ -163,7 +179,7 @@ Promise.all(promises).then(function(wardrobedata) {
         .attr("height", height);
 
     var smallMargin = {top: 0, right: 0, bottom: 20, left: 0};
-    var smallWidth = 300 - smallMargin.left - smallMargin.right;
+    var smallWidth = 225 - smallMargin.left - smallMargin.right;
     var smallHeight = 400 - smallMargin.top - smallMargin.bottom;
 
     var yScaleSmall = d3.scaleBand()
@@ -249,19 +265,32 @@ Promise.all(promises).then(function(wardrobedata) {
        })
       .attr("rx", 2)								
 	  .attr("ry", 2).on("mouseover, mousemove", function(d) {
-
-        tooltip.style("opacity", 1)
+        var timesWorn;
+        for(i = 0; i < nestedItems.length; i++) {
+            var itemA = d.Description;
+            if(itemA === nestedItems[i].key) {
+                timesWorn = nestedItems[i].value;
+            } 
+        }
+        console.log(timesWorn);
+        tooltip.classed("hidden", false)
             .style("left", (d3.event.pageX) + "px")		
-            .style("top", (d3.event.pageY - 28) + "px")
-            .text(function() {
+            .style("top", (d3.event.pageY - 28) + "px");
+        tooltip.select(".mainInfo")
+            .html(function() {
                 if(d.Vintage === "N") {
                     return d.Brand + " " + d.Description + " " + d.Sub_Category;
                 } else {
                     return "Vintage " + d.Description + " " + d.Sub_Category;
                 } 
-            })  
+            }) 
+        if(capsule.indexOf(d.Description)>= 0) {
+            tooltip.select(".wornInfo").html("Times Worn: " + timesWorn)
+        } else {
+            tooltip.select(".wornInfo").html("Times Worn: 0")
+        }
       }).on("mouseout", function() {
-        tooltip.style("opacity", 0);
+        tooltip.classed("hidden", true);
     });
 
     smalls.append("text")
@@ -443,22 +472,15 @@ Promise.all(promises).then(function(wardrobedata) {
 
         if(d.Category === "Bottoms") {
             string = `<img src=${bottompics[d.ypos-1]} class="bottoms"/>`
-            //string = bottompics[d.ypos];
         } else if(d.Category === "Dresses & Jumpsuits") {
             string = `<img src=${dresspics[d.ypos-1]} class="dresses"/>`
-            //string = dresspics[d.ypos];
         } else if(d.Category === "Tops") {
             string = `<img src=${toppics[d.ypos-1]} class="tops"/>`
-            //string = toppics[d.ypos];
         } else if(d.Category === "Outwear") {
             string = `<img src=${outerpics[d.ypos-1]} class="outerwear"/>`
-            //string = outerpics[d.ypos];
         } else if(d.Category === "Sets") {
-            //string = setpics[d.ypos];
             string = `<img src=${setpics[d.ypos-1]} class="sets"/>`
         }
-        console.log(string);
-        //var string = "<img src= + " yourImagePath " + />";
         annotation.select(".item").html(d.Description + " " + d.Sub_Category);
         annotation.select(".notes").html(d.Notes);
         annotation.select(".swatch")
