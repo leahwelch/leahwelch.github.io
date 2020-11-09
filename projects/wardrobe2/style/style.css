@@ -107,7 +107,7 @@ h2 {
     height: 40vh;
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
     grid-template-rows: 1fr;
     grid-template-areas:
         "image info";
@@ -185,12 +185,52 @@ h2 {
 
 .annotation_text {
     grid-area: info;
-    margin: 0px 80px 50px 30px;
+    margin: 0px 200px 50px 30px;
     color: #3d332a;
 }
 
 .annotation_image {
     grid-area: image;
+}
+
+.bottoms {
+    padding: 30px;
+    max-height:400px;
+    max-width:300px;
+    height:auto;
+    width:auto;
+}
+
+.dresses {
+    padding: 30px;
+    max-height:400px;
+    max-width:300px;
+    height:auto;
+    width:auto;
+}
+
+.tops {
+    padding: 30px;
+    max-height:400px;
+    max-width:300px;
+    height:auto;
+    width:auto;
+}
+
+.outerwear {
+    padding: 30px;
+    max-height:400px;
+    max-width:300px;
+    height:auto;
+    width:auto;
+}
+
+.sets {
+    padding: 30px;
+    max-height:400px;
+    max-width:300px;
+    height:auto;
+    width:auto;
 }
 
 .annotation_header {

@@ -36,9 +36,16 @@ Promise.all(promises).then(function(wardrobedata) {
     for(var i = 0; i < wearlog.length; i++) {
         itemsWorn.push({item: wearlog[i].Description, group: wearlog[i].group})
     }
+    //console.log(itemsWorn);
 
     var uniqueArray = removeDuplicates(itemsWorn, "item"); 
-    console.log(uniqueArray);
+    //console.log(uniqueArray);
+
+    var capsule = [];
+    for(i = 0; i < uniqueArray.length; i++) {
+        capsule.push(uniqueArray[i].item);
+    }
+    console.log(capsule);
 
     var era_start = [];
     for(i = 0; i < eras.length; i++) {
@@ -98,25 +105,53 @@ Promise.all(promises).then(function(wardrobedata) {
         return d.Category === "Tops";
     });
 
+    var toppics = [];
+    for(i = 0; i < tops.length; i++) {
+        toppics.push(`./assets/pics/tops/${i + 1}.png`)
+    }
+
     var maxItems = tops.length;
 
     var bottoms = wardrobe.filter(function(d) {
         return d.Category === "Bottoms";
     });
 
+    var bottompics = [];
+    for(i = 0; i < bottoms.length; i++) {
+        bottompics.push(`./assets/pics/bottoms/${i + 1}.png`)
+    }
+
     var dresses = wardrobe.filter(function(d) {
         return d.Category === "Dresses & Jumpsuits";
     });
+
+    var dresspics = [];
+    for(i = 0; i < dresses.length; i++) {
+        dresspics.push(`./assets/pics/dresses/${i + 1}.png`)
+    }
 
 
     var outerwear = wardrobe.filter(function(d) {
         return d.Category === "Outwear";
     });
 
+    var outerpics = [];
+    for(i = 0; i < outerwear.length; i++) {
+        outerpics.push(`./assets/pics/outwear/${i + 1}.png`)
+    }
+
     var sets = wardrobe.filter(function(d) {
         return d.Category === "Sets";
     });
 
+    var setpics = [];
+    for(i = 0; i < sets.length; i++) {
+        setpics.push(`./assets/pics/sets/${i + 1}.png`)
+    }
+
+    for(i = 0; i < wearlog.length; i++) {
+        wearlog[i].date = new Date(wearlog[i].date);
+    }
 
     var width = document.querySelector("#graph").clientWidth;
     var height = document.querySelector("#graph").clientHeight;
@@ -236,16 +271,17 @@ Promise.all(promises).then(function(wardrobedata) {
       .style("font-size", "10pt")
       .text( function(d) { return d.key; })
 
-    smalls.selectAll(".efficiencyLabel").data(function(d) {return d.values;}).enter().append("text")
-        .attr('class','efficiencyLabel')
+    smalls.selectAll("mylabels")
+        .data(function(d) {return d.values;}).enter().append("text")
+        //.attr('class','efficiencyLabel')
         .attr('x',smallMargin.left)
         .attr('y', smallHeight + 10)
         .style("font-size", "10pt")
         .text(function(d) {
             if (d.group === "Dresses" || d.group === "Shorts & Skirts" || d.group === "Sets") {
-                return "0% worn in the past month";
+                return "Efficiency: 0%";
             } else {
-                return percentages[d.group_ID-1] + "% worn in the past month";
+                return "Efficiency: " + percentages[d.group_ID-1] + "%";
             }
         })
 
@@ -403,11 +439,49 @@ Promise.all(promises).then(function(wardrobedata) {
         } else {
             annotation.select(".swatch2").style("color", "#FFFFFF");
         }
+        var string;
+
+        if(d.Category === "Bottoms") {
+            string = `<img src=${bottompics[d.ypos-1]} class="bottoms"/>`
+            //string = bottompics[d.ypos];
+        } else if(d.Category === "Dresses & Jumpsuits") {
+            string = `<img src=${dresspics[d.ypos-1]} class="dresses"/>`
+            //string = dresspics[d.ypos];
+        } else if(d.Category === "Tops") {
+            string = `<img src=${toppics[d.ypos-1]} class="tops"/>`
+            //string = toppics[d.ypos];
+        } else if(d.Category === "Outwear") {
+            string = `<img src=${outerpics[d.ypos-1]} class="outerwear"/>`
+            //string = outerpics[d.ypos];
+        } else if(d.Category === "Sets") {
+            //string = setpics[d.ypos];
+            string = `<img src=${setpics[d.ypos-1]} class="sets"/>`
+        }
+        console.log(string);
+        //var string = "<img src= + " yourImagePath " + />";
         annotation.select(".item").html(d.Description + " " + d.Sub_Category);
         annotation.select(".notes").html(d.Notes);
         annotation.select(".swatch")
             .style("background-color", d.Primary_Color)
             .html(d.Primary_Color)
+        annotation.select(".annotation_image").html(string);
+        
+        var wornDate = [];
+        for(i = 0; i < wearlog.length; i++) {
+            var itemA = d.Description;
+            if(itemA === wearlog[i].Description) {
+                wornDate.push(wearlog[i].date);
+            }
+        var latest = new Date(Math.max.apply(null,wornDate));
+        var formatTime = d3.timeFormat("%B %e, %Y")
+        latest = formatTime(latest);
+        if(capsule.indexOf(d.Description) >= 0) {
+            annotation.select(".date_worn").html("Last Worn: " + latest);
+        } else {
+            annotation.select(".date_worn").html("Not recently worn");
+        }
+
+        }
 
         });
 
