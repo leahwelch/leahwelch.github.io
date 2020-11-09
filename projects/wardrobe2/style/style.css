@@ -46,7 +46,7 @@ h2 {
 }
 
 .conclusion {
-    margin: 60px 0px;
+    margin: 150px 0px;
     display: grid;
     grid-template-columns: 1fr 5fr;
     grid-template-rows: 1fr;
