@@ -178,9 +178,9 @@ Promise.all(promises).then(function(wardrobedata) {
         .attr("width", width)
         .attr("height", height);
 
-    var smallMargin = {top: 0, right: 0, bottom: 20, left: 0};
+    var smallMargin = {top: 0, right: 20, bottom: 20, left: 0};
     var smallWidth = 225 - smallMargin.left - smallMargin.right;
-    var smallHeight = 400 - smallMargin.top - smallMargin.bottom;
+    var smallHeight = 325 - smallMargin.top - smallMargin.bottom;
 
     var yScaleSmall = d3.scaleBand()
         .domain(wardrobe.map(function(d) { return d.group_y; }))
@@ -252,10 +252,17 @@ Promise.all(promises).then(function(wardrobedata) {
       .enter()
       .append("rect")
       .attr("class", "bar")
-      .attr("x", smallMargin.left)
+      //.attr("x", smallMargin.left)
+      .attr("x", function(d) {
+          if(capsule.indexOf(d.Description)>=0) {
+              return smallMargin.left;
+          } else {
+              return 80;
+          }
+      })
       .attr("width", 70)
       .attr("y", function(d) { return yScaleSmall(d.group_y); })
-      .attr("height", 10)
+      .attr("height", 12)
       .attr("fill", function(d) {
         if(d.Pattern === "N") {
             return d.Primary_Color;
@@ -272,7 +279,7 @@ Promise.all(promises).then(function(wardrobedata) {
                 timesWorn = nestedItems[i].value;
             } 
         }
-        console.log(timesWorn);
+        //console.log(timesWorn);
         tooltip.classed("hidden", false)
             .style("left", (d3.event.pageX) + "px")		
             .style("top", (d3.event.pageY - 28) + "px");
@@ -296,23 +303,38 @@ Promise.all(promises).then(function(wardrobedata) {
     smalls.append("text")
       .attr('class','smalllabel')
       .attr('x', smallMargin.left)
-      .attr('y', smallHeight - 10)
-      .style("font-size", "10pt")
+      .attr('y', smallHeight + 10)
+      .style("font-size", "12pt")
+      .style("font-weight", "bold")
       .text( function(d) { return d.key; })
 
-    smalls.selectAll("mylabels")
-        .data(function(d) {return d.values;}).enter().append("text")
-        //.attr('class','efficiencyLabel')
-        .attr('x',smallMargin.left)
-        .attr('y', smallHeight + 10)
-        .style("font-size", "10pt")
-        .text(function(d) {
-            if (d.group === "Dresses" || d.group === "Shorts & Skirts" || d.group === "Sets") {
-                return "Efficiency: 0%";
-            } else {
-                return "Efficiency: " + percentages[d.group_ID-1] + "%";
-            }
-        })
+    smalls.append("text")
+      .attr('class','smalllabel')
+      .attr('x', smallMargin.left)
+      .attr('y', smallHeight - 15)
+      .style("font-size", "10pt")
+      .text("Worn")
+
+    smalls.append("text")
+      .attr('class','smalllabel')
+      .attr('x', 80)
+      .attr('y', smallHeight - 15)
+      .style("font-size", "10pt")
+      .text("Unworn")
+
+    // smalls.selectAll("mylabels")
+    //     .data(function(d) {return d.values;}).enter().append("text")
+    //     //.attr('class','efficiencyLabel')
+    //     .attr('x',smallMargin.left)
+    //     .attr('y', smallHeight + 10)
+    //     .style("font-size", "10pt")
+    //     .text(function(d) {
+    //         if (d.group === "Dresses" || d.group === "Shorts & Skirts" || d.group === "Sets") {
+    //             return "Efficiency: 0%";
+    //         } else {
+    //             return "Efficiency: " + percentages[d.group_ID-1] + "%";
+    //         }
+    //     })
 
           
     var topsG = svg.append("g").attr("class", "topsG")
