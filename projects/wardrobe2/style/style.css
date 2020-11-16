@@ -351,9 +351,6 @@ h2 {
     margin: 0px 50px;
 }
 
-
-
-
 .conclusion {
     margin: 150px 0px;
     display: grid;
@@ -361,6 +358,57 @@ h2 {
     grid-template-rows: 1fr;
     grid-template-areas: 
         "summary smalls";
+}
+
+/* SECOND SCROLLER */
+#analysis{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+        "sections vis";
+    height: 100%;
+  }
+
+  
+#sections{
+    margin: 200px 50px 0px 50px;
+    padding-bottom: 25vh;
+    grid-area: sections;
+}
+
+
+#sections > div{
+    padding: 5% 10%;
+    margin-bottom: 90vh;
+}
+
+#sections > div:last-child{
+    margin-bottom: 50px;
+}
+
+#sections > div.graph-scroll-active{
+    opacity: 0.9;
+}
+
+#vis{
+    /* width: 100%; */
+    height: 90vh;
+    position: -webkit-sticky;
+    position: sticky;
+    top:20px;   
+    /* margin-left: 0px; */
+    /* float: none; */
+    /* transform: translate(-50%, 0); */
+    position: sticky;
+    top: 0px;
+    grid-area: vis;
+    margin: 30px 45px 30px 0px;
+}
+
+pre{
+    overflow: hidden;
 }
 
 /* SMALL MULTIPLES */
