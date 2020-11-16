@@ -375,6 +375,7 @@ h2 {
 #sections{
     margin: 200px 50px 0px 50px;
     padding-bottom: 25vh;
+    padding-left: 50px;
     grid-area: sections;
 }
 
@@ -423,7 +424,7 @@ pre{
     grid-area: summary;
 }
 
-.totalWorn, .totalItems, .efficiencyP, .wornInfo {
+.totalWorn, .totalItems, .efficiencyP, .wornInfo, .totalVintage {
     font-weight: bold;
 }
 

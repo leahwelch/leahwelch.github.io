@@ -44,9 +44,15 @@ Promise.all(promises).then(function(wardrobedata) {
         capsule.push(uniqueArray[i].item);
     }
 
+    var vintageItems = wardrobe.filter(function(d) {
+        return d.Vintage === "Y";
+    });
+    var maxVintage =vintageItems.length;
+
     d3.select(".totalWorn").html(capsule.length);
     d3.select(".totalItems").html(wardrobe.length);
     d3.select(".efficiencyP").html(((capsule.length/wardrobe.length) * 100).toFixed(0) + "%");
+    d3.select(".totalVintage").html(((maxVintage/wardrobe.length)*100).toFixed(0) + "%")
 
     var era_start = [];
     for(i = 0; i < eras.length; i++) {
@@ -100,10 +106,7 @@ Promise.all(promises).then(function(wardrobedata) {
         return d.Category === "Tops";
     });
 
-    var nonVintage = wardrobe.filter(function(d) {
-        return d.Vintage === "N";
-    });
-    var maxVintage = nonVintage.length;
+    
 
     var toppics = [];
     for(i = 0; i < tops.length; i++) {
