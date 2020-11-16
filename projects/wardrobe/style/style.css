@@ -106,7 +106,7 @@ h2 {
     grid-area: note_container;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 2fr 2fr;
+    grid-template-rows: 1fr 3fr 1fr;
     grid-template-areas: 
         "instructions"    
         "annotation"
@@ -117,32 +117,38 @@ h2 {
     grid-area: instructions;
     margin-left: 100px;
     border-bottom: 1px solid #a08875;
+    width: 90%;
 }
 
 .description {
     width: 70%;
 }
 
-
-.annotation {
-    grid-area: annotation;
-    margin: 10px 30px 50px 100px;
-    /* position: -webkit-sticky; */
-    height: 40vh;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: 1fr;
-    grid-template-areas:
-        "image info";
-}
-
 .date_labels {
     grid-area: date_labels;
-    /* position: -webkit-sticky; */
-    height: 30vh;
     width: 100%;
     margin: 0px 30px 50px 100px;
+}
+
+.start_date {
+    font-size: 20pt;
+    color: #0b7c85;
+    margin: 0px;
+}
+
+.end_date {
+    font-size: 60pt;
+    font-weight: bold;
+    color: #a08875;
+    opacity: 0.4;
+    margin: 0px 50px;
+}
+
+.era_name {
+    font-size: 16pt;
+    color: #0b7c85;
+    font-family: 'Lilita One', cursive;
+    margin: 0px 50px;
 }
 
 .graphic__prose {
@@ -207,50 +213,68 @@ h2 {
     top: 2%;
 }
 
+.annotation {
+    grid-area: annotation;
+    margin: 0px 30px 20px 100px;
+    /* position: -webkit-sticky; */
+    height: 45vh;
+    width: 90%;
+    border-bottom: 1px solid #a08875;
+    display: grid;
+    /* grid-template-columns: 1fr 2fr; */
+    grid-template-columns: 33% 66%; 
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        "image info";
+}
+
 .annotation_text {
     grid-area: info;
-    margin: 0px 200px 50px 30px;
+    margin: 0px 200px 50px 50px;
     color: #3d332a;
 }
 
 .annotation_image {
     grid-area: image;
+    /* padding: 50px 0px; */
+    display: block;
+    margin: 1em auto;
+    
 }
 
 .bottoms {
-    padding: 30px;
-    max-height:400px;
+    
+    max-height:350px;
     max-width:300px;
     height:auto;
     width:auto;
 }
 
 .dresses {
-    padding: 30px;
-    max-height:400px;
+    max-height:350px;
     max-width:300px;
     height:auto;
     width:auto;
 }
 
 .tops {
-    padding: 30px;
-    max-height:400px;
+    /* padding: 0px 0px 40px; */
+    max-height:300px;
     max-width:300px;
     height:auto;
     width:auto;
 }
 
 .outerwear {
-    padding: 30px;
-    max-height:400px;
+    /* padding: 0px 0px 40px; */
+    max-height:350px;
     max-width:300px;
     height:auto;
     width:auto;
 }
 
 .sets {
-    padding: 30px;
+    /* padding: 40px 0px; */
     max-height:400px;
     max-width:300px;
     height:auto;
@@ -261,14 +285,6 @@ h2 {
     font-family: 'Lilita One', cursive;
     font-size: 20pt;
     color: #3d332a;
-}
-
-.default {
-    grid-area: default;
-    margin: 10px 80px 10px 30px;
-    height: 20px;
-    width: 100%;
-    font-size: 16pt;
 }
 
 .brand {
@@ -302,27 +318,6 @@ h2 {
     padding: 8px 10px 8px 10px;
     font-size: 10pt;
     font-style: italic;
-}
-
-.start_date {
-    font-size: 20pt;
-    color: #0b7c85;
-    margin: 0px;
-}
-
-.end_date {
-    font-size: 60pt;
-    font-weight: bold;
-    color: #a08875;
-    opacity: 0.4;
-    margin: 10px 50px;
-}
-
-.era_name {
-    font-size: 16pt;
-    color: #0b7c85;
-    font-family: 'Lilita One', cursive;
-    margin: 0px 50px;
 }
 
 .axis line {
