@@ -583,7 +583,7 @@ window.createGraphic = function(graphicSelector) {
                     .style("font-family", "Nunito")
                     .style("font-size", 14)
                     .style("opacity", 1)
-                    .text("5 key items have are")
+                    .text("5 key items are")
                 
                 svg.selectAll(".annotation").append("text")
                     .attr("x", function() {
