@@ -14,19 +14,34 @@ body {
     background-color: #f9ede1;
 }
 
+/* INTRODUCTION */
+
 .intro{
     width: 100%;
     height: 100vh;
 }
 
-.library {
-    margin-bottom: 40px;
-}
-
-#smalls {
-    margin: 20px 50px 20px 150px;
-    grid-area: smalls;
-}
+@media (min-width: 1200px) {
+    .intro {
+        width: 1170px;
+        margin-left: 100px;
+        padding-top: 100px;
+    }
+    }
+    @media (min-width: 992px){
+    .intro  {
+        width: 970px;
+        margin-left: 100px;
+        padding-top: 100px;
+    }
+    }
+    @media (min-width: 768px) {
+    .intro {
+        width: 750px;
+        margin-left: 100px;
+        padding-top: 100px;
+    }
+    }
 
 h1 {
     width: 75%;
@@ -45,46 +60,10 @@ h2 {
     padding-top: 20px;
 }
 
-.conclusion {
-    margin: 150px 0px;
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-    grid-template-rows: 1fr;
-    grid-template-areas: 
-        "summary smalls";
-}
+/* FIRST SCROLLER */
 
-
-.summary {
-    margin-left: 150px;
-    /* padding-top: 100px; */
-    grid-area: summary;
-}
-
-.totalWorn, .totalItems, .efficiencyP, .wornInfo {
-    font-weight: bold;
-}
-
-@media (min-width: 1200px) {
-.intro {
-    width: 1170px;
-    margin-left: 100px;
-    padding-top: 100px;
-}
-}
-@media (min-width: 992px){
-.intro  {
-    width: 970px;
-    margin-left: 100px;
-    padding-top: 100px;
-}
-}
-@media (min-width: 768px) {
-.intro {
-    width: 750px;
-    margin-left: 100px;
-    padding-top: 100px;
-}
+.library {
+    margin-bottom: 40px;
 }
 
 #container {
@@ -96,60 +75,7 @@ h2 {
     height: 100%;
   }
 
-.note_container {
-    position: fixed;
-    height: 90vh;
-    width: 100%;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 2%;
-    grid-area: note_container;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 3fr 1fr;
-    grid-template-areas: 
-        "instructions"    
-        "annotation"
-        "date_labels";
-}
-
-.instructions {
-    grid-area: instructions;
-    margin-left: 100px;
-    border-bottom: 1px solid #a08875;
-    width: 90%;
-}
-
-.description {
-    width: 70%;
-}
-
-.date_labels {
-    grid-area: date_labels;
-    width: 100%;
-    margin: 0px 30px 50px 100px;
-}
-
-.start_date {
-    font-size: 20pt;
-    color: #0b7c85;
-    margin: 0px;
-}
-
-.end_date {
-    font-size: 60pt;
-    font-weight: bold;
-    color: #a08875;
-    opacity: 0.4;
-    margin: 0px 50px;
-}
-
-.era_name {
-    font-size: 16pt;
-    color: #0b7c85;
-    font-family: 'Lilita One', cursive;
-    margin: 0px 50px;
-}
+/* TIMELINE */
 
 .graphic__prose {
     grid-area: timeline;
@@ -204,6 +130,34 @@ h2 {
     top: 346vh;
 }
 
+.trigger {
+    display: block;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border: 2px solid #3d332a;
+    text-align: left;
+    background-color: #f9ede1;
+    border-radius: 4px;
+}
+
+.trigger > .timeline_date {
+    color: #3d332a;
+    font-size: 9pt;
+    font-weight: bolder;
+    transform: translate(20px,-5px);
+}
+
+.trigger > .timeline_loc {
+    color: #3d332a;
+    font-family: 'Noto Serif', serif;
+    font-size: 9pt;
+    transform: translate(20px,-7px);
+    width: 200px;
+}
+
+/* FIRST GRAPH */
+
 #graph {
     grid-area: chart;
     height: 100vh;
@@ -211,6 +165,57 @@ h2 {
     position: -webkit-sticky;
     position: sticky;
     top: 2%;
+}
+
+.axis line {
+    stroke: #a08875;
+}
+  
+.axis path {
+    visibility: hidden;
+}
+
+.xaxis line {
+    visibility: hidden;
+}
+  
+.xaxis path {
+    visibility: hidden;
+}
+
+.tick text {
+    color: #3d332a;
+    font-weight: bolder;
+}
+
+/* KEY & PROFILES */
+
+.note_container {
+    position: fixed;
+    height: 90vh;
+    width: 100%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 2%;
+    grid-area: note_container;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 3fr 1fr;
+    grid-template-areas: 
+        "instructions"    
+        "annotation"
+        "date_labels";
+}
+
+.instructions {
+    grid-area: instructions;
+    margin-left: 100px;
+    border-bottom: 1px solid #a08875;
+    width: 90%;
+}
+
+.description {
+    width: 70%;
 }
 
 .annotation {
@@ -258,7 +263,6 @@ h2 {
 }
 
 .tops {
-    /* padding: 0px 0px 40px; */
     max-height:300px;
     max-width:300px;
     height:auto;
@@ -266,7 +270,6 @@ h2 {
 }
 
 .outerwear {
-    /* padding: 0px 0px 40px; */
     max-height:350px;
     max-width:300px;
     height:auto;
@@ -274,7 +277,6 @@ h2 {
 }
 
 .sets {
-    /* padding: 40px 0px; */
     max-height:400px;
     max-width:300px;
     height:auto;
@@ -320,51 +322,61 @@ h2 {
     font-style: italic;
 }
 
-.axis line {
-    stroke: #a08875;
-}
-  
-.axis path {
-    visibility: hidden;
+/* ERA INFO */
+
+.date_labels {
+    grid-area: date_labels;
+    width: 100%;
+    margin: 0px 30px 50px 100px;
 }
 
-.xaxis line {
-    visibility: hidden;
-}
-  
-.xaxis path {
-    visibility: hidden;
+.start_date {
+    font-size: 20pt;
+    color: #0b7c85;
+    margin: 0px;
 }
 
-.tick text {
-    color: #3d332a;
-    font-weight: bolder;
+.end_date {
+    font-size: 60pt;
+    font-weight: bold;
+    color: #a08875;
+    opacity: 0.4;
+    margin: 0px 50px;
 }
 
-.trigger {
-    display: block;
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    border: 2px solid #3d332a;
-    text-align: left;
-    background-color: #f9ede1;
-    border-radius: 4px;
+.era_name {
+    font-size: 16pt;
+    color: #0b7c85;
+    font-family: 'Lilita One', cursive;
+    margin: 0px 50px;
 }
 
-.trigger > .timeline_date {
-    color: #3d332a;
-    font-size: 9pt;
-    font-weight: bolder;
-    transform: translate(20px,-5px);
+
+
+
+.conclusion {
+    margin: 150px 0px;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+        "summary smalls";
 }
 
-.trigger > .timeline_loc {
-    color: #3d332a;
-    font-family: 'Noto Serif', serif;
-    font-size: 9pt;
-    transform: translate(20px,-7px);
-    width: 200px;
+/* SMALL MULTIPLES */
+
+#smalls {
+    margin: 20px 50px 20px 150px;
+    grid-area: smalls;
+}
+
+.summary {
+    margin-left: 150px;
+    grid-area: summary;
+}
+
+.totalWorn, .totalItems, .efficiencyP, .wornInfo {
+    font-weight: bold;
 }
 
 #tooltip {

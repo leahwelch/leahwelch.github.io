@@ -1,7 +1,7 @@
 
 var promises = [
     d3.csv("./data/eras.csv"), 
-    d3.csv("./data/Wardrobe.csv"),
+    d3.csv("./data/Wardrobe_old.csv"),
     d3.csv("./data/wearlog.csv")
 ];
     
