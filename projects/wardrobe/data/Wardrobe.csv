@@ -1,106 +1,105 @@
-ypos,Brand,Primary_Color,Secondary_Color,Pattern,Category,Sub_Category,Description,Year_Entered,Era,Gifted,Vintage,Online_Purchase,Traveling_Purchase,Quarantine_Purchase,Era_Date_Start,Era_End_Date,Notes
-1,Topshop,#ff4138,,N,Bottoms,shorts,High-waisted sailor,2009,"Study Abroad, London",N,N,N,N,N,"August, 2009","June, 2010",I could spend all day in the Topshop in Oxford Circus
-2,,#006e5f,#f0a605,Y,Bottoms,shorts,Color-block knit,2010,"Senior Year, Middlebury College",Y,Y,N,Y,N,September 2010,"May, 2011","These shorts are only really suitable for parties and music festivals, but they are so special that I can't give them up yet"
-3,Karl Lagerfeld,#000000,,N,Bottoms,skirt,Pleated,2010,"Senior Year, Middlebury College",Y,Y,N,N,N,September 2010,"May, 2011",My mom used to wear this on dates with my dad!
-4,Anthropologie,#8c0e1d,#425650,Y,Bottoms,pants,Plaid corduroy,2011,Los Angeles,N,N,N,Y,N,"June, 2011","June, 2014",Used a secret santa gift card to get these on serious discount
-5,J. Crew,#595739,,N,Bottoms,skirt,Zip-front mini,2013,Los Angeles,Y,N,N,N,N,"June, 2011","June, 2014","Still can't really fit into this, but it's lovely so I'm holding out hope"
-6,Zara,#000000,,N,Bottoms,skirt,Corduroy mini,2015,"Hangzhou, China",N,N,N,N,N,"September, 2014","July, 2016",Part of a NYE outfit
-7,Madewell,#70797f,,N,Bottoms,jeans,Straight-leg,2016,"The Orme School, Mayer, AZ",Y,N,N,Y,N,"September, 2016","June, 2019",Oldest jeans in circulation
-8,Madewell,#000000,,N,Bottoms,jeans,Skinny,2016,"The Orme School, Mayer, AZ",N,N,Y,N,N,"September, 2016","June, 2019",These are about to tear in a number of places but I can't stop wearing them
-9,Madewell,#2e3849,#FFFFFF,Y,Bottoms,pants,Wool pinstripe,2016,"The Orme School, Mayer, AZ",Y,N,Y,N,N,"September, 2016","June, 2019",Work pants
-10,,#fd9878,#f7d360,Y,Bottoms,skort,Hawaiian wrap,2017,"The Orme School, Mayer, AZ",N,Y,N,Y,N,"September, 2016","June, 2019",Kooky Kansas City find
-11,Madewell,#668596,,N,Bottoms,jeans,Wide-leg button-fly,2019,"Roslindale, MA",Y,N,N,Y,N,"June, 2019","June, 2020",These are my best-fitting jeans at the moment
-12,Madewell,#4d5266,,N,Bottoms,pants,Silk tie-belt,2019,"Roslindale, MA",Y,N,N,N,N,"June, 2019","June, 2020",Bought for an interview
-13,Cashmere in Love,#cc0d16,#000000,Y,Bottoms,shorts,High-waisted sweater,2020,"Roslindale, MA",Y,N,Y,N,Y,"June, 2019","June, 2020",Gift from Steven for Mother's Day
-14,Lett,#000000,,N,Bottoms,shorts,Ribbed bike,2020,"Roslindale, MA",N,N,Y,N,Y,"June, 2019","June, 2020",In the summer I wear these almost every day
-15,Agolde,#f9f3ed,,N,Bottoms,jeans,Wide-leg,2020,"Lawrence, MA",N,N,Y,N,Y,"June, 2020",and beyond,Every time I wear these these end up mysteriously stained
-16,Madewell,#000000,,N,Bottoms,jeans,Wide-leg,2020,"Lawrence, MA",Y,N,Y,N,Y,"June, 2020",and beyond,New jeans! Still breaking them in
-17,The Reformation,#8f9eb5,,N,Bottoms,jeans,Saddle,2020,"Lawrence, MA",Y,N,Y,N,Y,"June, 2020",and beyond,These have a silly no-butt-pocket design that reminds me of middle school in the best way
-1,Yael Aflalo,#000000,,N,Dresses & Jumpsuits,dress,Silk cocktail,2007,"Freshman Year, Middlebury College",Y,N,Y,N,N,"September, 2006","May, 2008","Purchased for Homecoming, still wear to weddings"
-2,Mint,#514941,,N,Dresses & Jumpsuits,dress,Wool bow-back,2008,"Sophomore Year, Middlebury College",Y,N,N,Y,N,"September, 2008","May, 2009",I wore this to an after-hours tour of the Met during my senior year and felt very artsy
-3,United Colors of Benetton,#423c36,,N,Dresses & Jumpsuits,dress,Wool shift,2008,"Sophomore Year, Middlebury College",Y,N,N,Y,N,"September, 2008","May, 2009",This is too short and tight now to be work-appropriate but I still love the pockets
-4,Madewell,#43467c,,N,Dresses & Jumpsuits,dress,Long-sleeved rib-knit,2011,Los Angeles,N,N,N,N,N,"June, 2011","June, 2014","This one is so old, it's from before Madewell clothes had Madewell labels"
-5,Bill Blass for Maurice Rentner,#000000,#FFFFFF,N,Dresses & Jumpsuits,dress,Velvet & silk,2013,Los Angeles,N,Y,N,N,N,"June, 2011","June, 2014",This allegedly once belonged to a tiny French model in the 70s
-6,Cynthia Steffe,#e7cbae,,N,Dresses & Jumpsuits,dress,Sequined mesh mini,2013,Los Angeles,N,Y,N,N,N,"June, 2011","June, 2014",Purchased for Steven's wizard party when we were still just friends
-7,,#6bd3db,#f9b7df,Y,Dresses & Jumpsuits,dress,Camp Beverley Hills graphic tube,2013,Los Angeles,N,Y,N,N,N,"June, 2011","June, 2014","Got this with Steven on an adventure to a tiny vintage store in the valley that felt like an exploding closet. I told the shopowner I wanted ""something scampy"" and this is what he showed me"
-8,Guess,#b90010,#000000,Y,Dresses & Jumpsuits,romper,Plaid front-zip,2013,Los Angeles,N,Y,N,N,N,"June, 2011","June, 2014","This is a ridiculous romper that Steven convinced me to get, but I still wear it to parties"
-9,,#000000,,Y,Dresses & Jumpsuits,dress,Velvet burnout prom,2014,"Moved in with Steven, Nottingham",N,Y,N,Y,N,"June, 2014","September, 2014",Got this in Berlin! Wore it recently to the last Orme prom we attended before moving east
-10,,#5ccccc,#FFFFFF,Y,Dresses & Jumpsuits,dress,Floral-print qipao,2014,"Hangzhou, China",Y,N,N,N,N,"September, 2014","July, 2016",First birthday in China
-11,Free People,#FFFFFF,,N,Dresses & Jumpsuits,romper,Crocheted,2015,"Hangzhou, China",Y,N,N,Y,N,"September, 2014","July, 2016",Wore this for my wedding after-party at the beach
-12,,#FFFFFF,#f97384,Y,Dresses & Jumpsuits,dress,Floral-print skort,2016,"Hangzhou, China",N,Y,N,Y,N,"September, 2014","July, 2016",Kyoto has surprisingly good vintage shopping
-13,,#ffc410,#ec5c18,Y,Dresses & Jumpsuits,dress,Floral Knit,2016,"Hangzhou, China",N,Y,N,Y,N,"September, 2014","July, 2016","Steven convinced me to get this one, it looks like it was made on a home sewing machine"
-14,Kapital,#70797f,,N,Dresses & Jumpsuits,jumpsuit,Embroidered denim,2016,"Hangzhou, China",N,N,N,Y,N,"September, 2014","July, 2016","The Kapital flagship store is part art gallery, part immersive surrealist shopping experience: a maze of levels with Wes Anderson-esque intrumentals piped through the sound system"
-15,Marimekko,#FFFFFF,#889bba,Y,Dresses & Jumpsuits,overalls,Striped,2016,"Hangzhou, China",N,Y,N,Y,N,"September, 2014","July, 2016",Kyoto has surprisingly good vintage shopping
-16,,#54638c,,N,Dresses & Jumpsuits,overalls,Short,2016,"Hangzhou, China",N,Y,N,Y,N,"September, 2014","July, 2016","First purchase in Tokyo, right after I dyed my hair pink"
-17,Betsy Johnson,#000000,,N,Dresses & Jumpsuits,dress,Pinafore,2016,"The Orme School, Mayer, AZ",N,Y,N,Y,N,"September, 2016","June, 2019",Channeling 90s layering styles
-18,,#e51e26,#1c2577,Y,Dresses & Jumpsuits,dress,Wool plaid shift,2016,"The Orme School, Mayer, AZ",N,Y,N,Y,N,"September, 2016","June, 2019",Wore this for Halloween 2009 when I went as a red bird
-19,H & M,#000000,,N,Dresses & Jumpsuits,dress,Wrap suiting,2017,"The Orme School, Mayer, AZ",Y,N,N,Y,N,"September, 2016","June, 2019",Maybe one day I'll attend an event that makes sense for this dress
-20,XOXO,#5f4633,#f2cead,Y,Dresses & Jumpsuits,dress,Embroidered shift,2017,"The Orme School, Mayer, AZ",N,Y,N,Y,N,"September, 2016","June, 2019",Wore this to the first Orme prom we attended
-21,,#9eba9e,,N,Dresses & Jumpsuits,gown,Beaded mesh flapper,2017,"The Orme School, Mayer, AZ",N,Y,N,Y,N,"September, 2016","June, 2019",Awesome Palm Springs find; great for weddings with a white bodysuit layered underneath
-22,Neiman Marcus,#a57e56,,N,Dresses & Jumpsuits,jumpsuit,sweater,2017,"The Orme School, Mayer, AZ",Y,Y,N,N,N,"September, 2016","June, 2019",Steven found this in a thrift store in a tiny high-desert town in Arizona and it fits perfectly!
-23,,#f861b7,,N,Dresses & Jumpsuits,jumpsuit,Sleeveless,2018,"The Orme School, Mayer, AZ",N,Y,N,Y,N,"September, 2016","June, 2019",Got this when I was pregnant and just starting to show
-24,& Other Stories,#b8956a,,N,Dresses & Jumpsuits,dress,Button-front corduroy,2019,"Roslindale, MA",N,N,Y,N,N,"June, 2019","June, 2020",Work dress
-25,Paloma Wool,#1e737c,,N,Dresses & Jumpsuits,jumpsuit,Front-zip corduroy,2019,"Roslindale, MA",Y,N,Y,N,N,"June, 2019","June, 2020",Always looking for an excuse to wear this
-1,The North Face,#000000,,N,Outwear,coat,Long quilted,2007,"Freshman Year, Middlebury College",Y,N,N,N,N,"September, 2006","May, 2008",Moving to Vermont necessitated a sleeping bag coat
-2,J. Crew,#d7b898,,N,Outwear,coat,Trench,2009,"Study Abroad, London",Y,N,N,Y,N,"August, 2009","June, 2010",Now I never need to buy a trench coat again
-3,Closed,#8e6f55,,N,Outwear,jacket,Leather motorcycle,2011,"Senior Year, Middlebury College",Y,N,N,Y,N,September 2010,"May, 2011",I had a Vespa when I first moved to LA; I'd wear this jacket every day layered over at least one thick sweater and would still freeze my ass off
-4,Madewell,#b28256,#000000,Y,Outwear,jacket,Houndstooth sweater,2011,Los Angeles,N,N,N,N,N,"June, 2011","June, 2014",Every fall I live in this
-5,Betabrand,#b8b9ba,#000000,Y,Outwear,jacket,Disco ball,2013,Los Angeles,Y,N,Y,N,N,"June, 2011","June, 2014",First gift from Steven; it's made from recycled disco balls!
-6,J. Crew,#6d673d,,N,Outwear,jacket,Quilted,2013,Los Angeles,Y,N,N,Y,N,"June, 2011","June, 2014",Almost too prepy but so practical
-7,J. Crew,#93a0a3,,N,Outwear,jacket,Denim,2014,"Hangzhou, China",Y,Y,N,Y,N,"September, 2014","July, 2016",To replace a similar one I left on a bus in Aachen
-8,,#af102c,#814979,Y,Outwear,jacket,Yak-wool long,2015,"Hangzhou, China",Y,N,N,Y,N,"September, 2014","July, 2016","Purchased in Nepal to commemorate our engagement, not sure if it is real yak"
-9,,#a90515,#000000,Y,Outwear,shawl,Houndstooth blanket,2016,"The Orme School, Mayer, AZ",N,Y,N,Y,N,"September, 2016","June, 2019",Blanket scarf FTW
-10,Aritzia,#5e383b,#435658,Y,Outwear,coat,Wool plaid,2019,"Roslindale, MA",Y,N,Y,N,N,"June, 2019","June, 2020",New fall coat
-1,Emilio de le Morena,#000000,,N,Sets,suit,Short & Vest,2013,Los Angeles,N,Y,N,N,N,"June, 2011","June, 2014",This allegedly once belonged to a tiny French model in the 70s
-2,,#2b3258,#faa521,Y,Sets,set,Floral shirt & Skirt,2019,"Roslindale, MA",N,Y,N,N,N,"June, 2019","June, 2020",I always wear these pieces separately; they're better on their own
-1,Express,#000000,,N,Tops,tee,Long-sleeved crew-neck,2006,"Winnetka, IL",Y,N,N,N,N,before,"September, 2006",The only item of clothing I still have from high school
-2,,#938c82,#000000,Y,Tops,sweater,Geometric Lurex,2008,"Freshman Year, Middlebury College",N,Y,N,Y,N,"September, 2006","May, 2008",NYC vintage stop en route to Europe
-3,Chanel,#7690a3,#dfb5a1,Y,Tops,sweater,Color-block,2009,"Study Abroad, London",Y,Y,N,N,N,"August, 2009","June, 2010",Another piece inherited from my mom; didn't realize it was Chanel until I found a tiny tag on the bottom hem
-4,French Connection,#000000,,N,Tops,sweater,Drapey,2009,"Study Abroad, London",N,N,N,N,N,"August, 2009","June, 2010",Layers up well in the fall
-5,Aritzia,#867e76,,N,Tops,tee,Long-sleeved raglan,2010,"Senior Year, Middlebury College",Y,N,N,N,N,September 2010,"May, 2011",One of my last boring gray tees from an era when I wore a lot of boring gray tees
-6,Aritzia,#000000,,N,Tops,blouse,Sheer crepe,2012,Los Angeles,Y,N,N,N,N,"June, 2011","June, 2014",For date nights
-7,J. Crew,#434a5b,#f3f4d0,Y,Tops,shirt,Silk French-hen print,2012,Los Angeles,N,N,N,N,N,"June, 2011","June, 2014",The French hens still make me laugh
-8,Topshop,#4e4c68,,N,Tops,tee,Matelasse mock-neck,2012,Los Angeles,Y,N,N,Y,N,"June, 2011","June, 2014",Textures
-9,Madewell,#8e322e,#000000,Y,Tops,shirt,Silk check-print,2013,Los Angeles,N,N,N,N,N,"June, 2011","June, 2014",Interview shirt
-10,Aritzia,#e5dfd6,,N,Tops,sweater,Ribbed crop,2013,Los Angeles,Y,N,N,Y,N,"June, 2011","June, 2014","Even though there are a few little stains on this, it's too beautiful for me to give up on it"
-11,Aritzia,#97bfb8,#6d5561,Y,Tops,sweater,Rainbow yarn,2013,Los Angeles,Y,N,N,Y,N,"June, 2011","June, 2014","Slightly awkward cut, but the fabric is like a hazy daydream"
-12,Opening Ceremony,#FFFFFF,#24294f,Y,Tops,sweater,"""L"" monogram",2013,Los Angeles,N,N,N,N,N,"June, 2011","June, 2014",RIP Opening Ceremony
-13,Loft,#8e8b88,,N,Tops,tee,Cardigan,2013,Los Angeles,N,N,N,N,N,"June, 2011","June, 2014",Bought this with a gift card that I won in a raffle along with a Fiat 500
-14,,#eddc77,#f33fa9,Y,Tops,tee,Sunglasses graphic,2013,Los Angeles,N,Y,N,N,N,"June, 2011","June, 2014",So summery
-15,,#FFFFFF,#ea0502,Y,Tops,tee,Running of the Bulls graphic,2013,Los Angeles,N,Y,N,N,N,"June, 2011","June, 2014",This shirt is amazing! It's like part of a theatre costume; splattered in blood with a hole where the bull's horn pierced the original owner
-16,,#000000,#FFFFFF,Y,Tops,tee,EDA graphic,2013,Los Angeles,N,Y,N,N,N,"June, 2011","June, 2014",I like to wear this one and see if people notice it has a stripped on it
-17,Aritzia,#000000,#FFFFFF,Y,Tops,vest,Ribbed sweater,2013,Los Angeles,Y,N,N,Y,N,"June, 2011","June, 2014",Work top
-18,,#a5a19f,,N,Tops,vest,sweater,2013,Los Angeles,N,Y,N,N,N,"June, 2011","June, 2014",This one always makes me think of Clueless; it's probably from the 90s
-19,,#FFFFFF,#7584a0,Y,Tops,shirt,Striped western-style,2014,"Moved in with Steven, Nottingham",N,Y,N,Y,N,"June, 2014","September, 2014",Steven found this in a vinatge shop in Glasgow
-20,Madewell,#4f4e4b,,N,Tops,sweatshirt,Quilted,2015,"Hangzhou, China",Y,N,N,Y,N,"September, 2014","July, 2016","Looks kind of like a taberd, but cozier"
-21,,#339966,#e9a413,Y,Tops,tee,Cal-Poly graphic ringer,2015,"Hangzhou, China",N,Y,N,Y,N,"September, 2014","July, 2016","Bought this in Portland, OR right before we got married"
-22,,#FFFFFF,#b8d8e8,Y,Tops,tee,California Raisins ringer,2015,"Hangzhou, China",N,Y,N,Y,N,"September, 2014","July, 2016","Bought this in Portland, OR right before we got married"
-23,,#000000,#FFFFFF,Y,Tops,vest,Abstract-print sweater,2015,"Hangzhou, China",N,Y,N,Y,N,"September, 2014","July, 2016",Bought this in Claremont CA right after we got married
-24,Muji,#FFFFFF,#000000,Y,Tops,tank,Ribbed striped ,2016,"Hangzhou, China",N,N,N,Y,N,"September, 2014","July, 2016",From our pilgrimage to the Muji flagship store
-25,,#1b2278,#d02624,Y,Tops,vest,Striped sweater,2016,"Hangzhou, China",N,Y,N,Y,N,"September, 2014","July, 2016",To wear with my Marimekko overalls
-26,Diane von Furstenberg,#428376,#ed1e4b,Y,Tops,shirt,Silk jungle-print,2016,"The Orme School, Mayer, AZ",N,Y,N,Y,N,"September, 2016","June, 2019",Steven originally wanted to buy this until we realized it was my size
-27,Madewell,#964038,#384942,Y,Tops,shirt,Check flannel,2016,"The Orme School, Mayer, AZ",Y,N,Y,N,N,"September, 2016","June, 2019",Fall shirt
-28,Madewell,#FFFFFF,#924b0b,Y,Tops,tee,Ribbed striped cap-sleeve,2016,"The Orme School, Mayer, AZ",Y,N,Y,N,N,"September, 2016","June, 2019",Still like this one tucked into jeans
-29,Madewell,#b7857e,,N,Tops,bodysuit,Velvet wrap,2017,"The Orme School, Mayer, AZ",N,N,Y,N,N,"September, 2016","June, 2019",A little dated but I'm hoping pink velvet comes back around
-30,,#2f2e4c,#FFFFFF,Y,Tops,top,Embroidered,2017,"The Orme School, Mayer, AZ",N,Y,N,Y,N,"September, 2016","June, 2019",Another piece from an alleged socialite whose family owned a major pencil manufacturer in the 60s
-31,,#aecebe,#1f443e,Y,Tops,tank,Ribbed ringer,2018,"The Orme School, Mayer, AZ",N,Y,N,Y,N,"September, 2016","June, 2019","Last purchase I made before confirming I was pregnant, Spring Break road trip 2018"
-32,& Other Stories,#3e4a66,#FFFFFF,Y,Tops,bodysuit,Giorgia Lupi,2019,"Roslindale, MA",Y,N,Y,N,N,"June, 2019","June, 2020",The pattern is data-driven; I wore this when I attended Giorgia Lupi's talk last year about data humanism
-33,,#59412e,#FFFFFF,Y,Tops,bodysuit,Color-block,2019,"Roslindale, MA",N,Y,N,N,N,"June, 2019","June, 2020",It's actually a deadstock bathing suit!
-34,,#c92d40,#af945d,Y,Tops,shirt,Striped,2019,"Roslindale, MA",N,Y,N,Y,N,"June, 2019","June, 2020","Steven calls this one my ""circus shirt"""
-35,Cupcakes & Cashmere,#f7decd,#5d698c,Y,Tops,sweater,Confetti-yarn,2019,"Roslindale, MA",Y,N,Y,N,N,"June, 2019","June, 2020",Replaced 3 or 4 moth-eaten sweaters with this one
-36,Sezane,#ac4437,#4f657a,Y,Tops,sweater,Color-block,2019,"Roslindale, MA",Y,N,Y,N,N,"June, 2019","June, 2020",There are buttons on the back!
-37,Target,#000000,#405d8b,Y,Tops,sweater,Stranger Things Graphic,2019,"Roslindale, MA",N,N,N,N,N,"June, 2019","June, 2020",Purchased for a Christmas sweater party
-38,,#FFFFFF,#3d678a,Y,Tops,tank,Floral sweater,2019,"Roslindale, MA",N,N,N,Y,N,"June, 2019","June, 2020",Got this right before we got on a 40-hour train ride from Flagstaff to Chicago
-39,The Reformation,#6d7d9e,#FFFFFF,Y,Tops,tee,Long-sleeved cathedral print mock-neck,2019,"Roslindale, MA",N,N,Y,N,N,"June, 2019","June, 2020",Surprisingly practical
-40,The Reformation,#92c7e4,#7e456c,Y,Tops,tee,Mesh tie-dye,2019,"Roslindale, MA",N,N,Y,N,N,"June, 2019","June, 2020",Trying to still dress playfully as a mom
-41,Yan Yan,#635743,#5b4156,Y,Tops,bra Top,Color-block sweater ,2020,"Roslindale, MA",N,N,Y,N,Y,"June, 2019","June, 2020",One day I will wear this beauty
-42,Madewell,#65635a,#bcbab5,Y,Tops,sweater,Textured yarn,2020,"Roslindale, MA",Y,N,N,N,N,"June, 2019","June, 2020",Bought for an interview
-43,Uniqlo,#000000,,N,Tops,sweater,Ribbed turtleneck,2020,"Roslindale, MA",N,N,Y,N,N,"June, 2019","June, 2020",Bought to replace a black turtleneck that fell apart
-44,H & M,#FFFFFF,,N,Tops,tank,Ribbed halter,2020,"Roslindale, MA",N,N,Y,N,Y,"June, 2019","June, 2020",Cheap summer top
-45,Agnes B,#000000,#FFFFFF,Y,Tops,tee,Signature graphic,2020,"Roslindale, MA",N,Y,Y,N,Y,"June, 2019","June, 2020",First quarantine purchase; all I wanted to wear were long-sleeved tees
-46,Mango,#7a6658,,N,Tops,bra Top,sweater,2020,"Lawrence, MA",N,N,Y,N,Y,"June, 2020",and beyond,Learning to love my boobies
-47,Monogram,#000000,#FFFFFF,Y,Tops,sweatshirt,Club sandwich graphic,2020,"Lawrence, MA",N,N,Y,N,Y,"June, 2020",and beyond,WFH coziness
-48,The Reformation,#FFFFFF,#b4c0d1,Y,Tops,sweatshirt,Tie-dyed half-zip,2020,"Lawrence, MA",N,N,Y,N,Y,"June, 2020",and beyond,WFH coziness
-49,Flat File,#FFFFFF,#e56d13,Y,Tops,tee,Matisse graphic,2020,"Lawrence, MA",N,N,Y,N,Y,"June, 2020",and beyond,My brief foray into only wearing tee shirts and bike shorts
-50,Monogram,#FFFFFF,#b21d24,Y,Tops,tee,Les Fraises graphic,2020,"Lawrence, MA",N,N,Y,N,Y,"June, 2020",and beyond,My brief foray into only wearing tee shirts and bike shorts
-51,Leset,#0c443d,,N,Tops,top,Long-sleeved wrap,2020,"Lawrence, MA",N,N,Y,N,Y,"June, 2020",and beyond,"Feels like cashmere, but can be washed in a machine"
+ypos,Brand,Primary_Color,Secondary_Color,Pattern,Pattern_ID,group_ID,group,Category,Sub_Category,group_y,Worn,Description,Year_Entered,Era,Gifted,Vintage,Online_Purchase,Traveling_Purchase,Quarantine_Purchase,Era_Date_Start,Era_End_Date,Notes
+34,& Other Stories,#3e4a66,#FFFFFF,Y,42,1,Bodysuits,Tops,bodysuit,1,N,Giorgia Lupi,2019,"Roslindale, MA",Y,N,Y,N,N,"June, 2019","June, 2020",The pattern is data-driven; I wore this when I attended Giorgia Lupi's talk last year about data humanism
+35,,#59412e,#FFFFFF,Y,43,1,Bodysuits,Tops,bodysuit,2,N,Sleeveless color-block,2019,"Roslindale, MA",N,Y,N,N,N,"June, 2019","June, 2020",It's actually a deadstock bathing suit!
+29,Madewell,#b7857e,,N,,1,Bodysuits,Tops,bodysuit,1,Y,Velvet wrap,2017,"The Orme School, Mayer, AZ",N,N,Y,N,N,"September, 2016","June, 2019",A little dated but I'm hoping pink velvet comes back around
+1,The North Face,#000000,,N,,2,Coats,Outwear,coat,1,N,Long quilted,2007,"Freshman Year, Middlebury College",Y,N,N,N,N,"September, 2006","May, 2008",Moving to Vermont necessitated a sleeping bag coat
+2,J. Crew,#d7b898,,N,,2,Coats,Outwear,coat,2,N,Trench,2009,"Study Abroad, London",Y,N,N,Y,N,"August, 2009","June, 2010",Now I never need to buy a trench coat again
+10,Aritzia,#5e383b,#435658,Y,19,2,Coats,Outwear,coat,1,Y,Wool plaid,2019,"Roslindale, MA",Y,N,Y,N,N,"June, 2019","June, 2020",New fall coat
+1,Yael Aflalo,#000000,,N,,,Dresses,Dresses & Jumpsuits,dress,1,N,Silk cocktail,2007,"Freshman Year, Middlebury College",Y,N,Y,N,N,"September, 2006","May, 2008","Purchased for Homecoming, still wear to weddings"
+2,Mint,#514941,,N,,,Dresses,Dresses & Jumpsuits,dress,2,N,Wool bow-back,2008,"Sophomore Year, Middlebury College",Y,N,N,Y,N,"September, 2008","May, 2009",I wore this to an after-hours tour of the Met during my senior year and felt very artsy
+3,United Colors of Benetton,#423c36,,N,,,Dresses,Dresses & Jumpsuits,dress,3,N,Wool shift,2008,"Sophomore Year, Middlebury College",Y,N,N,Y,N,"September, 2008","May, 2009",This is too short and tight now to be work-appropriate but I still love the pockets
+4,Madewell,#43467c,,N,,,Dresses,Dresses & Jumpsuits,dress,4,N,Long-sleeved rib-knit,2011,Los Angeles,N,N,N,N,N,"June, 2011","June, 2014","This one is so old, it's from before Madewell clothes had Madewell labels"
+5,Bill Blass for Maurice Rentner,#000000,#FFFFFF,Y,6,,Dresses,Dresses & Jumpsuits,dress,5,N,Velvet & silk,2013,Los Angeles,N,Y,N,N,N,"June, 2011","June, 2014",This allegedly once belonged to a tiny French model in the 70s
+6,Cynthia Steffe,#e7cbae,,N,,,Dresses,Dresses & Jumpsuits,dress,6,N,Sequined mesh mini,2013,Los Angeles,N,Y,N,N,N,"June, 2011","June, 2014",Purchased for Steven's wizard party when we were still just friends
+7,,#6bd3db,#f9b7df,Y,7,,Dresses,Dresses & Jumpsuits,dress,7,N,Camp Beverley Hills graphic tube,2013,Los Angeles,N,Y,N,N,N,"June, 2011","June, 2014","Got this with Steven on an adventure to a tiny vintage store in the valley. I told the shopowner I wanted ""something scampy"""
+9,,#000000,,N,,,Dresses,Dresses & Jumpsuits,dress,8,N,Velvet burnout prom,2014,"Moved in with Steven, Nottingham",N,Y,N,Y,N,"June, 2014","September, 2014",Got this in Berlin! Wore it to the last Orme prom we attended before moving east
+10,,#5ccccc,#FFFFFF,Y,9,,Dresses,Dresses & Jumpsuits,dress,9,N,Floral-print qipao,2014,"Hangzhou, China",Y,N,N,N,N,"September, 2014","July, 2016",First birthday in China
+12,,#FFFFFF,#f97384,Y,10,,Dresses,Dresses & Jumpsuits,dress,10,N,Floral-print skort,2016,"Hangzhou, China",N,Y,N,Y,N,"September, 2014","July, 2016",Kyoto has surprisingly good vintage shopping
+13,,#ffc410,#ec5c18,Y,11,,Dresses,Dresses & Jumpsuits,dress,11,N,Floral Knit,2016,"Hangzhou, China",N,Y,N,Y,N,"September, 2014","July, 2016","Steven convinced me to get this one, it looks like it was made on a home sewing machine"
+18,,#e51e26,#1c2577,Y,13,,Dresses,Dresses & Jumpsuits,dress,12,N,Wool plaid shift,2016,"The Orme School, Mayer, AZ",N,Y,N,Y,N,"September, 2016","June, 2019",Wore this for Halloween 2009 when I went as a red bird
+19,H & M,#000000,,N,,,Dresses,Dresses & Jumpsuits,dress,13,N,Wrap suiting,2017,"The Orme School, Mayer, AZ",Y,N,N,Y,N,"September, 2016","June, 2019",Maybe one day I'll attend an event that makes sense for this dress
+20,XOXO,#5f4633,#f2cead,Y,14,,Dresses,Dresses & Jumpsuits,dress,14,N,Embroidered shift,2017,"The Orme School, Mayer, AZ",N,Y,N,Y,N,"September, 2016","June, 2019",Wore this to the first Orme prom we attended
+21,,#9eba9e,,N,,,Dresses,Dresses & Jumpsuits,gown,15,N,Beaded mesh flapper,2017,"The Orme School, Mayer, AZ",N,Y,N,Y,N,"September, 2016","June, 2019",Awesome Palm Springs find; great for weddings with a white bodysuit layered underneath
+24,& Other Stories,#b8956a,,N,,,Dresses,Dresses & Jumpsuits,dress,16,N,Button-front corduroy,2019,"Roslindale, MA",N,N,Y,N,N,"June, 2019","June, 2020",Work dress
+17,Betsy Johnson,#000000,,N,,,Dresses,Dresses & Jumpsuits,dress,17,N,Pinafore,2016,"The Orme School, Mayer, AZ",N,Y,N,Y,N,"September, 2016","June, 2019",Channeling 90s layering styles
+5,Betabrand,#b8b9ba,#000000,Y,16,3,Jackets,Outwear,jacket,1,N,Disco ball,2013,Los Angeles,Y,N,Y,N,N,"June, 2011","June, 2014",First gift from Steven; it's made from recycled disco balls!
+3,Closed,#8e6f55,,N,,3,Jackets,Outwear,jacket,1,Y,Leather motorcycle,2011,"Senior Year, Middlebury College",Y,N,N,Y,N,10-Sep,"May, 2011",I had a Vespa when I first moved to LA; I'd wear this jacket every day layered over at least one thick sweater and would still freeze my ass off
+4,Madewell,#b28256,#000000,Y,15,3,Jackets,Outwear,jacket,2,Y,Houndstooth sweater,2011,Los Angeles,N,N,N,N,N,"June, 2011","June, 2014",Every fall I live in this
+6,J. Crew,#6d673d,,N,,3,Jackets,Outwear,jacket,3,Y,Quilted,2013,Los Angeles,Y,N,N,Y,N,"June, 2011","June, 2014",Almost too prepy but so practical
+7,J. Crew,#93a0a3,,N,,3,Jackets,Outwear,jacket,4,Y,Denim,2014,"Hangzhou, China",Y,Y,N,Y,N,"September, 2014","July, 2016",To replace a similar one I left on a bus in Aachen
+8,,#af102c,#814979,Y,17,3,Jackets,Outwear,jacket,5,Y,Yak-wool long,2015,"Hangzhou, China",Y,N,N,Y,N,"September, 2014","July, 2016","Purchased in Nepal to commemorate our engagement, not sure if it is real yak"
+9,,#a90515,#000000,Y,18,3,Jackets,Outwear,shawl,6,Y,Houndstooth blanket,2016,"The Orme School, Mayer, AZ",N,Y,N,Y,N,"September, 2016","June, 2019",Blanket scarf FTW
+7,Madewell,#70797f,,N,,4,Jeans,Bottoms,jeans,1,Y,Straight-leg,2016,"The Orme School, Mayer, AZ",Y,N,N,Y,N,"September, 2016","June, 2019",Oldest jeans in circulation
+8,Madewell,#000000,,N,,4,Jeans,Bottoms,jeans,2,Y,Skinny,2016,"The Orme School, Mayer, AZ",N,N,Y,N,N,"September, 2016","June, 2019",These are about to tear in a number of places but I can't stop wearing them
+11,Madewell,#668596,,N,,4,Jeans,Bottoms,jeans,3,Y,Wide-leg button-fly,2019,"Roslindale, MA",Y,N,N,Y,N,"June, 2019","June, 2020",These are my best-fitting jeans at the moment
+15,Agolde,#f9f3ed,,N,,4,Jeans,Bottoms,jeans,4,Y,Wide-leg,2020,"Roslindale, MA",N,N,Y,N,Y,"June, 2020",and beyond,Every time I wear these they end up mysteriously stained
+16,Madewell,#000000,,N,,4,Jeans,Bottoms,jeans,5,Y,High-waisted wide-leg,2020,"Lawrence, MA",Y,N,Y,N,Y,"June, 2020",and beyond,New jeans! Still breaking them in
+17,The Reformation,#8f9eb5,,N,,4,Jeans,Bottoms,jeans,6,Y,Saddle,2020,"Lawrence, MA",Y,N,Y,N,Y,"June, 2020",and beyond,These have a silly no-butt-pocket design that reminds me of middle school in the best way
+14,,#eddc77,#f33fa9,Y,27,5,Knit Tops,Tops,tee,1,N,Sunglasses graphic,2013,Los Angeles,N,Y,N,N,N,"June, 2011","June, 2014",So summery
+15,,#FFFFFF,#ea0502,Y,28,5,Knit Tops,Tops,tee,2,N,Running of the Bulls graphic,2013,Los Angeles,N,Y,N,N,N,"June, 2011","June, 2014",This shirt is amazing! It's like part of a theatre costume; splattered in blood with a hole where the bull's horn pierced the original owner
+16,,#000000,#FFFFFF,Y,29,5,Knit Tops,Tops,tee,3,N,EDA graphic,2013,Los Angeles,N,Y,N,N,N,"June, 2011","June, 2014",I like to wear this one and see if people notice it has a stripped on it
+17,Aritzia,#000000,#FFFFFF,Y,30,5,Knit Tops,Tops,vest,4,N,Ribbed sweater,2013,Los Angeles,Y,N,N,Y,N,"June, 2011","June, 2014",Work top
+18,,#a5a19f,,N,,5,Knit Tops,Tops,vest,5,N,sweater,2013,Los Angeles,N,Y,N,N,N,"June, 2011","June, 2014",This one always makes me think of Clueless; it's probably from the 90s
+21,,#339966,#e9a413,Y,32,5,Knit Tops,Tops,tee,6,N,Cal-Poly graphic ringer,2015,"Hangzhou, China",N,Y,N,Y,N,"September, 2014","July, 2016",Bought this in Portland OR right before we got married
+22,,#FFFFFF,#b8d8e8,Y,33,5,Knit Tops,Tops,tee,7,N,California Raisins ringer,2015,"Hangzhou, China",N,Y,N,Y,N,"September, 2014","July, 2016",Bought this in Portland OR right before we got married
+23,,#000000,#FFFFFF,Y,34,5,Knit Tops,Tops,vest,8,N,Abstract-print sweater,2015,"Hangzhou, China",N,Y,N,Y,N,"September, 2014","July, 2016",Bought this in Claremont CA right after we got married
+24,Muji,#FFFFFF,#000000,Y,35,5,Knit Tops,Tops,tank,9,N,Ribbed striped ,2016,"Hangzhou, China",N,N,N,Y,N,"September, 2014","July, 2016",From our pilgrimage to the Muji flagship store
+25,,#1b2278,#d02624,Y,36,5,Knit Tops,Tops,vest,10,N,Striped sweater,2016,"Hangzhou, China",N,Y,N,Y,N,"September, 2014","July, 2016",To wear with my Marimekko overalls
+28,Madewell,#FFFFFF,#924b0b,Y,39,5,Knit Tops,Tops,tee,11,N,Ribbed striped cap-sleeve,2016,"The Orme School, Mayer, AZ",Y,N,Y,N,N,"September, 2016","June, 2019",Still like this one tucked into jeans
+31,,#aecebe,#1f443e,Y,41,5,Knit Tops,Tops,tank,12,N,Ribbed ringer,2018,"The Orme School, Mayer, AZ",N,Y,N,Y,N,"September, 2016","June, 2019","Last purchase I made before confirming I was pregnant, Spring Break road trip 2018"
+39,The Reformation,#92c7e4,#7e456c,Y,50,5,Knit Tops,Tops,tee,13,N,Mesh tie-dye,2019,"Roslindale, MA",N,N,Y,N,N,"June, 2019","June, 2020",Trying to still dress playfully as a mom
+33,,#FFFFFF,#3d678a,Y,48,5,Knit Tops,Tops,tank,14,N,Floral sweater,2019,"The Orme School, Mayer, AZ",N,N,N,Y,N,"June, 2019","June, 2020",Got this right before we got on a 40-hour train ride from Flagstaff to Chicago
+40,Yan Yan,#635743,#5b4156,Y,51,5,Knit Tops,Tops,bra top,15,N,Color-block sweater ,2020,"Roslindale, MA",N,N,Y,N,Y,"June, 2019","June, 2020",One day I will wear this beauty
+45,Mango,#7a6658,,N,,5,Knit Tops,Tops,bra top,16,N,Sweater,2020,"Lawrence, MA",N,N,Y,N,Y,"June, 2020",and beyond,Learning to love my boobies
+1,Express,#000000,,N,,5,Knit Tops,Tops,tee,1,Y,Long-sleeved crew-neck,2006,"Winnetka, IL",Y,N,N,N,N,before,"September, 2006",The only item of clothing I still have from high school
+5,Aritzia,#867e76,,N,,5,Knit Tops,Tops,tee,2,Y,Long-sleeved raglan,2010,"Senior Year, Middlebury College",Y,N,N,N,N,10-Sep,"May, 2011",One of my last boring gray tees from an era when I wore a lot of boring gray tees
+8,Topshop,#4e4c68,,N,,5,Knit Tops,Tops,tee,3,Y,Matelasse mock-neck,2012,Los Angeles,Y,N,N,Y,N,"June, 2011","June, 2014",Textures
+13,Loft,#8e8b88,,N,,5,Knit Tops,Tops,tee,4,Y,Cardigan,2013,Los Angeles,N,N,N,N,N,"June, 2011","June, 2014",Bought this with a gift card that I won in a raffle along with a Fiat 500
+50,Leset,#0c443d,,N,,5,Knit Tops,Tops,top,5,Y,Long-sleeved wrap,2020,"Lawrence, MA",N,N,Y,N,Y,"June, 2020",and beyond,"Feels like cashmere, but can be washed in a machine"
+38,The Reformation,#6d7d9e,#FFFFFF,Y,49,5,Knit Tops,Tops,tee,6,Y,Long-sleeved cathedral print mock-neck,2019,"Roslindale, MA",N,N,Y,N,N,"June, 2019","June, 2020",Surprisingly practical
+44,Agnes B,#000000,#FFFFFF,Y,53,5,Knit Tops,Tops,tee,7,Y,Signature graphic,2020,"Roslindale, MA",N,Y,Y,N,Y,"June, 2019","June, 2020",First quarantine purchase; all I wanted to wear were long-sleeved tees
+48,Flat File,#FFFFFF,#e56d13,Y,56,5,Knit Tops,Tops,tee,8,Y,Matisse graphic,2020,"Lawrence, MA",N,N,Y,N,Y,"June, 2020",and beyond,My brief foray into only wearing tee shirts and bike shorts
+43,H & M,#FFFFFF,,N,,5,Knit Tops,Tops,tank,9,Y,Ribbed halter,2020,"Roslindale, MA",N,N,Y,N,Y,"June, 2019","June, 2020",Cheap summer top
+49,Monogram,#FFFFFF,#b21d24,Y,57,5,Knit Tops,Tops,tee,10,Y,Les Fraises graphic,2020,"Lawrence, MA",N,N,Y,N,Y,"June, 2020",and beyond,My brief foray into only wearing tee shirts and bike shorts
+9,Madewell,#2e3849,#FFFFFF,Y,3,6,Pants,Bottoms,pants,1,N,Wool pinstripe,2016,"The Orme School, Mayer, AZ",Y,N,Y,N,N,"September, 2016","June, 2019",Work pants
+12,Madewell,#4d5266,,N,,6,Pants,Bottoms,pants,2,N,Silk tie-belt,2019,"Roslindale, MA",Y,N,N,N,N,"June, 2019","June, 2020",Bought for an interview
+4,Anthropologie,#8c0e1d,#425650,Y,2,6,Pants,Bottoms,pants,1,Y,Plaid corduroy,2011,Los Angeles,N,N,N,Y,N,"June, 2011","June, 2014",Used a secret santa gift card to get these on serious discount
+8,Guess,#b90010,#000000,Y,8,7,Rompers & Jumpsuits,Dresses & Jumpsuits,romper,1,N,Plaid front-zip,2013,Los Angeles,N,Y,N,N,N,"June, 2011","June, 2014","This is a ridiculous romper that Steven convinced me to get, but I still wear it to parties"
+11,Free People,#FFFFFF,,N,,7,Rompers & Jumpsuits,Dresses & Jumpsuits,romper,2,N,Crocheted,2015,"Hangzhou, China",Y,N,N,Y,N,"September, 2014","July, 2016",Wore this for my wedding after-party at the beach
+14,Kapital,#70797f,,N,,7,Rompers & Jumpsuits,Dresses & Jumpsuits,jumpsuit,3,N,Embroidered denim,2016,"Hangzhou, China",N,N,N,Y,N,"September, 2014","July, 2016","The Kapital flagship store is part art gallery, part immersive surrealist shopping experience: a maze of levels with Wes Anderson-esque intrumentals piped through the sound system"
+15,Marimekko,#FFFFFF,#889bba,Y,12,7,Rompers & Jumpsuits,Dresses & Jumpsuits,overalls,4,N,Striped Marimekko,2016,"Hangzhou, China",N,Y,N,Y,N,"September, 2014","July, 2016",Kyoto has surprisingly good vintage shopping
+16,,#54638c,,N,,7,Rompers & Jumpsuits,Dresses & Jumpsuits,overalls,5,N,Short,2016,"Hangzhou, China",N,Y,N,Y,N,"September, 2014","July, 2016","First purchase in Tokyo, right after I dyed my hair pink"
+22,Neiman Marcus,#a57e56,,N,,7,Rompers & Jumpsuits,Dresses & Jumpsuits,jumpsuit,6,N,sweater,2017,"The Orme School, Mayer, AZ",Y,Y,N,N,N,"September, 2016","June, 2019",Steven found this in a thrift store in a tiny high-desert town in Arizona and it fits perfectly!
+23,,#f861b7,,N,,7,Rompers & Jumpsuits,Dresses & Jumpsuits,jumpsuit,7,N,Sleeveless,2018,"The Orme School, Mayer, AZ",N,Y,N,Y,N,"September, 2016","June, 2019",Got this when I was pregnant and just starting to show
+25,Paloma Wool,#1e737c,,N,,7,Rompers & Jumpsuits,Dresses & Jumpsuits,jumpsuit,1,Y,Front-zip corduroy,2019,"Roslindale, MA",Y,N,Y,N,N,"June, 2019","June, 2020",Always looking for an excuse to wear this
+1,Emilio de le Morena,#000000,,N,,,Sets,Sets,suit,1,N,Short & Vest,2013,Los Angeles,N,Y,N,N,N,"June, 2011","June, 2014",This allegedly once belonged to a tiny French model in the 70s
+2,,#2b3258,#faa521,Y,20,,Sets,Sets,set,2,N,Floral shirt & Skirt,2019,"Roslindale, MA",N,Y,N,N,N,"June, 2019","June, 2020",I always wear these pieces separately; they're better on their own
+1,Topshop,#ff4138,,N,,,Shorts & Skirts,Bottoms,shorts,1,N,High-waisted sailor,2009,"Study Abroad, London",N,N,N,N,N,"August, 2009","June, 2010",I could spend all day in the Topshop in Oxford Circus
+2,,#006e5f,#f0a605,Y,1,,Shorts & Skirts,Bottoms,shorts,2,N,Color-block knit,2010,"Senior Year, Middlebury College",Y,Y,N,Y,N,10-Sep,"May, 2011","These shorts are only really suitable for parties and music festivals, but they are so special that I can't give them up yet"
+13,Cashmere in Love,#cc0d16,#000000,Y,5,,Shorts & Skirts,Bottoms,shorts,3,N,High-waisted sweater,2020,"Roslindale, MA",Y,N,Y,N,Y,"June, 2019","June, 2020",Gift from Steven for Mother's Day
+14,Lett,#000000,,N,,,Shorts & Skirts,Bottoms,shorts,4,N,Ribbed bike,2020,"Roslindale, MA",N,N,Y,N,Y,"June, 2019","June, 2020",In the summer I wear these almost every day
+3,Karl Lagerfeld,#000000,,N,,,Shorts & Skirts,Bottoms,skirt,5,N,Pleated,2010,"Senior Year, Middlebury College",Y,Y,N,N,N,10-Sep,"May, 2011",My mom used to wear this on dates with my dad!
+5,J. Crew,#595739,,N,,,Shorts & Skirts,Bottoms,skirt,6,N,Zip-front mini,2013,Los Angeles,Y,N,N,N,N,"June, 2011","June, 2014","Still can't really fit into this, but it's lovely so I'm holding out hope"
+6,Zara,#000000,,N,,,Shorts & Skirts,Bottoms,skirt,7,N,Corduroy mini,2015,"Hangzhou, China",N,N,N,N,N,"September, 2014","July, 2016",Part of a NYE outfit
+10,,#fd9878,#f7d360,Y,4,,Shorts & Skirts,Bottoms,skort,8,N,Hawaiian wrap,2017,"The Orme School, Mayer, AZ",N,Y,N,Y,N,"September, 2016","June, 2019",Kooky Kansas City find
+2,,#938c82,#000000,Y,21,8,Sweaters & Sweatshirts,Tops,sweater,1,N,Geometric Lurex,2008,"Freshman Year, Middlebury College",N,Y,N,Y,N,"September, 2006","May, 2008",NYC vintage stop en route to Europe
+3,Chanel,#7690a3,#dfb5a1,Y,22,8,Sweaters & Sweatshirts,Tops,sweater,2,N,Color-block,2009,"Study Abroad, London",Y,Y,N,N,N,"August, 2009","June, 2010",Another piece inherited from my mom; didn't realize it was Chanel until I found a tiny tag on the bottom hem
+4,French Connection,#000000,,N,,8,Sweaters & Sweatshirts,Tops,sweater,3,N,Drapey,2009,"Study Abroad, London",N,N,N,N,N,"August, 2009","June, 2010",Layers up well in the fall
+10,Aritzia,#e5dfd6,,N,,8,Sweaters & Sweatshirts,Tops,sweater,4,N,Ribbed crop,2013,Los Angeles,Y,N,N,Y,N,"June, 2011","June, 2014","Even though there are a few little stains on this, it's too beautiful for me to give up on it"
+11,Aritzia,#97bfb8,#6d5561,Y,25,8,Sweaters & Sweatshirts,Tops,sweater,5,N,Rainbow yarn,2013,Los Angeles,Y,N,N,Y,N,"June, 2011","June, 2014","Slightly awkward cut, but the fabric is like a hazy daydream"
+12,Opening Ceremony,#FFFFFF,#24294f,Y,26,8,Sweaters & Sweatshirts,Tops,sweater,6,N,"""L"" monogram",2013,Los Angeles,N,N,N,N,N,"June, 2011","June, 2014",RIP Opening Ceremony
+37,Cupcakes & Cashmere,#f7decd,#5d698c,Y,45,8,Sweaters & Sweatshirts,Tops,sweater,7,N,Confetti-yarn,2019,"Roslindale, MA",Y,N,Y,N,N,"June, 2019","June, 2020",Replaced 3 or 4 moth-eaten sweaters with this one
+41,Madewell,#65635a,#bcbab5,Y,52,8,Sweaters & Sweatshirts,Tops,sweater,8,N,Textured yarn,2020,"Roslindale, MA",Y,N,N,N,N,"June, 2019","June, 2020",Bought for an interview
+20,Madewell,#4f4e4b,,N,,8,Sweaters & Sweatshirts,Tops,sweatshirt,1,Y,Cropped quilted,2015,"Hangzhou, China",Y,N,N,Y,N,"September, 2014","July, 2016","Looks kind of like a taberd, but cozier"
+32,Sezane,#ac4437,#4f657a,Y,46,8,Sweaters & Sweatshirts,Tops,sweater,2,Y,Drapey color-block,2019,"The Orme School, Mayer, AZ",Y,N,Y,N,N,"June, 2019","June, 2020",There are buttons on the back!
+46,Monogram,#000000,#FFFFFF,Y,54,8,Sweaters & Sweatshirts,Tops,sweatshirt,3,Y,Club sandwich graphic,2020,"Lawrence, MA",N,N,Y,N,Y,"June, 2020",and beyond,WFH coziness
+47,The Reformation,#FFFFFF,#b4c0d1,Y,55,8,Sweaters & Sweatshirts,Tops,sweatshirt,4,Y,Tie-dyed half-zip,2020,"Lawrence, MA",N,N,Y,N,Y,"June, 2020",and beyond,WFH coziness
+42,Uniqlo,#000000,,N,,8,Sweaters & Sweatshirts,Tops,sweater,5,Y,Ribbed turtleneck,2020,"Roslindale, MA",N,N,Y,N,N,"June, 2019","June, 2020",Bought to replace a black turtleneck that fell apart
+6,Aritzia,#000000,,N,,9,Woven Tops,Tops,blouse,1,N,Sheer crepe,2012,Los Angeles,Y,N,N,N,N,"June, 2011","June, 2014",For date nights
+7,J. Crew,#434a5b,#f3f4d0,Y,23,9,Woven Tops,Tops,shirt,2,N,Silk French-hen print,2012,Los Angeles,N,N,N,N,N,"June, 2011","June, 2014",The French hens still make me laugh
+9,Madewell,#8e322e,#000000,Y,24,9,Woven Tops,Tops,shirt,3,N,Silk check-print,2013,Los Angeles,N,N,N,N,N,"June, 2011","June, 2014",Interview shirt
+19,,#FFFFFF,#7584a0,Y,31,9,Woven Tops,Tops,shirt,1,Y,Striped western-style,2014,"Moved in with Steven, Nottingham",N,Y,N,Y,N,"June, 2014","September, 2014",Steven found this in a vinatge shop in Glasgow
+26,Diane von Furstenberg,#428376,#ed1e4b,Y,37,9,Woven Tops,Tops,shirt,4,N,Silk jungle-print,2016,"The Orme School, Mayer, AZ",N,Y,N,Y,N,"September, 2016","June, 2019",Steven originally wanted to buy this until we realized it was my size
+30,,#2f2e4c,#FFFFFF,Y,40,9,Woven Tops,Tops,top,5,N,Embroidered,2017,"The Orme School, Mayer, AZ",N,Y,N,Y,N,"September, 2016","June, 2019",Another piece from an alleged socialite whose family owned a major pencil manufacturer in the 60s
+27,Madewell,#964038,#384942,Y,38,9,Woven Tops,Tops,shirt,2,Y,Check flannel,2016,"The Orme School, Mayer, AZ",Y,N,Y,N,N,"September, 2016","June, 2019",Fall shirt
+36,,#c92d40,#af945d,Y,44,9,Woven Tops,Tops,shirt,3,Y,Striped,2019,"Roslindale, MA",N,Y,N,Y,N,"June, 2019","June, 2020","Steven calls this one my ""circus shirt"""

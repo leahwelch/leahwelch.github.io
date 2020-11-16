@@ -1,36 +1,328 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;700&display=swap');
 
 * {
     box-sizing: border-box;
   }
 
 body {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     /*background-color: #f9f9f4;*/
     background-color: #f9ede1;
 }
 
-.grid-container {
+.intro{
+    width: 100%;
+    height: 100vh;
+}
+
+.library {
+    margin-bottom: 40px;
+}
+
+#smalls {
+    margin: 20px 50px 20px 150px;
+    grid-area: smalls;
+}
+
+h1 {
+    width: 75%;
+    font-size: 60pt;
+    font-weight: 300;
+    padding-top: 50px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-style: italic;
+}
+
+.intro p {
+    width: 75%;
+    padding-top: 20px;
+}
+
+.conclusion {
+    margin: 150px 0px;
     display: grid;
-    grid-template-columns: 5fr 1fr;
+    grid-template-columns: 1fr 5fr;
     grid-template-rows: 1fr;
     grid-template-areas: 
-        "chart timeline";
+        "summary smalls";
+}
+
+
+.summary {
+    margin-left: 150px;
+    /* padding-top: 100px; */
+    grid-area: summary;
+}
+
+.totalWorn, .totalItems, .efficiencyP, .wornInfo {
+    font-weight: bold;
+}
+
+@media (min-width: 1200px) {
+.intro {
+    width: 1170px;
+    margin-left: 100px;
+    padding-top: 100px;
+}
+}
+@media (min-width: 992px){
+.intro  {
+    width: 970px;
+    margin-left: 100px;
+    padding-top: 100px;
+}
+}
+@media (min-width: 768px) {
+.intro {
+    width: 750px;
+    margin-left: 100px;
+    padding-top: 100px;
+}
+}
+
+#container {
+    display: grid;
+    grid-template-columns: 3fr 2fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+        "note_container chart timeline";
     height: 100%;
   }
 
-.grid-container > #timeline {
-    grid-area: timeline;
+.note_container {
+    position: fixed;
     height: 90vh;
-    margin: 30px;
+    width: 100%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 2%;
+    grid-area: note_container;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr 2fr;
+    grid-template-areas: 
+        "instructions"    
+        "annotation"
+        "date_labels";
 }
 
-.grid-container > #chartcontainer {
+.instructions {
+    grid-area: instructions;
+    margin-left: 100px;
+    border-bottom: 1px solid #a08875;
+}
+
+.description {
+    width: 70%;
+}
+
+
+.annotation {
+    grid-area: annotation;
+    margin: 10px 30px 50px 100px;
+    /* position: -webkit-sticky; */
+    height: 40vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        "image info";
+}
+
+.date_labels {
+    grid-area: date_labels;
+    /* position: -webkit-sticky; */
+    height: 30vh;
+    width: 100%;
+    margin: 0px 30px 50px 100px;
+}
+
+.graphic__prose {
+    grid-area: timeline;
+    height: 350vh;
+    margin: 30px 30px 30px 30px;
+}
+
+.spine {
+    background-color: #a08875;
+    height: 100%;
+    width: 1px;
+    margin-left: 3px;
+}
+
+#nyu {
+    top: 122vh;
+}
+
+#midd_fresh {
+    top: 138vh;
+}
+
+#london {
+    top: 170vh;
+}
+
+#midd_sr {
+    top: 186vh;
+}
+
+#la {
+    top: 202vh;
+}
+
+#nottingham {
+    top: 246vh;
+}
+
+#china {
+    top: 250vh;
+}
+
+#orme {
+    top: 282vh;
+}
+
+#roslindale {
+    top: 330vh;
+}
+
+#lawrence {
+    top: 346vh;
+}
+
+#graph {
     grid-area: chart;
-    height: 90vh;
-    margin: 30px 45px 30px 45px;
+    height: 100vh;
+    margin: 30px 45px 30px 0px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 2%;
+}
+
+.annotation_text {
+    grid-area: info;
+    margin: 0px 200px 50px 30px;
+    color: #3d332a;
+}
+
+.annotation_image {
+    grid-area: image;
+}
+
+.bottoms {
+    padding: 30px;
+    max-height:400px;
+    max-width:300px;
+    height:auto;
+    width:auto;
+}
+
+.dresses {
+    padding: 30px;
+    max-height:400px;
+    max-width:300px;
+    height:auto;
+    width:auto;
+}
+
+.tops {
+    padding: 30px;
+    max-height:400px;
+    max-width:300px;
+    height:auto;
+    width:auto;
+}
+
+.outerwear {
+    padding: 30px;
+    max-height:400px;
+    max-width:300px;
+    height:auto;
+    width:auto;
+}
+
+.sets {
+    padding: 30px;
+    max-height:400px;
+    max-width:300px;
+    height:auto;
+    width:auto;
+}
+
+.annotation_header {
+    font-family: 'Lilita One', cursive;
+    font-size: 20pt;
+    color: #3d332a;
+}
+
+.default {
+    grid-area: default;
+    margin: 10px 80px 10px 30px;
+    height: 20px;
+    width: 100%;
+    font-size: 16pt;
+}
+
+.brand {
+    font-family: 'Lilita One', cursive;
+    font-size: 16pt;
+    color: #3d332a;
+}
+
+.item{
+    color: #3d332a;
+}
+
+.notes{
+    color: #3d332a;
+    font-style: italic;
+}
+
+.swatch {
+    width: 90px;
+    height: 30px;
+    text-align: right;
+    padding: 8px 10px 8px 10px;
+    font-size: 10pt;
+    font-style: italic;
+}
+
+.swatch2 {
+    width: 90px;
+    height: 30px;
+    text-align: right;
+    padding: 8px 10px 8px 10px;
+    font-size: 10pt;
+    font-style: italic;
+}
+
+.start_date {
+    font-size: 20pt;
+    color: #0b7c85;
+    margin: 0px;
+}
+
+.end_date {
+    font-size: 60pt;
+    font-weight: bold;
+    color: #a08875;
+    opacity: 0.4;
+    margin: 10px 50px;
+}
+
+.era_name {
+    font-size: 16pt;
+    color: #0b7c85;
+    font-family: 'Lilita One', cursive;
+    margin: 0px 50px;
 }
 
 .axis line {
@@ -40,3 +332,68 @@ body {
 .axis path {
     visibility: hidden;
 }
+
+.xaxis line {
+    visibility: hidden;
+}
+  
+.xaxis path {
+    visibility: hidden;
+}
+
+.tick text {
+    color: #3d332a;
+    font-weight: bolder;
+}
+
+.trigger {
+    display: block;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border: 2px solid #3d332a;
+    text-align: left;
+    background-color: #f9ede1;
+    border-radius: 4px;
+}
+
+.trigger > .timeline_date {
+    color: #3d332a;
+    font-size: 9pt;
+    font-weight: bolder;
+    transform: translate(20px,-5px);
+}
+
+.trigger > .timeline_loc {
+    color: #3d332a;
+    font-family: 'Noto Serif', serif;
+    font-size: 9pt;
+    transform: translate(20px,-7px);
+    width: 200px;
+}
+
+#tooltip {
+    position: absolute;
+    text-align: center;
+    margin: 10px;
+    max-width: 200px;
+    height: auto;
+    width: auto;
+    padding: 5px;
+    font-size: 11pt;
+    background-color:#3d332a;
+    color: #ffffff;
+    border: 1px solid #f9ede1;
+    border-radius: 3px;
+    pointer-events: none;
+}
+
+#tooltip.hidden {
+    display: none;
+}
+
+#tooltip p {
+    margin: 0px;
+    padding: 0px;
+}
+
