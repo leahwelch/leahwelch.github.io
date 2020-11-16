@@ -221,12 +221,10 @@ h2 {
 .annotation {
     grid-area: annotation;
     margin: 0px 30px 20px 100px;
-    /* position: -webkit-sticky; */
     height: 45vh;
     width: 90%;
     border-bottom: 1px solid #a08875;
     display: grid;
-    /* grid-template-columns: 1fr 2fr; */
     grid-template-columns: 33% 66%; 
     grid-template-rows: 1fr;
     grid-template-areas:
@@ -241,7 +239,6 @@ h2 {
 
 .annotation_image {
     grid-area: image;
-    /* padding: 50px 0px; */
     display: block;
     margin: 1em auto;
     
