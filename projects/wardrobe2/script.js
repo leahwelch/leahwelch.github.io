@@ -640,12 +640,14 @@ Promise.all(promises).then(function(wardrobedata) {
         .attr("x", 0)
         .attr("y", 4)
         .attr("transform", function(d){ return( "translate(" + (+widthA-marginA.right-300) + "," + (260) + ")rotate(-90)")})
+        .attr("fill", "#3d332a")
         .text("Newer")
 
     svgA.append("text")
         .attr("x", 0)
         .attr("y", 4)
         .attr("transform", function(d){ return( "translate(" + (+widthA-marginA.right-300) + "," + (580) + ")rotate(-90)")})
+        .attr("fill", "#3d332a")
         .text("Older")
 
 
