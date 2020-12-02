@@ -1,4 +1,4 @@
-word,value,category_totals,category,sub-category,,,,theme_1
+word,value,category_totals,category,sub_category,,,,theme_1
 children,78,,impact,children,,,,america
 kids,31,,impact,children,,,,america
 childhood,28,,impact,children,,,,america
@@ -21,9 +21,9 @@ body,99,,impact,obesity,,,,health
 fat,75,,impact,obesity,,,,children
 fattest,46,,impact,obesity,,,,children
 pounds,28,,impact,obesity,1007,50,,lifestyle
-epidemic,88,,impact,problem,,,,lifestyle
-problem,75,,impact,problem,,,,lifestyle
-problems,40,1864,impact,problem,203,10,,lifestyle
+epidemic,88,,impact,problems,,,,lifestyle
+problem,75,,impact,problems,,,,lifestyle
+problems,40,1864,impact,problems,203,10,,lifestyle
 school,44,,response,education,,,,lifestyle
 education,31,,response,education,75,3/4,,health
 healthy,71,,response,lifestyle,,,,lifestyle
