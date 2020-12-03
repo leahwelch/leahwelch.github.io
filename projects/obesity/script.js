@@ -3,6 +3,8 @@ var grotesque = null;
 var width = d3.select('#vis').node().offsetWidth;
 var height =  d3.select('#vis').node().offsetHeight;
 
+var tooltip = d3.select("#tooltip");
+
 
 
 d3.queue()
@@ -38,9 +40,15 @@ d3.queue()
         svg.attr('viewBox', xmlSVG.attr('viewBox'));
 
         grotesque.style("fill", "none");
-        grotesque.selectAll("path").style("stroke-width", .75).on("mouseenter", function() {
+        grotesque.selectAll("path").style("stroke-width", .75)
+        grotesque.selectAll("#america_mouse").style("fill", "none").style("pointer-events", "all")
+        .on("mouseenter", function(d) {
+            
             grotesque.selectAll("." + this.getAttribute('class')).style("stroke-width", 2)
-            annotation.select(".theme").html("Theme: " + this.getAttribute('class'))
+            tooltip.classed("hidden", false)
+                .style("left", (d3.mouse(this)[0]) + "px")		
+                .style("top", (d3.mouse(this)[1]) + "px");
+            tooltip.select(".theme").html("Theme: " + this.getAttribute('class'))
             for(var i = 0; i < kuwait.length; i++) {
                 if(this.getAttribute('class') === kuwait[i].sub_category) {
                     document.getElementById("words").innerHTML += kuwait[i].word + " : " + kuwait[i].value +  "<br>";
@@ -49,7 +57,7 @@ d3.queue()
         }).on("mouseout", function() {
             grotesque.selectAll("." + this.getAttribute('class')).style("stroke-width", .75)
             document.getElementById("words").innerHTML = "";
-            annotation.select(".theme").html("")
+            tooltip.classed("hidden", true);
             
         });
 
