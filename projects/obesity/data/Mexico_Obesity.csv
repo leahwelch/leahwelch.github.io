@@ -1,4 +1,4 @@
-word,instances,category,sub_category,category totals,sub totals,,,theme_1
+word,value,category,sub_category,category totals,sub totals,,,theme_1
 children,61,impact,children,,,,,children
 school,29,impact,children,,90,,,children
 diabetes,106,impact,disease,,,,,health
@@ -18,8 +18,8 @@ fat,37,impact,obesity,,,,,obesity
 pounds,30,impact,obesity,,,,,obesity
 skinny,28,impact,obesity,,,,,obesity
 fattest,27,impact,obesity,,599,,,obesity
-epidemic,51,impact,problem,,,,,health
-crisis,24,impact,problem,1229,75,245.8,,
+epidemic,51,impact,problems,,,,,health
+crisis,24,impact,problems,1229,75,245.8,,
 university,49,response,education,,,,,
 learn,34,response,education,,83,,,
 healthy,45,response,lifestyle,,,,,health

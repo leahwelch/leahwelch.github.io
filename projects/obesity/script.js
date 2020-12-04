@@ -49,7 +49,7 @@ d3.queue()
                 tooltip.classed("hidden", false)
                     .style("top", d3.event.pageY  - 100 + "px")
                     .style("left", d3.event.pageX - 100 + "px")
-                tooltip.select(".theme").html("Theme: " + this.getAttribute('class'))
+                tooltip.select(".theme").html(this.getAttribute('class'))
                 for(var i = 0; i < kuwait.length; i++) {
                     if(this.getAttribute('class') === kuwait[i].sub_category) {
                         document.getElementById("words").innerHTML += kuwait[i].word + " : " + kuwait[i].value +  "<br>";
@@ -105,10 +105,10 @@ d3.queue()
                     tooltip.classed("hidden", false)
                         .style("top", d3.event.pageY  - 700 + "px")
                         .style("left", d3.event.pageX - 150 + "px")
-                    tooltip.select(".theme").html("Theme: " + this.getAttribute('class'))
-                    for(var i = 0; i < kuwait.length; i++) {
-                        if(this.getAttribute('class') === kuwait[i].sub_category) {
-                            document.getElementById("words").innerHTML += kuwait[i].word + " : " + kuwait[i].value +  "<br>";
+                    tooltip.select(".theme").html(this.getAttribute('class'))
+                    for(var i = 0; i < china.length; i++) {
+                        if(this.getAttribute('class') === china[i].sub_category) {
+                            document.getElementById("words").innerHTML += china[i].word + " : " + china[i].value +  "<br>";
                         }
                     }
                 }).on("mouseout", function() {
@@ -160,10 +160,10 @@ d3.queue()
                     tooltip.classed("hidden", false)
                         .style("top", d3.event.pageY  - 1500 + "px")
                         .style("left", d3.event.pageX - 150 + "px")
-                    tooltip.select(".theme").html("Theme: " + this.getAttribute('class'))
-                    for(var i = 0; i < kuwait.length; i++) {
-                        if(this.getAttribute('class') === kuwait[i].sub_category) {
-                            document.getElementById("words").innerHTML += kuwait[i].word + " : " + kuwait[i].value +  "<br>";
+                    tooltip.select(".theme").html(this.getAttribute('class'))
+                    for(var i = 0; i < mexico.length; i++) {
+                        if(this.getAttribute('class') === mexico[i].sub_category) {
+                            document.getElementById("words").innerHTML += mexico[i].word + " : " + mexico[i].value +  "<br>";
                         }
                     }
                 }).on("mouseout", function() {
@@ -216,9 +216,9 @@ d3.queue()
                         .style("top", d3.event.pageY  - 2500 + "px")
                         .style("left", d3.event.pageX - 100 + "px")
                     tooltip.select(".theme").html(this.getAttribute('class'))
-                    for(var i = 0; i < kuwait.length; i++) {
-                        if(this.getAttribute('class') === kuwait[i].sub_category) {
-                            document.getElementById("words").innerHTML += kuwait[i].word + " : " + kuwait[i].value +  "<br>";
+                    for(var i = 0; i < tonga.length; i++) {
+                        if(this.getAttribute('class') ===tonga[i].sub_category) {
+                            document.getElementById("words").innerHTML += "<b>" + tonga[i].word + " : " + "</b>" + tonga[i].value +  "<br>";
                         }
                     }
                 }).on("mouseout", function() {

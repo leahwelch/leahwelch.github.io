@@ -77,15 +77,10 @@ pre{
 
 #tooltip {
     position: absolute;
-    /* margin: 10px; */
     width: 200px;
-    /* padding: 10px 20px; */
     font-size: 11pt;
     background-color:#fff9f2;
     color: #808080;
-    border: 1px solid #fff9f2;
-    box-shadow: 2px 2px 5px #aaaaaa;
-    border-radius: 3px;
     pointer-events: none;
     display: grid;
     grid-template-columns: 1fr;
@@ -93,6 +88,18 @@ pre{
     grid-template-areas: 
           "header"
           "main";
+}
+
+#tooltip::before {
+	box-shadow: 2px 2px 5px #aaaaaa;
+	mix-blend-mode: multiply;
+  content: " ";
+  border-radius: 3px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
 }
 
   #tooltip.hidden {
@@ -105,6 +112,7 @@ pre{
   background-color:#808080;
   font-weight: 500;
   font-size: 12pt;
+  border-radius: 3px 3px 0px 0px;
   color: #fff9f2;
   padding: 0px 0px 5px 10px;
 }
