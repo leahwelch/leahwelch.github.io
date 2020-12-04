@@ -41,25 +41,26 @@ d3.queue()
 
         grotesque.style("fill", "none");
         grotesque.selectAll("path").style("stroke-width", .75)
-        grotesque.selectAll("#america_mouse").style("fill", "none").style("pointer-events", "all")
-        .on("mouseenter", function(d) {
-            
-            grotesque.selectAll("." + this.getAttribute('class')).style("stroke-width", 2)
-            tooltip.classed("hidden", false)
-                .style("left", (d3.mouse(this)[0]) + "px")		
-                .style("top", (d3.mouse(this)[1]) + "px");
-            tooltip.select(".theme").html("Theme: " + this.getAttribute('class'))
-            for(var i = 0; i < kuwait.length; i++) {
-                if(this.getAttribute('class') === kuwait[i].sub_category) {
-                    document.getElementById("words").innerHTML += kuwait[i].word + " : " + kuwait[i].value +  "<br>";
+        grotesque.selectAll("#america_mouse, #food_mouse, #children_mouse, #problems_mouse, #disease_mouse, #obesity_mouse, #education_mouse, #science_mouse, #lifestyle_mouse, #medicine_mouse")
+            .style("fill", "none").style("stroke", "none")
+            .style("pointer-events", "all")
+            .on("mouseenter", function(d) {
+                grotesque.selectAll("." + this.getAttribute('class')).style("stroke-width", 2)
+                tooltip.classed("hidden", false)
+                    .style("top", d3.event.pageY  - 100 + "px")
+                    .style("left", d3.event.pageX - 100 + "px")
+                tooltip.select(".theme").html("Theme: " + this.getAttribute('class'))
+                for(var i = 0; i < kuwait.length; i++) {
+                    if(this.getAttribute('class') === kuwait[i].sub_category) {
+                        document.getElementById("words").innerHTML += kuwait[i].word + " : " + kuwait[i].value +  "<br>";
+                    }
                 }
-            }
-        }).on("mouseout", function() {
-            grotesque.selectAll("." + this.getAttribute('class')).style("stroke-width", .75)
-            document.getElementById("words").innerHTML = "";
-            tooltip.classed("hidden", true);
-            
-        });
+            }).on("mouseout", function() {
+                grotesque.selectAll("." + this.getAttribute('class')).style("stroke-width", .75)
+                document.getElementById("words").innerHTML = "";
+                tooltip.classed("hidden", true);
+                
+            });
 
         //     //Styling lines
         grotesque.select("#food_solid").style("stroke", "#61544a");
