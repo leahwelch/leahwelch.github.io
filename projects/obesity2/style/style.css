@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+  }
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    margin: 0;
+    background-color: #fff9f2;
+    color: #808080;
+}
+
+#container {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+          "main side";
+    /* margin: 50px auto; */
+  }
+
+#main {
+    grid-area: main;
+    /* border-style: solid; */
+    text-align: center;
+    margin-top: 30px;
+}
+
+#graph {
+    max-height: 95vh;
+}
+
+.button_group {
+    padding-bottom: 20px;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 5px;
+    background-color: #fff9f2;
+    border: 1px solid #808080;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+.dot:hover {
+    background-color: #808080;
+}
+
+.dot:focus {
+    background-color: #808080;
+    outline:0;
+}
+
+#side {
+    grid-area: side;
+    display: grid;
+    margin-left: 50px;
+    /* border-left: 1px solid #808080; */
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr;
+    grid-template-areas: 
+          "info"
+          "supplement";
+}
+
+#country_info {
+    grid-area: info;
+    padding: 30px;
+    
+}
+
+h2 {
+    font-weight: 300;
+    font-size: 30pt;
+    margin: 0px;
+}
+
+#supplement {
+    grid-area: supplement;
+    /* border-style: solid; */
+    width: 100%;
+    height: auto;
+}
+
+.axis {
+    font-family: 'Space Grotesk', sans-serif;
+	font-size: 10pt;
+}
+
+.axis path {
+	visibility: hidden;
+  }
+
+.axis line {
+    visibility: hidden;
+}
+
+.sideLabels {
+    fill: #808080;
+}
+
+.quantLabels {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 10pt;
+    fill: #808080;
+}
+
+.suppTitle {
+    font-size: 16pt;
+    fill: #808080;
+}
