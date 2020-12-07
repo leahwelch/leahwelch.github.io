@@ -483,7 +483,7 @@ d3.queue()
                 .enter()
                 .append("text")
                     .attr("x", function(d) {return suppMargin.left + xScale(d.value) + 5})
-                    .attr("y", function(d) {return yScale(d.theme) + 12})
+                    .attr("y", function(d) {return yScaleTonga(d.theme) + 12})
                     .attr("class", "quantLabels")
                     .style("text-anchor", "start")
                     .text(function(d){return d.value});
