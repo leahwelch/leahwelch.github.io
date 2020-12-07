@@ -1,4 +1,4 @@
-word,value,category,sub_category,category totals,sub totals,,theme_1
+word,value,category,sub_category,,theme_total,,theme_1
 children,40,impact,children,,40,,children
 diabetes,98,impact,disease,,,,health
 disease,75,impact,disease,,,,health
@@ -41,8 +41,3 @@ eat,37,source,food,,,,lifestyle
 eating,36,source,food,,,,lifestyle
 rice,27,source,food,,,,lifestyle
 foods,24,source,food,603,468,120.6,lifestyle
-life,76,,,,,,
-street,66,,,,,,
-free,53,,,,,,
-care,41,,,,,,
-support,32,,,,,,

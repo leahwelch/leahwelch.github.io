@@ -1,4 +1,4 @@
-word,value,category,sub_category,category total,sub totals,,,theme_1
+word,value,category,sub_category,,theme_total,,,theme_1
 children,35,impact,children,,35,,,children
 diabetes,132,impact,disease,,,,,health
 disease,65,impact,disease,,,,,health
@@ -37,8 +37,3 @@ eating,37,source,food,,,,,lifestyle
 cook,31,source,food,,,,,lifestyle
 foods,27,source,food,,,,,lifestyle
 sugar,25,source,food,526,381,105.2,,lifestyle
-community,49,,,,,,,
-help,47,,,,,,,
-data,44,,,,,,,
-free,36,,,,,,,
-study,30,,,,,,,

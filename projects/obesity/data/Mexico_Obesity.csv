@@ -1,4 +1,4 @@
-word,value,category,sub_category,category totals,sub totals,,,theme_1
+word,value,category,sub_category,,theme_total,,,theme_1
 children,61,impact,children,,,,,children
 school,29,impact,children,,90,,,children
 diabetes,106,impact,disease,,,,,health
@@ -53,11 +53,3 @@ sugar,28,source,food,,,,,lifestyle
 drinks,27,source,food,,,,,lifestyle
 consumption,26,source,food,,,,,lifestyle
 junk,24,source,food,660,414,132,,lifestyle
-free,55,,,,,,,
-support,47,,,,,,,
-rates,46,,,,,,,
-care,40,,,,,,,
-traditional,33,,,,,,,
-old,32,,,,,,,
-government,31,,,,,,,
-study,29,,,,,,,

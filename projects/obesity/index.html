@@ -9,37 +9,29 @@
         
     </head>
     <body>
-        <div id='container'>
-
-            <div id="vis">
-                <svg id="graph" width="100%"></svg>
-                <div id="tooltip" class="hidden">
-                    <div class="tooltip_header">
-                        <p class="theme"></p>
-                    </div>
-                    <div class="tooltip_main">
-                        <p id="words"></p>
-                    </div>
+        <div id="container">
+            <div id='main'>
+                <div class="button_group">
+                    <button class="dot" id="kuwait_button" autofocus></button>
+                    <button class="dot" id="china_button"></button>
+                    <button class="dot" id="mexico_button"></button>
+                    <button class="dot" id="tonga_button"></button>
+                </div>
+                <div id="vis">
+                    <svg id="graph" width="100%"></svg>
+                    <!-- <svg id="graph" height="100vh"></svg> -->
                 </div>
             </div>
-
-            <div id = 'sections'>
-				<div id = "part_1" data-step='1'>
-					<p>Kuwait!</p>
-				</div>
-				<div id = "part_2" data-step='2'>
-					<p>China!</p>
-                </div>  
-                <div id = "part_3" data-step='3'>
-					<p>Mexico!</p>
-                </div> 
-                <div id = "part_4" data-step='4'>
-					<p>Tonga!</p>
-                </div>  
+            <div id="side">
+                <div id="country_info">
+                    <h2 id="country_name"></h2>
+                    <p id="explanation"></p>
+                </div>
+                <div id="supplement"></div>
             </div>
         </div>
+
         
         <script src="script.js"></script>
-        <script src="lib/graph-scroll.js"></script>
     </body>
 </html>
