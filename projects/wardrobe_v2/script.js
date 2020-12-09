@@ -1,28 +1,28 @@
 
 var promises = [
     d3.csv("./data/eras.csv"), 
-    d3.csv("./data/Wardrobe.csv"),
+    d3.csv("./data/Wardrobe_old.csv"),
     d3.csv("./data/wearlog.csv")
 ];
     
-var graphicEl = d3.select('#container')
-var graphicVisEl = graphicEl.select('#graph')
-var graphicProseEl = graphicEl.select('.graphic__prose')
+    var graphicEl = d3.select('#container')
+    var graphicVisEl = graphicEl.select('#graph')
+    var graphicProseEl = graphicEl.select('.graphic__prose')
 
-function removeDuplicates(originalData, prop) {
-    var newData = [];
-    var lookupObject = {};
+    function removeDuplicates(originalData, prop) {
+        var newData = [];
+        var lookupObject = {};
 
-    for(var i in originalData) {
-        lookupObject[originalData[i][prop]] = originalData[i];
-        }
+        for(var i in originalData) {
+            lookupObject[originalData[i][prop]] = originalData[i];
+         }
+    
+         for(i in lookupObject) {
+             newData.push(lookupObject[i]);
+         }
+          return newData;
 
-        for(i in lookupObject) {
-            newData.push(lookupObject[i]);
-        }
-        return newData;
-
-}
+    }
 
 Promise.all(promises).then(function(wardrobedata) {
 
@@ -36,23 +36,25 @@ Promise.all(promises).then(function(wardrobedata) {
     for(var i = 0; i < wearlog.length; i++) {
         itemsWorn.push({item: wearlog[i].Description, group: wearlog[i].group})
     }
+    //console.log(itemsWorn);
 
     var uniqueArray = removeDuplicates(itemsWorn, "item"); 
+    //console.log(uniqueArray);
 
     var capsule = [];
     for(i = 0; i < uniqueArray.length; i++) {
         capsule.push(uniqueArray[i].item);
     }
+    console.log(capsule.length);
+    console.log(wardrobe.length);
 
-    var vintageItems = wardrobe.filter(function(d) {
-        return d.Vintage === "Y";
-    });
-    var maxVintage =vintageItems.length;
+    
 
     d3.select(".totalWorn").html(capsule.length);
     d3.select(".totalItems").html(wardrobe.length);
     d3.select(".efficiencyP").html(((capsule.length/wardrobe.length) * 100).toFixed(0) + "%");
-    d3.select(".totalVintage").html(((maxVintage/wardrobe.length)*100).toFixed(0) + "%")
+    
+    
 
     var era_start = [];
     for(i = 0; i < eras.length; i++) {
@@ -76,11 +78,18 @@ Promise.all(promises).then(function(wardrobedata) {
         .key(function(d) { return d.group; })
         .rollup(function(v) { return v.length;})
         .entries(wardrobe)
+        //.sort(function(a,b) { return b.value - a.value; });
+
+    console.log(groupVals);
 
     var wornVals = d3.nest()
         .key(function(d) { return d.group; })
         .rollup(function(v) { return v.length;})
         .entries(uniqueArray)
+        //.sort(function(a,b) { return b.value - a.value; });
+
+    console.log(wornVals[0].key);
+    console.log(wornVals);
 
     var efficiencies = [];
     var percentages = [];
@@ -93,20 +102,24 @@ Promise.all(promises).then(function(wardrobedata) {
             } 
         }
     }
+    console.log(efficiencies);
 
     for(i = 0; i < percentages.length; i++) {
         percentages[i] = (percentages[i] * 100).toFixed(0);
     }
+    console.log(percentages);
 
     var tooltip = d3.select("#tooltip");
+    //     .append("div")
+    //     .attr("class", "tooltip")
+    //     .style("opacity", 0);
+
 
     var width = document.querySelector("#graph").clientWidth;
 
     var tops = wardrobe.filter(function(d) {
         return d.Category === "Tops";
     });
-
-    
 
     var toppics = [];
     for(i = 0; i < tops.length; i++) {
@@ -239,6 +252,7 @@ Promise.all(promises).then(function(wardrobedata) {
       .enter()
       .append("rect")
       .attr("class", "bar")
+      //.attr("x", smallMargin.left)
       .attr("x", function(d) {
           if(capsule.indexOf(d.Description)>=0) {
               return smallMargin.left;
@@ -265,6 +279,7 @@ Promise.all(promises).then(function(wardrobedata) {
                 timesWorn = nestedItems[i].value;
             } 
         }
+        //console.log(timesWorn);
         tooltip.classed("hidden", false)
             .style("left", (d3.event.pageX) + "px")		
             .style("top", (d3.event.pageY - 28) + "px");
@@ -306,6 +321,21 @@ Promise.all(promises).then(function(wardrobedata) {
       .attr('y', smallHeight - 15)
       .style("font-size", "10pt")
       .text("Unworn")
+
+    // smalls.selectAll("mylabels")
+    //     .data(function(d) {return d.values;}).enter().append("text")
+    //     //.attr('class','efficiencyLabel')
+    //     .attr('x',smallMargin.left)
+    //     .attr('y', smallHeight + 10)
+    //     .style("font-size", "10pt")
+    //     .text(function(d) {
+    //         if (d.group === "Dresses" || d.group === "Shorts & Skirts" || d.group === "Sets") {
+    //             return "Efficiency: 0%";
+    //         } else {
+    //             return "Efficiency: " + percentages[d.group_ID-1] + "%";
+    //         }
+    //     })
+
           
     var topsG = svg.append("g").attr("class", "topsG")
 
@@ -322,6 +352,7 @@ Promise.all(promises).then(function(wardrobedata) {
         .attr("stroke", "none")
         .attr("rx", 2)								
 		.attr("ry", 2);
+        //.style("opacity", 0.2);
 
     var bottomsG = svg.append("g").attr("class", "bottomsG")
 
@@ -337,6 +368,7 @@ Promise.all(promises).then(function(wardrobedata) {
         .attr("fill", function(d) { return d.Primary_Color; })
         .attr("rx", 2)								
 		.attr("ry", 2);
+        //.style("opacity", 0.2);
 
     var dressesG = svg.append("g").attr("class", "dressesG")
 
@@ -352,6 +384,7 @@ Promise.all(promises).then(function(wardrobedata) {
         .attr("fill", function(d) { return d.Primary_Color; })
         .attr("rx", 2)								
 		.attr("ry", 2);
+        //.style("opacity", 0.2);
 
     var setsG = svg.append("g").attr("class", "setsG")
 
@@ -367,6 +400,7 @@ Promise.all(promises).then(function(wardrobedata) {
         .attr("fill", function(d) { return d.Primary_Color; })
         .attr("rx", 2)								
 		.attr("ry", 2);
+        //.style("opacity", 0.2);
 
     var outerwearG = svg.append("g").attr("class", "outerwearG")
 
@@ -382,6 +416,7 @@ Promise.all(promises).then(function(wardrobedata) {
         .attr("fill", function(d) { return d.Primary_Color; })
         .attr("rx", 2)								
 		.attr("ry", 2);
+        //.style("opacity", 0.2);
 
     var legend = d3.select(".sketch").append("svg")
         .attr("width", 250)
@@ -429,6 +464,8 @@ Promise.all(promises).then(function(wardrobedata) {
         .attr("x", 110)
         .attr("y", 86)
         .text("On (multi-color)")
+
+
 
     svg.selectAll("rect").on("mouseover, mousemove", function(d) {
         if(d.Vintage === "N"){
@@ -492,198 +529,8 @@ Promise.all(promises).then(function(wardrobedata) {
 
         });
 
-    var widthA = document.querySelector("#vis").clientWidth;
-    var heightA = document.querySelector("#vis").clientHeight;
-    var marginA = {top: 50, left: 40, right: 40, bottom: 60};
-    
-    var svgA = d3.select("#vis")
-        .append("svg")
-        .attr("width", widthA)
-        .attr("height", heightA);
-
-    var xScaleA = d3.scaleBand()
-        .domain(wardrobe.map(function(d) { return d.Category; }))
-        .range([widthA-marginA.right-300, 200])
-        .padding(1);
-    
-    var yScaleA = d3.scaleLinear()
-        .domain([0, maxItems])
-        .range([heightA-marginA.bottom-10, marginA.top]);
-
-    var xAxisGeneratorA = d3.axisBottom(xScaleA)
-        .tickSize(-14)
-        .ticks(60);
-    
-    var xAxisA = svgA.append("g")
-        .attr("class","xaxis")
-        .attr("transform", `translate(5,${heightA-marginA.bottom + 15})`)
-        .call(xAxisGeneratorA);
-    
-    xAxisA.selectAll(".tick text")
-        .attr("class", "topLabels")
-        .attr("transform", function(d){ return( "translate(0,-20)rotate(30)")})
-        .style("text-anchor", "start");
-
-    var topsA = svgA.append("g").attr("class", "topsA")
-
-    topsA.selectAll("rect").data(tops)
-        .enter()
-        .append("rect")
-        .attr("x", function() {
-            return xScaleA("Tops")
-        })
-        .attr("y", function(d) { return yScaleA(d.ypos); })
-        .attr("width", 70)
-        .attr("height", 12)
-        .attr("fill", function(d) { return d.Primary_Color; })
-        .attr("stroke", "none")
-        .attr("rx", 2)								
-        .attr("ry", 2);
-
-    var bottomsA = svgA.append("g").attr("class", "bottomsA")
-
-    bottomsA.selectAll("rect").data(bottoms)
-        .enter()
-        .append("rect")
-        .attr("x", function() {
-            return xScaleA("Bottoms")
-        })
-        .attr("y", function(d) { return yScaleA(d.ypos); })
-        .attr("width", 70)
-        .attr("height", 12)
-        .attr("fill", function(d) { return d.Primary_Color; })
-        .attr("rx", 2)								
-        .attr("ry", 2);
-
-    var dressesA = svgA.append("g").attr("class", "dressesA")
-
-    dressesA.selectAll("rect").data(dresses)
-        .enter()
-        .append("rect")
-        .attr("x", function() {
-            return xScaleA("Dresses & Jumpsuits")
-        })
-        .attr("y", function(d) { return yScaleA(d.ypos); })
-        .attr("width", 70)
-        .attr("height", 12)
-        .attr("fill", function(d) { return d.Primary_Color; })
-        .attr("rx", 2)								
-        .attr("ry", 2);
-
-    var setsA = svgA.append("g").attr("class", "setsA")
-
-    setsA.selectAll("rect").data(sets)
-        .enter()
-        .append("rect")
-        .attr("x", function() {
-            return xScaleA("Sets")
-        })
-        .attr("y", function(d) { return yScaleA(d.ypos); })
-        .attr("width", 70)
-        .attr("height", 12)
-        .attr("fill", function(d) { return d.Primary_Color; })
-        .attr("rx", 2)								
-        .attr("ry", 2);
-
-    var outerwearA = svgA.append("g").attr("class", "outerwearA")
-
-    outerwearA.selectAll("rect").data(outerwear)
-        .enter()
-        .append("rect")
-        .attr("x", function() {
-            return xScaleA("Outwear")
-        })
-        .attr("y", function(d) { return yScaleA(d.ypos); })
-        .attr("width", 70)
-        .attr("height", 12)
-        .attr("fill", function(d) { return d.Primary_Color; })
-        .attr("rx", 2)								
-        .attr("ry", 2);
-
-    const markerBoxWidth = 8;
-    const markerBoxHeight = 8;
-    const refX = markerBoxWidth / 2;
-    const refY = markerBoxHeight / 2;
-    const markerWidth = markerBoxWidth / 2;
-    const markerHeight = markerBoxHeight / 2;
-    const arrowPoints = [[0, 0], [0, 8], [8, 4]];
-
-    svgA.append("svg:defs").append("svg:marker")
-        .attr("id", "triangle")
-        .attr('viewBox', [0, 0, markerBoxWidth, markerBoxHeight])
-        .attr('refX', refX)
-        .attr('refY', refY)
-        .attr('markerWidth', markerBoxWidth)
-        .attr('markerHeight', markerBoxHeight)
-        .attr("orient", "auto-start-reverse")
-        .append("path")
-        .attr("d", d3.line()(arrowPoints))
-        .style("fill", "#a08875");
-
-    svgA.append("line")
-        .attr("x1", widthA-marginA.right-300)
-        .attr("x2", widthA-marginA.right-300)
-        .attr("y1", marginA.top)
-        .attr("y2", 200)
-        .attr("stroke", "#a08875")
-        .attr("marker-start", "url(#triangle)");
-
-    svgA.append("line")
-        .attr("x1", widthA-marginA.right-300)
-        .attr("x2", widthA-marginA.right-300)
-        .attr("y1", 600)
-        .attr("y2", heightA-marginA.bottom-10)
-        .attr("stroke", "#a08875")
-        .attr("marker-end", "url(#triangle)");
-
-    svgA.append("text")
-        .attr("x", 0)
-        .attr("y", 4)
-        .attr("transform", function(d){ return( "translate(" + (+widthA-marginA.right-300) + "," + (260) + ")rotate(-90)")})
-        .attr("fill", "#3d332a")
-        .text("Newer")
-
-    svgA.append("text")
-        .attr("x", 0)
-        .attr("y", 4)
-        .attr("transform", function(d){ return( "translate(" + (+widthA-marginA.right-300) + "," + (580) + ")rotate(-90)")})
-        .attr("fill", "#3d332a")
-        .text("Older")
-
-
-    
-
-    
-
-    // var xScaleVintage = d3.scaleLinear()
-    //     .domain([0, maxVintage])
-    //     .range([marginA.left, widthA-marginA.right]);
-
-    // svgA.selectAll("rect").data(wardrobe)
-    //     .enter()
-    //     .append("rect")
-    //     .attr("x", function(d) { return xScaleVintage(d.vintage_ID); })
-    //     .attr("y", function(d) { 
-    //         if(d.Vintage === "N") {
-    //             return heightA/3;
-    //         } else {
-    //             return heightA/3 + 100;
-    //         }
-    //     })
-    //     .attr("height", 70)
-    //     .attr("width", 18)
-    //     .attr("fill", function(d) {
-    //         if(d.Pattern === "N") {
-    //             return d.Primary_Color;
-    //         } else {
-    //             return patterns[d.Pattern_ID];
-    //         } 
-    //        })
-    //     .attr("stroke", "none")
-    //     .attr("rx", 2)								
-	// 	.attr("ry", 2);
-
     function sec_1() {
+        //annotation.select(".instructions").style("opacity", 1).html("Want to see the story of an item? Hover over it!");
         svg.selectAll("rect")
             .attr("fill", function(d) {
                 if(d.Era === "Winnetka, IL") {
@@ -989,41 +836,6 @@ Promise.all(promises).then(function(wardrobedata) {
             date_labels.select(".end_date").html("present")
             date_labels.select(".era_name").html("Lawrence, MA")
     }
-
-    function update_1() {
-        svgA.selectAll("rect")
-            .attr("fill", function(d) {
-                if(d.Vintage === "Y") {
-                    if(d.Pattern === "N") {
-                        return d.Primary_Color;
-                    } else {
-                        return patterns[d.Pattern_ID];
-                    } 
-                } else {
-                    return "#f9ede1";
-                }
-                
-            })
-            .attr("stroke", function(d) {
-                if(d.Vintage === "Y") {
-                    return "none"
-                } else {
-                    return "#ddd3ca";
-                }
-            })
-    }
-    function update_2() {
-        console.log("second update");
-    }
-    function update_3() {
-        console.log("third update");
-    }
-    function update_4() {
-        console.log("fourth update");
-    }
-    function update_5() {
-        console.log("fifth update");
-    }
     
     var gs = d3.graphScroll()
         .container(d3.select('#container'))
@@ -1044,24 +856,6 @@ Promise.all(promises).then(function(wardrobedata) {
             sec_8,
             sec_9,
             sec_10
-        ][i]();
-
-        });
-
-    var second_scroller = d3.graphScroll()
-        .container(d3.select('#analysis'))
-        .graph(d3.selectAll('#vis'))
-        .sections(d3.selectAll('#sections > div'))
-        //.offset(200)
-        .eventId('uniqueId1')
-        .on('active', function(i) {
-
-        [
-            update_1,
-            update_2, 
-            update_3,
-            update_4,
-            update_5
         ][i]();
 
         });

@@ -221,12 +221,10 @@ h2 {
 .annotation {
     grid-area: annotation;
     margin: 0px 30px 20px 100px;
-    /* position: -webkit-sticky; */
     height: 45vh;
     width: 90%;
     border-bottom: 1px solid #a08875;
     display: grid;
-    /* grid-template-columns: 1fr 2fr; */
     grid-template-columns: 33% 66%; 
     grid-template-rows: 1fr;
     grid-template-areas:
@@ -241,7 +239,6 @@ h2 {
 
 .annotation_image {
     grid-area: image;
-    /* padding: 50px 0px; */
     display: block;
     margin: 1em auto;
     
@@ -351,9 +348,6 @@ h2 {
     margin: 0px 50px;
 }
 
-
-
-
 .conclusion {
     margin: 150px 0px;
     display: grid;
@@ -361,6 +355,58 @@ h2 {
     grid-template-rows: 1fr;
     grid-template-areas: 
         "summary smalls";
+}
+
+/* SECOND SCROLLER */
+#analysis{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+        "sections vis";
+    height: 100%;
+  }
+
+  
+#sections{
+    margin: 200px 50px 0px 50px;
+    padding-bottom: 25vh;
+    padding-left: 50px;
+    grid-area: sections;
+}
+
+
+#sections > div{
+    padding: 5% 10%;
+    margin-bottom: 90vh;
+}
+
+#sections > div:last-child{
+    margin-bottom: 50px;
+}
+
+#sections > div.graph-scroll-active{
+    opacity: 0.9;
+}
+
+#vis{
+    /* width: 100%; */
+    height: 90vh;
+    position: -webkit-sticky;
+    position: sticky;
+    top:20px;   
+    /* margin-left: 0px; */
+    /* float: none; */
+    /* transform: translate(-50%, 0); */
+    position: sticky;
+    top: 0px;
+    grid-area: vis;
+    margin: 30px 45px 30px 0px;
+}
+
+pre{
+    overflow: hidden;
 }
 
 /* SMALL MULTIPLES */
@@ -375,7 +421,7 @@ h2 {
     grid-area: summary;
 }
 
-.totalWorn, .totalItems, .efficiencyP, .wornInfo {
+.totalWorn, .totalItems, .efficiencyP, .wornInfo, .totalVintage {
     font-weight: bold;
 }
 
