@@ -72,7 +72,7 @@ d3.queue()
         d3.xml("./image/kuwait_layers.svg", function(error, kuwait_xml) {
 
             //d3.select("#country_name").html("The Language of Obesity in Kuwait");
-            d3.select("#explanation").html("Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse ")
+            d3.select("#explanation").html("How do we talk about obesity in different countries? This visualization examines how YouTube users describe videos about obesity in Kuwait, where a surge of nutritional inadequacy has generated a public health crisis. The aggregation of over 800 video descriptions reveals common themes related to the Causes of Obesity, Impacts of Obesity, and Responses to Obesity in Kuwait.")
 
             
             //console.log(kuwait);
@@ -185,19 +185,8 @@ d3.queue()
                 .style("pointer-events", "all")
                 .on("mouseenter", function(d) {
                     grotesque.selectAll("." + this.getAttribute('class')).style("stroke-width", 2)
-                    // tooltip.classed("hidden", false)
-                    //     .style("top", d3.event.pageY  - 100 + "px")
-                    //     .style("left", d3.event.pageX - 100 + "px")
-                    // tooltip.select(".theme").html(this.getAttribute('class'))
-                    // for(var i = 0; i < kuwait.length; i++) {
-                    //     if(this.getAttribute('class') === kuwait[i].sub_category) {
-                    //         document.getElementById("words").innerHTML += kuwait[i].word + " : " + kuwait[i].value +  "<br>";
-                    //     }
-                    // }
                 }).on("mouseout", function() {
                     grotesque.selectAll("." + this.getAttribute('class')).style("stroke-width", .75)
-                    // document.getElementById("words").innerHTML = "";
-                    // tooltip.classed("hidden", true);
                     
                 }).on("click", function() {
                     supp_clear();
@@ -206,16 +195,24 @@ d3.queue()
                     var filtered_data = kuwait.filter(function(d) {
                         return d.sub_category === criteria;
                     })
-                    //console.log(filtered_data);
 
                     var words = [];
                     for(var i = 0; i < filtered_data.length; i++) {
                         words.push(filtered_data[i].word);
                     }
+                    words.reverse();
+                    while(words.length > 5) {
+                        words.shift();
+                    }
 
                     var amounts = [];
                     for(var i = 0; i < filtered_data.length; i++) {
                         amounts.push(+filtered_data[i].value);
+                    }
+
+                    amounts.reverse();
+                    while(amounts.length > 5) {
+                        amounts.shift();
                     }
                     
                     var strings;
@@ -233,6 +230,16 @@ d3.queue()
                             .attr("x", suppMargin.left)
                             .attr("y", suppMargin.top + wordY[i])
                             .attr('height', 150)
+                        supplement.append("text")
+                            .text(words[i])
+                            .attr("x", suppMargin.left - 10)
+                            .attr("y", suppMargin.top + wordY[i] + 75)
+                            .attr("class", "supp_words")
+                        supplement.append("text")
+                            .text(amounts[i])
+                            .attr("x", suppMargin.left + 50)
+                            .attr("y", suppMargin.top + wordY[i] + 75)
+                            .attr("class", "supp_amounts")
                     }
                     
                 });
@@ -261,8 +268,7 @@ d3.queue()
         canvas_clear();
         supp_clear();
         d3.xml("./image/mexico_layers.svg", function(error, mexico_xml) {
-            //d3.select("#country_name").html("The Language of Obesity in Mexico");
-            d3.select("#explanation").html("Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse ")
+            d3.select("#explanation").html("How do we talk about obesity in different countries? This visualization examines how YouTube users describe videos about obesity in Mexico, where a surge of nutritional inadequacy has generated a public health crisis. The aggregation of over 800 video descriptions reveals common themes related to the Causes of Obesity, Impacts of Obesity, and Responses to Obesity in Mexico.")
             
             var theme_totals = [];
             for(var i = 0; i < mexico.length; i++) {
@@ -366,19 +372,8 @@ d3.queue()
                 .style("pointer-events", "all")
                 .on("mouseenter", function(d) {
                     grotesque.selectAll("." + this.getAttribute('class')).style("stroke-width", 2)
-                    // tooltip.classed("hidden", false)
-                    //     .style("top", d3.event.pageY  - 1500 + "px")
-                    //     .style("left", d3.event.pageX - 150 + "px")
-                    // tooltip.select(".theme").html(this.getAttribute('class'))
-                    // for(var i = 0; i < mexico.length; i++) {
-                    //     if(this.getAttribute('class') === mexico[i].sub_category) {
-                    //         document.getElementById("words").innerHTML += mexico[i].word + " : " + mexico[i].value +  "<br>";
-                    //     }
-                    // }
                 }).on("mouseout", function() {
                     grotesque.selectAll("." + this.getAttribute('class')).style("stroke-width", .75)
-                    // document.getElementById("words").innerHTML = "";
-                    // tooltip.classed("hidden", true);
                     
                 }).on("click", function() {
                     supp_clear();
@@ -387,17 +382,29 @@ d3.queue()
                     var filtered_data = mexico.filter(function(d) {
                         return d.sub_category === criteria;
                     })
-                    //console.log(filtered_data);
 
                     var words = [];
                     for(var i = 0; i < filtered_data.length; i++) {
                         words.push(filtered_data[i].word);
                     }
 
+                    words.reverse();
+                    while(words.length > 5) {
+                        words.shift();
+                    }
+                    console.log(words);
+
                     var amounts = [];
                     for(var i = 0; i < filtered_data.length; i++) {
                         amounts.push(+filtered_data[i].value);
                     }
+
+                    amounts.reverse();
+                    while(amounts.length > 5) {
+                        amounts.shift();
+                    }
+
+                    console.log(amounts);
                     
                     var strings;
                     for(i = 0; i < themes.length; i++) {
@@ -414,6 +421,16 @@ d3.queue()
                             .attr("x", suppMargin.left)
                             .attr("y", suppMargin.top + wordY[i])
                             .attr('height', 150)
+                        supplement.append("text")
+                            .text(words[i])
+                            .attr("x", suppMargin.left - 10)
+                            .attr("y", suppMargin.top + wordY[i] + 75)
+                            .attr("class", "supp_words")
+                        supplement.append("text")
+                            .text(amounts[i])
+                            .attr("x", suppMargin.left + 50)
+                            .attr("y", suppMargin.top + wordY[i] + 75)
+                            .attr("class", "supp_amounts")
                     }
                     
                 });
@@ -442,8 +459,7 @@ d3.queue()
         supp_clear();
         console.log("show tonga graph");
         d3.xml("./image/tonga_layers.svg", function(error, tonga_xml) {
-            //d3.select("#country_name").html("The Language of Obesity in Tonga");
-            d3.select("#explanation").html("Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse ")
+            d3.select("#explanation").html("How do we talk about obesity in different countries? This visualization examines how YouTube users describe videos about obesity in Tonga, where a surge of nutritional inadequacy has generated a public health crisis. The aggregation of over 800 video descriptions reveals common themes related to the Causes of Obesity, Impacts of Obesity, and Responses to Obesity in Tonga.")
             
             var theme_totals = [];
             for(var i = 0; i < tonga.length; i++) {
@@ -547,19 +563,8 @@ d3.queue()
                 .style("pointer-events", "all")
                 .on("mouseenter", function(d) {
                     grotesque.selectAll("." + this.getAttribute('class')).style("stroke-width", 2)
-                    // tooltip.classed("hidden", false)
-                    //     .style("top", d3.event.pageY  - 2500 + "px")
-                    //     .style("left", d3.event.pageX - 100 + "px")
-                    // tooltip.select(".theme").html(this.getAttribute('class'))
-                    // for(var i = 0; i < tonga.length; i++) {
-                    //     if(this.getAttribute('class') ===tonga[i].sub_category) {
-                    //         document.getElementById("words").innerHTML += "<b>" + tonga[i].word + " : " + "</b>" + tonga[i].value +  "<br>";
-                    //     }
-                    // }
                 }).on("mouseout", function() {
                     grotesque.selectAll("." + this.getAttribute('class')).style("stroke-width", .75)
-                    // document.getElementById("words").innerHTML = "";
-                    // tooltip.classed("hidden", true);
                     
                 }).on("click", function() {
                     supp_clear();
@@ -574,7 +579,17 @@ d3.queue()
                     for(var i = 0; i < filtered_data.length; i++) {
                         words.push(filtered_data[i].word);
                     }
+
+                    words.reverse();
+                    while(words.length > 5) {
+                        words.shift();
+                    }
         
+                    var amounts = [];
+                    for(var i = 0; i < filtered_data.length; i++) {
+                        amounts.push(+filtered_data[i].value);
+                    }
+
                     var amounts = [];
                     for(var i = 0; i < filtered_data.length; i++) {
                         amounts.push(+filtered_data[i].value);
@@ -595,6 +610,16 @@ d3.queue()
                             .attr("x", suppMargin.left)
                             .attr("y", suppMargin.top + wordY[i])
                             .attr('height', 150)
+                        supplement.append("text")
+                            .text(words[i])
+                            .attr("x", suppMargin.left - 10)
+                            .attr("y", suppMargin.top + wordY[i] + 75)
+                            .attr("class", "supp_words")
+                        supplement.append("text")
+                            .text(amounts[i])
+                            .attr("x", suppMargin.left + 50)
+                            .attr("y", suppMargin.top + wordY[i] + 75)
+                            .attr("class", "supp_amounts")
                     }
                     
                 });
