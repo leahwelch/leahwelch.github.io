@@ -268,7 +268,7 @@ d3.queue()
             for(var i = 0; i < mexico.length; i++) {
                 var totalA = mexico[i].theme_total;
                 if(totalA > 1) {
-                    theme_totals.push({category: mexico[i].category, theme: mexico[i].sub_category, value:+totalA})
+                    theme_totals.push({category: mexico[i].category, theme: mexico[i].sub_category, value: +totalA})
                 }
             }
             console.log(theme_totals);

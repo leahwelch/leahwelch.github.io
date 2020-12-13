@@ -1,6 +1,6 @@
 word,value,category,sub_category,,theme_total,,,theme_1
-children,61,impact,children,,,,,children
-school,29,response,education,,90,,,children
+children,61,impact,children,,61,,,children
+school,29,response,education,,,,,children
 diabetes,106,impact,disease,,,,,health
 patients,100,impact,disease,,,,,health
 disease,58,impact,disease,,,,,health
