@@ -227,7 +227,8 @@ d3.queue()
                     for(i = 0; i < strings.length; i++) {
                         supplement.append("image")
                             .attr('xlink:href', strings[i])
-                            .attr("x", suppMargin.left)
+                            .attr("class", "supp_image")
+                            .attr("x", suppWidth/2)
                             .attr("y", suppMargin.top + wordY[i])
                             .attr('height', 150)
                         supplement.append("text")
@@ -235,9 +236,16 @@ d3.queue()
                             .attr("x", suppMargin.left - 10)
                             .attr("y", suppMargin.top + wordY[i] + 75)
                             .attr("class", "supp_words")
+                    }
+                    for(i = 0; i < strings.length; i++) {
+                        var el = document.getElementsByClassName("supp_image")[i]
+                        //var xpos = el.width.baseVal.value;
+                        //var xpos = el.getBoundingClientRect().width;
+                        console.log(xpos);
                         supplement.append("text")
                             .text(amounts[i])
                             .attr("x", suppMargin.left + 50)
+                            //.attr("x", xpos)
                             .attr("y", suppMargin.top + wordY[i] + 75)
                             .attr("class", "supp_amounts")
                     }
@@ -418,7 +426,7 @@ d3.queue()
                     for(i = 0; i < strings.length; i++) {
                         supplement.append("image")
                             .attr('xlink:href', strings[i])
-                            .attr("x", suppMargin.left)
+                            .attr("x", suppWidth/2)
                             .attr("y", suppMargin.top + wordY[i])
                             .attr('height', 150)
                         supplement.append("text")
@@ -607,7 +615,7 @@ d3.queue()
                     for(i = 0; i < strings.length; i++) {
                         supplement.append("image")
                             .attr('xlink:href', strings[i])
-                            .attr("x", suppMargin.left)
+                            .attr("x", suppWidth/2)
                             .attr("y", suppMargin.top + wordY[i])
                             .attr('height', 150)
                         supplement.append("text")
