@@ -35,10 +35,11 @@ body {
     grid-template-rows: 1fr;
     grid-template-areas: 
           "header buttons";
+    border-bottom: 0.5px solid #bababa;
 }
 
 #graph {
-    max-height: 95vh;
+    max-height: 85vh;
 }
 
 .button_group {
@@ -53,7 +54,29 @@ body {
 #nav_header p{
     margin: 0px 50px;
     text-align: left;
-    font-size: 12pt;
+    font-size: 11pt;
+}
+
+#categories{
+    margin: 0px 50px;
+    display: grid;
+    font-weight: 300;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+          "causes impacts responses";
+}
+
+#causes {
+    grid-area: causes;
+}
+
+#impacts {
+    grid-area: impacts;
+}
+
+#responses {
+    grid-area: responses;
 }
 
 button {
@@ -76,6 +99,12 @@ button:hover {
 }
 
 button:focus {
+    background-color: #808080;
+    color: #fff9f2;
+    outline:0;
+}
+
+button.active {
     background-color: #808080;
     color: #fff9f2;
     outline:0;

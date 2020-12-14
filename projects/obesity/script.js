@@ -17,6 +17,20 @@ var kuwait_button = d3.select("#kuwait_button");
 var mexico_button = d3.select("#mexico_button");
 var tonga_button = d3.select("#tonga_button");
 
+function showVis(evt) {
+    // Declare all variables
+    var i, tablinks;
+  
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+  
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    evt.currentTarget.className += " active";
+  }
+
 //Default Supplement
 var themes = ["food", "america", "obesity", "disease", "problems", "children", "medicine", "lifestyle", "science", "education"];
 var themesTonga = ["food", "america", "obesity", "disease", "problems", "children", "lifestyle", "science", "education"];
@@ -143,44 +157,50 @@ d3.queue()
                 .tickSize(-14)
                 .ticks(60);
             
-            var yAxis = supplement.append("g")
-                .attr("class","axis")
-                .attr("transform", `translate(${suppMargin.left},7)`)
-                .call(yAxisGenerator);
+            function resetDefault(){
+                
+                var yAxis = supplement.append("g")
+                    .attr("class","axis")
+                    .attr("transform", `translate(${suppMargin.left},7)`)
+                    .call(yAxisGenerator);
 
-            var bar = supplement.selectAll("rect")
-                .data(theme_totals)
-                .enter()
-                .append("rect")
+                var bar = supplement.selectAll("rect")
+                    .data(theme_totals)
+                    .enter()
+                    .append("rect")
+                        .attr("x", suppMargin.left)
+                        .attr("y", function(d) {return yScale(d.theme)})
+                        .attr("width", function(d) {return xScale(d.value)})
+                        .attr("height", 15)
+                        .attr("fill", function(d) { return colorScale(d.theme); });
+                
+                yAxis.selectAll(".tick text")
+                    .attr("class", "sideLabels")
+                    .attr("transform", function(d){ return( "translate(-10,0)")})
+                    .style("text-anchor", "end");
+                
+                supplement.selectAll(".quantLabels")
+                        .data(theme_totals)
+                        .enter()
+                        .append("text")
+                            .attr("x", function(d) {return suppMargin.left + xScale(d.value) + 5})
+                            .attr("y", function(d) {return yScale(d.theme) + 12})
+                            .attr("class", "quantLabels")
+                            .style("text-anchor", "start")
+                            .text(function(d){return d.value});
+                
+                supplement.append("text")
                     .attr("x", suppMargin.left)
-                    .attr("y", function(d) {return yScale(d.theme)})
-                    .attr("width", function(d) {return xScale(d.value)})
-                    .attr("height", 15)
-                    .attr("fill", function(d) { return colorScale(d.theme); });
+                    .attr("y", suppMargin.top + 10)
+                    .attr("class", "suppTitle")
+                    .attr("fill", "#808080")
+                    .text("Themes")
+            }
             
-            yAxis.selectAll(".tick text")
-                .attr("class", "sideLabels")
-                .attr("transform", function(d){ return( "translate(-10,0)")})
-                .style("text-anchor", "end");
             
-           supplement.selectAll(".quantLabels")
-                .data(theme_totals)
-                .enter()
-                .append("text")
-                    .attr("x", function(d) {return suppMargin.left + xScale(d.value) + 5})
-                    .attr("y", function(d) {return yScale(d.theme) + 12})
-                    .attr("class", "quantLabels")
-                    .style("text-anchor", "start")
-                    .text(function(d){return d.value});
-            
-            supplement.append("text")
-                .attr("x", suppMargin.left)
-                .attr("y", suppMargin.top + 10)
-                .attr("class", "suppTitle")
-                .attr("fill", "#808080")
-                .text("Themes")
 
             htmlSVG.appendChild(kuwait_xml.documentElement.getElementById('grotesque'));
+            resetDefault();
     
             //     // d3 objects for later use
             svg = d3.select(htmlSVG);
@@ -197,10 +217,7 @@ d3.queue()
                 .style("pointer-events", "all")
                 .on("mouseenter", function(d) {
                     grotesque.selectAll("." + this.getAttribute('class')).style("stroke-width", 2)
-                }).on("mouseout", function() {
-                    grotesque.selectAll("." + this.getAttribute('class')).style("stroke-width", .75)
-                    
-                }).on("click", function() {
+
                     supp_clear();
                     var criteria = this.getAttribute('class');
                     
@@ -233,15 +250,6 @@ d3.queue()
                             strings = matrix[i];
                         }
                     }
-
-                    console.log(strings);
-
-                    // supplement.append("text")
-                    //     .attr("x", suppMargin.left - 50)
-                    //     .attr("y", suppMargin.top)
-                    //     .attr("class", "suppTitle")
-                    //     .text(criteria + ", a <blank> of Obesity")
-                    //     .attr("fill", function() { return colorScale(criteria); });
 
                     supplement.append("text")
                         .attr("x", suppMargin.left - 60)
@@ -283,7 +291,10 @@ d3.queue()
                             .style("text-anchor", "end")
                             .attr("fill", function() { return colorScale(criteria); });
                     }
-                    
+                }).on("mouseout", function() {
+                    grotesque.selectAll("." + this.getAttribute('class')).style("stroke-width", .75)
+                    supp_clear();
+                    resetDefault();    
                 });
     
             //     //Styling lines
@@ -361,44 +372,49 @@ d3.queue()
                 .tickSize(-14)
                 .ticks(60);
             
-            var yAxis = supplement.append("g")
-                .attr("class","axis")
-                .attr("transform", `translate(${suppMargin.left},7)`)
-                .call(yAxisGenerator);
+            function resetDefaultMexico(){
+                var yAxis = supplement.append("g")
+                    .attr("class","axis")
+                    .attr("transform", `translate(${suppMargin.left},7)`)
+                    .call(yAxisGenerator);
 
-            var bar = supplement.selectAll("rect")
-                .data(theme_totals)
-                .enter()
-                .append("rect")
+                var bar = supplement.selectAll("rect")
+                    .data(theme_totals)
+                    .enter()
+                    .append("rect")
+                        .attr("x", suppMargin.left)
+                        .attr("y", function(d) {return yScale(d.theme)})
+                        .attr("width", function(d) {return xScale(d.value)})
+                        .attr("height", 15)
+                        .attr("fill", function(d) { return colorScale(d.theme); });
+                
+                yAxis.selectAll(".tick text")
+                    .attr("class", "sideLabels")
+                    .attr("transform", function(d){ return( "translate(-10,0)")})
+                    .style("text-anchor", "end");
+                
+                var quants = supplement.selectAll(".quantLabels")
+                    .data(theme_totals)
+                    .enter()
+                    .append("text")
+                        .attr("x", function(d) {return suppMargin.left + xScale(d.value) + 5})
+                        .attr("y", function(d) {return yScale(d.theme) + 12})
+                        .attr("class", "quantLabels")
+                        .style("text-anchor", "start")
+                        .text(function(d){return d.value});
+                
+                var suppTitle = supplement.append("text")
                     .attr("x", suppMargin.left)
-                    .attr("y", function(d) {return yScale(d.theme)})
-                    .attr("width", function(d) {return xScale(d.value)})
-                    .attr("height", 15)
-                    .attr("fill", function(d) { return colorScale(d.theme); });
+                    .attr("y", suppMargin.top + 10)
+                    .attr("class", "suppTitle")
+                    .attr("fill", "#808080")
+                    .text("Themes")
+            }
             
-            yAxis.selectAll(".tick text")
-                .attr("class", "sideLabels")
-                .attr("transform", function(d){ return( "translate(-10,0)")})
-                .style("text-anchor", "end");
             
-            var quants = supplement.selectAll(".quantLabels")
-                .data(theme_totals)
-                .enter()
-                .append("text")
-                    .attr("x", function(d) {return suppMargin.left + xScale(d.value) + 5})
-                    .attr("y", function(d) {return yScale(d.theme) + 12})
-                    .attr("class", "quantLabels")
-                    .style("text-anchor", "start")
-                    .text(function(d){return d.value});
-            
-            var suppTitle = supplement.append("text")
-                .attr("x", suppMargin.left)
-                .attr("y", suppMargin.top + 10)
-                .attr("class", "suppTitle")
-                .attr("fill", "#808080")
-                .text("Themes")
             
             htmlSVG.appendChild(mexico_xml.documentElement.getElementById('grotesque'));
+            resetDefaultMexico();
     
             //     // d3 objects for later use
             svg = d3.select(htmlSVG);
@@ -415,10 +431,6 @@ d3.queue()
                 .style("pointer-events", "all")
                 .on("mouseenter", function(d) {
                     grotesque.selectAll("." + this.getAttribute('class')).style("stroke-width", 2)
-                }).on("mouseout", function() {
-                    grotesque.selectAll("." + this.getAttribute('class')).style("stroke-width", .75)
-                    
-                }).on("click", function() {
                     supp_clear();
                     var criteria = this.getAttribute('class');
                     
@@ -495,7 +507,11 @@ d3.queue()
                             .style("text-anchor", "end")
                             .attr("fill", function() { return colorScale(criteria); });
                     }
-                    
+                }).on("mouseout", function() {
+                    grotesque.selectAll("." + this.getAttribute('class')).style("stroke-width", .75)
+                    supp_clear();
+                    resetDefaultMexico();
+ 
                 });
     
             //     //Styling lines
@@ -572,44 +588,50 @@ d3.queue()
                 .tickSize(-14)
                 .ticks(60);
             
-            var yAxis = supplement.append("g")
-                .attr("class","axis")
-                .attr("transform", `translate(${suppMargin.left},7)`)
-                .call(yAxisGenerator);
+            function resetDefaultTonga() {
+                var yAxis = supplement.append("g")
+                    .attr("class","axis")
+                    .attr("transform", `translate(${suppMargin.left},7)`)
+                    .call(yAxisGenerator);
 
-            var bar = supplement.selectAll("rect")
-                .data(theme_totals)
-                .enter()
-                .append("rect")
+                var bar = supplement.selectAll("rect")
+                    .data(theme_totals)
+                    .enter()
+                    .append("rect")
+                        .attr("x", suppMargin.left)
+                        .attr("y", function(d) {return yScaleTonga(d.theme)})
+                        .attr("width", function(d) {return xScale(d.value)})
+                        .attr("height", 15)
+                        .attr("fill", function(d) { return colorScaleTonga(d.theme); });
+                
+                yAxis.selectAll(".tick text")
+                    .attr("class", "sideLabels")
+                    .attr("transform", function(d){ return( "translate(-10,0)")})
+                    .style("text-anchor", "end");
+                
+                var quants = supplement.selectAll(".quantLabels")
+                    .data(theme_totals)
+                    .enter()
+                    .append("text")
+                        .attr("x", function(d) {return suppMargin.left + xScale(d.value) + 5})
+                        .attr("y", function(d) {return yScaleTonga(d.theme) + 12})
+                        .attr("class", "quantLabels")
+                        .style("text-anchor", "start")
+                        .text(function(d){return d.value});
+                
+                var suppTitle = supplement.append("text")
                     .attr("x", suppMargin.left)
-                    .attr("y", function(d) {return yScaleTonga(d.theme)})
-                    .attr("width", function(d) {return xScale(d.value)})
-                    .attr("height", 15)
-                    .attr("fill", function(d) { return colorScaleTonga(d.theme); });
+                    .attr("y", suppMargin.top + 10)
+                    .attr("class", "suppTitle")
+                    .attr("fill", "#808080")
+                    .text("Themes")
+
+            }
             
-            yAxis.selectAll(".tick text")
-                .attr("class", "sideLabels")
-                .attr("transform", function(d){ return( "translate(-10,0)")})
-                .style("text-anchor", "end");
             
-            var quants = supplement.selectAll(".quantLabels")
-                .data(theme_totals)
-                .enter()
-                .append("text")
-                    .attr("x", function(d) {return suppMargin.left + xScale(d.value) + 5})
-                    .attr("y", function(d) {return yScaleTonga(d.theme) + 12})
-                    .attr("class", "quantLabels")
-                    .style("text-anchor", "start")
-                    .text(function(d){return d.value});
-            
-            var suppTitle = supplement.append("text")
-                .attr("x", suppMargin.left)
-                .attr("y", suppMargin.top + 10)
-                .attr("class", "suppTitle")
-                .attr("fill", "#808080")
-                .text("Themes")
             
             htmlSVG.appendChild(tonga_xml.documentElement.getElementById('grotesque'));
+            resetDefaultTonga();
     
             //     // d3 objects for later use
             svg = d3.select(htmlSVG);
@@ -626,10 +648,7 @@ d3.queue()
                 .style("pointer-events", "all")
                 .on("mouseenter", function(d) {
                     grotesque.selectAll("." + this.getAttribute('class')).style("stroke-width", 2)
-                }).on("mouseout", function() {
-                    grotesque.selectAll("." + this.getAttribute('class')).style("stroke-width", .75)
-                    
-                }).on("click", function() {
+
                     supp_clear();
                     var criteria = this.getAttribute('class');
                     
@@ -706,6 +725,10 @@ d3.queue()
                             .style("text-anchor", "end")
                             .attr("fill", function() { return colorScaleTonga(criteria); });
                     }
+                }).on("mouseout", function() {
+                    grotesque.selectAll("." + this.getAttribute('class')).style("stroke-width", .75)
+                    supp_clear();
+                    resetDefaultTonga();
                     
                 });
     
