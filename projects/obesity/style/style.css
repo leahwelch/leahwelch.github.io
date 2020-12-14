@@ -50,6 +50,12 @@ body {
     grid-area: header;
 }
 
+#nav_header p{
+    margin: 0px 50px;
+    text-align: left;
+    font-size: 12pt;
+}
+
 button {
     
     margin: 5px;
@@ -105,6 +111,12 @@ h2 {
     /* border-style: solid; */
     width: 100%;
     height: auto;
+    text-align: right;
+}
+
+.supp_words {
+    font-size: 12pt;
+    text-align: right;
 }
 
 .axis {
@@ -132,5 +144,5 @@ h2 {
 
 .suppTitle {
     font-size: 16pt;
-    fill: #808080;
+    text-transform: capitalize;
 }

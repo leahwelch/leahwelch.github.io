@@ -4,9 +4,9 @@ var width = d3.select('#vis').node().offsetWidth;
 var height =  d3.select('#vis').node().offsetHeight;
 
 var suppWidth = 400;
-var suppHeight = 500;
-var suppMargin = {left: 80, top: 10, right: 50, bottom: 10};
-var wordY = [0, 84, 168, 252, 336];
+var suppHeight = 600;
+var suppMargin = {left: 80, top: 30, right: 50, bottom: 10};
+var wordY = [0, 90, 180, 270, 360];
 
 var supplement = d3.select("#supplement")
         .append("svg")
@@ -21,6 +21,7 @@ var tonga_button = d3.select("#tonga_button");
 var themes = ["food", "america", "obesity", "disease", "problems", "children", "medicine", "lifestyle", "science", "education"];
 var themesTonga = ["food", "america", "obesity", "disease", "problems", "children", "lifestyle", "science", "education"];
 
+
 var yScale = d3.scaleBand()
     .domain(themes)
     .range([suppMargin.top, suppHeight-suppMargin.bottom])
@@ -31,6 +32,10 @@ var yScaleTonga = d3.scaleBand()
     .range([suppMargin.top, suppHeight-suppMargin.bottom])
     .padding(1);
 
+var categoryScale = d3.scaleOrdinal()
+    .domain(themes)
+    .range(["a cause of obesity", "a cause of obesity", "", "an impact of obesity", "", "an impact of obesity", "a response to obesity", "a response to obesity", "a response to obesity", "a response to obesity"]);
+
 var colorScale = d3.scaleOrdinal()
     .domain(themes)
     .range(["#61544a", "#578e8a", "#a94044", "#c1771e", "#4d6b40", "#9c8ca8", "#c1771e", "#61544a", "#29415e", "#9c8ca8"]);
@@ -38,6 +43,12 @@ var colorScale = d3.scaleOrdinal()
 var colorScaleTonga = d3.scaleOrdinal()
     .domain(themesTonga)
     .range(["#61544a", "#578e8a", "#a94044", "#c1771e", "#4d6b40", "#9c8ca8", "#61544a", "#29415e", "#9c8ca8"]);
+
+var categoryScaleTonga = d3.scaleOrdinal()
+    .domain(themesTonga)
+    .range([ "a cause of obesity", "a cause of obesity", "", "an impact of obesity", "", "an impact of obesity", "a response to obesity", "a response to obesity", "a response to obesity"]);
+
+   
 
 //Load Data
     
@@ -72,7 +83,7 @@ d3.queue()
         d3.xml("./image/kuwait_layers.svg", function(error, kuwait_xml) {
 
             //d3.select("#country_name").html("The Language of Obesity in Kuwait");
-            d3.select("#explanation").html("How do we talk about obesity in different countries? This visualization examines how YouTube users describe videos about obesity in Kuwait, where a surge of nutritional inadequacy has generated a public health crisis. The aggregation of over 800 video descriptions reveals common themes related to the Causes of Obesity, Impacts of Obesity, and Responses to Obesity in Kuwait.")
+            d3.select("#explanation").html("Descriptions of videos about obesity in <b>Kuwait</b> present the most mentions of the United States, with more videos explicitly stating the link between America’s fast food exports and the obesity epidemic abroad.")
 
             
             //console.log(kuwait);
@@ -152,7 +163,7 @@ d3.queue()
                 .attr("transform", function(d){ return( "translate(-10,0)")})
                 .style("text-anchor", "end");
             
-            var quants = supplement.selectAll(".quantLabels")
+           supplement.selectAll(".quantLabels")
                 .data(theme_totals)
                 .enter()
                 .append("text")
@@ -162,10 +173,11 @@ d3.queue()
                     .style("text-anchor", "start")
                     .text(function(d){return d.value});
             
-            var suppTitle = supplement.append("text")
+            supplement.append("text")
                 .attr("x", suppMargin.left)
                 .attr("y", suppMargin.top + 10)
                 .attr("class", "suppTitle")
+                .attr("fill", "#808080")
                 .text("Themes")
 
             htmlSVG.appendChild(kuwait_xml.documentElement.getElementById('grotesque'));
@@ -224,30 +236,52 @@ d3.queue()
 
                     console.log(strings);
 
+                    // supplement.append("text")
+                    //     .attr("x", suppMargin.left - 50)
+                    //     .attr("y", suppMargin.top)
+                    //     .attr("class", "suppTitle")
+                    //     .text(criteria + ", a <blank> of Obesity")
+                    //     .attr("fill", function() { return colorScale(criteria); });
+
+                    supplement.append("text")
+                        .attr("x", suppMargin.left - 60)
+                        .attr("y", suppMargin.top)
+                        .attr("class", "suppTitle")
+                        .text(function(word) {
+                            var word = criteria;
+                            if(word === "problems") {
+                                return "Terms of Crisis"
+                            } else if (word === "obesity") {
+                                return "Words About Obesity"
+                            } else {
+                                return word + ", " + categoryScale(word);
+                            }
+                            
+                        })
+                        .attr("fill", function() { return colorScale(criteria); });
+
                     for(i = 0; i < strings.length; i++) {
                         supplement.append("image")
                             .attr('xlink:href', strings[i])
                             .attr("class", "supp_image")
-                            .attr("x", suppWidth/2)
-                            .attr("y", suppMargin.top + wordY[i])
+                            .attr("x", suppWidth/3)
+                            .attr("y", suppMargin.top + 20 + wordY[i])
                             .attr('height', 150)
                         supplement.append("text")
                             .text(words[i])
-                            .attr("x", suppMargin.left - 10)
-                            .attr("y", suppMargin.top + wordY[i] + 75)
+                            .attr("x", suppWidth/3 - 15)
+                            .attr("y", suppMargin.top  + 20 + wordY[i] + 70)
                             .attr("class", "supp_words")
-                    }
-                    for(i = 0; i < strings.length; i++) {
-                        var el = document.getElementsByClassName("supp_image")[i]
-                        //var xpos = el.width.baseVal.value;
-                        //var xpos = el.getBoundingClientRect().width;
-                        console.log(xpos);
+                            .style("text-anchor", "end")
+                            .attr("fill", function() { return colorScale(criteria); });
                         supplement.append("text")
                             .text(amounts[i])
-                            .attr("x", suppMargin.left + 50)
+                            .attr("x", suppWidth/3 - 15)
                             //.attr("x", xpos)
-                            .attr("y", suppMargin.top + wordY[i] + 75)
+                            .attr("y", suppMargin.top + 20 + wordY[i] + 90)
                             .attr("class", "supp_amounts")
+                            .style("text-anchor", "end")
+                            .attr("fill", function() { return colorScale(criteria); });
                     }
                     
                 });
@@ -276,7 +310,7 @@ d3.queue()
         canvas_clear();
         supp_clear();
         d3.xml("./image/mexico_layers.svg", function(error, mexico_xml) {
-            d3.select("#explanation").html("How do we talk about obesity in different countries? This visualization examines how YouTube users describe videos about obesity in Mexico, where a surge of nutritional inadequacy has generated a public health crisis. The aggregation of over 800 video descriptions reveals common themes related to the Causes of Obesity, Impacts of Obesity, and Responses to Obesity in Mexico.")
+            d3.select("#explanation").html("Descriptions of videos about obesity in <b>Mexico</b> disproportionately emphasize the booming medical tourism industry there. The phenomenon of Amercians traveling to Mexico seeking affordable gastric bypass and bariatric surgery continues to thrive.")
             
             var theme_totals = [];
             for(var i = 0; i < mexico.length; i++) {
@@ -361,6 +395,7 @@ d3.queue()
                 .attr("x", suppMargin.left)
                 .attr("y", suppMargin.top + 10)
                 .attr("class", "suppTitle")
+                .attr("fill", "#808080")
                 .text("Themes")
             
             htmlSVG.appendChild(mexico_xml.documentElement.getElementById('grotesque'));
@@ -422,23 +457,43 @@ d3.queue()
                     }
 
                     console.log(strings);
+                    supplement.append("text")
+                        .attr("x", suppMargin.left - 60)
+                        .attr("y", suppMargin.top)
+                        .attr("class", "suppTitle")
+                        .text(function(word) {
+                            var word = criteria;
+                            if(word === "problems") {
+                                return "Terms of Crisis"
+                            } else if (word === "obesity") {
+                                return "Words About Obesity"
+                            } else {
+                                return word + ", " + categoryScale(word);
+                            }
+                            
+                        })
+                        .attr("fill", function() { return colorScale(criteria); });
 
                     for(i = 0; i < strings.length; i++) {
                         supplement.append("image")
                             .attr('xlink:href', strings[i])
-                            .attr("x", suppWidth/2)
-                            .attr("y", suppMargin.top + wordY[i])
+                            .attr("x", suppWidth/3)
+                            .attr("y", suppMargin.top + 20 + wordY[i])
                             .attr('height', 150)
                         supplement.append("text")
                             .text(words[i])
-                            .attr("x", suppMargin.left - 10)
-                            .attr("y", suppMargin.top + wordY[i] + 75)
+                            .attr("x", suppWidth/3 - 15)
+                            .attr("y", suppMargin.top + 20 + wordY[i] + 70)
                             .attr("class", "supp_words")
+                            .style("text-anchor", "end")
+                            .attr("fill", function() { return colorScale(criteria); });
                         supplement.append("text")
                             .text(amounts[i])
-                            .attr("x", suppMargin.left + 50)
-                            .attr("y", suppMargin.top + wordY[i] + 75)
+                            .attr("x", suppWidth/3 - 15)
+                            .attr("y", suppMargin.top + 20 + wordY[i] + 90)
                             .attr("class", "supp_amounts")
+                            .style("text-anchor", "end")
+                            .attr("fill", function() { return colorScale(criteria); });
                     }
                     
                 });
@@ -467,7 +522,7 @@ d3.queue()
         supp_clear();
         console.log("show tonga graph");
         d3.xml("./image/tonga_layers.svg", function(error, tonga_xml) {
-            d3.select("#explanation").html("How do we talk about obesity in different countries? This visualization examines how YouTube users describe videos about obesity in Tonga, where a surge of nutritional inadequacy has generated a public health crisis. The aggregation of over 800 video descriptions reveals common themes related to the Causes of Obesity, Impacts of Obesity, and Responses to Obesity in Tonga.")
+            d3.select("#explanation").html("Descriptions of videos about obesity in <b>Tonga</b> emphasize its impacts, with little discussion about how individuals and communities have responded to the epidemic. While words about diseases caused by obesity figure prominently, mentions of the medical interventions necessary to support sufferers of those diseases are absent.")
             
             var theme_totals = [];
             for(var i = 0; i < tonga.length; i++) {
@@ -480,7 +535,6 @@ d3.queue()
 
             var nested = d3.nest()
                 .key(function(d) { return d.sub_category; })
-                //.key(function(d) { return d.DAY_OF_WEEK; })
                 .rollup(function(v) { return v.length;})
                 .entries(tonga)
                 .sort(function(a,b) { return b.value - a.value; });
@@ -552,6 +606,7 @@ d3.queue()
                 .attr("x", suppMargin.left)
                 .attr("y", suppMargin.top + 10)
                 .attr("class", "suppTitle")
+                .attr("fill", "#808080")
                 .text("Themes")
             
             htmlSVG.appendChild(tonga_xml.documentElement.getElementById('grotesque'));
@@ -611,23 +666,45 @@ d3.queue()
                     }
         
                     console.log(strings);
+
+                    supplement.append("text")
+                        .attr("x", suppMargin.left - 60)
+                        .attr("y", suppMargin.top)
+                        .attr("class", "suppTitle")
+                        .text(function(word) {
+                            var word = criteria;
+                            if(word === "problems") {
+                                return "Terms of Crisis"
+                            } else if (word === "obesity") {
+                                return "Words About Obesity"
+                            } else {
+                                return word + ", " + categoryScaleTonga(word);
+                            }
+                            
+                        })
+                        .attr("fill", function() { return colorScaleTonga(criteria); });
         
                     for(i = 0; i < strings.length; i++) {
                         supplement.append("image")
                             .attr('xlink:href', strings[i])
-                            .attr("x", suppWidth/2)
-                            .attr("y", suppMargin.top + wordY[i])
+                            .attr("x", suppWidth/3)
+                            .attr("y", suppMargin.top + 20 + wordY[i])
                             .attr('height', 150)
                         supplement.append("text")
                             .text(words[i])
-                            .attr("x", suppMargin.left - 10)
-                            .attr("y", suppMargin.top + wordY[i] + 75)
+                            .attr("x", suppWidth/3 - 15)
+                            .attr("y", suppMargin.top + 20 + wordY[i] + 70)
                             .attr("class", "supp_words")
+                            .style("text-anchor", "end")
+                            .attr("fill", function() { return colorScaleTonga(criteria); });
                         supplement.append("text")
                             .text(amounts[i])
-                            .attr("x", suppMargin.left + 50)
-                            .attr("y", suppMargin.top + wordY[i] + 75)
+                            .attr("x", suppWidth/3 - 15)
+                            //.attr("x", xpos)
+                            .attr("y", suppMargin.top + 20 + wordY[i] + 90)
                             .attr("class", "supp_amounts")
+                            .style("text-anchor", "end")
+                            .attr("fill", function() { return colorScaleTonga(criteria); });
                     }
                     
                 });
