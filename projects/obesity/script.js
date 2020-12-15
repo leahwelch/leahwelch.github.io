@@ -97,10 +97,7 @@ d3.queue()
         d3.xml("./image/kuwait_layers.svg", function(error, kuwait_xml) {
 
             //d3.select("#country_name").html("The Language of Obesity in Kuwait");
-            d3.select("#explanation").html("Descriptions of videos about obesity in <b>Kuwait</b> present the most mentions of the United States, with more videos explicitly stating the link between America’s fast food exports and the obesity epidemic abroad.")
-
-            
-            //console.log(kuwait);
+            d3.select("#explanation").html("Descriptions of videos about obesity in <b>Kuwait</b> present the most mentions of the United States, with more videos explicitly stating the link between America’s fast food exports and the obesity epidemic abroad.<br><br>Hover over lines for the words that define that theme.")
 
             var theme_totals = [];
             for(var i = 0; i < kuwait.length; i++) {
@@ -321,7 +318,7 @@ d3.queue()
         canvas_clear();
         supp_clear();
         d3.xml("./image/mexico_layers.svg", function(error, mexico_xml) {
-            d3.select("#explanation").html("Descriptions of videos about obesity in <b>Mexico</b> disproportionately emphasize the booming medical tourism industry there. The phenomenon of Amercians traveling to Mexico seeking affordable gastric bypass and bariatric surgery continues to thrive.")
+            d3.select("#explanation").html("Descriptions of videos about obesity in <b>Mexico</b> disproportionately emphasize the booming medical tourism industry there. The phenomenon of Amercians traveling to Mexico seeking affordable gastric bypass and bariatric surgery continues to thrive.<br><br>Hover over lines for the words that define that theme.")
             
             var theme_totals = [];
             for(var i = 0; i < mexico.length; i++) {
@@ -538,7 +535,7 @@ d3.queue()
         supp_clear();
         console.log("show tonga graph");
         d3.xml("./image/tonga_layers.svg", function(error, tonga_xml) {
-            d3.select("#explanation").html("Descriptions of videos about obesity in <b>Tonga</b> emphasize its impacts, with little discussion about how individuals and communities have responded to the epidemic. While words about diseases caused by obesity figure prominently, mentions of the medical interventions necessary to support sufferers of those diseases are absent.")
+            d3.select("#explanation").html("Descriptions of videos about obesity in <b>Tonga</b> emphasize its impacts, with little discussion about how individuals and communities have responded to the epidemic. While words about diseases caused by obesity figure prominently, mentions of the medical interventions necessary to support sufferers of those diseases are absent.<br><br>Hover over lines for the words that define that theme.")
             
             var theme_totals = [];
             for(var i = 0; i < tonga.length; i++) {
