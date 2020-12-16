@@ -56,10 +56,10 @@ Promise.all(promises).then(function(wardrobedata) {
     
     
 
-    var era_start = [];
-    for(i = 0; i < eras.length; i++) {
-        era_start.push(eras[i].start);
-    }
+    // var era_start = [];
+    // for(i = 0; i < eras.length; i++) {
+    //     era_start.push(eras[i].start);
+    // }
 
     var nested = d3.nest()
         .key(function(d) { return d.group; })

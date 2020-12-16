@@ -1,6 +1,5 @@
 
 var promises = [
-    d3.csv("./data/eras.csv"), 
     d3.csv("./data/Wardrobe.csv"),
     d3.csv("./data/wearlog.csv")
 ];
@@ -26,9 +25,8 @@ function removeDuplicates(originalData, prop) {
 
 Promise.all(promises).then(function(wardrobedata) {
 
-    var eras = wardrobedata[0];
-    var wardrobe = wardrobedata[1];
-    var wearlog = wardrobedata[2]; 
+    var wardrobe = wardrobedata[0];
+    var wearlog = wardrobedata[1]; 
 
     console.log(wearlog);
 
@@ -53,11 +51,6 @@ Promise.all(promises).then(function(wardrobedata) {
     d3.select(".totalItems").html(wardrobe.length);
     d3.select(".efficiencyP").html(((capsule.length/wardrobe.length) * 100).toFixed(0) + "%");
     d3.select(".totalVintage").html(((maxVintage/wardrobe.length)*100).toFixed(0) + "%")
-
-    var era_start = [];
-    for(i = 0; i < eras.length; i++) {
-        era_start.push(eras[i].start);
-    }
 
     var nested = d3.nest()
         .key(function(d) { return d.group; })
