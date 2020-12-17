@@ -34,6 +34,10 @@ function showVis(evt) {
 //Default Supplement
 var themes = ["food", "america", "obesity", "disease", "problems", "children", "medicine", "lifestyle", "science", "education"];
 var categories = ["cause", "impact", "response"]
+var causes = ["food", "america"]
+var impacts = ["obesity", "disease", "problems", "children"]
+var responses = ["medicine", "lifestyle", "science", "education"]
+var responsesTonga = ["lifestyle", "science", "education"]
 var themesTonga = ["food", "america", "obesity", "disease", "problems", "children", "lifestyle", "science", "education"];
 
 
@@ -43,8 +47,18 @@ var yScale = d3.scaleBand()
     .padding(1);
 
 var yScaleCause = d3.scaleBand()
-    .domain(categories)
-    .range([suppMargin.top, suppHeight-suppMargin.bottom])
+    .domain(causes)
+    .range([suppMargin.top+20, suppMargin.top+120])
+    .padding(1);
+
+var yScaleImpact = d3.scaleBand()
+    .domain(impacts)
+    .range([suppMargin.top+140, suppMargin.top+300])
+    .padding(1);
+
+var yScaleResponse = d3.scaleBand()
+    .domain(responses)
+    .range([suppMargin.top+320, suppMargin.top+480])
     .padding(1);
 
 var yScaleTonga = d3.scaleBand()
@@ -112,7 +126,21 @@ d3.queue()
                     theme_totals.push({category: kuwait[i].category, theme: kuwait[i].sub_category, value:+totalA})
                 }
             }
-            //console.log(theme_totals);
+            console.log(theme_totals);
+
+            var causeTotals = theme_totals.filter(function(d) {
+                return d.category === "cause";
+            })
+
+            var impactTotals = theme_totals.filter(function(d) {
+                return d.category === "impact";
+            })
+
+            var responseTotals = theme_totals.filter(function(d) {
+                return d.category === "response";
+            })
+
+            
 
             var nested = d3.nest()
                 .key(function(d) { return d.sub_category; })
@@ -159,38 +187,143 @@ d3.queue()
             var yAxisGenerator = d3.axisRight(yScale)
                 .tickSize(-14)
                 .ticks(60);
+
+            var yAxisGenCause = d3.axisRight(yScaleCause)
+                .tickSize(-14)
+                .ticks(60);
+
+            var yAxisGenImpact = d3.axisRight(yScaleImpact)
+                .tickSize(-14)
+                .ticks(60);
+
+            var yAxisGenResponse = d3.axisRight(yScaleResponse)
+                .tickSize(-14)
+                .ticks(60);
             
             function resetDefault(){
-                
-                var yAxis = supplement.append("g")
-                    .attr("class","axis")
-                    .attr("transform", `translate(${suppMargin.left},7)`)
-                    .call(yAxisGenerator);
 
-                var bar = supplement.selectAll("rect")
-                    .data(theme_totals)
+                var causeBar = supplement.selectAll(".causeBar")
+                    .data(causeTotals)
                     .enter()
                     .append("rect")
+                        .attr("class", "causeBar")
                         .attr("x", suppMargin.left)
-                        .attr("y", function(d) {return yScale(d.theme)})
+                        .attr("y", function(d) {return yScaleCause(d.theme)})
                         .attr("width", function(d) {return xScale(d.value)})
                         .attr("height", 15)
                         .attr("fill", function(d) { return colorScale(d.theme); });
-                
-                yAxis.selectAll(".tick text")
+
+                var impactBar = supplement.selectAll(".impactBar")
+                    .data(impactTotals)
+                    .enter()
+                    .append("rect")
+                        .attr("class", "impactBar")
+                        .attr("x", suppMargin.left)
+                        .attr("y", function(d) {return yScaleImpact(d.theme)})
+                        .attr("width", function(d) {return xScale(d.value)})
+                        .attr("height", 15)
+                        .attr("fill", function(d) { return colorScale(d.theme); });
+
+                var responseBar = supplement.selectAll(".responseBar")
+                    .data(responseTotals)
+                    .enter()
+                    .append("rect")
+                        .attr("class", "responseBar")
+                        .attr("x", suppMargin.left)
+                        .attr("y", function(d) {return yScaleResponse(d.theme)})
+                        .attr("width", function(d) {return xScale(d.value)})
+                        .attr("height", 15)
+                        .attr("fill", function(d) { return colorScale(d.theme); });
+
+                supplement.selectAll(".quantLabels causeLabels")
+                    .data(causeTotals)
+                    .enter()
+                    .append("text")
+                        .attr("x", function(d) {return suppMargin.left + xScale(d.value) + 5})
+                        .attr("y", function(d) {return yScaleCause(d.theme) + 12})
+                        .attr("class", "quantLabels causeLabels")
+                        .style("text-anchor", "start")
+                        .text(function(d){return d.value});
+
+                supplement.selectAll(".quantLabels impactLabels")
+                    .data(impactTotals)
+                    .enter()
+                    .append("text")
+                        .attr("x", function(d) {return suppMargin.left + xScale(d.value) + 5})
+                        .attr("y", function(d) {return yScaleImpact(d.theme) + 12})
+                        .attr("class", "quantLabels impactLabels")
+                        .style("text-anchor", "start")
+                        .text(function(d){return d.value});
+
+                supplement.selectAll(".quantLabels responseLabels")
+                    .data(responseTotals)
+                    .enter()
+                    .append("text")
+                        .attr("x", function(d) {return suppMargin.left + xScale(d.value) + 5})
+                        .attr("y", function(d) {return yScaleResponse(d.theme) + 12})
+                        .attr("class", "quantLabels responseLabels")
+                        .style("text-anchor", "start")
+                        .text(function(d){return d.value});
+
+                var yAxisCause = supplement.append("g")
+                    .attr("class","axis")
+                    .attr("transform", `translate(${suppMargin.left},7)`)
+                    .call(yAxisGenCause);
+
+                yAxisCause.selectAll(".tick text")
+                    .attr("class", "sideLabels")
+                    .attr("transform", function(d){ return( "translate(-10,0)")})
+                    .style("text-anchor", "end");
+
+                var yAxisImpact = supplement.append("g")
+                    .attr("class","axis")
+                    .attr("transform", `translate(${suppMargin.left},7)`)
+                    .call(yAxisGenImpact);
+
+                yAxisImpact.selectAll(".tick text")
+                    .attr("class", "sideLabels")
+                    .attr("transform", function(d){ return( "translate(-10,0)")})
+                    .style("text-anchor", "end");
+
+                var yAxisResponse = supplement.append("g")
+                    .attr("class","axis")
+                    .attr("transform", `translate(${suppMargin.left},7)`)
+                    .call(yAxisGenResponse);
+
+                yAxisResponse.selectAll(".tick text")
                     .attr("class", "sideLabels")
                     .attr("transform", function(d){ return( "translate(-10,0)")})
                     .style("text-anchor", "end");
                 
-                supplement.selectAll(".quantLabels")
-                        .data(theme_totals)
-                        .enter()
-                        .append("text")
-                            .attr("x", function(d) {return suppMargin.left + xScale(d.value) + 5})
-                            .attr("y", function(d) {return yScale(d.theme) + 12})
-                            .attr("class", "quantLabels")
-                            .style("text-anchor", "start")
-                            .text(function(d){return d.value});
+                // var yAxis = supplement.append("g")
+                //     .attr("class","axis")
+                //     .attr("transform", `translate(${suppMargin.left},7)`)
+                //     .call(yAxisGenerator);
+
+                // var bar = supplement.selectAll("rect")
+                //     .data(theme_totals)
+                //     .enter()
+                //     .append("rect")
+                //         .attr("x", suppMargin.left)
+                //         .attr("y", function(d) {return yScale(d.theme)})
+                //         .attr("width", function(d) {return xScale(d.value)})
+                //         .attr("height", 15)
+                //         .attr("fill", function(d) { return colorScale(d.theme); });
+                
+                // yAxis.selectAll(".tick text")
+                //     .attr("class", "sideLabels")
+                //     .attr("transform", function(d){ return( "translate(-10,0)")})
+                //     .style("text-anchor", "end");
+                
+                // supplement.selectAll(".quantLabels")
+                //         .data(theme_totals)
+                //         .enter()
+                //         .append("text")
+                //             .attr("x", function(d) {return suppMargin.left + xScale(d.value) + 5})
+                //             .attr("y", function(d) {return yScale(d.theme) + 12})
+                //             .attr("class", "quantLabels")
+                //             .style("text-anchor", "start")
+                //             .text(function(d){return d.value});
                 
                 supplement.append("text")
                     .attr("x", 0)
@@ -198,6 +331,27 @@ d3.queue()
                     .attr("class", "suppTitle")
                     .attr("fill", "#808080")
                     .text("Themes")
+
+                supplement.append("text")
+                    .attr("x", 0)
+                    .attr("y", suppMargin.top + 40)
+                    .attr("class", "suppSubTitle")
+                    .attr("fill", "#808080")
+                    .text("Causes")
+
+                supplement.append("text")
+                    .attr("x", 0)
+                    .attr("y", suppMargin.top + 160)
+                    .attr("class", "suppSubTitle")
+                    .attr("fill", "#808080")
+                    .text("Impacts")
+
+                supplement.append("text")
+                    .attr("x", 0)
+                    .attr("y", suppMargin.top + 335)
+                    .attr("class", "suppSubTitle")
+                    .attr("fill", "#808080")
+                    .text("Responses")
             }
             
             
