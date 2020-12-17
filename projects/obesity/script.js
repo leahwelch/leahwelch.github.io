@@ -33,11 +33,17 @@ function showVis(evt) {
 
 //Default Supplement
 var themes = ["food", "america", "obesity", "disease", "problems", "children", "medicine", "lifestyle", "science", "education"];
+var categories = ["cause", "impact", "response"]
 var themesTonga = ["food", "america", "obesity", "disease", "problems", "children", "lifestyle", "science", "education"];
 
 
 var yScale = d3.scaleBand()
     .domain(themes)
+    .range([suppMargin.top, suppHeight-suppMargin.bottom])
+    .padding(1);
+
+var yScaleCause = d3.scaleBand()
+    .domain(categories)
     .range([suppMargin.top, suppHeight-suppMargin.bottom])
     .padding(1);
 
@@ -187,8 +193,8 @@ d3.queue()
                             .text(function(d){return d.value});
                 
                 supplement.append("text")
-                    .attr("x", suppMargin.left)
-                    .attr("y", suppMargin.top + 10)
+                    .attr("x", 0)
+                    .attr("y", suppMargin.top)
                     .attr("class", "suppTitle")
                     .attr("fill", "#808080")
                     .text("Themes")
@@ -249,7 +255,7 @@ d3.queue()
                     }
 
                     supplement.append("text")
-                        .attr("x", suppMargin.left - 60)
+                        .attr("x", 0)
                         .attr("y", suppMargin.top)
                         .attr("class", "suppTitle")
                         .text(function(word) {
@@ -401,8 +407,8 @@ d3.queue()
                         .text(function(d){return d.value});
                 
                 var suppTitle = supplement.append("text")
-                    .attr("x", suppMargin.left)
-                    .attr("y", suppMargin.top + 10)
+                    .attr("x", 0)
+                    .attr("y", suppMargin.top)
                     .attr("class", "suppTitle")
                     .attr("fill", "#808080")
                     .text("Themes")
@@ -467,7 +473,7 @@ d3.queue()
 
                     console.log(strings);
                     supplement.append("text")
-                        .attr("x", suppMargin.left - 60)
+                        .attr("x", 0)
                         .attr("y", suppMargin.top)
                         .attr("class", "suppTitle")
                         .text(function(word) {
@@ -617,8 +623,8 @@ d3.queue()
                         .text(function(d){return d.value});
                 
                 var suppTitle = supplement.append("text")
-                    .attr("x", suppMargin.left)
-                    .attr("y", suppMargin.top + 10)
+                    .attr("x", 0)
+                    .attr("y", suppMargin.top)
                     .attr("class", "suppTitle")
                     .attr("fill", "#808080")
                     .text("Themes")
@@ -684,7 +690,7 @@ d3.queue()
                     console.log(strings);
 
                     supplement.append("text")
-                        .attr("x", suppMargin.left - 60)
+                        .attr("x", 0)
                         .attr("y", suppMargin.top)
                         .attr("class", "suppTitle")
                         .text(function(word) {
