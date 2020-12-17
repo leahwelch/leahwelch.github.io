@@ -27,6 +27,45 @@ window.createGraphic = function(graphicSelector) {
         .attr("class", "annotation")
         .style("opacity", 1)
 
+    
+    var legendWidth = document.querySelector("#legendContainer").clientWidth;
+    var legendHeight = document.querySelector("#legendContainer").clientHeight;
+    var legendMargin = {top: 40, left: 90, right: 90, bottom: 10};
+    var legend = d3.select("#legendContainer").append("svg")
+        .attr("width", legendWidth)
+        .attr("height", legendHeight);
+
+    legend.append("circle")
+        .attr("cx", legendMargin.left)
+        .attr("cy", legendMargin.top + 22)
+        .attr("r", 8)
+        .attr("fill", "#1f1f89")
+        .attr("opacity", 0.3)
+
+    legend.append("circle")
+        .attr("cx", legendWidth - legendMargin.right - legendMargin.left)
+        .attr("cy", legendMargin.top)
+        .attr("r", 30)
+        .attr("fill", "#1f1f89")
+        .attr("opacity", 0.3)
+
+    legend.append("text")
+        .attr("x", legendMargin.left)
+        .attr("y", legendMargin.top + 55)
+        .attr("class", "legendText")
+        .attr("fill", "#1F1F89")
+        .style("text-anchor", "middle")
+        .text("1 item")
+
+    legend.append("text")
+        .attr("x", legendWidth - legendMargin.right - legendMargin.left)
+        .attr("y", legendMargin.top + 55)
+        .attr("class", "legendText")
+        .attr("fill", "#1F1F89")
+        .style("text-anchor", "middle")
+        .text("5 items")
+
+
     function removeDuplicates(originalData, prop) {
         var newData = [];
         var lookupObject = {};

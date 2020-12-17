@@ -12,8 +12,8 @@
 	/* width: 70rem; */
 	margin-right: 70%;
 	padding-top: 5%;
-	padding-left: 5%;
-	padding-right: 15%;
+	padding-left: 40px;
+	padding-right: 200px;
 	font-family: 'Volkhov', serif;
 	color: #1F1F89;
 	font-size: 13pt;
@@ -23,7 +23,10 @@
 	padding: 0;
 	margin: 0;
 	min-height: 100vh;
-	
+}
+
+#legendContainer {
+	height: 200px;
 }
 
 .graphic__vis {
@@ -57,21 +60,11 @@
 
 }
 
-/* .item circle {
-	stroke: #666;
-	stroke-width: 1px;
-	fill: #fff;
-} */
+.legendText {
+	font-family: 'Nunito', sans-serif;
+	font-size: 12pt;
 
-/* .item circle {
-	opacity: 0.3;
 }
-
-.item text {
-	fill: #666;
-	font-size: 12px;
-	text-anchor: middle;
-} */
 
 
 .axisLabel {
@@ -79,12 +72,6 @@
 	font-size: 16pt;
 	font-weight: lighter;
   }
-
-  /* .newTopLabels {
-	font-family: 'Nunito', sans-serif;
-	font-size: 15pt;
-	font-weight: lighter;
-  } */
   
   .axis {
 	font-family: 'Nunito', sans-serif;

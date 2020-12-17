@@ -151,6 +151,7 @@
   video {
     display: block;
     width: 100%;
+    margin: auto;
   }
   button {
     cursor: pointer;
@@ -256,6 +257,11 @@
     padding: 8vh 30%;
     font-family: 'Volkhov', serif;
     color: #1F1F89;
+
+  }
+
+  #intropic {
+    padding: 0px;
   }
   
   #credits, #byline {
