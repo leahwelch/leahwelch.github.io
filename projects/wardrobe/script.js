@@ -55,6 +55,7 @@ Promise.all(promises).then(function(wardrobedata) {
 
     console.log(vintageItems);
     var maxVintage =vintageItems.length;
+    console.log(maxVintage);
 
     d3.select(".totalWorn").html(capsule.length);
     d3.select(".totalItems").html(wardrobe.length);
@@ -101,6 +102,7 @@ Promise.all(promises).then(function(wardrobedata) {
     }
 
     var tooltip = d3.select("#tooltip");
+    var analysistooltip = d3.select("#analysis_tooltip");
 
     var width = document.querySelector("#graph").clientWidth;
 
@@ -551,7 +553,38 @@ Promise.all(promises).then(function(wardrobedata) {
             } 
             })
         .attr("rx", 2)								
-        .attr("ry", 2)
+        .attr("ry", 2).on("mouseover, mousemove", function(d) {
+
+            analysistooltip.classed("hidden", false)
+            analysistooltip.select(".brand")
+                .html(function() {
+                    if(d.Vintage === "N") {
+                        return d.Brand;
+                    } else {
+                        return "Vintage";
+                    } 
+                }) 
+            analysistooltip.select(".item")
+                .html(function() {
+                    return d.Description  + " " + d.Sub_Category;
+                })
+            var string;
+
+            if(d.Category === "Bottoms") {
+                string = `<img src=${bottompics[d.ypos-1]} class="bottoms"/>`
+            } else if(d.Category === "Dresses & Jumpsuits") {
+                string = `<img src=${dresspics[d.ypos-1]} class="dresses"/>`
+            } else if(d.Category === "Tops") {
+                string = `<img src=${toppics[d.ypos-1]} class="tops"/>`
+            } else if(d.Category === "Outwear") {
+                string = `<img src=${outerpics[d.ypos-1]} class="outerwear"/>`
+            } else if(d.Category === "Sets") {
+                string = `<img src=${setpics[d.ypos-1]} class="sets"/>`
+            }
+            analysistooltip.select(".annotation_image").html(string);
+          }).on("mouseout", function() {
+            analysistooltip.classed("hidden", true);
+          });
 
         analysis.append("text")
             .attr('class','smalllabel')

@@ -371,6 +371,10 @@ h2 {
     /* padding-top: 100px; */
   }
 
+.narrative {
+    font-size: 15pt;
+}
+
   
 #sections{
     margin: 200px 50px 0px 50px;
@@ -392,6 +396,8 @@ h2 {
 #sections > div.graph-scroll-active{
     opacity: 0.9;
 }
+
+
 
 #vis{
     /* width: 100%; */
@@ -454,4 +460,37 @@ pre{
     margin: 0px;
     padding: 0px;
 }
+
+/* #analysis_tooltip {
+    position: absolute;
+    text-align: center;
+    margin: 10px;
+    max-width: 200px;
+    height: auto;
+    width: auto;
+    padding: 5px;
+    font-size: 11pt;
+    background-color:#3d332a;
+    color: #ffffff;
+    border: 1px solid #f9ede1;
+    border-radius: 3px;
+    pointer-events: none;
+} */
+
+#analysis_tooltip {
+    border-top: 1px solid #a08875;
+}
+
+#analysis_tooltip.hidden {
+    display: none;
+}
+
+#sections.item {
+    font-size: 12pt;
+}
+
+/* #analysis_tooltip p {
+    margin: 0px;
+    padding: 0px;
+} */
 
