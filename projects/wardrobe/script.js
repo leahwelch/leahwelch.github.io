@@ -41,10 +41,19 @@ Promise.all(promises).then(function(wardrobedata) {
     for(i = 0; i < uniqueArray.length; i++) {
         capsule.push(uniqueArray[i].item);
     }
+    console.log(capsule);
 
-    var vintageItems = wardrobe.filter(function(d) {
-        return d.Vintage === "Y";
-    });
+    // var vintageItems = wardrobe.filter(function(d) {
+    //     return d.Vintage === "Y";
+    // });
+    var vintageItems = [];
+    for(i = 0; i < wardrobe.length; i++) {
+        if(wardrobe[i].Vintage === "Y") {
+            vintageItems.push(wardrobe[i].Description)
+        }
+    }
+
+    console.log(vintageItems);
     var maxVintage =vintageItems.length;
 
     d3.select(".totalWorn").html(capsule.length);
@@ -158,18 +167,7 @@ Promise.all(promises).then(function(wardrobedata) {
         .attr("width", width)
         .attr("height", height);
 
-    var smallMargin = {top: 0, right: 20, bottom: 20, left: 0};
-    var smallWidth = 225 - smallMargin.left - smallMargin.right;
-    var smallHeight = 325 - smallMargin.top - smallMargin.bottom;
-
-    var yScaleSmall = d3.scaleBand()
-        .domain(wardrobe.map(function(d) { return d.group_y; }))
-        .range([smallHeight-smallMargin.bottom-10, smallMargin.top])
-        .padding(1);
     
-
-    // Add an svg element for each group. The will be one beside each other and will go on the next row when no more room available
-
     var patterns = [];
     patterns[0] = "no value";
     for(i = 0; i < 57; i++) {
@@ -214,6 +212,18 @@ Promise.all(promises).then(function(wardrobedata) {
 
     var annotation = d3.select(".annotation")
     var date_labels = d3.select(".date_labels")
+
+
+    //WEARLOG SMALL MULTIPLES
+
+    var smallMargin = {top: 0, right: 20, bottom: 20, left: 0};
+    var smallWidth = 225 - smallMargin.left - smallMargin.right;
+    var smallHeight = 325 - smallMargin.top - smallMargin.bottom;
+
+    var yScaleSmall = d3.scaleBand()
+        .domain(wardrobe.map(function(d) { return d.group_y; }))
+        .range([smallHeight-smallMargin.bottom-10, smallMargin.top])
+        .padding(1);
 
     var smalls = d3.select("#smalls")
         .selectAll(".uniqueChart")
@@ -299,7 +309,9 @@ Promise.all(promises).then(function(wardrobedata) {
       .attr('y', smallHeight - 15)
       .style("font-size", "10pt")
       .text("Unworn")
-          
+    
+      
+     //INITIAL VISUALIZATION 
     var topsG = svg.append("g").attr("class", "topsG")
 
     topsG.selectAll("rect").data(tops)
@@ -485,196 +497,84 @@ Promise.all(promises).then(function(wardrobedata) {
 
         });
 
-    var widthA = document.querySelector("#vis").clientWidth;
-    var heightA = document.querySelector("#vis").clientHeight;
-    var marginA = {top: 50, left: 40, right: 40, bottom: 60};
-    
-    var svgA = d3.select("#vis")
-        .append("svg")
-        .attr("width", widthA)
-        .attr("height", heightA);
+    //ANALYSIS SMALL MULTIPLES
 
-    var xScaleA = d3.scaleBand()
-        .domain(wardrobe.map(function(d) { return d.Category; }))
-        .range([widthA-marginA.right-300, 200])
+    function canvas_clear() {
+        
+        d3.selectAll("#vis")
+            .selectAll("*")
+            .remove();
+    }
+
+    var analysisM = {top: 30, right: 20, bottom: 20, left: 0};
+    var analysisW = 225 - analysisM.left - analysisM.right;
+    var analysisH = 400 - analysisM.top - analysisM.bottom;
+    
+    
+    var yScaleA = d3.scaleBand()
+        .domain(wardrobe.map(function(d) { return d.vintage_y; }))
+        .range([analysisH-analysisM.bottom-10, analysisM.top])
         .padding(1);
-    
-    var yScaleA = d3.scaleLinear()
-        .domain([0, maxItems])
-        .range([heightA-marginA.bottom-10, marginA.top]);
 
-    var xAxisGeneratorA = d3.axisBottom(xScaleA)
-        .tickSize(-14)
-        .ticks(60);
-    
-    var xAxisA = svgA.append("g")
-        .attr("class","xaxis")
-        .attr("transform", `translate(5,${heightA-marginA.bottom + 15})`)
-        .call(xAxisGeneratorA);
-    
-    xAxisA.selectAll(".tick text")
-        .attr("class", "topLabels")
-        .attr("transform", function(d){ return( "translate(0,-20)rotate(30)")})
-        .style("text-anchor", "start");
+    var analysis = d3.select("#vis")
+        .selectAll(".smallMults")
+        .data(nested)
+        .enter()
+        .append("svg")
+            .attr("width", analysisW +analysisM.left + analysisM.right)
+            .attr("height", analysisH + analysisM.top + analysisM.bottom)
+            .attr("class", "smallMults")
+        .append("g")
+            .attr("transform",
+                "translate(" + analysisM.left + "," + analysisM.top + ")");
 
-    var topsA = svgA.append("g").attr("class", "topsA")
-
-    topsA.selectAll("rect").data(tops)
+    analysis.selectAll(".bar")
+        .data(function(d) {return d.values;})
         .enter()
         .append("rect")
-        .attr("x", function() {
-            return xScaleA("Tops")
+        .attr("class", "bar")
+        .attr("x", function(d) {
+            if(vintageItems.indexOf(d.Description)>=0) {
+                return smallMargin.left;
+            } else {
+                return 80;
+            }
         })
-        .attr("y", function(d) { return yScaleA(d.ypos); })
         .attr("width", 70)
+        .attr("y", function(d) { return yScaleA(d.vintage_y); })
         .attr("height", 12)
-        .attr("fill", function(d) { return d.Primary_Color; })
-        .attr("stroke", "none")
+        .attr("fill", function(d) {
+            if(d.Pattern === "N") {
+                return d.Primary_Color;
+            } else {
+                return patterns[d.Pattern_ID];
+            } 
+            })
         .attr("rx", 2)								
-        .attr("ry", 2);
+        .attr("ry", 2)
 
-    var bottomsA = svgA.append("g").attr("class", "bottomsA")
+        analysis.append("text")
+            .attr('class','smalllabel')
+            .attr('x', analysisM.left)
+            .attr('y', analysisH + 10)
+            .style("font-size", "12pt")
+            .style("font-weight", "bold")
+            .text( function(d) { return d.key; })
 
-    bottomsA.selectAll("rect").data(bottoms)
-        .enter()
-        .append("rect")
-        .attr("x", function() {
-            return xScaleA("Bottoms")
-        })
-        .attr("y", function(d) { return yScaleA(d.ypos); })
-        .attr("width", 70)
-        .attr("height", 12)
-        .attr("fill", function(d) { return d.Primary_Color; })
-        .attr("rx", 2)								
-        .attr("ry", 2);
+        analysis.append("text")
+            .attr('class','smalllabel')
+            .attr('x', analysisM.left)
+            .attr('y', analysisH - 15)
+            .style("font-size", "10pt")
+            .text("Vintage")
 
-    var dressesA = svgA.append("g").attr("class", "dressesA")
+        analysis.append("text")
+            .attr('class','smalllabel')
+            .attr('x', 80)
+            .attr('y', analysisH - 15)
+            .style("font-size", "10pt")
+            .text("New")
 
-    dressesA.selectAll("rect").data(dresses)
-        .enter()
-        .append("rect")
-        .attr("x", function() {
-            return xScaleA("Dresses & Jumpsuits")
-        })
-        .attr("y", function(d) { return yScaleA(d.ypos); })
-        .attr("width", 70)
-        .attr("height", 12)
-        .attr("fill", function(d) { return d.Primary_Color; })
-        .attr("rx", 2)								
-        .attr("ry", 2);
-
-    var setsA = svgA.append("g").attr("class", "setsA")
-
-    setsA.selectAll("rect").data(sets)
-        .enter()
-        .append("rect")
-        .attr("x", function() {
-            return xScaleA("Sets")
-        })
-        .attr("y", function(d) { return yScaleA(d.ypos); })
-        .attr("width", 70)
-        .attr("height", 12)
-        .attr("fill", function(d) { return d.Primary_Color; })
-        .attr("rx", 2)								
-        .attr("ry", 2);
-
-    var outerwearA = svgA.append("g").attr("class", "outerwearA")
-
-    outerwearA.selectAll("rect").data(outerwear)
-        .enter()
-        .append("rect")
-        .attr("x", function() {
-            return xScaleA("Outwear")
-        })
-        .attr("y", function(d) { return yScaleA(d.ypos); })
-        .attr("width", 70)
-        .attr("height", 12)
-        .attr("fill", function(d) { return d.Primary_Color; })
-        .attr("rx", 2)								
-        .attr("ry", 2);
-
-    const markerBoxWidth = 8;
-    const markerBoxHeight = 8;
-    const refX = markerBoxWidth / 2;
-    const refY = markerBoxHeight / 2;
-    const markerWidth = markerBoxWidth / 2;
-    const markerHeight = markerBoxHeight / 2;
-    const arrowPoints = [[0, 0], [0, 8], [8, 4]];
-
-    svgA.append("svg:defs").append("svg:marker")
-        .attr("id", "triangle")
-        .attr('viewBox', [0, 0, markerBoxWidth, markerBoxHeight])
-        .attr('refX', refX)
-        .attr('refY', refY)
-        .attr('markerWidth', markerBoxWidth)
-        .attr('markerHeight', markerBoxHeight)
-        .attr("orient", "auto-start-reverse")
-        .append("path")
-        .attr("d", d3.line()(arrowPoints))
-        .style("fill", "#a08875");
-
-    svgA.append("line")
-        .attr("x1", widthA-marginA.right-300)
-        .attr("x2", widthA-marginA.right-300)
-        .attr("y1", marginA.top)
-        .attr("y2", 200)
-        .attr("stroke", "#a08875")
-        .attr("marker-start", "url(#triangle)");
-
-    svgA.append("line")
-        .attr("x1", widthA-marginA.right-300)
-        .attr("x2", widthA-marginA.right-300)
-        .attr("y1", 600)
-        .attr("y2", heightA-marginA.bottom-10)
-        .attr("stroke", "#a08875")
-        .attr("marker-end", "url(#triangle)");
-
-    svgA.append("text")
-        .attr("x", 0)
-        .attr("y", 4)
-        .attr("transform", function(d){ return( "translate(" + (+widthA-marginA.right-300) + "," + (260) + ")rotate(-90)")})
-        .attr("fill", "#3d332a")
-        .text("Newer")
-
-    svgA.append("text")
-        .attr("x", 0)
-        .attr("y", 4)
-        .attr("transform", function(d){ return( "translate(" + (+widthA-marginA.right-300) + "," + (580) + ")rotate(-90)")})
-        .attr("fill", "#3d332a")
-        .text("Older")
-
-
-    
-
-    
-
-    // var xScaleVintage = d3.scaleLinear()
-    //     .domain([0, maxVintage])
-    //     .range([marginA.left, widthA-marginA.right]);
-
-    // svgA.selectAll("rect").data(wardrobe)
-    //     .enter()
-    //     .append("rect")
-    //     .attr("x", function(d) { return xScaleVintage(d.vintage_ID); })
-    //     .attr("y", function(d) { 
-    //         if(d.Vintage === "N") {
-    //             return heightA/3;
-    //         } else {
-    //             return heightA/3 + 100;
-    //         }
-    //     })
-    //     .attr("height", 70)
-    //     .attr("width", 18)
-    //     .attr("fill", function(d) {
-    //         if(d.Pattern === "N") {
-    //             return d.Primary_Color;
-    //         } else {
-    //             return patterns[d.Pattern_ID];
-    //         } 
-    //        })
-    //     .attr("stroke", "none")
-    //     .attr("rx", 2)								
-	// 	.attr("ry", 2);
 
     function sec_1() {
         svg.selectAll("rect")
@@ -984,35 +884,37 @@ Promise.all(promises).then(function(wardrobedata) {
     }
 
     function update_1() {
-        svgA.selectAll("rect")
-            .attr("fill", function(d) {
-                if(d.Vintage === "Y") {
-                    if(d.Pattern === "N") {
-                        return d.Primary_Color;
-                    } else {
-                        return patterns[d.Pattern_ID];
-                    } 
-                } else {
-                    return "#f9ede1";
-                }
+        d3.select("#analysis_header").html("Shopping Habits")
+        // svgA.selectAll("rect")
+        //     .attr("fill", function(d) {
+        //         if(d.Vintage === "Y") {
+        //             if(d.Pattern === "N") {
+        //                 return d.Primary_Color;
+        //             } else {
+        //                 return patterns[d.Pattern_ID];
+        //             } 
+        //         } else {
+        //             return "#f9ede1";
+        //         }
                 
-            })
-            .attr("stroke", function(d) {
-                if(d.Vintage === "Y") {
-                    return "none"
-                } else {
-                    return "#ddd3ca";
-                }
-            })
+        //     })
+        //     .attr("stroke", function(d) {
+        //         if(d.Vintage === "Y") {
+        //             return "none"
+        //         } else {
+        //             return "#ddd3ca";
+        //         }
+        //     })
     }
     function update_2() {
         console.log("second update");
     }
     function update_3() {
-        console.log("third update");
+        d3.select("#analysis_header").html("Shopping Habits")
     }
     function update_4() {
-        console.log("fourth update");
+        d3.select("#analysis_header").html("Towards a Capsule Closet")
+        
     }
     function update_5() {
         console.log("fifth update");

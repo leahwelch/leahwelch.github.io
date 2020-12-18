@@ -284,6 +284,8 @@ h2 {
     font-family: 'Lilita One', cursive;
     font-size: 20pt;
     color: #3d332a;
+    /* position: sticky;
+    top: 50px; */
 }
 
 .brand {
@@ -351,7 +353,7 @@ h2 {
 .conclusion {
     margin: 150px 0px;
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1fr 3fr;
     grid-template-rows: 1fr;
     grid-template-areas: 
         "summary smalls";
@@ -361,11 +363,12 @@ h2 {
 #analysis{
     position: relative;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 3fr;
     grid-template-rows: 1fr;
     grid-template-areas: 
         "sections vis";
-    height: 100%;
+    height: 90%;
+    /* padding-top: 100px; */
   }
 
   
@@ -412,12 +415,14 @@ pre{
 /* SMALL MULTIPLES */
 
 #smalls {
-    margin: 20px 50px 20px 150px;
+    margin: 20px 50px 20px 0px;
     grid-area: smalls;
 }
 
 .summary {
-    margin-left: 150px;
+    margin: 200px 50px 0px 50px;
+    padding-bottom: 25vh;
+    padding-left: 50px;
     grid-area: summary;
 }
 
