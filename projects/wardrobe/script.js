@@ -43,9 +43,28 @@ Promise.all(promises).then(function(wardrobedata) {
     }
     console.log(capsule);
 
-    // var vintageItems = wardrobe.filter(function(d) {
-    //     return d.Vintage === "Y";
-    // });
+    var filtered_vintage = wardrobe.filter(function(d) {
+        return d.Vintage === "Y";
+    });
+    console.log(filtered_vintage);
+
+    var nested_vintage = d3.nest()
+        .key(function(d) {return d.Year_Entered})
+        .rollup(function(d) { return d.length; })
+        .entries(filtered_vintage)
+
+    nested_vintage.push({key: 2011, value: 0});
+    nested_vintage.push({key: 2012, value: 0});
+    
+    for(i = 0; i < nested_vintage.length; i++) {
+        nested_vintage[i].key = +nested_vintage[i].key;
+        nested_vintage[i].value = +nested_vintage[i].value;
+    }
+
+    nested_vintage.sort(function(a,b) { return b.key-a.key;})
+    console.log(nested_vintage);
+    var years = [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020]
+
     var vintageItems = [];
     for(i = 0; i < wardrobe.length; i++) {
         if(wardrobe[i].Vintage === "Y") {
@@ -74,6 +93,17 @@ Promise.all(promises).then(function(wardrobedata) {
         .entries(wearlog)
 
     console.log(nestedItems);
+
+    var purchases = {
+        min: d3.min(nested_vintage, function(d) { return d.value; }),
+        max: d3.max(nested_vintage, function(d) { return d.value; })
+    }
+
+    var year = {
+        min: d3.min(nested_vintage, function(d) { return d.key; }),
+        max: d3.max(nested_vintage, function(d) { return d.key; })
+    }
+    console.log(year);
     
     var groupVals = d3.nest()
         .key(function(d) { return d.group; })
@@ -925,31 +955,57 @@ Promise.all(promises).then(function(wardrobedata) {
 
     function update_1() {
         d3.select("#analysis_header").html("My 'Vintage' Style")
+        canvas_clear();
         defaultAnalysis();
-        // svgA.selectAll("rect")
-        //     .attr("fill", function(d) {
-        //         if(d.Vintage === "Y") {
-        //             if(d.Pattern === "N") {
-        //                 return d.Primary_Color;
-        //             } else {
-        //                 return patterns[d.Pattern_ID];
-        //             } 
-        //         } else {
-        //             return "#f9ede1";
-        //         }
-                
-        //     })
-        //     .attr("stroke", function(d) {
-        //         if(d.Vintage === "Y") {
-        //             return "none"
-        //         } else {
-        //             return "#ddd3ca";
-        //         }
-        //     })
     }
     function update_2() {
-        canvas_clear()
+        canvas_clear();
         d3.select("#analysis_header").html("My 'Vintage' Style?")
+        var visW = document.querySelector("#vis").clientWidth;
+        var visH = document.querySelector("#vis").clientHeight;
+        var visM = {top: 50, left: 60, right: 400, bottom: 400}
+
+        var analysisSVG = d3.select("#vis")
+            .append("svg")
+            .attr("width", visW)
+            .attr("height", visH)
+
+        var vintageX = d3.scaleLinear()
+            .domain([year.min, year.max])
+            .range([visM.left, visW - visM.right])
+
+        var vintageY = d3.scaleLinear()
+            .domain([0,10])
+            .range([visH - visM.bottom, visM.top])
+
+        var line = d3.line()
+            .x(function(d) { return vintageX(d.key)})
+            .y(function(d) { return vintageY(d.value)})
+
+        var vintageXAxis = analysisSVG.append("g")
+            .attr("class", "vintageXAxis")
+            .attr("transform", `translate(0,${visH-visM.bottom})`)
+            .call(d3.axisBottom().scale(vintageX).tickFormat(d3.format("Y")).tickSize(0));
+
+        vintageXAxis.selectAll(".tick text")
+            .attr("class", "vintageLabels")
+            .attr("transform", function(d){ return( "translate(0,20)")})
+
+        var vintageYAxis = analysisSVG.append("g")
+            .attr("class", "vintageYAxis")
+            .attr("transform", `translate(${visM.left}, 0)`)
+            .call(d3.axisLeft().scale(vintageY));
+
+        vintageYAxis.selectAll(".tick text")
+            .attr("class", "vintageLabels")
+            .attr("transform", function(d){ return( "translate(-10,0)")})
+        
+        var path = analysisSVG.append("path")
+            .datum(nested_vintage)
+            .attr("d", function(d) { return line(d); })
+            .attr("stroke", "#a08875")
+            .attr("fill", "none")
+            .attr("stroke-width", 2)
         
     }
     function update_3() {

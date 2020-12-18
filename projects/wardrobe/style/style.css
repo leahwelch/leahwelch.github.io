@@ -188,6 +188,28 @@ h2 {
     font-weight: bolder;
 }
 
+.vintageYAxis path {
+    visibility: hidden;
+}
+
+.vintageYAxis line {
+    visibility: hidden;
+}
+
+.vintageXAxis path {
+    stroke: #a08875;
+}
+
+.vintageXAxis > .tick text {
+    font-size: 10pt;
+    font-weight: lighter
+}
+
+.vintageYAxis > .tick text {
+    font-size: 10pt;
+    font-weight: lighter
+}
+
 /* KEY & PROFILES */
 
 .note_container {
@@ -401,6 +423,9 @@ h2 {
     text-decoration: line-through;
 }
 
+#vis {
+    height: 80vh;
+}
 
 
 #visContainer{
