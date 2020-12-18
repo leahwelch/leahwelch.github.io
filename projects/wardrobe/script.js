@@ -508,7 +508,8 @@ Promise.all(promises).then(function(wardrobedata) {
             .remove();
     }
 
-    var analysisM = {top: 30, right: 20, bottom: 20, left: 0};
+    function defaultAnalysis () {
+        var analysisM = {top: 30, right: 20, bottom: 20, left: 0};
     var analysisW = 225 - analysisM.left - analysisM.right;
     var analysisH = 400 - analysisM.top - analysisM.bottom;
     
@@ -607,6 +608,12 @@ Promise.all(promises).then(function(wardrobedata) {
             .attr('y', analysisH - 15)
             .style("font-size", "10pt")
             .text("New")
+
+    }
+
+    defaultAnalysis();
+
+    
 
 
     function sec_1() {
@@ -917,7 +924,8 @@ Promise.all(promises).then(function(wardrobedata) {
     }
 
     function update_1() {
-        d3.select("#analysis_header").html("Shopping Habits")
+        d3.select("#analysis_header").html("My 'Vintage' Style")
+        defaultAnalysis();
         // svgA.selectAll("rect")
         //     .attr("fill", function(d) {
         //         if(d.Vintage === "Y") {
@@ -940,10 +948,12 @@ Promise.all(promises).then(function(wardrobedata) {
         //     })
     }
     function update_2() {
-        console.log("second update");
+        canvas_clear()
+        d3.select("#analysis_header").html("My 'Vintage' Style?")
+        
     }
     function update_3() {
-        d3.select("#analysis_header").html("Shopping Habits")
+        d3.select("#analysis_header").html("My <span id='notVintage'>'Vintage'</span> Shopping Blog Style")
     }
     function update_4() {
         d3.select("#analysis_header").html("Towards a Capsule Closet")

@@ -397,9 +397,13 @@ h2 {
     opacity: 0.9;
 }
 
+#notVintage {
+    text-decoration: line-through;
+}
 
 
-#vis{
+
+#visContainer{
     /* width: 100%; */
     height: 90vh;
     position: -webkit-sticky;
