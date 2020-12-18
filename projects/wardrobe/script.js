@@ -55,6 +55,7 @@ Promise.all(promises).then(function(wardrobedata) {
 
     nested_vintage.push({key: 2011, value: 0});
     nested_vintage.push({key: 2012, value: 0});
+    nested_vintage.push({key: 2021, value: 0});
     
     for(i = 0; i < nested_vintage.length; i++) {
         nested_vintage[i].key = +nested_vintage[i].key;
@@ -63,7 +64,6 @@ Promise.all(promises).then(function(wardrobedata) {
 
     nested_vintage.sort(function(a,b) { return b.key-a.key;})
     console.log(nested_vintage);
-    var years = [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020]
 
     var vintageItems = [];
     for(i = 0; i < wardrobe.length; i++) {
@@ -539,105 +539,168 @@ Promise.all(promises).then(function(wardrobedata) {
     }
 
     function defaultAnalysis () {
-        var analysisM = {top: 30, right: 20, bottom: 20, left: 0};
-    var analysisW = 225 - analysisM.left - analysisM.right;
-    var analysisH = 400 - analysisM.top - analysisM.bottom;
-    
-    
-    var yScaleA = d3.scaleBand()
-        .domain(wardrobe.map(function(d) { return d.vintage_y; }))
-        .range([analysisH-analysisM.bottom-10, analysisM.top])
-        .padding(1);
 
-    var analysis = d3.select("#vis")
-        .selectAll(".smallMults")
-        .data(nested)
-        .enter()
-        .append("svg")
-            .attr("width", analysisW +analysisM.left + analysisM.right)
-            .attr("height", analysisH + analysisM.top + analysisM.bottom)
-            .attr("class", "smallMults")
-        .append("g")
-            .attr("transform",
-                "translate(" + analysisM.left + "," + analysisM.top + ")");
+        d3.select("#analysis_header").html("My 'Vintage' Style?")
+        var visW = document.querySelector("#vis").clientWidth;
+        var visH = document.querySelector("#vis").clientHeight;
+        var visM = {top: 50, left: 60, right: 400, bottom: 400}
 
-    analysis.selectAll(".bar")
-        .data(function(d) {return d.values;})
-        .enter()
-        .append("rect")
-        .attr("class", "bar")
-        .attr("x", function(d) {
-            if(vintageItems.indexOf(d.Description)>=0) {
-                return smallMargin.left;
-            } else {
-                return 80;
-            }
-        })
-        .attr("width", 70)
-        .attr("y", function(d) { return yScaleA(d.vintage_y); })
-        .attr("height", 12)
-        .attr("fill", function(d) {
-            if(d.Pattern === "N") {
-                return d.Primary_Color;
-            } else {
-                return patterns[d.Pattern_ID];
-            } 
+        var analysisSVG = d3.select("#vis")
+            .append("svg")
+            .attr("width", visW)
+            .attr("height", visH)
+
+        var vintageX = d3.scaleLinear()
+            .domain([year.min, year.max])
+            .range([visM.left, visW - visM.right])
+
+        var vintageY = d3.scaleLinear()
+            .domain([0,10])
+            .range([visH - visM.bottom, visM.top])
+
+        var line = d3.line()
+            .x(function(d) { return vintageX(d.key)})
+            .y(function(d) { return vintageY(d.value)})
+
+        var vintageXAxis = analysisSVG.append("g")
+            .attr("class", "vintageXAxis")
+            .attr("transform", `translate(0,${visH-visM.bottom})`)
+            .call(d3.axisBottom().scale(vintageX).tickFormat(d3.format("Y")).tickSize(0));
+
+        vintageXAxis.selectAll(".tick text")
+            .attr("class", "vintageLabels")
+            .attr("transform", function(d){ return( "translate(0,10)")})
+            .style("text-anchor", "start")
+
+        var vintageYAxis = analysisSVG.append("g")
+            .attr("class", "vintageYAxis")
+            .attr("transform", `translate(${visM.left}, 0)`)
+            .call(d3.axisLeft().scale(vintageY));
+
+        vintageYAxis.selectAll(".tick text")
+            .attr("class", "vintageLabels")
+            .attr("transform", function(d){ return( "translate(-10,0)")})
+        
+        var path = analysisSVG.append("path")
+            .datum(nested_vintage)
+            .attr("d", function(d) { return line(d); })
+            .attr("stroke", "#a08875")
+            .attr("fill", "none")
+            .attr("stroke-width", 2)
+        
+
+        var yScaleVintage = d3.scaleBand()
+            .domain(filtered_vintage.map(function(d) { return d.vintage_ID; }))
+            .range([425,600])
+            .padding(1);
+
+        var vintageG = analysisSVG.append("g").attr("class", "vintageG")
+
+        vintageG.selectAll("rect").data(filtered_vintage)
+            .enter()
+            .append("rect")
+            .attr("x", function(d) {
+                return vintageX(d.Year_Entered)
             })
-        .attr("rx", 2)								
-        .attr("ry", 2).on("mouseover, mousemove", function(d) {
+            .attr("y", function(d) { return yScaleVintage(d.vintage_ID); })
+            .attr("width", 60)
+            .attr("height", 12)
+            .attr("fill", function(d) { 
+                if(d.Pattern === "N") {
+                    return d.Primary_Color;
+                } else {
+                    return patterns[d.Pattern_ID];
+                } 
+            })
+            .attr("rx", 2)								
+            .attr("ry", 2);
 
-            analysistooltip.classed("hidden", false)
-            analysistooltip.select(".brand")
-                .html(function() {
-                    if(d.Vintage === "N") {
-                        return d.Brand;
-                    } else {
-                        return "Vintage";
-                    } 
-                }) 
-            analysistooltip.select(".item")
-                .html(function() {
-                    return d.Description  + " " + d.Sub_Category;
-                })
-            var string;
+        vintageG.append("line")
+            .attr("x1", 0)
+            .attr("y1", 435)
+            .attr("x2", function() {
+                return vintageX(2021);})
+            .attr("y2", 435)
+            .attr('stroke', "#a08875")
+            .attr("stroke-width", 1);
 
-            if(d.Category === "Bottoms") {
-                string = `<img src=${bottompics[d.ypos-1]} class="bottoms"/>`
-            } else if(d.Category === "Dresses & Jumpsuits") {
-                string = `<img src=${dresspics[d.ypos-1]} class="dresses"/>`
-            } else if(d.Category === "Tops") {
-                string = `<img src=${toppics[d.ypos-1]} class="tops"/>`
-            } else if(d.Category === "Outwear") {
-                string = `<img src=${outerpics[d.ypos-1]} class="outerwear"/>`
-            } else if(d.Category === "Sets") {
-                string = `<img src=${setpics[d.ypos-1]} class="sets"/>`
-            }
-            analysistooltip.select(".annotation_image").html(string);
-          }).on("mouseout", function() {
-            analysistooltip.classed("hidden", true);
-          });
+        vintageG.append("line")
+            .attr("x1", function() {
+                return vintageX(2016);
+            })
+            .attr("y1", visM.top)
+            .attr("x2", function() {
+                return vintageX(2016);})
+            .attr("y2", visH - visM.bottom)
+            .attr('stroke', "#a08875")
+            .attr("stroke-dasharray", 4)
+            .attr("stroke-width", 1);
 
-        analysis.append("text")
-            .attr('class','smalllabel')
-            .attr('x', analysisM.left)
-            .attr('y', analysisH + 10)
-            .style("font-size", "12pt")
-            .style("font-weight", "bold")
-            .text( function(d) { return d.key; })
-
-        analysis.append("text")
-            .attr('class','smalllabel')
-            .attr('x', analysisM.left)
-            .attr('y', analysisH - 15)
+        analysisSVG.append("text")
+            .attr("x", function() {
+                return vintageX(2016) + 5;
+            })
+            .attr("y", visM.top + 10)
+            .attr("fill", "#3d332a")
             .style("font-size", "10pt")
-            .text("Vintage")
+            .text("Honeymoon in Japan")
 
-        analysis.append("text")
-            .attr('class','smalllabel')
-            .attr('x', 80)
-            .attr('y', analysisH - 15)
+        vintageG.append("line")
+            .attr("x1", function() {
+                return vintageX(2013);
+            })
+            .attr("y1", visM.top)
+            .attr("x2", function() {
+                return vintageX(2013);})
+            .attr("y2", visH - visM.bottom)
+            .attr('stroke', "#a08875")
+            .attr("stroke-dasharray", 4)
+            .attr("stroke-width", 1);
+
+        analysisSVG.append("text")
+            .attr("x", function() {
+                return vintageX(2013) + 5;
+            })
+            .attr("y", visM.top + 10)
+            .attr("fill", "#3d332a")
             .style("font-size", "10pt")
-            .text("New")
+            .text("Met Steven")
+
+        vintageG.append("line")
+            .attr("x1", function() {
+                return vintageX(2018);
+            })
+            .attr("y1", visM.top)
+            .attr("x2", function() {
+                return vintageX(2018);})
+            .attr("y2", visH - visM.bottom)
+            .attr('stroke', "#a08875")
+            .attr("stroke-dasharray", 4)
+            .attr("stroke-width", 1);
+
+        analysisSVG.append("text")
+            .attr("x", function() {
+                return vintageX(2018) + 5;
+            })
+            .attr("y", visM.top + 10)
+            .attr("fill", "#3d332a")
+            .style("font-size", "10pt")
+            .text("Start of Pregnancy")
+
+        analysisSVG.append("text")
+            .attr("x", 0)
+            .attr("y", 20)
+            .attr("class", "miniTitle")
+            .attr("fill", "#3d332a")
+            .text("Vintage Items By Purchase Year")
+
+        analysisSVG.append("text")
+            .attr("x", 0)
+            .attr("y", 425)
+            .attr("class", "miniTitle")
+            .attr("fill", "#3d332a")
+            .text("Every Vintage Item I Own")
+    
 
     }
 
@@ -958,64 +1021,15 @@ Promise.all(promises).then(function(wardrobedata) {
         canvas_clear();
         defaultAnalysis();
     }
+    
     function update_2() {
-        canvas_clear();
-        d3.select("#analysis_header").html("My 'Vintage' Style?")
-        var visW = document.querySelector("#vis").clientWidth;
-        var visH = document.querySelector("#vis").clientHeight;
-        var visM = {top: 50, left: 60, right: 400, bottom: 400}
-
-        var analysisSVG = d3.select("#vis")
-            .append("svg")
-            .attr("width", visW)
-            .attr("height", visH)
-
-        var vintageX = d3.scaleLinear()
-            .domain([year.min, year.max])
-            .range([visM.left, visW - visM.right])
-
-        var vintageY = d3.scaleLinear()
-            .domain([0,10])
-            .range([visH - visM.bottom, visM.top])
-
-        var line = d3.line()
-            .x(function(d) { return vintageX(d.key)})
-            .y(function(d) { return vintageY(d.value)})
-
-        var vintageXAxis = analysisSVG.append("g")
-            .attr("class", "vintageXAxis")
-            .attr("transform", `translate(0,${visH-visM.bottom})`)
-            .call(d3.axisBottom().scale(vintageX).tickFormat(d3.format("Y")).tickSize(0));
-
-        vintageXAxis.selectAll(".tick text")
-            .attr("class", "vintageLabels")
-            .attr("transform", function(d){ return( "translate(0,20)")})
-
-        var vintageYAxis = analysisSVG.append("g")
-            .attr("class", "vintageYAxis")
-            .attr("transform", `translate(${visM.left}, 0)`)
-            .call(d3.axisLeft().scale(vintageY));
-
-        vintageYAxis.selectAll(".tick text")
-            .attr("class", "vintageLabels")
-            .attr("transform", function(d){ return( "translate(-10,0)")})
-        
-        var path = analysisSVG.append("path")
-            .datum(nested_vintage)
-            .attr("d", function(d) { return line(d); })
-            .attr("stroke", "#a08875")
-            .attr("fill", "none")
-            .attr("stroke-width", 2)
-        
-    }
-    function update_3() {
         d3.select("#analysis_header").html("My <span id='notVintage'>'Vintage'</span> Shopping Blog Style")
     }
-    function update_4() {
+    function update_3() {
         d3.select("#analysis_header").html("Towards a Capsule Closet")
         
     }
-    function update_5() {
+    function update_4() {
         console.log("fifth update");
     }
     
@@ -1054,8 +1068,7 @@ Promise.all(promises).then(function(wardrobedata) {
             update_1,
             update_2, 
             update_3,
-            update_4,
-            update_5
+            update_4
         ][i]();
 
         });

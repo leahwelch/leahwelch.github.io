@@ -210,6 +210,11 @@ h2 {
     font-weight: lighter
 }
 
+.miniTitle {
+    font-size: 12pt;
+    font-weight: bolder;
+}
+
 /* KEY & PROFILES */
 
 .note_container {

@@ -146,3 +146,105 @@
         .attr("transform", function(d){ return( "translate(" + (+widthA-marginA.right-300) + "," + (580) + ")rotate(-90)")})
         .attr("fill", "#3d332a")
         .text("Older")
+
+
+//ORIGINAL DEFAULT FUNCTION
+//     var analysisM = {top: 30, right: 20, bottom: 20, left: 0};
+    // var analysisW = 225 - analysisM.left - analysisM.right;
+    // var analysisH = 400 - analysisM.top - analysisM.bottom;
+    
+    
+    // var yScaleA = d3.scaleBand()
+    //     .domain(wardrobe.map(function(d) { return d.vintage_y; }))
+    //     .range([analysisH-analysisM.bottom-10, analysisM.top])
+    //     .padding(1);
+
+    // var analysis = d3.select("#vis")
+    //     .selectAll(".smallMults")
+    //     .data(nested)
+    //     .enter()
+    //     .append("svg")
+    //         .attr("width", analysisW +analysisM.left + analysisM.right)
+    //         .attr("height", analysisH + analysisM.top + analysisM.bottom)
+    //         .attr("class", "smallMults")
+    //     .append("g")
+    //         .attr("transform",
+    //             "translate(" + analysisM.left + "," + analysisM.top + ")");
+
+    // analysis.selectAll(".bar")
+    //     .data(function(d) {return d.values;})
+    //     .enter()
+    //     .append("rect")
+    //     .attr("class", "bar")
+    //     .attr("x", function(d) {
+    //         if(vintageItems.indexOf(d.Description)>=0) {
+    //             return smallMargin.left;
+    //         } else {
+    //             return 80;
+    //         }
+    //     })
+    //     .attr("width", 70)
+    //     .attr("y", function(d) { return yScaleA(d.vintage_y); })
+    //     .attr("height", 12)
+    //     .attr("fill", function(d) {
+    //         if(d.Pattern === "N") {
+    //             return d.Primary_Color;
+    //         } else {
+    //             return patterns[d.Pattern_ID];
+    //         } 
+    //         })
+    //     .attr("rx", 2)								
+    //     .attr("ry", 2).on("mouseover, mousemove", function(d) {
+
+    //         analysistooltip.classed("hidden", false)
+    //         analysistooltip.select(".brand")
+    //             .html(function() {
+    //                 if(d.Vintage === "N") {
+    //                     return d.Brand;
+    //                 } else {
+    //                     return "Vintage";
+    //                 } 
+    //             }) 
+    //         analysistooltip.select(".item")
+    //             .html(function() {
+    //                 return d.Description  + " " + d.Sub_Category;
+    //             })
+    //         var string;
+
+    //         if(d.Category === "Bottoms") {
+    //             string = `<img src=${bottompics[d.ypos-1]} class="bottoms"/>`
+    //         } else if(d.Category === "Dresses & Jumpsuits") {
+    //             string = `<img src=${dresspics[d.ypos-1]} class="dresses"/>`
+    //         } else if(d.Category === "Tops") {
+    //             string = `<img src=${toppics[d.ypos-1]} class="tops"/>`
+    //         } else if(d.Category === "Outwear") {
+    //             string = `<img src=${outerpics[d.ypos-1]} class="outerwear"/>`
+    //         } else if(d.Category === "Sets") {
+    //             string = `<img src=${setpics[d.ypos-1]} class="sets"/>`
+    //         }
+    //         analysistooltip.select(".annotation_image").html(string);
+    //       }).on("mouseout", function() {
+    //         analysistooltip.classed("hidden", true);
+    //       });
+
+    //     analysis.append("text")
+    //         .attr('class','smalllabel')
+    //         .attr('x', analysisM.left)
+    //         .attr('y', analysisH + 10)
+    //         .style("font-size", "12pt")
+    //         .style("font-weight", "bold")
+    //         .text( function(d) { return d.key; })
+
+    //     analysis.append("text")
+    //         .attr('class','smalllabel')
+    //         .attr('x', analysisM.left)
+    //         .attr('y', analysisH - 15)
+    //         .style("font-size", "10pt")
+    //         .text("Vintage")
+
+    //     analysis.append("text")
+    //         .attr('class','smalllabel')
+    //         .attr('x', 80)
+    //         .attr('y', analysisH - 15)
+    //         .style("font-size", "10pt")
+    //         .text("New")
