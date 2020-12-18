@@ -48,22 +48,49 @@ Promise.all(promises).then(function(wardrobedata) {
     });
     console.log(filtered_vintage);
 
+    var filtered_online = wardrobe.filter(function(d) {
+        return d.Online === "Y";
+    });
+    console.log(filtered_online);
+
     var nested_vintage = d3.nest()
         .key(function(d) {return d.Year_Entered})
         .rollup(function(d) { return d.length; })
         .entries(filtered_vintage)
 
+    var nested_online = d3.nest()
+        .key(function(d) {return d.Year_Entered})
+        .rollup(function(d) { return d.length; })
+        .entries(filtered_online)
+
+    nested_vintage.push({key: 2007, value: 0});
     nested_vintage.push({key: 2011, value: 0});
     nested_vintage.push({key: 2012, value: 0});
     nested_vintage.push({key: 2021, value: 0});
-    
+
+    nested_online.push({key: 2008, value: 0});
+    nested_online.push({key: 2009, value: 0});
+    nested_online.push({key: 2010, value: 0});
+    nested_online.push({key: 2011, value: 0});
+    nested_online.push({key: 2012, value: 0});
+    nested_online.push({key: 2014, value: 0});
+    nested_online.push({key: 2015, value: 0});
+    nested_online.push({key: 2018, value: 0});
+
     for(i = 0; i < nested_vintage.length; i++) {
         nested_vintage[i].key = +nested_vintage[i].key;
         nested_vintage[i].value = +nested_vintage[i].value;
     }
 
+    for(i = 0; i < nested_online.length; i++) {
+        nested_online[i].key = +nested_online[i].key;
+        nested_online[i].value = +nested_online[i].value;
+    }
+
     nested_vintage.sort(function(a,b) { return b.key-a.key;})
+    nested_online.sort(function(a,b) { return b.key-a.key;})
     console.log(nested_vintage);
+    console.log(nested_online);
 
     var vintageItems = [];
     for(i = 0; i < wardrobe.length; i++) {
