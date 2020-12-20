@@ -941,7 +941,7 @@ Promise.all(promises).then(function(wardrobedata) {
 
         var yScaleVintage = d3.scaleBand()
             .domain(filtered_vintage.map(function(d) { return d.vintage_ID; }))
-            .range([425,600])
+            .range([425,550])
             .padding(1);
 
         var vintageG = analysisSVG.append("g").attr("class", "vintageG")
@@ -954,7 +954,7 @@ Promise.all(promises).then(function(wardrobedata) {
             })
             .attr("y", function(d) { return yScaleVintage(d.vintage_ID); })
             .attr("width", 60)
-            .attr("height", 12)
+            .attr("height", 10)
             .attr("fill", function(d) { 
                 if(d.Pattern === "N") {
                     return d.Primary_Color;
@@ -1152,12 +1152,12 @@ Promise.all(promises).then(function(wardrobedata) {
 
         analysisSVG.append("line")
             .attr("x1", function() {
-                return vintageX(2019);
+                return vintageX(2018.5);
             })
             .attr("class", "onlineCallout")
             .attr("y1", visM.top)
             .attr("x2", function() {
-                return vintageX(2019);})
+                return vintageX(2018.5);})
             .attr("y2", visH - visM.bottom)
             .attr('stroke', "#0b7c85")
             .attr("stroke-dasharray", 4)
@@ -1165,7 +1165,7 @@ Promise.all(promises).then(function(wardrobedata) {
 
         analysisSVG.append("text")
             .attr("x", function() {
-                return vintageX(2019) - 5;
+                return vintageX(2018.5) - 5;
             })
             .attr("class", "onlineCallout")
             .attr("y", visM.top + 10)
