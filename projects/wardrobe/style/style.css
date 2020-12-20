@@ -210,9 +210,10 @@ h2 {
     font-weight: lighter
 }
 
-.miniTitle {
+#miniTitle {
     font-size: 12pt;
     font-weight: bolder;
+    color: #3d332a;
 }
 
 /* KEY & PROFILES */
