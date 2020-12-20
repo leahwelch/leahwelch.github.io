@@ -1051,7 +1051,8 @@ Promise.all(promises).then(function(wardrobedata) {
             .text("Every Vintage Item I Own")
 
         analysisSVG.selectAll(".onlinePath").remove();  
-        analysisSVG.selectAll(".onlineCallout").remove();  
+        analysisSVG.selectAll(".onlineCallout").remove(); 
+        analysisSVG.selectAll(".onlineG").remove();
     }
     
     function update_2() {
@@ -1172,6 +1173,48 @@ Promise.all(promises).then(function(wardrobedata) {
             .style("font-size", "10pt")
             .text("Discovered Shopping Blogs")
             .style("text-anchor", "end")
+
+        var yScaleOnline = d3.scaleBand()
+            .domain(filtered_online.map(function(d) { return d.online_ID; }))
+            .range([625,800])
+            .padding(1);
+
+        var onlineG = analysisSVG.append("g").attr("class", "onlineG")
+
+        onlineG.selectAll("rect").data(filtered_online)
+            .enter()
+            .append("rect")
+            .attr("x", function(d) {
+                return vintageX(d.Year_Entered)
+            })
+            .attr("y", function(d) { return yScaleOnline(d.online_ID); })
+            .attr("width", 60)
+            .attr("height", 12)
+            .attr("fill", function(d) { 
+                if(d.Pattern === "N") {
+                    return d.Primary_Color;
+                } else {
+                    return patterns[d.Pattern_ID];
+                } 
+            })
+            .attr("rx", 2)								
+            .attr("ry", 2);
+
+        onlineG.append("line")
+            .attr("x1", 0)
+            .attr("y1", 635)
+            .attr("x2", function() {
+                return vintageX(2021);})
+            .attr("y2", 635)
+            .attr('stroke', "#0b7c85")
+            .attr("stroke-width", 1);
+
+        onlineG.append("text")
+            .attr("x", 0)
+            .attr("y", 625)
+            .attr("class", "miniTitle")
+            .attr("fill", "#0b7c85")
+            .text("Every Online Purchase I (Still) Own")
 
         analysisSVG.selectAll(".vintageCallout").remove();
     }
