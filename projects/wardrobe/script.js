@@ -61,7 +61,7 @@ Promise.all(promises).then(function(wardrobedata) {
     nested_vintage.push({key: 2007, value: 0});
     nested_vintage.push({key: 2011, value: 0});
     nested_vintage.push({key: 2012, value: 0});
-    nested_vintage.push({key: 2021, value: 0});
+    //nested_vintage.push({key: 2021, value: 0});
 
     nested_online.push({key: 2008, value: 0});
     nested_online.push({key: 2009, value: 0});
@@ -561,7 +561,7 @@ Promise.all(promises).then(function(wardrobedata) {
         
     var visW = document.querySelector("#vis").clientWidth;
     var visH = document.querySelector("#vis").clientHeight;
-    var visM = {top: 50, left: 60, right: 400, bottom: 400}
+    var visM = {top: 50, left: 60, right: 300, bottom: 400}
 
     var analysisSVG = d3.select("#vis")
         .append("svg")
@@ -569,7 +569,7 @@ Promise.all(promises).then(function(wardrobedata) {
         .attr("height", visH)
 
     var vintageX = d3.scaleLinear()
-        .domain([year.min, year.max])
+        .domain([year.min, 2021])
         .range([visM.left, visW - visM.right])
 
     var vintageY = d3.scaleLinear()
@@ -1050,7 +1050,8 @@ Promise.all(promises).then(function(wardrobedata) {
             .attr("fill", "#3d332a")
             .text("Every Vintage Item I Own")
 
-        analysisSVG.selectAll(".onlinePath").remove();    
+        analysisSVG.selectAll(".onlinePath").remove();  
+        analysisSVG.selectAll(".onlineCallout").remove();  
     }
     
     function update_2() {
@@ -1089,6 +1090,88 @@ Promise.all(promises).then(function(wardrobedata) {
             .attr("stroke", "#0b7c85")
             .attr("fill", "none")
             .attr("stroke-width", 2)
+
+        analysisSVG.append("line")
+            .attr("x1", function() {
+                return vintageX(2020) + 5;
+            })
+            .attr("class", "onlineCallout")
+            .attr("y1", function() {
+                return vintageY(17);
+            })
+            .attr("x2", function() {
+                return vintageX(2021) + 20;})
+            .attr("y2", function() {
+                return vintageY(17);
+            })
+            .attr('stroke', "#0b7c85")
+            .attr("stroke-dasharray", 4)
+            .attr("stroke-width", 1);
+
+        analysisSVG.append("text")
+            .attr("x", function() {
+                return vintageX(2021) + 25;
+            })
+            .attr("class", "onlineCallout")
+            .attr("y", function() {
+                return vintageY(17) + 5;
+            })
+            .attr("fill", "#0b7c85")
+            .style("font-size", "10pt")
+            .text("Online Purchases")
+
+        analysisSVG.append("line")
+            .attr("x1", function() {
+                return vintageX(2020) + 5;
+            })
+            .attr("class", "onlineCallout")
+            .attr("y1", function() {
+                return vintageY(1);
+            })
+            .attr("x2", function() {
+                return vintageX(2021) + 20;})
+            .attr("y2", function() {
+                return vintageY(1);
+            })
+            .attr('stroke', "#a08875")
+            .attr("stroke-dasharray", 4)
+            .attr("stroke-width", 1);
+
+        analysisSVG.append("text")
+            .attr("x", function() {
+                return vintageX(2021) + 25;
+            })
+            .attr("class", "onlineCallout")
+            .attr("y", function() {
+                return vintageY(1) + 5;
+            })
+            .attr("fill", "#a08875")
+            .style("font-size", "10pt")
+            .text("Vintage Purchases")
+
+        analysisSVG.append("line")
+            .attr("x1", function() {
+                return vintageX(2019);
+            })
+            .attr("class", "onlineCallout")
+            .attr("y1", visM.top)
+            .attr("x2", function() {
+                return vintageX(2019);})
+            .attr("y2", visH - visM.bottom)
+            .attr('stroke', "#0b7c85")
+            .attr("stroke-dasharray", 4)
+            .attr("stroke-width", 1);
+
+        analysisSVG.append("text")
+            .attr("x", function() {
+                return vintageX(2019) - 5;
+            })
+            .attr("class", "onlineCallout")
+            .attr("y", visM.top + 10)
+            .attr("fill", "#0b7c85")
+            .style("font-size", "10pt")
+            .text("Discovered Shopping Blogs")
+            .style("text-anchor", "end")
 
         analysisSVG.selectAll(".vintageCallout").remove();
     }
