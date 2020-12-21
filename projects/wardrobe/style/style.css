@@ -10,8 +10,9 @@
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
-    /*background-color: #f9f9f4;*/
     background-color: #f9ede1;
+    overflow-y: scroll;
+    touch-action: auto;
 }
 
 /* INTRODUCTION */
@@ -496,24 +497,65 @@ pre{
     padding: 0px;
 }
 
-/* #analysis_tooltip {
+#analysis_tooltip {
     position: absolute;
-    text-align: center;
-    margin: 10px;
-    max-width: 200px;
+    /* margin: 20px; */
+    /* max-width: 200px; */
     height: auto;
-    width: auto;
-    padding: 5px;
+    width: 200px;
+    padding: 10px 20px;
     font-size: 11pt;
-    background-color:#3d332a;
+    background-color:#ddd3ca;
     color: #ffffff;
     border: 1px solid #f9ede1;
     border-radius: 3px;
     pointer-events: none;
+}
+
+/* #analysis_tooltip {
+    border-top: 1px solid #a08875;
 } */
 
-#analysis_tooltip {
-    border-top: 1px solid #a08875;
+#tooltip_image {
+    grid-area: image;
+    display: block;
+    margin: 1em auto;
+}
+
+.bottoms_sm {
+    
+    max-height:175px;
+    max-width:150px;
+    height:auto;
+    width:auto;
+}
+
+.dresses_sm {
+    max-height:175px;
+    max-width:150px;
+    height:auto;
+    width:auto;
+}
+
+.tops_sm {
+    max-height:150px;
+    max-width:150px;
+    height:auto;
+    width:auto;
+}
+
+.outerwear_sm {
+    max-height:175px;
+    max-width:150px;
+    height:auto;
+    width:auto;
+}
+
+.sets_sm {
+    max-height:200px;
+    max-width:150px;
+    height:auto;
+    width:auto;
 }
 
 #analysis_tooltip.hidden {
@@ -524,8 +566,8 @@ pre{
     font-size: 12pt;
 }
 
-/* #analysis_tooltip p {
+#analysis_tooltip p {
     margin: 0px;
     padding: 0px;
-} */
+}
 

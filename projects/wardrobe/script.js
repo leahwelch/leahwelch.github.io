@@ -568,6 +568,8 @@ Promise.all(promises).then(function(wardrobedata) {
         .attr("width", visW)
         .attr("height", visH)
 
+    var vintageG = analysisSVG.append("g").attr("class", "vintageG")
+
     var vintageX = d3.scaleLinear()
         .domain([year.min, 2021])
         .range([visM.left, visW - visM.right])
@@ -575,6 +577,11 @@ Promise.all(promises).then(function(wardrobedata) {
     var vintageY = d3.scaleLinear()
         .range([visH - visM.bottom, visM.top])
         .domain([0,10])
+
+    var yScaleVintage = d3.scaleBand()
+        .domain(filtered_vintage.map(function(d) { return d.vintage_ID; }))
+        .range([325,460])
+        .padding(1);
 
     var vintageYAxis = analysisSVG.append("g")
         .attr("class", "vintageYAxis")
@@ -902,6 +909,7 @@ Promise.all(promises).then(function(wardrobedata) {
     function update_1() {
         d3.select("#analysis_header").html("My 'Vintage' Style")
         d3.select("#miniTitle").html("Vintage Items By Purchase Year")
+        d3.select(".newvintageG").remove();
         
         //canvas_clear();
         
@@ -936,14 +944,6 @@ Promise.all(promises).then(function(wardrobedata) {
             .attr("stroke", "#a08875")
             .attr("stroke-width", 2)
 
-
-        var yScaleVintage = d3.scaleBand()
-            .domain(filtered_vintage.map(function(d) { return d.vintage_ID; }))
-            .range([325,460])
-            .padding(1);
-
-        var vintageG = analysisSVG.append("g").attr("class", "vintageG")
-
         vintageG.selectAll("rect").data(filtered_vintage)
             .enter()
             .append("rect")
@@ -961,7 +961,38 @@ Promise.all(promises).then(function(wardrobedata) {
                 } 
             })
             .attr("rx", 2)								
-            .attr("ry", 2);
+            .attr("ry", 2).on("mouseover", function(d) {
+                analysistooltip.classed("hidden", false)
+                    .style("left", (d3.mouse(this)[0]+20) + "px")		
+                    .style("top", (d3.mouse(this)[1]) + "px");
+                analysistooltip.select(".brand").html(function() {
+                    if(d.Vintage === "N") {
+                        return d.Brand;
+                    } else {
+                        return "Vintage ";
+                    } 
+                }) 
+                analysistooltip.select(".item").html(function() {
+                    return d.Description + " " + d.Sub_Category;
+                })
+                var string;
+
+                if(d.Category === "Bottoms") {
+                    string = `<img src=${bottompics[d.ypos-1]} class="bottoms_sm"/>`
+                } else if(d.Category === "Dresses & Jumpsuits") {
+                    string = `<img src=${dresspics[d.ypos-1]} class="dresses_sm"/>`
+                } else if(d.Category === "Tops") {
+                    string = `<img src=${toppics[d.ypos-1]} class="tops_sm"/>`
+                } else if(d.Category === "Outwear") {
+                    string = `<img src=${outerpics[d.ypos-1]} class="outerwear_sm"/>`
+                } else if(d.Category === "Sets") {
+                    string = `<img src=${setpics[d.ypos-1]} class="sets_sm"/>`
+                }
+                analysistooltip.select("#tooltip_image").html(string);
+
+              }).on("mouseout", function() {
+               analysistooltip.classed("hidden", true);
+            });
 
         vintageG.append("line")
             .attr("x1", 0)
@@ -1056,6 +1087,7 @@ Promise.all(promises).then(function(wardrobedata) {
     function update_2() {
         d3.select("#analysis_header").html("My <span id='notVintage'>'Vintage'</span> Shopping Blog Style")
         d3.select("#miniTitle").html("Vintage & Online Items By Purchase Year")
+        vintageG.selectAll("rect").remove();
         vintageY.domain([0,18])
 
         var newline = d3.line()
@@ -1178,6 +1210,57 @@ Promise.all(promises).then(function(wardrobedata) {
             .padding(1);
 
         var onlineG = analysisSVG.append("g").attr("class", "onlineG")
+        var newvintageG = analysisSVG.append("g").attr("class", "newvintageG")
+
+        newvintageG.selectAll("rect").data(filtered_vintage)
+            .enter()
+            .append("rect")
+            .attr("x", function(d) {
+                return vintageX(d.Year_Entered)
+            })
+            .attr("y", function(d) { return yScaleVintage(d.vintage_ID); })
+            .attr("width", 60)
+            .attr("height", 11)
+            .attr("fill", function(d) { 
+                if(d.Pattern === "N") {
+                    return d.Primary_Color;
+                } else {
+                    return patterns[d.Pattern_ID];
+                } 
+            })
+            .attr("rx", 2)								
+            .attr("ry", 2).on("mouseover", function(d) {
+                analysistooltip.classed("hidden", false)
+                    .style("left", (d3.mouse(this)[0]+20) + "px")		
+                    .style("top", (d3.mouse(this)[1] - 1500) + "px");
+                analysistooltip.select(".brand").html(function() {
+                    if(d.Vintage === "N") {
+                        return d.Brand;
+                    } else {
+                        return "Vintage ";
+                    } 
+                }) 
+                analysistooltip.select(".item").html(function() {
+                    return d.Description + " " + d.Sub_Category;
+                })
+                var string;
+
+                if(d.Category === "Bottoms") {
+                    string = `<img src=${bottompics[d.ypos-1]} class="bottoms_sm"/>`
+                } else if(d.Category === "Dresses & Jumpsuits") {
+                    string = `<img src=${dresspics[d.ypos-1]} class="dresses_sm"/>`
+                } else if(d.Category === "Tops") {
+                    string = `<img src=${toppics[d.ypos-1]} class="tops_sm"/>`
+                } else if(d.Category === "Outwear") {
+                    string = `<img src=${outerpics[d.ypos-1]} class="outerwear_sm"/>`
+                } else if(d.Category === "Sets") {
+                    string = `<img src=${setpics[d.ypos-1]} class="sets_sm"/>`
+                }
+                analysistooltip.select("#tooltip_image").html(string);
+
+              }).on("mouseout", function() {
+               analysistooltip.classed("hidden", true);
+            });
 
         onlineG.selectAll("rect").data(filtered_online)
             .enter()
@@ -1196,7 +1279,38 @@ Promise.all(promises).then(function(wardrobedata) {
                 } 
             })
             .attr("rx", 2)								
-            .attr("ry", 2);
+            .attr("ry", 2).on("mouseover", function(d) {
+                analysistooltip.classed("hidden", false)
+                    .style("left", (d3.mouse(this)[0]+20) + "px")		
+                    .style("top", (d3.mouse(this)[1] - 1500) + "px");
+                analysistooltip.select(".brand").html(function() {
+                    if(d.Vintage === "N") {
+                        return d.Brand;
+                    } else {
+                        return "Vintage ";
+                    } 
+                }) 
+                analysistooltip.select(".item").html(function() {
+                    return d.Description + " " + d.Sub_Category;
+                })
+                var string;
+
+                if(d.Category === "Bottoms") {
+                    string = `<img src=${bottompics[d.ypos-1]} class="bottoms_sm"/>`
+                } else if(d.Category === "Dresses & Jumpsuits") {
+                    string = `<img src=${dresspics[d.ypos-1]} class="dresses_sm"/>`
+                } else if(d.Category === "Tops") {
+                    string = `<img src=${toppics[d.ypos-1]} class="tops_sm"/>`
+                } else if(d.Category === "Outwear") {
+                    string = `<img src=${outerpics[d.ypos-1]} class="outerwear_sm"/>`
+                } else if(d.Category === "Sets") {
+                    string = `<img src=${setpics[d.ypos-1]} class="sets_sm"/>`
+                }
+                analysistooltip.select("#tooltip_image").html(string);
+
+              }).on("mouseout", function() {
+               analysistooltip.classed("hidden", true);
+            });
 
         onlineG.append("line")
             .attr("x1", 0)
