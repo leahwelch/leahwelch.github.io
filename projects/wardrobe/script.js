@@ -267,8 +267,10 @@ Promise.all(promises).then(function(wardrobedata) {
 
     //WEARLOG SMALL MULTIPLES
 
+    
+
     var smallMargin = {top: 0, right: 20, bottom: 20, left: 0};
-    var smallWidth = 225 - smallMargin.left - smallMargin.right;
+    var smallWidth = 240 - smallMargin.left - smallMargin.right;
     var smallHeight = 325 - smallMargin.top - smallMargin.bottom;
 
     var yScaleSmall = d3.scaleBand()
@@ -287,79 +289,85 @@ Promise.all(promises).then(function(wardrobedata) {
         .append("g")
             .attr("transform",
                 "translate(" + smallMargin.left + "," + smallMargin.top + ")");
+    
+    var updater = d3.select("#updater");
+    var resetter = d3.select("#reset");
 
-    smalls.selectAll(".bar")
-      .data(function(d) {return d.values;})
-      .enter()
-      .append("rect")
-      .attr("class", "bar")
-      .attr("x", function(d) {
-          if(capsule.indexOf(d.Description)>=0) {
-              return smallMargin.left;
-          } else {
-              return 80;
-          }
-      })
-      .attr("width", 70)
-      .attr("y", function(d) { return yScaleSmall(d.group_y); })
-      .attr("height", 12)
-      .attr("fill", function(d) {
-        if(d.Pattern === "N") {
-            return d.Primary_Color;
-        } else {
-            return patterns[d.Pattern_ID];
-        } 
-       })
-      .attr("rx", 2)								
-	  .attr("ry", 2).on("mouseover, mousemove", function(d) {
-        var timesWorn;
-        for(i = 0; i < nestedItems.length; i++) {
-            var itemA = d.Description;
-            if(itemA === nestedItems[i].key) {
-                timesWorn = nestedItems[i].value;
-            } 
-        }
-        tooltip.classed("hidden", false)
-            .style("left", (d3.event.pageX) + "px")		
-            .style("top", (d3.event.pageY - 28) + "px");
-        tooltip.select(".mainInfo")
-            .html(function() {
-                if(d.Vintage === "N") {
-                    return d.Brand + " " + d.Description + " " + d.Sub_Category;
+    function default_smalls() {
+        canvas_clear();
+        smalls.selectAll(".bar")
+            .data(function(d) {return d.values;})
+            .enter()
+            .append("rect")
+            .attr("class", "bar")
+            .attr("x", function(d) {
+                if(capsule.indexOf(d.Description)>=0) {
+                    return smallMargin.left;
                 } else {
-                    return "Vintage " + d.Description + " " + d.Sub_Category;
+                    return 80;
+                }
+            })
+            .attr("width", 70)
+            .attr("y", function(d) { return yScaleSmall(d.group_y); })
+            .attr("height", 12)
+            .attr("fill", function(d) {
+            if(d.Pattern === "N") {
+                return d.Primary_Color;
+            } else {
+                return patterns[d.Pattern_ID];
+            } 
+            })
+            .attr("rx", 2)								
+            .attr("ry", 2).on("mouseover, mousemove", function(d) {
+            var timesWorn;
+            for(i = 0; i < nestedItems.length; i++) {
+                var itemA = d.Description;
+                if(itemA === nestedItems[i].key) {
+                    timesWorn = nestedItems[i].value;
                 } 
-            }) 
-        if(capsule.indexOf(d.Description)>= 0) {
-            tooltip.select(".wornInfo").html("Times Worn: " + timesWorn)
-        } else {
-            tooltip.select(".wornInfo").html("Times Worn: 0")
-        }
-      }).on("mouseout", function() {
-        tooltip.classed("hidden", true);
-    });
-
-    smalls.append("text")
-      .attr('class','smalllabel')
-      .attr('x', smallMargin.left)
-      .attr('y', smallHeight + 10)
-      .style("font-size", "12pt")
-      .style("font-weight", "bold")
-      .text( function(d) { return d.key; })
-
-    smalls.append("text")
-      .attr('class','smalllabel')
-      .attr('x', smallMargin.left)
-      .attr('y', smallHeight - 15)
-      .style("font-size", "10pt")
-      .text("Worn")
-
-    smalls.append("text")
-      .attr('class','smalllabel')
-      .attr('x', 80)
-      .attr('y', smallHeight - 15)
-      .style("font-size", "10pt")
-      .text("Unworn")
+            }
+          tooltip.classed("hidden", false)
+              .style("left", (d3.event.pageX) + "px")		
+              .style("top", (d3.event.pageY - 28) + "px");
+          tooltip.select(".mainInfo")
+              .html(function() {
+                  if(d.Vintage === "N") {
+                      return d.Brand + " " + d.Description + " " + d.Sub_Category;
+                  } else {
+                      return "Vintage " + d.Description + " " + d.Sub_Category;
+                  } 
+              }) 
+          if(capsule.indexOf(d.Description)>= 0) {
+              tooltip.select(".wornInfo").html("Times Worn: " + timesWorn)
+          } else {
+              tooltip.select(".wornInfo").html("Times Worn: 0")
+          }
+        }).on("mouseout", function() {
+          tooltip.classed("hidden", true);
+      });
+  
+      smalls.append("text")
+        .attr('class','smalllabel')
+        .attr('x', smallMargin.left)
+        .attr('y', smallHeight + 10)
+        .style("font-size", "12pt")
+        .style("font-weight", "bold")
+        .text( function(d) { return d.key; })
+  
+      smalls.append("text")
+        .attr('class','smalllabel')
+        .attr('x', smallMargin.left)
+        .attr('y', smallHeight - 15)
+        .style("font-size", "10pt")
+        .text("Worn")
+  
+      smalls.append("text")
+        .attr('class','smalllabel')
+        .attr('x', 80)
+        .attr('y', smallHeight - 15)
+        .style("font-size", "10pt")
+        .text("Unworn")
+    }
     
       
      //INITIAL VISUALIZATION 
@@ -552,10 +560,17 @@ Promise.all(promises).then(function(wardrobedata) {
 
     function canvas_clear() {
         
-        d3.selectAll("#vis")
-            .selectAll("*")
+        smalls
+            .selectAll(".bar")
+            .remove();
+
+        smalls
+            .selectAll("text")
             .remove();
     }
+
+    
+
 
     //GLOBAL VARIABLES FOR ANALYSIS UPDATES
         
@@ -565,6 +580,7 @@ Promise.all(promises).then(function(wardrobedata) {
 
     var analysisSVG = d3.select("#vis")
         .append("svg")
+        .attr("class", "analysisSVG")
         .attr("width", visW)
         .attr("height", visH)
 
@@ -910,9 +926,7 @@ Promise.all(promises).then(function(wardrobedata) {
         d3.select("#analysis_header").html("My 'Vintage' Style")
         d3.select("#miniTitle").html("Vintage Items By Purchase Year")
         d3.select(".newvintageG").remove();
-        
-        //canvas_clear();
-        
+
         vintageY.domain([0,10])
         vintageline.y(function(d) { return vintageY(d.value)})
 
@@ -1088,6 +1102,9 @@ Promise.all(promises).then(function(wardrobedata) {
         d3.select("#analysis_header").html("My <span id='notVintage'>'Vintage'</span> Shopping Blog Style")
         d3.select("#miniTitle").html("Vintage & Online Items By Purchase Year")
         vintageG.selectAll("rect").remove();
+        analysisSVG.selectAll(".vintageCallout").remove();
+        // d3.selectAll(".uniqueChart").remove();
+
         vintageY.domain([0,18])
 
         var newline = d3.line()
@@ -1328,14 +1345,31 @@ Promise.all(promises).then(function(wardrobedata) {
             .attr("fill", "#0b7c85")
             .text("Every Online Purchase I (Still) Own")
 
-        analysisSVG.selectAll(".vintageCallout").remove();
-    }
-    function update_3() {
-        d3.select("#analysis_header").html("Towards a Capsule Closet")
         
     }
-    function update_4() {
-        console.log("fifth update");
+    
+    function update_sm() {
+
+        smalls.selectAll(".bar")
+            .attr("fill", function(d) {
+                if(d.discard === "N") {
+                    if(d.Pattern === "N") {
+                        return d.Primary_Color;
+                    } else {
+                        return patterns[d.Pattern_ID];
+                    } 
+                } else {
+                    return "#f9ede1";
+                }
+            })
+            .attr("stroke", function(d) {
+                if(d.discard === "N") {
+                    return "none"
+                } else {
+                    return "#ddd3ca";
+                }
+            })
+           
     }
     
     var gs = d3.graphScroll()
@@ -1371,12 +1405,14 @@ Promise.all(promises).then(function(wardrobedata) {
 
         [
             update_1,
-            update_2, 
-            update_3,
-            update_4
+            update_2
         ][i]();
 
         });
+
+    default_smalls();
+    updater.on("click", update_sm);
+    resetter.on("click", default_smalls);
                 
 
 
