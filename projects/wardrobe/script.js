@@ -561,7 +561,7 @@ Promise.all(promises).then(function(wardrobedata) {
         
     var visW = document.querySelector("#vis").clientWidth;
     var visH = document.querySelector("#vis").clientHeight;
-    var visM = {top: 50, left: 60, right: 300, bottom: 500}
+    var visM = {top: 30, left: 30, right: 300, bottom: 500}
 
     var analysisSVG = d3.select("#vis")
         .append("svg")
@@ -939,7 +939,7 @@ Promise.all(promises).then(function(wardrobedata) {
 
         var yScaleVintage = d3.scaleBand()
             .domain(filtered_vintage.map(function(d) { return d.vintage_ID; }))
-            .range([325,475])
+            .range([325,460])
             .padding(1);
 
         var vintageG = analysisSVG.append("g").attr("class", "vintageG")
