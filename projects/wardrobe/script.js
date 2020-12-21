@@ -561,7 +561,7 @@ Promise.all(promises).then(function(wardrobedata) {
         
     var visW = document.querySelector("#vis").clientWidth;
     var visH = document.querySelector("#vis").clientHeight;
-    var visM = {top: 50, left: 60, right: 300, bottom: 400}
+    var visM = {top: 50, left: 60, right: 300, bottom: 500}
 
     var analysisSVG = d3.select("#vis")
         .append("svg")
@@ -918,8 +918,6 @@ Promise.all(promises).then(function(wardrobedata) {
             .attr("transform", function(d){ return( "translate(0,10)")})
             .style("text-anchor", "start")
 
-        
-
         vintageYAxis.call(d3.axisLeft().scale(vintageY));
 
         vintageYAxis.selectAll(".tick text")
@@ -941,7 +939,7 @@ Promise.all(promises).then(function(wardrobedata) {
 
         var yScaleVintage = d3.scaleBand()
             .domain(filtered_vintage.map(function(d) { return d.vintage_ID; }))
-            .range([425,550])
+            .range([325,475])
             .padding(1);
 
         var vintageG = analysisSVG.append("g").attr("class", "vintageG")
@@ -954,7 +952,7 @@ Promise.all(promises).then(function(wardrobedata) {
             })
             .attr("y", function(d) { return yScaleVintage(d.vintage_ID); })
             .attr("width", 60)
-            .attr("height", 10)
+            .attr("height", 11)
             .attr("fill", function(d) { 
                 if(d.Pattern === "N") {
                     return d.Primary_Color;
@@ -967,10 +965,10 @@ Promise.all(promises).then(function(wardrobedata) {
 
         vintageG.append("line")
             .attr("x1", 0)
-            .attr("y1", 435)
+            .attr("y1", 335)
             .attr("x2", function() {
                 return vintageX(2021);})
-            .attr("y2", 435)
+            .attr("y2", 335)
             .attr('stroke', "#a08875")
             .attr("stroke-width", 1);
 
@@ -1045,7 +1043,7 @@ Promise.all(promises).then(function(wardrobedata) {
 
         analysisSVG.append("text")
             .attr("x", 0)
-            .attr("y", 425)
+            .attr("y", 325)
             .attr("class", "miniTitle")
             .attr("fill", "#3d332a")
             .text("Every Vintage Item I Own")
@@ -1176,7 +1174,7 @@ Promise.all(promises).then(function(wardrobedata) {
 
         var yScaleOnline = d3.scaleBand()
             .domain(filtered_online.map(function(d) { return d.online_ID; }))
-            .range([625,800])
+            .range([500,750])
             .padding(1);
 
         var onlineG = analysisSVG.append("g").attr("class", "onlineG")
@@ -1189,7 +1187,7 @@ Promise.all(promises).then(function(wardrobedata) {
             })
             .attr("y", function(d) { return yScaleOnline(d.online_ID); })
             .attr("width", 60)
-            .attr("height", 12)
+            .attr("height", 11)
             .attr("fill", function(d) { 
                 if(d.Pattern === "N") {
                     return d.Primary_Color;
@@ -1202,16 +1200,16 @@ Promise.all(promises).then(function(wardrobedata) {
 
         onlineG.append("line")
             .attr("x1", 0)
-            .attr("y1", 635)
+            .attr("y1", 510)
             .attr("x2", function() {
                 return vintageX(2021);})
-            .attr("y2", 635)
+            .attr("y2", 510)
             .attr('stroke', "#0b7c85")
             .attr("stroke-width", 1);
 
         onlineG.append("text")
             .attr("x", 0)
-            .attr("y", 625)
+            .attr("y", 500)
             .attr("class", "miniTitle")
             .attr("fill", "#0b7c85")
             .text("Every Online Purchase I (Still) Own")
