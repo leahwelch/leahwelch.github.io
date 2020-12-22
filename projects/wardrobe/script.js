@@ -565,10 +565,12 @@ Promise.all(promises).then(function(wardrobedata) {
         annotation.select(".annotation_image").html(string);
 
         var dateValues = [];
+        var allDates = [];
         var wornDate = [];
         //var formatDate = d3.timeFormat("%Y-%m-%d")
         for(i = 0; i < wearlog.length; i++) {
             var itemA = d.Description;
+            allDates.push({date: wearlog[i].date});
             if(itemA === wearlog[i].Description) {
                 wornDate.push(wearlog[i].date);
                 dateValues.push({date: wearlog[i].date, value: 1})
@@ -579,26 +581,59 @@ Promise.all(promises).then(function(wardrobedata) {
             .key(d => d.date.getUTCFullYear())
             .entries(dateValues)
             .reverse()
+
         const cellSize = 15
-        const yearHeight = cellSize * 7 + 25
-        const formatDay = d => ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"][d.getUTCDay()]
+        const yearHeight = cellSize * 7 + 35
+        const formatDay = d => ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"][d.getUTCDay()]
         const countDay = d => d.getUTCDay()
         const timeWeek = d3.utcSunday
-        //console.log(timeWeek);
 
         const thisyear = heatmap.selectAll('g')
-        .data(years)
-        .join('g')
-        .attr('transform', (d, i) => `translate(40, ${yearHeight * i + cellSize * 1.5})`)
+            .data(years)
+            .join('g')
+            .attr('transform', (d, i) => `translate(40, ${yearHeight * i + cellSize * 1.5 + 20} )`)
+        
+        
 
-        // thisyear.append('text')
-        // .attr('x', -5)
-        // .attr('y', -30)
-        // .attr("text-anchor", "end")
-        // .attr('font-size', 16)
-        // .attr('font-weight', 550)
-        // .attr('transform', 'rotate(270)')
-        // .text(d => d.key);
+        const monthLabels = thisyear.append('g').attr("class", "monthLabels")
+
+        monthLabels.append("text")
+            .attr('x', 0)
+            .attr('y', 0)
+            .attr("class", "monthlabel")
+            .attr("text-anchor", "start")
+            .attr('font-size', 16)
+            .attr('transform', 'translate(15,-5) rotate(-45)')
+            .attr("fill", "#3d332a")
+            .text("Oct");
+
+        // monthLabels.append("line")
+        //     .attr('x1', 10)
+        //     .attr('y1', -2)
+        //     .attr('x2', 220)
+        //     .attr('y2', -2)
+        //     .attr("stroke-width", 1)
+        //     .attr("stroke", "#3d332a");
+
+        monthLabels.append("text")
+            .attr('x', 0)
+            .attr('y', 0)
+            .attr("class", "monthlabel")
+            .attr("text-anchor", "start")
+            .attr('font-size', 16)
+            .attr('transform', 'translate(75,-5) rotate(-45)')
+            .attr("fill", "#3d332a")
+            .text("Nov");
+
+        monthLabels.append("text")
+            .attr('x', 0)
+            .attr('y', 0)
+            .attr("class", "monthlabel")
+            .attr("text-anchor", "start")
+            .attr('font-size', 16)
+            .attr('transform', 'translate(140,-5) rotate(-45)')
+            .attr("fill", "#3d332a")
+            .text("Dec");
 
         thisyear.append('g')
             .attr('text-anchor', 'end')
@@ -609,9 +644,9 @@ Promise.all(promises).then(function(wardrobedata) {
             .attr('x', -5)
             .attr('y', d => (countDay(d) + 0.5) * cellSize)
             .attr('dy', '0.31em')
-            .attr("fill", "#0b7c85")
+            .attr("fill", "#3d332a")
             .text(formatDay);
-        
+
 
         thisyear.append('g')
             .selectAll('rect')
@@ -623,7 +658,7 @@ Promise.all(promises).then(function(wardrobedata) {
             .attr("x", (d, i) => timeWeek.count(d3.utcYear(d.date), d.date) * cellSize + 10)
             .attr("y", d => countDay(d.date) * cellSize + 0.5)
             .attr('transform', "translate(-600, 0)")
-            .attr("fill", "#0b7c85")
+            .attr("fill", "#a08875")
 
 
         var latest = new Date(Math.max.apply(null,wornDate));
