@@ -28,6 +28,10 @@ Promise.all(promises).then(function(wardrobedata) {
     var wardrobe = wardrobedata[0];
     var wearlog = wardrobedata[1]; 
 
+    for(i = 0; i < wardrobe.length; i++) {
+        wardrobe[i].Year_Entered = +wardrobe[i].Year_Entered;
+    }
+
     var itemsWorn = [];
     for(var i = 0; i < wearlog.length; i++) {
         itemsWorn.push({item: wearlog[i].Description, group: wearlog[i].group})
@@ -40,6 +44,10 @@ Promise.all(promises).then(function(wardrobedata) {
         capsule.push(uniqueArray[i].item);
     }
 
+    var filtered_unworn = wardrobe.filter(function(d) {
+        return d.Worn === "N";
+    })
+
     var filtered_vintage = wardrobe.filter(function(d) {
         return d.Vintage === "Y";
     });
@@ -47,6 +55,12 @@ Promise.all(promises).then(function(wardrobedata) {
     var filtered_online = wardrobe.filter(function(d) {
         return d.Online === "Y";
     });
+
+    var filtered_discards = wardrobe.filter(function(d) {
+        return d.discard === "Y";
+    })
+
+    console.log(filtered_discards);
 
     var nested_vintage = d3.nest()
         .key(function(d) {return d.Year_Entered})
@@ -104,8 +118,10 @@ Promise.all(promises).then(function(wardrobedata) {
 
 
     d3.select(".totalWorn").html(capsule.length);
+    d3.select(".initialDiscards").html(filtered_discards.length);
+    d3.select(".totalUnworn").html(filtered_unworn.length);
     d3.select(".totalItems").html(wardrobe.length);
-    d3.select(".efficiencyP").html(((capsule.length/wardrobe.length) * 100).toFixed(0) + "%");
+    // d3.select(".efficiencyP").html(((capsule.length/wardrobe.length) * 100).toFixed(0) + "%");
     d3.select(".totalVintage").html(((maxVintage/wardrobe.length)*100).toFixed(0) + "%")
 
     var nested = d3.nest()
@@ -263,6 +279,12 @@ Promise.all(promises).then(function(wardrobedata) {
 
     var annotation = d3.select(".annotation")
     var date_labels = d3.select(".date_labels")
+    
+    var cal = d3.select("#cal").append("svg")
+        .attr("width", 200)
+        .attr("height", 200)
+
+    
 
 
     //WEARLOG SMALL MULTIPLES
@@ -274,7 +296,6 @@ Promise.all(promises).then(function(wardrobedata) {
     var smallHeight = 325 - smallMargin.top - smallMargin.bottom;
 
     var yScaleSmall = d3.scaleBand()
-        .domain(wardrobe.map(function(d) { return d.group_y; }))
         .range([smallHeight-smallMargin.bottom-10, smallMargin.top])
         .padding(1);
 
@@ -295,6 +316,10 @@ Promise.all(promises).then(function(wardrobedata) {
 
     function default_smalls() {
         canvas_clear();
+        d3.select(".efficiencyP").html(((capsule.length/wardrobe.length) * 100).toFixed(0) + "%");
+
+        yScaleSmall.domain(wardrobe.map(function(d) { return d.group_y; }));
+
         smalls.selectAll(".bar")
             .data(function(d) {return d.values;})
             .enter()
@@ -494,6 +519,8 @@ Promise.all(promises).then(function(wardrobedata) {
         .attr("y", 86)
         .text("On (multi-color)")
 
+   
+
     svg.selectAll("rect").on("mouseover, mousemove", function(d) {
         if(d.Vintage === "N"){
             annotation.select(".brand").html(d.Brand);
@@ -536,13 +563,64 @@ Promise.all(promises).then(function(wardrobedata) {
             .style("background-color", d.Primary_Color)
             .html(d.Primary_Color)
         annotation.select(".annotation_image").html(string);
-        
+
+        var dateValues = [];
         var wornDate = [];
+        var formatDate = d3.timeFormat("%Y-%m-%d")
         for(i = 0; i < wearlog.length; i++) {
             var itemA = d.Description;
             if(itemA === wearlog[i].Description) {
                 wornDate.push(wearlog[i].date);
+                dateValues.push({date: formatDate(wearlog[i].date), value: 1})
             }
+
+ //HEATMAP CALENDAR
+        const years = d3.nest()
+            .key(d => d.date.getUTCFullYear())
+            .entries(dateValues)
+            .reverse()
+        const cellSize = 15
+        const yearHeight = cellSize * 7 + 25
+        const formatDay = d => ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"][d.getUTCDay()]
+        const countDay = d => d.getUTCDay()
+        const timeWeek = d3.utcSunday
+
+        const thisyear = cal.selectAll('g')
+        .data(years)
+        .enter()
+        .append('g')
+        .attr('transform', (d, i) => `translate(40, ${yearHeight * i + cellSize * 1.5})`)
+
+        thisyear.append('text')
+        .attr('x', -5)
+        .attr('y', -30)
+        .attr("text-anchor", "end")
+        .attr('font-size', 16)
+        .attr('font-weight', 550)
+        .attr('transform', 'rotate(270)')
+        .text(d => d.key);
+
+        thisyear.append('g')
+        .attr('text-anchor', 'end')
+        .selectAll('text')
+        .data(d3.range(7).map(i => new Date(1999, 0, i)))
+        .join('text')
+        .attr('x', -5)
+        .attr('y', d => (countDay(d) + 0.5) * cellSize)
+        .attr('dy', '0.31em')
+        .text(formatDay);
+        
+
+        thisyear.append('g')
+            .selectAll('rect')
+            .data(d => d.value)
+            .join('rect')
+            .attr("width", cellSize - 1.5)
+            .attr("height", cellSize - 1.5)
+            .attr("x", (d, i) => timeWeek.count(d3.utcYear(d.date), d.date) * cellSize + 10)
+            .attr("y", d => countDay(d.date) * cellSize + 0.5)
+
+
         var latest = new Date(Math.max.apply(null,wornDate));
         var formatTime = d3.timeFormat("%B %e, %Y")
         latest = formatTime(latest);
@@ -1349,26 +1427,91 @@ Promise.all(promises).then(function(wardrobedata) {
     }
     
     function update_sm() {
+        //yScaleSmall.domain(wardrobe.map(function(d) { return d.new_group_y; }));
 
-        smalls.selectAll(".bar")
+        var newbars = smalls.selectAll(".bar").data(function(d) {return d.values;})
+
+        newbars
+            .enter()
+            .append("rect")
+            .attr("class", "bar")
+            .merge(newbars)
+            .attr("x", function(d) {
+                if(capsule.indexOf(d.Description)>=0) {
+                    return smallMargin.left;
+                } else {
+                    return 80;
+                }
+            })
+            .attr("width", 70)
+            .attr("y", function(d) { return yScaleSmall(d.new_group_y); })
+            .attr("height", 12)
+            .attr("opacity", function(d) {
+                if(d.discard === "Y") {
+                    return 0;
+                } else {
+                    return 1;
+                }
+            })
             .attr("fill", function(d) {
-                if(d.discard === "N") {
-                    if(d.Pattern === "N") {
-                        return d.Primary_Color;
-                    } else {
-                        return patterns[d.Pattern_ID];
-                    } 
-                } else {
-                    return "#f9ede1";
-                }
+            if(d.Pattern === "N") {
+                return d.Primary_Color;
+            } else {
+                return patterns[d.Pattern_ID];
+            } 
             })
-            .attr("stroke", function(d) {
-                if(d.discard === "N") {
-                    return "none"
-                } else {
-                    return "#ddd3ca";
-                }
-            })
+            .attr("rx", 2)								
+            .attr("ry", 2).on("mouseover, mousemove", function(d) {
+            var timesWorn;
+            for(i = 0; i < nestedItems.length; i++) {
+                var itemA = d.Description;
+                if(itemA === nestedItems[i].key) {
+                    timesWorn = nestedItems[i].value;
+                } 
+            }
+          tooltip.classed("hidden", false)
+              .style("left", (d3.event.pageX) + "px")		
+              .style("top", (d3.event.pageY - 28) + "px");
+          tooltip.select(".mainInfo")
+              .html(function() {
+                  if(d.Vintage === "N") {
+                      return d.Brand + " " + d.Description + " " + d.Sub_Category;
+                  } else {
+                      return "Vintage " + d.Description + " " + d.Sub_Category;
+                  } 
+              }) 
+          if(capsule.indexOf(d.Description)>= 0) {
+              tooltip.select(".wornInfo").html("Times Worn: " + timesWorn)
+          } else {
+              tooltip.select(".wornInfo").html("Times Worn: 0")
+          }
+        }).on("mouseout", function() {
+          tooltip.classed("hidden", true);
+      });
+
+        // smalls.selectAll(".bar")
+        //     .attr("fill", function(d) {
+        //         if(d.discard === "N") {
+        //             if(d.Pattern === "N") {
+        //                 return d.Primary_Color;
+        //             } else {
+        //                 return patterns[d.Pattern_ID];
+        //             } 
+        //         } else {
+        //             return "#f9ede1";
+        //         }
+        //     })
+        //     .attr("stroke", function(d) {
+        //         if(d.discard === "N") {
+        //             return "none"
+        //         } else {
+        //             return "#ddd3ca";
+        //         }
+        //     })
+
+        d3.select(".efficiencyP").html(((capsule.length/(wardrobe.length - filtered_discards.length)) * 100).toFixed(0) + "%");
+
+        
            
     }
     
@@ -1413,8 +1556,5 @@ Promise.all(promises).then(function(wardrobedata) {
     default_smalls();
     updater.on("click", update_sm);
     resetter.on("click", default_smalls);
-                
-
-
     
 });

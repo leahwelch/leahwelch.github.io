@@ -91,6 +91,7 @@
                             <p class="date_worn"></p>
                             <p class="worn_with"></p>
                         </div>
+                        <div id="cal"></div>
                     </div>
                     <div class="date_labels">
                         <p class="start_date"></p> 
@@ -152,27 +153,30 @@
         <div class="conclusion">
             <div class="summary">
                 <section class="summary_part">
-                    <p class="annotation_header">Closet (in)Efficiency: <span class="efficiencyP"></span></p>
+                    
                     <p>Since October 5, 2020, I have kept a log of everything I have worn: <span class="totalWorn"></span> out of my total <span class="totalItems"></span> items.</p>
                     <p>Even taking into account seasonal items, I own at least twice as much clothing as I would reasonably wear in the next year.</p>
                     <br>
                 </section>
                 <section class="summary_part">
                     <br>
-                    <p>Looking at the everything I didn’t wear, I easily identified 13 of the 68 unworn items that I could not see myself wearing again.</p>
+                    <p>Looking at the everything I didn’t wear, I easily identified <span class="initialDiscards"></span> of the <span class="totalUnworn"></span> unworn items that I could not see myself wearing again.</p>
                     <!-- <br> -->
-                    <button id="updater">Initiate Closet Clean-Out</button>
+                    <button id="updater">Update Closet</button>
+                    <button id="reset">Reset Closet</button>
                     <br>
                     <br>
+                
+                <p class="annotation_header">Closet (in)Efficiency: <span class="efficiencyP"></span></p>
                 </section>
-                    <p>Explore possible paths to a capsule closet by removing anything:</p>
-                    <!-- <div class="button_group"> -->
+                    <!-- <p>Explore possible paths to a capsule closet by removing anything:</p>
+                    <div class="button_group"> -->
                         <!-- <button class="tablinks" id="kuwait_button" onclick="showVis(event)">dry clean only</button>
                         <button class="tablinks" id="mexico_button" onclick="showVis(event)">more than 5 years old</button> -->
                         <!-- <input type="radio" id="dryClean" name="capsule" value="dryClean">
                         <label for="dryClean">dry clean only</label><br>
                         <input type="radio" id="old" name="capsule" value="old">
-                        <label for="dryClean">more than 5 years old</label><br> -->
+                        <label for="dryClean">more than 5 years old</label><br> 
                         <label class="capsule_cont">dry clean only
                             <input type="radio" name="radio" id="dryClean">
                             <span class="checkmark"></span>
@@ -180,8 +184,8 @@
                         <label class="capsule_cont">more than 5 years old
                             <input type="radio" name="radio" id="old">
                             <span class="checkmark"></span>
-                        </label>
-                        <button id="reset">Reset Closet</button>
+                        </label> -->
+                        
                     <!-- </div> -->
             </div>
             <div id="smalls">

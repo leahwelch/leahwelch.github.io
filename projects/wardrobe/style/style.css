@@ -408,7 +408,7 @@ h2 {
 
 button {
     
-    margin: 5px 0px;
+    margin: 5px 10px 5px 0px;
     background-color: #f9ede1;
     border: 1px solid #0b7c85;
     font-family: 'Roboto', sans-serif;
@@ -417,6 +417,7 @@ button {
     text-align: center;
     padding: 5px 10px;
     border-radius: 2px; 
+    display: inline-block;
 
   }
 
@@ -426,8 +427,8 @@ button:hover {
 }
 
 button:focus {
-    /* background-color: #0b7c85;
-    color: #f9ede1; */
+    background-color: #0b7c85;
+    color: #f9ede1;
     outline:0;
 }
 
@@ -565,7 +566,7 @@ pre{
 
 /* SMALL MULTIPLES */
 
-.totalWorn, .totalItems, .efficiencyP, .wornInfo, .totalVintage {
+.totalWorn, .totalUnworn, .initialDiscards, .totalItems, .efficiencyP, .wornInfo, .totalVintage {
     font-weight: bold;
 }
 
