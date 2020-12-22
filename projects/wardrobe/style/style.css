@@ -255,14 +255,25 @@ h2 {
     border-bottom: 1px solid #a08875;
     display: grid;
     grid-template-columns: 33% 66%; 
-    grid-template-rows: 1fr;
+    grid-template-rows: 60% 40%;
     grid-template-areas:
-        "image info";
+        "image info"
+        "image cal";
+}
+
+#cal {
+    grid-area: cal;
+    margin-left: 40px;
+}
+
+.heatmapText {
+    font-size: 10pt;
 }
 
 .annotation_text {
     grid-area: info;
-    margin: 0px 200px 50px 50px;
+    margin: 0px 200px 10px 50px;
+    /* height: 30vh; */
     color: #3d332a;
 }
 
