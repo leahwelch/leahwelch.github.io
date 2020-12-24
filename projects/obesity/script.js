@@ -376,7 +376,7 @@ d3.queue()
             grotesque.selectAll("#america_mouse, #food_mouse, #children_mouse, #problems_mouse, #disease_mouse, #obesity_mouse, #education_mouse, #science_mouse, #lifestyle_mouse, #medicine_mouse")
                 .style("fill", "none").style("stroke", "none")
                 .style("pointer-events", "all")
-                .on("click", function(d) {
+                .on("mouseenter", function(d) {
                     grotesque.selectAll("." + this.getAttribute('class')).style("stroke-width", 2)
 
                     supp_clear();
@@ -452,12 +452,11 @@ d3.queue()
                             .style("text-anchor", "end")
                             .attr("fill", function() { return colorScale(criteria); });
                     }
-                })
-                // .on("mouseout", function() {
-                //     grotesque.selectAll("." + this.getAttribute('class')).style("stroke-width", .75)
-                //     supp_clear();
-                //     resetDefault();    
-                // });
+                }).on("mouseout", function() {
+                    grotesque.selectAll("." + this.getAttribute('class')).style("stroke-width", .75)
+                    supp_clear();
+                    resetDefault();    
+                });
     
             //     //Styling lines
             grotesque.select("#food_solid").style("stroke", "#61544a");
