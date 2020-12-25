@@ -48,6 +48,12 @@ Promise.all(promises).then(function(wardrobedata) {
         return d.Worn === "N";
     })
 
+    var filtered_patterned = wardrobe.filter(function(d) {
+        return d.Pattern === "Y";
+    })
+
+    console.log(filtered_patterned.length)
+
     var filtered_vintage = wardrobe.filter(function(d) {
         return d.Vintage === "Y";
     });
