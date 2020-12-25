@@ -714,7 +714,7 @@ Promise.all(promises).then(function(wardrobedata) {
 
     var yScaleVintage = d3.scaleBand()
         .domain(filtered_vintage.map(function(d) { return d.vintage_ID; }))
-        .range([325,460])
+        .range([visH - visM.bottom + 75, visH - visM.bottom + 200])
         .padding(1);
 
     var vintageYAxis = analysisSVG.append("g")
@@ -1128,10 +1128,10 @@ Promise.all(promises).then(function(wardrobedata) {
 
         vintageG.append("line")
             .attr("x1", 0)
-            .attr("y1", 335)
+            .attr("y1", visH - visM.bottom + 80)
             .attr("x2", function() {
                 return vintageX(2021);})
-            .attr("y2", 335)
+            .attr("y2", visH - visM.bottom + 80)
             .attr('stroke', "#a08875")
             .attr("stroke-width", 1);
 
@@ -1206,7 +1206,7 @@ Promise.all(promises).then(function(wardrobedata) {
 
         analysisSVG.append("text")
             .attr("x", 0)
-            .attr("y", 325)
+            .attr("y", visH - visM.bottom + 70)
             .attr("class", "miniTitle")
             .attr("fill", "#3d332a")
             .text("Every Vintage Item I Own")
@@ -1341,7 +1341,7 @@ Promise.all(promises).then(function(wardrobedata) {
 
         var yScaleOnline = d3.scaleBand()
             .domain(filtered_online.map(function(d) { return d.online_ID; }))
-            .range([500,750])
+            .range([visH - visM.bottom + 250,visH - visM.bottom + 500])
             .padding(1);
 
         var onlineG = analysisSVG.append("g").attr("class", "onlineG")
@@ -1449,16 +1449,16 @@ Promise.all(promises).then(function(wardrobedata) {
 
         onlineG.append("line")
             .attr("x1", 0)
-            .attr("y1", 510)
+            .attr("y1", visH - visM.bottom + 255)
             .attr("x2", function() {
                 return vintageX(2021);})
-            .attr("y2", 510)
+            .attr("y2", visH - visM.bottom + 255)
             .attr('stroke', "#0b7c85")
             .attr("stroke-width", 1);
 
         onlineG.append("text")
             .attr("x", 0)
-            .attr("y", 500)
+            .attr("y", visH - visM.bottom + 245)
             .attr("class", "miniTitle")
             .attr("fill", "#0b7c85")
             .text("Every Online Purchase I (Still) Own")
