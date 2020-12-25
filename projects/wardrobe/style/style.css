@@ -536,11 +536,11 @@ button:focus {
 
 #sections > div{
     padding: 5% 10%;
-    margin-bottom: 90vh;
+    margin-bottom: 50vh;
 }
 
 #sections > div:last-child{
-    margin-bottom: 50px;
+    margin-bottom: 80px;
 }
 
 #sections > div.graph-scroll-active{
