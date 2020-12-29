@@ -588,11 +588,11 @@ pre{
     max-width: 200px;
     height: auto;
     width: auto;
-    padding: 5px;
+    padding: 10px;
     font-size: 11pt;
     background-color:#f9ede1;
     color: #3d332a;
-    /* border: 1px solid #f9ede1; */
+    border: 2px solid #3d332a;
     border-radius: 3px;
     pointer-events: none;
 }
