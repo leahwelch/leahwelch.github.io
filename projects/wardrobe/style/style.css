@@ -22,11 +22,25 @@ body {
     height: 100vh;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
     .intro {
         width: 1170px;
         margin-left: 100px;
         padding-top: 100px;
+    }
+    #vis {
+        width: 1000px;
+    }
+    .summary {
+        margin: 100px 50px 20px 50px;
+    }
+    #sections{
+        margin: 200px 50px 0px 10px;
+        font-size: 13pt;
+        padding-left: 10px;
+    }
+    #sections > div{
+        padding: 10px;
     }
     }
     @media (min-width: 992px){
@@ -35,12 +49,40 @@ body {
         margin-left: 100px;
         padding-top: 100px;
     }
+    #vis {
+        width: 850px;
+    }
+    .summary {
+        margin: 150px 50px 20px 50px;
+    }
+    #sections{
+        margin: 200px 50px 0px 10px;
+        font-size: 13pt;
+        padding-left: 5px;
+    }
+    #sections > div{
+        padding: 10px;
+    }
     }
     @media (min-width: 768px) {
     .intro {
         width: 750px;
         margin-left: 100px;
         padding-top: 100px;
+    }
+    #vis {
+        width: 600px;
+    }
+    .summary {
+        margin: 200px 50px 20px 50px;
+    }
+    #sections{
+        margin: 200px 50px 0px 10px;
+        font-size: 13pt;
+        padding-left: 5px;
+    }
+    #sections > div{
+        padding: 10px;
     }
     }
 
@@ -527,9 +569,9 @@ button:focus {
 
   
 #sections{
-    margin: 200px 50px 0px 50px;
+    margin: 200px 1vw 0px 1vw;
     padding-bottom: 25vh;
-    padding-left: 50px;
+    padding-left: 1vw;
     grid-area: sections;
 }
 
@@ -553,6 +595,7 @@ button:focus {
 
 #vis {
     height: 80vh;
+    width: 100%;
 }
 
 

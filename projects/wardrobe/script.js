@@ -303,7 +303,7 @@ Promise.all(promises).then(function(wardrobedata) {
     
 
     var smallMargin = {top: 0, right: 20, bottom: 20, left: 0};
-    var smallWidth = 240 - smallMargin.left - smallMargin.right;
+    var smallWidth = 200 - smallMargin.left - smallMargin.right;
     var smallHeight = 325 - smallMargin.top - smallMargin.bottom;
 
     var yScaleSmall = d3.scaleBand()
@@ -705,7 +705,7 @@ Promise.all(promises).then(function(wardrobedata) {
         
     var visW = document.querySelector("#vis").clientWidth;
     var visH = document.querySelector("#vis").clientHeight;
-    var visM = {top: 30, left: 30, right: 200, bottom: 500}
+    var visM = {top: 30, left: 30, right: 50, bottom: 500}
 
     var analysisSVG = d3.select("#vis")
         .append("svg")
@@ -1281,7 +1281,7 @@ Promise.all(promises).then(function(wardrobedata) {
                 return vintageY(17);
             })
             .attr("x2", function() {
-                return vintageX(2021);})
+                return vintageX(2021) + 30;})
             .attr("y2", function() {
                 return vintageY(17);
             })
@@ -1291,11 +1291,11 @@ Promise.all(promises).then(function(wardrobedata) {
 
         analysisSVG.append("text")
             .attr("x", function() {
-                return vintageX(2021) + 5;
+                return vintageX(2020) + 5;
             })
             .attr("class", "onlineCallout")
             .attr("y", function() {
-                return vintageY(17) + 5;
+                return vintageY(17) - 10;
             })
             .attr("fill", "#0b7c85")
             .style("font-size", "10pt")
@@ -1310,7 +1310,7 @@ Promise.all(promises).then(function(wardrobedata) {
                 return vintageY(1);
             })
             .attr("x2", function() {
-                return vintageX(2021);})
+                return vintageX(2021) + 30;})
             .attr("y2", function() {
                 return vintageY(1);
             })
@@ -1320,11 +1320,11 @@ Promise.all(promises).then(function(wardrobedata) {
 
         analysisSVG.append("text")
             .attr("x", function() {
-                return vintageX(2021) + 5;
+                return vintageX(2020) + 5;
             })
             .attr("class", "onlineCallout")
             .attr("y", function() {
-                return vintageY(1) + 5;
+                return vintageY(1) - 10;
             })
             .attr("fill", "#a08875")
             .style("font-size", "10pt")
