@@ -614,9 +614,10 @@ pre{
     width: 200px;
     padding: 10px 20px;
     font-size: 11pt;
-    background-color:#ddd3ca;
+    background-color:#f9ede1;
     color: #ffffff;
-    border: 1px solid #f9ede1;
+    
+    /* border: 1px solid #f9ede1; */
     border-radius: 3px;
     pointer-events: none;
 }

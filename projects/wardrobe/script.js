@@ -200,6 +200,11 @@ Promise.all(promises).then(function(wardrobedata) {
         bottompics.push(`./assets/pics/bottoms/${i + 1}.png`)
     }
 
+    var bottomsmpics = [];
+    for(i = 0; i < bottoms.length; i++) {
+        bottomsmpics.push(`./assets/pics/bottoms_sm/${i + 1}.png`)
+    }
+
     var dresses = wardrobe.filter(function(d) {
         return d.Category === "Dresses & Jumpsuits";
     });
@@ -700,7 +705,7 @@ Promise.all(promises).then(function(wardrobedata) {
         
     var visW = document.querySelector("#vis").clientWidth;
     var visH = document.querySelector("#vis").clientHeight;
-    var visM = {top: 30, left: 30, right: 300, bottom: 500}
+    var visM = {top: 30, left: 30, right: 200, bottom: 500}
 
     var analysisSVG = d3.select("#vis")
         .append("svg")
@@ -1102,7 +1107,11 @@ Promise.all(promises).then(function(wardrobedata) {
             .attr("ry", 2).on("mouseover", function(d) {
                 analysistooltip.classed("hidden", false)
                     .style("left", (d3.mouse(this)[0]+20) + "px")		
-                    .style("top", (d3.mouse(this)[1]) + "px");
+                    .style("top", (d3.mouse(this)[1]) + "px")
+                    .style("border", "2px solid")
+                    .style("border-color", function() {
+                        return d.Primary_Color;
+                    })
                 analysistooltip.select(".brand").html(function() {
                     if(d.Vintage === "N") {
                         return d.Brand;
@@ -1116,7 +1125,7 @@ Promise.all(promises).then(function(wardrobedata) {
                 var string;
 
                 if(d.Category === "Bottoms") {
-                    string = `<img src=${bottompics[d.ypos-1]} class="bottoms_sm"/>`
+                    string = `<img src=${bottomsmpics[d.ypos-1]} class="bottoms_sm"/>`
                 } else if(d.Category === "Dresses & Jumpsuits") {
                     string = `<img src=${dresspics[d.ypos-1]} class="dresses_sm"/>`
                 } else if(d.Category === "Tops") {
@@ -1272,7 +1281,7 @@ Promise.all(promises).then(function(wardrobedata) {
                 return vintageY(17);
             })
             .attr("x2", function() {
-                return vintageX(2021) + 20;})
+                return vintageX(2021);})
             .attr("y2", function() {
                 return vintageY(17);
             })
@@ -1282,7 +1291,7 @@ Promise.all(promises).then(function(wardrobedata) {
 
         analysisSVG.append("text")
             .attr("x", function() {
-                return vintageX(2021) + 25;
+                return vintageX(2021) + 5;
             })
             .attr("class", "onlineCallout")
             .attr("y", function() {
@@ -1301,7 +1310,7 @@ Promise.all(promises).then(function(wardrobedata) {
                 return vintageY(1);
             })
             .attr("x2", function() {
-                return vintageX(2021) + 20;})
+                return vintageX(2021);})
             .attr("y2", function() {
                 return vintageY(1);
             })
@@ -1311,7 +1320,7 @@ Promise.all(promises).then(function(wardrobedata) {
 
         analysisSVG.append("text")
             .attr("x", function() {
-                return vintageX(2021) + 25;
+                return vintageX(2021) + 5;
             })
             .attr("class", "onlineCallout")
             .attr("y", function() {
