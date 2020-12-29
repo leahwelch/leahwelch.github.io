@@ -15,6 +15,11 @@ body {
     touch-action: auto;
 }
 
+p {
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+}
+
 /* INTRODUCTION */
 
 .intro{
@@ -314,7 +319,7 @@ h2 {
 
 .annotation_text {
     grid-area: info;
-    margin: 0px 200px 10px 50px;
+    margin: 0px 100px 10px 50px;
     /* height: 30vh; */
     color: #3d332a;
 }

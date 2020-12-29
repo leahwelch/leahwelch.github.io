@@ -285,7 +285,7 @@ Promise.all(promises).then(function(wardrobedata) {
     
     xAxis.selectAll(".tick text")
         .attr("class", "topLabels")
-        .attr("transform", function(d){ return( "translate(0,-20)rotate(30)")})
+        .attr("transform", function(d){ return( "translate(0,-20)rotate(15)")})
         .style("text-anchor", "start");
 
     var annotation = d3.select(".annotation")
