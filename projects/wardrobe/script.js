@@ -1382,7 +1382,11 @@ Promise.all(promises).then(function(wardrobedata) {
             .attr("ry", 2).on("mouseover", function(d) {
                 analysistooltip.classed("hidden", false)
                     .style("left", (d3.mouse(this)[0]+20) + "px")		
-                    .style("top", (d3.mouse(this)[1] - 1500) + "px");
+                    .style("top", (d3.mouse(this)[1] - 1000) + "px")
+                    .style("border", "2px solid")
+                    .style("border-color", function() {
+                        return d.Primary_Color;
+                    })
                 analysistooltip.select(".brand").html(function() {
                     if(d.Vintage === "N") {
                         return d.Brand;
@@ -1396,7 +1400,7 @@ Promise.all(promises).then(function(wardrobedata) {
                 var string;
 
                 if(d.Category === "Bottoms") {
-                    string = `<img src=${bottompics[d.ypos-1]} class="bottoms_sm"/>`
+                    string = `<img src=${bottomsmpics[d.ypos-1]} class="bottoms_sm"/>`
                 } else if(d.Category === "Dresses & Jumpsuits") {
                     string = `<img src=${dresspics[d.ypos-1]} class="dresses_sm"/>`
                 } else if(d.Category === "Tops") {
@@ -1432,7 +1436,11 @@ Promise.all(promises).then(function(wardrobedata) {
             .attr("ry", 2).on("mouseover", function(d) {
                 analysistooltip.classed("hidden", false)
                     .style("left", (d3.mouse(this)[0]+20) + "px")		
-                    .style("top", (d3.mouse(this)[1] - 1500) + "px");
+                    .style("top", (d3.mouse(this)[1] - 1000) + "px")
+                    .style("border", "2px solid")
+                    .style("border-color", function() {
+                        return d.Primary_Color;
+                    })
                 analysistooltip.select(".brand").html(function() {
                     if(d.Vintage === "N") {
                         return d.Brand;
@@ -1446,7 +1454,7 @@ Promise.all(promises).then(function(wardrobedata) {
                 var string;
 
                 if(d.Category === "Bottoms") {
-                    string = `<img src=${bottompics[d.ypos-1]} class="bottoms_sm"/>`
+                    string = `<img src=${bottomsmpics[d.ypos-1]} class="bottoms_sm"/>`
                 } else if(d.Category === "Dresses & Jumpsuits") {
                     string = `<img src=${dresspics[d.ypos-1]} class="dresses_sm"/>`
                 } else if(d.Category === "Tops") {
@@ -1526,7 +1534,11 @@ Promise.all(promises).then(function(wardrobedata) {
             }
           tooltip.classed("hidden", false)
               .style("left", (d3.event.pageX) + "px")		
-              .style("top", (d3.event.pageY - 28) + "px");
+              .style("top", (d3.event.pageY - 28) + "px")
+              .style("border", "2px solid")
+            //   .style("border-color", function() {
+            //     return d.Primary_Color;
+            //   })
           tooltip.select(".mainInfo")
               .html(function() {
                   if(d.Vintage === "N") {

@@ -583,16 +583,16 @@ pre{
 
 #tooltip {
     position: absolute;
-    text-align: center;
+    /* text-align: center; */
     margin: 10px;
     max-width: 200px;
     height: auto;
     width: auto;
     padding: 5px;
     font-size: 11pt;
-    background-color:#3d332a;
-    color: #ffffff;
-    border: 1px solid #f9ede1;
+    background-color:#f9ede1;
+    color: #3d332a;
+    /* border: 1px solid #f9ede1; */
     border-radius: 3px;
     pointer-events: none;
 }
