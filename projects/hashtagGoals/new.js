@@ -179,12 +179,12 @@ window.createGraphic = function(graphicSelector) {
 
                 svg.selectAll(".annotation").append("rect")
                     .attr("x", function() {
-                        return +xScale("Transportation & Logistics") + 20
+                        return +xScale("Chemical & Treatment") + 20
                     })
                     .attr("y", function() {
                         return + yScale("1") - 20
                     })
-                    .attr("width", 300)
+                    .attr("width", 265)
                     .attr("height", 70)
                     .attr("fill", "#FFF8F6")
                     .style("opacity", 1.0)
@@ -199,7 +199,7 @@ window.createGraphic = function(graphicSelector) {
                         return + yScale("1")
                     })
                     .attr("x2", function() {
-                        return +xScale("Transportation & Logistics") + 20
+                        return +xScale("Chemical & Treatment") + 20
                     })
                     .attr("y2", function() {
                         return + yScale("1")
@@ -211,7 +211,7 @@ window.createGraphic = function(graphicSelector) {
 
                 svg.selectAll(".annotation").append("text")
                     .attr("x", function() {
-                        return +xScale("Transportation & Logistics") + 40
+                        return +xScale("Chemical & Treatment") + 30
                     })
                     .attr("y", function() {
                         return + yScale("1") + 8
@@ -224,7 +224,7 @@ window.createGraphic = function(graphicSelector) {
 
                 svg.selectAll(".annotation").append("text")
                     .attr("x", function() {
-                        return +xScale("Transportation & Logistics") + 40
+                        return +xScale("Chemical & Treatment") + 30
                     })
                     .attr("y", function() {
                         return + yScale("1") + 28
