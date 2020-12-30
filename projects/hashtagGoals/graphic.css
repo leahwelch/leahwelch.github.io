@@ -46,7 +46,7 @@
 	-moz-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0);
 	height: 100vh;
-	width: 80%; 
+	width: 80rem; 
 }
 
 .graphic__vis.is-fixed {
@@ -118,12 +118,16 @@
 }
 
 @media only screen and (max-width: 1300px) {
+	.graphic__vis {
+		width: 62rem; 
+	}
+	
 	.axis {
 		font-family: 'Nunito', sans-serif;
 		font-size: 0.85rem;
 	  }
 
-	  .graphic__prose .trigger {
+	.graphic__prose .trigger {
 		font-size: 11pt;
 	}
 

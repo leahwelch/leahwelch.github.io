@@ -7,7 +7,7 @@ window.createGraphic = function(graphicSelector) {
 
     var width = document.querySelector('.graphic__vis').clientWidth;
     var height = document.querySelector('.graphic__vis').clientHeight;
-    var margin = {top: 250, left: 100, right: 280, bottom: 50};
+    var margin = {top: 250, left: 100, right: 260, bottom: 50};
 
     var svg = graphicVisEl.append("svg")
         .attr("width", width)
@@ -145,6 +145,7 @@ window.createGraphic = function(graphicSelector) {
                     .text(function(d){ return(d.goalNames)})
                     .attr("fill","#1F1F89")
                     .style("font-family", "Nunito")
+                    .style("font-size", "10pt")
                     .style("opacity", 1);
                 sdgLabels.exit()
                     .transition(t)
@@ -307,6 +308,7 @@ window.createGraphic = function(graphicSelector) {
                     .text(function(d){ return(d.goalNames)})
                     .attr("fill","#1F1F89")
                     .style("font-family", "Nunito")
+                    .style("font-size", "10pt")
                     .style("opacity", 1);
                 sdgLabels.exit()
                     .transition(t)
@@ -425,6 +427,7 @@ window.createGraphic = function(graphicSelector) {
                     .text(function(d){ return(d.goalNames)})
                     .attr("fill","#1F1F89")
                     .style("font-family", "Nunito")
+                    .style("font-size", "10pt")
                     .style("opacity", 1);
                 sdgLabels.exit()
                     .transition(t)
@@ -768,6 +771,7 @@ window.createGraphic = function(graphicSelector) {
                         }
                     })
                     .style("font-family", "Nunito")
+                    .style("font-size", "10pt")
                     .style("opacity", 1);
                 sdgLabels.exit()
                     .transition()
