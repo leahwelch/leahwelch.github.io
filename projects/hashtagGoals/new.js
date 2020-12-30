@@ -182,10 +182,10 @@ window.createGraphic = function(graphicSelector) {
                         return +xScale("Chemical & Treatment") + 20
                     })
                     .attr("y", function() {
-                        return + yScale("1") - 20
+                        return + yScale("1") - 15
                     })
                     .attr("width", 265)
-                    .attr("height", 70)
+                    .attr("height", 60)
                     .attr("fill", "#FFF8F6")
                     .style("opacity", 1.0)
                     .attr("stroke", "#443730")
@@ -503,7 +503,7 @@ window.createGraphic = function(graphicSelector) {
                         return +xScale("Retail & eCommerce")
                     })
                     .attr("y2", function() {
-                        return + yScale("6") - 15
+                        return + yScale("6") - 20
                     })
                     .attr('stroke', "#443730")
                     .attr("stroke-width", 2)
@@ -551,10 +551,10 @@ window.createGraphic = function(graphicSelector) {
 
                 svg.selectAll(".annotation").append("rect")
                     .attr("x", function() {
-                        return +xScale("Stakeholder Well-Being") + 30
+                        return +xScale("Packaging")
                     })
                     .attr("y", function() {
-                        return + yScale("13") - 10
+                        return + yScale("14") + 10
                     })
                     .attr("width", 180)
                     .attr("height", 70)
@@ -563,9 +563,27 @@ window.createGraphic = function(graphicSelector) {
                     .attr("stroke", "#443730")
                     .attr("stroke-width", 2)
 
+                // svg.selectAll(".annotation").append("line")
+                //     .attr("x1", function() {
+                //         return xScale("Waste & Circular Living") + 50
+                //     })
+                //     .attr("y1", function() {
+                //         return + yScale("13")
+                //     })
+                //     .attr("x2", function() {
+                //         return +xScale("Waste & Circular Living")
+                //     })
+                //     .attr("y2", function() {
+                //         return + yScale("13")
+                //     })
+                //     .attr('stroke', "#443730")
+                //     .attr("stroke-width", 2)
+                //     .attr("stroke-dasharray", 4)
+                //     .style("opacity", 1);
+
                 svg.selectAll(".annotation").append("line")
                     .attr("x1", function() {
-                        return xScale("Waste & Circular Living") + 50
+                        return xScale("Waste & Circular Living")
                     })
                     .attr("y1", function() {
                         return + yScale("13")
@@ -574,55 +592,37 @@ window.createGraphic = function(graphicSelector) {
                         return +xScale("Waste & Circular Living")
                     })
                     .attr("y2", function() {
-                        return + yScale("13")
+                        return + yScale("14") + 11
                     })
                     .attr('stroke', "#443730")
                     .attr("stroke-width", 2)
                     .attr("stroke-dasharray", 4)
                     .style("opacity", 1);
 
-                svg.selectAll(".annotation").append("line")
-                    .attr("x1", function() {
-                        return xScale("Waste & Circular Living") + 50
-                    })
-                    .attr("y1", function() {
-                        return + yScale("13")
-                    })
-                    .attr("x2", function() {
-                        return +xScale("Waste & Circular Living") + 50
-                    })
-                    .attr("y2", function() {
-                        return + yScale("14")
-                    })
-                    .attr('stroke', "#443730")
-                    .attr("stroke-width", 2)
-                    .attr("stroke-dasharray", 4)
-                    .style("opacity", 1);
-
-                svg.selectAll(".annotation").append("line")
-                    .attr("x1", function() {
-                        return xScale("Stakeholder Well-Being") + 30
-                    })
-                    .attr("y1", function() {
-                        return + yScale("14")
-                    })
-                    .attr("x2", function() {
-                        return +xScale("Waste & Circular Living") + 50
-                    })
-                    .attr("y2", function() {
-                        return + yScale("14")
-                    })
-                    .attr('stroke', "#443730")
-                    .attr("stroke-width", 2)
-                    .attr("stroke-dasharray", 4)
-                    .style("opacity", 1);
+                // svg.selectAll(".annotation").append("line")
+                //     .attr("x1", function() {
+                //         return xScale("Stakeholder Well-Being") + 30
+                //     })
+                //     .attr("y1", function() {
+                //         return + yScale("14")
+                //     })
+                //     .attr("x2", function() {
+                //         return +xScale("Waste & Circular Living") + 50
+                //     })
+                //     .attr("y2", function() {
+                //         return + yScale("14")
+                //     })
+                //     .attr('stroke', "#443730")
+                //     .attr("stroke-width", 2)
+                //     .attr("stroke-dasharray", 4)
+                //     .style("opacity", 1);
 
                 svg.selectAll(".annotation").append("text")
                     .attr("x", function() {
-                        return +xScale("Stakeholder Well-Being") + 40
+                        return +xScale("Packaging") + 10
                     })
                     .attr("y", function() {
-                        return + yScale("13") + 8
+                        return + yScale("14") + 28
                     })
                     .attr("fill","#443730")
                     .style("font-family", "Nunito")
@@ -632,10 +632,10 @@ window.createGraphic = function(graphicSelector) {
                 
                 svg.selectAll(".annotation").append("text")
                     .attr("x", function() {
-                        return +xScale("Stakeholder Well-Being") + 40
+                        return +xScale("Packaging") + 10
                     })
                     .attr("y", function() {
-                        return + yScale("13") + 28
+                        return + yScale("14") + 48
                     })
                     .attr("fill","#443730")
                     .style("font-family", "Nunito")
@@ -645,10 +645,10 @@ window.createGraphic = function(graphicSelector) {
 
                 svg.selectAll(".annotation").append("text")
                     .attr("x", function() {
-                        return +xScale("Stakeholder Well-Being") + 40
+                        return +xScale("Packaging") + 10
                     })
                     .attr("y", function() {
-                        return + yScale("13") + 48
+                        return + yScale("14") + 68
                     })
                     .attr("fill","#443730")
                     .style("font-family", "Nunito")
