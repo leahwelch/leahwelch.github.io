@@ -7,7 +7,7 @@ window.createGraphic = function(graphicSelector) {
 
     var width = document.querySelector('.graphic__vis').clientWidth;
     var height = document.querySelector('.graphic__vis').clientHeight;
-    var margin = {top: 300, left: 400, right: 400, bottom: 100};
+    var margin = {top: 250, left: 100, right: 280, bottom: 50};
 
     var svg = graphicVisEl.append("svg")
         .attr("width", width)
@@ -17,7 +17,7 @@ window.createGraphic = function(graphicSelector) {
 
     var yAxis = svg.append("g")
         .attr("class","axis")
-        .attr("transform", `translate(${width-margin.right-40},0)`)
+        .attr("transform", `translate(${width-margin.right-30},0)`)
 
     var xAxis =  svg.append("g")
         .attr("class","axis")
@@ -30,7 +30,7 @@ window.createGraphic = function(graphicSelector) {
     
     var legendWidth = document.querySelector("#legendContainer").clientWidth;
     var legendHeight = document.querySelector("#legendContainer").clientHeight;
-    var legendMargin = {top: 40, left: 90, right: 90, bottom: 10};
+    var legendMargin = {top: 40, left: 60, right: 60, bottom: 10};
     var legend = d3.select("#legendContainer").append("svg")
         .attr("width", legendWidth)
         .attr("height", legendHeight);
@@ -110,7 +110,7 @@ window.createGraphic = function(graphicSelector) {
                     .range([height-margin.bottom, margin.top]);
 
                 var yAxisGenerator = d3.axisRight(yScale)
-                    .tickSize(-width+margin.left+margin.right + 100)
+                    .tickSize(-width+margin.left+margin.right + 50)
                     .ticks(17);
 
                 var xAxisGenerator = d3.axisTop(xScale)
@@ -127,20 +127,20 @@ window.createGraphic = function(graphicSelector) {
             
                 yAxis.selectAll(".tick text")
                     .attr("class", "sideLabels")
-                    .attr("transform", function(d){ return( "translate(30,0)")})
+                    .attr("transform", function(d){ return( "translate(15,0)")})
                     .style("text-anchor", "middle")
                     .style("opacity", 1);
 
                 var sdgLabels = svg.selectAll(".mylabels").data(uniqueArray) 
                 var labelEnter = sdgLabels.enter().append("text")
                     .attr("class", "mylabels")
-                    .attr("x", width-margin.right + 20)
+                    .attr("x", width-margin.right + 5)
                     .attr("y", function(d){return yScale(d.goal) + 5})    
                     .text(function(d){ return(d.goalNames)})
                     .style("opacity", 0);
                 sdgLabels.merge(labelEnter)
                     .transition(t)
-                    .attr("x", width-margin.right + 20)
+                    .attr("x", width-margin.right + 5)
                     .attr("y", function(d){return yScale(d.goal) + 5})    
                     .text(function(d){ return(d.goalNames)})
                     .attr("fill","#1F1F89")
@@ -186,7 +186,7 @@ window.createGraphic = function(graphicSelector) {
                     .attr("width", 300)
                     .attr("height", 70)
                     .attr("fill", "#FFF8F6")
-                    .style("opacity", 0.6)
+                    .style("opacity", 1.0)
                     .attr("stroke", "#443730")
                     .attr("stroke-width", 2)
 
@@ -297,12 +297,12 @@ window.createGraphic = function(graphicSelector) {
                 var labelEnter = sdgLabels.enter().append("text")
                     .attr("class", "mylabels")
                     .style("opacity", 0)
-                    .attr("x", width-margin.right + 20)
+                    .attr("x", width-margin.right + 5)
                     .attr("y", function(d){return yScale(d.goal) + 5})    
                     .text(function(d){ return(d.goalNames)});
                 sdgLabels.merge(labelEnter)
                     .transition(t)
-                    .attr("x", width-margin.right + 20)
+                    .attr("x", width-margin.right + 5)
                     .attr("y", function(d){return yScale(d.goal) + 5})  
                     .text(function(d){ return(d.goalNames)})
                     .attr("fill","#1F1F89")
@@ -317,7 +317,7 @@ window.createGraphic = function(graphicSelector) {
                     .tickSize(-height+margin.bottom+margin.top - 30);
 
                 var yAxisGenerator = d3.axisRight(yScale)
-                    .tickSize(-width+margin.left+margin.right + 100)
+                    .tickSize(-width+margin.left+margin.right + 50)
                     .ticks(17);
 
                 //transition the axes//
@@ -332,7 +332,7 @@ window.createGraphic = function(graphicSelector) {
             
                 yAxis.selectAll(".tick text")
                     .attr("class", "sideLabels")
-                    .attr("transform", function(d){ return( "translate(30,0)")})
+                    .attr("transform", function(d){ return( "translate(15,0)")})
                     .style("text-anchor", "middle")
                     .style("opacity", 1);
 
@@ -352,6 +352,8 @@ window.createGraphic = function(graphicSelector) {
 
                 var uniqueArray = removeDuplicates(data, "goalNames");  
                 uniqueArray.pop();
+
+                annotation.raise();
 
                 xScale.domain(data.map(function(d) { return d.industry}));
                 
@@ -411,14 +413,14 @@ window.createGraphic = function(graphicSelector) {
                 var labelEnter = sdgLabels.enter().append("text")
                     .attr("class", "mylabels")
                     .style("opacity", 0)
-                    .attr("x", width-margin.right + 20)
+                    .attr("x", width-margin.right + 5)
                     .attr("y", function(d){return yScale(d.goal) + 5})    
                     .text(function(d){ return(d.goalNames)})
                     .attr("fill","#1F1F89")
                     .style("font-family", "Nunito");
                 sdgLabels.merge(labelEnter)
                     .transition(t)
-                    .attr("x", width-margin.right + 20)
+                    .attr("x", width-margin.right + 5)
                     .attr("y", function(d){return yScale(d.goal) + 5})  
                     .text(function(d){ return(d.goalNames)})
                     .attr("fill","#1F1F89")
@@ -433,7 +435,7 @@ window.createGraphic = function(graphicSelector) {
                     .tickSize(-height+margin.bottom+margin.top - 30);
 
                 var yAxisGenerator = d3.axisRight(yScale)
-                    .tickSize(-width+margin.left+margin.right + 100)
+                    .tickSize(-width+margin.left+margin.right + 50)
                     .ticks(17);
 
                 //transition the axes//
@@ -448,7 +450,7 @@ window.createGraphic = function(graphicSelector) {
             
                 yAxis.selectAll(".tick text")
                     .attr("class", "sideLabels")
-                    .attr("transform", function(d){ return( "translate(30,0)")})
+                    .attr("transform", function(d){ return( "translate(15,0)")})
                     .style("text-anchor", "middle")
                     .style("opacity", 1);
 
@@ -464,9 +466,10 @@ window.createGraphic = function(graphicSelector) {
                     .attr("width", 180)
                     .attr("height", 70)
                     .attr("fill", "#FFF8F6")
-                    .style("opacity", 0.6)
+                    .style("opacity", 1.0)
                     .attr("stroke", "#443730")
                     .attr("stroke-width", 2)
+                    .raise()
 
                 svg.selectAll(".annotation").append("line")
                     .attr("x1", function() {
@@ -553,7 +556,7 @@ window.createGraphic = function(graphicSelector) {
                     .attr("width", 180)
                     .attr("height", 70)
                     .attr("fill", "#FFF8F6")
-                    .style("opacity", 0.6)
+                    .style("opacity", 1.0)
                     .attr("stroke", "#443730")
                     .attr("stroke-width", 2)
 
@@ -677,7 +680,7 @@ window.createGraphic = function(graphicSelector) {
                     .paddingOuter(0)
                     .paddingInner(1);
                 var yAxisGenerator = d3.axisRight(yScale)
-                    .tickSize(-width+margin.left+margin.right + 100)
+                    .tickSize(-width+margin.left+margin.right + 50)
                     .ticks(17);
                 yAxis.transition()
                     .duration(1000)
@@ -685,7 +688,7 @@ window.createGraphic = function(graphicSelector) {
                     .call(yAxisGenerator);
                 yAxis.selectAll(".tick text")
                     .attr("class", "sideLabels")
-                    .attr("transform", function(d){ return( "translate(30,0)")})
+                    .attr("transform", function(d){ return( "translate(15,0)")})
                     .style("text-anchor", "middle")
                     .style("opacity", 0);
 
@@ -707,13 +710,13 @@ window.createGraphic = function(graphicSelector) {
                 var colorLabels = svg.selectAll(".colorLabels").data(uniqueArray) 
                 var colorEnter = colorLabels.enter().append("text")
                     .attr("class", "colorLabels")
-                    .attr("x", width-margin.right-9)
+                    .attr("x", width-margin.right-13)
                     .attr("y", function(d){return yScale(d.goal)})
                     .text(function(d){ return(d.goal)});
                 colorLabels.merge(colorEnter)
                     .transition()
                     .duration(500)
-                    .attr("x", width-margin.right-9)
+                    .attr("x", width-margin.right-13)
                     .attr("y", function(d){return +yScale(d.goal) + 5})
                     .text(function(d){ return(d.goal)}) 
                     .attr("fill", function(d) {
@@ -741,7 +744,7 @@ window.createGraphic = function(graphicSelector) {
                 var labelEnter = sdgLabels.enter().append("text")
                     .attr("class", "mylabels")
                     .style("opacity", 0)
-                    .attr("x", width-margin.right + 20)
+                    .attr("x", width-margin.right + 5)
                     .attr("y", function(d){return yScale(d.goal)})    
                     .text(function(d){ return(d.goalNames)})
                     //.attr("fill","#1F1F89")
@@ -749,7 +752,7 @@ window.createGraphic = function(graphicSelector) {
                 sdgLabels.merge(labelEnter)
                     .transition()
                     .duration(500)
-                    .attr("x", width-margin.right + 20)
+                    .attr("x", width-margin.right + 5)
                     .attr("y", function(d){return +yScale(d.goal) + 5})   
                     .text(function(d){ return(d.goalNames)})
                     //.attr("fill","#1F1F89")
@@ -916,7 +919,7 @@ window.createGraphic = function(graphicSelector) {
                     .style("font-family", "Nunito")
                     .style("font-size", function(d) {
                         if(d.industry === "Manufacturing" || d.industry === "Waste & Circular Living" || d.industry === "Social & Labor") {
-                            return 24;
+                            return 18;
                         } else {
                             return 12;
                         }
@@ -1090,7 +1093,7 @@ window.createGraphic = function(graphicSelector) {
                     .style("font-family", "Nunito")
                     .style("font-size", function(d) {
                         if(d.industry === "Transportation & Logistics" || d.industry === "Retail & eCommerce" || d.industry === "Marketing") {
-                            return 24;
+                            return 18;
                         } else {
                             return 12;
                         }
@@ -1250,7 +1253,7 @@ window.createGraphic = function(graphicSelector) {
                     .style("font-family", "Nunito")
                     .style("font-size", function(d) {
                         if(d.industry === "Consumer Engagement" || d.industry === "Transparency & Governance") {
-                            return 24;
+                            return 18;
                         } else {
                             return 12;
                         }

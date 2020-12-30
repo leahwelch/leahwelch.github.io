@@ -3,26 +3,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Volkhov&display=swap');
 
+
+
 .graphic {
 	width: 100%;
 	position: relative;
 }
 
 .graphic__prose {
-	/* width: 70rem; */
-	margin-right: 70%;
+	width: 20rem;
+	/* margin-right: 70%; */
 	padding-top: 5%;
 	padding-left: 40px;
-	padding-right: 200px;
+	padding-right: 50px;
 	font-family: 'Volkhov', serif;
 	color: #1F1F89;
-	font-size: 13pt;
+	font-size: 12pt;
 }
 
 .graphic__prose .trigger {
 	padding: 0;
 	margin: 0;
-	min-height: 100vh;
+	min-height: 550px;
+	font-size: 12pt;
+}
+
+.trigger p {
+	margin: 0px;
+	padding: 0px;
 }
 
 #legendContainer {
@@ -32,13 +40,13 @@
 .graphic__vis {
 	position: absolute;
 	top: 0;
-	/* margin-left: 10rem;
-	margin-right: 10rem; */
+	margin-left: 12rem;
+	/* margin-right: 3rem; */
 	-webkit-transform: translate3d(0, 0, 0);
 	-moz-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0);
 	height: 100vh;
-	width: 100%; 
+	width: 80%; 
 }
 
 .graphic__vis.is-fixed {
@@ -69,13 +77,13 @@
 
 .axisLabel {
 	font-family: 'Nunito', sans-serif;
-	font-size: 16pt;
+	font-size: 14pt;
 	font-weight: lighter;
   }
   
   .axis {
 	font-family: 'Nunito', sans-serif;
-	font-size: 14pt;
+	font-size: 1rem;
   }
   
   .axis line {
@@ -87,11 +95,15 @@
 	visibility: hidden;
   }
   
-  .sideLabels {
+  .sideLabels, .myLabels {
 	font-family: 'Nunito', sans-serif;
-	font-size: 12pt;
+	font-size: 0.9rem;
 	font-weight: bolder;
 	color: #1F1F89;
+  }
+
+  .colorLabels {
+	  font-size: 0.9rem;
   }
 
 /* graph-scroll.js version */
@@ -103,4 +115,19 @@
 .graphic__vis.graph-scroll-below {
 	top: auto;
 	bottom: 0;
+}
+
+@media only screen and (max-width: 1300px) {
+	.axis {
+		font-family: 'Nunito', sans-serif;
+		font-size: 0.85rem;
+	  }
+
+	  .graphic__prose .trigger {
+		font-size: 11pt;
+	}
+
+	.sideLabels, .myLabels, .colorLabels {
+		font-size: 0.75rem;
+	  }
 }
