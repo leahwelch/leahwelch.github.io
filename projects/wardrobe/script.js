@@ -290,8 +290,8 @@ Promise.all(promises).then(function(wardrobedata) {
     var date_labels = d3.select(".date_labels")
     
     var heatmap = d3.select("#cal").append("svg")
-        .attr("width", 400)
-        .attr("height", 300)
+        .attr("width", 200)
+        .attr("height", 200)
 
     
 

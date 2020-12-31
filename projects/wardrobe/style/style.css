@@ -127,6 +127,19 @@ h2 {
     border-radius: 4px;
 }
 
+.trigger.graph-scroll-active {
+    border: 2px solid #0b7c85;
+    background-color: #0b7c85;
+}
+
+.trigger.graph-scroll-active > .timeline_date {
+    color: #0b7c85;
+}
+
+.trigger.graph-scroll-active > .timeline_loc {
+    color: #0b7c85;
+}
+
 .trigger > .timeline_date {
     color: #3d332a;
     font-size: 9pt;
