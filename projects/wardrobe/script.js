@@ -301,8 +301,8 @@ Promise.all(promises).then(function(wardrobedata) {
     
 
     var smallMargin = {top: 0, right: 20, bottom: 20, left: 0};
-    var smallWidth = 200 - smallMargin.left - smallMargin.right;
-    var smallHeight = 325 - smallMargin.top - smallMargin.bottom;
+    var smallWidth = 150 - smallMargin.left - smallMargin.right;
+    var smallHeight = 300 - smallMargin.top - smallMargin.bottom;
 
     var yScaleSmall = d3.scaleBand()
         .range([smallHeight-smallMargin.bottom-10, smallMargin.top])
@@ -338,12 +338,12 @@ Promise.all(promises).then(function(wardrobedata) {
                 if(capsule.indexOf(d.Description)>=0) {
                     return smallMargin.left;
                 } else {
-                    return 80;
+                    return 65;
                 }
             })
-            .attr("width", 70)
+            .attr("width", 55)
             .attr("y", function(d) { return yScaleSmall(d.group_y); })
-            .attr("height", 12)
+            .attr("height", 11)
             .attr("fill", function(d) {
             if(d.Pattern === "N") {
                 return d.Primary_Color;
@@ -383,8 +383,8 @@ Promise.all(promises).then(function(wardrobedata) {
       smalls.append("text")
         .attr('class','smalllabel')
         .attr('x', smallMargin.left)
-        .attr('y', smallHeight + 10)
-        .style("font-size", "12pt")
+        .attr('y', smallHeight + 5)
+        .style("font-size", "9pt")
         .style("font-weight", "bold")
         .text( function(d) { return d.key; })
   
@@ -392,14 +392,14 @@ Promise.all(promises).then(function(wardrobedata) {
         .attr('class','smalllabel')
         .attr('x', smallMargin.left)
         .attr('y', smallHeight - 15)
-        .style("font-size", "10pt")
+        .style("font-size", "9pt")
         .text("Worn")
   
       smalls.append("text")
         .attr('class','smalllabel')
-        .attr('x', 80)
+        .attr('x', 70)
         .attr('y', smallHeight - 15)
-        .style("font-size", "10pt")
+        .style("font-size", "9pt")
         .text("Unworn")
     }
     
@@ -703,7 +703,7 @@ Promise.all(promises).then(function(wardrobedata) {
         
     var visW = document.querySelector("#vis").clientWidth;
     var visH = document.querySelector("#vis").clientHeight;
-    var visM = {top: 30, left: 30, right: 50, bottom: 500}
+    var visM = {top: 30, left: 30, right: 50, bottom: 450}
 
     var analysisSVG = d3.select("#vis")
         .append("svg")
@@ -723,7 +723,7 @@ Promise.all(promises).then(function(wardrobedata) {
 
     var yScaleVintage = d3.scaleBand()
         .domain(filtered_vintage.map(function(d) { return d.vintage_ID; }))
-        .range([visH - visM.bottom + 75, visH - visM.bottom + 200])
+        .range([visH - visM.bottom + 55, visH - visM.bottom + 180])
         .padding(1);
 
     var vintageYAxis = analysisSVG.append("g")
@@ -1092,8 +1092,8 @@ Promise.all(promises).then(function(wardrobedata) {
                 return vintageX(d.Year_Entered)
             })
             .attr("y", function(d) { return yScaleVintage(d.vintage_ID); })
-            .attr("width", 60)
-            .attr("height", 11)
+            .attr("width", 50)
+            .attr("height", 10)
             .attr("fill", function(d) { 
                 if(d.Pattern === "N") {
                     return d.Primary_Color;
@@ -1141,10 +1141,10 @@ Promise.all(promises).then(function(wardrobedata) {
 
         vintageG.append("line")
             .attr("x1", 0)
-            .attr("y1", visH - visM.bottom + 80)
+            .attr("y1", visH - visM.bottom + 60)
             .attr("x2", function() {
                 return vintageX(2021);})
-            .attr("y2", visH - visM.bottom + 80)
+            .attr("y2", visH - visM.bottom + 60)
             .attr('stroke', "#a08875")
             .attr("stroke-width", 1);
 
@@ -1168,7 +1168,7 @@ Promise.all(promises).then(function(wardrobedata) {
             .attr("class", "vintageCallout")
             .attr("y", visM.top + 10)
             .attr("fill", "#3d332a")
-            .style("font-size", "10pt")
+            .style("font-size", "9pt")
             .text("Honeymoon in Japan")
 
         vintageG.append("line")
@@ -1191,7 +1191,7 @@ Promise.all(promises).then(function(wardrobedata) {
             .attr("class", "vintageCallout")
             .attr("y", visM.top + 10)
             .attr("fill", "#3d332a")
-            .style("font-size", "10pt")
+            .style("font-size", "9pt")
             .text("Met Steven")
 
         vintageG.append("line")
@@ -1199,7 +1199,7 @@ Promise.all(promises).then(function(wardrobedata) {
                 return vintageX(2018);
             })
             .attr("class", "vintageCallout")
-            .attr("y1", visM.top)
+            .attr("y1", visM.top + 50)
             .attr("x2", function() {
                 return vintageX(2018);})
             .attr("y2", visH - visM.bottom)
@@ -1212,14 +1212,14 @@ Promise.all(promises).then(function(wardrobedata) {
                 return vintageX(2018) + 5;
             })
             .attr("class", "vintageCallout")
-            .attr("y", visM.top + 10)
+            .attr("y", visM.top + 60)
             .attr("fill", "#3d332a")
-            .style("font-size", "10pt")
+            .style("font-size", "9pt")
             .text("Start of Pregnancy")
 
         analysisSVG.append("text")
             .attr("x", 0)
-            .attr("y", visH - visM.bottom + 70)
+            .attr("y", visH - visM.bottom + 50)
             .attr("class", "miniTitle")
             .attr("fill", "#3d332a")
             .text("Every Vintage Item I Own")
@@ -1296,7 +1296,7 @@ Promise.all(promises).then(function(wardrobedata) {
                 return vintageY(17) - 10;
             })
             .attr("fill", "#0b7c85")
-            .style("font-size", "10pt")
+            .style("font-size", "9pt")
             .text("Online Purchases")
 
         analysisSVG.append("line")
@@ -1325,7 +1325,7 @@ Promise.all(promises).then(function(wardrobedata) {
                 return vintageY(1) - 10;
             })
             .attr("fill", "#a08875")
-            .style("font-size", "10pt")
+            .style("font-size", "9pt")
             .text("Vintage Purchases")
 
         analysisSVG.append("line")
@@ -1348,13 +1348,13 @@ Promise.all(promises).then(function(wardrobedata) {
             .attr("class", "onlineCallout")
             .attr("y", visM.top + 10)
             .attr("fill", "#0b7c85")
-            .style("font-size", "10pt")
+            .style("font-size", "9pt")
             .text("Discovered Shopping Blogs")
             .style("text-anchor", "end")
 
         var yScaleOnline = d3.scaleBand()
             .domain(filtered_online.map(function(d) { return d.online_ID; }))
-            .range([visH - visM.bottom + 250,visH - visM.bottom + 500])
+            .range([visH - visM.bottom + 230,visH - visM.bottom + 450])
             .padding(1);
 
         var onlineG = analysisSVG.append("g").attr("class", "onlineG")
@@ -1367,8 +1367,8 @@ Promise.all(promises).then(function(wardrobedata) {
                 return vintageX(d.Year_Entered)
             })
             .attr("y", function(d) { return yScaleVintage(d.vintage_ID); })
-            .attr("width", 60)
-            .attr("height", 11)
+            .attr("width", 50)
+            .attr("height", 10)
             .attr("fill", function(d) { 
                 if(d.Pattern === "N") {
                     return d.Primary_Color;
@@ -1421,8 +1421,8 @@ Promise.all(promises).then(function(wardrobedata) {
                 return vintageX(d.Year_Entered)
             })
             .attr("y", function(d) { return yScaleOnline(d.online_ID); })
-            .attr("width", 60)
-            .attr("height", 11)
+            .attr("width", 50)
+            .attr("height", 10)
             .attr("fill", function(d) { 
                 if(d.Pattern === "N") {
                     return d.Primary_Color;
@@ -1470,16 +1470,16 @@ Promise.all(promises).then(function(wardrobedata) {
 
         onlineG.append("line")
             .attr("x1", 0)
-            .attr("y1", visH - visM.bottom + 255)
+            .attr("y1", visH - visM.bottom + 235)
             .attr("x2", function() {
                 return vintageX(2021);})
-            .attr("y2", visH - visM.bottom + 255)
+            .attr("y2", visH - visM.bottom + 235)
             .attr('stroke', "#0b7c85")
             .attr("stroke-width", 1);
 
         onlineG.append("text")
             .attr("x", 0)
-            .attr("y", visH - visM.bottom + 245)
+            .attr("y", visH - visM.bottom + 225)
             .attr("class", "miniTitle")
             .attr("fill", "#0b7c85")
             .text("Every Online Purchase I (Still) Own")
@@ -1501,12 +1501,12 @@ Promise.all(promises).then(function(wardrobedata) {
                 if(capsule.indexOf(d.Description)>=0) {
                     return smallMargin.left;
                 } else {
-                    return 80;
+                    return 65;
                 }
             })
-            .attr("width", 70)
+            .attr("width", 55)
             .attr("y", function(d) { return yScaleSmall(d.new_group_y); })
-            .attr("height", 12)
+            .attr("height", 11)
             .attr("opacity", function(d) {
                 if(d.discard === "Y") {
                     return 0;
