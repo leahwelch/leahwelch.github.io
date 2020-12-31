@@ -233,7 +233,7 @@ Promise.all(promises).then(function(wardrobedata) {
 
     var width = document.querySelector("#graph").clientWidth;
     var height = document.querySelector("#graph").clientHeight;
-    var margin = {top: 0, left: 0, right: 0, bottom: 80};
+    var margin = {top: 0, left: 0, right: 0, bottom: 60};
     
     var svg = d3.select("#graph")
         .append("svg")
