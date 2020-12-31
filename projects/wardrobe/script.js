@@ -52,8 +52,6 @@ Promise.all(promises).then(function(wardrobedata) {
         return d.Pattern === "Y";
     })
 
-    console.log(filtered_patterned.length)
-
     var filtered_vintage = wardrobe.filter(function(d) {
         return d.Vintage === "Y";
     });
@@ -102,7 +100,6 @@ Promise.all(promises).then(function(wardrobedata) {
 
     nested_vintage.sort(function(a,b) { return b.key-a.key;})
     nested_online.sort(function(a,b) { return b.key-a.key;})
-    console.log(nested_online);
 
     var vintageItems = [];
     for(i = 0; i < wardrobe.length; i++) {

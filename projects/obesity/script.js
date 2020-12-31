@@ -118,7 +118,6 @@ d3.queue()
     function show_kuwait() {
         canvas_clear();
         supp_clear();
-        console.log("show kuwait");
         d3.xml("./image/kuwait_layers.svg", function(error, kuwait_xml) {
 
             //d3.select("#country_name").html("The Language of Obesity in Kuwait");
@@ -131,7 +130,6 @@ d3.queue()
                     theme_totals.push({category: kuwait[i].category, theme: kuwait[i].sub_category, value:+totalA})
                 }
             }
-            console.log(theme_totals);
 
             var causeTotals = theme_totals.filter(function(d) {
                 return d.category === "cause";
@@ -153,8 +151,6 @@ d3.queue()
                 .entries(kuwait)
                 .sort(function(a,b) { return b.value - a.value; });
 
-                console.log(nested);
-
             var matrix = [];
             for(k = 0; k < themes.length; k++) {
                 var myArray = [];
@@ -170,11 +166,8 @@ d3.queue()
                 }
                 matrix.push(myArray);
             }
-            console.log(matrix);
 
-            
-
-            var totals = {
+          var totals = {
                 min: d3.min(theme_totals, function(d) {return +d.value}),
                 max: d3.max(theme_totals, function(d) {return +d.value})
             }
@@ -298,36 +291,7 @@ d3.queue()
                     .attr("class", "sideLabels")
                     .attr("transform", function(d){ return( "translate(-10,0)")})
                     .style("text-anchor", "end");
-                
-                // var yAxis = supplement.append("g")
-                //     .attr("class","axis")
-                //     .attr("transform", `translate(${suppMargin.left},7)`)
-                //     .call(yAxisGenerator);
 
-                // var bar = supplement.selectAll("rect")
-                //     .data(theme_totals)
-                //     .enter()
-                //     .append("rect")
-                //         .attr("x", suppMargin.left)
-                //         .attr("y", function(d) {return yScale(d.theme)})
-                //         .attr("width", function(d) {return xScale(d.value)})
-                //         .attr("height", 15)
-                //         .attr("fill", function(d) { return colorScale(d.theme); });
-                
-                // yAxis.selectAll(".tick text")
-                //     .attr("class", "sideLabels")
-                //     .attr("transform", function(d){ return( "translate(-10,0)")})
-                //     .style("text-anchor", "end");
-                
-                // supplement.selectAll(".quantLabels")
-                //         .data(theme_totals)
-                //         .enter()
-                //         .append("text")
-                //             .attr("x", function(d) {return suppMargin.left + xScale(d.value) + 5})
-                //             .attr("y", function(d) {return yScale(d.theme) + 12})
-                //             .attr("class", "quantLabels")
-                //             .style("text-anchor", "start")
-                //             .text(function(d){return d.value});
                 
                 supplement.append("text")
                     .attr("x", 0)
@@ -491,13 +455,11 @@ d3.queue()
                     theme_totals.push({category: mexico[i].category, theme: mexico[i].sub_category, value: +totalA})
                 }
             }
-            console.log(theme_totals);
 
             var totals = {
                 min: d3.min(theme_totals, function(d) {return +d.value}),
                 max: d3.max(theme_totals, function(d) {return +d.value})
             }
-            console.log(totals);
 
             var causeTotals = theme_totals.filter(function(d) {
                 return d.category === "cause";
@@ -518,7 +480,6 @@ d3.queue()
                 .entries(mexico)
                 .sort(function(a,b) { return b.value - a.value; });
 
-                console.log(nested);
 
             var matrix = [];
             for(k = 0; k < themes.length; k++) {
@@ -535,7 +496,6 @@ d3.queue()
                 }
                 matrix.push(myArray);
             }
-            console.log(matrix);
 
             var xScale = d3.scaleLinear()
                 .domain([totals.min, totals.max])
@@ -745,7 +705,6 @@ d3.queue()
                     while(words.length > 5) {
                         words.shift();
                     }
-                    console.log(words);
 
                     var amounts = [];
                     for(var i = 0; i < filtered_data.length; i++) {
@@ -756,8 +715,6 @@ d3.queue()
                     while(amounts.length > 5) {
                         amounts.shift();
                     }
-
-                    console.log(amounts);
                     
                     var strings;
                     for(i = 0; i < themes.length; i++) {
@@ -766,7 +723,6 @@ d3.queue()
                         }
                     }
 
-                    console.log(strings);
                     supplement.append("text")
                         .attr("x", 0)
                         .attr("y", suppMargin.top)
@@ -834,7 +790,6 @@ d3.queue()
     function show_tonga() {
         canvas_clear();
         supp_clear();
-        console.log("show tonga graph");
         d3.xml("./image/tonga_layers.svg", function(error, tonga_xml) {
             d3.select("#explanation").html("Descriptions of videos about obesity in <b>Tonga</b> emphasize its impacts, with little discussion about how individuals and communities have responded to the epidemic. While words about diseases caused by obesity figure prominently, mentions of the medical interventions necessary to support sufferers of those diseases are absent.<br><br>Hover over lines for the words that define that theme.")
             
@@ -845,7 +800,6 @@ d3.queue()
                     theme_totals.push({category: tonga[i].category, theme: tonga[i].sub_category, value:+totalA})
                 }
             }
-            console.log(theme_totals);
 
             var causeTotals = theme_totals.filter(function(d) {
                 return d.category === "cause";
@@ -865,8 +819,6 @@ d3.queue()
                 .entries(tonga)
                 .sort(function(a,b) { return b.value - a.value; });
 
-                console.log(nested);
-
             var matrix = [];
             for(k = 0; k < themesTonga.length; k++) {
                 var myArray = [];
@@ -882,13 +834,11 @@ d3.queue()
                 }
                 matrix.push(myArray);
             }
-            console.log(matrix);
 
             var totals = {
                 min: d3.min(theme_totals, function(d) {return +d.value}),
                 max: d3.max(theme_totals, function(d) {return +d.value})
             }
-            console.log(totals);
 
             var xScale = d3.scaleLinear()
                 .domain([totals.min, totals.max])
@@ -1090,7 +1040,6 @@ d3.queue()
                     var filtered_data = tonga.filter(function(d) {
                         return d.sub_category === criteria;
                     })
-                    //console.log(filtered_data);
         
                     var words = [];
                     for(var i = 0; i < filtered_data.length; i++) {
@@ -1118,8 +1067,6 @@ d3.queue()
                             strings = matrix[i];
                         }
                     }
-        
-                    console.log(strings);
 
                     supplement.append("text")
                         .attr("x", 0)
