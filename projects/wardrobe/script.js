@@ -66,8 +66,6 @@ Promise.all(promises).then(function(wardrobedata) {
         return d.discard === "Y";
     })
 
-    console.log(filtered_discards);
-
     var nested_vintage = d3.nest()
         .key(function(d) {return d.Year_Entered})
         .rollup(function(d) { return d.length; })

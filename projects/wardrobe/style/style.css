@@ -206,7 +206,7 @@ h2 {
 
 .note_container {
     position: fixed;
-    height: 90vh;
+    height: 95vh;
     width: 100%;
     position: -webkit-sticky;
     position: sticky;
@@ -214,7 +214,7 @@ h2 {
     grid-area: note_container;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 3fr 1fr;
+    grid-template-rows: 1fr 3.5fr 0.5fr;
     grid-template-areas: 
         "instructions"    
         "annotation"
@@ -229,13 +229,13 @@ h2 {
 }
 
 .description {
-    width: 70%;
+    font-size: 11pt;
 }
 
 .annotation {
     grid-area: annotation;
     margin: 0px 30px 20px 100px;
-    height: 45vh;
+    height: 50vh;
     width: 90%;
     border-bottom: 1px solid #a08875;
     display: grid;
@@ -310,8 +310,6 @@ h2 {
     font-family: 'Lilita One', cursive;
     font-size: 20pt;
     color: #3d332a;
-    /* position: sticky;
-    top: 50px; */
 }
 
 .brand {
@@ -328,7 +326,7 @@ h2 {
 .notes{
     color: #3d332a;
     font-style: italic;
-    font-size: 11pt;
+    font-size: 10pt;
 }
 
 .swatch {
@@ -527,11 +525,11 @@ button:focus {
 
 #sections > div{
     padding: 5% 10%;
-    margin-bottom: 50vh;
+    margin-bottom: 60vh;
 }
 
 #sections > div:last-child{
-    margin-bottom: 80px;
+    margin-bottom: 50vh;
 }
 
 #sections > div.graph-scroll-active{
@@ -543,14 +541,14 @@ button:focus {
 }
 
 #vis {
-    height: 80vh;
+    height: 85vh;
     width: 100%;
 }
 
 
 #visContainer{
     /* width: 100%; */
-    height: 90vh;
+    height: 100vh;
     position: -webkit-sticky;
     position: sticky;
     top:20px;   
@@ -704,9 +702,14 @@ pre{
     }
 
     .annotation {
-        margin: 0px 30px 20px 50px;
+        margin: 0px 30px 10px 50px;
+        padding-bottom: 10px;
         width: 500px;
         grid-template-columns: 1fr 1fr;
+    }
+
+    .annotation_header {
+        font-size: 15pt;
     }
 
     .annotation_image {
@@ -736,12 +739,25 @@ pre{
         margin: 30px 10px 30px 0px;
     }
 
-    #vis {
+    /* #analysis{
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: 
+            "sections vis";
+        height: 90%;
+        padding-top: 100px;
+      } */
+    
+
+    /* #vis {
         width: 1000px;
-    }
+    } */
     .summary {
         margin: 100px 10px 20px 10px;
         padding: 0px 10px 25px 10px;
+        font-size: 11pt;
     }
     #sections{
         margin: 200px 50px 0px 10px;
@@ -777,7 +793,8 @@ pre{
     }
 
     .annotation {
-        margin: 0px 30px 20px 30px;
+        margin: 0px 30px 10px 30px;
+        padding-bottom: 10px;
     }
 
     .date_labels {
@@ -789,12 +806,13 @@ pre{
     }
 
 
-    #vis {
+    /* #vis {
         width: 850px;
-    }
+    } */
     .summary {
         margin: 150px 10px 20px 10px;
         padding: 0px 10px 25px 10px;
+        font-size: 10pt;
     }
     #sections{
         margin: 200px 50px 0px 10px;
@@ -811,12 +829,13 @@ pre{
         margin-left: 100px;
         padding-top: 100px;
     }
-    #vis {
+    /* #vis {
         width: 600px;
-    }
+    } */
     .summary {
         margin: 200px 10px 20px 10px;
         padding: 0px 10px 25px 10px;
+        font-size: 9pt;
     }
     #sections{
         margin: 200px 50px 0px 10px;
