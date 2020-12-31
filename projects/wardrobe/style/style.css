@@ -23,8 +23,9 @@ p {
 /* INTRODUCTION */
 
 .intro{
-    width: 100%;
+    width: 70%;
     margin-bottom: 100px;
+    margin-left: 100px;
 }
 
 
@@ -77,43 +78,43 @@ h2 {
 }
 
 #nyu {
-    top: 172vh;
+    top: 122vh;
 }
 
 #midd_fresh {
-    top: 188vh;
+    top: 138vh;
 }
 
 #london {
-    top: 220vh;
+    top: 170vh;
 }
 
 #midd_sr {
-    top: 236vh;
+    top: 186vh;
 }
 
 #la {
-    top: 252vh;
+    top: 202vh;
 }
 
 #nottingham {
-    top: 296vh;
+    top: 246vh;
 }
 
 #china {
-    top: 302vh;
+    top: 252vh;
 }
 
 #orme {
-    top: 332vh;
+    top: 282vh;
 }
 
 #roslindale {
-    top: 380vh;
+    top: 330vh;
 }
 
 #lawrence {
-    top: 396vh;
+    top: 346vh;
 }
 
 .trigger {
@@ -690,6 +691,46 @@ pre{
         width: 1170px;
         margin-left: 100px;
         padding-top: 100px;
+    }
+
+    #nyu {
+        top: 172vh;
+    }
+    
+    #midd_fresh {
+        top: 188vh;
+    }
+    
+    #london {
+        top: 220vh;
+    }
+    
+    #midd_sr {
+        top: 236vh;
+    }
+    
+    #la {
+        top: 252vh;
+    }
+    
+    #nottingham {
+        top: 296vh;
+    }
+    
+    #china {
+        top: 302vh;
+    }
+    
+    #orme {
+        top: 332vh;
+    }
+    
+    #roslindale {
+        top: 380vh;
+    }
+    
+    #lawrence {
+        top: 396vh;
     }
 
     #container {
