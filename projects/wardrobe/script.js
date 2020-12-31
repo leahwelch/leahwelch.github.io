@@ -564,7 +564,7 @@ Promise.all(promises).then(function(wardrobedata) {
             string = `<img src=${setpics[d.ypos-1]} class="sets"/>`
         }
         annotation.select(".item").html(d.Description + " " + d.Sub_Category);
-        annotation.select(".notes").html(d.Notes);
+        // annotation.select(".notes").html(d.Notes);
         annotation.select(".swatch")
             .style("background-color", d.Primary_Color)
             .html(d.Primary_Color)
