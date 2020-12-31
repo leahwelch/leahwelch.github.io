@@ -415,7 +415,7 @@ Promise.all(promises).then(function(wardrobedata) {
         })
         .attr("y", function(d) { return yScale(d.ypos); })
         .attr("width", 70)
-        .attr("height", 12)
+        .attr("height", 11)
         .attr("fill", function(d) { return d.Primary_Color; })
         .attr("stroke", "none")
         .attr("rx", 2)								
@@ -431,7 +431,7 @@ Promise.all(promises).then(function(wardrobedata) {
         })
         .attr("y", function(d) { return yScale(d.ypos); })
         .attr("width", 70)
-        .attr("height", 12)
+        .attr("height", 11)
         .attr("fill", function(d) { return d.Primary_Color; })
         .attr("rx", 2)								
 		.attr("ry", 2);
@@ -446,7 +446,7 @@ Promise.all(promises).then(function(wardrobedata) {
         })
         .attr("y", function(d) { return yScale(d.ypos); })
         .attr("width", 70)
-        .attr("height", 12)
+        .attr("height", 11)
         .attr("fill", function(d) { return d.Primary_Color; })
         .attr("rx", 2)								
 		.attr("ry", 2);
@@ -461,7 +461,7 @@ Promise.all(promises).then(function(wardrobedata) {
         })
         .attr("y", function(d) { return yScale(d.ypos); })
         .attr("width", 70)
-        .attr("height", 12)
+        .attr("height", 11)
         .attr("fill", function(d) { return d.Primary_Color; })
         .attr("rx", 2)								
 		.attr("ry", 2);
@@ -476,7 +476,7 @@ Promise.all(promises).then(function(wardrobedata) {
         })
         .attr("y", function(d) { return yScale(d.ypos); })
         .attr("width", 70)
-        .attr("height", 12)
+        .attr("height", 11)
         .attr("fill", function(d) { return d.Primary_Color; })
         .attr("rx", 2)								
 		.attr("ry", 2);
