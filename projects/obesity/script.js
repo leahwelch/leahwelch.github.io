@@ -130,6 +130,7 @@ d3.queue()
                     theme_totals.push({category: kuwait[i].category, theme: kuwait[i].sub_category, value:+totalA})
                 }
             }
+            console.log(kuwait);
 
             var causeTotals = theme_totals.filter(function(d) {
                 return d.category === "cause";
@@ -349,6 +350,7 @@ d3.queue()
                     var filtered_data = kuwait.filter(function(d) {
                         return d.sub_category === criteria;
                     })
+                    console.log(filtered_data);
 
                     var words = [];
                     for(var i = 0; i < filtered_data.length; i++) {
