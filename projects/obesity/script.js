@@ -1042,7 +1042,7 @@ d3.queue()
                     var filtered_data = tonga.filter(function(d) {
                         return d.sub_category === criteria;
                     })
-        
+                    
                     var words = [];
                     for(var i = 0; i < filtered_data.length; i++) {
                         words.push(filtered_data[i].word);
@@ -1052,16 +1052,36 @@ d3.queue()
                     while(words.length > 5) {
                         words.shift();
                     }
-        
-                    var amounts = [];
-                    for(var i = 0; i < filtered_data.length; i++) {
-                        amounts.push(+filtered_data[i].value);
-                    }
 
                     var amounts = [];
                     for(var i = 0; i < filtered_data.length; i++) {
                         amounts.push(+filtered_data[i].value);
                     }
+
+                    amounts.reverse();
+                    while(amounts.length > 5) {
+                        amounts.shift();
+                    }
+        
+                    // var words = [];
+                    // for(var i = 0; i < filtered_data.length; i++) {
+                    //     words.push(filtered_data[i].word);
+                    // }
+
+                    // words.reverse();
+                    // while(words.length > 5) {
+                    //     words.shift();
+                    // }
+        
+                    // var amounts = [];
+                    // for(var i = 0; i < filtered_data.length; i++) {
+                    //     amounts.push(+filtered_data[i].value);
+                    // }
+
+                    // var amounts = [];
+                    // for(var i = 0; i < filtered_data.length; i++) {
+                    //     amounts.push(+filtered_data[i].value);
+                    // }
                     
                     var strings;
                     for(i = 0; i < themesTonga.length; i++) {
