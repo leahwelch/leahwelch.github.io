@@ -1,5 +1,5 @@
 
-d3.csv("./data/tongan_food.csv", parseCSV).then(function(data) {
+d3.csv("./data/google_test.csv", parseCSV).then(function(data) {
 
     //console.log(data)
 
@@ -22,7 +22,7 @@ d3.csv("./data/tongan_food.csv", parseCSV).then(function(data) {
 
     var descWords = [];
     for(var i = 0; i < data.length; i++) {
-        var words = data[i].description;
+        var words = data[i].body;
         words.forEach(function(val) {
             descWords.push({word: val});
         }
@@ -69,13 +69,13 @@ function parseCSV(data) {
     var d = {};
     d.title = data.title;
     //d.id = data.VideoID;
-    d.description = data.description;
+    d.body = data.body;
     //d.thumbnail = data.thumbnail;
 
     var separators = [' ', '\\\!', '-', '\\\(', '\\\)', '\\*', '/', ':', '\\\?', '\\\.', ','];
     d.title = d.title.split(" ");
     //d.title = data.title.split(new RegExp(separators.join('|'), 'g'));
-    d.description = data.description.split(new RegExp(separators.join('|'), 'g'));
+    d.body = d.body.split(new RegExp(separators.join('|'), 'g'));
 
     
     return d;
