@@ -70,42 +70,6 @@ Promise.all(promises).then(function(data) {
             .attr("d", path);
 
     var yearRange;
-
-    var brush = d3.brushX()
-        .extent([[margin_context.left, 0], [width -margin_context.right, height_context]])
-        .on("brush", brushed)
-
-    context.append("g")
-        .attr("class", "brush")
-        .attr("transform", function() {
-            return (`translate(0, ${margin_context.top})`);
-        })
-        .call(brush)
-
-    function brushed() {
-        var s = d3.event.selection
-        yearRange = s.map(scaleDate.invert, scaleDate);
-        console.log(yearRange)
-    }
-
-   
-    //console.log(shootingsData)
-
-    var slider = d3.select("#selectYear");
-
-    slider
-        .property("min", shootingsData[0].year)
-        .property("max", shootingsData[shootingsData.length-1].year)
-        .property("value", shootingsData[shootingsData.length-1].year);
-
-    var selectedYear = slider.property("value");
-    
-    
-    var yearLabel = focus.append("text")
-        .attr("class", "yearLabel")
-        .attr("x", 25)
-        .attr("y", height-100)
-        .text(selectedYear);
     
     var rScale = d3.scaleSqrt()
         .domain([0,50])
@@ -173,16 +137,70 @@ Promise.all(promises).then(function(data) {
             });
     }
 
-        // var filtered_data = shootingsData.filter(function(d) {
-        //     return d.year > yearMin && d.year < yearMax;
-        // });
+        
 
-        var c = focus.selectAll("circle")
-            .data(shootingsData, function(d) {
+    var c = focus.selectAll("circle")
+        .data(shootingsData, function(d) {
+            return d.id;
+        });
+    
+    c.enter().append("circle")
+        .attr("cx", function(d) {
+            var proj = projection([d.longitude, d.latitude]);
+            return proj[0];
+        }).attr("cy", function(d){
+            var proj = projection([d.longitude, d.latitude]);
+            return proj[1];                
+        }).attr("r", 0)
+        .attr("opacity", 0.7)
+        .attr("fill", "#CC0000")
+    .merge(c)
+        .transition()
+        .duration(1000)
+        .attr("cx", function(d) {
+            var proj = projection([d.longitude, d.latitude]);
+            return proj[0];
+        }).attr("cy", function(d){
+            var proj = projection([d.longitude, d.latitude]);
+            return proj[1];                
+        }).attr("r", function(d) { return rScale(d.victims); })
+        .attr("opacity", 0.7)
+        .attr("fill", "#CC0000");
+    
+    c.exit()
+        .transition()
+        .duration(1000)
+        .attr("r", 0)
+        .remove();
+
+    var brush = d3.brushX()
+        .extent([[margin_context.left, 0], [width -margin_context.right, height_context]])
+        .on("brush", brushed)
+
+    context.append("g")
+        .attr("class", "brush")
+        .attr("transform", function() {
+            return (`translate(0, ${margin_context.top})`);
+        })
+        .call(brush)
+
+    function brushed() {
+        var s = d3.event.selection
+        yearRange = s.map(scaleDate.invert, scaleDate);
+        console.log(yearRange)
+
+        var filtered_data = shootingsData.filter(function(d) {
+            return d.year > yearRange[0] && d.year < yearRange[1];
+        });
+
+        console.log(filtered_data)
+
+        var newPoints = focus.selectAll("circle")
+            .data(filtered_data, function(d) {
                 return d.id;
             });
-        
-        c.enter().append("circle")
+    
+        newPoints.enter().append("circle")
             .attr("cx", function(d) {
                 var proj = projection([d.longitude, d.latitude]);
                 return proj[0];
@@ -192,7 +210,7 @@ Promise.all(promises).then(function(data) {
             }).attr("r", 0)
             .attr("opacity", 0.7)
             .attr("fill", "#CC0000")
-        .merge(c)
+        .merge(newPoints)
             .transition()
             .duration(1000)
             .attr("cx", function(d) {
@@ -205,46 +223,32 @@ Promise.all(promises).then(function(data) {
             .attr("opacity", 0.7)
             .attr("fill", "#CC0000");
         
-        c.exit()
+        newPoints.exit()
             .transition()
             .duration(1000)
             .attr("r", 0)
             .remove();
+        }
 
-        //yearLabel.text(year);
+    focus.selectAll("circle")
+        .on("mouseover", function(d){
+            var cx = +d3.select(this).attr("cx") + 15;
+            var cy = +d3.select(this).attr("cy") - 15;
 
-        focus.selectAll("circle")
-            .on("mouseover", function(d){
-                var cx = +d3.select(this).attr("cx") + 15;
-                var cy = +d3.select(this).attr("cy") - 15;
-
-                tooltip.style("visibility", "visible")
-                    .style("left", cx + "px")
-                    .style("top", cy + "px")
-                    .html(d.location + "<br>" + d.date.toLocaleDateString("en-US"));
-                svg.selectAll("circle")
-                    .attr("opacity", 0.2);
-                d3.select(this)
-                    .attr("opacity", 0.7);
-            
-                }).on("mouseout", function(d) {
-                tooltip.style("visibility", "hidden");
-                svg.selectAll("circle")
-                    .attr("opacity", 0.7);
-            });
-
-    //Initialize the map
-    //updateMap(selectedYear);
-
-
-    slider.on("input", function() {
-        var year = this.value;
-        console.log(year);
-
-        selectedYear = year;
-        updateMap(selectedYear);
-    })
-
+            tooltip.style("visibility", "visible")
+                .style("left", cx + "px")
+                .style("top", cy + "px")
+                .html(d.location + "<br>" + d.date.toLocaleDateString("en-US"));
+            svg.selectAll("circle")
+                .attr("opacity", 0.2);
+            d3.select(this)
+                .attr("opacity", 0.7);
+        
+            }).on("mouseout", function(d) {
+            tooltip.style("visibility", "hidden");
+            svg.selectAll("circle")
+                .attr("opacity", 0.7);
+        });
 
     var tooltip = d3.select("#chart")
         .append("div")
