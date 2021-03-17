@@ -5,6 +5,7 @@
 html, body {
   margin: 0px;
   padding: 0px;
+  background-color: black;
 }
 
 #container {
@@ -22,9 +23,17 @@ html, body {
 }
 
 .state {
-  fill: #F1F1F1;
-  stroke: #AAAAAA;
-  stroke-width: 2;
+  fill: black;
+  stroke: #333333;
+  stroke-width: 1;
+}
+
+/* .nodes {
+  mix-blend-mode: multiply;
+} */
+
+.label {
+  font-family: "Helvetica Neue", Helvetica, Arial, Helvetica, sans-serif;
 }
 
 #slider {
