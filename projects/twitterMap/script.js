@@ -2,7 +2,8 @@
 
 var promises = [
     d3.csv("./data/mass_shooting_events_stanford_msa_release_06142016.csv", parseCSV), 
-    d3.json("./data/blm.json"),
+    d3.json("./data/stopasianhate.json"),
+    d3.json("./data/blacklivesmatter.json"),
     d3.json("./geojson/gz_2010_us_040_00_20m.json")
 ];
 
@@ -13,17 +14,18 @@ Promise.all(promises).then(function(data) {
     var shootingsData = data[0];
     console.log(shootingsData)
 
-    var blmData = data[1];
+    var blmData = data[2];
+    var asianData = data[1];
     
 
-    var usa = data[2];
+    var usa = data[3];
     
     var twitterData = [];
     var separators = [' ', '\\\!', '-', '\\\(', '\\\)', '\\*', '/', ':', '\\\?', '\\\.', ','];
 
     for(var i = 0; i<blmData.length; i++){
         var text = blmData[i].text.split(new RegExp(separators.join('|'), 'g'));
-        twitterData.push({id: i, location: blmData[i].location, longitude: blmData[i].x_average, latitude: blmData[i].y_average, text: text, tweetLength: text.length});
+        twitterData.push({id: i, location: blmData[i].place_info.location, longitude: blmData[i].x_average, latitude: blmData[i].y_average, text: text, tweetLength: text.length});
     }
     console.log(twitterData);
     var nested = d3.nest()
