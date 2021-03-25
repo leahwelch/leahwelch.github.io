@@ -6,10 +6,17 @@
     </head>
     <body>
         <div id="container">
+            <div class="button_group">
+                <button class="tablinks active" id="blmBtn" onclick="showVis(event)">#BlackLivesMatter</button>
+                <button class="tablinks" id="asianBtn" onclick="showVis(event)">#StopAsianHate</button>
+            </div>
             <svg id="chart">
                 <g id="focus"></g>
                 <g id="context"></g>
             </svg>
+            <div id="tweetBox">
+                    The tweets will show up here.
+            </div>
         </div>
         <script src="./script.js"></script>
     </body>
