@@ -49,6 +49,14 @@ context.append("text")
     .text("Tweets Distributed by Length")
     .attr("fill", "white")
 
+context.append("text")
+    .attr("x", width/2)
+    .attr("class", "label")
+    .attr("y", height_context + margin_context.top + 30)
+    .text("Words")
+    .style("text-align", "center")
+    .attr("fill", "white")
+
 Promise.all(promises).then(function(data) {
 
     console.log(data);
@@ -81,26 +89,26 @@ Promise.all(promises).then(function(data) {
         var twitterData = [];
         for(var i = 0; i<dataset.length; i++){
             var text = dataset[i].text.split(new RegExp(separators.join('|'), 'g'));
-            twitterData.push({id: i, location: dataset[i].place_info.location, longitude: dataset[i].x_average, latitude: dataset[i].y_average, text: text, tweetLength: text.length});
+            var originalTweet = dataset[i].text;
+            twitterData.push({id: i, location: dataset[i].place_info.location, longitude: dataset[i].x_average, latitude: dataset[i].y_average, text: text, tweetLength: text.length, tweet: originalTweet});
         }
     
         var nested = d3.nest()
             .key(function(d){ return d.location; })
             .entries(twitterData)
+
+        console.log(nested);
     
         var tweets = [];
         for(var i = 0; i < nested.length; i++) {
             tweets.push({quantity: nested[i].values.length, 
                 latitude: nested[i].values[0].latitude, 
                 longitude: nested[i].values[0].longitude, 
-                id: i
+                id: i, 
+                location: nested[i].key
             })
         }
-        
-    
-        // var scaleDate = d3.scaleLinear()
-        //     .domain([1966,2016])
-        //     .range([margin_context.left, width-margin_context.right])
+        console.log(tweets)
     
         var xScale = d3.scaleLinear()
             .domain([1,75])
@@ -114,12 +122,12 @@ Promise.all(promises).then(function(data) {
         bins = histogramValues(twitterData);
     
         var yScale = d3.scaleLinear()
-            .range([height_context, margin_context.bottom])
+            .range([height_context-10, margin_context.bottom - 40])
             .domain([0, d3.max(bins, function(d) { return d.length; })])
 
         var xAxis = context.append("g")
             .attr("class", "axis")
-            .attr("transform", `translate(0,${height_context + margin_context.top})`)
+            .attr("transform", `translate(0,${height_context + margin_context.top-10})`)
             .call(d3.axisBottom().scale(xScale))
 
         function zeroState(selection) {
@@ -137,12 +145,9 @@ Promise.all(promises).then(function(data) {
             .attr("class", "bar")
             .call(zeroState)
 
-        bars.merge(barEnter)
-            
+        bars.merge(barEnter)  
             .attr("x", d => xScale(d.x0))
             .attr("width", d => Math.max(0, (xScale(d.x1) - xScale (d.x0))/2))
-            
-            
             .attr("transform", `translate(0, ${margin_context.top})`)
             .transition()
             .duration(500)
@@ -191,74 +196,108 @@ Promise.all(promises).then(function(data) {
             .attr("r", 0)
             .attr("opacity", 0)
             .remove();
-    
-        var brush = d3.brushX()
-            .extent([[margin_context.left, 0], [width -margin_context.right, height_context]])
-            .on("brush", brushed)
-    
-        context.append("g")
-            .attr("class", "brush")
-            .attr("transform", function() {
-                return (`translate(0, ${margin_context.top})`);
-            })
-            .call(brush)
-    
-        function brushed() {
-            var s = d3.event.selection
-            tweetLengths = s.map(xScale.invert, xScale);
-            // yearRange = s.map(scaleDate.invert, scaleDate);
-    
-            var filtered_data = twitterData.filter(function(d) {
-                return d.tweetLength > tweetLengths[0] && d.tweetLength < tweetLengths[1];
-            });
-    
-            nested = d3.nest()
-                .key(function(d){ return d.location; })
-                .entries(filtered_data)
-            console.log(nested);
-    
-            tweets.length = 0;
-            for(var i = 0; i < nested.length; i++) {
-                tweets.push({quantity: nested[i].values.length, 
-                    latitude: nested[i].values[0].latitude, 
-                    longitude: nested[i].values[0].longitude
-                })
-            }
-    
-            var newPoints = focus.selectAll("circle")
-                .data(tweets, function(d) {
-                    return d.id;
-                });
-        
-            newPoints.enter().append("circle")
-                .attr("cx", function(d) {
-                    var proj = projection([d.longitude, d.latitude]);
-                    return proj[0];
-                }).attr("cy", function(d){
-                    var proj = projection([d.longitude, d.latitude]);
-                    return proj[1];                
-                }).attr("r", 0)
-                .attr("opacity", 0)
-                .attr("fill", col)
-            .merge(newPoints)
-                .transition()
-                .duration(500)
-                .attr("cx", function(d) {
-                    var proj = projection([d.longitude, d.latitude]);
-                    return proj[0];
-                }).attr("cy", function(d){
-                    var proj = projection([d.longitude, d.latitude]);
-                    return proj[1];                
-                }).attr("r", function(d) { return rScale(d.quantity); })
-                .attr("opacity", 0.5)
-                .attr("fill", col);
+
+        var tweetList = [];
+
+        svg.selectAll(".circle").on("mouseover", function(d){
+            svg.selectAll(".circle")
+                .attr("opacity", 0.2);
+            d3.select(this)
+                .attr("opacity", 0.8);
             
-            newPoints.exit()
-                .transition()
-                .duration(500)
-                .attr("r", 0)
-                .remove();
-            }
+            }).on("click", function(d) {
+                d3.selectAll(".dynamicTweet").remove();
+                var loc = d.location;
+                document.getElementById("location").innerHTML = loc;
+            
+                var filtered_tweets = nested.filter(function(d) {
+                    return d.key === loc;
+                });
+                //console.log(filtered_tweets)
+                for(var i = 0; i < filtered_tweets[0].values.length; i++) {
+                    tweetList.push(filtered_tweets[0].values[i].tweet)
+                }
+                console.log(tweetList)
+                for(var i = 0; i < tweetList.length; i++) {
+                    document.getElementById("tweets").innerHTML +=
+                        `<p class="dynamicTweet">${tweetList[i]}</p>`
+                }
+                
+            })
+            .on("mouseout", function(d) {
+            svg.selectAll(".circle")
+                .attr("opacity", 0.5);
+                tweetList.length = 0;
+                
+        });
+    
+        // var brush = d3.brushX()
+        //     .extent([[margin_context.left, 0], [width -margin_context.right, height_context]])
+        //     .on("brush", brushed)
+    
+        // context.append("g")
+        //     .attr("class", "brush")
+        //     .attr("transform", function() {
+        //         return (`translate(0, ${margin_context.top})`);
+        //     })
+        //     .call(brush)
+    
+        // function brushed() {
+        //     var s = d3.event.selection
+        //     tweetLengths = s.map(xScale.invert, xScale);
+        //     // yearRange = s.map(scaleDate.invert, scaleDate);
+    
+        //     var filtered_data = twitterData.filter(function(d) {
+        //         return d.tweetLength > tweetLengths[0] && d.tweetLength < tweetLengths[1];
+        //     });
+    
+        //     nested = d3.nest()
+        //         .key(function(d){ return d.location; })
+        //         .entries(filtered_data)
+        //     console.log(nested);
+    
+        //     tweets.length = 0;
+        //     for(var i = 0; i < nested.length; i++) {
+        //         tweets.push({quantity: nested[i].values.length, 
+        //             latitude: nested[i].values[0].latitude, 
+        //             longitude: nested[i].values[0].longitude
+        //         })
+        //     }
+    
+        //     var newPoints = focus.selectAll("circle")
+        //         .data(tweets, function(d) {
+        //             return d.id;
+        //         });
+        
+        //     newPoints.enter().append("circle")
+        //         .attr("cx", function(d) {
+        //             var proj = projection([d.longitude, d.latitude]);
+        //             return proj[0];
+        //         }).attr("cy", function(d){
+        //             var proj = projection([d.longitude, d.latitude]);
+        //             return proj[1];                
+        //         }).attr("r", 0)
+        //         .attr("opacity", 0)
+        //         .attr("fill", col)
+        //     .merge(newPoints)
+        //         .transition()
+        //         .duration(500)
+        //         .attr("cx", function(d) {
+        //             var proj = projection([d.longitude, d.latitude]);
+        //             return proj[0];
+        //         }).attr("cy", function(d){
+        //             var proj = projection([d.longitude, d.latitude]);
+        //             return proj[1];                
+        //         }).attr("r", function(d) { return rScale(d.quantity); })
+        //         .attr("opacity", 0.5)
+        //         .attr("fill", col);
+            
+        //     newPoints.exit()
+        //         .transition()
+        //         .duration(500)
+        //         .attr("r", 0)
+        //         .remove();
+        //     }
     }
 
     blmBtn.on("click", function() {
