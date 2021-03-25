@@ -44,7 +44,7 @@ var context = svg.select("#context");
     
 context.append("text")
     .attr("x", margin_context.left)
-    .attr("class", "label")
+    .attr("class", "miniTitle")
     .attr("y", margin_context.top + 20)
     .text("How Much Are People Writing?")
     .attr("fill", "white")

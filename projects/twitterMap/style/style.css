@@ -88,6 +88,12 @@ h1 {
 
 .label {
   font-family: "Helvetica Neue", Helvetica, Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+}
+
+.miniTitle {
+  font-family: "Helvetica Neue", Helvetica, Arial, Helvetica, sans-serif;
+  font-size: 16pt;
 }
 
 .button_group {
