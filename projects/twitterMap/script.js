@@ -231,75 +231,75 @@ Promise.all(promises).then(function(data) {
                 
         });
     
-        var brush = d3.brushX()
-            .extent([[margin_context.left, 0], [width -margin_context.right, height_context]])
-            .on("brush", brushed)
+        // var brush = d3.brushX()
+        //     .extent([[margin_context.left, 0], [width -margin_context.right, height_context]])
+        //     .on("brush", brushed)
     
-        context.append("g")
-            .attr("class", "brush")
-            .attr("transform", function() {
-                return (`translate(0, ${margin_context.top})`);
-            })
-            .call(brush)
+        // context.append("g")
+        //     .attr("class", "brush")
+        //     .attr("transform", function() {
+        //         return (`translate(0, ${margin_context.top})`);
+        //     })
+        //     .call(brush)
     
-        function brushed() {
-            var s = d3.event.selection
+        // function brushed() {
+        //     var s = d3.event.selection
 
-            tweetLengths = s.map(xScale.invert, xScale);
+        //     tweetLengths = s.map(xScale.invert, xScale);
     
-            var filtered_data = twitterData.filter(function(d) {
-                return d.tweetLength > tweetLengths[0] && d.tweetLength < tweetLengths[1];
-            });
+        //     var filtered_data = twitterData.filter(function(d) {
+        //         return d.tweetLength > tweetLengths[0] && d.tweetLength < tweetLengths[1];
+        //     });
     
-            nested = d3.nest()
-                .key(function(d){ return d.location; })
-                .entries(filtered_data)
-            console.log(nested);
+        //     nested = d3.nest()
+        //         .key(function(d){ return d.location; })
+        //         .entries(filtered_data)
+        //     console.log(nested);
     
-            tweets.length = 0;
-            for(var i = 0; i < nested.length; i++) {
-                tweets.push({quantity: nested[i].values.length, 
-                    latitude: nested[i].values[0].latitude, 
-                    longitude: nested[i].values[0].longitude
-                })
-            }
+        //     tweets.length = 0;
+        //     for(var i = 0; i < nested.length; i++) {
+        //         tweets.push({quantity: nested[i].values.length, 
+        //             latitude: nested[i].values[0].latitude, 
+        //             longitude: nested[i].values[0].longitude
+        //         })
+        //     }
     
-            var newPoints = focus.selectAll("circle")
-                .data(tweets, function(d) {
-                    return d.id;
-                });
+        //     var newPoints = focus.selectAll("circle")
+        //         .data(tweets, function(d) {
+        //             return d.id;
+        //         });
         
-            newPoints.enter().append("circle")
-                .attr("cx", function(d) {
-                    var proj = projection([d.longitude, d.latitude]);
-                    return proj[0];
-                }).attr("cy", function(d){
-                    var proj = projection([d.longitude, d.latitude]);
-                    return proj[1];                
-                }).attr("r", 0)
-                .attr("opacity", 0)
-                .attr("fill", col)
-            .merge(newPoints)
-                .transition()
-                .duration(500)
-                .attr("cx", function(d) {
-                    var proj = projection([d.longitude, d.latitude]);
-                    return proj[0];
-                }).attr("cy", function(d){
-                    var proj = projection([d.longitude, d.latitude]);
-                    return proj[1];                
-                }).attr("r", function(d) { return rScale(d.quantity); })
-                .attr("opacity", 0.3)
-                .attr("fill", col);
+        //     newPoints.enter().append("circle")
+        //         .attr("cx", function(d) {
+        //             var proj = projection([d.longitude, d.latitude]);
+        //             return proj[0];
+        //         }).attr("cy", function(d){
+        //             var proj = projection([d.longitude, d.latitude]);
+        //             return proj[1];                
+        //         }).attr("r", 0)
+        //         .attr("opacity", 0)
+        //         .attr("fill", col)
+        //     .merge(newPoints)
+        //         .transition()
+        //         .duration(500)
+        //         .attr("cx", function(d) {
+        //             var proj = projection([d.longitude, d.latitude]);
+        //             return proj[0];
+        //         }).attr("cy", function(d){
+        //             var proj = projection([d.longitude, d.latitude]);
+        //             return proj[1];                
+        //         }).attr("r", function(d) { return rScale(d.quantity); })
+        //         .attr("opacity", 0.3)
+        //         .attr("fill", col);
             
-            newPoints.exit()
-                .transition()
-                .duration(500)
-                .attr("r", 0)
-                .remove();
+        //     newPoints.exit()
+        //         .transition()
+        //         .duration(500)
+        //         .attr("r", 0)
+        //         .remove();
 
-            if (!event.selection) return;
-            }
+        //     if (!event.selection) return;
+        //     }
     }
 
     blmBtn.on("click", function() {
