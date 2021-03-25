@@ -31,7 +31,7 @@ var width = document.querySelector("#chart").clientWidth;
 var height = document.querySelector("#chart").clientHeight;
 var margin = {top: 100, right: 100, left: 100, bottom: 200}
 
-var margin_context = {top: 650, right: 50, bottom: 100, left: 50};
+var margin_context = {top: 650, right: 50, bottom: 120, left: 50};
 var height_context = height - margin_context.top - margin_context.bottom
 
 var svg = d3.select("#chart")
@@ -45,8 +45,8 @@ var context = svg.select("#context");
 context.append("text")
     .attr("x", margin_context.left)
     .attr("class", "label")
-    .attr("y", margin_context.top - 20)
-    .text("Tweet Length")
+    .attr("y", margin_context.top + 20)
+    .text("Tweets Distributed by Length")
     .attr("fill", "white")
 
 Promise.all(promises).then(function(data) {
@@ -58,13 +58,8 @@ Promise.all(promises).then(function(data) {
 
     var blmData = data[2];
     var asianData = data[1];
-
-    
-    
-
     var usa = data[3];
-    
-   
+
     var separators = [' ', '\\\!', '-', '\\\(', '\\\)', '\\*', '/', ':', '\\\?', '\\\.', ','];
 
     var projection = d3.geoAlbers()
@@ -119,8 +114,13 @@ Promise.all(promises).then(function(data) {
         bins = histogramValues(twitterData);
     
         var yScale = d3.scaleLinear()
-            .range([height_context, 0])
+            .range([height_context, margin_context.bottom])
             .domain([0, d3.max(bins, function(d) { return d.length; })])
+
+        var xAxis = context.append("g")
+            .attr("class", "axis")
+            .attr("transform", `translate(0,${height_context + margin_context.top})`)
+            .call(d3.axisBottom().scale(xScale))
 
         function zeroState(selection) {
             selection
