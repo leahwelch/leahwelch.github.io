@@ -9,7 +9,7 @@ html, body {
 }
 
 h1 {
-  padding: 5% 30%;
+  padding: 5% 25%;
   font-size: 60pt;
   font-family: 'Menlo', Consolas, Monaco,'Courier New', monospace;
   text-align: center;
@@ -26,17 +26,18 @@ h1 {
   margin: 100px;
   color: white;
   font-family: "Helvetica Neue", Helvetica, Arial, Helvetica, sans-serif;
-  font-size: 16pt;
+  font-size: 14pt;
+  line-height: 1.6;
 }
 
 #intro p {
-  padding: 20px 35%;
+  padding: 20px 30%;
 }
 
 #container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 90vh;
   margin: 0px;
   padding: 0px;
   display: grid;
@@ -47,11 +48,22 @@ h1 {
         "chart tweetBox";
 }
 
+.dynamicTweet {
+  background-color: #333333;
+  padding: 10px;
+
+}
+
 #chart {
   width: 100%;
   height: 100vh;
   position: relative;
   grid-area: chart;
+}
+
+#tweets {
+  font-size: 0.75rem;
+  line-height: 1.6;
 }
 
 .axis {
@@ -77,7 +89,6 @@ h1 {
   width:400px;
   border:1px solid #555555;
   font-family: "Helvetica Neue", Helvetica, Arial, Helvetica, sans-serif;
-  font:16px/26px;
   overflow:auto;
 }
 
@@ -113,30 +124,34 @@ button {
     
   /* margin: 5px; */
   background-color: black;
-  border: 1px solid white;
+  border: none;
+  margin: 10px;
   font-family: "Helvetica Neue", Helvetica, Arial, Helvetica, sans-serif;
   font-size: 12pt;
   color: white;
   text-align: center;
-  padding: 5px 50px;
+  padding: 5px 30px;
   /* border-radius: 50%; */
   display: inline-block;
 }
 
 button:hover {
-  background-color: white;
-  color: black;
+  /* background-color: white; */
+  border-bottom: 1px solid white;
+  color: white;
 }
 
 button:focus {
-  background-color: white;
-  color: black;
+  /* background-color: white; */
+  border-bottom: 1px solid white;
+  color: white;
   outline:0;
 }
 
 button.active {
-  background-color: white;
-  color: black;
+  /* background-color: white; */
+  border-bottom: 1px solid white;
+  color: white;
   outline:0;
 }
 
