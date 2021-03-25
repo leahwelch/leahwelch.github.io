@@ -8,6 +8,26 @@ html, body {
   background-color: black;
 }
 
+h1 {
+  font-size: 60pt;
+  font-family: 'Menlo', Consolas, Monaco,'Courier New', monospace;
+  text-align: center;
+}
+
+#byline {
+  font-size: 12pt;
+  text-align: center;
+  padding-bottom: 5vh;
+  font-family: "Helvetica Neue", Helvetica, Arial, Helvetica, sans-serif;
+}
+
+#intro {
+  padding: 20vh 35%;
+  color: white;
+  font-family: "Helvetica Neue", Helvetica, Arial, Helvetica, sans-serif;
+  font-size: 16pt;
+}
+
 #container {
   display: flex;
   flex-direction: column;

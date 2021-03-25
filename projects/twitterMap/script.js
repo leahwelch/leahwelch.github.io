@@ -46,14 +46,14 @@ context.append("text")
     .attr("x", margin_context.left)
     .attr("class", "label")
     .attr("y", margin_context.top + 20)
-    .text("Tweets Distributed by Length")
+    .text("How Much Are People Writing?")
     .attr("fill", "white")
 
 context.append("text")
     .attr("x", width/2)
     .attr("class", "label")
     .attr("y", height_context + margin_context.top + 30)
-    .text("Words")
+    .text("Tweet Length (words)")
     .style("text-align", "center")
     .attr("fill", "white")
 
@@ -309,10 +309,6 @@ Promise.all(promises).then(function(data) {
     });
     
     draw(blmData, blmFill);
-   //draw(asianData, asianFill);
-
-
-
 
 });
 
