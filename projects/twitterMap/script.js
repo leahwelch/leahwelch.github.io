@@ -11,7 +11,7 @@ var blmBtn = d3.select("#blmBtn");
 var asianBtn = d3.select("#asianBtn");
 
 var blmFill = "#FEED02";
-var asianFill = "#ff0000";
+var asianFill = "#F4683A";
 
 function showVis(evt) {
     // Declare all variables
@@ -29,9 +29,9 @@ function showVis(evt) {
 
 var width = document.querySelector("#chart").clientWidth;
 var height = document.querySelector("#chart").clientHeight;
-var margin = {top: 100, right: 100, left: 100, bottom: 200}
+var margin = {top: 100, right: 100, left: 100, bottom: 0}
 
-var margin_context = {top: 650, right: 50, bottom: 120, left: 50};
+var margin_context = {top: 650, right: 50, bottom: 40, left: 50};
 var height_context = height - margin_context.top - margin_context.bottom
 
 var svg = d3.select("#chart")
@@ -40,22 +40,6 @@ var svg = d3.select("#chart")
 
 var focus = svg.select("#focus");
 var context = svg.select("#context");
-
-    
-context.append("text")
-    .attr("x", margin_context.left)
-    .attr("class", "miniTitle")
-    .attr("y", margin_context.top + 20)
-    .text("How Much Are People Writing?")
-    .attr("fill", "white")
-
-context.append("text")
-    .attr("x", width/2)
-    .attr("class", "label")
-    .attr("y", height_context + margin_context.top + 30)
-    .text("Tweet Length (words)")
-    .style("text-align", "center")
-    .attr("fill", "white")
 
 Promise.all(promises).then(function(data) {
 
@@ -71,8 +55,8 @@ Promise.all(promises).then(function(data) {
     var separators = [' ', '\\\!', '-', '\\\(', '\\\)', '\\*', '/', ':', '\\\?', '\\\.', ','];
 
     var projection = d3.geoAlbers()
-        .translate([width/2, height/3])
-        .scale(1250);
+        .translate([width/2-100, height/3 + 30])
+        .scale(1350);
 
     var path = d3.geoPath().projection(projection);
 
@@ -82,6 +66,57 @@ Promise.all(promises).then(function(data) {
         .append("path")
             .attr("class", "state")
             .attr("d", path);
+
+    context.append("rect")
+        .attr("class", "contextBG")
+        .attr("x", margin_context.left)
+        .attr("y", margin_context.top)
+        .attr("height", height_context)
+        .attr("width", width-margin_context.right)
+        .attr("fill", "#272727")
+    
+        
+    context.append("text")
+        .attr("x", margin_context.left + 20)
+        .attr("class", "miniTitle")
+        .attr("y", margin_context.top + 30)
+        .text("How Much Are People Writing?")
+        .attr("fill", "white")
+
+    context.append("text")
+        .attr("x", margin_context.left + 20)
+        .attr("class", "histoText")
+        .attr("y", margin_context.top + 60)
+        .text("This histogram shows the distribution of")
+        .attr("fill", "white")
+
+    context.append("text")
+        .attr("x", margin_context.left + 20)
+        .attr("class", "histoText")
+        .attr("y", margin_context.top + 82)
+        .text("tweets by length from single hashtag to")
+        .attr("fill", "white")
+
+    context.append("text")
+        .attr("x", margin_context.left + 20)
+        .attr("class", "histoText")
+        .attr("y", margin_context.top + 104)
+        .text("lengthy prose.")
+        .attr("fill", "white")
+
+
+        
+        
+
+    
+    
+    // context.append("text")
+    //     .attr("x", width/2)
+    //     .attr("class", "label")
+    //     .attr("y", height_context + margin_context.top + 30)
+    //     .text("Tweet Length (words)")
+    //     .style("text-align", "center")
+    //     .attr("fill", "white")
 
     function draw(dataset, col) {
 
@@ -112,7 +147,7 @@ Promise.all(promises).then(function(data) {
     
         var xScale = d3.scaleLinear()
             .domain([1,75])
-            .range([margin_context.left, width-margin_context.right])
+            .range([margin_context.left + (width-margin_context.right)/4, width-margin_context.right])
     
         var histogramValues = d3.histogram()
             .value(function(d) {return d.tweetLength})
@@ -122,12 +157,12 @@ Promise.all(promises).then(function(data) {
         bins = histogramValues(twitterData);
     
         var yScale = d3.scaleLinear()
-            .range([height_context-10, margin_context.bottom - 40])
+            .range([height_context-40, margin_context.bottom -10])
             .domain([0, d3.max(bins, function(d) { return d.length; })])
 
         var xAxis = context.append("g")
             .attr("class", "axis")
-            .attr("transform", `translate(0,${height_context + margin_context.top-10})`)
+            .attr("transform", `translate(0,${height_context + margin_context.top-30})`)
             .call(d3.axisBottom().scale(xScale))
 
         function zeroState(selection) {

@@ -5,7 +5,7 @@
 html, body {
   margin: 0px;
   padding: 0px;
-  background-color: black;
+  background-color: #121212;
 }
 
 h1 {
@@ -13,6 +13,11 @@ h1 {
   font-size: 60pt;
   font-family: 'Menlo', Consolas, Monaco,'Courier New', monospace;
   text-align: center;
+}
+
+h2 {
+  margin: 0px;
+  font-weight: normal;
 }
 
 #byline {
@@ -37,26 +42,28 @@ h1 {
 #container {
   display: flex;
   flex-direction: column;
-  height: 90vh;
+  height: 100vh;
   margin: 0px;
   padding: 0px;
   display: grid;
-  grid-template-columns: 3fr 1fr;
-  grid-template-rows: 1fr 6fr;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: 1fr 7fr;
   grid-template-areas: 
         "buttons tweetBox"
         "chart tweetBox";
 }
 
 .dynamicTweet {
-  background-color: #333333;
-  padding: 10px;
+  /* background-color: #333333; */
+  border-bottom: 1px solid #585858;
+  padding: 0px 10px 10px 10px;
+  
 
 }
 
 #chart {
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   position: relative;
   grid-area: chart;
 }
@@ -64,12 +71,15 @@ h1 {
 #tweets {
   font-size: 0.75rem;
   line-height: 1.6;
+  opacity: 0.6;
+  padding-bottom: 0px;
 }
 
 .axis {
   color: white;
   font-family: "Helvetica Neue", Helvetica, Arial, Helvetica, sans-serif;
   font-size: 0.5rem;
+  opacity: 0.87;
 }
 
 .axis path {
@@ -78,6 +88,7 @@ h1 {
 
 .axis line {
   stroke: white;
+  opacity: 0.87;
 }
 
 #tweetBox {
@@ -85,22 +96,23 @@ h1 {
   padding: 20px;
   margin: 40px;
   color: white;
-  height:90vh;
-  width:400px;
-  border:1px solid #555555;
+  height:92vh;
+  width:300px;
+  background-color: #272727;
+  /* border:1px solid #555555; */
   font-family: "Helvetica Neue", Helvetica, Arial, Helvetica, sans-serif;
   overflow:auto;
 }
 
-.state {
-  fill: black;
-  stroke: #555555;
-  stroke-width: 1;
+.histoText {
+  font-family: "Helvetica Neue", Helvetica, Arial, Helvetica, sans-serif;
 }
 
-/* .nodes {
-  mix-blend-mode: multiply;
-} */
+.state {
+  fill: #1e1e1e;
+  stroke: #737373;
+  stroke-width: 1;
+}
 
 .label {
   font-family: "Helvetica Neue", Helvetica, Arial, Helvetica, sans-serif;
@@ -109,15 +121,26 @@ h1 {
 
 .miniTitle {
   font-family: "Helvetica Neue", Helvetica, Arial, Helvetica, sans-serif;
-  font-size: 16pt;
+  font-size: 14pt;
 }
 
 .button_group {
   display: block;
-  margin-left: auto;
+  margin-left: 62rem;
   margin-right: auto;
   margin-top: 2em;
   grid-area: buttons;
+}
+
+.button_group button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+/* Clear floats (clearfix hack) */
+.button_group:after {
+  content: "";
+  clear: both;
+  display: table;
 }
 
 button {
@@ -125,52 +148,50 @@ button {
   /* margin: 5px; */
   background-color: black;
   border: none;
-  margin: 10px;
+  /* margin: 10px; */
   font-family: "Helvetica Neue", Helvetica, Arial, Helvetica, sans-serif;
   font-size: 12pt;
   color: white;
   text-align: center;
-  padding: 5px 30px;
+  padding: 10px 30px;
   /* border-radius: 50%; */
-  display: inline-block;
+  /* display: inline-block; */
+  float: left; /* Float the buttons side by side */
 }
 
-button:hover {
-  /* background-color: white; */
-  border-bottom: 1px solid white;
-  color: white;
+#blmBtn:hover {
+  background-color: #FEED02;
+  color: black;
 }
 
-button:focus {
-  /* background-color: white; */
-  border-bottom: 1px solid white;
-  color: white;
+#blmBtn:focus {
+  background-color: #FEED02;
+  color: black;
   outline:0;
 }
 
-button.active {
-  /* background-color: white; */
-  border-bottom: 1px solid white;
-  color: white;
+#blmBtn.active {
+  background-color: #FEED02;
+  color: black;
   outline:0;
 }
 
-/* #slider {
-  padding: 20px;
-  width: 100%;
+#asianBtn:hover {
+  background-color: #F4683A;
+  color: black;
 }
 
-#selectYear {
-  width: 100%;
+#asianBtn:focus {
+  background-color: #F4683A;
+  color: black;
+  outline:0;
 }
 
-.yearLabel {
-  font-family: "Helvetica Neue", Helvetica, Arial, Helvetica, sans-serif;
-  font-size: 8.0em;
-  font-weight: 700;
-  fill: #E2E2E2;
-  cursor: default;
-} */
+#asianBtn.active {
+  background-color: #F4683A;
+  color: black;
+  outline:0;
+}
 
 .tooltip {
   position: absolute;
