@@ -74,6 +74,21 @@ Promise.all(promises).then(function(data) {
         .attr("height", height_context)
         .attr("width", width-margin_context.right)
         .attr("fill", "#272727")
+
+    focus.append("rect")
+        .attr("class", "focusBG")
+        .attr("x", width + margin.left - margin.right- 200)
+        .attr("y", margin_context.top - margin_context.bottom-160)
+        .attr("height", 160)
+        .attr("width", 200)
+        .attr("fill", "#272727")
+
+    focus.append("text")
+        .attr("x", width + margin.left - margin.right- 180)
+        .attr("class", "histoText")
+        .attr("y", margin_context.top - margin_context.bottom-125)
+        .text("Size: # Of Tweets")
+        .attr("fill", "white")
     
         
     context.append("text")
@@ -103,12 +118,6 @@ Promise.all(promises).then(function(data) {
         .attr("y", margin_context.top + 104)
         .text("lengthy prose.")
         .attr("fill", "white")
-
-
-        
-        
-
-    
     
     // context.append("text")
     //     .attr("x", width/2)
@@ -120,6 +129,7 @@ Promise.all(promises).then(function(data) {
 
     function draw(dataset, col) {
 
+        focus.selectAll(".legendNode").remove();
         console.log(dataset)
         var twitterData = [];
         for(var i = 0; i<dataset.length; i++){
@@ -195,6 +205,85 @@ Promise.all(promises).then(function(data) {
             .duration(500)
             .call(zeroState)
             .remove();
+
+        focus.append("circle")
+            .attr("class", "legendNode")
+            .attr("cx", width + margin.left - margin.right- 140)
+            .attr("cy", margin_context.top - margin_context.bottom - 60)
+            .attr("r", 40)
+            .attr("fill", col)
+            .attr("opacity", 0.3)
+
+        focus.append("line")
+            .attr("class", "legendNode")
+            .attr("x1", width + margin.left - margin.right- 140)
+            .attr("x2", width + margin.left - margin.right- 80)
+            .attr("y1", margin_context.top - margin_context.bottom - 100)
+            .attr("y2", margin_context.top - margin_context.bottom - 100)
+            .attr("stroke", "white")
+            .attr("stroke-weight", 1)
+            .attr("stroke-dasharray", 4)
+            .attr("opacity", 0.87)
+
+        focus.append("text")
+            .attr("x", width + margin.left - margin.right- 70)
+            .attr("class", "histoText")
+            .attr("y", margin_context.top - margin_context.bottom - 95)
+            .text("65")
+            .attr("fill", "white")
+
+        focus.append("circle")
+            .attr("class", "legendNode")
+            .attr("cx", width + margin.left - margin.right- 140)
+            .attr("cy", margin_context.top - margin_context.bottom - 40)
+            .attr("r", 20)
+            .attr("fill", col)
+            .attr("opacity", 0.3)
+
+        focus.append("line")
+            .attr("class", "legendNode")
+            .attr("x1", width + margin.left - margin.right- 140)
+            .attr("x2", width + margin.left - margin.right- 80)
+            .attr("y1", margin_context.top - margin_context.bottom - 60)
+            .attr("y2", margin_context.top - margin_context.bottom - 60)
+            .attr("stroke", "white")
+            .attr("stroke-weight", 1)
+            .attr("stroke-dasharray", 4)
+            .attr("opacity", 0.87)
+
+        focus.append("text")
+            .attr("x", width + margin.left - margin.right- 70)
+            .attr("class", "histoText")
+            .attr("y", margin_context.top - margin_context.bottom - 55)
+            .text("15")
+            .attr("fill", "white")
+
+        focus.append("circle")
+            .attr("class", "legendNode")
+            .attr("cx", width + margin.left - margin.right- 140)
+            .attr("cy", margin_context.top - margin_context.bottom - 25)
+            .attr("r", 5)
+            .attr("fill", col)
+            .attr("opacity", 0.3)
+
+        focus.append("line")
+            .attr("class", "legendNode")
+            .attr("x1", width + margin.left - margin.right- 140)
+            .attr("x2", width + margin.left - margin.right- 80)
+            .attr("y1", margin_context.top - margin_context.bottom - 30)
+            .attr("y2", margin_context.top - margin_context.bottom - 30)
+            .attr("stroke", "white")
+            .attr("stroke-weight", 1)
+            .attr("stroke-dasharray", 4)
+            .attr("opacity", 0.87)
+
+        focus.append("text")
+            .attr("x", width + margin.left - margin.right- 70)
+            .attr("class", "histoText")
+            .attr("y", margin_context.top - margin_context.bottom - 25)
+            .text("1")
+            .attr("fill", "white")
+
     
     
         var tweetLengths;

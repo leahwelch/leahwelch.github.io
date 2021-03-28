@@ -106,6 +106,7 @@ h2 {
 
 .histoText {
   font-family: "Helvetica Neue", Helvetica, Arial, Helvetica, sans-serif;
+  opacity: 0.87;
 }
 
 .state {
@@ -126,7 +127,7 @@ h2 {
 
 .button_group {
   display: block;
-  margin-left: 62rem;
+  margin-left: auto;
   margin-right: auto;
   margin-top: 2em;
   grid-area: buttons;
