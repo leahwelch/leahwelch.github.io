@@ -2,8 +2,8 @@
 
 var promises = [
     d3.csv("./data/mass_shooting_events_stanford_msa_release_06142016.csv", parseCSV), 
-    d3.json("./data/stopasianhate.json"),
-    d3.json("./data/blacklivesmatter.json"),
+    d3.json("./data/stopasianhate_orig.json"),
+    d3.json("./data/racism.json"),
     d3.json("./geojson/gz_2010_us_040_00_20m.json")
 ];
 
@@ -135,7 +135,9 @@ Promise.all(promises).then(function(data) {
         for(var i = 0; i<dataset.length; i++){
             var text = dataset[i].text.split(new RegExp(separators.join('|'), 'g'));
             var originalTweet = dataset[i].text;
-            twitterData.push({id: i, location: dataset[i].place_info.location, longitude: dataset[i].x_average, latitude: dataset[i].y_average, text: text, tweetLength: text.length, tweet: originalTweet});
+            var longitude = (dataset[i].place_info.geo.bbox[0] + dataset[i].place_info.geo.bbox[2])/2;
+            var latitude = (dataset[i].place_info.geo.bbox[1] + dataset[i].place_info.geo.bbox[3])/2;
+            twitterData.push({id: i, location: dataset[i].place_info.name, longitude: longitude, latitude: latitude, text: text, tweetLength: text.length, tweet: originalTweet});
         }
     
         var nested = d3.nest()
@@ -435,6 +437,7 @@ Promise.all(promises).then(function(data) {
     });
     
     draw(blmData, blmFill);
+    //draw(asianData, asianFill);
 
 });
 
