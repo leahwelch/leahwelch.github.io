@@ -64746,31 +64746,6 @@
         }
     },
     {
-        "geo": {
-            "place_id": "4bb41f9d86e16416"
-        },
-        "id": "1375345030278250498",
-        "text": "@GeoffBakerTIMES @gdrinnan WTF is wrong with people 😡 As if they don't know #racism is unacceptable 🤦 Their careers are probably cooked now too! #WHL",
-        "created_at": "2021-03-26T07:13:02.000Z",
-        "author_id": "1060182799",
-        "place_info": {
-            "full_name": "Saskatoon, Saskatchewan",
-            "geo": {
-                "type": "Feature",
-                "bbox": [
-                    -106.8249536,
-                    52.069634,
-                    -106.5036955,
-                    52.2305208
-                ],
-                "properties": {}
-            },
-            "id": "4bb41f9d86e16416",
-            "place_type": "city",
-            "name": "Saskatoon"
-        }
-    },
-    {
         "id": "1375340358972796930",
         "geo": {
             "place_id": "d15f2a2cc5813ac5"
