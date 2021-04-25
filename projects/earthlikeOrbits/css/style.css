@@ -33,6 +33,8 @@
 
   #sketch-holder {
       grid-area: sketch;
+      /* position: sticky;
+      position: -webkit-sticky; */
   }
 
   #description {

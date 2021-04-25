@@ -20,11 +20,11 @@ function setup() {
   for (let i = 0; i < 20; i++) {
     let x = random(width);
     let y = random(height);
-    let m = random(5, 10);
+    let m = random(1, 5);
     movers[i] = new Mover(x, y, m, 220,20,255);
   }
-  sun = new Attractor(width / 2 - 100, height / 2, 3000,50, 249, 244, 189);
-  e = new Attractor(2*(width/3)-100, height / 2, 1,10, 27, 244, 189);
+  sun = new Attractor(width / 2 - 200, height / 2, 3000,50, 249, 244, 189);
+  e = new Attractor(2*(width/3), height / 2, 1,10, 27, 244, 189);
   background(8,8,45);
 }
 
