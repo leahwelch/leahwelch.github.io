@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Syncopate&display=swap');
+
+* {
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    padding: 0px;
+    font-family: "Futura",'Arial Narrow', sans-serif;
+    background-color: #08082D;
+    color: white;
+    /* This centers our sketch horizontally. */
+    justify-content: center;
+
+    /* This centers our sketch vertically. */
+    align-items: center;
+  }
+  
+  h1 {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 80pt;
+  }
+
+  .container {
+    margin-top: 200px;
+    margin-bottom: 100px;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    grid-template-rows: 1fr ;
+    grid-template-areas: 
+            "description sketch";
+  }
+
+  #sketch-holder {
+      grid-area: sketch;
+  }
+
+  #description {
+      grid-area: description;
+      margin: 50px;
+  }
+  
