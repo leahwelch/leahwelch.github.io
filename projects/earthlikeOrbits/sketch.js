@@ -1,9 +1,14 @@
 let movers = [];
+let l1;
 let sun;
+let sunX;
 let e;
-let s1;
-let s2;
+let earthX;
 let cnv;
+let labelColor;
+let nextButton;
+let prevButton;
+let dist;
 
 function centerCanvas() {
   let canvasX = (windowWidth - width) / 2;
@@ -14,24 +19,35 @@ function centerCanvas() {
 function setup() {
     let canvasX = (windowWidth - width) / 2;
     let canvasY;
-    
+
+    labelColor=255;
+
+    nextButton = select("#next");
+    prevButton = select("#prev");
+    nextButton.mousePressed(update1);
+    // button.mousePressed(update1);
+
     cnv = createCanvas(800, 600);
     cnv.position(canvasX, canvasY);
     cnv.parent('sketch-holder');
-  for (let i = 0; i < 20; i++) {
-    let x = random(width);
-    let y = random(height);
-    let m = random(1, 5);
-    movers[i] = new Mover(x, y, m, 220,20,255);
-  }
-  sun = new Attractor(width / 2 - 200, height / 2, 3000,50, 249, 244, 189);
-  e = new Attractor(2*(width/3), height / 2, 1,10, 27, 244, 189);
-  background(8,8,45);
-}
 
-// function windowResized() {
-//     centerCanvas();
-//   }
+    for (let i = 0; i < 20; i++) {
+      let x = random(width);
+      let y = random(height);
+      let m = random(1, 5);
+      movers[i] = new Mover(x, y, m, 220,20,255);
+    }
+
+    
+    sunX = width / 2 - 100;
+    earthX = 2*(width/3) + 50;
+    dist = earthX - sunX;
+    
+    sun = new Attractor(sunX, height / 2, 3000,50, 249, 244, 189);
+    e = new Attractor(earthX, height / 2, 1,10, 27, 244, 189);
+
+    background(8,8,45);
+}
 
 function draw() {
   background(8,8,45);
@@ -43,19 +59,29 @@ function draw() {
     sun.attract(mover);
   }
 
-  fill(255);
+  fill(labelColor);
   textSize(12);
   textFont('Arial Narrow');
-  s1 = 'SUN';
-  s2 = 'EARTH';
-  text(s1, width / 2 - 210, height / 2 - 60)
-  text(s2, 2*(width/3) - 16, height / 2 - 20)
-//   if (mouseIsPressed) {
-//     attractor.pos.x = mouseX;
-//     attractor.pos.y = mouseY;
-//   }
-  
+  text('SUN', sunX - 10, height / 2 - 60)
+  text('EARTH', earthX - 16, height / 2 - 20)
+
+  fill(255,0)
+  stroke(255,100);
+  strokeWeight(1)
+  ellipse(earthX + (dist/10), height/2, 10, 10);
+  ellipse(earthX - (dist/10), height/2, 10, 10);
+  ellipse(sunX - dist, height/2, 10, 10);
+  ellipse(earthX-(dist/2), height/2+sqrt(sq(dist) - sq(dist/2)), 10, 10);
+  ellipse(earthX-(dist/2), height/2-sqrt(sq(dist) - sq(dist/2)), 10, 10);
 }
+
+function update1() {
+  labelColor = color(8,8,45);
+}
+
+
+  
+
 
 class Attractor {
     constructor(x, y, m,r, c1, c2, c3) {

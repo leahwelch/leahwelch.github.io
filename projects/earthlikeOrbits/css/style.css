@@ -53,6 +53,10 @@
       grid-area: description;
       margin: 50px;
   }
+
+  .button_group {
+    float: right;
+  }
   
   button {
     
