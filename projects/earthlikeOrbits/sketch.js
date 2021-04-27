@@ -1,7 +1,8 @@
 let movers = [];
 let sun;
 let e;
-
+let s1;
+let s2;
 let cnv;
 
 function centerCanvas() {
@@ -14,7 +15,7 @@ function setup() {
     let canvasX = (windowWidth - width) / 2;
     let canvasY;
     
-    cnv = createCanvas(800, 800);
+    cnv = createCanvas(800, 600);
     cnv.position(canvasX, canvasY);
     cnv.parent('sketch-holder');
   for (let i = 0; i < 20; i++) {
@@ -41,6 +42,14 @@ function draw() {
     mover.show();
     sun.attract(mover);
   }
+
+  fill(255);
+  textSize(12);
+  textFont('Arial Narrow');
+  s1 = 'SUN';
+  s2 = 'EARTH';
+  text(s1, width / 2 - 210, height / 2 - 60)
+  text(s2, 2*(width/3) - 16, height / 2 - 20)
 //   if (mouseIsPressed) {
 //     attractor.pos.x = mouseX;
 //     attractor.pos.y = mouseY;
