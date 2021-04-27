@@ -15,10 +15,22 @@
     /* This centers our sketch vertically. */
     align-items: center;
   }
+
+  .intro {
+    margin: 200px;
+  }
   
   h1 {
     font-family: 'Syncopate', sans-serif;
-    font-size: 80pt;
+    font-size: 60pt;
+  }
+
+  .intro h2 {
+    margin: 50px 0px 100px 0px;
+  }
+
+  .intro p {
+    margin: 40px 100px;
   }
 
   .container {
@@ -42,3 +54,27 @@
       margin: 50px;
   }
   
+  button {
+    
+    margin: 5px;
+    background-color: #08082D;
+    border: 1px solid #DC14FF;
+    font-family: "Futura",'Arial Narrow', sans-serif;
+    font-size: 12pt;
+    color: #DC14FF;
+    text-align: center;
+    padding: 5px 32px;
+    /* border-radius: 50%; */
+    display: inline-block;
+  }
+
+button:hover {
+    background-color: #DC14FF;
+    color: #08082D;
+}
+
+button:focus {
+    background-color: #DC14FF;
+    color: #08082D;
+    outline:0;
+}
