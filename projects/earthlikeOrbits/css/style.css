@@ -29,6 +29,10 @@
     margin: 50px 0px 100px 0px;
   }
 
+  h3 {
+    font-weight: normal;
+  }
+
   .intro p {
     margin: 40px 100px;
   }
@@ -55,7 +59,8 @@
   }
 
   .button_group {
-    float: right;
+    text-justify: right;
+    margin: 50px 0px;
   }
   
   button {
@@ -81,4 +86,34 @@ button:focus {
     background-color: #DC14FF;
     color: #08082D;
     outline:0;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 50%;
+  height: 10px;
+  background: #ffffff;
+  outline: none;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: #DC14FF;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  background: #DC14FF;
+  cursor: pointer;
 }
