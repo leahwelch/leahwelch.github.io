@@ -60,7 +60,7 @@ function setup() {
 }
 
 function resetSketch() {
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 20; i++) {
     let x = random(width);
     let y = random(height);
     let m = random(1, 5);
@@ -91,6 +91,7 @@ function draw() {
   textFont('Arial Narrow');
   text('SUN', sunX - 10, height / 2 - 60)
   text('EARTH', earthX - 16, height / 2 - 20)
+  fill(fillColor);
   text('L1', earthX + (dist/10) - 5, height / 2 +25);
   text('L2', earthX - (dist/10) - 5, height/2 + 25);
   text('L3',sunX - dist - 5, height/2 + 25)
@@ -98,7 +99,7 @@ function draw() {
   text('L5', earthX-(dist/2) - 5, height/2+sqrt(sq(dist) - sq(dist/2)) - 20)
 
   fill(255,0)
-  stroke(255,100);
+  stroke(fillColor,150);
   strokeWeight(1)
   ellipse(earthX + (dist/10), height/2, 10, 10);
   
@@ -201,7 +202,7 @@ class Attractor {
     show() {
       stroke(255);
       strokeWeight(0);
-      fill(this.c1, this.c2, this.c3, 150);
+      fill(this.c1, this.c2, this.c3, 100);
       ellipse(this.pos.x, this.pos.y, this.r * 2);
     }
   }
