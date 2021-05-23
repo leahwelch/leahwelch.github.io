@@ -26,14 +26,14 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
     var histogramValues = d3.histogram()
         .value(function(d) {return d.date})
         .domain(scaleDate.domain())
-        .thresholds(scaleDate.ticks(7))
+        .thresholds(scaleDate.ticks(28))
 
     bins = histogramValues(filtered_data);
     console.log(bins)
 
     var yScale = d3.scaleLinear()
         // .domain([0, d3.max(bins, function(d) { return d.length; })])
-        .domain([0, 30])
+        .domain([0, 8])
         .range([height-margin.bottom, margin.top])
         
 

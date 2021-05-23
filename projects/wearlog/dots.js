@@ -20,7 +20,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
     console.log(filtered_data);
 
     var scaleDate = d3.scaleTime()
-        .domain([new Date("2020-10-05"), new Date("2021-05-11")])
+        .domain([new Date("2020-10-05"), new Date("2021-05-23")])
         .range([margin.left, width-margin.right])
 
     var yScale = d3.scalePoint()
