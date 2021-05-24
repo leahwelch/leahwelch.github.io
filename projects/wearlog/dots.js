@@ -46,7 +46,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         //.attr("cy", height/2)
         .attr("r", 10)
         .attr("fill", function(d) {
-            if(d.new === "Y") {
+            if(d.group === "Bodysuits" || d.group === "Knit Tops" || d.group === "Sweaters & Sweatshirts" || d.group === "Woven Tops") {
                 return "#FF00FF";
             } else {
                 return "black";
