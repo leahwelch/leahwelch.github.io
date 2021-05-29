@@ -23,7 +23,6 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
     var dateNest = d3.nest()
         .key(function(d) { return d.date; })
-        // .rollup()
         .entries(data)
 
     console.log(dateNest);

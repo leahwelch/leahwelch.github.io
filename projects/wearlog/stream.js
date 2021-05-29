@@ -23,7 +23,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
     console.log(dateNest)
 
     var filteredNest = dateNest.filter(function(d,i) {
-        return i == 0;
+        return i == 236;
     });
 
     console.log(filteredNest)
@@ -44,13 +44,13 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
     console.log(filtered_data);
 
     var scaleDate = d3.scaleTime()
-        .domain([new Date("2020-10-05"), new Date("2021-05-23")])
+        .domain([new Date("2020-10-05"), new Date("2021-05-29")])
         .range([margin.left, width-margin.right])
 
     var histogramValues = d3.histogram()
         .value(function(d) {return d.date})
         .domain(scaleDate.domain())
-        .thresholds(scaleDate.ticks(28))
+        .thresholds(scaleDate.ticks(31))
 
     var bins = histogramValues(data)
     console.log(bins)
@@ -108,6 +108,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
     var series = d3.stack()
         //   .offset(stacks[stack]) // *this is how you apply the custom function*
+        .offset(d3.stackOffsetSilhouette)
         .keys(keys)(one_outfit)
         .map(d => {
             return d.forEach(v => (v.key = d.key)), d;
@@ -117,7 +118,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
     var color = d3.scaleOrdinal()
         .domain(keys)
-        .range(["steelblue", "black", "darkred"])
+        .range(["steelblue", "lightblue", "darkred"])
         .unknown("#ccc")
 
     var yScale = d3.scaleLinear()
