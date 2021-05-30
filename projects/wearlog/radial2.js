@@ -1,18 +1,26 @@
 
 
-var width = document.querySelector("#chart").clientWidth;
-var height = document.querySelector("#chart").clientHeight;
-var margin = {top: 350, left: 250, right: 250, bottom: 350};
+var margin = {top: 150, left: 150, right: 150, bottom: 150};
+const diameter = Math.min(innerWidth, innerHeight);
+let width = diameter - margin.left - margin.right;
+let height = diameter - margin.top - margin.bottom;
+let innerRadius = width / 11;
+let outerRadius = width / 2 - 50;
+
 
 var svg = d3.select("#chart")
     .append("svg")
-    .attr("width", width)
-    .attr("height", height);
+    .attr("viewBox", [-width / 2, -height / 2, width, height])
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.left + margin.right);
 
 
 d3.csv("./data/wearlog.csv", parse).then(function(data) {
-    console.log(data);
+    // var filtered_data = data.filter(function(d) {
+    //     return d.id == "405";
+    // });
 
+    // console.log(filtered_data);
     var dateNest = d3.nest()
         .key(function(d) { return d.date; })
         .entries(data)
@@ -20,11 +28,11 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
     console.log(dateNest)
 
     var filteredNest = dateNest.filter(function(d,i) {
-        return i == 237;
+        return i == 234;
     });
 
     console.log(filteredNest)
-    
+
     var filtered_data = [];
     var keys = [];
     for(var i = 0; i < filteredNest[0].values.length; i++) {
@@ -41,8 +49,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
     console.log(filtered_data);
 
     var scaleDate = d3.scaleTime()
-        .domain([new Date("2020-10-05"), new Date("2021-05-29")])
-        .range([margin.left, width-margin.right])
+        .domain([new Date("2020-10-05"), new Date("2021-10-04")])
 
     var histogramValues = d3.histogram()
         .value(function(d) {return d.date})
@@ -102,35 +109,43 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         .map(d => {
             return d.forEach(v => (v.key = d.key)), d;
         })
-    
+
     console.log(series)
 
     var color = d3.scaleOrdinal()
         .domain(keys)
-        .range(["darkorange", "black", "darkred"])
+        .range(["black", "midnightblue", "steelblue"])
         .unknown("#ccc")
 
-    var yScale = d3.scaleLinear()
-        .domain([0, 12])
-        .range([height - margin.bottom, margin.top]);
-
-    console.log(d3.max(series, d => d3.max(d, d => d[1])));
-
     
-    svg
-        .selectAll("path")
+
+    // var histogramValues = d3.histogram()
+    //     .value(function(d) {return d.date})
+    //     .domain(scaleDate.domain())
+    //     .thresholds(scaleDate.ticks(31))
+
+    // bins = histogramValues(filtered_data);
+    // console.log(bins)
+
+    const radiusScale = d3.scaleLinear()
+        .domain([0, 20])
+        .range([innerRadius, outerRadius])
+
+    scaleDate.range([0, Math.PI * 2]);
+
+    let area = d3.areaRadial()
+        .curve(d3.curveBasisClosed)
+        .angle(d => scaleDate(d.data.date))
+
+    svg.selectAll("path")
         .data(series)
         .enter()
         .append("path")
-          .style("fill", d => color(d.key))
-          .attr("d", d3.area()
-            .x(function(d, i) { return scaleDate(d.data.date); })
-            .y0(function(d) { return yScale(d[0]); })
-            .y1(function(d) { return yScale(d[1]); })
-            .curve(d3.curveBasis)
-        )
-    
-
+        .style("fill", d => color(d.key))
+        .attr("d", area
+            .innerRadius(d => radiusScale(d[0]))
+            .outerRadius(d => radiusScale(d[1])));
+        
 });
 
 function parse(d) {
