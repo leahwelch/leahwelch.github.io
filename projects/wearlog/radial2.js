@@ -28,7 +28,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
     console.log(dateNest)
 
     var filteredNest = dateNest.filter(function(d,i) {
-        return i == 234;
+        return i == 209;
     });
 
     console.log(filteredNest)
@@ -114,7 +114,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
     var color = d3.scaleOrdinal()
         .domain(keys)
-        .range(["black", "midnightblue", "steelblue"])
+        .range(["darkcyan", "#808080", "firebrick", "#BEB7A4"])
         .unknown("#ccc")
 
     
