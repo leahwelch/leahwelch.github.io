@@ -14,13 +14,14 @@ var svg = d3.select("#chart")
 d3.csv("./data/wearlog.csv", parse).then(function(data) {
     console.group(data);
     var filtered_data = data.filter(function(d) {
-        return d.group == "Coats";
+        // return d.group == "Coats";
+        return d.id == "308";
     });
 
     console.log(filtered_data);
 
     var scaleDate = d3.scaleTime()
-        .domain([new Date("2020-10-05"), new Date("2021-05-23")])
+        .domain([new Date("2020-10-05"), new Date("2021-10-04")])
         .range([margin.left, width-margin.right])
 
     var yScale = d3.scalePoint()
@@ -38,16 +39,16 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         .call(d3.axisLeft(yScale))
 
     svg.selectAll("circle")
-        .data(data)
+        .data(filtered_data)
         .enter()
         .append("circle")
         .attr("cx", function(d) { return scaleDate(d.date); })
         .attr("cy", function(d) { return yScale(d.id); })
         //.attr("cy", height/2)
-        .attr("r", 10)
+        .attr("r", 8)
         .attr("fill", function(d) {
-            if(d.group === "Bodysuits" || d.group === "Knit Tops" || d.group === "Sweaters & Sweatshirts" || d.group === "Woven Tops") {
-                return "#FF00FF";
+            if(d.new === "Y") {
+                return "red";
             } else {
                 return "black";
             }

@@ -670,7 +670,7 @@ date,Brand,Sub_Category,Description,group,garmentId,new
 5/21/2021,J. Crew,jacket,Denim,Jackets,402,N
 5/22/2021,Agolde,shorts,Denim cutoff,Shorts & Skirts,110,Y
 5/22/2021,,vest,90s square neckline,Knit Tops,337,N
-5/22/2021,Baum und Pferdgarten,jacket,Woven shirt,Jackets,411,Y
+5/22/2021,Baum und Pferdgarten,jacket,Woven shirt,Jackets,411,N
 5/23/2021,Lett,shorts,Ribbed bike,Shorts & Skirts,111,N
 5/23/2021,Everlane,shirt,Cotton button-down,Woven Tops,325,N
 5/24/2021,Madewell,jeans,Wide-leg button-fly,Jeans,102,N
@@ -696,3 +696,42 @@ date,Brand,Sub_Category,Description,group,garmentId,new
 5/31/2021,Madewell,jeans,High-waisted wide-leg,Jeans,105,N
 5/31/2021,Leset,top,Long-sleeved wrap,Knit Tops,307,N
 5/31/2021,Aritzia,coat,Wool plaid,Coats,405,N
+6/1/2021,The Reformation,jeans,Saddle,Jeans,106,N
+6/1/2021,The Reformation,tee,Long-sleeved seamed turtleneck,Knit Tops,327,N
+6/1/2021,,shawl,Houndstooth blanket,Jackets,403,N
+6/2/2021,Agolde,shorts,Denim cutoff,Shorts & Skirts,110,N
+6/2/2021,The Reformation,tee,Long-sleeved cathedral print mock-neck,Knit Tops,308,N
+6/3/2021,Agolde,jeans,Wide-leg,Jeans,104,N
+6/3/2021,,shirt,Striped western-style,Woven Tops,319,N
+6/4/2021,Alex Mill,romper,Belted twill,Rompers & Jumpsuits,205,N
+6/4/2021,Baum und Pferdgarten,jacket,Woven shirt,Jackets,411,N
+6/5/2021,Pixie Market,dress,Open-back midi,Dresses,207,Y
+6/6/2021,Agolde,shorts,Denim cutoff,Shorts & Skirts,110,N
+6/6/2021,The Line By K,tee,Short sleeved wrap,Knit Tops,338,Y
+6/6/2021,Baum und Pferdgarten,jacket,Woven shirt,Jackets,411,N
+6/7/2021,Lett,shorts,Ribbed bike,Shorts & Skirts,111,N
+6/7/2021,,shirt,Striped,Woven Tops,305,N
+6/8/2021,Sleeper,shorts,Ruffled linen,Shorts & Skirts,112,N
+6/8/2021,Sleeper,shirt,Ruffled linen button-down,Woven Tops,339,N
+6/9/2021,Alex Mill,romper,Belted twill,Rompers & Jumpsuits,205,N
+6/10/2021,Agolde,jeans,Wide-leg,Jeans,104,N
+6/10/2021,Loft,tee,Cardigan,Knit Tops,311,N
+6/10/2021,H & M,tank,Ribbed halter,Knit Tops,312,N
+6/11/2021,Kapital,jumpsuit,Embroidered denim,Rompers & Jumpsuits,203,N
+6/11/2021,Madewell,jacket,Houndstooth sweater,Jackets,401,N
+6/12/2021,Madewell,jeans,High-waisted wide-leg,Jeans,105,N
+6/12/2021,The Reformation,sweatshirt,Tie-dyed half-zip,Sweaters & Sweatshirts,310,N
+6/12/2021,Scout,vest,Tailored,Woven Tops,340,Y
+6/12/2021,J. Crew,jacket,Denim,Jackets,402,N
+6/13/2021,Lett,shorts,Ribbed bike,Shorts & Skirts,111,N
+6/13/2021,Flat File,tee,Matisse graphic,Knit Tops,302,N
+6/14/2021,Agolde,jeans,Wide-leg,Jeans,104,N
+6/14/2021,,shirt,Striped western-style,Woven Tops,319,N
+6/15/2021,Madewell,jeans,High-waisted wide-leg,Jeans,105,N
+6/15/2021,The Reformation,tee,Long-sleeved cathedral print mock-neck,Knit Tops,308,N
+6/16/2021,Madewell,jeans,Straight-leg,Jeans,101,N
+6/16/2021,Aritzia,vest,Ribbed sweater,Knit Tops,326,N
+6/16/2021,Baum und Pferdgarten,jacket,Woven shirt,Jackets,411,N
+6/17/2021,Madewell,jeans,Wide-leg button-fly,Jeans,102,N
+6/17/2021,Loft,tee,Cardigan,Knit Tops,311,N
+6/17/2021,H & M,tank,Ribbed halter,Knit Tops,312,N
