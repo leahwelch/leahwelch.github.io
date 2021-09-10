@@ -1,6 +1,6 @@
 var width = document.querySelector("#chart").clientWidth;
 var height = document.querySelector("#chart").clientHeight;
-var margin = {top: 250, left: 350, right: 350, bottom: 350};
+var margin = {top: 250, left: 550, right: 550, bottom: 350};
 
 console.log(width);
 console.log(height);
