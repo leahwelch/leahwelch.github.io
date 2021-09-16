@@ -4,8 +4,8 @@ var width = document.querySelector("#chart").clientWidth;
 var height = document.querySelector("#chart").clientHeight;
 var margin = {top: 250, left: 250, right: 250, bottom: 350};
 
-console.log(width);
-console.log(height);
+// console.log(width);
+// console.log(height);
 
 var svg = d3.select("#chart")
     .append("svg")
@@ -13,45 +13,51 @@ var svg = d3.select("#chart")
     .attr("height", height);
 
 
-d3.csv("./data/wearlog.csv", parse).then(function(data) {
+d3.csv("./data/albums.csv", parse).then(function(data) {
 
-    var nested = d3.nest()
-        .key(function(d) { return d.id; })
-        .rollup(function(v) { return v.length;})
-        // .rollup()
-        .entries(data);
+    console.log(data)
 
-    console.log(nested)
+    // var nested = d3.nest()
+    //     .key(function(d) { return d.id; })
+    //     .rollup(function(v) { return v.length;})
+    //     // .rollup()
+    //     .entries(data);
 
-    nested.forEach(function(d) {
-        data.forEach(function(g) {
-            if(g.id == d.key) {
-                d.hex1 = g.hex1;
-            }
-        })
-    })
+    // console.log(nested)
 
-    console.log(nested)
+    // nested.forEach(function(d) {
+    //     data.forEach(function(g) {
+    //         if(g.id == d.key) {
+    //             d.hex1 = g.hex1;
+    //         }
+    //     })
+    // })
+
+    // console.log(nested)
 
     var xScale = d3.scaleLinear()
         .range([margin.left, width-margin.right])
-        .domain(d3.extent(nested, function(d) {
-            return +d["value"];
+        .domain(d3.extent(data, function(d) {
+            return +d["year"];
         }))
 
-    let simulation = d3.forceSimulation(nested)
+    var rScale = d3.scaleLinear()
+        .range([5,50])
+        .domain([20,50])
+
+    let simulation = d3.forceSimulation(data)
         .force("x", d3.forceX(function(d) {
-            return xScale(+d["value"]);
+            return xScale(+d["year"]);
         }).strength(0.1))
         .force("y", d3.forceY((height/2) - margin.bottom/2).strength(0.1))
-        .force("collide", d3.forceCollide(9))
+        .force("collide", d3.forceCollide((d) => rScale(d["sales"]) + 0.5))
 
-    for(let i = 0; i < nested.length; i++) {
+    for(let i = 0; i < data.length; i++) {
         simulation.tick(10);
     }
 
     let nodes = svg.selectAll(".nodes")
-        .data(nested, function(d) { return d.key });
+        .data(data, function(d) { return d.ranking });
 
     nodes.exit()
         .transition()
@@ -65,8 +71,8 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         .attr("class", "nodes")
         .attr("cx", 0)
         .attr("cy", (height/2) - margin.bottom/2)
-        .attr("r", 8)
-        .attr("fill", function(d) { return d.hex1; })
+        .attr("r", function(d) { return rScale(d.sales)})
+        // .attr("fill", function(d) { return d.hex1; })
         .merge(nodes)
         .transition()
         .duration(2000)
@@ -87,11 +93,10 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 function parse(d) {
 
     return {
-        date: new Date(d.date),
-        description: (d.Brand + " ").concat((d.Description + " ")).concat(d.Sub_Category),
-        id: +d.garmentId,
-        group: d.group,
-        hex1: d.hex1
+        ranking: +d.Ranking,
+        year: +d.Year,
+        sales: +d.Sales,
+        genre: d.Genre
     }
     
 }
