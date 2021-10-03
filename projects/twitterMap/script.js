@@ -118,14 +118,6 @@ Promise.all(promises).then(function(data) {
         .attr("y", margin_context.top + 104)
         .text("lengthy prose.")
         .attr("fill", "white")
-    
-    // context.append("text")
-    //     .attr("x", width/2)
-    //     .attr("class", "label")
-    //     .attr("y", height_context + margin_context.top + 30)
-    //     .text("Tweet Length (words)")
-    //     .style("text-align", "center")
-    //     .attr("fill", "white")
 
     function draw(dataset, col) {
 
