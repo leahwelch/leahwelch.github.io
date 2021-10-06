@@ -14,7 +14,7 @@ var svg = d3.select("#chart")
 d3.csv("./data/wearlog.csv", parse).then(function(data) {
     // console.group(data);
     var filtered_data = data.filter(function(d) {
-        return d.id > 400 && d.id < 500;
+        return d.date > new Date("2021-04-01") && d.date < new Date("2021-05-01");
     });
 
     console.log(filtered_data);
@@ -23,7 +23,8 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         .key(function(d) { return d.id; })
         .rollup(function(v) { return v.length;})
         // .rollup()
-        .entries(data);
+        .entries(filtered_data)
+        .sort((a,b) => d3.ascending(a.key,b.key));
 
     console.log(nested)
 
