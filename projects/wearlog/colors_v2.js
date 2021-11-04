@@ -18,8 +18,10 @@ var promises = [
 
 Promise.all(promises).then(function(data) {
     jsonData = data[0];
-    csvData = data[1]
-        // .filter(d => d.date > new Date("2021-04-30") && d.date < new Date("2021-06-01"));
+    csvData = data[1].filter(d => 
+        d.date > new Date("2021-09-30") &&
+        d.date < new Date("2021-11-01")
+        );
 
     console.log(csvData)
     let colors = [];
@@ -38,59 +40,66 @@ Promise.all(promises).then(function(data) {
         .rollup(function(v) { return v.length;})
         .entries(colors)
 
-    let hslColors = []
     nested.forEach((d) => {
         d.hsl = HEXtoHSL(d.key)
-        hslColors.push({key: d.key, hsl: HEXtoHSL(d.key)})
+        d.hue = d.hsl.h
     })
 
-    console.log(hslColors)
+    nested.sort((a,b) => d3.ascending(a.hue,b.hue))
+    
+    console.log(nested)
 
-    const hueScale = d3.scaleLinear()
-        .domain([0,360])
+    // const hueScale = d3.scaleLinear()
+    //     .domain([0,360])
+    //     .range([margin.left, width-margin.right])
+
+    const hueScale = d3.scaleBand()
+        .domain(nested.map(function(d) { return d.key; }))
         .range([margin.left, width-margin.right])
+        .padding(1);
 
     const satScale = d3.scaleLinear()
         .domain([0,100])
-        .range([height-margin.bottom, margin.top])
+        .range([height,0])
 
     const yScale = d3.scaleLinear()
-        .domain([0,600])
-        .range([height-margin.bottom, margin.top])
+        .domain([1,d3.max(nested, d=>d.value)])
+        .range([height-margin.bottom,margin.top])
 
-    let histogramValues = d3.histogram()
-        .value(function(d) {return d.hsl.h})
-        .domain(hueScale.domain())
-        .thresholds(hueScale.ticks(25))
+    // let histogramValues = d3.histogram()
+    //     .value(function(d) {return d.hsl.h})
+    //     .domain(hueScale.domain())
+    //     .thresholds(hueScale.ticks(45))
 
-    let bins = histogramValues(hslColors);
-    console.log(bins)
+    // let bins = histogramValues(nested);
     
-    hslColors.forEach((g) => {
-        bins.forEach((bin) => {
-            bin.sort((a,b) => d3.ascending(a.hsl.l, b.hsl.l))
-            bin.forEach((d,i) => {
-                d.xPos = bin.x0;
-                d.yPos = i*7;
-                // d.yPos = ((i) * d.value);
-            })
-            // console.log(bin)
-            if(bin.key === g.key) {
-                hslColors.push({xPos: bin.xPos, yPos: bin.yPos})
-            }
-        })
-    })
+    // nested.forEach((g) => {
+    //     bins.forEach((bin) => {
+    //         bin.sort((a,b) => d3.ascending(a.hsl.l, b.hsl.l))
+    //         bin.forEach((d,i) => {
+    //             d.xPos = bin.x0;
+    //             // d.yPos = i*20;
+    //             d.yPos = ((i) * d.value);
+    //         })
+    //         if(bin.key === g.key) {
+    //             g.push({xPos: bin.xPos, yPos: bin.yPos})
+    //         }
+    //     })
+    // })
+    
 
+    // console.log(nested)
 
     svg.selectAll("rect")
-        .data(hslColors)
+        .data(nested)
         .enter()
         .append("rect")
-        .attr("x", d => hueScale(d.xPos))
-        .attr("width", 30)
-        .attr("y", d => yScale(d.yPos))
-        .attr("height", 5)
-        .attr("fill", (d) => d.key)
+        .attr("x", d => hueScale(d.key))
+        .attr("width", 7)
+        // .attr("y", d => yScale(d.yPos))
+        .attr("y", d =>yScale(d.value))
+        .attr("height", d => height - yScale(d.value))
+        .attr("fill", d => d.key)
     
     
 });
