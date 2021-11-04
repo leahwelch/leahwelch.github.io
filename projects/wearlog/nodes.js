@@ -2,7 +2,7 @@
 
 var width = document.querySelector("#chart").clientWidth;
 var height = document.querySelector("#chart").clientHeight;
-var margin = {top: 250, left: 250, right: 250, bottom: 350};
+var margin = {top: 50, left: 50, right: 50, bottom: 50};
 
 var svg = d3.select("#chart")
     .append("svg")
@@ -101,48 +101,34 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         .range([margin.left, width-margin.right])
         .domain([new Date("2020-10-05"), new Date("2021-11-04")])
 
-    var yScale = d3.scalePoint()
+    var yScale = d3.scaleLinear()
         .range([height-margin.bottom, margin.top])
-        .domain(d3.extent(bins, function(d) {
-            return +d["x0"];
+        .domain(d3.extent(colors, function(d) {
+            return +d["bucket"];
         }))
 
-    let simulation = d3.forceSimulation(colors)
-        .force("x", d3.forceX(function(d) {
-            return xScale(d.date);
-        }).strength(0.1))
-        // .force("y", d3.forceY((height/2) - margin.bottom/2).strength(0.1))
-        .force("y", d3.forceY((d) => {
-            return yScale(+d["x0"])
-        }).strength(1))
-        .force("collide", d3.forceCollide(9))
+    // svg.selectAll("rect")
+    //     .data(colors)
+    //     .enter()
+    //     .append("rect")
+    //     .attr("x", function(d) { return xScale(d.date); })
+    //     .attr("y", function(d) { return yScale(d.bucket); })
+    //     //.attr("cy", height/2)
+    //     .attr("width", 2)
+    //     .attr("height", 25)
+    //     .attr("fill", d=>d.color)
 
-    for(let i = 0; i < colors.length; i++) {
-        simulation.tick(10);
-    }
-
-    let nodes = svg.selectAll(".nodes")
-        .data(colors, function(d) { return d.key });
-
-    nodes.exit()
-        .transition()
-        .duration(1000)
-        .attr("cx", 0)
-        .attr("cy", (height/2) - margin.bottom/2)
-        .remove();
-
-    nodes.enter()
+    svg.selectAll("circle")
+        .data(colors)
+        .enter()
         .append("circle")
-        .attr("class", "nodes")
-        .attr("cx", 0)
-        .attr("cy", d=>d.date)
-        .attr("r", 8)
-        .attr("fill", function(d) { return d.hex1; })
-        .merge(nodes)
-        .transition()
-        .duration(2000)
-        .attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; })
+        .attr("cx", function(d) { return xScale(d.date); })
+        .attr("cy", function(d) { return yScale(d.bucket) + ((Math.random()-0.5)*18); })
+        //.attr("cy", height/2)
+        .attr("r", 3)
+        .attr("fill", d=>d.color)
+
+    
 
     // var xAxis = svg.append("g")
     //     .attr("class", "axis")
