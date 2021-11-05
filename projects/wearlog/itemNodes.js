@@ -12,23 +12,6 @@ var svg = d3.select("#chart")
 
 d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
-    // var nested = d3.nest()
-    //     .key(function(d) { return d.id; })
-    //     .rollup(function(v) { return v.length;})
-    //     // .rollup()
-    //     .entries(data);
-
-    // console.log(nested)
-
-    // nested.forEach(function(d) {
-    //     data.forEach(function(g) {
-    //         if(g.id == d.key) {
-    //             d.hex1 = g.hex1;
-    //         }
-    //     })
-    // })
-
-    // console.log(nested)
 
     let colors = [];
     for(let i = 0; i < data.length; i++) {
@@ -89,13 +72,15 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
             bin.forEach((d,i) => {
                 d.bucket = bin.x0;
             })
-            // console.log(bin)
             if(bin.date === g.date) {
                 colors.push({bucket: bin.x0})
             }
         })
     })
     console.log(colors)
+
+    let filtered = colors.filter(d => d.bucket === 20)
+    console.log(filtered)
 
     var xScale = d3.scaleTime()
         .range([margin.left, width-margin.right])
@@ -107,24 +92,12 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
             return +d["bucket"];
         }))
 
-    // svg.selectAll("rect")
-    //     .data(colors)
-    //     .enter()
-    //     .append("rect")
-    //     .attr("x", function(d) { return xScale(d.date); })
-    //     .attr("y", function(d) { return yScale(d.bucket); })
-    //     //.attr("cy", height/2)
-    //     .attr("width", 2)
-    //     .attr("height", 25)
-    //     .attr("fill", d=>d.color)
-
     svg.selectAll("circle")
         .data(colors)
         .enter()
         .append("circle")
         .attr("cx", function(d) { return xScale(d.date); })
         .attr("cy", function(d) { return yScale(d.bucket) + ((Math.random()-0.5)*30); })
-        //.attr("cy", height/2)
         .attr("r", 4)
         .attr("fill", d=>d.color)
 

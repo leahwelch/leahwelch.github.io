@@ -30,7 +30,8 @@ const promises = [
 
 Promise.all(promises).then(function(allData) {
 
-    const data = allData[0].filter(d=>d.date < new Date("2020-11-01"))
+    const data = allData[0]
+    // .filter(d=>d.date < new Date("2020-11-01"))
 
     let colors = [];
     for(let i = 0; i < data.length; i++) {
