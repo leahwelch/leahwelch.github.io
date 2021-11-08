@@ -101,7 +101,9 @@ Promise.all(promises).then(function(allData) {
             .attr("y", function(d) { return d.y0; })
             .attr("width", function(d) { return d.x1 - d.x0; })
             .attr("height", function(d) { return d.y1 - d.y0; })
-            .attr("fill", function(d) { return d.data.key; })
+            .attr("fill", function(d) { 
+                return d.data.key;
+                 })
             .attr("stroke", "#FFFFFF");
 
     // svg.selectAll("text")

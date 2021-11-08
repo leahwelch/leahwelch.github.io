@@ -80,24 +80,45 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
     console.log(colors)
 
     let filtered = colors.filter(d => d.bucket === 20)
-    console.log(filtered)
+    
+
+    let filterNest = d3.nest()
+        .key(d=>d.id)
+        .rollup()
+        .entries(filtered)
+
+    console.log(filterNest)
+
+    let filteredData = []
+    for(let i = 0; i < filterNest.length; i++) {
+        for(let j = 0; j < colors.length; j++) {
+            if(+filterNest[i].key === colors[j].id) {
+                filteredData.push({
+                    id: colors[j].id,
+                    description: colors[j].description,
+                    color: colors[j].color,
+                    date: colors[j].date
+                })
+            }
+        }
+    }
+    console.log(filteredData)
 
     var xScale = d3.scaleTime()
         .range([margin.left, width-margin.right])
         .domain([new Date("2020-10-01"), new Date("2021-12-01")])
 
-    var yScale = d3.scaleLinear()
-        .range([height-margin.bottom, margin.top])
-        .domain(d3.extent(colors, function(d) {
-            return +d["bucket"];
-        }))
+    var yScale = d3.scalePoint()
+        .domain(filteredData.map(function(d) { return d.id; }))
+        .range([margin.top, height-margin.bottom])
+        .padding(1)
 
     svg.selectAll("circle")
-        .data(colors)
+        .data(filteredData)
         .enter()
         .append("circle")
-        .attr("cx", function(d) { return xScale(d.date); })
-        .attr("cy", function(d) { return yScale(d.bucket) + ((Math.random()-0.5)*30); })
+        .attr("cx", function(d) { return xScale(d.date) + ((Math.random()-0.5)*10); })
+        .attr("cy", function(d) { return yScale(d.id) + ((Math.random()-0.5)*10); })
         .attr("r", 4)
         .attr("fill", d=>d.color)
 
@@ -107,6 +128,11 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         .attr("class", "axis")
         .attr("transform", `translate(0, ${height-margin.bottom})`)
         .call(d3.axisBottom().scale(xScale));
+
+    var yAxis = svg.append("g")
+        .attr("class","axis")
+        .attr("transform", `translate(${margin.left},0)`)
+        .call(d3.axisLeft().scale(yScale));
 
     
         

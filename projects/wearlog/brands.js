@@ -12,17 +12,45 @@ var svg = d3.select("#chart")
 
 d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
+    
+    data.forEach(function(d) {
+        if(d.brand === '') {
+            d.brand = 'Vintage';
+        }
+    })
+    console.log(data)
     var nested = d3.nest()
+        .key(function(d) { return d.brand; })
         .key(function(d) { return d.id; })
         .rollup(function(v) { return v.length;})
-        // .rollup()
         .entries(data);
+
+    nested.forEach(function(d) {
+        d.itemCount = d.values.length;
+        let wearCount;
+        wearCount = d3.sum(d.values, g=>g.value)
+        d.wearCount = wearCount;
+    })
+    console.log(nested)
+    
+
+    // nested.forEach(function(d) {
+    //     d.itemTotal = d.values.length;
+    //     let wearCount;
+    //     let items = d.values;
+    //     items.forEach(function(g) {
+    //         console.log(g.values.length)
+    //         wearCount = d3.sum(items => g.values.length)
+    //     })
+    //     d.wearCount = wearCount;
+        
+    // })
 
     console.log(nested)
 
     var xScale = d3.scaleLinear()
         .range([margin.left, width-margin.right])
-        .domain([0,140])
+        .domain([0,280])
 
     let histogramValues = d3.histogram()
         .value(function(d) {return d.value})
@@ -38,16 +66,19 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
     //     .domain(d3.extent(bins, function(d) {
     //         return +d["x0"];
     //     }))
+    const rScale = d3.scaleSqrt()
+        .domain(d3.extent(nested, d=>+d["itemCount"]))
+        .range([3,30])
 
     let simulation = d3.forceSimulation(nested)
         .force("x", d3.forceX(function(d) {
-            return xScale(d.value);
+            return xScale(d.wearCount);
         }).strength(0.1))
         .force("y", d3.forceY((height/2) - margin.bottom/2).strength(0.1))
         // .force("y", d3.forceY((d) => {
         //     return yScale(+d["x0"])
         // }).strength(1))
-        .force("collide", d3.forceCollide(9))
+        .force("collide", d3.forceCollide((d)=> rScale(d["itemCount"]+0.5)))
 
     for(let i = 0; i < nested.length; i++) {
         simulation.tick(10);
@@ -67,8 +98,8 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         .append("circle")
         .attr("class", "nodes")
         .attr("cx", 0)
-        .attr("cy", 0)
-        .attr("r", 8)
+        .attr("cy", (height/2) - margin.bottom/2)
+        .attr("r", d=>rScale(d.itemCount))
         // .attr("fill", function(d) { return d.hex1; })
         .merge(nodes)
         .transition()
@@ -92,6 +123,7 @@ function parse(d) {
     return {
         date: new Date(d.date),
         description: (d.Brand + " ").concat((d.Description + " ")).concat(d.Sub_Category),
+        brand: d.Brand,
         id: +d.garmentId,
         group: d.group,
         hex1: d.hex1,
