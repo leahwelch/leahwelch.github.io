@@ -30,8 +30,14 @@ const promises = [
 
 Promise.all(promises).then(function(allData) {
 
-    const data = allData[0]
+    let data = allData[0]
     // .filter(d=>d.date < new Date("2020-11-01"))
+
+    data.forEach(function(d) {
+        if(d.brand === '') {
+            d.brand = 'Vintage';
+        }
+    })
 
     let colors = [];
     for(let i = 0; i < data.length; i++) {
@@ -145,13 +151,16 @@ function parse(d) {
     return {
         date: new Date(d.date),
         description: (d.Brand + " ").concat((d.Description + " ")).concat(d.Sub_Category),
+        brand: d.Brand,
         id: +d.garmentId,
         group: d.group,
         hex1: d.hex1,
         hex2: d.hex2,
         hex3: d.hex3,
         hex4: d.hex4,
-        hex5: d.hex5
+        hex5: d.hex5,
+        sold: d.sold,
+        new: d.new
     }
     
 }
