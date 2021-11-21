@@ -9,7 +9,7 @@ html, body {
 
 #chart {
   width: 90%;
-  height: 800px;
+  height: 90vh;
 }
 
 .axisLabel {

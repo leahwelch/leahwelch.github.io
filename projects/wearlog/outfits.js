@@ -98,8 +98,6 @@ Promise.all(promises).then(function(data) {
         }
     }
 
-    console.log(outfits)
-
     // outfits.forEach(function(d,i) {
     //     let arr = [];
     //     let outfit = outfits[i].outfit;

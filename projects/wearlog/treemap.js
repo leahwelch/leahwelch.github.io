@@ -31,7 +31,7 @@ const promises = [
 Promise.all(promises).then(function(allData) {
 
     let data = allData[0]
-    // .filter(d=>d.date < new Date("2020-11-01"))
+        // .filter(d=>d.date < new Date("2021-11-15") && d.date > new Date("2021-10-04"))
 
     data.forEach(function(d) {
         if(d.brand === '') {

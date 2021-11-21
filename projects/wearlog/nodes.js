@@ -70,6 +70,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
     let bins = histogramValues(nested);
     let beeBins = histogramValues(colors)
     console.log(beeBins)
+    console.log(bins)
     
     nested.forEach((g) => {
         bins.forEach((bin) => {
@@ -123,7 +124,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         .enter()
         .append("circle")
         .attr("cx", function(d) { return xScale(d.date); })
-        .attr("cy", function(d) { return yScale(d.bucket) + ((Math.random()-0.5)*30); })
+        .attr("cy", function(d) { return yScale(d.bucket) + ((Math.random()-0.5)*50); })
         //.attr("cy", height/2)
         .attr("r", 4)
         .attr("fill", d=>d.color)

@@ -80,7 +80,23 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
     console.log(colors)
 
     // let filtered = colors.filter(d => d.bucket === 20)
-    let filtered = colors.filter(d => d.date > new Date("2021-10-02") && d.date < new Date("2021-10-03"))
+    let filtered = colors.filter(d => d.date > new Date("2021-10-01") && d.date < new Date("2021-11-01"))
+
+    let dateNest = d3.nest()
+        .key(d=>d.date)
+        .rollup()
+        .entries(filtered)
+
+    dateNest.forEach((d)=> {
+        d.key = new Date(d.key)
+        let itemNest = d3.nest()
+            .key(p=>p.id)
+            .rollup()
+            .entries(d.values)
+        d.itemNest = itemNest;
+    })
+
+    console.log(dateNest)
     
 
     let filterNest = d3.nest()
@@ -91,77 +107,54 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
     console.log(filterNest)
 
     let stackData = [];
-    filterNest.forEach((d,i) => {
-        d.values.forEach((p) => {
-            stackData.push({
-                ypos: i,
-                color: p.color,
-                date: p.date
+    // filterNest.forEach((d,i) => {
+    //     d.values.forEach((p) => {
+    //         stackData.push({
+    //             ypos: i,
+    //             color: p.color,
+    //             date: p.date
+    //         })
+    //     })
+    // })
+    dateNest.forEach((d) => {
+        d.itemNest.forEach((p,i)=> {
+            p.values.forEach((m)=> {
+                stackData.push({
+                    ypos: i*1.5,
+                    color: m.color,
+                    date: m.date
+                })
             })
         })
     })
     console.log(stackData)
 
-    let filteredData = []
-    for(let i = 0; i < filterNest.length; i++) {
-        for(let j = 0; j < colors.length; j++) {
-            if(+filterNest[i].key === colors[j].id) {
-                filteredData.push({
-                    id: colors[j].id,
-                    description: colors[j].description,
-                    color: colors[j].color,
-                    date: colors[j].date,
-                    ypos: j
-                })
-            }
-        }
-    }
-    console.log(filteredData)
-
     const xScale = d3.scaleTime()
         .range([margin.left, width-margin.right])
-        .domain([new Date("2020-10-01"), new Date("2021-12-01")])
+        .domain([new Date("2021-10-01"), new Date("2021-11-15")])
 
     const yScale = d3.scaleLinear()
-        .domain([-5, 45])
+        .domain([-10, 45])
         .range([height-margin.bottom, margin.top])
-
-
-
-    // var yScale = d3.scalePoint()
-    //     .domain(filteredData.map(function(d) { return d.id; }))
-    //     .range([margin.top, height-margin.bottom])
-    //     .padding(10)
-
-    // svg.selectAll("circle")
-    //     .data(filteredData)
-    //     .enter()
-    //     .append("circle")
-    //     .attr("cx", function(d) { return xScale(d.date) + ((Math.random()-0.5)*15); })
-    //     .attr("cy", function(d) { return yScale(d.id) + ((Math.random()-0.5)*15); })
-    //     .attr("r", 4)
-    //     .attr("fill", d=>d.color)
 
      svg.selectAll("circle")
         .data(stackData)
         .enter()
         .append("circle")
-        .attr("cx", function(d) { return xScale(d.date) + ((Math.random()-0.5)*25); })
-        .attr("cy", function(d) { return yScale(d.ypos) + ((Math.random()-0.5)*25); })
+        .attr("cx", function(d) { return xScale(d.date) + ((Math.random()-0.5)*10); })
+        .attr("cy", function(d) { return yScale(d.ypos) + ((Math.random()-0.5)*35); })
         .attr("r", 8)
         .attr("fill", d=>d.color)
 
-    
+    // var xAxis = svg.append("g")
+    //     .attr("class", "axis")
+    //     .attr("transform", `translate(0, ${height-margin.bottom})`)
+    //     .call(d3.axisBottom().scale(xScale));
 
-    var xAxis = svg.append("g")
-        .attr("class", "axis")
-        .attr("transform", `translate(0, ${height-margin.bottom})`)
-        .call(d3.axisBottom().scale(xScale));
-
-    var yAxis = svg.append("g")
-        .attr("class","axis")
-        .attr("transform", `translate(${margin.left},0)`)
-        .call(d3.axisLeft().scale(yScale));
+    // var yAxis = svg.append("g")
+    //     .attr("class","axis")
+    //     .attr("transform", `translate(${margin.left},0)`)
+    //     .call(d3.axisLeft().scale(yScale));
 
     
         
