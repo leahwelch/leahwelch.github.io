@@ -2,7 +2,7 @@
 
 var width = document.querySelector("#chart").clientWidth;
 var height = document.querySelector("#chart").clientHeight;
-var margin = {top: 300, left: 200, right: 200, bottom: 300};
+var margin = {top: 200, left: 200, right: 200, bottom: 400};
 
 var svg = d3.select("#chart")
     .append("svg")
@@ -16,17 +16,25 @@ const barWidth = 24
 const hueBtn = d3.select("#hueBtn")
 const satBtn = d3.select("#satBtn")
 const lumBtn = d3.select("#lumBtn")
-const filterBtn = d3.select("#filter")
+const shelvesBtn = d3.select("#shelves")
+const resetBtn = d3.select("#reset")
+const dropDown = d3.select("#dropdownArea").append("select")
+    .attr("name", "brandList");
 
 d3.csv("./data/wearlog.csv", parse).then(function(data) {
+    data.forEach(function(d) {
+        if(d.brand === '') {
+            d.brand = 'Vintage';
+        }
+    })
 
     let colors = [];
     for(let i = 0; i < data.length; i++) {
-        colors.push({color: data[i].hex1, date: data[i].date, id: data[i].id, description: data[i].description, week: data[i].week})
-        colors.push({color: data[i].hex2, date: data[i].date, id: data[i].id, description: data[i].description, week: data[i].week})
-        colors.push({color: data[i].hex3, date: data[i].date, id: data[i].id, description: data[i].description, week: data[i].week})
-        colors.push({color: data[i].hex4, date: data[i].date, id: data[i].id, description: data[i].description, week: data[i].week})
-        colors.push({color: data[i].hex5, date: data[i].date, id: data[i].id, description: data[i].description, week: data[i].week})
+        colors.push({color: data[i].hex1, date: data[i].date, id: data[i].id, description: data[i].description, week: data[i].week, brand: data[i].brand})
+        colors.push({color: data[i].hex2, date: data[i].date, id: data[i].id, description: data[i].description, week: data[i].week, brand: data[i].brand})
+        colors.push({color: data[i].hex3, date: data[i].date, id: data[i].id, description: data[i].description, week: data[i].week, brand: data[i].brand})
+        colors.push({color: data[i].hex4, date: data[i].date, id: data[i].id, description: data[i].description, week: data[i].week, brand: data[i].brand})
+        colors.push({color: data[i].hex5, date: data[i].date, id: data[i].id, description: data[i].description, week: data[i].week, brand: data[i].brand})
     }
 
     colors.forEach((d) => {
@@ -37,6 +45,29 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
     })
 
     colors.sort((a,b) => d3.ascending(a.date,b.date))
+
+    let brands = [];
+    const brandNest = d3.nest()
+        .key(d=>d.brand)
+        .key(d=>d.id)
+        .rollup()
+        .entries(data)
+    brandNest.forEach((d) => {
+        if(d.values.length >= 2) {
+            brands.push(d.key)
+        }
+    })
+    const options = dropDown.selectAll("option")
+        .data(brands)
+        .enter()
+        .append("option");
+
+    options.text(function(d) {
+        return d;
+            })
+            .attr("value", function(d) {
+        return d;
+        });
 
     const hueScale = d3.scaleLinear()
         .domain([0,360])
@@ -67,7 +98,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
     nested.forEach((d) => {
         let stackHeight = d.values.length * barHeight;
-        d.offset = Math.abs(chartHeight/2 - stackHeight/2);
+        d.offset = stackHeight/2;
     })
 
     const xScale = d3.scaleLinear()
@@ -78,14 +109,13 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         .domain([0, 60])
         .range([height-margin.bottom, margin.top])
 
-        nested.forEach((d)=>{
-            d.key = +d.key
-            d.values.sort((a,b)=>d3.ascending(a.hue,b.hue))
-            d.values.forEach((p,i)=>{
-                p.ypos = i;
-            })
+    nested.forEach((d)=>{
+        d.key = +d.key
+        d.values.sort((a,b)=>d3.ascending(a.hue,b.hue))
+        d.values.forEach((p,i)=>{
+            p.ypos = i;
         })
-        console.log(nested)
+    })
         
     const grouping = svg.selectAll(".stackGroup")
         .data(nested)
@@ -93,9 +123,9 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         .append("g")
         .attr("transform", (d) => `translate(${xScale(d.key)},${d.offset})`)
 
-    const bars = grouping.selectAll("rect").data(d=>d.values)
+    let bars = grouping.selectAll("rect").data(d=>d.values)
 
-    const enter = bars.enter()
+    let enter = bars.enter()
         .append("rect")
         .attr("width", barWidth)
         .attr("height", barHeight)
@@ -109,10 +139,12 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         .attr("height", barHeight)
         .attr("fill", p=>p.color)
         .attr("y", function(p) { return yScale(p.ypos); })
+        .attr("opacity",1)
         
     bars.exit()
         .transition()
         .duration(500)
+        .attr("opacity", 0)
         .remove();
 
 
@@ -147,21 +179,80 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         grouping.selectAll("rect").transition().duration(500).attr("y", function(p) { return yScale(p.ypos); })
     })
 
-    filterBtn.on("click", function() {
+    shelvesBtn.on("click", function() {
+
+    })
+
+    dropDown.on("change", function() {
+        console.log(this.value)
         nested.forEach((d) => {
-            d.values = d.values.filter(p => p.bucket === 20);
-            let stackHeight = d.values.length * barHeight;
-            d.offset = Math.abs(chartHeight/2 - stackHeight/2);
+            d.filtered = d.values.filter(p=>p.brand === this.value)
+            let stackHeight = d.filtered.length * barHeight;
+            d.offset = stackHeight/2;
+            d.filtered.forEach((p,i)=>{
+                p.ypos = i;
+            })
         })
+
         grouping.transition().duration(500)
             .attr("transform", (d) => `translate(${xScale(d.key)},${d.offset})`)
-        grouping.selectAll("rect")
-            .transition()
+        
+        bars = grouping.selectAll("rect").data(d=>d.filtered)
+        enter = bars.enter()
+            .append("rect")
+            .attr("width", barWidth)
+            .attr("height", barHeight)
+            .attr("fill", p=>p.color)
+            .attr("y", function(p) { return yScale(p.ypos); })
+            .attr("opacity", 0)
+        bars.merge(enter).transition()
             .duration(500)
             .attr("width", barWidth)
             .attr("height", barHeight)
             .attr("fill", p=>p.color)
             .attr("y", function(p) { return yScale(p.ypos); })
+            .attr("opacity", 1)
+
+        bars.exit()
+            .transition()
+            .duration(500)
+            .attr("opacity", 0)
+            .remove(); 
+    })
+
+    resetBtn.on("click", function() {
+        nested.forEach((d) => {
+            let stackHeight = d.values.length * barHeight;
+            d.offset = stackHeight/2;
+            d.values.forEach((p,i)=>{
+                p.ypos = i;
+            })
+        })
+
+        grouping.transition().duration(500)
+            .attr("transform", (d) => `translate(${xScale(d.key)},${d.offset})`)
+        
+        bars = grouping.selectAll("rect").data(d=>d.values)
+        enter = bars.enter()
+            .append("rect")
+            .attr("width", barWidth)
+            .attr("height", barHeight)
+            .attr("fill", p=>p.color)
+            .attr("y", function(p) { return yScale(p.ypos); })
+            .attr("opacity", 0)
+        bars.merge(enter).transition()
+            .duration(500)
+            .attr("width", barWidth)
+            .attr("height", barHeight)
+            .attr("fill", p=>p.color)
+            .attr("y", function(p) { return yScale(p.ypos); })
+            .attr("opacity", 1)
+
+        bars.exit()
+            .transition()
+            .duration(500)
+            .attr("opacity", 0)
+            .remove();
     })
     
         
@@ -177,6 +268,7 @@ function parse(d) {
         description: (d.Brand + " ").concat((d.Description + " ")).concat(d.Sub_Category),
         id: +d.garmentId,
         group: d.group,
+        brand: d.Brand,
         hex1: d.hex1,
         hex2: d.hex2,
         hex3: d.hex3,
