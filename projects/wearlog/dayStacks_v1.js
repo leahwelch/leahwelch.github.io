@@ -2,16 +2,30 @@
 
 var width = document.querySelector("#chart").clientWidth;
 var height = document.querySelector("#chart").clientHeight;
-var margin = {top: 200, left: 200, right: 200, bottom: 400};
+var margin = {top: 150, left: 0, right: 55, bottom: 400};
+
+var treeWidth = document.querySelector("#tree").clientWidth;
+var treeHeight = document.querySelector("#tree").clientHeight;
+var treeMargin = {top: 20, left: 20, right: 0, bottom: 20};
 
 var svg = d3.select("#chart")
     .append("svg")
     .attr("width", width)
     .attr("height", height);
 
-const barHeight = 4;
+var treePanel = d3.select("#tree")
+    .append("svg")
+    .attr("width", treeWidth)
+    .attr("height", treeHeight);
+
+var treemap = d3.treemap()
+    .size([treeWidth, treeHeight])
+    .padding(1)
+    .round(true);
+
+const barHeight = 5;
 const chartHeight = height - margin.bottom - margin.top;
-const barWidth = 24
+const barWidth = 20
 
 const hueBtn = d3.select("#hueBtn")
 const satBtn = d3.select("#satBtn")
@@ -99,24 +113,21 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
     nested.forEach((d) => {
         let stackHeight = d.values.length * barHeight;
         d.offset = stackHeight/2;
-    })
-
-    const xScale = d3.scaleLinear()
-        .domain([0,60])
-        .range([margin.left, width-margin.right])
-
-    const yScale = d3.scaleLinear()
-        .domain([0, 60])
-        .range([height-margin.bottom, margin.top])
-
-    nested.forEach((d)=>{
         d.key = +d.key
         d.values.sort((a,b)=>d3.ascending(a.hue,b.hue))
         d.values.forEach((p,i)=>{
             p.ypos = i;
         })
     })
-        
+
+    const xScale = d3.scaleLinear()
+        .domain([1,60])
+        .range([margin.left, width-margin.right])
+
+    const yScale = d3.scaleLinear()
+        .domain([0, 60])
+        .range([height-margin.bottom, margin.top])
+
     const grouping = svg.selectAll(".stackGroup")
         .data(nested)
         .enter()

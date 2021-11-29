@@ -12,12 +12,12 @@ var svg = d3.select("#chart")
 
 var format = d3.format(",d");
 
-var color = d3.scaleOrdinal()
-    .range(d3.schemeCategory10
-        .map(function(c) { c = d3.rgb(c); c.opacity = 0.6; return c; }));
+// var color = d3.scaleOrdinal()
+//     .range(d3.schemeCategory10
+//         .map(function(c) { c = d3.rgb(c); c.opacity = 0.6; return c; }));
 
-var stratify = d3.stratify()
-    .parentId(function(d) { return d.id.substring(0, d.id.lastIndexOf(".")); });
+// var stratify = d3.stratify()
+//     .parentId(function(d) { return d.id.substring(0, d.id.lastIndexOf(".")); });
 
 var treemap = d3.treemap()
     .size([width, height])

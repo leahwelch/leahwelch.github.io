@@ -7,9 +7,26 @@ html, body {
   padding: 0px;
 }
 
+#container {
+  width: 100%;
+  max-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: 
+        "tree main";
+}
+
 #chart {
-  width: 90%;
+  /* width: 90%; */
   height: 90vh;
+  grid-area: main;
+}
+
+#tree {
+  /* width: 90%; */
+  height: 90vh;
+  grid-area: tree;
 }
 
 .axisLabel {
