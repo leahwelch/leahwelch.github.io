@@ -42,35 +42,13 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         }
     })
 
-    let colors = [];
-    for(let i = 0; i < data.length; i++) {
-        colors.push({color: data[i].hex1, date: data[i].date, id: data[i].id, description: data[i].description, week: data[i].week, brand: data[i].brand})
-        colors.push({color: data[i].hex2, date: data[i].date, id: data[i].id, description: data[i].description, week: data[i].week, brand: data[i].brand})
-        colors.push({color: data[i].hex3, date: data[i].date, id: data[i].id, description: data[i].description, week: data[i].week, brand: data[i].brand})
-        colors.push({color: data[i].hex4, date: data[i].date, id: data[i].id, description: data[i].description, week: data[i].week, brand: data[i].brand})
-        colors.push({color: data[i].hex5, date: data[i].date, id: data[i].id, description: data[i].description, week: data[i].week, brand: data[i].brand})
-    }
+    const hueScale = d3.scaleLinear()
+        .domain([0,360])
+        .range([margin.left, width-margin.right])
 
-    colors.forEach((d) => {
-        d.hsl = HEXtoHSL(d.color)
-        d.hue = d.hsl.h
-        d.sat = d.hsl.s
-        d.lum = d.hsl.l
-    })
-
-    colors.sort((a,b) => d3.ascending(a.date,b.date))
-
-    let colorNest = d3.nest()
-        .key(function(d) { return d.color})
-        .rollup(function(v) { return v.length;})
-        .entries(colors)
-
-    colorNest.forEach((d) => {
-        d.hsl = HEXtoHSL(d.key)
-        d.hue = d.hsl.h
-    })
-
-    colorNest.sort((a,b) => d3.ascending(a.hue,b.hue))
+    const satScale = d3.scaleLinear()
+        .domain([0,100])
+        .range([margin.left, width-margin.right])
 
     let brands = [];
     const brandNest = d3.nest()
@@ -95,13 +73,36 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         return d;
         });
 
-    const hueScale = d3.scaleLinear()
-        .domain([0,360])
-        .range([margin.left, width-margin.right])
+    let colors = [];
+    for(let i = 0; i < data.length; i++) {
+        colors.push({color: data[i].hex1, date: data[i].date, id: data[i].id, description: data[i].description, week: data[i].week, brand: data[i].brand})
+        colors.push({color: data[i].hex2, date: data[i].date, id: data[i].id, description: data[i].description, week: data[i].week, brand: data[i].brand})
+        colors.push({color: data[i].hex3, date: data[i].date, id: data[i].id, description: data[i].description, week: data[i].week, brand: data[i].brand})
+        colors.push({color: data[i].hex4, date: data[i].date, id: data[i].id, description: data[i].description, week: data[i].week, brand: data[i].brand})
+        colors.push({color: data[i].hex5, date: data[i].date, id: data[i].id, description: data[i].description, week: data[i].week, brand: data[i].brand})
+    }
 
-    const satScale = d3.scaleLinear()
-        .domain([0,100])
-        .range([margin.left, width-margin.right])
+    colors.forEach((d) => {
+        d.hsl = HEXtoHSL(d.color)
+        d.hue = d.hsl.h
+        d.sat = d.hsl.s
+        d.lum = d.hsl.l
+    })
+
+    colors.sort((a,b) => d3.ascending(a.date,b.date))
+
+    let colorNest = d3.nest()
+        .key(function(d) { return d.color})
+        .rollup(function(v) { return v.length;})
+        // .rollup()
+        .entries(colors)
+
+    colorNest.forEach((d) => {
+        d.hsl = HEXtoHSL(d.key)
+        d.hue = d.hsl.h
+    })
+
+    colorNest.sort((a,b) => d3.ascending(a.hue,b.hue))
 
     let histogramValues = d3.histogram()
         .value(function(d) {return d.hue})
@@ -110,6 +111,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
     let bins = histogramValues(colors)
     let colorBins = histogramValues(colorNest)
+    
 
     colorNest.forEach((g) => {
         colorBins.forEach((bin) => {
@@ -121,10 +123,13 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
             }
         })
     })
+    console.log(colorNest)
 
     let doubleNest = d3.nest()
         .key(d=>d.bucket)
+        
         .key(d=>d.hue)
+        .rollup()
         .entries(colorNest)
 
     // let topNest = d3.nest()
@@ -132,9 +137,10 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
     //     .rollup(function(v) { return v.length;})
     //     .entries(colorNest)
 
-    console.log(doubleNest)
     doubleNest.forEach(d => d.key = +d.key)
     // topNest.forEach(d => d.key = +d.key)
+
+    console.log(doubleNest)
     
     let hierarchy = d3.hierarchy({values: doubleNest}, function(d) { return d.values; })
         .sum(function(d) { return d.value; });
