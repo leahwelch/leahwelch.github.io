@@ -65,8 +65,6 @@ Promise.all(promises).then(function(allData) {
         .domain([0,360])
         .range([margin.left, width-margin.right])
 
-    var color = d3.scaleOrdinal(d3.schemeDark2);
-
     let histogramValues = d3.histogram()
         .value(function(d) {return d.hue})
         .domain(hueScale.domain())
@@ -80,7 +78,6 @@ Promise.all(promises).then(function(allData) {
             bin.forEach((d,i) => {
                 d.bucket = bin.x0;
             })
-            // console.log(bin)
             if(bin.key === g.key) {
                 nested.push({bucket: bin.x0})
             }
@@ -94,10 +91,8 @@ Promise.all(promises).then(function(allData) {
         .entries(nested)
     var hierarchy = d3.hierarchy({values: doubleNest}, function(d) { return d.values; })
         .sum(function(d) { return d.value; });
-    console.log(doubleNest)
-    console.log(hierarchy)
+
     var root = treemap(hierarchy);
-    console.log(root)
 
     var rect = svg.selectAll("rect")
         .data(root.leaves())
@@ -112,38 +107,6 @@ Promise.all(promises).then(function(allData) {
                  })
             .attr("stroke", "#FFFFFF");
 
-    // svg.selectAll("text")
-    //     .data(root.leaves())
-    //     .enter()
-    //     .append("text")
-    //         .attr("x", function(d) { return d.x0+10; })
-    //         .attr("y", function(d) { return d.y0+20; })
-    //         .attr("fill", "#FFFFFF")
-    //         .text(function(d) {return d.data.key; });
-
-//   var root = stratify(data)
-//       .sum(function(d) { return d.value; })
-//       .sort(function(a, b) { return b.height - a.height || b.value - a.value; });
-
-//   treemap(root);
-
-//   d3.select("body")
-//     .selectAll(".node")
-//     .data(root.leaves())
-//     .enter().append("div")
-//       .attr("class", "node")
-//       .attr("title", function(d) { return d.id + "\n" + format(d.value); })
-//       .style("left", function(d) { return d.x0 + "px"; })
-//       .style("top", function(d) { return d.y0 + "px"; })
-//       .style("width", function(d) { return d.x1 - d.x0 + "px"; })
-//       .style("height", function(d) { return d.y1 - d.y0 + "px"; })
-//       .style("background", function(d) { while (d.depth > 1) d = d.parent; return color(d.id); })
-//     .append("div")
-//       .attr("class", "node-label")
-//       .text(function(d) { return d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n"); })
-//     .append("div")
-//       .attr("class", "node-value")
-//       .text(function(d) { return format(d.value); });
 });
 
 function parse(d) {

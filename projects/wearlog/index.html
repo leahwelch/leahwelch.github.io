@@ -10,18 +10,22 @@
         <script src="https://unpkg.com/geometric@2.0.1/build/geometric.min.js"></script>
     </head>
     <body>
-        <div id="buttonArea">
-            <button id="satBtn">Sort by Saturation</button>
-            <button id="lumBtn">Sort by Lightness</button>
-            <button id="hueBtn">Sort by Hue</button>
-            <button id="shelves">Shelves</button>
-        </div>
-        <div id="dropdownArea">
-            <button id="reset">Reset</button>
-        </div>
+        
         <div id="container">
             <div id="tree"></div>
-            <div id="chart"></div>
+            <div id="chart">
+                <div id="controls">
+                    <div id="buttonArea">
+                        <button id="satBtn">Sort by Saturation</button>
+                        <button id="lumBtn">Sort by Lightness</button>
+                        <button id="hueBtn">Sort by Hue</button>
+                        <button id="shelves">Shelves</button>
+                    </div>
+                    <div id="dropdownArea">
+                        <button id="reset">Reset</button>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <script src="./dayStacks_v1.js"></script>

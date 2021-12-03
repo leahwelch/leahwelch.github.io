@@ -22,12 +22,12 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
     var xScale = d3.scaleLinear()
         .range([margin.left, width-margin.right])
-        .domain([0,140])
+        .domain([0,150])
 
     let histogramValues = d3.histogram()
         .value(function(d) {return d.value})
         .domain(xScale.domain())
-        .thresholds(xScale.ticks(140))
+        .thresholds(xScale.ticks(150))
 
     let bins = histogramValues(nested);
     console.log(bins)
@@ -43,7 +43,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         .force("x", d3.forceX(function(d) {
             return xScale(d.value);
         }).strength(0.1))
-        .force("y", d3.forceY((height/2) - margin.bottom/2).strength(0.1))
+        .force("y", d3.forceY((height/2) - margin.bottom/2).strength(2))
         // .force("y", d3.forceY((d) => {
         //     return yScale(+d["x0"])
         // }).strength(1))
@@ -68,7 +68,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         .attr("class", "nodes")
         .attr("cx", 0)
         .attr("cy", 0)
-        .attr("r", 8)
+        .attr("r", 3)
         // .attr("fill", function(d) { return d.hex1; })
         .merge(nodes)
         .transition()

@@ -20,7 +20,7 @@ var treePanel = d3.select("#tree")
 
 var treemap = d3.treemap()
     .size([treeWidth, treeHeight])
-    .padding(1)
+    .padding(0.5)
     .round(true);
 
 const barHeight = 5;
@@ -60,6 +60,18 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
     colors.sort((a,b) => d3.ascending(a.date,b.date))
 
+    let colorNest = d3.nest()
+        .key(function(d) { return d.color})
+        .rollup(function(v) { return v.length;})
+        .entries(colors)
+
+    colorNest.forEach((d) => {
+        d.hsl = HEXtoHSL(d.key)
+        d.hue = d.hsl.h
+    })
+
+    colorNest.sort((a,b) => d3.ascending(a.hue,b.hue))
+
     let brands = [];
     const brandNest = d3.nest()
         .key(d=>d.brand)
@@ -87,12 +99,47 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         .domain([0,360])
         .range([margin.left, width-margin.right])
 
+    const satScale = d3.scaleLinear()
+        .domain([0,100])
+        .range([margin.left, width-margin.right])
+
     let histogramValues = d3.histogram()
         .value(function(d) {return d.hue})
         .domain(hueScale.domain())
         .thresholds(hueScale.ticks(24))
 
     let bins = histogramValues(colors)
+    let colorBins = histogramValues(colorNest)
+
+    colorNest.forEach((g) => {
+        colorBins.forEach((bin) => {
+            bin.forEach((d,i) => {
+                d.bucket = bin.x0;
+            })
+            if(bin.key === g.key) {
+                colorNest.push({bucket: bin.x0})
+            }
+        })
+    })
+
+    let doubleNest = d3.nest()
+        .key(d=>d.bucket)
+        .key(d=>d.hue)
+        .entries(colorNest)
+
+    // let topNest = d3.nest()
+    //     .key(d=>d.bucket)
+    //     .rollup(function(v) { return v.length;})
+    //     .entries(colorNest)
+
+    console.log(doubleNest)
+    doubleNest.forEach(d => d.key = +d.key)
+    // topNest.forEach(d => d.key = +d.key)
+    
+    let hierarchy = d3.hierarchy({values: doubleNest}, function(d) { return d.values; })
+        .sum(function(d) { return d.value; });
+
+    let root = treemap(hierarchy);
 
     colors.forEach((g) => {
         bins.forEach((bin) => {
@@ -158,14 +205,113 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         .attr("opacity", 0)
         .remove();
 
+    let tree = treePanel.selectAll("rect")
+        .data(root.leaves())
+        
+    let treeEnter = tree.enter()
+        .append("rect")
+        .attr("x", function(d) { return d.x0; })
+        .attr("y", function(d) { return d.y0; })
+        .attr("class", d => d.data.key)
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .attr("height", function(d) { return d.y1 - d.y0; })
+        .attr("fill", function(d) { 
+            return d.data.key;
+                })
+        .attr("stroke", "#FFFFFF");
+
+    tree.merge(treeEnter)
+        .transition()
+        .attr("x", function(d) { return d.x0; })
+        .attr("y", function(d) { return d.y0; })
+        .attr("class", d => d.data.key)
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .attr("height", function(d) { return d.y1 - d.y0; })
+        .attr("fill", function(d) { 
+            return d.data.key;
+                })
+        .attr("stroke", "#FFFFFF");
+
+    tree.exit()
+        .transition()
+        .attr("opacity", 0)
+        .remove();
+
 
     satBtn.on("click", function() {
         nested.forEach((d) => {
-            d.values.sort((a,b)=>d3.ascending(a.sat,b.sat))
+            d.values.sort((a,b)=>d3.ascending(b.sat,a.sat))
             d.values.forEach((p,i)=>{
                 p.ypos = i;
             })
         })
+
+        colorNest.forEach((d) => {
+            d.hue = d.hsl.s 
+        })
+        histogramValues = d3.histogram()
+            .value(function(d) {return d.hue})
+            .domain(satScale.domain())
+            .thresholds(satScale.ticks(20))
+        colorBins = histogramValues(colorNest)
+        console.log(colorBins)
+
+        colorNest.forEach((d) => {
+            colorBins.forEach((bin) => {
+                bin.forEach((g,i) => {
+                    g.bucket = bin.x0;
+                })
+                if(bin.key === d.key) {
+                    colorNest.push({bucket: bin.x0})
+                }
+            })
+        })
+
+        doubleNest = d3.nest()
+            .key(d=>d.bucket)
+            .key(d=>d.hue)
+            .entries(colorNest)
+
+        doubleNest.forEach(d => d.key = +d.key)
+        doubleNest.sort((a,b)=>d3.ascending(a.key,b.key))
+
+        console.log(doubleNest)
+        hierarchy = d3.hierarchy({values: doubleNest}, function(d) { return d.values; })
+            .sum(function(d) { return d.value; });
+        root = treemap(hierarchy);
+
+        tree = treePanel.selectAll("rect")
+            .data(root.leaves())
+            
+        let treeEnter = tree.enter()
+            .append("rect")
+            .attr("x", function(d) { return d.x0; })
+            .attr("y", function(d) { return d.y0; })
+            .attr("class", d => d.data.key)
+            .attr("width", function(d) { return d.x1 - d.x0; })
+            .attr("height", function(d) { return d.y1 - d.y0; })
+            .attr("fill", function(d) { 
+                return d.data.key;
+                    })
+            .attr("stroke", "#FFFFFF");
+
+        tree.merge(treeEnter)
+            .transition()
+            .attr("x", function(d) { return d.x0; })
+            .attr("y", function(d) { return d.y0; })
+            .attr("class", d => d.data.key)
+            .attr("width", function(d) { return d.x1 - d.x0; })
+            .attr("height", function(d) { return d.y1 - d.y0; })
+            .attr("fill", function(d) { 
+                return d.data.key;
+                    })
+            .attr("stroke", "#FFFFFF");
+
+        tree.exit()
+            .transition()
+            .attr("opacity", 0)
+            .remove();
+
         grouping.selectAll("rect").transition().duration(500).attr("y", function(p) { return yScale(p.ypos); })
         
     })
@@ -177,6 +323,11 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
                 p.ypos = i;
             })
         })
+
+        colorNest.forEach((d) => {
+            d.hue = d.hsl.l
+        })
+
         grouping.selectAll("rect").transition().duration(500).attr("y", function(p) { return yScale(p.ypos); })
     })
 
@@ -187,6 +338,11 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
                 p.ypos = i;
             })
         })
+
+        colorNest.forEach((d) => {
+            d.hue = d.hsl.h
+        })
+
         grouping.selectAll("rect").transition().duration(500).attr("y", function(p) { return yScale(p.ypos); })
     })
 
