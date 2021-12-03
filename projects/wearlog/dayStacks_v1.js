@@ -228,6 +228,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
     tree.merge(treeEnter)
         .transition()
+        .duration(500)
         .attr("x", function(d) { return d.x0; })
         .attr("y", function(d) { return d.y0; })
         .attr("class", d => d.data.key)
@@ -240,6 +241,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
     tree.exit()
         .transition()
+        .duration(500)
         .attr("opacity", 0)
         .remove();
 
@@ -304,6 +306,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
         tree.merge(treeEnter)
             .transition()
+            .duration(500)
             .attr("x", function(d) { return d.x0; })
             .attr("y", function(d) { return d.y0; })
             .attr("class", d => d.data.key)
@@ -316,6 +319,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
         tree.exit()
             .transition()
+            .duration(500)
             .attr("opacity", 0)
             .remove();
         
@@ -380,6 +384,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
         tree.merge(treeEnter)
             .transition()
+            .duration(500)
             .attr("x", function(d) { return d.x0; })
             .attr("y", function(d) { return d.y0; })
             .attr("class", d => d.data.key)
@@ -392,6 +397,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
         tree.exit()
             .transition()
+            .duration(500)
             .attr("opacity", 0)
             .remove();
 
@@ -457,6 +463,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
         tree.merge(treeEnter)
             .transition()
+            .duration(500)
             .attr("x", function(d) { return d.x0; })
             .attr("y", function(d) { return d.y0; })
             .attr("class", d => d.data.key)
@@ -469,6 +476,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
         tree.exit()
             .transition()
+            .duration(500)
             .attr("opacity", 0)
             .remove();
 
