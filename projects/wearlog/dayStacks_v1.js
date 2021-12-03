@@ -161,7 +161,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         let stackHeight = d.values.length * barHeight;
         d.offset = stackHeight/2;
         d.key = +d.key
-        d.values.sort((a,b)=>d3.ascending(a.hue,b.hue))
+        d.values.sort((a,b)=>d3.ascending(b.hue,a.hue))
         d.values.forEach((p,i)=>{
             p.ypos = i;
         })
@@ -245,6 +245,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
                 p.ypos = i;
             })
         })
+        grouping.selectAll("rect").transition().duration(500).attr("y", function(p) { return yScale(p.ypos); })
 
         colorNest.forEach((d) => {
             d.hue = d.hsl.s 
@@ -311,37 +312,159 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
             .transition()
             .attr("opacity", 0)
             .remove();
-
-        grouping.selectAll("rect").transition().duration(500).attr("y", function(p) { return yScale(p.ypos); })
         
     })
 
     lumBtn.on("click", function() {
         nested.forEach((d) => {
-            d.values.sort((a,b)=>d3.ascending(a.lum,b.lum))
+            d.values.sort((a,b)=>d3.ascending(b.lum,a.lum))
             d.values.forEach((p,i)=>{
                 p.ypos = i;
             })
         })
 
         colorNest.forEach((d) => {
-            d.hue = d.hsl.l
+            d.hue = d.hsl.l 
         })
+        histogramValues = d3.histogram()
+            .value(function(d) {return d.hue})
+            .domain(satScale.domain())
+            .thresholds(satScale.ticks(20))
+        colorBins = histogramValues(colorNest)
+        console.log(colorBins)
+
+        colorNest.forEach((d) => {
+            colorBins.forEach((bin) => {
+                bin.forEach((g,i) => {
+                    g.bucket = bin.x0;
+                })
+                if(bin.key === d.key) {
+                    colorNest.push({bucket: bin.x0})
+                }
+            })
+        })
+
+        doubleNest = d3.nest()
+            .key(d=>d.bucket)
+            .key(d=>d.hue)
+            .entries(colorNest)
+
+        doubleNest.forEach(d => d.key = +d.key)
+        doubleNest.sort((a,b)=>d3.ascending(a.key,b.key))
+
+        console.log(doubleNest)
+        hierarchy = d3.hierarchy({values: doubleNest}, function(d) { return d.values; })
+            .sum(function(d) { return d.value; });
+        root = treemap(hierarchy);
+
+        tree = treePanel.selectAll("rect")
+            .data(root.leaves())
+            
+        let treeEnter = tree.enter()
+            .append("rect")
+            .attr("x", function(d) { return d.x0; })
+            .attr("y", function(d) { return d.y0; })
+            .attr("class", d => d.data.key)
+            .attr("width", function(d) { return d.x1 - d.x0; })
+            .attr("height", function(d) { return d.y1 - d.y0; })
+            .attr("fill", function(d) { 
+                return d.data.key;
+                    })
+            .attr("stroke", "#FFFFFF");
+
+        tree.merge(treeEnter)
+            .transition()
+            .attr("x", function(d) { return d.x0; })
+            .attr("y", function(d) { return d.y0; })
+            .attr("class", d => d.data.key)
+            .attr("width", function(d) { return d.x1 - d.x0; })
+            .attr("height", function(d) { return d.y1 - d.y0; })
+            .attr("fill", function(d) { 
+                return d.data.key;
+                    })
+            .attr("stroke", "#FFFFFF");
+
+        tree.exit()
+            .transition()
+            .attr("opacity", 0)
+            .remove();
 
         grouping.selectAll("rect").transition().duration(500).attr("y", function(p) { return yScale(p.ypos); })
     })
 
     hueBtn.on("click", function() {
         nested.forEach((d) => {
-            d.values.sort((a,b)=>d3.ascending(a.hue,b.hue))
+            d.values.sort((a,b)=>d3.ascending(b.hue,a.hue))
             d.values.forEach((p,i)=>{
                 p.ypos = i;
             })
         })
 
         colorNest.forEach((d) => {
-            d.hue = d.hsl.h
+            d.hue = d.hsl.h 
         })
+        histogramValues = d3.histogram()
+            .value(function(d) {return d.hue})
+            .domain(hueScale.domain())
+            .thresholds(hueScale.ticks(24))
+        colorBins = histogramValues(colorNest)
+        console.log(colorBins)
+
+        colorNest.forEach((d) => {
+            colorBins.forEach((bin) => {
+                bin.forEach((g,i) => {
+                    g.bucket = bin.x0;
+                })
+                if(bin.key === d.key) {
+                    colorNest.push({bucket: bin.x0})
+                }
+            })
+        })
+
+        doubleNest = d3.nest()
+            .key(d=>d.bucket)
+            .key(d=>d.hue)
+            .entries(colorNest)
+
+        doubleNest.forEach(d => d.key = +d.key)
+        doubleNest.sort((a,b)=>d3.ascending(a.key,b.key))
+
+        console.log(doubleNest)
+        hierarchy = d3.hierarchy({values: doubleNest}, function(d) { return d.values; })
+            .sum(function(d) { return d.value; });
+        root = treemap(hierarchy);
+
+        tree = treePanel.selectAll("rect")
+            .data(root.leaves())
+            
+        let treeEnter = tree.enter()
+            .append("rect")
+            .attr("x", function(d) { return d.x0; })
+            .attr("y", function(d) { return d.y0; })
+            .attr("class", d => d.data.key)
+            .attr("width", function(d) { return d.x1 - d.x0; })
+            .attr("height", function(d) { return d.y1 - d.y0; })
+            .attr("fill", function(d) { 
+                return d.data.key;
+                    })
+            .attr("stroke", "#FFFFFF");
+
+        tree.merge(treeEnter)
+            .transition()
+            .attr("x", function(d) { return d.x0; })
+            .attr("y", function(d) { return d.y0; })
+            .attr("class", d => d.data.key)
+            .attr("width", function(d) { return d.x1 - d.x0; })
+            .attr("height", function(d) { return d.y1 - d.y0; })
+            .attr("fill", function(d) { 
+                return d.data.key;
+                    })
+            .attr("stroke", "#FFFFFF");
+
+        tree.exit()
+            .transition()
+            .attr("opacity", 0)
+            .remove();
 
         grouping.selectAll("rect").transition().duration(500).attr("y", function(p) { return yScale(p.ypos); })
     })
