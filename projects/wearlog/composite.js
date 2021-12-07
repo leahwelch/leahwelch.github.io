@@ -37,6 +37,21 @@ const dropDown = d3.select("#dropdownArea").append("select")
     .attr("name", "brandList");
 
 d3.csv("./data/wearlog.csv", parse).then(function(data) {
+    
+    d3.selection.prototype.moveToFront = function() {  
+        return this.each(function(){
+          this.parentNode.appendChild(this);
+        });
+      };
+      d3.selection.prototype.moveToBack = function() {  
+          return this.each(function() { 
+              var firstChild = this.parentNode.firstChild; 
+              if (firstChild) { 
+                  this.parentNode.insertBefore(this, firstChild); 
+              } 
+          });
+      };
+    
     data.forEach(function(d) {
         if(d.brand === '') {
             d.brand = 'Vintage';
@@ -92,67 +107,12 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
     colors.sort((a,b) => d3.ascending(a.date,b.date))
 
-    let colorNest = d3.nest()
-        .key(function(d) { return d.color})
-        .rollup(function(v) { return v.length;})
-        .entries(colors)
-
-    colorNest.forEach((d) => {
-        d.hsl = HEXtoHSL(d.key)
-        d.hue = d.hsl.h
-    })
-
-    colorNest.sort((a,b) => d3.ascending(a.hue,b.hue))
-
     let histogramValues = d3.histogram()
         .value(function(d) {return d.hue})
         .domain(hueScale.domain())
         .thresholds(hueScale.ticks(24))
 
     let bins = histogramValues(colors)
-    let colorBins = histogramValues(colorNest)
-    
-
-    colorNest.forEach((g) => {
-        colorBins.forEach((bin) => {
-            bin.forEach((d,i) => {
-                d.bucket = bin.x0;
-            })
-            if(bin.key === g.key) {
-                colorNest.push({bucket: bin.x0})
-            }
-        })
-    })
-    
-
-    let doubleNest = d3.nest()
-        
-        .key(d=>d.bucket)
-        .key(d=>d.hue)
-    //     // .rollup(function(v) { return v.length;})
-        .rollup()
-        
-        .entries(colorNest)
-
-    // let topNest = d3.nest()
-    //     .key(d=>d.bucket)
-    //     .rollup(function(v) { return v.length;})
-    //     .entries(colorNest)
-
-    doubleNest.forEach(d => d.key = +d.key)
-    doubleNest = doubleNest.filter(d=>d.key === 0)
-    // topNest.forEach(d => d.key = +d.key)
-
-    console.log(doubleNest)
-    
-    // let hierarchy = d3.hierarchy({values: doubleNest}, function(d) { return d.values; })
-    //     .sum(function(d) { return d.value; });
-    let hierarchy = d3.hierarchy({values: doubleNest}, function(d) { return d.values; })
-        .sum(function(d) { return d.value; });
-
-    let root = treemap(hierarchy);
-
-    // console.log(root.children)
 
     colors.forEach((g) => {
         bins.forEach((bin) => {
@@ -160,7 +120,8 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
                 d.bucket = bin.x0;
             })
             if(bin.date === g.date) {
-                colors.push({bucket: bin.x0})
+                // colors.push({bucket: bin.x0})
+                g.bucket = bin.x0;
             }
         })
     })
@@ -179,6 +140,31 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
             p.ypos = i;
         })
     })
+
+    let colorNest = d3.nest()
+        .key(d=>d.bucket)
+        .key(d=>d.hue)
+        .key(d=>d.color)
+        .rollup(function(v) { return v.length;})
+        .entries(colors)
+        
+
+    colorNest.forEach((d) => {
+        d.key = +d.key;
+        d.values.forEach((p) => {
+            p.key = +p.key;
+        })
+        d.values.sort((a,b)=>d3.ascending(a.key,b.key))
+    })
+
+    colorNest.sort((a,b)=>d3.ascending(a.key,b.key))
+
+    let hierarchy = d3.hierarchy({values: colorNest}, function(d) { return d.values; })
+        .sum(function(d) { return d.value; });
+
+    let root = treemap(hierarchy);
+
+    console.log(hierarchy)
 
     const xScale = d3.scaleLinear()
         .domain([1,60])
@@ -220,6 +206,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
     let tree = treePanel.selectAll("rect")
         .data(root.leaves())
+        // .data(root.children) //USE THIS FOR THE MOUSEOVERS
         
     let treeEnter = tree.enter()
         .append("rect")
@@ -252,6 +239,41 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         .attr("opacity", 0)
         .remove();
 
+    let mouseTree = treePanel.selectAll(".mouse")
+        .data(root.children)
+
+    let mouseTreeEnter = mouseTree.enter()
+        .append("rect")
+        .attr("x", function(d) { return d.x0; })
+        .attr("y", function(d) { return d.y0; })
+        .attr("class", "mouse")
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .attr("height", function(d) { return d.y1 - d.y0; })
+        .style("fill", "transparent")
+        .attr("stroke", "none")
+        // .moveToFront();
+
+    mouseTree.merge(mouseTreeEnter)
+        .transition()
+        .duration(500)
+        .attr("x", function(d) { return d.x0; })
+        .attr("y", function(d) { return d.y0; })
+        .attr("class", "mouse")
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .attr("height", function(d) { return d.y1 - d.y0; })
+        .style("fill", "transparent")
+        .attr("stroke", "none")   
+
+    mouseTree.exit()
+        .transition()
+        .duration(500)
+        .remove();
+
+    d3.selectAll(".mouse")
+        .on('click', function(d) {
+            console.log(d.data.key)
+        })
+
 
     satBtn.on("click", function() {
         nested.forEach((d) => {
@@ -262,43 +284,48 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         })
         grouping.selectAll("rect").transition().duration(500).attr("y", function(p) { return yScale(p.ypos); })
 
-        colorNest.forEach((d) => {
-            d.hue = d.hsl.s 
-        })
         histogramValues = d3.histogram()
-            .value(function(d) {return d.hue})
+            .value(function(d) {return d.sat})
             .domain(satScale.domain())
             .thresholds(satScale.ticks(20))
-        colorBins = histogramValues(colorNest)
-        console.log(colorBins)
 
-        colorNest.forEach((d) => {
-            colorBins.forEach((bin) => {
-                bin.forEach((g,i) => {
-                    g.bucket = bin.x0;
+        bins = histogramValues(colors)
+        
+        colors.forEach((g) => {
+            bins.forEach((bin) => {
+                bin.forEach((d,i) => {
+                    d.bucket = bin.x0;
                 })
-                if(bin.key === d.key) {
-                    colorNest.push({bucket: bin.x0})
+                if(bin.date === g.date) {
+                    g.bucket = bin.x0;
                 }
             })
         })
-
-        doubleNest = d3.nest()
+        
+        colorNest = d3.nest()
             .key(d=>d.bucket)
-            .key(d=>d.hue)
-            .entries(colorNest)
+            .key(d=>d.sat)
+            .key(d=>d.color)
+            .rollup(function(v) { return v.length;})
+            .entries(colors)
 
-        doubleNest.forEach(d => d.key = +d.key)
-        doubleNest.sort((a,b)=>d3.ascending(a.key,b.key))
+        colorNest.forEach((d) => {
+            d.key = +d.key;
+            d.values.forEach((p) => {
+                p.key = +p.key;
+            })
+            d.values.sort((a,b)=>d3.ascending(a.key,b.key))
+        })
+    
+        colorNest.sort((a,b)=>d3.ascending(a.key,b.key))
 
-        console.log(doubleNest)
-        hierarchy = d3.hierarchy({values: doubleNest}, function(d) { return d.values; })
+        hierarchy = d3.hierarchy({values: colorNest}, function(d) { return d.values; })
             .sum(function(d) { return d.value; });
         root = treemap(hierarchy);
 
         tree = treePanel.selectAll("rect")
-            // .data(root.leaves())
-            .data(root.children)
+            .data(root.leaves())
+            // .data(root.children)
             
         let treeEnter = tree.enter()
             .append("rect")
@@ -341,37 +368,42 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
             })
         })
 
-        colorNest.forEach((d) => {
-            d.hue = d.hsl.l 
-        })
         histogramValues = d3.histogram()
-            .value(function(d) {return d.hue})
+            .value(function(d) {return d.lum})
             .domain(satScale.domain())
             .thresholds(satScale.ticks(20))
-        colorBins = histogramValues(colorNest)
-        console.log(colorBins)
 
-        colorNest.forEach((d) => {
-            colorBins.forEach((bin) => {
-                bin.forEach((g,i) => {
-                    g.bucket = bin.x0;
+        bins = histogramValues(colors)
+        
+        colors.forEach((g) => {
+            bins.forEach((bin) => {
+                bin.forEach((d,i) => {
+                    d.bucket = bin.x0;
                 })
-                if(bin.key === d.key) {
-                    colorNest.push({bucket: bin.x0})
+                if(bin.date === g.date) {
+                    g.bucket = bin.x0;
                 }
             })
         })
-
-        doubleNest = d3.nest()
+        
+        colorNest = d3.nest()
             .key(d=>d.bucket)
-            .key(d=>d.hue)
-            .entries(colorNest)
+            .key(d=>d.lum)
+            .key(d=>d.color)
+            .rollup(function(v) { return v.length;})
+            .entries(colors)
 
-        doubleNest.forEach(d => d.key = +d.key)
-        doubleNest.sort((a,b)=>d3.ascending(a.key,b.key))
+        colorNest.forEach((d) => {
+            d.key = +d.key;
+            d.values.forEach((p) => {
+                p.key = +p.key;
+            })
+            d.values.sort((a,b)=>d3.ascending(a.key,b.key))
+        })
+    
+        colorNest.sort((a,b)=>d3.ascending(a.key,b.key))
 
-        console.log(doubleNest)
-        hierarchy = d3.hierarchy({values: doubleNest}, function(d) { return d.values; })
+        hierarchy = d3.hierarchy({values: colorNest}, function(d) { return d.values; })
             .sum(function(d) { return d.value; });
         root = treemap(hierarchy);
 
@@ -420,37 +452,42 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
             })
         })
 
-        colorNest.forEach((d) => {
-            d.hue = d.hsl.h 
-        })
         histogramValues = d3.histogram()
             .value(function(d) {return d.hue})
-            .domain(hueScale.domain())
-            .thresholds(hueScale.ticks(24))
-        colorBins = histogramValues(colorNest)
-        console.log(colorBins)
+            .domain(satScale.domain())
+            .thresholds(satScale.ticks(20))
 
-        colorNest.forEach((d) => {
-            colorBins.forEach((bin) => {
-                bin.forEach((g,i) => {
-                    g.bucket = bin.x0;
+        bins = histogramValues(colors)
+        
+        colors.forEach((g) => {
+            bins.forEach((bin) => {
+                bin.forEach((d,i) => {
+                    d.bucket = bin.x0;
                 })
-                if(bin.key === d.key) {
-                    colorNest.push({bucket: bin.x0})
+                if(bin.date === g.date) {
+                    g.bucket = bin.x0;
                 }
             })
         })
-
-        doubleNest = d3.nest()
+        
+        colorNest = d3.nest()
             .key(d=>d.bucket)
             .key(d=>d.hue)
-            .entries(colorNest)
+            .key(d=>d.color)
+            .rollup(function(v) { return v.length;})
+            .entries(colors)
 
-        doubleNest.forEach(d => d.key = +d.key)
-        doubleNest.sort((a,b)=>d3.ascending(a.key,b.key))
+        colorNest.forEach((d) => {
+            d.key = +d.key;
+            d.values.forEach((p) => {
+                p.key = +p.key;
+            })
+            d.values.sort((a,b)=>d3.ascending(a.key,b.key))
+        })
+    
+        colorNest.sort((a,b)=>d3.ascending(a.key,b.key))
 
-        console.log(doubleNest)
-        hierarchy = d3.hierarchy({values: doubleNest}, function(d) { return d.values; })
+        hierarchy = d3.hierarchy({values: colorNest}, function(d) { return d.values; })
             .sum(function(d) { return d.value; });
         root = treemap(hierarchy);
 
