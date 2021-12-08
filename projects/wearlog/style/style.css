@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;300;400&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -5,6 +7,38 @@
 html, body {
   margin: 0px;
   padding: 0px;
+  background-color: #efe8e6;
+  font-family: 'Roboto Mono', monospace;
+}
+
+button {
+  font-family: 'Roboto Mono', monospace;
+  text-transform: uppercase;
+  margin: 5px;
+  background-color: #efe8e6;
+  border: 1px solid #808080;
+  font-size: 12pt;
+  color: #565656;
+  text-align: center;
+  padding: 5px 20px;
+  display: inline-block;
+}
+
+button:hover {
+  background-color: #808080;
+  color: #efe8e6;
+}
+
+button:focus {
+  background-color: #808080;
+  color: #efe8e6;
+  outline:0;
+}
+
+button.active {
+  background-color: #808080;
+  color: #efe8e6;
+  outline:0;
 }
 
 #container {
@@ -17,18 +51,12 @@ html, body {
         "tree main";
 }
 
-/* #controls {
-  grid-area: controls;
-} */
-
 #chart {
-  /* width: 90%; */
   height: 90vh;
   grid-area: main;
 }
 
 #tree {
-  /* width: 90%; */
   height: 100vh;
   grid-area: tree;
 }

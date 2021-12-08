@@ -1,5 +1,3 @@
-
-
 var width = document.querySelector("#chart").clientWidth;
 var height = document.querySelector("#chart").clientHeight;
 var margin = {top: 150, left: 0, right: 55, bottom: 400};
@@ -22,7 +20,6 @@ var treemap = d3.treemap()
     .size([treeWidth, treeHeight])
     .padding(0.5)
     .round(true)
-    // .tile(tile);
 
 const barHeight = 5;
 const chartHeight = height - margin.bottom - margin.top;
@@ -37,20 +34,6 @@ const dropDown = d3.select("#dropdownArea").append("select")
     .attr("name", "brandList");
 
 d3.csv("./data/wearlog.csv", parse).then(function(data) {
-    
-    d3.selection.prototype.moveToFront = function() {  
-        return this.each(function(){
-          this.parentNode.appendChild(this);
-        });
-      };
-      d3.selection.prototype.moveToBack = function() {  
-          return this.each(function() { 
-              var firstChild = this.parentNode.firstChild; 
-              if (firstChild) { 
-                  this.parentNode.insertBefore(this, firstChild); 
-              } 
-          });
-      };
     
     data.forEach(function(d) {
         if(d.brand === '') {
@@ -120,7 +103,6 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
                 d.bucket = bin.x0;
             })
             if(bin.date === g.date) {
-                // colors.push({bucket: bin.x0})
                 g.bucket = bin.x0;
             }
         })
@@ -147,7 +129,6 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         .key(d=>d.color)
         .rollup(function(v) { return v.length;})
         .entries(colors)
-        
 
     colorNest.forEach((d) => {
         d.key = +d.key;
@@ -219,7 +200,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         .attr("fill", function(d) { 
             return d.data.key;
                 })
-        .attr("stroke", "#FFFFFF")
+        .attr("stroke", "#efe8e6")
         .attr("opacity", 1);
 
     tree.merge(treeEnter)
@@ -233,7 +214,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         .attr("fill", function(d) { 
             return d.data.key;
                 })
-        .attr("stroke", "#FFFFFF")
+        .attr("stroke", "#efe8e6")
         .attr("opacity", 1);
 
     tree.exit()
@@ -254,7 +235,6 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         .attr("height", function(d) { return d.y1 - d.y0; })
         .style("fill", "transparent")
         .attr("stroke", "none")
-        // .moveToFront();
 
     mouseTree.merge(mouseTreeEnter)
         .transition()
@@ -388,7 +368,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
             .attr("fill", function(d) { 
                 return d.data.key;
                     })
-            .attr("stroke", "#FFFFFF");
+            .attr("stroke", "#efe8e6");
 
         tree.merge(treeEnter)
             .transition()
@@ -401,7 +381,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
             .attr("fill", function(d) { 
                 return d.data.key;
                     })
-            .attr("stroke", "#FFFFFF");
+            .attr("stroke", "#efe8e6");
 
         tree.exit()
             .transition()
@@ -471,7 +451,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
             .attr("fill", function(d) { 
                 return d.data.key;
                     })
-            .attr("stroke", "#FFFFFF");
+            .attr("stroke", "#efe8e6");
 
         tree.merge(treeEnter)
             .transition()
@@ -484,7 +464,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
             .attr("fill", function(d) { 
                 return d.data.key;
                     })
-            .attr("stroke", "#FFFFFF");
+            .attr("stroke", "#efe8e6");
 
         tree.exit()
             .transition()
@@ -505,8 +485,8 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
         histogramValues = d3.histogram()
             .value(function(d) {return d.hue})
-            .domain(satScale.domain())
-            .thresholds(satScale.ticks(20))
+            .domain(hueScale.domain())
+            .thresholds(hueScale.ticks(24))
 
         bins = histogramValues(colors)
         
@@ -555,7 +535,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
             .attr("fill", function(d) { 
                 return d.data.key;
                     })
-            .attr("stroke", "#FFFFFF");
+            .attr("stroke", "#efe8e6");
 
         tree.merge(treeEnter)
             .transition()
@@ -568,7 +548,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
             .attr("fill", function(d) { 
                 return d.data.key;
                     })
-            .attr("stroke", "#FFFFFF");
+            .attr("stroke", "#efe8e6");
 
         tree.exit()
             .transition()
@@ -676,7 +656,9 @@ function parse(d) {
         hex2: d.hex2,
         hex3: d.hex3,
         hex4: d.hex4,
-        hex5: d.hex5
+        hex5: d.hex5,
+        new: d.new,
+        sold: d.sold
     }
     
 }
@@ -742,13 +724,3 @@ function ISO8601_week_no(dt) {
         }
      return 1 + Math.ceil((firstThursday - tdt) / 604800000);
         }
-
-function tile(node, x0, y0, x1, y1) {
-    d3.treemapBinary(node, 0, 0, width, height);
-    for (const child of node.children) {
-        child.x0 = x0 + child.x0 / width * (x1 - x0);
-        child.x1 = x0 + child.x1 / width * (x1 - x0);
-        child.y0 = y0 + child.y0 / height * (y1 - y0);
-        child.y1 = y0 + child.y1 / height * (y1 - y0);
-    }
-    }
