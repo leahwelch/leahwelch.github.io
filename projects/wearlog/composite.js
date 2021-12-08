@@ -159,12 +159,12 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
     colorNest.sort((a,b)=>d3.ascending(a.key,b.key))
 
+    console.log(colorNest)
+
     let hierarchy = d3.hierarchy({values: colorNest}, function(d) { return d.values; })
         .sum(function(d) { return d.value; });
 
     let root = treemap(hierarchy);
-
-    console.log(hierarchy)
 
     const xScale = d3.scaleLinear()
         .domain([1,60])
@@ -206,7 +206,8 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
     let tree = treePanel.selectAll("rect")
         .data(root.leaves())
-        // .data(root.children) //USE THIS FOR THE MOUSEOVERS
+
+    console.log(root.leaves())
         
     let treeEnter = tree.enter()
         .append("rect")
@@ -218,20 +219,22 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         .attr("fill", function(d) { 
             return d.data.key;
                 })
-        .attr("stroke", "#FFFFFF");
+        .attr("stroke", "#FFFFFF")
+        .attr("opacity", 1);
 
     tree.merge(treeEnter)
         .transition()
         .duration(500)
         .attr("x", function(d) { return d.x0; })
         .attr("y", function(d) { return d.y0; })
-        .attr("class", d => d.data.key)
+        .attr("class", d => d.data.bucket)
         .attr("width", function(d) { return d.x1 - d.x0; })
         .attr("height", function(d) { return d.y1 - d.y0; })
         .attr("fill", function(d) { 
             return d.data.key;
                 })
-        .attr("stroke", "#FFFFFF");
+        .attr("stroke", "#FFFFFF")
+        .attr("opacity", 1);
 
     tree.exit()
         .transition()
@@ -270,8 +273,57 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         .remove();
 
     d3.selectAll(".mouse")
-        .on('click', function(d) {
-            console.log(d.data.key)
+        .on('click', function(p) {
+            let filteredColors = colors.filter(d=>d.bucket === p.data.key)
+            let colorList = [];
+            filteredColors.forEach(d=>
+                    colorList.push(d.color)
+                )
+            tree = treePanel.selectAll("rect")
+                .transition().duration(500)
+                .attr("opacity", (d) => {
+                    let color = d.data.key
+                    if(colorList.indexOf(color) > 0) {
+                        return 1;
+                    } else {
+                        return 0.15;
+                    }
+                })
+
+            nested.forEach((d) => {
+                d.filtered = d.values.filter(g=>g.bucket === p.data.key)
+                let stackHeight = d.filtered.length * barHeight;
+                d.offset = stackHeight/2;
+                d.filtered.forEach((g,i)=>{
+                    g.ypos = i;
+                })
+            })
+    
+            grouping.transition().duration(500)
+                .attr("transform", (d) => `translate(${xScale(d.key)},${d.offset})`)
+            
+            bars = grouping.selectAll("rect").data(d=>d.filtered)
+            enter = bars.enter()
+                .append("rect")
+                .attr("width", barWidth)
+                .attr("height", barHeight)
+                .attr("fill", g=>g.color)
+                .attr("y", function(g) { return yScale(g.ypos); })
+                .attr("opacity", 0)
+            bars.merge(enter).transition()
+                .duration(500)
+                .attr("width", barWidth)
+                .attr("height", barHeight)
+                .attr("fill", g=>g.color)
+                .attr("y", function(g) { return yScale(g.ypos); })
+                .attr("opacity", 1)
+    
+            bars.exit()
+                .transition()
+                .duration(500)
+                .attr("opacity", 0)
+                .remove(); 
+            
         })
 
 
@@ -325,7 +377,6 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
         tree = treePanel.selectAll("rect")
             .data(root.leaves())
-            // .data(root.children)
             
         let treeEnter = tree.enter()
             .append("rect")
@@ -601,6 +652,10 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
             .duration(500)
             .attr("opacity", 0)
             .remove();
+
+        tree = treePanel.selectAll("rect")
+            .transition().duration(500)
+            .attr("opacity", 1)
     })
     
         
