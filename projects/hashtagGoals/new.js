@@ -89,7 +89,7 @@ window.createGraphic = function(graphicSelector) {
 
     var steps = [
         function showTshirt() {
-            d3.csv(dataLoc).then(function(data) {
+            d3.csv(dataLoc, parse).then(function(data) {
                 var t = d3.transition()
                     .duration(800)
                     .ease(d3.easeQuadInOut)
@@ -238,7 +238,7 @@ window.createGraphic = function(graphicSelector) {
             });
         },
         function showAll() {
-            d3.csv(dataLoc).then(function(data) {
+            d3.csv(dataLoc, parse).then(function(data) {
                 var t = d3.transition()
                     .duration(800)
                     .ease(d3.easeQuadInOut)
@@ -342,7 +342,7 @@ window.createGraphic = function(graphicSelector) {
             });
         },
         function showAllHighlighted() {
-            d3.csv(dataLoc).then(function(data) {
+            d3.csv(dataLoc, parse).then(function(data) {
                 var t = d3.transition()
                     .duration(800)
                     .ease(d3.easeQuadInOut)
@@ -659,7 +659,7 @@ window.createGraphic = function(graphicSelector) {
             });
         },
         function reorganize() {
-            d3.csv(dataLoc).then(function(data) {
+            d3.csv(dataLoc, parse).then(function(data) {
                 svg.selectAll(".newTopLabels").transition().duration(500).style("opacity",0)
                 svg.selectAll(".topLine").transition().duration(500).style("opacity",0)
 
@@ -673,6 +673,7 @@ window.createGraphic = function(graphicSelector) {
                     min: d3.min(data, function(d) { return +d.totals; }),
                     max: d3.max(data, function(d) { return +d.totals; }),
                 };
+                console.log(data)
 
                 var rScale = d3.scaleLinear()
                     .domain([totals.min, totals.max])
@@ -714,7 +715,7 @@ window.createGraphic = function(graphicSelector) {
                 var colorEnter = colorLabels.enter().append("text")
                     .attr("class", "colorLabels")
                     .attr("x", width-margin.right-13)
-                    .attr("y", function(d){return yScale(d.goal)})
+                    .attr("y", function(d){return +yScale(d.goal)})
                     .text(function(d){ return(d.goal)});
                 colorLabels.merge(colorEnter)
                     .transition()
@@ -748,7 +749,7 @@ window.createGraphic = function(graphicSelector) {
                     .attr("class", "mylabels")
                     .style("opacity", 0)
                     .attr("x", width-margin.right + 5)
-                    .attr("y", function(d){return yScale(d.goal)})    
+                    .attr("y", function(d){return +yScale(d.goal)})    
                     .text(function(d){ return(d.goalNames)})
                     //.attr("fill","#1F1F89")
                     .style("font-family", "Nunito");
@@ -828,7 +829,7 @@ window.createGraphic = function(graphicSelector) {
             });
         },
         function topIndustries() {
-            d3.csv(dataLoc).then(function(data) {
+            d3.csv(dataLoc, parse).then(function(data) {
 
                 
 
@@ -1003,7 +1004,7 @@ window.createGraphic = function(graphicSelector) {
             });
         },
         function bottomIndustries() {
-            d3.csv(dataLoc).then(function(data) {
+            d3.csv(dataLoc, parse).then(function(data) {
                 svg.selectAll(".topLine").transition().duration(500).style("opacity",0)
                 svg.selectAll(".highlightline").transition().duration(500).style("opacity",0)
                 svg.selectAll(".table").transition().duration(500).style("opacity",0)
@@ -1171,7 +1172,7 @@ window.createGraphic = function(graphicSelector) {
             });
         },
         function highlights() {
-            d3.csv(dataLoc).then(function(data) {
+            d3.csv(dataLoc, parse).then(function(data) {
                 svg.selectAll(".bottomLine").style("opacity", 0)
                 var uniqueIndustry = removeDuplicates(data, "industry");
 
@@ -1352,4 +1353,17 @@ window.createGraphic = function(graphicSelector) {
 	return {
 		update: update,
 	}
+}
+
+function parse(d) {
+
+    return {
+        industry: d.industry,
+        goal: +d.goal,
+        goalNames: d.goalNames,
+        totals: +d.totals,
+        t_shirt: d.t_shirt,
+        category: d.category
+    }
+    
 }
