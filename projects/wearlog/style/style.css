@@ -17,6 +17,11 @@ span {
   color: #565656;
 }
 
+#controls {
+  text-align: right;
+  padding: 10px 50px;
+}
+
 button {
   font-family: 'Roboto Mono', monospace;
   text-transform: uppercase;
