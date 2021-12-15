@@ -21,7 +21,7 @@ var treemap = d3.treemap()
     .padding(0.5)
     .round(true)
 
-const barHeight = 5;
+let barHeight = 5;
 const chartHeight = height - margin.bottom - margin.top;
 const barWidth = 20
 
@@ -30,8 +30,10 @@ const satBtn = d3.select("#satBtn")
 const lumBtn = d3.select("#lumBtn")
 const shelvesBtn = d3.select("#shelves")
 const resetBtn = d3.select("#reset")
-const dropDown = d3.select("#dropdownArea").append("select")
-    .attr("name", "brandList");
+const dropDown = d3.select(".select").append("select")
+    .attr("name", "brandList")
+    .attr("class", "custom-select");
+    
 
 d3.csv("./data/wearlog.csv", parse).then(function(data) {
     
@@ -153,7 +155,17 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         .domain([1,63])
         .range([margin.left, width-margin.right])
 
-    const yScale = d3.scaleLinear()
+    const dateScale = d3.scaleTime()
+        .domain([data[0].date, data[data.length-1].date])
+        .range([margin.left, width-margin.right])
+
+    let xAxis = svg.append("g")
+        .attr("class", "axis")
+        .attr("transform", `translate(0,${height - 50})`)
+        .style("opacity", 1)
+        .call(d3.axisBottom().scale(dateScale))
+
+    let yScale = d3.scaleLinear()
         .domain([0, 60])
         .range([height-margin.bottom, margin.top])
 
@@ -564,6 +576,9 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
     shelvesBtn.on("click", function() {
         let stackHeights = [];
         let heightNest;
+        d3.selectAll(".axis").style("opacity", 0);
+        barHeight = 3;
+        yScale.domain([0,80])
         nested.forEach((d) => {
             
             let weekNest = d3.nest()
@@ -577,8 +592,6 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
                     bucket: p.key,
                     stackHeight: p.values.length
                 })
-                // let stackHeight = p.values.length * barHeight; //this needs to be the maximum by week, a bucket should have the same stack height week to week
-                // p.offset = stackHeight/2;
             })
             
             weekNest.sort((a,b) => d3.ascending(a.key,b.key))
@@ -603,32 +616,23 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
         }
         nested.forEach((d) => {
-            d.values.forEach((p,i) => {
+            d.values.forEach((p) => {
                 heightNest.forEach((m) => {
                     if(p.bucket === m.key) {
                         p.offset = m.offset;
-                        p.ypos = p.offset - i;
                     }
                 })   
             }) 
 
-            
-                // p[i].ypos = (p[i-1].maxHeight*barHeight)/2 + i;
-                
-                
-                // d.weekNest.forEach((m) => {
-                //     if(p.bucket === m.key) {
-                //         p.ypos = m.offset + i;
-                //     }
-                // })
+            d.weekNest.forEach((p) => {
+                p.values.forEach((m,i) => {
+                    m.ypos = m.offset + i;
+                })
             })
-        
-        
-        console.log(heightNest)
-        console.log(stackHeights)
-        console.log(nested)
+            })
+
         grouping.transition().duration(500)
-            .attr("transform", (d) => `translate(${xScale(d.key)},${-1*height/2})`)
+            .attr("transform", (d) => `translate(${xScale(d.key)},${height/2})`)
         grouping.selectAll("rect").transition().duration(500).attr("y", function(p) { return yScale(p.ypos); })
     })
 
@@ -669,6 +673,9 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
     })
 
     resetBtn.on("click", function() {
+        barHeight = 5;
+        yScale.domain([0,60]);
+        xAxis.style("opacity", 1);
         nested.forEach((d) => {
             let stackHeight = d.values.length * barHeight;
             d.offset = stackHeight/2;
