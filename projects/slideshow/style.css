@@ -62,11 +62,11 @@ html, body {
 .text {
   color: #565656;
   font-size: 15px;
-  padding: 8px 12px;
+  padding: 8px 25%;
   position: absolute;
   bottom: 8px;
   width: 100%;
-  text-align: center;
+  text-align: left;
 }
 
 /* Number text (1/3 etc) */
