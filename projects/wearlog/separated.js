@@ -30,7 +30,7 @@ const satBtn = d3.select("#satBtn")
 const lumBtn = d3.select("#lumBtn")
 const shelvesBtn = d3.select("#shelves")
 const resetBtn = d3.select("#reset")
-const dropDown = d3.select(".select").append("select")
+const dropDown = d3.select("#dropdownArea").append("select")
     .attr("name", "brandList")
     .attr("class", "custom-select");
     
