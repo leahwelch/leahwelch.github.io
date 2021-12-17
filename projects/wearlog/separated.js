@@ -117,7 +117,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
     nested.forEach((d) => {
         let stackHeight = d.values.length * barHeight;
-        d.offset = stackHeight/2;
+        d.offset = stackHeight/3;
         d.key = +d.key
         d.values.sort((a,b)=>d3.ascending(b.hue,a.hue))
         d.values.forEach((p,i)=>{
@@ -402,6 +402,89 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
             .duration(500)
             .attr("opacity", 0)
             .remove();
+
+    let mouseTree = treePanel.selectAll(".mouse")
+        .data(root.children)
+
+    let mouseTreeEnter = mouseTree.enter()
+        .append("rect")
+        .attr("x", function(d) { return d.x0; })
+        .attr("y", function(d) { return d.y0; })
+        .attr("class", "mouse")
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .attr("height", function(d) { return d.y1 - d.y0; })
+        .style("fill", "transparent")
+        .attr("stroke", "none")
+
+    mouseTree.merge(mouseTreeEnter)
+        .transition()
+        .duration(500)
+        .attr("x", function(d) { return d.x0; })
+        .attr("y", function(d) { return d.y0; })
+        .attr("class", "mouse")
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .attr("height", function(d) { return d.y1 - d.y0; })
+        .style("fill", "transparent")
+        .attr("stroke", "none")   
+
+    mouseTree.exit()
+        .transition()
+        .duration(500)
+        .remove();
+
+    d3.selectAll(".mouse")
+        .on('click', function(p) {
+            let filteredColors = colors.filter(d=>d.bucket === p.data.key)
+            let colorList = [];
+            filteredColors.forEach(d=>
+                    colorList.push(d.color)
+                )
+            tree = treePanel.selectAll("rect")
+                .transition().duration(500)
+                .attr("opacity", (d) => {
+                    let color = d.data.key
+                    if(colorList.indexOf(color) > 0) {
+                        return 1;
+                    } else {
+                        return 0.15;
+                    }
+                })
+
+            nested.forEach((d) => {
+                d.filtered = d.values.filter(g=>g.bucket === p.data.key)
+                let stackHeight = d.filtered.length * barHeight;
+                d.offset = stackHeight/2;
+                d.filtered.forEach((g,i)=>{
+                    g.ypos = i;
+                })
+            })
+    
+            grouping.transition().duration(500)
+                .attr("transform", (d) => `translate(${xScale(d.key)},${d.offset})`)
+            
+            bars = grouping.selectAll("rect").data(d=>d.filtered)
+            enter = bars.enter()
+                .append("rect")
+                .attr("width", barWidth)
+                .attr("height", barHeight)
+                .attr("fill", g=>g.color)
+                .attr("y", function(g) { return yScale(g.ypos); })
+                .attr("opacity", 0)
+            bars.merge(enter).transition()
+                .duration(500)
+                .attr("width", barWidth)
+                .attr("height", barHeight)
+                .attr("fill", g=>g.color)
+                .attr("y", function(g) { return yScale(g.ypos); })
+                .attr("opacity", 1)
+    
+            bars.exit()
+                .transition()
+                .duration(500)
+                .attr("opacity", 0)
+                .remove(); 
+            
+        })
         
     })
 
@@ -487,6 +570,90 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
             .remove();
 
         grouping.selectAll("rect").transition().duration(500).attr("y", function(p) { return yScale(p.ypos); })
+
+        let mouseTree = treePanel.selectAll(".mouse")
+        .data(root.children)
+
+    let mouseTreeEnter = mouseTree.enter()
+        .append("rect")
+        .attr("x", function(d) { return d.x0; })
+        .attr("y", function(d) { return d.y0; })
+        .attr("class", "mouse")
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .attr("height", function(d) { return d.y1 - d.y0; })
+        .style("fill", "transparent")
+        .attr("stroke", "none")
+
+    mouseTree.merge(mouseTreeEnter)
+        .transition()
+        .duration(500)
+        .attr("x", function(d) { return d.x0; })
+        .attr("y", function(d) { return d.y0; })
+        .attr("class", "mouse")
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .attr("height", function(d) { return d.y1 - d.y0; })
+        .style("fill", "transparent")
+        .attr("stroke", "none")   
+        
+
+    mouseTree.exit()
+        .transition()
+        .duration(500)
+        .remove();
+
+    d3.selectAll(".mouse")
+        .on('click', function(p) {
+            let filteredColors = colors.filter(d=>d.bucket === p.data.key)
+            let colorList = [];
+            filteredColors.forEach(d=>
+                    colorList.push(d.color)
+                )
+            tree = treePanel.selectAll("rect")
+                .transition().duration(500)
+                .attr("opacity", (d) => {
+                    let color = d.data.key
+                    if(colorList.indexOf(color) > 0) {
+                        return 1;
+                    } else {
+                        return 0.15;
+                    }
+                })
+
+            nested.forEach((d) => {
+                d.filtered = d.values.filter(g=>g.bucket === p.data.key)
+                let stackHeight = d.filtered.length * barHeight;
+                d.offset = stackHeight/2;
+                d.filtered.forEach((g,i)=>{
+                    g.ypos = i;
+                })
+            })
+    
+            grouping.transition().duration(500)
+                .attr("transform", (d) => `translate(${xScale(d.key)},${d.offset})`)
+            
+            bars = grouping.selectAll("rect").data(d=>d.filtered)
+            enter = bars.enter()
+                .append("rect")
+                .attr("width", barWidth)
+                .attr("height", barHeight)
+                .attr("fill", g=>g.color)
+                .attr("y", function(g) { return yScale(g.ypos); })
+                .attr("opacity", 0)
+            bars.merge(enter).transition()
+                .duration(500)
+                .attr("width", barWidth)
+                .attr("height", barHeight)
+                .attr("fill", g=>g.color)
+                .attr("y", function(g) { return yScale(g.ypos); })
+                .attr("opacity", 1)
+    
+            bars.exit()
+                .transition()
+                .duration(500)
+                .attr("opacity", 0)
+                .remove(); 
+            
+        })
     })
 
     hueBtn.on("click", function() {
@@ -571,14 +738,97 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
             .remove();
 
         grouping.selectAll("rect").transition().duration(500).attr("y", function(p) { return yScale(p.ypos); })
+
+        let mouseTree = treePanel.selectAll(".mouse")
+        .data(root.children)
+
+    let mouseTreeEnter = mouseTree.enter()
+        .append("rect")
+        .attr("x", function(d) { return d.x0; })
+        .attr("y", function(d) { return d.y0; })
+        .attr("class", "mouse")
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .attr("height", function(d) { return d.y1 - d.y0; })
+        .style("fill", "transparent")
+        .attr("stroke", "none")
+
+    mouseTree.merge(mouseTreeEnter)
+        .transition()
+        .duration(500)
+        .attr("x", function(d) { return d.x0; })
+        .attr("y", function(d) { return d.y0; })
+        .attr("class", "mouse")
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .attr("height", function(d) { return d.y1 - d.y0; })
+        .style("fill", "transparent")
+        .attr("stroke", "none")   
+
+    mouseTree.exit()
+        .transition()
+        .duration(500)
+        .remove();
+
+    d3.selectAll(".mouse")
+        .on('click', function(p) {
+            let filteredColors = colors.filter(d=>d.bucket === p.data.key)
+            let colorList = [];
+            filteredColors.forEach(d=>
+                    colorList.push(d.color)
+                )
+            tree = treePanel.selectAll("rect")
+                .transition().duration(500)
+                .attr("opacity", (d) => {
+                    let color = d.data.key
+                    if(colorList.indexOf(color) > 0) {
+                        return 1;
+                    } else {
+                        return 0.15;
+                    }
+                })
+
+            nested.forEach((d) => {
+                d.filtered = d.values.filter(g=>g.bucket === p.data.key)
+                let stackHeight = d.filtered.length * barHeight;
+                d.offset = stackHeight/2;
+                d.filtered.forEach((g,i)=>{
+                    g.ypos = i;
+                })
+            })
+    
+            grouping.transition().duration(500)
+                .attr("transform", (d) => `translate(${xScale(d.key)},${d.offset})`)
+            
+            bars = grouping.selectAll("rect").data(d=>d.filtered)
+            enter = bars.enter()
+                .append("rect")
+                .attr("width", barWidth)
+                .attr("height", barHeight)
+                .attr("fill", g=>g.color)
+                .attr("y", function(g) { return yScale(g.ypos); })
+                .attr("opacity", 0)
+            bars.merge(enter).transition()
+                .duration(500)
+                .attr("width", barWidth)
+                .attr("height", barHeight)
+                .attr("fill", g=>g.color)
+                .attr("y", function(g) { return yScale(g.ypos); })
+                .attr("opacity", 1)
+    
+            bars.exit()
+                .transition()
+                .duration(500)
+                .attr("opacity", 0)
+                .remove(); 
+            
+        })
     })
 
     shelvesBtn.on("click", function() {
         let stackHeights = [];
         let heightNest;
         d3.selectAll(".axis").style("opacity", 0);
-        barHeight = 3;
-        yScale.domain([0,80])
+        barHeight = 2;
+        yScale.domain([0,90])
         nested.forEach((d) => {
             
             let weekNest = d3.nest()
@@ -594,7 +844,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
                 })
             })
             
-            weekNest.sort((a,b) => d3.ascending(a.key,b.key))
+            weekNest.sort((a,b) => d3.ascending(b.key,a.key))
             d.weekNest = weekNest
             
         })
@@ -607,12 +857,12 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
             p.maxHeight = d3.max(p.values, m=>m.stackHeight)
         })
         
-        heightNest.sort((a,b) => d3.ascending(a.key,b.key))
+        heightNest.sort((a,b) => d3.ascending(b.key,a.key))
         heightNest[0].offset = 0;
         for(j = 1; j < heightNest.length; j++) {
             
             
-            heightNest[j].offset = heightNest[j-1].offset + heightNest[j-1].maxHeight;
+            heightNest[j].offset = heightNest[j-1].offset + heightNest[j-1].maxHeight + 1;
 
         }
         nested.forEach((d) => {
@@ -678,7 +928,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         xAxis.style("opacity", 1);
         nested.forEach((d) => {
             let stackHeight = d.values.length * barHeight;
-            d.offset = stackHeight/2;
+            d.offset = stackHeight/3;
             d.values.forEach((p,i)=>{
                 p.ypos = i;
             })
