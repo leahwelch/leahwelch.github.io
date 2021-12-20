@@ -1,6 +1,6 @@
 var width = document.querySelector("#chart").clientWidth;
 var height = document.querySelector("#chart").clientHeight;
-var margin = {top: 150, left: 0, right: 55, bottom: 400};
+var margin = {top: 200, left: 0, right: 55, bottom: 400};
 
 var treeWidth = document.querySelector("#tree").clientWidth;
 var treeHeight = document.querySelector("#tree").clientHeight;
@@ -95,7 +95,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
     let histogramValues = d3.histogram()
         .value(function(d) {return d.hue})
         .domain(hueScale.domain())
-        .thresholds(hueScale.ticks(24))
+        .thresholds(hueScale.ticks(20))
 
     let bins = histogramValues(colors)
 
@@ -826,9 +826,11 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
     shelvesBtn.on("click", function() {
         let stackHeights = [];
         let heightNest;
-        d3.selectAll(".axis").style("opacity", 0);
-        barHeight = 2;
+        // d3.selectAll(".axis").style("opacity", 0);
+        barHeight = 0.25;
         yScale.domain([0,90])
+        margin.top = 0;
+        margin.bottom = 0;
         nested.forEach((d) => {
             
             let weekNest = d3.nest()
@@ -882,7 +884,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
             })
 
         grouping.transition().duration(500)
-            .attr("transform", (d) => `translate(${xScale(d.key)},${height/2})`)
+            .attr("transform", (d) => `translate(${xScale(d.key)},${0.38*height})`)
         grouping.selectAll("rect").transition().duration(500).attr("y", function(p) { return yScale(p.ypos); })
     })
 
