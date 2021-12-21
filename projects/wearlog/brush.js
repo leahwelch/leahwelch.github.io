@@ -1,7 +1,6 @@
 var width = document.querySelector("#chart").clientWidth;
 var height = document.querySelector("#chart").clientHeight;
-var margin = {top: 200, left: 0, right: 70, bottom: 400};
-console.log(height)
+var margin = {top: 200, left: 0, right: 55, bottom: 400};
 
 var treeWidth = document.querySelector("#tree").clientWidth;
 var treeHeight = document.querySelector("#tree").clientHeight;
@@ -29,9 +28,7 @@ const barWidth = 20
 const hueBtn = d3.select("#hueBtn")
 const satBtn = d3.select("#satBtn")
 const lumBtn = d3.select("#lumBtn")
-const streamBtn = d3.select("#stream")
 const shelvesBtn = d3.select("#shelves")
-// const nrmlBtn = d3.select("#normalize")
 const resetBtn = d3.select("#reset")
 const dropDown = d3.select("#dropdownArea").append("select")
     .attr("name", "brandList")
@@ -128,8 +125,6 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         })
     })
 
-    console.log(nested)
-
     let colorNest = d3.nest()
         .key(d=>d.bucket)
         .key(d=>d.hue)
@@ -146,8 +141,6 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
     })
 
     colorNest.sort((a,b)=>d3.ascending(a.key,b.key))
-
-    console.log(colorNest)
 
     let hierarchy = d3.hierarchy({values: colorNest}, function(d) { return d.values; })
         .sum(function(d) { return d.value; });
@@ -322,6 +315,87 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
                 .remove(); 
             
         })
+
+    const brush = d3.brushX()
+        .extent([[margin.left, 0], [width - margin.right, height]])
+        .on("brush", brushed)
+    
+    svg.append("g")
+        .attr("class", "brush")
+        .attr("transform", function() {
+            return (`translate(0, 0)`);
+        })
+        .call(brush)
+
+    let weeks;
+
+    function brushed() {
+        let s = d3.event.selection
+
+        weeks = s.map(xScale.invert, xScale);
+
+        let filtered_data = colors.filter(function(d) {
+            return d.week > weeks[0] && d.week < weeks[1];
+        });
+
+        colorNest = d3.nest()
+            .key(d=>d.bucket)
+            .key(d=>d.hue)
+            .key(d=>d.color)
+            .rollup(function(v) { return v.length;})
+            .entries(filtered_data)
+
+        colorNest.forEach((d) => {
+            d.key = +d.key;
+            d.values.forEach((p) => {
+                p.key = +p.key;
+            })
+            d.values.sort((a,b)=>d3.ascending(a.key,b.key))
+        })
+
+        colorNest.sort((a,b)=>d3.ascending(a.key,b.key))
+
+        hierarchy = d3.hierarchy({values: colorNest}, function(d) { return d.values; })
+            .sum(function(d) { return d.value; });
+
+        root = treemap(hierarchy);
+
+        let tree = treePanel.selectAll("rect")
+            .data(root.leaves())
+            
+        let treeEnter = tree.enter()
+            .append("rect")
+            .attr("x", function(d) { return d.x0; })
+            .attr("y", function(d) { return d.y0; })
+            .attr("class", d => d.data.key)
+            .attr("width", function(d) { return d.x1 - d.x0; })
+            .attr("height", function(d) { return d.y1 - d.y0; })
+            .attr("fill", function(d) { 
+                return d.data.key;
+                    })
+            .attr("stroke", "#efe8e6");
+
+        tree.merge(treeEnter)
+            .transition()
+            .duration(500)
+            .attr("x", function(d) { return d.x0; })
+            .attr("y", function(d) { return d.y0; })
+            .attr("class", d => d.data.key)
+            .attr("width", function(d) { return d.x1 - d.x0; })
+            .attr("height", function(d) { return d.y1 - d.y0; })
+            .attr("fill", function(d) { 
+                return d.data.key;
+                    })
+            .attr("stroke", "#efe8e6");
+
+        tree.exit()
+            .transition()
+            .duration(500)
+            .attr("opacity", 0)
+            .remove();
+
+            if (!event.selection) return;
+        }
 
 
     satBtn.on("click", function() {
@@ -831,7 +905,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         let heightNest;
         // d3.selectAll(".axis").style("opacity", 0);
         barHeight = 0.25;
-        yScale.domain([0,85])
+        yScale.domain([0,90])
         margin.top = 0;
         margin.bottom = 0;
         nested.forEach((d) => {
@@ -931,8 +1005,10 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         barHeight = 5;
         yScale.domain([0,60]);
         xAxis.style("opacity", 1);
+
+svg.selectAll(".brush").remove();
+
         nested.forEach((d) => {
-            // d.values.sort((a,b)=>d3.ascending(b.hue,a.hue))
             let stackHeight = d.values.length * barHeight;
             d.offset = stackHeight/3;
             d.values.forEach((p,i)=>{
@@ -968,74 +1044,11 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         tree = treePanel.selectAll("rect")
             .transition().duration(500)
             .attr("opacity", 1)
-    })
 
-    streamBtn.on("click", function() {
-        barHeight = 5;
-        yScale.domain([0,60]);
-        xAxis.style("opacity", 1);
-        nested.forEach((d) => {
-            // d.values.sort((a,b)=>d3.ascending(b.hue,a.hue))
-            let stackHeight = d.values.length * barHeight;
-            d.offset = stackHeight/3;
-            d.values.forEach((p,i)=>{
-                p.ypos = i;
-            })
-        })
-
-        grouping.transition().duration(500)
-            .attr("transform", (d) => `translate(${xScale(d.key)},${d.offset})`)
         
-        bars = grouping.selectAll("rect").data(d=>d.values)
-        enter = bars.enter()
-            .append("rect")
-            .attr("width", barWidth)
-            .attr("height", barHeight)
-            .attr("fill", p=>p.color)
-            .attr("y", function(p) { return yScale(p.ypos); })
-            .attr("opacity", 0)
-        bars.merge(enter).transition()
-            .duration(500)
-            .attr("width", barWidth)
-            .attr("height", barHeight)
-            .attr("fill", p=>p.color)
-            .attr("y", function(p) { return yScale(p.ypos); })
-            .attr("opacity", 1)
-
-        bars.exit()
-            .transition()
-            .duration(500)
-            .attr("opacity", 0)
-            .remove();
-
-        tree = treePanel.selectAll("rect")
-            .transition().duration(500)
-            .attr("opacity", 1)
     })
     
-     
-    // nrmlBtn.on("click", function() {
         
-    //     nested.forEach((d) => {
-            
-    //         // d.offset = 0;
-    //         let variableHeight = height / d.values.length;
-    //         d.values.sort((a,b)=>d3.ascending(a.hue,b.hue))
-    //         d.values.forEach((p,i) => {
-    //             p.variableHeight = variableHeight;
-    //             p.ypos = i * variableHeight;
-    //         })
-    //         // yScale.domain([0,d.values.length / variableHeight])
-            
-    //     })
-    //     console.log(nested)
-        
-    //     grouping.transition().duration(500)
-    //         .attr("transform", (d) => `translate(${xScale(d.key)},0)`)
-    //     grouping.selectAll("rect").transition().duration(500)
-    //         .attr("height", d=>d.variableHeight)
-    //         .attr("y", d=>d.ypos)
-    // })   
 
    
 });
