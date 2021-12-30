@@ -70,11 +70,15 @@ html, body {
 }
 
 .single {
-  width: 400px;
+  width: 300px;
 }
 
 .triple {
-  width: 200px;
+  width: 100px;
+}
+
+.many {
+  width: 50px;
 }
 /* Number text (1/3 etc) */
 .numbertext {
