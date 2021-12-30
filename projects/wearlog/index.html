@@ -17,15 +17,15 @@
                 <div id="controls">
                     <div id="sorting">
                         <p>Sorting</p>
-                        <button id="hueBtn">Hue</button>
-                        <button id="satBtn">Saturation</button>
-                        <button id="lumBtn">Lightness</button>
+                        <button class="tablinks active" id="hueBtn" onclick="showVis(event)">Hue</button>
+                        <button class="tablinks" id="satBtn" onclick="showVis(event)">Saturation</button>
+                        <button class="tablinks" id="lumBtn" onclick="showVis(event)">Lightness</button>
                     </div>
                     <div id="form">
                         <p>Form</p>
-                        <button id="stream">Stream</button>
+                        <button class="tabForms active" id="stream" onclick="formChange(event)">Stream</button>
                         <!-- <button id="normalize">Normalized</button> -->
-                        <button id="shelves">Shelves</button>
+                        <button class="tabForms" id="shelves" onclick="formChange(event)">Shelves</button>
                     </div>
                     <div id="clear">
                         <p>Filters</p>

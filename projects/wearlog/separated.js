@@ -36,6 +36,34 @@ const resetBtn = d3.select("#reset")
 const dropDown = d3.select("#dropdownArea").append("select")
     .attr("name", "brandList")
     .attr("class", "custom-select");
+
+function showVis(evt) {
+    // Declare all variables
+    var i, tablinks;
+    
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    evt.currentTarget.className += " active";
+}
+
+function formChange(evt) {
+    // Declare all variables
+    var i, tabForms;
+    
+    // Get all elements with class="tablinks" and remove the class "active"
+    tabForms = document.getElementsByClassName("tabForms");
+    for (i = 0; i < tabForms.length; i++) {
+        tabForms[i].className = tabForms[i].className.replace(" active", "");
+    }
+    
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    evt.currentTarget.className += " active";
+}
     
 
 d3.csv("./data/wearlog.csv", parse).then(function(data) {
