@@ -858,14 +858,14 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         let stackHeights = [];
         let heightNest;
         // d3.selectAll(".axis").style("opacity", 0);
-        barHeight = 0.25;
-        yScale.domain([0,85])
+        barHeight = 2;
+        yScale.domain([0,60])
         margin.top = 0;
         margin.bottom = 0;
         nested.forEach((d) => {
             
             let weekNest = d3.nest()
-                .key(p=>p.bucket)
+                .key(p=>p.day)
                 .rollup()
                 .entries(d.values)
             weekNest.forEach((p)=> {
@@ -878,9 +878,11 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
             })
             
             weekNest.sort((a,b) => d3.ascending(b.key,a.key))
+            
             d.weekNest = weekNest
             
         })
+        console.log(stackHeights)
         heightNest = d3.nest()
             .key(p=>p.bucket)
             .rollup()
@@ -901,7 +903,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         nested.forEach((d) => {
             d.values.forEach((p) => {
                 heightNest.forEach((m) => {
-                    if(p.bucket === m.key) {
+                    if(p.day === m.key) {
                         p.offset = m.offset;
                     }
                 })   
