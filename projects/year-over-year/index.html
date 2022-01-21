@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Style Chromatics</title>
+        <link rel="stylesheet" type="text/css" href="./style/style.css">
+        <script src="lib/d3.js"></script>
+        <script src="https://d3js.org/d3-array.v2.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/apache-arrow@latest"></script>
+        <script src="https://cdn.jsdelivr.net/npm/arquero@latest"></script>
+        <!-- <script src="https://d3js.org/d3-scale.v3.min.js"></script> -->
+        <script src="https://unpkg.com/geometric@2.0.1/build/geometric.min.js"></script>
+    </head>
+    <body>
+        
+        <div id="container">
+            <!-- <div id="controls">
+                <div id="sorting">
+                    <p>Sorting</p>
+                    <button class="tablinks active" id="hueBtn" onclick="showVis(event)">Hue</button>
+                    <button class="tablinks" id="satBtn" onclick="showVis(event)">Saturation</button>
+                    <button class="tablinks" id="lumBtn" onclick="showVis(event)">Lightness</button>
+                </div>
+                <div id="form">
+                    <p>Form</p>
+                    <button class="tabForms active" id="stream" onclick="formChange(event)">Stream</button>
+                    <button id="normalize">Normalized</button>
+                    <button class="tabForms" id="shelves" onclick="formChange(event)">Shelves</button>
+                </div>
+                <div id="clear">
+                    <p>Filters</p>
+                    <button id="reset">Clear Filter</button>
+                </div>
+                
+                <div id="dropdownArea">
+                    <span>Select Brand:</span>
+                    <div class="select">
+                        <span class="focus"></span>
+                    </div>
+                </div> 
+            </div> -->
+            <div id="year1">
+                <div id="tree1"></div>
+                <div id="chart1">
+            </div>
+            <div id="year2">
+                <div id="tree2"></div>
+                <div id="chart2">
+            </div>
+
+            </div>
+        </div>
+        
+        <script src="./years.js"></script>
+    </body>
+</html>
