@@ -79,7 +79,7 @@
     */
 
    var root = treemap(hierarchy);
-   console.log(root);
+   console.log(hierarchy);
 
 
     /*
