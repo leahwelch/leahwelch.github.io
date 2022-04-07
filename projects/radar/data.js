@@ -2,13 +2,13 @@ var d = [
 
 	{
 		name:"Data Set",
-		color:"#d62728",
+		color:"#0d8e6c",
 		skills:[
-			{axis:"Node",value:1},
-			{axis:"D3",value:1},
-			{axis:"Javascript",value:2},
-			{axis:"HTML",value:3},
-			{axis:"CSS",value:3}
+			{axis:"Sustainability",value:1},
+			{axis:"Aesthetics",value:8},
+			{axis:"Diversity",value:2},
+			{axis:"Convenience",value:6},
+			{axis:"Cost",value:3}
 		  ],
 	}
 ];

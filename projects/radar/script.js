@@ -1,7 +1,7 @@
 //Options for the Radar chart, other than default
 var cfg = {
-    w: 675,
-    h: 675,
+    w: 500,
+    h: 500,
     maxValue: 10,
     levels: 10,
    opacityArea: 0.20,
@@ -59,20 +59,20 @@ function init(){
              .attr("transform", "translate(" + (cfg.w/2-levelFactor) + ", " + (cfg.h/2-levelFactor) + ")");
 
       //Text labels along 12 0'clock axis [1-10]
-      g.selectAll(".levels")
-          .data([1]) //dummy data
-             .enter()
-             .append("svg:text")
-             .attr("x", function(d){
-                 return levelFactor*(1-cfg.factor*Math.sin(0));})
-             .attr("y", function(d){
-                 return levelFactor*(1-cfg.factor*Math.cos(0));})
-             .attr("class", "skill-value")
-             .style("font-family", "sans-serif")
-             .style("font-size", "10px")
-             .attr("transform", "translate(" + (cfg.w/2-levelFactor + cfg.ToRight) + ", " + (cfg.h/2-levelFactor) + ")")
-             .attr("fill", "#737373")
-             .text((j+1)*cfg.maxValue/cfg.levels);
+    //   g.selectAll(".levels")
+    //       .data([1]) //dummy data
+    //          .enter()
+    //          .append("svg:text")
+    //          .attr("x", function(d){
+    //              return levelFactor*(1-cfg.factor*Math.sin(0));})
+    //          .attr("y", function(d){
+    //              return levelFactor*(1-cfg.factor*Math.cos(0));})
+    //          .attr("class", "skill-value")
+    //          .style("font-family", "sans-serif")
+    //          .style("font-size", "10px")
+    //          .attr("transform", "translate(" + (cfg.w/2-levelFactor + cfg.ToRight) + ", " + (cfg.h/2-levelFactor) + ")")
+    //          .attr("fill", "#737373")
+    //          .text((j+1)*cfg.maxValue/cfg.levels);
   }
   
   series = 0;
@@ -98,7 +98,7 @@ function init(){
               maxAxisValues[i].y = cfg.h/2*(1-cfg.factor*Math.cos(i*cfg.radians/total));
               return maxAxisValues[i].y;
             })
-            .attr("class", "line").style("stroke", "grey").style("stroke-width", "1px");
+            .attr("class", "line").style("stroke", "#cccccc").style("stroke-width", "1px");
 
       //Axis labels
       axis.append("text")
