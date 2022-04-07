@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;300;400&display=swap');
+
 *,
 *::before,
 *::after {
@@ -7,100 +9,56 @@
 html, body {
   margin: 0px;
   padding: 0px;
-  background-color: #f0eff0;
+  background-color: #121212;
+  background-color: #fff;
+  /* font-family: 'Roboto Mono', monospace; */
 }
 
-#container {
-  width: 100%;
-  max-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  grid-template-areas: 
-        "radar nodes";
+#chart {
+  height: 600px;
+  width: 600px;
+  grid-area: main;
 }
 
-#radar {
-  height: 92vh;
-  grid-area: radar;
+.slidecontainer {
+  width: 600px; /* Width of the outside container */
+  padding: 0px 50px;
 }
 
-#nodes {
-  height: 100vh;
-  grid-area: nodes;
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  margin-left: 50px;
+  width: 80%; /* Full-width */
+  height: 15px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
 }
 
-body {
-    overflow: hidden;
-    margin: 0;
-    font-size: 14px;
-    font-family: "proxima_nova_reg", sans-serif;
-  }
-
-  body .edit-btn {
-    position: absolute;
-    left: 100px;
-    top: 50px;
-    height: 20px;
-    background-color: #a8a8a8;
-    color: white;
-    border-radius: 40px;
-    padding: 8px 16px 7px 13px;
-    cursor: default;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    opacity: 1;
-    visibility: visible;
-  }
-
-
-  /* line 493, ../sass/radarChart.scss */
-  .yaxis, .xaxis {
-    font: 10px sans-serif;
-    width: 100px;
-  }
-
-  /* line 498, ../sass/radarChart.scss */
-  .yaxis path,
-  .yaxis line,
-  .yaxis tick {
-    fill: none;
-    stroke: black;
-    shape-rendering: crispEdges;
-  }
-
-  /* line 507, ../sass/radarChart.scss */
-  .xaxis path,
-  .xaxis line {
-    fill: none;
-    stroke: black;
-    stroke-dasharray: 10,10;
-    shape-rendering: crispEdges;
-  }
-
-  body .update-value {
-    position: absolute;
-    left: 505px;
-    top: 365px;
-    width: 65px;
-    height: 65px;
-    background-color: #a8a8a8;
-    color: white;
-    border-radius: 50%;
-    cursor: default;
-    opacity: 0;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    z-index: 9;
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
 }
 
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: royalblue; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #04AA6D; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
 
 

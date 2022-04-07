@@ -1,3 +1,14 @@
+var promises = [
+    d3.csv("./data/indexValues.csv", parseValues), 
+    d3.csv("./data/positions.csv", parsePositions) 
+];
+
+console.log(promises);
+
+
+Promise.all(promises).then(function(data) {
+    console.log(data);
+});
 //Options for the Radar chart, other than default
 var cfg = {
     w: 400,
@@ -17,8 +28,15 @@ var cfg = {
    duration:200
 };
 
+
+
 //Will need this for the drag update, not sure how to pass it back and forth
 var maxAxisValues = [];
+
+
+
+
+
 
 function init(){
   cfg.maxValue = Math.max(cfg.maxValue, d3.max(d, function(i){return d3.max(i.skills.map(function(o){return o.value;}));}));
@@ -388,3 +406,22 @@ function editSet(){
 
 
 d3.select(".edit-btn").on("click",editSet);
+
+
+function parseValues(d) {
+    return {
+        id: +d.id,
+        index: d.index,
+        value: +d.value
+    }
+
+}
+
+function parsePositions(d) {
+    return {
+        id: +d.id,
+        xpos: +d.xpos,
+        ypos: +d.ypos
+    }
+
+}
