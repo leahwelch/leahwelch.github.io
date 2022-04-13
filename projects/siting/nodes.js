@@ -30,8 +30,8 @@ Promise.all(promises).then(function(data) {
     }
 
     function updateFilters() {
-      let inputA = sliderA.value/100;
-      let inputB = sliderB.value/100;
+      let inputA = sliderA.value;
+      let inputB = sliderB.value;
       nodeData.forEach((d) => {
         d.dist = math.distance([inputA, inputB],[d.indexA, d.indexB]);
       })
@@ -40,7 +40,7 @@ Promise.all(promises).then(function(data) {
         return d.indexA > inputA && d.indexB > inputB;
       });
       console.log(newDataset)
-      draw(newDataset);
+      draw(nodeData);
     }
 
     const xScale = d3.scaleLinear()
@@ -70,7 +70,7 @@ Promise.all(promises).then(function(data) {
           .attr("cy", d=>yScale(d.ypos))
           .attr("r", 0)
           // .attr("opacity", 0)
-          // .attr("fill", d=>colorScale(d.dist))
+          .attr("fill", d=>colorScale(d.dist))
 
       circles.merge(enter)
         .attr("cx", d=>xScale(d.xpos))
@@ -79,7 +79,7 @@ Promise.all(promises).then(function(data) {
         .duration(500)
         .attr("r", 7)
         // .attr("opacity", d=>opacityScale(d.dist))
-        // .attr("fill", d=>colorScale(d.dist))
+        .attr("fill", d=>colorScale(d.dist))
 
       circles.exit()
         .transition()

@@ -2,7 +2,7 @@ var d = [
 
 	{
 		name:"Data Set",
-		color:"#0d8e6c",
+		color:"#808080",
 		skills:[
 			{axis:"Sustainability",value:1},
 			{axis:"Aesthetics",value:8},
