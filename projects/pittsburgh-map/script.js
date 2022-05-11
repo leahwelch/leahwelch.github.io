@@ -20,10 +20,11 @@ const promises = [
 ];
 
 Promise.all(promises).then(function(geoData) {
-    console.log(geoData[0].features)
+    console.log(geoData[0].objects.geo.geometries)
+    // console.log(geoData)
     var dots = svg
         .selectAll("circle")
-        .data(geoData[0].features)
+        .data(geoData[0].objects.geo.geometries)
         .enter()
         .append("circle")
         .attr("r", 0.5)
@@ -33,10 +34,10 @@ Promise.all(promises).then(function(geoData) {
     function render() {
         dots
             .attr("cx", function (d) {
-            return project(d.geometry.coordinates).x;
+            return project(d.coordinates).x;
             })
             .attr("cy", function (d) {
-            return project(d.geometry.coordinates).y;
+            return project(d.coordinates).y;
             });
         }
     map.on("viewreset", render);
