@@ -13,40 +13,53 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
     const newItems = data.filter(d => d.new === "Y")
     const soldItems = data.filter(d => d.sold === "Y")
 
-    const weeklyNew = d3.nest()
-        .key(d=>d.week)
+    const newNest = d3.nest()
+        .key(d=>d.id)
         .rollup()
         .entries(newItems)
 
-    const weeklySold = d3.nest()
-        .key(d=>d.week)
-        .rollup()
-        .entries(soldItems)
-
-    weeklyNew.forEach(d=>d.key = +d.key)
-    weeklySold.forEach(d=>d.key = +d.key)
     
-    const xScale = d3.scaleLinear()
-        .domain([1,70])
-        .range([margin.left, width-margin.right])
 
-    const yScale = d3.scaleLinear()
-        .domain([0, d3.max(weeklyNew, d => d.values.length)])
-        .range([margin.left, width-margin.right])
+    newNest.forEach(function(d) {
+        d.firstWear = d3.min(d.values, function(p) { return p.date; })
+    })
 
-    const line = d3.line()
-        .x(function(d) { return xScale(d.week); })
-        .y(function(d){ return yScale(d.values.length); })
-        // .curve(d3.curveStep)
+    console.log(newNest)
 
-    var path = svg.selectAll(".path").data([cumData])
+    // const weeklyNew = d3.nest()
+    //     .key(d=>d.week)
+    //     .rollup()
+    //     .entries(newItems)
 
-    path.enter().append("path")
-        .attr("class", "path")
-        .attr("d", line)
-        .attr("stroke", "#cccccc")
-        .attr("fill", "none")
-        .attr("stroke-width", 1)
+    // const weeklySold = d3.nest()
+    //     .key(d=>d.week)
+    //     .rollup()
+    //     .entries(soldItems)
+
+    // weeklyNew.forEach(d=>d.key = +d.key)
+    // weeklySold.forEach(d=>d.key = +d.key)
+    
+    // const xScale = d3.scaleLinear()
+    //     .domain([1,70])
+    //     .range([margin.left, width-margin.right])
+
+    // const yScale = d3.scaleLinear()
+    //     .domain([0, d3.max(weeklyNew, d => d.values.length)])
+    //     .range([margin.left, width-margin.right])
+
+    // const line = d3.line()
+    //     .x(function(d) { return xScale(d.week); })
+    //     .y(function(d){ return yScale(d.values.length); })
+    //     // .curve(d3.curveStep)
+
+    // var path = svg.selectAll(".path").data([cumData])
+
+    // path.enter().append("path")
+    //     .attr("class", "path")
+    //     .attr("d", line)
+    //     .attr("stroke", "#cccccc")
+    //     .attr("fill", "none")
+    //     .attr("stroke-width", 1)
 });
 
 function parse(d) {
