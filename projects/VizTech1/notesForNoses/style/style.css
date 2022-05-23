@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Gill Sans",Helvetica,Arial,sans-serif;
+}
+
+.filter {
+  cursor: pointer;
+  font-size: 11pt;
+  text-decoration: underline;
+}
+
+.instructions {
+  font-size: 10pt;
+}
+
+#maintitle {
+  font-family: Georgia, Times, "Times New Roman", serif;
+  text-align: center;
+  font-size: 84pt;
+  margin-bottom: 50;
+}
+
+#chart {
+  width: 100%;
+  height: 80vh;
+  grid-area: chart;
+}
+
+#intro {
+  text-align: center;
+  font-size: 16pt;
+  grid-area: intro;
+  padding-left: 250px;
+  padding-right: 250px;
+}
+
+#filters {
+  grid-area: filters;
+  height: 75%;
+}
+
+#container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 3fr 1fr 4fr;
+  grid-template-areas: 
+    "intro"
+    "filters"
+    "chart";
+}
+

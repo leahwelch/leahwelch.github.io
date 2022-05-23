@@ -111,7 +111,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 11/16/2020,7,1,Uniqlo,sweater,Ribbed turtleneck,Sweaters & Sweatshirts,315,N,#000001,#000002,#010203,#05060a,#020204,Y
 11/16/2020,7,1,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 11/17/2020,7,2,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
-11/17/2020,7,2,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+11/17/2020,7,2,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 11/17/2020,7,2,Aritzia,tank,sweater bustier,Knit Tops,322,Y,#c3b2a5,#bba99b,#cdbeb1,#af9d8e,#998b80,
 11/17/2020,7,2,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 11/18/2020,7,3,Madewell,jeans,Demi-boot,Jeans,108,N,#2b2c35,#020305,#1a1c27,#3e4047,#5c5e64,Y
@@ -121,7 +121,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 11/19/2020,7,4,Leset,top,Long-sleeved wrap,Knit Tops,307,Y,#172c1e,#102417,#0c1d0f,#010303,#333837,
 11/19/2020,7,4,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 11/20/2020,7,5,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
-11/20/2020,7,5,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+11/20/2020,7,5,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 11/20/2020,7,5,Aritzia,tank,sweater bustier,Knit Tops,322,Y,#c3b2a5,#bba99b,#cdbeb1,#af9d8e,#998b80,
 11/20/2020,7,5,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 11/21/2020,7,6,Madewell,jeans,Demi-boot,Jeans,108,N,#2b2c35,#020305,#1a1c27,#3e4047,#5c5e64,Y
@@ -138,7 +138,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 11/24/2020,8,2,The Reformation,tee,Long-sleeved cathedral print mock-neck,Knit Tops,308,N,#5b6278,#828899,#454d62,#989ca9,#d8d7d8,
 11/24/2020,8,2,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 11/25/2020,8,3,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
-11/25/2020,8,3,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+11/25/2020,8,3,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 11/25/2020,8,3,Aritzia,tank,sweater bustier,Knit Tops,322,Y,#c3b2a5,#bba99b,#cdbeb1,#af9d8e,#998b80,
 11/25/2020,8,3,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 11/26/2020,8,4,Madewell,jeans,Demi-boot,Jeans,108,N,#2b2c35,#020305,#1a1c27,#3e4047,#5c5e64,Y
@@ -156,7 +156,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 11/30/2020,9,1,Leset,top,Long-sleeved wrap,Knit Tops,307,Y,#172c1e,#102417,#0c1d0f,#010303,#333837,
 11/30/2020,9,1,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 12/1/2020,9,2,Madewell,jeans,Wide-leg button-fly,Jeans,102,N,#778ca1,#657a91,#50657c,#8d9eb0,#37485e,Y
-12/1/2020,9,2,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+12/1/2020,9,2,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 12/1/2020,9,2,Mango,bra top,Sweater,Knit Tops,323,N,#281c18,#040202,#190e0b,#372a25,#483e3c,
 12/1/2020,9,2,,shawl,Houndstooth blanket,Jackets,403,N,#020201,#5e160a,#721c0f,#290603,#480f06,
 12/2/2020,9,3,Madewell,jeans,Straight-leg,Jeans,101,N,#526378,#3a4c65,#233044,#7d8a98,#b2b6b8,Y
@@ -166,7 +166,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 12/3/2020,9,4,Madewell,sweater,Textured yarn,Sweaters & Sweatshirts,320,N,#9e7e89,#7d616c,#39353d,#66646a,#d7d5d7,Y
 12/3/2020,9,4,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 12/4/2020,9,5,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
-12/4/2020,9,5,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+12/4/2020,9,5,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 12/4/2020,9,5,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 12/5/2020,9,6,Madewell,jeans,Wide-leg button-fly,Jeans,102,N,#778ca1,#657a91,#50657c,#8d9eb0,#37485e,Y
 12/5/2020,9,6,Monogram,sweatshirt,Club sandwich graphic,Sweaters & Sweatshirts,313,N,#020404,#656155,#2a2a26,#9d9c85,#c0c5c8,
@@ -182,7 +182,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 12/9/2020,10,3,Madewell,jeans,Skinny,Jeans,103,N,#000000,#000202,#1c1e20,#323134,#4e4d4d,Y
 12/9/2020,10,3,Sezane,sweater,Drapey color-block,Sweaters & Sweatshirts,314,N,#83572d,#863e3b,#5c6b77,#384b5d,#e6e1d9,Y
 12/10/2020,10,4,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
-12/10/2020,10,4,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+12/10/2020,10,4,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 12/10/2020,10,4,Aritzia,tank,sweater bustier,Knit Tops,322,Y,#c3b2a5,#bba99b,#cdbeb1,#af9d8e,#998b80,
 12/11/2020,10,5,Madewell,jeans,Straight-leg,Jeans,101,N,#526378,#3a4c65,#233044,#7d8a98,#b2b6b8,Y
 12/11/2020,10,5,Uniqlo,sweater,Ribbed turtleneck,Sweaters & Sweatshirts,315,N,#000001,#000002,#010203,#05060a,#020204,Y
@@ -214,7 +214,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 12/20/2020,11,7,Monogram,sweatshirt,Club sandwich graphic,Sweaters & Sweatshirts,313,N,#020404,#656155,#2a2a26,#9d9c85,#c0c5c8,
 12/20/2020,11,7,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 12/21/2020,12,1,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
-12/21/2020,12,1,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+12/21/2020,12,1,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 12/21/2020,12,1,Aritzia,tank,sweater bustier,Knit Tops,322,Y,#c3b2a5,#bba99b,#cdbeb1,#af9d8e,#998b80,
 12/21/2020,12,1,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 12/22/2020,12,2,Madewell,jeans,Straight-leg,Jeans,101,N,#526378,#3a4c65,#233044,#7d8a98,#b2b6b8,Y
@@ -244,7 +244,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 12/30/2020,13,3,,shawl,Houndstooth blanket,Jackets,403,N,#020201,#5e160a,#721c0f,#290603,#480f06,
 12/30/2020,13,3,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 12/31/2020,13,4,Madewell,jeans,Wide-leg button-fly,Jeans,102,N,#778ca1,#657a91,#50657c,#8d9eb0,#37485e,Y
-12/31/2020,13,4,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+12/31/2020,13,4,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 12/31/2020,13,4,Mango,bra top,Sweater,Knit Tops,323,N,#281c18,#040202,#190e0b,#372a25,#483e3c,
 1/1/2021,13,5,Madewell,jeans,Skinny,Jeans,103,N,#000000,#000202,#1c1e20,#323134,#4e4d4d,Y
 1/1/2021,13,5,Madewell,sweatshirt,Cropped quilted,Sweaters & Sweatshirts,317,N,#292d35,#1f222b,#030306,#32363d,#3d4048,Y
@@ -282,7 +282,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 1/12/2021,15,2,Madewell,sweatshirt,Cropped quilted,Sweaters & Sweatshirts,317,N,#292d35,#1f222b,#030306,#32363d,#3d4048,Y
 1/12/2021,15,2,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 1/13/2021,15,3,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
-1/13/2021,15,3,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+1/13/2021,15,3,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 1/13/2021,15,3,Mango,bra top,Sweater,Knit Tops,323,N,#281c18,#040202,#190e0b,#372a25,#483e3c,
 1/13/2021,15,3,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 1/14/2021,15,4,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
@@ -311,7 +311,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 1/21/2021,16,4,Madewell,sweatshirt,Cropped quilted,Sweaters & Sweatshirts,317,N,#292d35,#1f222b,#030306,#32363d,#3d4048,Y
 1/21/2021,16,4,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 1/22/2021,16,5,Madewell,jeans,Wide-leg button-fly,Jeans,102,N,#778ca1,#657a91,#50657c,#8d9eb0,#37485e,Y
-1/22/2021,16,5,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+1/22/2021,16,5,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 1/22/2021,16,5,Mango,bra top,Sweater,Knit Tops,323,N,#281c18,#040202,#190e0b,#372a25,#483e3c,
 1/22/2021,16,5,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 1/23/2021,16,6,Paloma Wool,jumpsuit,Front-zip corduroy,Rompers & Jumpsuits,201,N,#1c4349,#15343a,#285a60,#32676c,#6d6b67,
@@ -330,7 +330,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 1/26/2021,17,2,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 1/27/2021,17,3,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
 1/27/2021,17,3,H & M,tank,Ribbed halter,Knit Tops,312,N,#e8e9e9,#dfe0df,#d1d1d1,#c1c0c1,#a7a7a5,
-1/27/2021,17,3,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+1/27/2021,17,3,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 1/27/2021,17,3,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 1/28/2021,17,4,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
 1/28/2021,17,4,The Reformation,tee,Long-sleeved cathedral print mock-neck,Knit Tops,308,N,#5b6278,#828899,#454d62,#989ca9,#d8d7d8,
@@ -352,7 +352,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 2/2/2021,18,2,Madewell,sweatshirt,Cropped quilted,Sweaters & Sweatshirts,317,N,#292d35,#1f222b,#030306,#32363d,#3d4048,Y
 2/3/2021,18,3,Madewell,jeans,Wide-leg button-fly,Jeans,102,N,#778ca1,#657a91,#50657c,#8d9eb0,#37485e,Y
 2/3/2021,18,3,H & M,tank,Ribbed halter,Knit Tops,312,N,#e8e9e9,#dfe0df,#d1d1d1,#c1c0c1,#a7a7a5,
-2/3/2021,18,3,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+2/3/2021,18,3,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 2/3/2021,18,3,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 2/4/2021,18,4,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
 2/4/2021,18,4,Everlane,shirt,Cotton button-down,Woven Tops,325,Y,#eef1f2,#e4e7e8,#f9fafa,#efefef,#eaeaea,
@@ -374,7 +374,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 2/9/2021,19,2,Madewell,bodysuit,Velvet wrap,Bodysuits,316,N,#8f7971,#9a857d,#836c65,#ae9b95,#d3c8c4,Y
 2/9/2021,19,2,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 2/10/2021,19,3,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
-2/10/2021,19,3,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+2/10/2021,19,3,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 2/10/2021,19,3,Aritzia,tank,sweater bustier,Knit Tops,322,Y,#c3b2a5,#bba99b,#cdbeb1,#af9d8e,#998b80,
 2/10/2021,19,3,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 2/11/2021,19,4,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
@@ -397,7 +397,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 2/16/2021,20,2,Loft,tee,Cardigan,Knit Tops,311,N,#56565a,#6e7075,#87888c,#323439,#a4a5a8,
 2/17/2021,20,3,Madewell,jeans,Wide-leg button-fly,Jeans,102,N,#778ca1,#657a91,#50657c,#8d9eb0,#37485e,Y
 2/17/2021,20,3,H & M,tank,Ribbed halter,Knit Tops,312,N,#e8e9e9,#dfe0df,#d1d1d1,#c1c0c1,#a7a7a5,
-2/17/2021,20,3,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+2/17/2021,20,3,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 2/17/2021,20,3,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 2/18/2021,20,4,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
 2/18/2021,20,4,Madewell,sweater,Textured yarn,Sweaters & Sweatshirts,320,N,#9e7e89,#7d616c,#39353d,#66646a,#d7d5d7,Y
@@ -415,7 +415,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 2/22/2021,21,1,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 2/23/2021,21,2,Madewell,jeans,Wide-leg button-fly,Jeans,102,N,#778ca1,#657a91,#50657c,#8d9eb0,#37485e,Y
 2/23/2021,21,2,H & M,tank,Ribbed halter,Knit Tops,312,N,#e8e9e9,#dfe0df,#d1d1d1,#c1c0c1,#a7a7a5,
-2/23/2021,21,2,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+2/23/2021,21,2,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 2/23/2021,21,2,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 2/24/2021,21,3,Madewell,jeans,Demi-boot,Jeans,108,N,#2b2c35,#020305,#1a1c27,#3e4047,#5c5e64,Y
 2/24/2021,21,3,The Reformation,tee,Long-sleeved cathedral print mock-neck,Knit Tops,308,N,#5b6278,#828899,#454d62,#989ca9,#d8d7d8,
@@ -429,7 +429,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 2/27/2021,21,6,Monogram,sweatshirt,Club sandwich graphic,Sweaters & Sweatshirts,313,N,#020404,#656155,#2a2a26,#9d9c85,#c0c5c8,
 2/27/2021,21,6,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 2/28/2021,21,7,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
-2/28/2021,21,7,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+2/28/2021,21,7,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 2/28/2021,21,7,Aritzia,tank,sweater bustier,Knit Tops,322,Y,#c3b2a5,#bba99b,#cdbeb1,#af9d8e,#998b80,
 2/28/2021,21,7,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 3/1/2021,22,1,Madewell,jeans,Straight-leg,Jeans,101,N,#526378,#3a4c65,#233044,#7d8a98,#b2b6b8,Y
@@ -468,14 +468,14 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 3/11/2021,23,4,Une Heures,top,Colorblock mock-neck,Knit Tops,330,Y,#000002,#c1b8b0,#cbc3bb,#b6aca5,#040506,
 3/11/2021,23,4,Madewell,jacket,Houndstooth sweater,Jackets,401,N,#040202,#6f574c,#584237,#866d61,#36241d,
 3/12/2021,23,5,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
-3/12/2021,23,5,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+3/12/2021,23,5,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 3/12/2021,23,5,Aritzia,tank,sweater bustier,Knit Tops,322,Y,#c3b2a5,#bba99b,#cdbeb1,#af9d8e,#998b80,
 3/12/2021,23,5,Madewell,jacket,Houndstooth sweater,Jackets,401,N,#040202,#6f574c,#584237,#866d61,#36241d,
 3/13/2021,23,6,Paloma Wool,jumpsuit,Front-zip corduroy,Rompers & Jumpsuits,201,N,#1c4349,#15343a,#285a60,#32676c,#6d6b67,
 3/13/2021,23,6,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 3/14/2021,23,7,Madewell,jeans,Straight-leg,Jeans,101,N,#526378,#3a4c65,#233044,#7d8a98,#b2b6b8,Y
 3/14/2021,23,7,The Reformation,tee,Long-sleeved seamed turtleneck,Knit Tops,327,Y,#f0f1f0,#ebecec,#e6e6e6,#ccc1ba,#f5f7f6,
-3/14/2021,23,7,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,
+3/14/2021,23,7,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,Y
 3/15/2021,24,1,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
 3/15/2021,24,1,Madewell,bodysuit,Velvet wrap,Bodysuits,316,N,#8f7971,#9a857d,#836c65,#ae9b95,#d3c8c4,Y
 3/15/2021,24,1,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
@@ -516,7 +516,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 3/28/2021,25,7,Kapital,jumpsuit,Embroidered denim,Rompers & Jumpsuits,203,N,#5c7387,#3e5569,#81919f,#8a9e78,#883b30,
 3/28/2021,25,7,Closed,jacket,Leather motorcycle,Jackets,404,N,#050201,#3f2b21,#29170e,#503c30,#635043,Y
 3/29/2021,26,1,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
-3/29/2021,26,1,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+3/29/2021,26,1,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 3/29/2021,26,1,Aritzia,tank,sweater bustier,Knit Tops,322,Y,#c3b2a5,#bba99b,#cdbeb1,#af9d8e,#998b80,
 3/29/2021,26,1,J. Crew,jacket,Quilted,Jackets,406,N,#2b2810,#54453b,#21210d,#3b2318,#b9a881,
 3/30/2021,26,2,Madewell,jeans,Wide-leg button-fly,Jeans,102,N,#778ca1,#657a91,#50657c,#8d9eb0,#37485e,Y
@@ -550,7 +550,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 4/9/2021,27,5,Yan Yan,top,Tweedle cropped,Knit Tops,332,Y,#5e4b47,#74615b,#595865,#757780,#dde35b,
 4/9/2021,27,5,J. Crew,jacket,Denim,Jackets,402,N,#717f8f,#86929f,#5f6e7e,#3f4e5e,#a2adb5,
 4/10/2021,27,6,Madewell,jeans,Wide-leg button-fly,Jeans,102,N,#778ca1,#657a91,#50657c,#8d9eb0,#37485e,Y
-4/10/2021,27,6,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+4/10/2021,27,6,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 4/10/2021,27,6,Mango,bra top,Sweater,Knit Tops,323,N,#281c18,#040202,#190e0b,#372a25,#483e3c,
 4/11/2021,27,7,Holiday The Label,pants,Chess print,Pants,109,Y,#cd8f56,#f1efe9,#b17543,#ddd8d1,#beb5ac,Y
 4/11/2021,27,7,Monogram,sweatshirt,Club sandwich graphic,Sweaters & Sweatshirts,313,N,#020404,#656155,#2a2a26,#9d9c85,#c0c5c8,
@@ -564,7 +564,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 4/14/2021,28,3,Madewell,jeans,Wide-leg button-fly,Jeans,102,N,#778ca1,#657a91,#50657c,#8d9eb0,#37485e,Y
 4/14/2021,28,3,Topshop,tee,Matelasse mock-neck,Knit Tops,306,N,#0a1330,#161f3b,#030821,#010108,#232d49,
 4/15/2021,28,4,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
-4/15/2021,28,4,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+4/15/2021,28,4,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 4/15/2021,28,4,Aritzia,tank,sweater bustier,Knit Tops,322,Y,#c3b2a5,#bba99b,#cdbeb1,#af9d8e,#998b80,
 4/16/2021,28,5,Agolde,jeans,Wide-leg,Jeans,104,N,#e1ded8,#eeece5,#d2ceca,#c2bdb9,#aeaba7,
 4/16/2021,28,5,Leset,top,Long-sleeved wrap,Knit Tops,307,Y,#172c1e,#102417,#0c1d0f,#010303,#333837,
@@ -584,13 +584,13 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 4/21/2021,29,3,H & M,tank,Ribbed halter,Knit Tops,312,N,#e8e9e9,#dfe0df,#d1d1d1,#c1c0c1,#a7a7a5,
 4/22/2021,29,4,Paloma Wool,jumpsuit,Front-zip corduroy,Rompers & Jumpsuits,201,N,#1c4349,#15343a,#285a60,#32676c,#6d6b67,
 4/23/2021,29,5,Agolde,jeans,Wide-leg,Jeans,104,N,#e1ded8,#eeece5,#d2ceca,#c2bdb9,#aeaba7,
-4/23/2021,29,5,,top,Embroidered boat neck,Knit Tops,333,N,#22243b,#292b47,#22212f,#e2dacf,#d2c9c1,
+4/23/2021,29,5,,top,Embroidered boat neck,Knit Tops,333,N,#22243b,#292b47,#22212f,#e2dacf,#d2c9c1,Y
 4/23/2021,29,5,J. Crew,jacket,Denim,Jackets,402,N,#717f8f,#86929f,#5f6e7e,#3f4e5e,#a2adb5,
 4/24/2021,29,6,Madewell,jeans,Wide-leg button-fly,Jeans,102,N,#778ca1,#657a91,#50657c,#8d9eb0,#37485e,Y
 4/24/2021,29,6,The Reformation,sweatshirt,Tie-dyed half-zip,Sweaters & Sweatshirts,310,N,#d9dbe3,#eae9f0,#c8d0db,#e2e3ea,#bec0c8,
 4/24/2021,29,6,Monogram,tee,Les Fraises graphic,Knit Tops,318,N,#f6f7f6,#e5e6e8,#9e5c5b,#68484a,#7a8374,
 4/25/2021,29,7,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
-4/25/2021,29,7,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+4/25/2021,29,7,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 4/25/2021,29,7,,tee,Running of the bulls,Knit Tops,335,N,#eceaea,#d56254,#dcd5d8,#5a5a5e,#bf5549,
 4/25/2021,29,7,J. Crew,jacket,Quilted,Jackets,406,N,#2b2810,#54453b,#21210d,#3b2318,#b9a881,
 4/26/2021,30,1,Madewell,jeans,Straight-leg,Jeans,101,N,#526378,#3a4c65,#233044,#7d8a98,#b2b6b8,Y
@@ -610,14 +610,14 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 4/30/2021,30,5,Closed,jacket,Leather motorcycle,Jackets,404,N,#050201,#3f2b21,#29170e,#503c30,#635043,Y
 5/1/2021,30,6,Holiday The Label,pants,Chess print,Pants,109,Y,#cd8f56,#f1efe9,#b17543,#ddd8d1,#beb5ac,Y
 5/1/2021,30,6,Agnes B,tee,Signature graphic,Knit Tops,301,N,#000103,#000100,#030305,#dddee3,#14171b,
-5/1/2021,30,6,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,
+5/1/2021,30,6,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,Y
 5/2/2021,30,7,Paloma Wool,jumpsuit,Front-zip corduroy,Rompers & Jumpsuits,201,N,#1c4349,#15343a,#285a60,#32676c,#6d6b67,
 5/3/2021,31,1,Madewell,jeans,Straight-leg,Jeans,101,N,#526378,#3a4c65,#233044,#7d8a98,#b2b6b8,Y
 5/3/2021,31,1,Aritzia,vest,Ribbed sweater,Knit Tops,326,N,#393b44,#171925,#56575d,#727377,#908f92,Y
 5/3/2021,31,1,,shawl,Houndstooth blanket,Jackets,403,N,#020201,#5e160a,#721c0f,#290603,#480f06,
 5/3/2021,31,1,Closed,jacket,Leather motorcycle,Jackets,404,N,#050201,#3f2b21,#29170e,#503c30,#635043,Y
 5/4/2021,31,2,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
-5/4/2021,31,2,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+5/4/2021,31,2,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 5/4/2021,31,2,Aritzia,tank,sweater bustier,Knit Tops,322,Y,#c3b2a5,#bba99b,#cdbeb1,#af9d8e,#998b80,
 5/4/2021,31,2,J. Crew,jacket,Quilted,Jackets,406,N,#2b2810,#54453b,#21210d,#3b2318,#b9a881,
 5/5/2021,31,3,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
@@ -652,11 +652,11 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 5/14/2021,32,5,Holiday The Label,pants,Chess print,Pants,109,Y,#cd8f56,#f1efe9,#b17543,#ddd8d1,#beb5ac,Y
 5/14/2021,32,5,Topshop,tee,Matelasse mock-neck,Knit Tops,306,N,#0a1330,#161f3b,#030821,#010108,#232d49,
 5/15/2021,32,6,Alex Mill,romper,Belted twill,Rompers & Jumpsuits,205,Y,#77592a,#6b4e21,#5e4117,#4b2f0d,#826334,
-5/16/2021,32,7,Betsy Johnson,dress,Overall,Dresses,206,N,#06060b,#000002,#8e8783,#ebe7e2,#040406,
+5/16/2021,32,7,Betsy Johnson,dress,Overall,Dresses,206,N,#06060b,#000002,#8e8783,#ebe7e2,#040406,Y
 5/16/2021,32,7,The Reformation,tee,Tie dye mesh,Knit Tops,336,N,#89b3c8,#7698b0,#aec6cd,#617489,#342d44,
 5/16/2021,32,7,J. Crew,jacket,Denim,Jackets,402,N,#717f8f,#86929f,#5f6e7e,#3f4e5e,#a2adb5,
 5/17/2021,33,1,Madewell,jeans,Straight-leg,Jeans,101,N,#526378,#3a4c65,#233044,#7d8a98,#b2b6b8,Y
-5/17/2021,33,1,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+5/17/2021,33,1,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 5/17/2021,33,1,Aritzia,vest,Ribbed sweater,Knit Tops,326,N,#393b44,#171925,#56575d,#727377,#908f92,Y
 5/18/2021,33,2,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
 5/18/2021,33,2,Leset,top,Long-sleeved wrap,Knit Tops,307,Y,#172c1e,#102417,#0c1d0f,#010303,#333837,
@@ -674,7 +674,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 5/23/2021,33,7,Lett,shorts,Ribbed bike,Shorts & Skirts,111,N,#000002,#020204,#000000,#010204,#030405,
 5/23/2021,33,7,Everlane,shirt,Cotton button-down,Woven Tops,325,Y,#eef1f2,#e4e7e8,#f9fafa,#efefef,#eaeaea,
 5/24/2021,34,1,Madewell,jeans,Wide-leg button-fly,Jeans,102,N,#778ca1,#657a91,#50657c,#8d9eb0,#37485e,Y
-5/24/2021,34,1,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+5/24/2021,34,1,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 5/24/2021,34,1,Aritzia,tank,sweater bustier,Knit Tops,322,Y,#c3b2a5,#bba99b,#cdbeb1,#af9d8e,#998b80,
 5/25/2021,34,2,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
 5/25/2021,34,2,Loft,tee,Cardigan,Knit Tops,311,N,#56565a,#6e7075,#87888c,#323439,#a4a5a8,
@@ -766,7 +766,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 6/30/2021,39,3,,shirt,Striped western-style,Woven Tops,319,N,#eff1f0,#8e9aae,#b4ba9a,#e3e5e5,#e3c494,
 7/1/2021,39,4,Madewell,jeans,Wide-leg button-fly,Jeans,102,N,#778ca1,#657a91,#50657c,#8d9eb0,#37485e,Y
 7/1/2021,39,4,Lisa Says Gah,dress,Cow-print midi,Dresses,202,Y,#965d34,#cbbfb3,#7e4720,#aea198,#51220a,Y
-7/1/2021,39,4,,top,Embroidered boat neck,Knit Tops,333,N,#22243b,#292b47,#22212f,#e2dacf,#d2c9c1,
+7/1/2021,39,4,,top,Embroidered boat neck,Knit Tops,333,N,#22243b,#292b47,#22212f,#e2dacf,#d2c9c1,Y
 7/2/2021,39,5,Madewell,jeans,Straight-leg,Jeans,101,N,#526378,#3a4c65,#233044,#7d8a98,#b2b6b8,Y
 7/2/2021,39,5,,shirt,Striped,Woven Tops,305,N,#c33a2b,#a79380,#a03228,#631e12,#94766a,
 7/3/2021,39,6,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
@@ -888,12 +888,12 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 8/17/2021,46,2,Madewell,jeans,Straight-leg,Jeans,101,N,#526378,#3a4c65,#233044,#7d8a98,#b2b6b8,Y
 8/17/2021,46,2,,tee,Terrycloth,Knit Tops,343,Y,#ab2e19,#9a2915,#ba3621,#832212,#61180d,
 8/18/2021,46,3,Scout,shorts,Tailored suiting,Shorts & Skirts,113,Y,#3d3a3e,#5a5657,#1c191c,#757271,#908d8b,
-8/18/2021,46,3,,top,Embroidered boat neck,Knit Tops,333,N,#22243b,#292b47,#22212f,#e2dacf,#d2c9c1,
+8/18/2021,46,3,,top,Embroidered boat neck,Knit Tops,333,N,#22243b,#292b47,#22212f,#e2dacf,#d2c9c1,Y
 8/19/2021,46,4,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
 8/19/2021,46,4,Topshop,tee,Matelasse mock-neck,Knit Tops,306,N,#0a1330,#161f3b,#030821,#010108,#232d49,
 8/19/2021,46,4,J. Crew,jacket,Denim,Jackets,402,N,#717f8f,#86929f,#5f6e7e,#3f4e5e,#a2adb5,
 8/20/2021,46,5,Madewell,jeans,Wide-leg button-fly,Jeans,102,N,#778ca1,#657a91,#50657c,#8d9eb0,#37485e,Y
-8/20/2021,46,5,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+8/20/2021,46,5,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 8/20/2021,46,5,Aritzia,tank,sweater bustier,Knit Tops,322,Y,#c3b2a5,#bba99b,#cdbeb1,#af9d8e,#998b80,
 8/21/2021,46,6,Staud,shorts,Flag print,Shorts & Skirts,115,Y,#588a4a,#c6c8ca,#b8583d,#bd7795,#355090,
 8/21/2021,46,6,The Reformation,tank,Ribbed open-back,Knit Tops,344,Y,#010203,#020304,#000000,#050505,#262227,
@@ -921,7 +921,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 8/29/2021,47,7,,tee,O.K.,Knit Tops,341,Y,#706a58,#d9dbdf,#423e32,#b2afb1,#a93526,
 8/29/2021,47,7,J. Crew,jacket,Denim,Jackets,402,N,#717f8f,#86929f,#5f6e7e,#3f4e5e,#a2adb5,
 8/30/2021,48,1,Agolde,jeans,Wide-leg,Jeans,104,N,#e1ded8,#eeece5,#d2ceca,#c2bdb9,#aeaba7,
-8/30/2021,48,1,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+8/30/2021,48,1,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 8/30/2021,48,1,Mango,bra top,Sweater,Knit Tops,323,N,#281c18,#040202,#190e0b,#372a25,#483e3c,
 8/31/2021,48,2,Lett,shorts,Ribbed bike,Shorts & Skirts,111,N,#000002,#020204,#000000,#010204,#030405,
 8/31/2021,48,2,Everlane,shirt,Cotton button-down,Woven Tops,325,Y,#eef1f2,#e4e7e8,#f9fafa,#efefef,#eaeaea,
@@ -952,7 +952,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 9/10/2021,49,5,The Reformation,tank,Ribbed open-back,Knit Tops,344,Y,#010203,#020304,#000000,#050505,#262227,
 9/10/2021,49,5,J. Crew,jacket,Denim,Jackets,402,N,#717f8f,#86929f,#5f6e7e,#3f4e5e,#a2adb5,
 9/11/2021,49,6,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
-9/11/2021,49,6,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+9/11/2021,49,6,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 9/11/2021,49,6,Mango,bra top,Sweater,Knit Tops,323,N,#281c18,#040202,#190e0b,#372a25,#483e3c,
 9/12/2021,49,7,Lett,shorts,Ribbed bike,Shorts & Skirts,111,N,#000002,#020204,#000000,#010204,#030405,
 9/12/2021,49,7,Pixie Market,dress,Open-back midi,Dresses,207,Y,#000102,#030305,#040609,#06080b,#0a0d11,
@@ -986,7 +986,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 9/23/2021,51,4,Loft,tee,Cardigan,Knit Tops,311,N,#56565a,#6e7075,#87888c,#323439,#a4a5a8,
 9/23/2021,51,4,H & M,tank,Ribbed halter,Knit Tops,312,N,#e8e9e9,#dfe0df,#d1d1d1,#c1c0c1,#a7a7a5,
 9/24/2021,51,5,Madewell,jeans,Wide-leg button-fly,Jeans,102,N,#778ca1,#657a91,#50657c,#8d9eb0,#37485e,Y
-9/24/2021,51,5,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+9/24/2021,51,5,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 9/24/2021,51,5,The Reformation,tank,Ribbed open-back,Knit Tops,344,Y,#010203,#020304,#000000,#050505,#262227,
 9/24/2021,51,5,J. Crew,coat,Trench,Coats,409,N,#b1a28c,#a19280,#6a5e4f,#877969,#372d23,
 9/25/2021,51,6,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
@@ -1013,7 +1013,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 10/1/2021,52,5,Leset,top,Long-sleeved wrap,Knit Tops,307,Y,#172c1e,#102417,#0c1d0f,#010303,#333837,
 10/1/2021,52,5,,shawl,Houndstooth blanket,Jackets,403,N,#020201,#5e160a,#721c0f,#290603,#480f06,
 10/2/2021,52,6,The Reformation,jeans,Cowboy,Jeans,116,Y,#233222,#293b27,#1e2a1c,#314330,#737c72,
-10/2/2021,52,6,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+10/2/2021,52,6,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 10/2/2021,52,6,Aritzia,tank,sweater bustier,Knit Tops,322,Y,#c3b2a5,#bba99b,#cdbeb1,#af9d8e,#998b80,
 10/2/2021,52,6,,jacket,Yak-wool long,Jackets,407,N,#0c030a,#411c3f,#671e28,#491011,#353057,
 10/3/2021,52,7,Madewell,jeans,Wide-leg button-fly,Jeans,102,N,#778ca1,#657a91,#50657c,#8d9eb0,#37485e,Y
@@ -1039,7 +1039,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 10/8/2021,53,5,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 10/9/2021,53,6,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
 10/9/2021,53,6,The Reformation,tee,Long-sleeved seamed turtleneck,Knit Tops,327,Y,#f0f1f0,#ebecec,#e6e6e6,#ccc1ba,#f5f7f6,
-10/9/2021,53,6,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,
+10/9/2021,53,6,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,Y
 10/10/2021,53,7,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
 10/10/2021,53,7,Madewell,bodysuit,Velvet wrap,Bodysuits,316,N,#8f7971,#9a857d,#836c65,#ae9b95,#d3c8c4,Y
 10/10/2021,53,7,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
@@ -1057,20 +1057,20 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 10/14/2021,54,4,J. Crew,jacket,Denim,Jackets,402,N,#717f8f,#86929f,#5f6e7e,#3f4e5e,#a2adb5,
 10/15/2021,54,5,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
 10/15/2021,54,5,The Reformation,tee,Long-sleeved seamed turtleneck,Knit Tops,327,Y,#f0f1f0,#ebecec,#e6e6e6,#ccc1ba,#f5f7f6,
-10/15/2021,54,5,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,
+10/15/2021,54,5,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,Y
 10/16/2021,54,6,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
 10/16/2021,54,6,Agolde,shorts,Denim cutoff,Shorts & Skirts,110,Y,#010103,#050710,#13131e,#272932,#4e4c53,
 10/16/2021,54,6,AllSaints,dress,Full-length slip,Dresses,208,Y,#250c0d,#281014,#230a0d,#180405,#030000,
 10/16/2021,54,6,Yan Yan,top,Tweedle cropped,Knit Tops,332,Y,#5e4b47,#74615b,#595865,#757780,#dde35b,
 10/16/2021,54,6,AllSaints,sweater,Cropped ribbed,Sweaters & Sweatshirts,346,Y,#230503,#290606,#170201,#050000,#2f0808,
 10/17/2021,54,7,Holiday The Label,pants,Chess print,Pants,109,Y,#cd8f56,#f1efe9,#b17543,#ddd8d1,#beb5ac,Y
-10/17/2021,54,7,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+10/17/2021,54,7,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 10/17/2021,54,7,,tee,Running of the bulls,Knit Tops,335,N,#eceaea,#d56254,#dcd5d8,#5a5a5e,#bf5549,
 10/17/2021,54,7,J. Crew,jacket,Denim,Jackets,402,N,#717f8f,#86929f,#5f6e7e,#3f4e5e,#a2adb5,
 10/18/2021,55,1,Paloma Wool,jumpsuit,Front-zip corduroy,Rompers & Jumpsuits,201,N,#1c4349,#15343a,#285a60,#32676c,#6d6b67,
 10/18/2021,55,1,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 10/19/2021,55,2,Madewell,jeans,Wide-leg button-fly,Jeans,102,N,#778ca1,#657a91,#50657c,#8d9eb0,#37485e,Y
-10/19/2021,55,2,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+10/19/2021,55,2,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 10/19/2021,55,2,Aritzia,tank,sweater bustier,Knit Tops,322,Y,#c3b2a5,#bba99b,#cdbeb1,#af9d8e,#998b80,
 10/19/2021,55,2,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 10/20/2021,55,3,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
@@ -1109,7 +1109,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 10/30/2021,56,6,J. Crew,jacket,Quilted,Jackets,406,N,#2b2810,#54453b,#21210d,#3b2318,#b9a881,
 10/31/2021,56,7,The Reformation,jeans,Cowboy,Jeans,116,Y,#233222,#293b27,#1e2a1c,#314330,#737c72,
 10/31/2021,56,7,The Reformation,tee,Long-sleeved seamed turtleneck,Knit Tops,327,Y,#f0f1f0,#ebecec,#e6e6e6,#ccc1ba,#f5f7f6,
-10/31/2021,56,7,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,
+10/31/2021,56,7,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,Y
 11/1/2021,57,1,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
 11/1/2021,57,1,,shirt,Striped,Woven Tops,305,N,#c33a2b,#a79380,#a03228,#631e12,#94766a,
 11/1/2021,57,1,Madewell,jacket,Houndstooth sweater,Jackets,401,N,#040202,#6f574c,#584237,#866d61,#36241d,
@@ -1125,7 +1125,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 11/4/2021,57,4,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 11/5/2021,57,5,Madewell,jeans,Wide-leg button-fly,Jeans,102,N,#778ca1,#657a91,#50657c,#8d9eb0,#37485e,Y
 11/5/2021,57,5,H & M,tank,Ribbed halter,Knit Tops,312,N,#e8e9e9,#dfe0df,#d1d1d1,#c1c0c1,#a7a7a5,
-11/5/2021,57,5,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+11/5/2021,57,5,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 11/5/2021,57,5,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 11/6/2021,57,6,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
 11/6/2021,57,6,Agnes B,tee,Signature graphic,Knit Tops,301,N,#000103,#000100,#030305,#dddee3,#14171b,
@@ -1144,7 +1144,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 11/10/2021,58,3,,shawl,Houndstooth blanket,Jackets,403,N,#020201,#5e160a,#721c0f,#290603,#480f06,
 11/10/2021,58,3,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 11/11/2021,58,4,Agolde,jeans,Wide-leg,Jeans,104,N,#e1ded8,#eeece5,#d2ceca,#c2bdb9,#aeaba7,
-11/11/2021,58,4,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+11/11/2021,58,4,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 11/11/2021,58,4,Aritzia,tank,sweater bustier,Knit Tops,322,Y,#c3b2a5,#bba99b,#cdbeb1,#af9d8e,#998b80,
 11/11/2021,58,4,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 11/12/2021,58,5,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
@@ -1180,15 +1180,15 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 11/21/2021,59,7,Leset,top,Long-sleeved wrap,Knit Tops,307,Y,#172c1e,#102417,#0c1d0f,#010303,#333837,
 11/21/2021,59,7,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 11/22/2021,60,1,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
-11/22/2021,60,1,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+11/22/2021,60,1,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 11/22/2021,60,1,Aritzia,tank,sweater bustier,Knit Tops,322,Y,#c3b2a5,#bba99b,#cdbeb1,#af9d8e,#998b80,
 11/22/2021,60,1,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 11/23/2021,60,2,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
 11/23/2021,60,2,The Reformation,tee,Long-sleeved seamed turtleneck,Knit Tops,327,Y,#f0f1f0,#ebecec,#e6e6e6,#ccc1ba,#f5f7f6,
-11/23/2021,60,2,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,
+11/23/2021,60,2,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,Y
 11/23/2021,60,2,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 11/24/2021,60,3,The Reformation,jeans,Cowboy,Jeans,116,Y,#233222,#293b27,#1e2a1c,#314330,#737c72,
-11/24/2021,60,3,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+11/24/2021,60,3,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 11/24/2021,60,3,,tee,EDA graphic,Knit Tops,342,N,#000002,#020406,#1d418d,#b73924,#e5e8ea,
 11/24/2021,60,3,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 11/25/2021,60,4,Kapital,jumpsuit,Embroidered denim,Rompers & Jumpsuits,203,N,#5c7387,#3e5569,#81919f,#8a9e78,#883b30,
@@ -1231,14 +1231,14 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 12/6/2021,62,1,Madewell,jacket,Houndstooth sweater,Jackets,401,N,#040202,#6f574c,#584237,#866d61,#36241d,
 12/7/2021,62,2,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
 12/7/2021,62,2,H & M,tank,Ribbed halter,Knit Tops,312,N,#e8e9e9,#dfe0df,#d1d1d1,#c1c0c1,#a7a7a5,
-12/7/2021,62,2,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+12/7/2021,62,2,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 12/7/2021,62,2,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 12/8/2021,62,3,Holiday The Label,pants,Chess print,Pants,109,Y,#cd8f56,#f1efe9,#b17543,#ddd8d1,#beb5ac,Y
 12/8/2021,62,3,Agnes B,tee,Signature graphic,Knit Tops,301,N,#000103,#000100,#030305,#dddee3,#14171b,
 12/8/2021,62,3,Ganni,sweater,Smiley cardigan,Sweaters & Sweatshirts,348,Y,#949b68,#e7d792,#6a3226,#392822,#ebe8e3,
 12/9/2021,62,4,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
 12/9/2021,62,4,The Reformation,tee,Long-sleeved seamed turtleneck,Knit Tops,327,Y,#f0f1f0,#ebecec,#e6e6e6,#ccc1ba,#f5f7f6,
-12/9/2021,62,4,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,
+12/9/2021,62,4,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,Y
 12/9/2021,62,4,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 12/10/2021,62,5,The Reformation,jeans,Cowboy,Jeans,116,Y,#233222,#293b27,#1e2a1c,#314330,#737c72,
 12/10/2021,62,5,Henrik Vibskov,sweater,Strawberry print,Sweaters & Sweatshirts,347,Y,#31662c,#214d1c,#030606,#7e8781,#ae3b42,
@@ -1274,10 +1274,10 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 12/18/2021,63,6,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 12/19/2021,63,7,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
 12/19/2021,63,7,Agnes B,tee,Signature graphic,Knit Tops,301,N,#000103,#000100,#030305,#dddee3,#14171b,
-12/19/2021,63,7,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,
+12/19/2021,63,7,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,Y
 12/19/2021,63,7,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 12/20/2021,64,1,The Reformation,jeans,Cowboy,Jeans,116,Y,#233222,#293b27,#1e2a1c,#314330,#737c72,
-12/20/2021,64,1,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+12/20/2021,64,1,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 12/20/2021,64,1,Aritzia,vest,Ribbed sweater,Knit Tops,326,N,#393b44,#171925,#56575d,#727377,#908f92,Y
 12/20/2021,64,1,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 12/21/2021,64,2,Paloma Wool,jumpsuit,Front-zip corduroy,Rompers & Jumpsuits,201,N,#1c4349,#15343a,#285a60,#32676c,#6d6b67,
@@ -1290,7 +1290,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 12/23/2021,64,4,Monogram,sweatshirt,Club sandwich graphic,Sweaters & Sweatshirts,313,N,#020404,#656155,#2a2a26,#9d9c85,#c0c5c8,
 12/23/2021,64,4,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 12/24/2021,64,5,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
-12/24/2021,64,5,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+12/24/2021,64,5,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 12/24/2021,64,5,,tee,O.K.,Knit Tops,341,Y,#706a58,#d9dbdf,#423e32,#b2afb1,#a93526,
 12/24/2021,64,5,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 12/25/2021,64,6,The Reformation,jeans,Cowboy,Jeans,116,Y,#233222,#293b27,#1e2a1c,#314330,#737c72,
@@ -1301,14 +1301,14 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 12/26/2021,64,7,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 12/27/2021,65,1,The Reformation,jeans,Cowboy,Jeans,116,Y,#233222,#293b27,#1e2a1c,#314330,#737c72,
 12/27/2021,65,1,Agnes B,tee,Signature graphic,Knit Tops,301,N,#000103,#000100,#030305,#dddee3,#14171b,
-12/27/2021,65,1,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,
+12/27/2021,65,1,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,Y
 12/27/2021,65,1,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 12/28/2021,65,2,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
 12/28/2021,65,2,The Reformation,tee,Long-sleeved cathedral print mock-neck,Knit Tops,308,N,#5b6278,#828899,#454d62,#989ca9,#d8d7d8,
 12/28/2021,65,2,,shawl,Houndstooth blanket,Jackets,403,N,#020201,#5e160a,#721c0f,#290603,#480f06,
 12/28/2021,65,2,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 12/29/2021,65,3,Madewell,jeans,Wide-leg button-fly,Jeans,102,N,#778ca1,#657a91,#50657c,#8d9eb0,#37485e,Y
-12/29/2021,65,3,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+12/29/2021,65,3,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 12/29/2021,65,3,,tee,Running of the bulls,Knit Tops,335,N,#eceaea,#d56254,#dcd5d8,#5a5a5e,#bf5549,
 12/29/2021,65,3,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 12/30/2021,65,4,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
@@ -1326,7 +1326,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 1/2/2022,65,7,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 1/3/2022,66,1,Madewell,jeans,Wide-leg button-fly,Jeans,102,N,#778ca1,#657a91,#50657c,#8d9eb0,#37485e,Y
 1/3/2022,66,1,H & M,tank,Ribbed halter,Knit Tops,312,N,#e8e9e9,#dfe0df,#d1d1d1,#c1c0c1,#a7a7a5,
-1/3/2022,66,1,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+1/3/2022,66,1,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 1/4/2022,66,2,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
 1/4/2022,66,2,The Reformation,tee,Long-sleeved seamed turtleneck,Knit Tops,327,Y,#f0f1f0,#ebecec,#e6e6e6,#ccc1ba,#f5f7f6,
 1/4/2022,66,2,Ganni,sweater,Smiley cardigan,Sweaters & Sweatshirts,348,Y,#949b68,#e7d792,#6a3226,#392822,#ebe8e3,
@@ -1335,7 +1335,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 1/5/2022,66,3,,shawl,Houndstooth blanket,Jackets,403,N,#020201,#5e160a,#721c0f,#290603,#480f06,
 1/5/2022,66,3,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 1/6/2022,66,4,Madewell,jeans,Wide-leg button-fly,Jeans,102,N,#778ca1,#657a91,#50657c,#8d9eb0,#37485e,Y
-1/6/2022,66,4,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+1/6/2022,66,4,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 1/6/2022,66,4,Aritzia,tank,sweater bustier,Knit Tops,322,Y,#c3b2a5,#bba99b,#cdbeb1,#af9d8e,#998b80,
 1/6/2022,66,4,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 1/7/2022,66,5,The Reformation,jeans,Cowboy,Jeans,116,Y,#233222,#293b27,#1e2a1c,#314330,#737c72,
@@ -1343,7 +1343,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 1/7/2022,66,5,,tank,Ribbed ringer,Knit Tops,329,N,#a1bab3,#8ca49e,#708883,#2a473e,#e0e4e5,
 1/8/2022,66,6,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
 1/8/2022,66,6,Agnes B,tee,Signature graphic,Knit Tops,301,N,#000103,#000100,#030305,#dddee3,#14171b,
-1/8/2022,66,6,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,
+1/8/2022,66,6,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,Y
 1/8/2022,66,6,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 1/9/2022,66,7,Madewell,jeans,Wide-leg button-fly,Jeans,102,N,#778ca1,#657a91,#50657c,#8d9eb0,#37485e,Y
 1/9/2022,66,7,Monogram,sweatshirt,Club sandwich graphic,Sweaters & Sweatshirts,313,N,#020404,#656155,#2a2a26,#9d9c85,#c0c5c8,
@@ -1353,7 +1353,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 1/10/2022,67,1,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 1/11/2022,67,2,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
 1/11/2022,67,2,Agnes B,tee,Signature graphic,Knit Tops,301,N,#000103,#000100,#030305,#dddee3,#14171b,
-1/11/2022,67,2,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,
+1/11/2022,67,2,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,Y
 1/12/2022,67,3,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
 1/12/2022,67,3,Henrik Vibskov,sweater,Strawberry print,Sweaters & Sweatshirts,347,Y,#31662c,#214d1c,#030606,#7e8781,#ae3b42,
 1/12/2022,67,3,,shawl,Houndstooth blanket,Jackets,403,N,#020201,#5e160a,#721c0f,#290603,#480f06,
@@ -1395,13 +1395,13 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 1/21/2022,68,5,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 1/22/2022,68,6,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
 1/22/2022,68,6,Agnes B,tee,Signature graphic,Knit Tops,301,N,#000103,#000100,#030305,#dddee3,#14171b,
-1/22/2022,68,6,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,
+1/22/2022,68,6,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,Y
 1/23/2022,68,7,Kapital,jumpsuit,Embroidered denim,Rompers & Jumpsuits,203,N,#5c7387,#3e5569,#81919f,#8a9e78,#883b30,
 1/23/2022,68,7,Sweaty Betty,tee,Jacquard turtleneck,Knit Tops,350,Y,#000001,#000002,#010203,#05060a,#020204,
 1/23/2022,68,7,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 1/24/2022,69,1,The Reformation,jeans,Cowboy,Jeans,116,Y,#233222,#293b27,#1e2a1c,#314330,#737c72,
 1/24/2022,69,1,Agnes B,tee,Signature graphic,Knit Tops,301,N,#000103,#000100,#030305,#dddee3,#14171b,
-1/24/2022,69,1,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,
+1/24/2022,69,1,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,Y
 1/24/2022,69,1,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 1/25/2022,69,2,Madewell,jeans,Wide-leg button-fly,Jeans,102,N,#778ca1,#657a91,#50657c,#8d9eb0,#37485e,Y
 1/25/2022,69,2,Leset,top,Long-sleeved wrap,Knit Tops,307,Y,#172c1e,#102417,#0c1d0f,#010303,#333837,
@@ -1411,7 +1411,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 1/26/2022,69,3,Henrik Vibskov,sweater,Strawberry print,Sweaters & Sweatshirts,347,Y,#31662c,#214d1c,#030606,#7e8781,#ae3b42,
 1/26/2022,69,3,Madewell,jacket,Houndstooth sweater,Jackets,401,N,#040202,#6f574c,#584237,#866d61,#36241d,
 1/27/2022,69,4,The Reformation,jeans,Cowboy,Jeans,116,Y,#233222,#293b27,#1e2a1c,#314330,#737c72,
-1/27/2022,69,4,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+1/27/2022,69,4,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 1/27/2022,69,4,Sweaty Betty,tee,Jacquard turtleneck,Knit Tops,350,Y,#000001,#000002,#010203,#05060a,#020204,
 1/27/2022,69,4,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 1/28/2022,69,5,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
@@ -1433,7 +1433,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 2/1/2022,70,2,Madewell,jacket,Houndstooth sweater,Jackets,401,N,#040202,#6f574c,#584237,#866d61,#36241d,
 2/1/2022,70,2,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 2/2/2022,70,3,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
-2/2/2022,70,3,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+2/2/2022,70,3,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 2/2/2022,70,3,Alex Mill,vest,3-button sweater,Sweaters & Sweatshirts,349,Y,#343947,#2c313e,#3d404f,#1d222c,#ebeae7,
 2/2/2022,70,3,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 2/3/2022,70,4,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
@@ -1444,7 +1444,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 2/4/2022,70,5,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 2/5/2022,70,6,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
 2/5/2022,70,6,The Reformation,tee,Long-sleeved seamed turtleneck,Knit Tops,327,Y,#f0f1f0,#ebecec,#e6e6e6,#ccc1ba,#f5f7f6,
-2/5/2022,70,6,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,
+2/5/2022,70,6,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,Y
 2/6/2022,70,7,Levi,jeans,Ribcage,Jeans,117,Y,#202b41,#2e3954,#3b4868,#121827,#4c5976,
 2/6/2022,70,7,The Reformation,sweatshirt,Tie-dyed half-zip,Sweaters & Sweatshirts,310,N,#d9dbe3,#eae9f0,#c8d0db,#e2e3ea,#bec0c8,
 2/6/2022,70,7,Sweaty Betty,tee,Jacquard turtleneck,Knit Tops,350,Y,#000001,#000002,#010203,#05060a,#020204,
@@ -1453,7 +1453,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 2/7/2022,71,1,Henrik Vibskov,sweater,Strawberry print,Sweaters & Sweatshirts,347,Y,#31662c,#214d1c,#030606,#7e8781,#ae3b42,
 2/7/2022,71,1,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 2/8/2022,71,2,Madewell,jeans,Wide-leg button-fly,Jeans,102,N,#778ca1,#657a91,#50657c,#8d9eb0,#37485e,Y
-2/8/2022,71,2,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+2/8/2022,71,2,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 2/8/2022,71,2,Sweaty Betty,tee,Jacquard turtleneck,Knit Tops,350,Y,#000001,#000002,#010203,#05060a,#020204,
 2/8/2022,71,2,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 2/9/2022,71,3,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
@@ -1467,7 +1467,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 2/11/2022,71,5,Alex Mill,vest,3-button sweater,Sweaters & Sweatshirts,349,Y,#343947,#2c313e,#3d404f,#1d222c,#ebeae7,
 2/11/2022,71,5,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 2/12/2022,71,6,Levi,jeans,Ribcage,Jeans,117,Y,#202b41,#2e3954,#3b4868,#121827,#4c5976,
-2/12/2022,71,6,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+2/12/2022,71,6,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 2/12/2022,71,6,,tee,O.K.,Knit Tops,341,Y,#706a58,#d9dbdf,#423e32,#b2afb1,#a93526,
 2/12/2022,71,6,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 2/13/2022,71,7,The Reformation,jeans,Cowboy,Jeans,116,Y,#233222,#293b27,#1e2a1c,#314330,#737c72,
@@ -1483,7 +1483,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 2/15/2022,72,2,Sweaty Betty,tee,Jacquard turtleneck,Knit Tops,350,Y,#000001,#000002,#010203,#05060a,#020204,
 2/16/2022,72,3,Levi,jeans,Ribcage,Jeans,117,Y,#202b41,#2e3954,#3b4868,#121827,#4c5976,
 2/16/2022,72,3,Paloma Wool,jumpsuit,Front-zip corduroy,Rompers & Jumpsuits,201,N,#1c4349,#15343a,#285a60,#32676c,#6d6b67,
-2/16/2022,72,3,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+2/16/2022,72,3,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 2/16/2022,72,3,The Reformation,tee,Long-sleeved seamed turtleneck,Knit Tops,327,Y,#f0f1f0,#ebecec,#e6e6e6,#ccc1ba,#f5f7f6,
 2/16/2022,72,3,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 2/17/2022,72,4,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
@@ -1499,7 +1499,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 2/19/2022,72,6,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 2/20/2022,72,7,Levi,jeans,Ribcage,Jeans,117,Y,#202b41,#2e3954,#3b4868,#121827,#4c5976,
 2/20/2022,72,7,Agnes B,tee,Signature graphic,Knit Tops,301,N,#000103,#000100,#030305,#dddee3,#14171b,
-2/20/2022,72,7,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,
+2/20/2022,72,7,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,Y
 2/20/2022,72,7,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 2/21/2022,73,1,The Reformation,jeans,Cowboy,Jeans,116,Y,#233222,#293b27,#1e2a1c,#314330,#737c72,
 2/21/2022,73,1,Monogram,sweatshirt,Club sandwich graphic,Sweaters & Sweatshirts,313,N,#020404,#656155,#2a2a26,#9d9c85,#c0c5c8,
@@ -1515,12 +1515,12 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 2/24/2022,73,4,Ganni,sweater,Smiley cardigan,Sweaters & Sweatshirts,348,Y,#949b68,#e7d792,#6a3226,#392822,#ebe8e3,
 2/24/2022,73,4,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 2/25/2022,73,5,Levi,jeans,Ribcage,Jeans,117,Y,#202b41,#2e3954,#3b4868,#121827,#4c5976,
-2/25/2022,73,5,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+2/25/2022,73,5,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 2/25/2022,73,5,Sweaty Betty,tee,Jacquard turtleneck,Knit Tops,350,Y,#000001,#000002,#010203,#05060a,#020204,
 2/25/2022,73,5,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 2/26/2022,73,6,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
 2/26/2022,73,6,The Reformation,tee,Long-sleeved seamed turtleneck,Knit Tops,327,Y,#f0f1f0,#ebecec,#e6e6e6,#ccc1ba,#f5f7f6,
-2/26/2022,73,6,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,
+2/26/2022,73,6,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,Y
 2/26/2022,73,6,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 2/27/2022,73,7,Kapital,jumpsuit,Embroidered denim,Rompers & Jumpsuits,203,N,#5c7387,#3e5569,#81919f,#8a9e78,#883b30,
 2/27/2022,73,7,Sweaty Betty,tee,Jacquard turtleneck,Knit Tops,350,Y,#000001,#000002,#010203,#05060a,#020204,
@@ -1566,7 +1566,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 3/10/2022,75,4,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 3/11/2022,75,5,Levi,jeans,Ribcage,Jeans,117,Y,#202b41,#2e3954,#3b4868,#121827,#4c5976,
 3/11/2022,75,5,H & M,tank,Ribbed halter,Knit Tops,312,N,#e8e9e9,#dfe0df,#d1d1d1,#c1c0c1,#a7a7a5,
-3/11/2022,75,5,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+3/11/2022,75,5,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 3/11/2022,75,5,Une Heures,top,Colorblock mock-neck,Knit Tops,330,Y,#000002,#c1b8b0,#cbc3bb,#b6aca5,#040506,
 3/11/2022,75,5,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 3/12/2022,75,6,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
@@ -1575,14 +1575,14 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 3/12/2022,75,6,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 3/13/2022,75,7,The Reformation,jeans,Cowboy,Jeans,116,Y,#233222,#293b27,#1e2a1c,#314330,#737c72,
 3/13/2022,75,7,Agnes B,tee,Signature graphic,Knit Tops,301,N,#000103,#000100,#030305,#dddee3,#14171b,
-3/13/2022,75,7,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,
+3/13/2022,75,7,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,Y
 3/13/2022,75,7,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 3/14/2022,76,1,Madewell,jeans,Wide-leg button-fly,Jeans,102,N,#778ca1,#657a91,#50657c,#8d9eb0,#37485e,Y
 3/14/2022,76,1,Leset,top,Long-sleeved wrap,Knit Tops,307,Y,#172c1e,#102417,#0c1d0f,#010303,#333837,
 3/14/2022,76,1,Ganni,sweater,Smiley cardigan,Sweaters & Sweatshirts,348,Y,#949b68,#e7d792,#6a3226,#392822,#ebe8e3,
 3/14/2022,76,1,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 3/15/2022,76,2,Levi,jeans,Ribcage,Jeans,117,Y,#202b41,#2e3954,#3b4868,#121827,#4c5976,
-3/15/2022,76,2,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+3/15/2022,76,2,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 3/15/2022,76,2,Aritzia,tank,sweater bustier,Knit Tops,322,Y,#c3b2a5,#bba99b,#cdbeb1,#af9d8e,#998b80,
 3/15/2022,76,2,,shawl,Houndstooth blanket,Jackets,403,N,#020201,#5e160a,#721c0f,#290603,#480f06,
 3/15/2022,76,2,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
@@ -1619,7 +1619,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 3/23/2022,77,3,Henrik Vibskov,sweater,Strawberry print,Sweaters & Sweatshirts,347,Y,#31662c,#214d1c,#030606,#7e8781,#ae3b42,
 3/23/2022,77,3,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 3/24/2022,77,4,The Reformation,jeans,Cowboy,Jeans,116,Y,#233222,#293b27,#1e2a1c,#314330,#737c72,
-3/24/2022,77,4,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+3/24/2022,77,4,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 3/24/2022,77,4,Sweaty Betty,tee,Jacquard turtleneck,Knit Tops,350,Y,#000001,#000002,#010203,#05060a,#020204,
 3/24/2022,77,4,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 3/25/2022,77,5,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
@@ -1643,7 +1643,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 3/29/2022,78,2,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 3/30/2022,78,3,The Reformation,jeans,Cowboy,Jeans,116,Y,#233222,#293b27,#1e2a1c,#314330,#737c72,
 3/30/2022,78,3,The Reformation,tee,Long-sleeved seamed turtleneck,Knit Tops,327,Y,#f0f1f0,#ebecec,#e6e6e6,#ccc1ba,#f5f7f6,
-3/30/2022,78,3,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,
+3/30/2022,78,3,Stine Goya,sweater,Rainbow zig-zag,Sweaters & Sweatshirts,331,Y,#0a0808,#b86b2f,#213967,#dbc089,#e0b7aa,Y
 3/30/2022,78,3,The North Face,coat,Long quilted,Coats,408,N,#14171a,#010202,#090a0e,#2a2c30,#383a3d,
 3/31/2022,78,4,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
 3/31/2022,78,4,Who What Wear Collection,sweater,Striped mock neck,Knit Tops,352,Y,#534f64,#767384,#e9e7ec,#9e9ca7,#c6c4cc,
@@ -1659,7 +1659,7 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 4/2/2022,78,6,The Reformation,tee,Long-sleeved seamed turtleneck,Knit Tops,327,Y,#f0f1f0,#ebecec,#e6e6e6,#ccc1ba,#f5f7f6,
 4/2/2022,78,6,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 4/3/2022,78,7,Levi,jeans,Ribcage,Jeans,117,Y,#202b41,#2e3954,#3b4868,#121827,#4c5976,
-4/3/2022,78,7,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,
+4/3/2022,78,7,Aritzia,sweater,Boxy cardigan,Sweaters & Sweatshirts,321,Y,#c4b4a6,#b6a598,#d0c2b4,#9d8d80,#675b52,Y
 4/3/2022,78,7,Sweaty Betty,tee,Jacquard turtleneck,Knit Tops,350,Y,#000001,#000002,#010203,#05060a,#020204,
 4/3/2022,78,7,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
 4/4/2022,79,1,Agolde,jeans,Wide-leg,Jeans,104,N,#e1ded8,#eeece5,#d2ceca,#c2bdb9,#aeaba7,
@@ -1763,3 +1763,60 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 5/3/2022,83,2,J. Crew,jacket,Quilted,Jackets,406,N,#2b2810,#54453b,#21210d,#3b2318,#b9a881,
 5/4/2022,83,3,Levi,jeans,Ribcage,Jeans,117,Y,#202b41,#2e3954,#3b4868,#121827,#4c5976,
 5/4/2022,83,3,AllSaints,sweater,Cropped ribbed,Sweaters & Sweatshirts,346,Y,#230503,#290606,#170201,#050000,#2f0808,
+5/4/2022,83,3,Madewell,jacket,Houndstooth sweater,Jackets,401,N,#040202,#6f574c,#584237,#866d61,#36241d,
+5/4/2022,83,3,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
+5/5/2022,83,4,Agolde,jeans,Wide-leg,Jeans,104,N,#e1ded8,#eeece5,#d2ceca,#c2bdb9,#aeaba7,
+5/5/2022,83,4,Everlane,shirt,Oxford,Woven Tops,354,Y,#efeff1,#f3f3f5,#eaeaed,#e4e5e8,#d7d7d9,
+5/5/2022,83,4,J. Crew,jacket,Denim,Jackets,402,N,#717f8f,#86929f,#5f6e7e,#3f4e5e,#a2adb5,
+5/6/2022,83,5,The Reformation,jeans,Cowboy,Jeans,116,Y,#233222,#293b27,#1e2a1c,#314330,#737c72,
+5/6/2022,83,5,Agnes B,tee,Signature graphic,Knit Tops,301,N,#000103,#000100,#030305,#dddee3,#14171b,
+5/6/2022,83,5,Madewell,jacket,Houndstooth sweater,Jackets,401,N,#040202,#6f574c,#584237,#866d61,#36241d,
+5/6/2022,83,5,J. Crew,jacket,Denim,Jackets,402,N,#717f8f,#86929f,#5f6e7e,#3f4e5e,#a2adb5,
+5/7/2022,83,6,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
+5/7/2022,83,6,Leset,top,Long-sleeved wrap,Knit Tops,307,Y,#172c1e,#102417,#0c1d0f,#010303,#333837,
+5/7/2022,83,6,J. Crew,jacket,Quilted,Jackets,406,N,#2b2810,#54453b,#21210d,#3b2318,#b9a881,
+5/8/2022,83,7,Urban Outfitters,jeans,High loose,Jeans,118,Y,#b5967c,#a78369,#c5a88f,#d6bea8,#8c6447,
+5/8/2022,83,7,Sweaty Betty,tee,Jacquard turtleneck,Knit Tops,350,Y,#000001,#000002,#010203,#05060a,#020204,
+5/8/2022,83,7,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
+5/9/2022,84,1,Paloma Wool,jumpsuit,Front-zip corduroy,Rompers & Jumpsuits,201,N,#1c4349,#15343a,#285a60,#32676c,#6d6b67,
+5/9/2022,84,1,Aritzia,coat,Wool plaid,Coats,405,N,#311514,#221e27,#524b50,#947e76,#614845,
+5/10/2022,84,2,Levi,jeans,Ribcage,Jeans,117,Y,#202b41,#2e3954,#3b4868,#121827,#4c5976,
+5/10/2022,84,2,AllSaints,sweater,Cropped ribbed,Sweaters & Sweatshirts,346,Y,#230503,#290606,#170201,#050000,#2f0808,
+5/10/2022,84,2,,coat,Suede,Coats,412,Y,#d9c55f,#ead869,#c1b053,#ab9a46,#8d8239,
+5/11/2022,84,3,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
+5/11/2022,84,3,Who What Wear Collection,sweater,Striped mock neck,Knit Tops,352,Y,#534f64,#767384,#e9e7ec,#9e9ca7,#c6c4cc,
+5/11/2022,84,3,J. Crew,jacket,Denim,Jackets,402,N,#717f8f,#86929f,#5f6e7e,#3f4e5e,#a2adb5,
+5/12/2022,84,4,Urban Outfitters,jeans,High loose,Jeans,118,Y,#b5967c,#a78369,#c5a88f,#d6bea8,#8c6447,
+5/12/2022,84,4,The Reformation,tee,Long-sleeved cathedral print mock-neck,Knit Tops,308,N,#5b6278,#828899,#454d62,#989ca9,#d8d7d8,
+5/12/2022,84,4,J. Crew,jacket,Quilted,Jackets,406,N,#2b2810,#54453b,#21210d,#3b2318,#b9a881,
+5/13/2022,84,5,The Reformation,jeans,Cowboy,Jeans,116,Y,#233222,#293b27,#1e2a1c,#314330,#737c72,
+5/13/2022,84,5,Everlane,shirt,Oxford,Woven Tops,354,Y,#efeff1,#f3f3f5,#eaeaed,#e4e5e8,#d7d7d9,
+5/13/2022,84,5,c,bra top,Ribbed undercup,Knit Tops,355,Y,#e1e0dc,#d4d1cd,#c8c5c1,#bab7b3,#aba8a4,
+5/14/2022,84,6,Alex Mill,romper,Belted twill,Rompers & Jumpsuits,205,Y,#77592a,#6b4e21,#5e4117,#4b2f0d,#826334,
+5/15/2022,84,7,Levi,jeans,Ribcage,Jeans,117,Y,#202b41,#2e3954,#3b4868,#121827,#4c5976,
+5/15/2022,84,7,,shirt,Striped,Woven Tops,305,N,#c33a2b,#a79380,#a03228,#631e12,#94766a,
+5/15/2022,84,7,Ganni,sweater,Smiley cardigan,Sweaters & Sweatshirts,348,Y,#949b68,#e7d792,#6a3226,#392822,#ebe8e3,
+5/15/2022,84,7,J. Crew,jacket,Quilted,Jackets,406,N,#2b2810,#54453b,#21210d,#3b2318,#b9a881,
+5/16/2022,85,1,Urban Outfitters,jeans,High loose,Jeans,118,Y,#b5967c,#a78369,#c5a88f,#d6bea8,#8c6447,
+5/16/2022,85,1,Sweaty Betty,tee,Jacquard turtleneck,Knit Tops,350,Y,#000001,#000002,#010203,#05060a,#020204,
+5/16/2022,85,1,J. Crew,jacket,Denim,Jackets,402,N,#717f8f,#86929f,#5f6e7e,#3f4e5e,#a2adb5,
+5/17/2022,85,2,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
+5/17/2022,85,2,The Reformation,tee,Ruched,Knit Tops,353,Y,#e1dcd4,#d7d1ca,#e9e6df,#baafa3,#cac1b8,
+5/17/2022,85,2,Baum und Pferdgarten,jacket,Woven shirt,Jackets,411,Y,#07102b,#03081f,#020206,#141f35,#252f44,
+5/18/2022,85,3,The Reformation,jeans,Cowboy,Jeans,116,Y,#233222,#293b27,#1e2a1c,#314330,#737c72,
+5/18/2022,85,3,Everlane,shirt,Oxford,Woven Tops,354,Y,#efeff1,#f3f3f5,#eaeaed,#e4e5e8,#d7d7d9,
+5/18/2022,85,3,J. Crew,jacket,Denim,Jackets,402,N,#717f8f,#86929f,#5f6e7e,#3f4e5e,#a2adb5,
+5/19/2022,85,4,Levi,jeans,Ribcage,Jeans,117,Y,#202b41,#2e3954,#3b4868,#121827,#4c5976,
+5/19/2022,85,4,AllSaints,sweater,Cropped ribbed,Sweaters & Sweatshirts,346,Y,#230503,#290606,#170201,#050000,#2f0808,
+5/19/2022,85,4,J. Crew,jacket,Quilted,Jackets,406,N,#2b2810,#54453b,#21210d,#3b2318,#b9a881,
+5/20/2022,85,5,Urban Outfitters,jeans,High loose,Jeans,118,Y,#b5967c,#a78369,#c5a88f,#d6bea8,#8c6447,
+5/20/2022,85,5,Leset,top,Long-sleeved wrap,Knit Tops,307,Y,#172c1e,#102417,#0c1d0f,#010303,#333837,
+5/20/2022,85,5,J. Crew,jacket,Quilted,Jackets,406,N,#2b2810,#54453b,#21210d,#3b2318,#b9a881,
+5/21/2022,85,6,Madewell,jeans,High-waisted wide-leg,Jeans,105,Y,#000003,#05060d,#0c0e16,#161a22,#30323b,
+5/21/2022,85,6,Marimekko,jumpsuit,Striped overalls,Rompers & Jumpsuits,204,N,#6c7a95,#dee0e2,#c1c5cd,#99a1b1,#3d424c,
+5/21/2022,85,6,Topshop,tee,Matelasse mock-neck,Knit Tops,306,N,#0a1330,#161f3b,#030821,#010108,#232d49,
+5/21/2022,85,6,Ganni,sweater,Smiley cardigan,Sweaters & Sweatshirts,348,Y,#949b68,#e7d792,#6a3226,#392822,#ebe8e3,
+5/21/2022,85,6,Aritzia,bra top,Ribbed undercup,Knit Tops,355,Y,#e1e0dc,#d4d1cd,#c8c5c1,#bab7b3,#aba8a4,
+5/22/2022,85,7,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,
+5/22/2022,85,7,The Reformation,tank,Ribbed open-back,Knit Tops,344,Y,#010203,#020304,#000000,#050505,#262227,
+5/22/2022,85,7,,jacket,Colorblock bomber,Jackets,413,Y,#161715,#faea55,#2036a4,#59bf5f,#d06a2b,

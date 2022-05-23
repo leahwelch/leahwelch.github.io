@@ -10,13 +10,14 @@ var svg = d3.select("#chart")
 
 d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
-    const newItems = data.filter(d => d.new === "Y")
+    const newItems = data.filter(d => d.new === "Y" && d.sold != "Y")
     const soldItems = data.filter(d => d.sold === "Y")
 
     const newNest = d3.nest()
         .key(d=>d.id)
         .rollup()
         .entries(newItems)
+        .sort((a,b) => d3.descending(b.key,a.key))
 
     
 
@@ -26,40 +27,48 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
     console.log(newNest)
 
-    // const weeklyNew = d3.nest()
-    //     .key(d=>d.week)
-    //     .rollup()
-    //     .entries(newItems)
+    var scaleDate = d3.scaleTime()
+        .domain([new Date("2020-10-05"), new Date("2022-05-18")])
+        .range([margin.left, width-margin.right])
 
-    // const weeklySold = d3.nest()
-    //     .key(d=>d.week)
-    //     .rollup()
-    //     .entries(soldItems)
+    var yScale = d3.scalePoint()
+        .domain(newNest.map(function(d) { return d.key; }))
+        .range([margin.top, height-margin.bottom])
+        .padding(1)
 
-    // weeklyNew.forEach(d=>d.key = +d.key)
-    // weeklySold.forEach(d=>d.key = +d.key)
-    
-    // const xScale = d3.scaleLinear()
-    //     .domain([1,70])
-    //     .range([margin.left, width-margin.right])
+    var xAxis = svg.append("g")
+        .attr("class","xaxis")
+        .attr("transform", `translate(0, ${height-margin.bottom})`)
+        .call(d3.axisBottom().scale(scaleDate)
+            .ticks(16));
 
-    // const yScale = d3.scaleLinear()
-    //     .domain([0, d3.max(weeklyNew, d => d.values.length)])
-    //     .range([margin.left, width-margin.right])
+    svg.append("g")
+        .attr("transform", `translate(${margin.left}, 0)`)
+        .call(d3.axisLeft(yScale))
 
-    // const line = d3.line()
-    //     .x(function(d) { return xScale(d.week); })
-    //     .y(function(d){ return yScale(d.values.length); })
-    //     // .curve(d3.curveStep)
+    const grouping = svg.selectAll(".stackGroup")
+        .data(newNest)
+        .enter()
+        .append("g")
+        .attr("transform", (d) => `translate(0,${yScale(d.key) - 4})`)
 
-    // var path = svg.selectAll(".path").data([cumData])
+    let bars = grouping.selectAll("rect").data(d=>d.values)
 
-    // path.enter().append("path")
-    //     .attr("class", "path")
-    //     .attr("d", line)
-    //     .attr("stroke", "#cccccc")
-    //     .attr("fill", "none")
-    //     .attr("stroke-width", 1)
+
+    bars.enter()
+        .append("rect")
+        .attr("x", function(d) { return scaleDate(d.date); })
+        // .attr("y", function(d) { return yScale(d.id)-4; })
+        //.attr("cy", height/2)
+        .attr("width", 1)
+        .attr("height", 8)
+        .attr("fill", function(d) {
+            if(d.sold === "Y") {
+                return "red";
+            } else {
+                return "black";
+            }
+        })
 });
 
 function parse(d) {
@@ -67,6 +76,7 @@ function parse(d) {
     return {
         date: new Date(d.date),
         week: +d.week,
+        group: d.group,
         description: (d.Brand + " ").concat((d.Description + " ")).concat(d.Sub_Category),
         id: +d.garmentId,
         new: d.new,
