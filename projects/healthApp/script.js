@@ -1,22 +1,23 @@
 
-d3.xml("./data/export.xml").then(function(data) {
-    // console.log(data.getElementsByTagName("Record")[0].getAttribute("stateDate"))
-    function myFunction(xml) {
-        var x, i, txt, array;
-        xml = xml;
-        txt = "";
-        array = [];
-        x = xml.getElementsByTagName('Record');
-        // console.log(x)
-        for (i = 0; i < x.length; i++) { 
-            array.push({date: new Date(x[i].getAttribute('startDate')), value: +x[i].getAttribute('value')})
-            // txt += x[i].getAttribute('startDate') + "<br>";
+d3.xml("./data/export.xml").then(function (data) {
 
-        }
-        // document.getElementById("chart").innerHTML = txt; 
-        console.log(array)
+    var x, i, txt, array;
+    xml = data;
+    txt = "";
+    array = [];
+    x = xml.getElementsByTagName('Record');
+
+    for (i = 0; i < x.length; i++) {
+        array.push({
+            date: new Date(x[i].getAttribute('startDate')),
+            year: new Date(x[i].getAttribute('startDate')).getFullYear(),
+            value: +x[i].getAttribute('value')
+        })
+
+
     }
 
-    myFunction(data)
+    console.log(array)
+
 
 })
