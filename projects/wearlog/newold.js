@@ -10,7 +10,7 @@ var svg = d3.select("#chart")
 
 d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
-    const newItems = data.filter(d => d.new === "Y" && d.sold != "Y")
+    const newItems = data.filter(d => d.new === "N")
     const soldItems = data.filter(d => d.sold === "Y")
 
     const newNest = d3.nest()
@@ -28,7 +28,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
     console.log(newNest)
 
     var scaleDate = d3.scaleTime()
-        .domain([new Date("2020-10-05"), new Date("2022-05-18")])
+        .domain([new Date("2020-10-05"), new Date("2022-05-31")])
         .range([margin.left, width-margin.right])
 
     var yScale = d3.scalePoint()
