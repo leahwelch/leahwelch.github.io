@@ -14,16 +14,14 @@ var svg = d3.select("#chart")
 d3.csv("./data/wearlog.csv", parse).then(function(data) {
     // console.group(data);
     var filtered_data = data.filter(function(d) {
-        return d.date > new Date("2021-04-01") && d.date < new Date("2021-05-01");
+        return d.sold != "Y";
     });
-
-    console.log(filtered_data);
 
     var nested = d3.nest()
         .key(function(d) { return d.id; })
         .rollup(function(v) { return v.length;})
         // .rollup()
-        .entries(data)
+        .entries(filtered_data)
         .sort((a,b) => d3.ascending(a.key,b.key));
 
     console.log(nested)
@@ -33,13 +31,13 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         .range([margin.left, width-margin.right])
 
     var xScale = d3.scaleLinear()
-        .domain([0,160])
+        .domain([0,192])
         .range([margin.left, width-margin.right])
 
     var histogramValues = d3.histogram()
         .value(function(d) {return d.value})
         .domain(xScale.domain())
-        .thresholds(xScale.ticks(160))
+        .thresholds(xScale.ticks(192))
 
     bins = histogramValues(nested);
     console.log(bins)
@@ -89,7 +87,8 @@ function parse(d) {
         date: new Date(d.date),
         description: (d.Brand + " ").concat((d.Description + " ")).concat(d.Sub_Category),
         id: +d.garmentId,
-        group: d.group
+        group: d.group,
+        sold: d.sold
     }
     
-}
+}s

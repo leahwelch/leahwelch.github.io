@@ -36,7 +36,7 @@ Promise.all(promises).then(function (geoData) {
   // const xMax = -79.95796;
   // const yMin = 40.41783;
   // const yMax = 40.44548;
-  const xMin = -79.98629;
+  const xMin = -79.98929;
   const xMax = -79.96796;
   const yMin = 40.42783;
   const yMax = 40.44048;
@@ -433,7 +433,7 @@ function init() {
       y.score = d3.mean(y.skills, n => n.value)
       // console.log(y)
       filtered.forEach(function(d) {
-        return d.diff = d.score - y.score;
+        return d.diff = d.scaledScore - y.score;
       })
       // console.log(filtered)
       
@@ -460,9 +460,9 @@ function init() {
     // .attr("fill-opacity","0.25")
     .attr("fill-opacity",function(d) {
       if(d.diff >= 0) {
-        return "0.5";
+        return "0.4";
       } else {
-        return "0.25";
+        return "0.3";
       }
     })
     .style("stroke",function(d) {

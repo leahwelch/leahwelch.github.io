@@ -24,7 +24,7 @@ var treemap = d3.treemap()
 
 let barHeight = 5;
 const chartHeight = height - margin.bottom - margin.top;
-const barWidth = 17;
+const barWidth = 16;
 
 const hueBtn = d3.select("#hueBtn")
 const satBtn = d3.select("#satBtn")
@@ -183,7 +183,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
     let root = treemap(hierarchy);
 
     const xScale = d3.scaleLinear()
-        .domain([1,83])
+        .domain([1,88])
         .range([margin.left, width-margin.right])
 
     const dateScale = d3.scaleTime()

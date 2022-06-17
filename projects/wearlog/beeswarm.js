@@ -22,12 +22,12 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
 
     var xScale = d3.scaleLinear()
         .range([margin.left, width-margin.right])
-        .domain([0,150])
+        .domain([0,192])
 
     let histogramValues = d3.histogram()
         .value(function(d) {return d.value})
         .domain(xScale.domain())
-        .thresholds(xScale.ticks(150))
+        .thresholds(xScale.ticks(300))
 
     let bins = histogramValues(nested);
     console.log(bins)

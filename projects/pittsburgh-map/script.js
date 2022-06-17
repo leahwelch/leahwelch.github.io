@@ -29,7 +29,7 @@ Promise.all(promises).then(function(geoData) {
         .append("circle")
         .attr("r", 0.5)
         // .style("fill", "MediumOrchid");
-        .style("fill", "#3d3d3d")
+        .style("fill", "#2d0b51")
 
     function render() {
         dots
@@ -96,19 +96,19 @@ var d = [
 		name:"Data Set",
 		color:"#808080",
 		skills:[
-			{axis:"Sustainability",value:1},
-			{axis:"Aesthetics",value:8},
-			{axis:"Diversity",value:2},
-			{axis:"Convenience",value:6},
-			{axis:"Affordability",value:3}
+			{ axis: "Variable A", value: 1 },
+      { axis: "Variable B", value: 8 },
+      { axis: "Variable C", value: 2 },
+      { axis: "Variable D", value: 6 },
+      { axis: "Variable E", value: 3 }
 		  ],
 	}
 ];
 
 //Options for the Radar chart, other than default
 var cfg = {
-    w: 300,
-    h: 300,
+    w: 200,
+    h: 200,
     maxValue: 10,
     levels: 10,
    opacityArea: 0.20,
