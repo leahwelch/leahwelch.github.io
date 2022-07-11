@@ -52,6 +52,7 @@ Promise.all(promises).then(function (geoData) {
   let filtered = geoData[0].filter(function (d) {
     return d.geometry[0] > xMin && d.geometry[0] < xMax && d.geometry[1] > yMin && d.geometry[1] < yMax;
   })
+  
 
   
 
@@ -437,6 +438,8 @@ function init() {
         });
 
       dataValues = [dataValues];
+      console.log(dataValues)
+      
 
       g.selectAll("#radar-chart-area-Data-Set")
         .data(dataValues)
@@ -453,17 +456,33 @@ function init() {
       })
       y.score = d3.mean(y.skills, n => n.value)
       console.log(y.skills)
-      // filtered = filtered.filter((d) => {
+      // filtered.filter((d) => {
       //   d.affordable >= y.skills[0].value &&
       //   d.dense >= y.skills[1].value &&
       //   d.diverse >= y.skills[2].value &&
       //   d.drivable >= y.skills[3].value &&
       //   d.walkable >= y.skills[4].value
       // })
-      filtered.forEach(function(d) {
-        return d.diff = d.score - y.score;
-      })
+      // filtered.forEach(function(d) {
+      //   return d.diff = d.score - y.score;
+      // })
       // console.log(d3.min(filtered, d => d.diff), d3.max(filtered, d => d.diff))
+      filtered.forEach(function(d){
+        return d.affordableDiff = d.affordable - y.skills[0].value;
+      })
+      filtered.forEach(function(d){
+        return d.denseDiff = d.dense - y.skills[1].value;
+      })
+      filtered.forEach(function(d){
+        return d.diverseDiff = d.diverse - y.skills[2].value;
+      })
+      filtered.forEach(function(d){
+        return d.drivableDiff = d.drivable - y.skills[3].value;
+      })
+      filtered.forEach(function(d){
+        return d.walkableDiff = d.walkable - y.skills[4].value;
+      })
+      console.log(filtered)
       
     });
     svg.selectAll("circle")
@@ -477,13 +496,20 @@ function init() {
       }
       
     })
-    .attr("r", function(d) {
-      if(d.diff >= 0) {
-        return 20;
-      } else {
-        return rScale(d.diff)
-      }
+    // .attr("r", function(d) {
+    //   if(d.diff >= 0) {
+    //     return 20;
+    //   } else {
+    //     return rScale(d.diff)
+    //   }
       
+    // })
+    .attr("r", function(d) {
+      if(d.affordableDiff >=0 && d.denseDiff >= 0 && d.diverseDiff >= 0 && d.drivableDiff >= 0 && d.walkableDiff >= 0){
+      return 5;
+    } else {
+      return 0;
+    }
     })
     // .attr("r", 5)
     // .attr("fill-opacity","0.25")

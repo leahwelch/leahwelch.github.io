@@ -11,33 +11,25 @@ const svg = d3.select(container)
   .style("position", "absolute")
   .style("z-index", 2)
 
-const colorScale = d3.scaleSequential(d3.interpolateOranges)
-  .domain([-5,0])
+let colorScale = d3.scaleSequential(d3.interpolateRdYlBu)
+  
 
-const rScale = d3.scaleSqrt()
-  .domain([-10,10])
-  .range([1,12])
+let rScale = d3.scaleSqrt()
+  .range([1,8])
 
 const scoreScale = d3.scaleLinear()
   .domain([-3, 3])
   .range([1,10])
-
-  //["#eff3ff","#bdd7e7","#6baed6","#3182bd","#08519c"]
-
-  
 
 function project(d) {
   return map.project(new mapboxgl.LngLat(d[0], d[1]));
 }
 
 const promises = [
-  // d3.json("./data/geo.json"),
   d3.csv("./data/indices-vis.csv", parse)
 ];
 
 Promise.all(promises).then(function (geoData) {
-  console.log(geoData);
-  // console.log(geoData[0].objects.geo.geometries[0].coordinates[0])
   // const xMin = -79.99629;
   // const xMax = -79.95796;
   // const yMin = 40.41783;
@@ -46,63 +38,60 @@ Promise.all(promises).then(function (geoData) {
   const xMax = -79.96796;
   const yMin = 40.42783;
   const yMax = 40.44048;
-  
-  
-  // const pittCoords = geoData[0].objects.geo.geometries;
+
   let filtered = geoData[0].filter(function (d) {
     return d.geometry[0] > xMin && d.geometry[0] < xMax && d.geometry[1] > yMin && d.geometry[1] < yMax;
   })
-
   
-
   filtered.forEach(function (d) {
     return d.score = (d.walkable + d.affordable + d.drivable + d.dense + d.diverse) / 5;
   })
   
-  const scoreMin = d3.min(filtered, d => d.score)
-  const scoreMax = d3.max(filtered, d => d.score)
+  let scoreMin = d3.min(filtered, d => d.score)
+  let scoreMax = d3.max(filtered, d => d.score)
   console.log(scoreMin, scoreMax)
 
-  
+  colorScale.domain([scoreMin, scoreMax])
+  rScale.domain([scoreMin, scoreMax])
 
-    // filtered.forEach(function(d) {
-    //   return d.scaledScore = scoreScale(d.score);
-    // })
-
-    console.log(filtered)
   let dots = svg
     .selectAll("circle")
     .data(filtered)
+    .enter()
+    .append("circle")
+    .attr("fill", function(d) {
+      return colorScale(d.score);
+    })
+    .attr("r", 5)
 
   function render() {
 
-    let enter = dots
-      .enter()
-      .append("circle")
-      .attr("r", 1.5)
-      .style("fill", "#3d3d3d")
+    dots
       .attr("cx", function (d) {
         return project(d.geometry).x;
       })
       .attr("cy", function (d) {
         return project(d.geometry).y;
       });
+
+
+    // let enter = dots
+    //   .enter()
+    //   .append("circle")
+      
+    //   .attr("fill", "#3d3d3d")
+      
   
-    dots.merge(enter)
-      .transition()
-      .style("fill", function(d) {
-        return colorScale(d.diff);
-      })
-      .attr("fill-opacity","1")
-      .style("stroke",function(d) {
-        return colorScale(d.diff);
-      })
-      .style("stroke-width","0.5px");
-      // .attr("fill", "black")
+    // dots.merge(enter)
+    //   .transition()
+    //   .attr("fill", function(d) {
+    //     return colorScale(d.score);
+    //   })
+    //   .attr("r", 5)
   
-    dots.exit()
-      .transition()
-      .remove();
+    // dots.exit()
+    //   .transition()
+    //   .remove();
   }
   map.on("viewreset", render);
   map.on("move", render);
@@ -160,13 +149,12 @@ var d = [
     name: "Data Set",
     color: "#808080",
     skills: [
-      { axis: "Affordable", value: 1 },
-      { axis: "Dense", value: 8 },
-      { axis: "Diverse", value: 2 },
-      { axis: "Drivable", value: 6 },
-      { axis: "Walkable", value: 3 }
+      { axis: "Affordable", value: 10 },
+      { axis: "Dense", value: 10 },
+      { axis: "Diverse", value: 10 },
+      { axis: "Drivable", value: 10 },
+      { axis: "Walkable", value: 10 }
     ],
-    // score: 4
   }
 ];
 
@@ -189,15 +177,6 @@ var cfg = {
   duration: 200
 };
 
-// var promises = [
-//     d3.csv("./data/nodeData.csv")
-// ];
-
-// Promise.all(promises).then(function(data) {
-//     console.log(data)
-// });
-
-//Will need this for the drag update, not sure how to pass it back and forth
 var maxAxisValues = [];
 
 function init() {
@@ -408,8 +387,6 @@ function init() {
         .style("visibility", "visible");
 
 
-      //reCalculatePoints();
-      //drawPoly();'
       updatePoly();
 
 
@@ -438,6 +415,7 @@ function init() {
 
       dataValues = [dataValues];
 
+      
       g.selectAll("#radar-chart-area-Data-Set")
         .data(dataValues)
         .attr("points", function (d) {
@@ -451,57 +429,93 @@ function init() {
       y.skills.forEach(function (d) {
         return d.value = +d.value;
       })
-      y.score = d3.mean(y.skills, n => n.value)
-      console.log(y.skills)
-      // filtered = filtered.filter((d) => {
+      // y.score = d3.mean(y.skills, n => n.value)
+      // console.log(y.skills)
+      // filtered.filter((d) => {
       //   d.affordable >= y.skills[0].value &&
       //   d.dense >= y.skills[1].value &&
       //   d.diverse >= y.skills[2].value &&
       //   d.drivable >= y.skills[3].value &&
       //   d.walkable >= y.skills[4].value
       // })
-      filtered.forEach(function(d) {
-        return d.diff = d.score - y.score;
-      })
+      // filtered.forEach(function(d) {
+      //   return d.diff = d.score - y.score;
+      // })
       // console.log(d3.min(filtered, d => d.diff), d3.max(filtered, d => d.diff))
+      filtered.forEach(function(d){
+        d.affordable = d.affordable * y.skills[0].value/10;
+        d.dense = d.dense * y.skills[1].value/10;
+        d.diverse = d.diverse * y.skills[2].value/10;
+        d.drivable = d.drivable * y.skills[3].value/10;
+        d.walkable = d.walkable * y.skills[4].value/10;
+        d.score = (d.walkable + d.affordable + d.drivable + d.dense + d.diverse) / 5;
+      })
+      console.log(filtered)
+      scoreMin = d3.min(filtered, d => d.score)
+      scoreMax = d3.max(filtered, d => d.score)
+      console.log(scoreMin, scoreMax)
+      // colorScale.domain([scoreMin, scoreMax])
+      // filtered.forEach(function(d){
+      //   return d.affordableDiff = d.affordable - y.skills[0].value;
+      // })
+      // filtered.forEach(function(d){
+      //   return d.denseDiff = d.dense - y.skills[1].value;
+      // })
+      // filtered.forEach(function(d){
+      //   return d.diverseDiff = d.diverse - y.skills[2].value;
+      // })
+      // filtered.forEach(function(d){
+      //   return d.drivableDiff = d.drivable - y.skills[3].value;
+      // })
+      // filtered.forEach(function(d){
+      //   return d.walkableDiff = d.walkable - y.skills[4].value;
+      // })
+      // console.log(filtered)
       
     });
     svg.selectAll("circle")
       .transition()
       .attr("fill", function(d) {
-      if(d.diff >= 0) {
-        return "#2d0b51";
-      } else {
-        return colorScale(d.diff);
+      
+        return colorScale(d.score);
         // return "black";
-      }
+
       
     })
-    .attr("r", function(d) {
-      if(d.diff >= 0) {
-        return 20;
-      } else {
-        return rScale(d.diff)
-      }
+      // .attr("r", d=>rScale(d.score))
+      .attr("r", 5)
+    // .attr("r", function(d) {
+    //   if(d.diff >= 0) {
+    //     return 20;
+    //   } else {
+    //     return rScale(d.diff)
+    //   }
       
-    })
+    // })
+    // .attr("r", function(d) {
+    //   if(d.affordableDiff >=0 && d.denseDiff >= 0 && d.diverseDiff >= 0 && d.drivableDiff >= 0 && d.walkableDiff >= 0){
+    //   return 5;
+    // } else {
+    //   return 0;
+    // }
+    // })
     // .attr("r", 5)
     // .attr("fill-opacity","0.25")
-    .attr("fill-opacity",function(d) {
-      if(d.diff >= 0) {
-        return "0.4";
-      } else {
-        return "0.3";
-      }
-    })
-    .style("stroke",function(d) {
-      if(d.diff >= 0) {
-        return "#2d0b51";
-      } else {
-        return colorScale(d.diff);
-        // return "black";
-      }
-    })
+    // .attr("fill-opacity",function(d) {
+    //   if(d.diff >= 0) {
+    //     return "0.4";
+    //   } else {
+    //     return "0.3";
+    //   }
+    // })
+    // .style("stroke",function(d) {
+    //   if(d.diff >= 0) {
+    //     return "#2d0b51";
+    //   } else {
+    //     return colorScale(d.diff);
+    //     // return "black";
+    //   }
+    // })
   }
 
   //Put circles on the polygon at inflection points
@@ -607,11 +621,11 @@ d3.select(".edit-btn").on("click", editSet);
 
 function parse(d) {
   return {
-    affordable: scoreScale(+d.f_affordable),
-    dense: scoreScale(+d.f_dense),
-    diverse: scoreScale(+d.f_diverse),
-    drivable: scoreScale(+d.f_drivable),
-    walkable: scoreScale(+d.f_walkable),
+    affordable: +d.f_affordable,
+    dense: +d.f_dense,
+    diverse: +d.f_diverse,
+    drivable: +d.f_drivable,
+    walkable: +d.f_walkable,
     geometry: [
       +d.geometry.split(",")[0].slice(2),
       +d.geometry.split(",")[1].slice(1, -1)
