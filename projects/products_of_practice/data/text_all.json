@@ -1,0 +1,159 @@
+{
+    "product": [
+        {
+            "period": "1000-1600",
+            "sub_products": [
+                {
+                    "name": "treatise",
+                    "market_share": 59,
+                    "innovation": 0.90,
+                    "separation": 3.0,
+                    "migrant": -2,
+                    "color": "#dae0ee"
+                },{
+                    "name": "monograph",
+                    "market_share": 41,
+                    "innovation": 0.62,
+                    "separation": 3.0,
+                    "migrant": 0,
+                    "color": "#4059ad"
+                }
+            ]
+        },
+        {
+            "period": "1300-1700",
+            "sub_products": [
+                {
+                    "name": "treatise",
+                    "market_share": 43,
+                    "innovation": 0.75,
+                    "separation": 3.0,
+                    "migrant": -2,
+                    "color": "#dae0ee"
+                },{
+                    "name": "monograph",
+                    "market_share": 57,
+                    "innovation": 0.66,
+                    "separation": 3.0,
+                    "migrant": -1,
+                    "color": "#4059ad"
+                }
+            ]
+        },
+        {
+            "period": "1750-1850",
+            "sub_products": [
+                {
+                    "name": "treatise",
+                    "market_share": 18,
+                    "innovation": 0.30,
+                    "separation": 3.0,
+                    "migrant": -2,
+                    "color": "#dae0ee"
+                },{
+                    "name": "monograph",
+                    "market_share": 77,
+                    "innovation": 0.80,
+                    "separation": 3.0,
+                    "migrant": -1,
+                    "color": "#4059ad"
+                },{
+                    "name": "discursive monologue",
+                    "market_share": 5,
+                    "innovation": 0.20,
+                    "separation": 7.5,
+                    "migrant": 0,
+                    "color": "#333d83"
+                }
+            ]
+        },
+        {
+            "period": "1750-1920",
+            "sub_products": [
+                {
+                    "name": "treatise",
+                    "market_share": 14,
+                    "innovation": 0.21,
+                    "separation": 3.0,
+                    "migrant": -2,
+                    "color": "#dae0ee"
+                },{
+                    "name": "monograph",
+                    "market_share": 52,
+                    "innovation": 0.75,
+                    "separation": 3.0,
+                    "migrant": -1,
+                    "color": "#4059ad"
+                },{
+                    "name": "manifesto",
+                    "market_share": 13,
+                    "innovation": 0.10,
+                    "separation": 3.0,
+                    "migrant": 1,
+                    "color": "#8e9bcf"
+                },{
+                    "name": "discursive monologue",
+                    "market_share": 21,
+                    "innovation": 0.25,
+                    "separation": 7.5,
+                    "migrant": 0,
+                    "color": "#333d83"
+                }
+            ]
+        },
+        {
+            "period": "1940-2005",
+            "sub_products": [
+                {
+                    "name": "monograph",
+                    "market_share": 31,
+                    "innovation": 0.70,
+                    "separation": 3.0,
+                    "migrant": -1,
+                    "color": "#4059ad"
+                },{
+                    "name": "manifesto",
+                    "market_share": 17,
+                    "innovation": 0.09,
+                    "separation": 3.0,
+                    "migrant": -1,
+                    "color": "#8e9bcf"
+                },{
+                    "name": "discursive monologue",
+                    "market_share": 52,
+                    "innovation": 0.30,
+                    "separation": 7.5,
+                    "migrant": -1,
+                    "color": "#333d83"
+                }
+            ]
+        },
+        {
+            "period": "2010-2020",
+            "sub_products": [
+                {
+                    "name": "treatise",
+                    "market_share": 9,
+                    "innovation": 0.17,
+                    "separation": 3.0,
+                    "migrant": -2,
+                    "color": "#dae0ee"
+                },{
+                    "name": "monograph",
+                    "market_share": 33,
+                    "innovation": 0.70,
+                    "separation": 3.0,
+                    "migrant": -1,
+                    "color": "#4059ad"
+                },{
+                    "name": "discursive monologue",
+                    "market_share": 58,
+                    "innovation": 0.30,
+                    "separation": 7.5,
+                    "migrant": -2,
+                    "color": "#333d83"
+                }
+            ]
+        }
+    ]
+}
