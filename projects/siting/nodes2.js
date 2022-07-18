@@ -1,12 +1,12 @@
-var promises = [
+const promises = [
     d3.csv("./data/nodeDataUpdated.csv", parseNodes)
 ];
 
-var width = document.querySelector("#chart").clientWidth;
-var height = document.querySelector("#chart").clientHeight;
-var margin = {top: 100, left: 50, right: 50, bottom: 100};
+const width = document.querySelector("#chart").clientWidth;
+const height = document.querySelector("#chart").clientHeight;
+const margin = {top: 100, left: 50, right: 50, bottom: 100};
 
-var svg = d3.select("#chart")
+const svg = d3.select("#chart")
     .append("svg")
     .attr("width", width)
     .attr("height", height);

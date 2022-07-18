@@ -16,7 +16,16 @@
         
         <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
         <div id="mydivheader">Draggable Floating Controls</div>
-        <div id="chart"></div>
+        <br>
+        <p>Dense</p>
+        <input type="range" min="0" max="10" value="10" class="slider" id="dense">
+        <p>Diverse</p>
+        <input type="range" min="0" max="10" value="10" class="slider" id="diverse">
+        <p>Walkable</p>
+        <input type="range" min="0" max="10" value="10" class="slider" id="walkable">
+        <p>Drivable</p>
+        <input type="range" min="0" max="10" value="10" class="slider" id="drivable">
+        <!-- <div id="chart"></div> -->
         
     </div>
     <script>mapboxgl.accessToken = 'pk.eyJ1IjoibGVhaHdlbGNoIiwiYSI6ImNsMXdhd3UzNDB6b28zY3FmdDJ2M3FjcTMifQ.oXAHRvEr5YjZjXvNnr2cWQ';
@@ -28,7 +37,7 @@
         });
         // map.addControl(new mapboxgl.NavigationControl());
     </script>
-    <script src="script4.js" type="text/javascript"></script>
+    <script src="sliders.js" type="text/javascript"></script>
     <!-- <script type="text/javascript" src="radarChart.js"></script> -->
     <!-- <script type="text/javascript" src="radarScript.js"></script> -->
 
