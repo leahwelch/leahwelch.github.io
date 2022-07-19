@@ -18,13 +18,13 @@ html, body {
 button {
   font-family: 'Roboto Mono', monospace;
   text-transform: uppercase;
-  margin: 5px;
+  margin: 5px 0px;
   background-color: #fff;
   border: 1px solid #b9b8b9;
-  font-size: 12pt;
+  font-size: 8pt;
   color: #808080;
   text-align: center;
-  padding: 10px 30px;
+  padding: 10px 10px;
   display: inline-block;
 }
 

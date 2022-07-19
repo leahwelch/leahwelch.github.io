@@ -9,7 +9,7 @@ const svg = d3.select("#chart")
 
 const nodeGroup = svg.append("g")
     .attr("class", "nodeGroup")
-    .attr("transform", `translate(0,0)`)
+    .attr("transform", `translate(200,200)`)
 
 const medievalBtn = d3.select("#medieval");
 const renBtn = d3.select("#renaissance");
@@ -22,7 +22,7 @@ const numNodes = 100;
 
 let rScale = d3.scaleSqrt()
     .domain([0, 1])
-    .range([0.5, 20])
+    .range([0.5, 15])
 
 function showVis(evt) {
     // Declare all variables
@@ -57,23 +57,26 @@ d3.json("./data/text_all.json").then(function (data) {
 
         let xScale = d3.scaleLinear()
             .domain([d3.min(array, d => d.innovation), d3.max(array, d => d.innovation)])
-            .range([0, 100])
+            .range([300,0])
 
         let simulation = d3.forceSimulation(array)
             .force('x', d3.forceX(function (d) {
                 return xScale(d.innovation);
             }).strength(.1))
-            .force('y', d3.forceY(function (d) {
-                return xScale(d.innovation);
-            }).strength(.1))
+            // .force('y', d3.forceY(function (d) {
+            //     return xScale(d.innovation);
+            // }).strength(.1))
             // .force("x", d3.forceX((width - margin.left - margin.right) / 2))
             // .force("y", d3.forceY((height - margin.top - margin.bottom) / 2))
-            .force("center", d3.forceCenter().x(function (d) {
-                return xScale(d.innovation);
-            }).y(function (d) {
-                return xScale(d.innovation);
-            }))
-            .force("center", d3.forceCenter((width - margin.left - margin.right) / 2, (height - margin.top - margin.bottom) / 2))
+            // .force("radial", d3.forceRadial(300)
+            // .x(function (d) {
+            //     return xScale(d.innovation);
+            // }).y(function (d) {
+            //     return xScale(d.innovation);
+            // })
+            // )
+            .force('charge', d3.forceManyBody().strength(10))
+            // .force("center", d3.forceCenter((width - margin.left - margin.right) / 2, (height - margin.top - margin.bottom) / 2))
             .force('collide', d3.forceCollide(d => rScale(d.innovation) + 0.5))
             // .velocityDecay(0.3)
             // .alpha(0.3)

@@ -1,0 +1,214 @@
+{
+    "product": [
+        {
+            "period_name": "Ancient and Medieval Europe",
+            "period_date": "11th-16th Century",
+            "sub_products": [
+                {
+                    "name": "diagram",
+                    "market_share": 43,
+                    "innovation": 0.72,
+                    "separation": 3.0,
+                    "migrant": 0,
+                    "color": "#ef99f1"
+                },{
+                    "name": "rendered drawing",
+                    "market_share": 37,
+                    "innovation": 0.64,
+                    "separation": 3.0,
+                    "migrant": -1,
+                    "color": "#ee66ec"
+                },{
+                    "name": "rendering",
+                    "market_share": 18,
+                    "innovation": 0.54,
+                    "separation": 3.0,
+                    "migrant": 0,
+                    "color": "#720071"
+                }
+            ]
+        },
+        {
+            "period_name": "Italian Renaissance",
+            "period_date": "14th-17th Century",
+            "sub_products": [
+                {
+                    "name": "diagram",
+                    "market_share": 33,
+                    "innovation": 0.90,
+                    "separation": 3.0,
+                    "migrant": 0,
+                    "color": "#ef99f1"
+                },{
+                    "name": "rendered drawing",
+                    "market_share": 38,
+                    "innovation": 0.62,
+                    "separation": 3.0,
+                    "migrant": -1,
+                    "color": "#ee66ec"
+                },{
+                    "name": "rendering",
+                    "market_share": 29,
+                    "innovation": 0.90,
+                    "separation": 3.0,
+                    "migrant": 0,
+                    "color": "#720071"
+                }
+            ]
+        },
+        {
+            "period_name": "French Revolution + Beaux Arts in Paris",
+            "period_date": "1789-1816",
+            "sub_products": [
+                {
+                    "name": "diagram",
+                    "market_share": 7,
+                    "innovation": 0.70,
+                    "separation": 3.0,
+                    "migrant": 0,
+                    "color": "#ef99f1"
+                },{
+                    "name": "rendered drawing",
+                    "market_share": 45,
+                    "innovation": 0.53,
+                    "separation": 3.0,
+                    "migrant": -1,
+                    "color": "#ee66ec"
+                },{
+                    "name": "rendering",
+                    "market_share": 45,
+                    "innovation": 0.73,
+                    "separation": 3.0,
+                    "migrant": 0,
+                    "color": "#720071"
+                },{
+                    "name": "photograph",
+                    "market_share": 3,
+                    "innovation": 0.23,
+                    "separation": 3.0,
+                    "migrant": 2,
+                    "color": "#e200de"
+                }
+            ]
+        },
+        {
+            "period_name": "Industrial Revolution in England",
+            "period_date": "1760-1920",
+            "sub_products": [
+                {
+                    "name": "diagram",
+                    "market_share": 7,
+                    "innovation": 0.70,
+                    "separation": 3.0,
+                    "migrant": 0,
+                    "color": "#ef99f1"
+                },{
+                    "name": "rendered drawing",
+                    "market_share": 40,
+                    "innovation": 0.47,
+                    "separation": 3.0,
+                    "migrant": -1,
+                    "color": "#ee66ec"
+                },{
+                    "name": "rendering",
+                    "market_share": 40,
+                    "innovation": 0.77,
+                    "separation": 3.0,
+                    "migrant": 0,
+                    "color": "#720071"
+                },{
+                    "name": "photograph",
+                    "market_share": 13,
+                    "innovation": 0.47,
+                    "separation": 3.0,
+                    "migrant": 2,
+                    "color": "#e200de"
+                }
+            ]
+        },
+        {
+            "period_name": "American Post-War + Information Age",
+            "period_date": "1945-2005",
+            "sub_products": [
+                {
+                    "name": "diagram",
+                    "market_share": 17,
+                    "innovation": 0.70,
+                    "separation": 3.0,
+                    "migrant": 1,
+                    "color": "#ef99f1"
+                },{
+                    "name": "rendered drawing",
+                    "market_share": 16,
+                    "innovation": 0.36,
+                    "separation": 3.0,
+                    "migrant": -1,
+                    "color": "#ee66ec"
+                },{
+                    "name": "rendering",
+                    "market_share": 20,
+                    "innovation": 0.84,
+                    "separation": 3.0,
+                    "migrant": -1,
+                    "color": "#720071"
+                },{
+                    "name": "photograph",
+                    "market_share": 41,
+                    "innovation": 0.76,
+                    "separation": 3.0,
+                    "migrant": 2,
+                    "color": "#e200de"
+                },{
+                    "name": "moving image",
+                    "market_share": 3,
+                    "innovation": 0.18,
+                    "separation": 3.0,
+                    "migrant": 2,
+                    "color": "#ab00a7"
+                }
+            ]
+        },
+        {
+            "period_name": "Post-Digital Age",
+            "period_date": "2009-Present",
+            "sub_products": [
+                {
+                    "name": "diagram",
+                    "market_share": 17,
+                    "innovation": 0.70,
+                    "separation": 3.0,
+                    "migrant": 1,
+                    "color": "#ef99f1"
+                },{
+                    "name": "rendered drawing",
+                    "market_share": 14,
+                    "innovation": 0.30,
+                    "separation": 3.0,
+                    "migrant": -1,
+                    "color": "#ee66ec"
+                },{
+                    "name": "rendering",
+                    "market_share": 27,
+                    "innovation": 0.90,
+                    "separation": 3.0,
+                    "migrant": -1,
+                    "color": "#720071"
+                },{
+                    "name": "photograph",
+                    "market_share": 24,
+                    "innovation": 0.90,
+                    "separation": 3.0,
+                    "migrant": 2,
+                    "color": "#e200de"
+                },{
+                    "name": "moving image",
+                    "market_share": 18,
+                    "innovation": 0.40,
+                    "separation": 3.0,
+                    "migrant": 2,
+                    "color": "#ab00a7"
+                }
+            ]
+        }
+    ]
+}

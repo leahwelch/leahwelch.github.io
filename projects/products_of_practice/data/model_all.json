@@ -1,0 +1,214 @@
+{
+    "product": [
+        {
+            "period_name": "Ancient and Medieval Europe",
+            "period_date": "11th-16th Century",
+            "sub_products": [
+                {
+                    "name": "abstract",
+                    "market_share": 35,
+                    "innovation": 0.20,
+                    "separation": 3.0,
+                    "migrant": -1,
+                    "color": "#99f5a0"
+                },{
+                    "name": "formal study",
+                    "market_share": 28,
+                    "innovation": 0.27,
+                    "separation": 3.0,
+                    "migrant": -2,
+                    "color": "#cdfad1"
+                },{
+                    "name": "presentation",
+                    "market_share": 37,
+                    "innovation": 0.80,
+                    "separation": 3.0,
+                    "migrant": -2,
+                    "color": "#00e50e"
+                }
+            ]
+        },
+        {
+            "period_name": "Italian Renaissance",
+            "period_date": "14th-17th Century",
+            "sub_products": [
+                {
+                    "name": "abstract",
+                    "market_share": 21,
+                    "innovation": 0.20,
+                    "separation": 3.0,
+                    "migrant": -1,
+                    "color": "#99f5a0"
+                },{
+                    "name": "formal study",
+                    "market_share": 29,
+                    "innovation": 0.30,
+                    "separation": 3.0,
+                    "migrant": -2,
+                    "color": "#cdfad1"
+                },{
+                    "name": "presentation",
+                    "market_share": 50,
+                    "innovation": 0.80,
+                    "separation": 3.0,
+                    "migrant": -2,
+                    "color": "#00e50e"
+                }
+            ]
+        },
+        {
+            "period_name": "French Revolution + Beaux Arts in Paris",
+            "period_date": "1789-1816",
+            "sub_products": [
+                {
+                    "name": "abstract",
+                    "market_share": 9,
+                    "innovation": 0.20,
+                    "separation": 3.0,
+                    "migrant": -1,
+                    "color": "#99f5a0"
+                },{
+                    "name": "formal study",
+                    "market_share": 21,
+                    "innovation": 0.30,
+                    "separation": 3.0,
+                    "migrant": -2,
+                    "color": "#cdfad1"
+                },{
+                    "name": "presentation",
+                    "market_share": 60,
+                    "innovation": 0.80,
+                    "separation": 3.0,
+                    "migrant": -2,
+                    "color": "#00e50e"
+                },{
+                    "name": "physical mockup",
+                    "market_share": 10,
+                    "innovation": 0.33,
+                    "separation": 3.0,
+                    "migrant": -2,
+                    "color": "#00ac0c"
+                }
+            ]
+        },
+        {
+            "period_name": "Industrial Revolution in England",
+            "period_date": "1760-1920",
+            "sub_products": [
+                {
+                    "name": "abstract",
+                    "market_share": 10,
+                    "innovation": 0.20,
+                    "separation": 3.0,
+                    "migrant": -1,
+                    "color": "#99f5a0"
+                },{
+                    "name": "formal study",
+                    "market_share": 17,
+                    "innovation": 0.30,
+                    "separation": 3.0,
+                    "migrant": -2,
+                    "color": "#cdfad1"
+                },{
+                    "name": "presentation",
+                    "market_share": 57,
+                    "innovation": 0.80,
+                    "separation": 3.0,
+                    "migrant": -2,
+                    "color": "#00e50e"
+                },{
+                    "name": "physical mockup",
+                    "market_share": 16,
+                    "innovation": 0.43,
+                    "separation": 3.0,
+                    "migrant": -2,
+                    "color": "#00ac0c"
+                }
+            ]
+        },
+        {
+            "period_name": "American Post-War + Information Age",
+            "period_date": "1945-2005",
+            "sub_products": [
+                {
+                    "name": "abstract",
+                    "market_share": 11,
+                    "innovation": 0.14,
+                    "separation": 3.0,
+                    "migrant": -2,
+                    "color": "#99f5a0"
+                },{
+                    "name": "formal study",
+                    "market_share": 9,
+                    "innovation": 0.24,
+                    "separation": 3.0,
+                    "migrant": -2,
+                    "color": "#cdfad1"
+                },{
+                    "name": "presentation",
+                    "market_share": 32,
+                    "innovation": 0.77,
+                    "separation": 3.0,
+                    "migrant": -2,
+                    "color": "#00e50e"
+                },{
+                    "name": "physical mockup",
+                    "market_share": 39,
+                    "innovation": 0.60,
+                    "separation": 3.0,
+                    "migrant": -2,
+                    "color": "#00ac0c"
+                },{
+                    "name": "digital twin",
+                    "market_share": 9,
+                    "innovation": 0.38,
+                    "separation": 3.0,
+                    "migrant": 1,
+                    "color": "#027309"
+                }
+            ]
+        },
+        {
+            "period_name": "Post-Digital Age",
+            "period_date": "2009-Present",
+            "sub_products": [
+                {
+                    "name": "abstract",
+                    "market_share": 10,
+                    "innovation": 0.10,
+                    "separation": 3.0,
+                    "migrant": -1,
+                    "color": "#99f5a0"
+                },{
+                    "name": "formal study",
+                    "market_share": 7,
+                    "innovation": 0.20,
+                    "separation": 3.0,
+                    "migrant": -2,
+                    "color": "#cdfad1"
+                },{
+                    "name": "presentation",
+                    "market_share": 12,
+                    "innovation": 0.70,
+                    "separation": 3.0,
+                    "migrant": -2,
+                    "color": "#00e50e"
+                },{
+                    "name": "physical mockup",
+                    "market_share": 11,
+                    "innovation": 0.60,
+                    "separation": 3.0,
+                    "migrant": -2,
+                    "color": "#00ac0c"
+                },{
+                    "name": "digital twin",
+                    "market_share": 60,
+                    "innovation": 0.87,
+                    "separation": 3.0,
+                    "migrant": -1,
+                    "color": "#027309"
+                }
+            ]
+        }
+    ]
+}
