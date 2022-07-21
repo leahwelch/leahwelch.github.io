@@ -6,21 +6,24 @@
         <script src="https://d3js.org/d3-array.v2.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/apache-arrow@latest"></script>
         <script src="https://cdn.jsdelivr.net/npm/arquero@latest"></script>
+        <script src="https://cdn.jsdelivr.net/npm/arquero@latest"></script>
         <!-- <script src="https://d3js.org/d3-scale.v3.min.js"></script> -->
         <script src="https://unpkg.com/geometric@2.0.1/build/geometric.min.js"></script>
     </head>
     <body>
-        <div class="button_group">
-            <button class="tablinks active" id="medieval" onclick="showVis(event)">Ancient and Medieval Europe</button>
-            <button class="tablinks" id="renaissance" onclick="showVis(event)">Italian Renaissance</button>
-            <button class="tablinks" id="frenchRev" onclick="showVis(event)">French Revolution + Beaux Arts in Paris</button>
-            <button class="tablinks" id="industrial" onclick="showVis(event)">Industrial Revolution in England</button>
-            <button class="tablinks" id="modern" onclick="showVis(event)">American Post-War + Information Age</button>
-            <button class="tablinks" id="contemporary" onclick="showVis(event)">Post-Digital Age</button>
+        <div id="container">
+            <div id="supplement"></div>
+            <div class="button_group">
+                <button class="tablinks active" id="medieval" onclick="showVis(event)">Ancient and Medieval Europe</button>
+                <button class="tablinks" id="renaissance" onclick="showVis(event)">Italian Renaissance</button>
+                <button class="tablinks" id="frenchRev" onclick="showVis(event)">French Revolution + Beaux Arts in Paris</button>
+                <button class="tablinks" id="industrial" onclick="showVis(event)">Industrial Revolution in England</button>
+                <button class="tablinks" id="modern" onclick="showVis(event)">American Post-War + Information Age</button>
+                <button class="tablinks" id="contemporary" onclick="showVis(event)">Post-Digital Age</button>
+            </div>
+            <div id="chart"></div>
         </div>
-        <div id="chart">
-
-        </div>
+        
 
         
         <script src="./script2.js"></script>
