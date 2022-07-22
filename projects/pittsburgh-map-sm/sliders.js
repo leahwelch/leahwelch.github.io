@@ -25,7 +25,10 @@ let drivableVal = 1;
 let colorScale = d3.scaleSequential(d3.interpolateRdYlBu)
 
 let rScale = d3.scaleSqrt()
-  .range([1,8])
+  .domain([1,5])
+  .range([1,5])
+
+let zoomLevel = map.getZoom();
 
 const scoreScale = d3.scaleLinear()
   .domain([-3, 3])
@@ -35,13 +38,15 @@ function project(d) {
   return map.project(new mapboxgl.LngLat(d[0], d[1]));
 }
 
+
+
 const promises = [
   d3.csv("./data/indices-vis.csv", parse)
 ];
 
 Promise.all(promises).then(function (geoData) {
-  const xMin = -79.99629;
-  const xMax = -79.95796;
+  const xMin = -80.10000;
+  const xMax = -79.94796;
   const yMin = 40.41783;
   const yMax = 40.44548;
   // const xMin = -79.98929;
@@ -93,6 +98,10 @@ Promise.all(promises).then(function (geoData) {
   map.on("viewreset", render);
   map.on("move", render);
   map.on("moveend", render);
+  map.on('zoom', function() {
+    zoomLevel = map.getZoom();
+    updateZoom(zoomLevel)
+  })
   render();
 
 
@@ -191,6 +200,19 @@ function updateFilters() {
     })
 
 }
+
+function updateZoom(zoomLevel) {
+    console.log(zoomLevel)
+    svg.selectAll("circle").transition().attr("r", () => {
+      if(zoomLevel > 13) {
+        return 3;
+      } else {
+        return 1;
+      }
+    })
+}
+
+
 });
 
 function parse(d) {
