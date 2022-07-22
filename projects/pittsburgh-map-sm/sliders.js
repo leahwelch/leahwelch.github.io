@@ -40,14 +40,14 @@ const promises = [
 ];
 
 Promise.all(promises).then(function (geoData) {
-  // const xMin = -79.99629;
-  // const xMax = -79.95796;
-  // const yMin = 40.41783;
-  // const yMax = 40.44548;
-  const xMin = -79.98929;
-  const xMax = -79.96796;
-  const yMin = 40.42783;
-  const yMax = 40.44048;
+  const xMin = -79.99629;
+  const xMax = -79.95796;
+  const yMin = 40.41783;
+  const yMax = 40.44548;
+  // const xMin = -79.98929;
+  // const xMax = -79.96796;
+  // const yMin = 40.42783;
+  // const yMax = 40.44048;
 
   let filtered = geoData[0].filter(function (d) {
     return d.geometry[0] > xMin && d.geometry[0] < xMax && d.geometry[1] > yMin && d.geometry[1] < yMax;
@@ -78,7 +78,7 @@ Promise.all(promises).then(function (geoData) {
     .attr("fill", function(d) {
       return colorScale(d.score);
     })
-    .attr("r", 5)
+    .attr("r", 3)
 
   function render() {
 
