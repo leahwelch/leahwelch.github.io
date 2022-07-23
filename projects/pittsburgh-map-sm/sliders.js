@@ -47,8 +47,8 @@ const promises = [
 Promise.all(promises).then(function (geoData) {
   const xMin = -80.10000;
   const xMax = -79.94796;
-  const yMin = 40.41783;
-  const yMax = 40.44548;
+  const yMin = 40.38783;
+  const yMax = 40.50548;
   // const xMin = -79.98929;
   // const xMax = -79.96796;
   // const yMin = 40.42783;
