@@ -1,0 +1,99 @@
+{
+  "perfume": [
+    {
+      "brand": "Byredo",
+      "product": [
+        {
+          "fragrance": "Accord Oud",
+          "notes": {
+            "top": [
+                "Blackberry",
+                "Rum",
+                "Saffron"
+            ],
+            "heart": [
+                "Clary Sage",
+                "Leather Accord"
+              ],
+            "base": [
+                "Patchouli",
+                "Powdery Musks"
+              ]
+          }
+        },
+        {
+          "fragrance": "Bal d'Afrique",
+          "notes": {
+            "top": [
+                "African Marigold",
+                "Bergamot",
+                "Bucchu",
+                "Lemon",
+                "Neroli"
+              ],
+            "heart":[
+                "Cyclamen",
+                "Jasmine Petals",
+                "Violet"
+              ],
+            "base": [
+                "Black Amber",
+                "Moroccan Cedarwood",
+                "Musk",
+                "Vetiver"
+              ]
+          }
+        }
+      ]
+    },
+    {
+      "brand": "MALIN+GOETZ",
+      "product": [
+        {
+          "fragrance": "petitgrain perfume oil.",
+          "notes": {
+            "top": [
+                "Bergamot",
+                "Neroli",
+                "Lemon",
+                "Petitgrain"
+              ],
+            "heart": [
+                "Lavender",
+                "Cardamom",
+                "Orange Flower",
+                "Orris"
+              ],
+            "base": [
+                "Orcanox",
+                "Patchouli",
+                "Vetiver",
+                "Tonka Bean",
+                "Musk"
+              ]
+          }
+        },
+        {
+          "fragrance": "dark rum eau de parfum.",
+          "notes": {
+            "top": [
+                "Bergamot",
+                "Plum",
+                "Anise"
+              ],
+            "heart": [
+                "Leather",
+                "Rum",
+                "Vanilla"
+            ],
+            "base": [
+                "Patchouli",
+                "Amber",
+                "Milk"
+              ]
+          }
+        }
+      ]
+    }
+  ]
+}

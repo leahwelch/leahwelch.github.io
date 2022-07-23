@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <style>
+      .axisLabel {
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 16pt;
+        font-weight: bold;
+      }
+
+      .axis {
+        font-size: 12pt;
+      }
+  </style>
+</head>
+<body>
+  <script>
+    /*
+    DEFINE DIMENSIONS AND GENERATE SVG CANVAS
+    */
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+    var margin = {top: 100, left: 200, right: 100, bottom: 100};
+    var svg = d3.select("body")
+      .append("svg")
+      .attr("width",width)
+      .attr("height",height);
+
+
+    /*
+    DEFINE DATA SETS
+
+    Data taken from the following websites:
+
+    Median rent for one-bedroom apartment, Fall 2018 to Spring 2019
+    http://realestate.boston.com/renting/2019/02/19/median-one-bedroom-rent-price/
+
+    Median household income, in thousands of dollars (last updated October 2019)
+    https://statisticalatlas.com/neighborhood/Massachusetts/Boston/South-Boston/Household-Income
+
+    Population, in thousands (last updated October 2019)
+    https://statisticalatlas.com/place/Massachusetts/Boston/Population
+
+
+    here, `rent` is the median rent for a one-bedroom apartment in Spring 2019
+
+    */
+    var spring2019 = [
+        {area: "Back Bay", rent: 2920, income: 97.8, population: 21.88, charles: true},
+        {area: "Charlestown", rent: 2585, income: 94.6, population: 16.44, charles: false},
+        {area: "Chinatown", rent: 3210, income: 121.0, population: 6.87, charles: false},
+        {area: "Downtown", rent: 3325, income: 168.6, population: 1.98, charles: true},
+        {area: "Fenway", rent: 2400, income: 37.9, population: 21.77, charles: true},
+        {area: "North End", rent: 2350, income: 98.5, population: 10.61, charles: false},
+        {area: "Allston", rent: 1900, income: 52.1, population: 28.82, charles: true},
+        {area: "Brighton", rent: 1950, income: 65.7, population: 45.98, charles: true},
+        {area: "Dorchester", rent: 1700, income: 62.2, population: 60.79, charles: false},
+        {area: "Jamaica Plain", rent: 1950, income: 84.0, population: 41.26, charles: false},
+        {area: "South Boston", rent: 2840, income: 89.1, population: 33.69, charles: false},
+        {area: "West Roxbury", rent: 1810, income: 90.5, population: 30.44, charles: true},
+        {area: "South End", rent: 2700, income: 69.9, charles: false},
+        {area: "Roslindale", rent: 1600, income: 77.9, charles: false},
+        {area: "East Boston", rent: 1900, income: 54.9, charles: false}
+    ];
+
+    /*
+    DEFINE SCALES
+    */
+    var xScale = d3.scaleLinear()
+      .domain([0,130])
+      .range([margin.left, width-margin.right]);
+
+    var yScale = d3.scaleLinear()
+      .domain([0,3500])
+      .range([height-margin.bottom, margin.top]);
+
+    /*
+    DRAW AXES
+    */
+    var xAxis = svg.append("g")
+      .attr("class","axis")
+      .attr("transform",`translate(0, ${height-margin.bottom})`)
+      .call(d3.axisBottom().scale(xScale).tickFormat(d3.format("$")));
+
+    var yAxis = svg.append("g")
+      .attr("class","axis")
+      .attr("transform",`translate(${margin.left},0)`)
+      .call(d3.axisLeft().scale(yScale).tickFormat(d3.format("$")));
+
+    /*
+    DRAW AXIS LABELS
+    */
+    var xAxisLabel = svg.append("text")
+      .attr("class","axisLabel")
+      .attr("x", width/2)
+      .attr("y", height-margin.bottom/2)
+      .attr("text-anchor","middle")
+      .text("Median Income (Thousands)");
+
+    var yAxisLabel = svg.append("text")
+      .attr("class","axisLabel")
+      .attr("transform","rotate(-90)")
+      .attr("x",-height/2)
+      .attr("y",margin.left/2)
+      .attr("text-anchor","middle")
+      .text("Median Rent");
+
+    /*
+    DRAW POINTS FOR SCATTER PLOT WITH THE DATASET `spring2019`
+    */
+    var circle = svg.selectAll("circle")
+        .data(spring2019)
+        .enter()
+        .append("circle")
+            .attr("cx", function(d) { return xScale(d.income); })
+            .attr("cy", function(d) { return yScale(d.rent); })
+            .attr("r", 10)
+            .attr("fill","steelblue");
+
+    /*
+    SIMPLE MOUSEOVER INTERACTIVITY: Changing visual style of marks
+    */
+
+    circle.on("mouseover", function(){
+        d3.select(this) /*this is a javascript keyboard to grab or select the shape that's currently being interacted with*/
+          .attr("fill", "white")
+          .attr("stroke", "#CC0000")
+          .attr("stroke-width", 2)
+          .attr("r", 15);
+    }).on("mouseout", function(){
+      d3.select(this) /*this is a javascript keyboard to grab or select the shape that's currently being interacted with*/
+          .attr("fill", "steelblue")
+          .attr("stroke", "none")
+          .attr("stroke-width", 0)
+          .attr("r", 10);
+    });
+
+
+
+
+
+
+
+  </script>
+
+</body>
+</html>
