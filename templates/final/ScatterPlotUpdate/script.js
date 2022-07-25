@@ -13,21 +13,24 @@ function showVis(evt) {
     evt.currentTarget.className += " active";
 }
 
+//Setting up the SVG where we'll be appending everything for our chart
 const width = document.querySelector("#chart").clientWidth;
 const height = document.querySelector("#chart").clientHeight;
 const margin = { top: 50, left: 150, right: 50, bottom: 150 };
-
 
 const svg = d3.select("#chart")
     .append("svg")
     .attr("width", width)
     .attr("height", height);
 
+//The color scale
 const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
 
+// Variables for the buttons so we can set up event listeners
 const initialBtn = d3.select("#initialData");
 const updateBtn = d3.select("#updatedData");
 
+//Loading in the data
 d3.csv("data/gapminder.csv").then(function (data) {
 
     console.log(data);
@@ -38,6 +41,7 @@ d3.csv("data/gapminder.csv").then(function (data) {
     //Filtering the data to 2007//
     const filtered_data2007 = data.filter((d) => d.year == 2007);
 
+    //X and Y axis
     let xAxis = svg.append("g")
         .attr("class", "axis")
         .attr("transform", `translate(0,${height - margin.bottom})`);
@@ -61,10 +65,10 @@ d3.csv("data/gapminder.csv").then(function (data) {
         .text("GDP Per Capita");
 
 
-
-
-    //this function handles setting the scales and drawing the data-driven elements
+    //this function handles the data-driven elements
     function draw(dataset) {
+
+        //these are the dimensions we can map to different forms in the visualization
         let lifeExp = {
             min: d3.min(dataset, (d) => +d.lifeExp),
             max: d3.max(dataset, (d) => +d.lifeExp)
@@ -80,6 +84,7 @@ d3.csv("data/gapminder.csv").then(function (data) {
             max: d3.max(dataset, (d) => +d.pop)
         }
 
+        //scales
         let xScale = d3.scaleLinear()
             .domain([lifeExp.min, lifeExp.max])
             .range([margin.left, width - margin.right]);
@@ -92,35 +97,46 @@ d3.csv("data/gapminder.csv").then(function (data) {
             .domain([pop.min, pop.max])
             .range([3, 25]);
 
+        //a little helper function for better transitions
         function zeroState(selection) {
-            selection
-                .attr('r', 0)
+            selection.attr('r', 0);
         }
 
+        //select all of the elements in the DOM that meet the criteria of having the class name of "nodes"
         let points = svg.selectAll(".nodes")
+            //bind those elements to our dataset using the country dimension as the key
             .data(dataset, (d) => d.country)
 
+        //the enter function creates the elements we need
         points.enter()
             .append("circle")
             .attr("class", "nodes")
+            //we're going to set the cx, cy, and fill on enter
             .attr("cx", function (d) { return xScale(d.lifeExp); })
             .attr("cy", function (d) { return yScale(d.gdpPercap); })
             .attr("fill", function (d) { return colorScale(d.continent); })
+            //but we call the zero state so there's a nice transition on update
             .call(zeroState)
+            //merge with any existing points that have ahte same key
             .merge(points)
+            //transition and duration create that smooth D3 animation we're going for
             .transition()
             .duration(500)
+            //now set the attributes of the merged points, including the radius
             .attr("cx", function (d) { return xScale(d.lifeExp); })
             .attr("cy", function (d) { return yScale(d.gdpPercap); })
             .attr("fill", function (d) { return colorScale(d.continent); })
             .attr("r", function (d) { return rScale(d.pop); });
 
+        //the exit function removes anything we don't need
         points.exit()
             .transition()
             .duration(500)
+            //call zero state again so the circles leave the way they came in
             .call(zeroState)
             .remove();
 
+        //axis updates
         xAxis.transition().duration(500).call(d3.axisBottom().scale(xScale));
         yAxis.transition().duration(500).call(d3.axisLeft().scale(yScale));
     }
