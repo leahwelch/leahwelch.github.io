@@ -16,9 +16,9 @@ d3.csv("./data/gapminder.csv").then(function(data) {
 /* filtered by column header */
     });
 
-    var filtered_data = filtered_data.filter(function(d) {
-        return d.continent === "Europe";
-    }) ;
+    // var filtered_data = filtered_data.filter(function(d) {
+    //     return d.continent === "Europe";
+    // }) ;
 
     console.log(filtered_data);
 
