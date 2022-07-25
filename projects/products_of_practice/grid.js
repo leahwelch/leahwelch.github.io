@@ -7,11 +7,6 @@ const svg = d3.select("#chart")
     .attr("width", width - margin.left - margin.right)
     .attr("height", height - margin.top - margin.bottom);
 
-// let grouping = svg.selectAll(".row")
-//     .append("g")
-//     .attr("class", "row")
-
-
 function showVis(evt) {
     // Declare all variables
     var i, tablinks;
@@ -224,85 +219,123 @@ const miniData3 = [
     }
 ]
 
-let medievalData = miniData3[0].sub_products;
-let renData = miniData3[1].sub_products;
-const gridHeight = 5;
-
-function showViz(dataset) {
-    let expandedData = [];
-    for (let m = 0; m < gridHeight; m++) {
-        for (let j = m; j < dataset.length; j += gridHeight) {
-            expandedData.push({
-                id: dataset[j].id,
-                color: dataset[j].color,
-                y: m
-            })
-        }
-    }
+d3.csv("./data/products_distribution.csv", parse).then(function (data) {
+    console.log(data)
     let nested = d3.nest()
-        .key(d => d.y)
+        .key(d => d.year)
         .rollup()
-        .entries(expandedData)
-    nested.forEach((d) => {
-        d.key = +d.key;
+        .entries(data)
+
+    let miniData4 = [];
+    nested.forEach(d => {
         for (let i = 0; i < d.values.length; i++) {
-            d.values[i].x = i;
+            for (let j = 0; j < d.values[i].value; j++) {
+                miniData4.push({
+                    period: d.key,
+                    id: d.values[i].product,
+                    color: d.values[i].color
+                })
+            }
         }
     })
+    console.log(miniData4)
 
-    let yScale = d3.scaleBand()
-        .domain(d3.map(nested, d => d.key))
-        .range([0, 200])
-        .padding(0.1)
+    let renData = miniData4.filter(d => d.period === "1500")
+    let contemporaryData = miniData4.filter(d => d.period === "2020")
 
-    let xScale = d3.scaleBand()
-        .domain(d3.map(nested[0].values, d => d.x))
-        .range([0, 150])
-        .padding(0.1)
+    // let medievalData = miniData3[0].sub_products;
+    // let renData = miniData3[1].sub_products;
+    const gridHeight = 40;
 
-    //  d3.selectAll().data(nested).attr("transform", (d) => `translate(0,${yScale(d.key)})`)
+    function showViz(dataset) {
+        let expandedData = [];
+        for (let m = 0; m < gridHeight; m++) {
+            for (let j = m; j < dataset.length; j += gridHeight) {
+                expandedData.push({
+                    id: dataset[j].id,
+                    color: dataset[j].color,
+                    y: m
+                })
+            }
+        }
+        let nested = d3.nest()
+            .key(d => d.y)
+            .rollup()
+            .entries(expandedData)
+        nested.forEach((d) => {
+            d.key = +d.key;
+            for (let i = 0; i < d.values.length; i++) {
+                d.values[i].x = i;
+            }
+        })
 
-    let grouping = svg.selectAll(".barGroup").data(nested)
+        let yScale = d3.scaleBand()
+            .domain(d3.map(nested, d => d.key))
+            .range([0, 600])
+            .padding(0.1)
 
-    grouping
-        .enter()
-        .append("g")
-        .attr("class", "barGroup")
-    .merge(grouping)
-        .attr("transform", (d) => `translate(0,${yScale(d.key)})`)
+        let xScale = d3.scaleBand()
+            .domain(d3.map(nested[0].values, d => d.x))
+            .range([0, 300])
+            .padding(0.1)
 
-    grouping.exit()
-        .remove();
+        //  d3.selectAll().data(nested).attr("transform", (d) => `translate(0,${yScale(d.key)})`)
 
-    let bars = d3.selectAll(".barGroup").selectAll("rect").data(d => d.values)
+        let grouping = svg.selectAll(".barGroup").data(nested)
 
-    bars.enter()
-        .append("rect")
-        .attr("x", function (p) { return xScale(p.x); })
-        // .attr("width", 10)
-        // .attr("height", 10)
-        .attr("opacity", 0)
-        .merge(bars)
+        grouping
+            .enter()
+            .append("g")
+            .attr("class", "barGroup")
+            .merge(grouping)
+            .attr("transform", (d) => `translate(0,${yScale(d.key)})`)
 
-        .transition()
-        .duration(500)
-        .attr("x", function (p) { return xScale(p.x); })
-        .attr("width", xScale.bandwidth())
-        .attr("height", yScale.bandwidth())
-        .attr("opacity", 1)
-        .attr("fill", p => p.color)
-        
+        grouping.exit()
+            .remove();
 
-    bars.exit()
-        .transition()
-        .remove();
-}
+        let bars = d3.selectAll(".barGroup").selectAll("rect").data(d => d.values)
 
-showViz(medievalData);
+        bars.enter()
+            .append("rect")
+            .attr("x", function (p) { return xScale(p.x); })
+            // .attr("width", 10)
+            // .attr("height", 10)
+            .attr("opacity", 0)
+            .merge(bars)
 
-medievalBtn.on("click", function () {
-    showViz(medievalData);
-});
-renBtn.on("click", function () {
+            .transition()
+            .duration(500)
+            .attr("x", function (p) { return xScale(p.x); })
+            .attr("width", xScale.bandwidth())
+            .attr("height", yScale.bandwidth())
+            .attr("opacity", 1)
+            .attr("fill", p => p.color)
+
+
+        bars.exit()
+            .transition()
+            .remove();
+    }
+
     showViz(renData);
-});
+
+    // medievalBtn.on("click", function () {
+    //     showViz(medievalData);
+    // });
+    renBtn.on("click", function () {
+        showViz(renData);
+    });
+    contemporaryBtn.on("click", function () {
+        showViz(contemporaryData);
+    });
+
+})
+
+function parse(d) {
+    return {
+        year: d.year,
+        product: d.product,
+        color: d.color,
+        value: +d.value
+    }
+}
