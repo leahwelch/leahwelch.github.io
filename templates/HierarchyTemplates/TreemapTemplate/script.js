@@ -1,5 +1,5 @@
 // d3.csv("data/2018-boston-crimes.csv").then(function(data) {
-    d3.csv("data/Wardrobe.csv").then(function(data) {
+    d3.csv("data/2018-boston-crimes.csv").then(function(data) {
     /*
     BOSTON CRIME DATA from the BOSTON POLICE DEPARTMENT, 2018
     Adapted from:
@@ -25,8 +25,8 @@
     We can use the function d3.nest() to count the number of incidents of each unique offense code group:
     */
     var nested = d3.nest()
-        .key(function(d) { return d.group; })
-        //.key(function(d) { return d.DAY_OF_WEEK; })
+        .key(function(d) { return d.OFFENSE_CODE_GROUP; })
+        
         .rollup(function(v) { return v.length;})
         .entries(data)
         .sort(function(a,b) { return b.value - a.value; });
