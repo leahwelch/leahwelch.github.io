@@ -112,9 +112,9 @@ d3.csv("data/gapminder.csv").then(function (data) {
             .append("circle")
             .attr("class", "nodes")
             //we're going to set the cx, cy, and fill on enter
-            .attr("cx", function (d) { return xScale(d.lifeExp); })
-            .attr("cy", function (d) { return yScale(d.gdpPercap); })
-            .attr("fill", function (d) { return colorScale(d.continent); })
+            .attr("cx", d =>  xScale(d.lifeExp))
+            .attr("cy", d => yScale(d.gdpPercap))
+            .attr("fill", d => colorScale(d.continent))
             //but we call the zero state so there's a nice transition on update
             .call(zeroState)
             //merge with any existing points that have ahte same key
@@ -123,10 +123,10 @@ d3.csv("data/gapminder.csv").then(function (data) {
             .transition()
             .duration(500)
             //now set the attributes of the merged points, including the radius
-            .attr("cx", function (d) { return xScale(d.lifeExp); })
-            .attr("cy", function (d) { return yScale(d.gdpPercap); })
-            .attr("fill", function (d) { return colorScale(d.continent); })
-            .attr("r", function (d) { return rScale(d.pop); });
+            .attr("cx", d => xScale(d.lifeExp))
+            .attr("cy", d => yScale(d.gdpPercap))
+            .attr("fill", d => colorScale(d.continent))
+            .attr("r", d => rScale(d.pop));
 
         //the exit function removes anything we don't need
         points.exit()
