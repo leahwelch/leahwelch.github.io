@@ -39,12 +39,12 @@ d3.csv("./data/gapminder.csv", parse).then(function (data) {
         .attr("height", d => height - margin.bottom - yScale(d.gdpPercap))
         .attr("fill", "black");
 
-    let xAxis = svg.append("g")
+    const xAxis = svg.append("g")
         .attr("class", "axis")
         .attr("transform", `translate(0,${height - margin.bottom})`)
         .call(d3.axisBottom().scale(xScale).tickFormat(d3.format("Y")));
 
-    let yAxis = svg.append("g")
+    const yAxis = svg.append("g")
         .attr("class", "axis")
         .attr("transform", `translate(${margin.left},0)`)
         .call(d3.axisLeft().scale(yScale));
