@@ -10,33 +10,36 @@ const svg = d3.select("#chart")
 
 d3.csv("./data/gapminder.csv", parse).then(function (data) {
 
-    /* filter subset of data, grabbing only the rows where the country = United States */
-    const filtered = data.filter(d => d.country === "United States");
+    /* filter subset of data, grabbing only the rows where the year = 1957 */
+    const filtered = data.filter(d => d.year == 1957);
 
-    //scales: we'll use a band scale for the bars
-    const xScale = d3.scaleBand()
-        .domain(filtered.map(d => d.year))
-        .range([margin.left, width - margin.right])
-        .padding(0.1);
-
-    const yScale = d3.scaleLinear()
+    //before we create our distribution, we need to set the xScale based on the possible values
+    const xScale = d3.scaleLinear()
         .domain([0, d3.max(filtered, d => d.gdpPercap)])
+        .range([margin.left, width - margin.right])
+
+    //we need to create a binned dataset using the d3.histogram() method
+    const histogramValues = d3.histogram()
+        .value(d => d.gdpPercap) //sets the distribution based on a dimension of the data - GDP Per Capita
+        .domain(xScale.domain()) //based on the xScale
+        .thresholds(xScale.ticks(100)) //how many bins
+
+    const bins = histogramValues(filtered)
+    console.log(bins)
+
+    //our yScale is based off of the new binned dataset - the max value is the bin with the most records
+    const yScale = d3.scaleLinear()
+        .domain([0, d3.max(bins, d => d.length)])
         .range([height - margin.bottom, margin.top]);
 
-
-    /*making the bars in the barchart:
-    uses filtered data
-    defines height and width of bars
-    */
-
     let bar = svg.selectAll("rect")
-        .data(filtered)
+        .data(bins)
         .enter()
         .append("rect")
-        .attr("x", d => xScale(d.year))
-        .attr("y", d => yScale(d.gdpPercap))
-        .attr("width", xScale.bandwidth())
-        .attr("height", d => height - margin.bottom - yScale(d.gdpPercap))
+        .attr("x", d => xScale(d.x0))
+        .attr("y", d => yScale(d.length))
+        .attr("width", d => xScale(d.x1) - xScale(d.x0) - 1)
+        .attr("height", d => height - margin.bottom - yScale(d.length))
         .attr("fill", "black");
 
     let xAxis = svg.append("g")
@@ -53,14 +56,7 @@ d3.csv("./data/gapminder.csv", parse).then(function (data) {
         .attr("class", "axisLabel")
         .attr("x", width / 2)
         .attr("y", height - margin.bottom / 2)
-        .text("Year");
-
-    const yAxisLabel = svg.append("text")
-        .attr("class", "axisLabel")
-        .attr("transform", "rotate(-90)")
-        .attr("x", -height / 2)
-        .attr("y", margin.left / 2)
-        .text("GDP Per Capita");
+        .text("GDP Per Capita, 1957");
 
 });
 
