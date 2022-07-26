@@ -13,9 +13,7 @@ d3.csv("./data/gapminder.csv", parse).then(function (data) {
 
 
     /* filter subset of data, grabbing only the rows where the country = China */
-    const filtered_data = data.filter(function (d) {
-        return d.country === "China";
-    });
+    const filtered_data = data.filter(d => d.country === "China");
 
     //scales - xScale is a linear scale of the years
     const xScale = d3.scaleLinear()
