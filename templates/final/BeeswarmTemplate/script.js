@@ -57,6 +57,7 @@ d3.csv("data/gapminder.csv", parse).then(function (data) {
         simulation.tick(10);
     }
 
+    //define the tooltip
     let tooltip = d3.select("#chart")
         .append("div")
         .attr("class", "tooltip");
@@ -71,29 +72,34 @@ d3.csv("data/gapminder.csv", parse).then(function (data) {
         .append("circle")
         .attr("class", "nodes")
         .attr("fill", "red")
-        //merge with any existing points that have ahte same key
+        //merge with any existing points that have the same key
         .merge(points)
         //now set the attributes of the merged points, including the radius
         .attr("cx", d => d.x)
         .attr("cy", d => d.y)
         .attr("r", d => rScale(d.pop))
+        //tooltip interactivity
         .on("mouseover", function (d) { /*d is referencing each of the cirlces*/
-            var cx = +d3.select(this).attr("cx")+10;
-            var cy = +d3.select(this).attr("cy")-15;
+            //grab the position of the node that we're hovering on    
+            var cx = +d3.select(this).attr("cx") + 10;
+            var cy = +d3.select(this).attr("cy") - 15;
+            //make the tooltip visible
             tooltip.style("visibility", "visible")
                 .style("left", cx + "px")
                 .style("top", cy + "px")
-                .text(d.country);
-
+                .text(d.country + ": $" + Math.round(d.gdpPercap)); //the text that shows up in the tooltip
+            //all other circles fall away slightly
+            d3.selectAll("circle")
+                .attr("opacity", 0.5)
+            //the cirlce we're hovering on comes into focus
             d3.select(this)
-                .attr("stroke", "black")
-                .attr("stroke-width", 2);
+                .attr("opacity", 1)
         }).on("mouseout", function () {
+            //tooltip goes away
             tooltip.style("visibility", "hidden");
-
-            d3.select(this)
-                .attr("stroke", "none")
-                .attr("stroke-width", 0);
+            //all circles return to full opacity
+            d3.selectAll("circle")
+                .attr("opacity", 1)
         });
 
 

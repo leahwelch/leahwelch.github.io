@@ -117,7 +117,7 @@ d3.csv("data/gapminder.csv").then(function (data) {
             .attr("fill", d => colorScale(d.continent))
             //but we call the zero state so there's a nice transition on update
             .call(zeroState)
-            //merge with any existing points that have ahte same key
+            //merge with any existing points that have the same key
             .merge(points)
             //transition and duration create that smooth D3 animation we're going for
             .transition()
