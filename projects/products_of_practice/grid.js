@@ -220,11 +220,15 @@ const miniData3 = [
 ]
 
 d3.csv("./data/products_distribution.csv", parse).then(function (data) {
+    data.sort((a,b) => a.value - b.value)
     console.log(data)
+
     let nested = d3.nest()
         .key(d => d.year)
         .rollup()
         .entries(data)
+
+    console.log(nested)
 
     let miniData4 = [];
     nested.forEach(d => {
@@ -268,6 +272,7 @@ d3.csv("./data/products_distribution.csv", parse).then(function (data) {
                 d.values[i].x = i;
             }
         })
+        
 
         let yScale = d3.scaleBand()
             .domain(d3.map(nested, d => d.key))
@@ -276,7 +281,7 @@ d3.csv("./data/products_distribution.csv", parse).then(function (data) {
 
         let xScale = d3.scaleBand()
             .domain(d3.map(nested[0].values, d => d.x))
-            .range([0, 300])
+            .range([margin.left, width - margin.right - margin.left])
             .padding(0.1)
 
         //  d3.selectAll().data(nested).attr("transform", (d) => `translate(0,${yScale(d.key)})`)
@@ -336,6 +341,6 @@ function parse(d) {
         year: d.year,
         product: d.product,
         color: d.color,
-        value: +d.value
+        value: +d.value * 10
     }
 }
