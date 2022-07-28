@@ -1,6 +1,6 @@
 const width = document.querySelector("#chart").clientWidth;
 const height = document.querySelector("#chart").clientHeight;
-const margin = { top: 10, left: 10, right: 10, bottom: 0 };
+const margin = { top: 10, left: 10, right: 10, bottom: 10 };
 
 const svg = d3.select("#chart")
     .append("svg")
@@ -29,198 +29,8 @@ const modernBtn = d3.select("#modern");
 const contemporaryBtn = d3.select("#contemporary");
 
 
-const miniData = [
-    {
-        id: "a",
-        color: "red",
-        value: 11
-    },
-    {
-        id: "b",
-        color: "blue",
-        value: 10
-    },
-    {
-        id: "c",
-        color: "green",
-        value: 8
-    }
-]
-
-const miniData2 = [
-    {
-        id: "a",
-        color: "red"
-    },
-    {
-        id: "a",
-        color: "red"
-    },
-    {
-        id: "a",
-        color: "red"
-    },
-    {
-        id: "a",
-        color: "red"
-    },
-    {
-        id: "b",
-        color: "blue"
-    },
-    {
-        id: "b",
-        color: "blue"
-    },
-    {
-        id: "b",
-        color: "blue"
-    },
-    {
-        id: "b",
-        color: "blue"
-    },
-    {
-        id: "b",
-        color: "blue"
-    },
-    {
-        id: "b",
-        color: "blue"
-    },
-    {
-        id: "c",
-        color: "green"
-    },
-    {
-        id: "c",
-        color: "green"
-    },
-    {
-        id: "c",
-        color: "green"
-    }
-]
-
-const miniData3 = [
-    {
-        "period": "1000-1600",
-        "sub_products": [
-            {
-                id: "a",
-                color: "red"
-            },
-            {
-                id: "a",
-                color: "red"
-            },
-            {
-                id: "a",
-                color: "red"
-            },
-            {
-                id: "a",
-                color: "red"
-            },
-            {
-                id: "b",
-                color: "blue"
-            },
-            {
-                id: "b",
-                color: "blue"
-            },
-            {
-                id: "b",
-                color: "blue"
-            },
-            {
-                id: "b",
-                color: "blue"
-            },
-            {
-                id: "b",
-                color: "blue"
-            },
-            {
-                id: "b",
-                color: "blue"
-            },
-            {
-                id: "c",
-                color: "green"
-            },
-            {
-                id: "c",
-                color: "green"
-            },
-            {
-                id: "c",
-                color: "green"
-            }
-        ]
-    },
-    {
-        "period": "1300-1700",
-        "sub_products": [
-            {
-                id: "a",
-                color: "red"
-            },
-            {
-                id: "a",
-                color: "red"
-            },
-            {
-                id: "b",
-                color: "blue"
-            },
-            {
-                id: "b",
-                color: "blue"
-            },
-            {
-                id: "b",
-                color: "blue"
-            },
-            {
-                id: "b",
-                color: "blue"
-            },
-            {
-                id: "b",
-                color: "blue"
-            },
-            {
-                id: "b",
-                color: "blue"
-            },
-            {
-                id: "b",
-                color: "blue"
-            },
-            {
-                id: "b",
-                color: "blue"
-            },
-            {
-                id: "c",
-                color: "green"
-            },
-            {
-                id: "d",
-                color: "orange"
-            },
-            {
-                id: "d",
-                color: "orange"
-            }
-        ]
-    }
-]
-
-d3.csv("./data/products_distribution.csv", parse).then(function (data) {
-    data.sort((a,b) => a.value - b.value)
+d3.csv("./data/sub_products.csv", parse).then(function (data) {
+    // data.sort((a,b) => a.value - b.value)
     console.log(data)
 
     let nested = d3.nest()
@@ -236,7 +46,7 @@ d3.csv("./data/products_distribution.csv", parse).then(function (data) {
             for (let j = 0; j < d.values[i].value; j++) {
                 miniData4.push({
                     period: d.key,
-                    id: d.values[i].product,
+                    id: d.values[i].sub_product,
                     color: d.values[i].color
                 })
             }
@@ -276,13 +86,13 @@ d3.csv("./data/products_distribution.csv", parse).then(function (data) {
 
         let yScale = d3.scaleBand()
             .domain(d3.map(nested, d => d.key))
-            .range([margin.top, height-margin.top-margin.bottom])
-            .padding(0.05)
+            .range([0, 600])
+            .padding(0.1)
 
         let xScale = d3.scaleBand()
             .domain(d3.map(nested[0].values, d => d.x))
             .range([margin.left, width - margin.right - margin.left])
-            .padding(0.05)
+            .padding(0.1)
 
         //  d3.selectAll().data(nested).attr("transform", (d) => `translate(0,${yScale(d.key)})`)
 
@@ -341,6 +151,6 @@ function parse(d) {
         year: d.year,
         product: d.product,
         color: d.color,
-        value: +d.value * 10
+        value: +d.value
     }
 }

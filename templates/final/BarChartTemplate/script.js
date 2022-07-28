@@ -10,8 +10,8 @@ const svg = d3.select("#chart")
 
 d3.csv("./data/gapminder.csv", parse).then(function (data) {
 
-    /* filter subset of data, grabbing only the rows where the country = United States */
-    const filtered = data.filter(d => d.country === "United States");
+    /* filter subset of data, grabbing only the rows where the country = China */
+    const filtered = data.filter(d => d.country === "China");
 
     //scales: we'll use a band scale for the bars
     const xScale = d3.scaleBand()
@@ -47,7 +47,8 @@ d3.csv("./data/gapminder.csv", parse).then(function (data) {
     const yAxis = svg.append("g")
         .attr("class", "axis")
         .attr("transform", `translate(${margin.left},0)`)
-        .call(d3.axisLeft().scale(yScale));
+        .call(d3.axisLeft().scale(yScale)
+        .tickFormat(d3.format("$.2s")));
 
     const xAxisLabel = svg.append("text")
         .attr("class", "axisLabel")
