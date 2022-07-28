@@ -27,7 +27,7 @@ d3.csv("./data/gapminder.csv", parse).then(function (data) {
     //set out colors based on our list of keys
     const colorScale = d3.scaleOrdinal()
         .domain(keys)
-        .range(["#00A676", "#CBFF4D", "#C84630", "#235789", "#FF9B42"])
+        .range(["#00A676", "#8F3985", "#C84630", "#235789", "#FF9B42"])
 
     //group the data by continent
     const by_continent = d3.groups(data, d=>d.continent)
