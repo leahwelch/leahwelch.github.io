@@ -86,7 +86,7 @@ d3.csv("./data/sub_products.csv", parse).then(function (data) {
 
         let yScale = d3.scaleBand()
             .domain(d3.map(nested, d => d.key))
-            .range([0, 600])
+            .range([margin.top, height-margin.top-margin.bottom])
             .padding(0.1)
 
         let xScale = d3.scaleBand()

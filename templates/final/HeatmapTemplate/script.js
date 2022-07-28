@@ -9,26 +9,33 @@ const svg = d3.select("#chart")
     .attr("height", height);
 
 const parseTime = d3.timeParse("%H");
-console.log(parseTime("15")); // Tue Jun 30 2015 00:00:00 GMT-0700 (PDT)
 
 d3.csv("./data/2018-boston-crimes.csv", parse).then(function (data) {
+    //we want to organize the data by the offense code group, so we're using the d3.nest() method
     let groupNest = d3.nest()
-        .key(d => d.group)
+        .key(d => d.group) //the attribute that we're nesting by
         .rollup()
-        .entries(data)
-        .sort((a, b) => b.values.length - a.values.length);
+        .entries(data) 
+        .sort((a, b) => b.values.length - a.values.length); //sorting by the group with the most occurences
+    
+    //we only want the top 20
     groupNest = groupNest.slice(0, 20);
 
+    //we're going to create a new dataset for our heatmap, so we start with an empty array
     let heatmapData = [];
+    //go through each set of values in our nested data
     groupNest.forEach((d) => {
+        //nest again by hour
         let hourNest = d3.nest()
             .key(p => p.hour)
             .rollup(v => v.length)
             .entries(d.values)
+        //by default, d3.nest returns the key attributes as strings; we want them to show up as time values so we need to reformat them
         hourNest.forEach(p => p.key = parseTime(p.key))
+        //sort from earliest in the day to latest in the day
         hourNest.sort((a, b) => a.key - b.key);
         for (let i = 0; i < hourNest.length; i++) {
-            heatmapData.push({
+            heatmapData.push({ //push group, hour, and number of instances into our new array
                 group: d.key,
                 hour: hourNest[i].key,
                 value: hourNest[i].value
@@ -48,7 +55,7 @@ d3.csv("./data/2018-boston-crimes.csv", parse).then(function (data) {
         .range([margin.top, height - margin.bottom])
         .padding(0.01);
 
-    const colorScale = d3.scaleSequential()
+    const colorScale = d3.scaleSequential() //sequential colors for the heatmap
         .interpolator(d3.interpolateBlues)
         .domain(d3.extent(heatmapData, (d) => {
             return +d["value"];

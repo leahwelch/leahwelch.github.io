@@ -76,8 +76,6 @@ d3.csv("./data/gapminder.csv", parse).then(function (data) {
         .domain([0, d3.max(by_year, d => d["Africa"] + d["Americas"] + d["Asia"] + d["Europe"] + d["Oceania"])])
         .range([height - margin.bottom, margin.top]);
 
-    console.log(stackedData[0][0].data)
-
     //draw the areas
     svg.selectAll("path")
         .data(stackedData)
