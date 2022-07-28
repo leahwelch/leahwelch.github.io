@@ -18,20 +18,31 @@ const width = document.querySelector("#chart").clientWidth;
 const height = document.querySelector("#chart").clientHeight;
 const margin = { top: 50, left: 150, right: 50, bottom: 150 };
 
+const legendWidth = document.querySelector("#legend").clientWidth;
+const legendHeight = document.querySelector("#legend").clientHeight;
+
 const svg = d3.select("#chart")
     .append("svg")
     .attr("width", width)
     .attr("height", height);
 
+const legend = d3.select("#legend")
+    .append("svg")
+    .attr("width", legendWidth)
+    .attr("height", legendHeight);
+
+const keys = ["Africa", "Americas", "Asia", "Europe", "Oceania"]
+
 //The color scale
-const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+const colorScale = d3.scaleOrdinal()
+    .range(["#00A676", "#8F3985", "#C84630", "#235789", "#FF9B42"])
 
 // Variables for the buttons so we can set up event listeners
 const initialBtn = d3.select("#initialData");
 const updateBtn = d3.select("#updatedData");
 
 //Loading in the data
-d3.csv("data/gapminder.csv").then(function (data) {
+d3.csv("data/gapminder.csv", parse).then(function (data) {
 
     console.log(data);
 
@@ -64,37 +75,40 @@ d3.csv("data/gapminder.csv").then(function (data) {
         .attr("y", margin.left / 2)
         .text("GDP Per Capita");
 
+    //draw the legend
+    const legendRects = legend.selectAll("rect")
+        .data(keys)
+        .enter()
+        .append("rect")
+        .attr("x", 0)
+        .attr("y", (d,i) => i * 30)
+        .attr("width", 20)
+        .attr("height", 20)
+        .attr("fill", d => colorScale(d))
+
+    const legendLabels = legend.selectAll("text")
+        .data(keys)
+        .enter()
+        .append("text")
+        .attr("class", "legendLabel")
+        .attr("x", 27)
+        .attr("y", (d,i) => i * 30 + 15)
+        .text(d => d)
+
 
     //this function handles the data-driven elements
     function draw(dataset) {
-
-        //these are the dimensions we can map to different forms in the visualization
-        let lifeExp = {
-            min: d3.min(dataset, (d) => +d.lifeExp),
-            max: d3.max(dataset, (d) => +d.lifeExp)
-        };
-
-        let gdpPercap = {
-            min: d3.min(dataset, (d) => +d.gdpPercap),
-            max: d3.max(dataset, (d) => +d.gdpPercap)
-        };
-
-        let pop = {
-            min: d3.min(dataset, (d) => +d.pop),
-            max: d3.max(dataset, (d) => +d.pop)
-        }
-
         //scales
         let xScale = d3.scaleLinear()
-            .domain([lifeExp.min, lifeExp.max])
+            .domain(d3.extent(dataset, d => d.lifeExp))
             .range([margin.left, width - margin.right]);
 
         let yScale = d3.scaleLinear()
-            .domain([gdpPercap.min, gdpPercap.max])
+            .domain(d3.extent(dataset, d => d.gdpPercap))
             .range([height - margin.bottom, margin.top]);
 
         let rScale = d3.scaleSqrt()
-            .domain([pop.min, pop.max])
+            .domain(d3.extent(dataset, d => d.pop))
             .range([3, 25]);
 
         //a little helper function for better transitions
@@ -112,7 +126,7 @@ d3.csv("data/gapminder.csv").then(function (data) {
             .append("circle")
             .attr("class", "nodes")
             //we're going to set the cx, cy, and fill on enter
-            .attr("cx", d =>  xScale(d.lifeExp))
+            .attr("cx", d => xScale(d.lifeExp))
             .attr("cy", d => yScale(d.gdpPercap))
             .attr("fill", d => colorScale(d.continent))
             //but we call the zero state so there's a nice transition on update
@@ -138,7 +152,7 @@ d3.csv("data/gapminder.csv").then(function (data) {
 
         //axis updates
         xAxis.transition().duration(500).call(d3.axisBottom().scale(xScale));
-        yAxis.transition().duration(500).call(d3.axisLeft().scale(yScale));
+        yAxis.transition().duration(500).call(d3.axisLeft().scale(yScale).tickFormat(d3.format("$.2s")));
     }
     //initialize with the 1957 dataset
     draw(filtered_data1957);
@@ -152,3 +166,15 @@ d3.csv("data/gapminder.csv").then(function (data) {
     });
 
 });
+
+//get the data in the right format
+function parse(d) {
+    return {
+        country: d.country,
+        continent: d.continent,
+        year: +d.year,
+        lifeExp: +d.lifeExp,
+        gdpPercap: +d.gdpPercap,
+        pop: +d.pop
+    }
+}
