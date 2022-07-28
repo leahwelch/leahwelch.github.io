@@ -8,6 +8,9 @@ const svg = d3.select("#chart")
     .attr("width", width)
     .attr("height", height);
 
+const parseTime = d3.timeParse("%H");
+console.log(parseTime("15")); // Tue Jun 30 2015 00:00:00 GMT-0700 (PDT)
+
 d3.csv("./data/2018-boston-crimes.csv", parse).then(function (data) {
     let groupNest = d3.nest()
         .key(d => d.group)
@@ -15,14 +18,14 @@ d3.csv("./data/2018-boston-crimes.csv", parse).then(function (data) {
         .entries(data)
         .sort((a, b) => b.values.length - a.values.length);
     groupNest = groupNest.slice(0, 20);
-    console.log(groupNest)
+
     let heatmapData = [];
     groupNest.forEach((d) => {
         let hourNest = d3.nest()
             .key(p => p.hour)
             .rollup(v => v.length)
             .entries(d.values)
-        hourNest.forEach(p => p.key = +p.key)
+        hourNest.forEach(p => p.key = parseTime(p.key))
         hourNest.sort((a, b) => a.key - b.key);
         for (let i = 0; i < hourNest.length; i++) {
             heatmapData.push({
@@ -32,6 +35,7 @@ d3.csv("./data/2018-boston-crimes.csv", parse).then(function (data) {
             })
         }
     })
+    console.log(heatmapData)
 
     //scales: we'll use a band scale for the bars
     const xScale = d3.scaleBand()
@@ -63,7 +67,7 @@ d3.csv("./data/2018-boston-crimes.csv", parse).then(function (data) {
     const xAxis = svg.append("g")
         .attr("class", "axis")
         .attr("transform", `translate(0,${height - margin.bottom})`)
-        .call(d3.axisBottom().scale(xScale));
+        .call(d3.axisBottom().scale(xScale).tickFormat(d3.timeFormat("%I %p")));
 
     const yAxis = svg.append("g")
         .attr("class", "axis")
