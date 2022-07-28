@@ -244,8 +244,15 @@ d3.csv("./data/products_distribution.csv", parse).then(function (data) {
     })
     console.log(miniData4)
 
+    let medievalData = miniData4.filter(d => d.period === "1100")
     let renData = miniData4.filter(d => d.period === "1500")
+    let frenchData = miniData4.filter(d => d.period === "1700")
+    let industrialData = miniData4.filter(d => d.period === "1900")
+    let modernData = miniData4.filter(d => d.period === "1950")
     let contemporaryData = miniData4.filter(d => d.period === "2020")
+    
+
+
 
     // let medievalData = miniData3[0].sub_products;
     // let renData = miniData3[1].sub_products;
@@ -322,18 +329,26 @@ d3.csv("./data/products_distribution.csv", parse).then(function (data) {
             .remove();
     }
 
-    showViz(renData);
+    showViz(medievalData);
 
-    // medievalBtn.on("click", function () {
-    //     showViz(medievalData);
-    // });
+    medievalBtn.on("click", function () {
+        showViz(medievalData);
+    });
     renBtn.on("click", function () {
         showViz(renData);
+    });
+    frenchBtn.on("click", function () {
+        showViz(frenchData);
+    });
+    industrialBtn.on("click", function () {
+        showViz(industrialData);
+    });
+    modernBtn.on("click", function () {
+        showViz(modernData);
     });
     contemporaryBtn.on("click", function () {
         showViz(contemporaryData);
     });
-
 })
 
 function parse(d) {
@@ -341,6 +356,6 @@ function parse(d) {
         year: d.year,
         product: d.product,
         color: d.color,
-        value: +d.value * 10
+        value: +d.value
     }
 }

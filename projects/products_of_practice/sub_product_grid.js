@@ -47,7 +47,8 @@ d3.csv("./data/sub_products.csv", parse).then(function (data) {
                 miniData4.push({
                     period: d.key,
                     id: d.values[i].sub_product,
-                    color: d.values[i].color
+                    color: d.values[i].color,
+                    innovation: d.values[i].innovation
                 })
             }
         }
@@ -68,7 +69,8 @@ d3.csv("./data/sub_products.csv", parse).then(function (data) {
                 expandedData.push({
                     id: dataset[j].id,
                     color: dataset[j].color,
-                    y: m
+                    y: m,
+                    innovation: dataset[j].innovation
                 })
             }
         }
@@ -82,6 +84,7 @@ d3.csv("./data/sub_products.csv", parse).then(function (data) {
                 d.values[i].x = i;
             }
         })
+        console.log(nested)
         
 
         let yScale = d3.scaleBand()
@@ -121,7 +124,7 @@ d3.csv("./data/sub_products.csv", parse).then(function (data) {
             .transition()
             .duration(500)
             .attr("x", function (p) { return xScale(p.x); })
-            .attr("width", xScale.bandwidth())
+            .attr("width", function(p) { return xScale.bandwidth() * p.innovation} )
             .attr("height", yScale.bandwidth())
             .attr("opacity", 1)
             .attr("fill", p => p.color)
@@ -150,7 +153,9 @@ function parse(d) {
     return {
         year: d.year,
         product: d.product,
+        sub_product: d.sub_product,
         color: d.color,
-        value: +d.value
+        value: +d.value,
+        innovation: +d.innovation
     }
 }
