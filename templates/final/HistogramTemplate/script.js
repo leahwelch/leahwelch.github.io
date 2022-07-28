@@ -45,7 +45,7 @@ d3.csv("./data/gapminder.csv", parse).then(function (data) {
     let xAxis = svg.append("g")
         .attr("class", "axis")
         .attr("transform", `translate(0,${height - margin.bottom})`)
-        .call(d3.axisBottom().scale(xScale).tickFormat(d3.format("Y")));
+        .call(d3.axisBottom().scale(xScale).tickFormat(d3.format("$.2s")));
 
     let yAxis = svg.append("g")
         .attr("class", "axis")
@@ -56,7 +56,14 @@ d3.csv("./data/gapminder.csv", parse).then(function (data) {
         .attr("class", "axisLabel")
         .attr("x", width / 2)
         .attr("y", height - margin.bottom / 2)
-        .text("GDP Per Capita, 1957");
+        .text("GDP Per Capita");
+
+    const yAxisLabel = svg.append("text")
+        .attr("class", "axisLabel")
+        .attr("transform", "rotate(-90)")
+        .attr("x", -height / 2)
+        .attr("y", margin.left / 2)
+        .text("Count");
 
 });
 

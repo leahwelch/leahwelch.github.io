@@ -24,13 +24,13 @@ d3.csv("./data/gapminder.csv", parse).then(function (data) {
 
     //yScale is a linear scale with a minimum value of 0 and a maximum bsed on the population maximum
     const yScale = d3.scaleLinear()
-        .domain([0, d3.max(filtered_data, d => d.pop)])
+        .domain([0, d3.max(filtered_data, d => d.gdpPercap)])
         .range([height - margin.bottom, margin.top]);
 
     //set up the x and y values of your line
     const line = d3.line()
         .x(d => xScale(d.year))
-        .y(d => yScale(d.pop))
+        .y(d => yScale(d.gdpPercap))
 
     //draw the path
     const path = svg.append("path")
@@ -50,7 +50,7 @@ d3.csv("./data/gapminder.csv", parse).then(function (data) {
         .attr("transform", `translate(${margin.left},0)`)
         .call(d3.axisLeft()
             .scale(yScale)
-            .tickFormat(d3.format(".2s"))); //use d3.format to customize your axis tick format
+            .tickFormat(d3.format("$.2s"))); //use d3.format to customize your axis tick format
 
 
     const xAxisLabel = svg.append("text")
@@ -64,7 +64,7 @@ d3.csv("./data/gapminder.csv", parse).then(function (data) {
         .attr("transform", "rotate(-90)")
         .attr("x", -height / 2)
         .attr("y", margin.left / 2)
-        .text("Population");
+        .text("GDP Per Capita");
 
 });
 
