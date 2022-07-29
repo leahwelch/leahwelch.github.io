@@ -45,14 +45,14 @@ const promises = [
 ];
 
 Promise.all(promises).then(function (geoData) {
-  const xMin = -80.10000;
-  const xMax = -79.94796;
-  const yMin = 40.38783;
-  const yMax = 40.50548;
-  // const xMin = -79.98929;
-  // const xMax = -79.96796;
-  // const yMin = 40.42783;
-  // const yMax = 40.44048;
+  // const xMin = -80.10000;
+  // const xMax = -79.94796;
+  // const yMin = 40.38783;
+  // const yMax = 40.50548;
+  const xMin = -79.98929;
+  const xMax = -79.96796;
+  const yMin = 40.42783;
+  const yMax = 40.44048;
 
   let filtered = geoData[0].filter(function (d) {
     return d.geometry[0] > xMin && d.geometry[0] < xMax && d.geometry[1] > yMin && d.geometry[1] < yMax;
@@ -76,7 +76,7 @@ Promise.all(promises).then(function (geoData) {
   updateFilters();
 
   let dots = svg
-    .selectAll("circle")
+    .selectAll("circle") //revisit this, don't need to select all every time
     .data(filtered)
     .enter()
     .append("circle")
