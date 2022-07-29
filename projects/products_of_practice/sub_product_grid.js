@@ -124,7 +124,15 @@ d3.csv("./data/sub_products.csv", parse).then(function (data) {
             .transition()
             .duration(500)
             .attr("x", function (p) { return xScale(p.x); })
-            .attr("width", function(p) { return xScale.bandwidth() * p.innovation} )
+            // .attr("width", function(p) { return xScale.bandwidth() * p.innovation} )
+            .attr("width", function(p) {
+                if(p.innovation < 0.5) {
+                    return xScale.bandwidth() * 0.4;
+                } else {
+                    return xScale.bandwidth();
+                }
+                
+            } )
             .attr("height", yScale.bandwidth())
             .attr("opacity", 1)
             .attr("fill", p => p.color)
