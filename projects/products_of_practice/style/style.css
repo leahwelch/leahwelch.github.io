@@ -65,6 +65,7 @@ button.active {
 
 #chart {
   /* height: 100%; */
+  background-color: black;
   height: 85vh;
   width: 100%;
   grid-area: chart;
