@@ -29,7 +29,7 @@ const modernBtn = d3.select("#modern");
 const contemporaryBtn = d3.select("#contemporary");
 
 
-d3.csv("./data/sub_products_JL.csv", parse).then(function (data) {
+d3.csv("./data/all_dimensions.csv", parse).then(function (data) {
     // data.sort((a,b) => a.value - b.value)
     console.log(data)
 
@@ -48,7 +48,8 @@ d3.csv("./data/sub_products_JL.csv", parse).then(function (data) {
                     period: d.key,
                     id: d.values[i].sub_product,
                     color: d.values[i].color,
-                    innovation: d.values[i].innovation
+                    innovation: d.values[i].innovation,
+                    wax_wane: d.values[i].wax_wane
                 })
             }
         }
@@ -74,7 +75,8 @@ d3.csv("./data/sub_products_JL.csv", parse).then(function (data) {
                     id: dataset[j].id,
                     color: dataset[j].color,
                     y: m,
-                    innovation: dataset[j].innovation
+                    innovation: dataset[j].innovation,
+                    wax_wane: dataset[j].wax_wane
                 })
             }
         }
@@ -127,6 +129,7 @@ d3.csv("./data/sub_products_JL.csv", parse).then(function (data) {
 
             .transition()
             .duration(500)
+            .delay(function(p,i){ return 10*i; }) 
             .attr("x", function (p) { return xScale(p.x); })
             .attr("width", function(p) { return xScale.bandwidth() * p.innovation} )
             // .attr("width", function(p) {
@@ -140,6 +143,15 @@ d3.csv("./data/sub_products_JL.csv", parse).then(function (data) {
             .attr("height", yScale.bandwidth())
             .attr("opacity", 1)
             .attr("fill", p => p.color)
+            .attr("transform", (p) => {
+                if(p.wax_wane === "X") {
+                    return "skewX(-20)";
+                } else {
+                    return "skewX(20)";
+                }
+            }
+            )
+            
 
 
         bars.exit()
@@ -177,6 +189,7 @@ function parse(d) {
         sub_product: d.sub_product,
         color: d.color,
         value: +d.sub_prod_value,
-        innovation: +d.innovation
+        innovation: +d.innovation,
+        wax_wane: d.wax_wane
     }
 }
