@@ -53,3 +53,18 @@ h2 {
   visibility: hidden;
 }
 
+.slider text {
+  opacity: 0;
+}
+
+.axis text {
+  opacity: 1;
+  font-size: 9pt;
+  fill: black;
+}
+
+.tick line {
+  opacity: 0;
+}
+
+
