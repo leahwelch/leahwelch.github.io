@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="./style/style.css">
-        <script src="https://d3js.org/d3.v5.min.js"></script>
-        <script src="https://d3js.org/d3-array.v2.min.js"></script>
-        <!--extra js library to handle some special data wrangling for the stacked layout-->
-        <script src="./arquero.js"></script>
-    </head>
-    <body>
-    
-        <div id="container">
-            <div id="chart"></div>
-            <div id="legend"></div>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="./style/style.css">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://d3js.org/d3-array.v2.min.js"></script>
+    <script src="https://unpkg.com/d3-simple-slider"></script>
+    <!--extra js library to handle some special data wrangling for the stacked layout-->
+    <script src="./arquero.js"></script>
+</head>
+
+<body>
+
+    <div id="container">
+        <div id="slider_result">
+            <p id="value-step"></p>
         </div>
-        
-        <script src="./script.js"></script>
-    </body>
+        <div id="chart"></div>
+    </div>
+
+    <div id="slider">
+
+        <div id="slider_container">
+            <div id="slider-step"></div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
 </html>

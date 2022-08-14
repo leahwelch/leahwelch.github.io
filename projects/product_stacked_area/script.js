@@ -1,10 +1,7 @@
 /* defining variables for the width and heigth of the SVG */
 const width = document.querySelector("#chart").clientWidth;
 const height = document.querySelector("#chart").clientHeight;
-const margin = { top: 20, left: 700, right: 700, bottom: 20 };
-
-const legendWidth = document.querySelector("#legend").clientWidth;
-const legendHeight = document.querySelector("#legend").clientHeight;
+const margin = { top: 100, left: 50, right: 1250, bottom: 100 };
 
 /*creating the actual SVG */
 const svg = d3.select("#chart")
@@ -12,26 +9,21 @@ const svg = d3.select("#chart")
     .attr("width", width)
     .attr("height", height);
 
-const legend = d3.select("#legend")
-    .append("svg")
-    .attr("width", legendWidth)
-    .attr("height", legendHeight);
-
 // Function to offset each layer by the maximum of the previous layer
 function offset(series, order) {
     if (!((n = series.length) > 1)) return;
     // Standard series
     for (var i = 1, s0, s1 = series[order[0]], n, m = s1.length; i < n; ++i) {
-      (s0 = s1), (s1 = series[order[i]]);
-      let base = d3.max(s0, d => d[1]); // here is where you calculate the maximum of the previous layer
-      for (var j = 0; j < m; ++j) {
-        // Set the height based on the data values, shifted up by the previous layer
-        let diff = s1[j][1] - s1[j][0];
-        s1[j][0] = base + 4;
-        s1[j][1] = base + diff + 4;
-      }
+        (s0 = s1), (s1 = series[order[i]]);
+        let base = d3.max(s0, d => d[1]); // here is where you calculate the maximum of the previous layer
+        for (var j = 0; j < m; ++j) {
+            // Set the height based on the data values, shifted up by the previous layer
+            let diff = s1[j][1] - s1[j][0];
+            s1[j][0] = base + 4;
+            s1[j][1] = base + diff + 4;
+        }
     }
-  }
+}
 
 // d3.csv("./data/gapminder.csv", parse).then(function (data) {
 d3.csv("./data/products_rise_run.csv", parseProducts).then(function (data) {
@@ -64,15 +56,16 @@ d3.csv("./data/products_rise_run.csv", parseProducts).then(function (data) {
 
     //yScale is a linear scale with a minimum value of 0 and a maximum bsed on the total population maximum
     const yScale = d3.scaleLinear()
-    .domain([0, d3.max(stackedData, d => d3.max(d, d => d[1]))])
+        .domain([0, d3.max(stackedData, d => d3.max(d, d => d[1]))])
         // .domain([0, d3.max(data, d => d["model"] + d["drawing"] + d["code"] + d["image"] + d["text"] + d["profession"] + d["building"])])
-        .range([height - margin.bottom, margin.top]);
+        .range([height - margin.bottom - 10, margin.top]);
 
     //draw the areas
-    svg.selectAll("path")
+    svg.selectAll(".path")
         .data(stackedData)
         .enter()
         .append("path")
+        .attr("class", "path")
         .attr("fill", d => colorScale(d.key))
         // .attr("stroke", "#ffffff")
         .attr("d", d3.area()
@@ -97,27 +90,54 @@ d3.csv("./data/products_rise_run.csv", parseProducts).then(function (data) {
     //     .attr("y", height - margin.bottom / 3)
     //     .text("Year");
 
-    //draw the legend
-    const legendRects = legend.selectAll("rect")
-        .data(keys)
-        .enter()
-        .append("rect")
-        .attr("x", 0)
-        .attr("y", (d, i) => i * 30)
-        .attr("width", 20)
-        .attr("height", 20)
-        .attr("fill", d => colorScale(d))
+    // //draw the legend
+    // const legendRects = legend.selectAll("rect")
+    //     .data(keys)
+    //     .enter()
+    //     .append("rect")
+    //     .attr("x", 0)
+    //     .attr("y", (d, i) => i * 30)
+    //     .attr("width", 20)
+    //     .attr("height", 20)
+    //     .attr("fill", d => colorScale(d))
 
-    const legendLabels = legend.selectAll("text")
-        .data(keys)
-        .enter()
-        .append("text")
-        .attr("class", "legendLabel")
-        .attr("x", 27)
-        .attr("y", (d, i) => i * 30 + 15)
-        .text(d => d)
+    // const legendLabels = legend.selectAll("text")
+    //     .data(keys)
+    //     .enter()
+    //     .append("text")
+    //     .attr("class", "legendLabel")
+    //     .attr("x", 27)
+    //     .attr("y", (d, i) => i * 30 + 15)
+    //     .text(d => d)
 
 });
+
+//SLIDER
+
+var dataTime = d3.range(0, 6).map(function (d) {
+    return new Date(1995 + d, 10, 3);
+});
+
+var sliderTime = d3
+    .sliderBottom()
+    .min(d3.min(dataTime))
+    .max(d3.max(dataTime))
+    .step(1000 * 60 * 60 * 24 * 365)
+    .width(width - margin.left - margin.right)
+    .tickFormat(d3.timeFormat('%Y'))
+    .tickValues(dataTime)
+    .default(new Date(1998, 10, 3))
+    .on('onchange', val => {
+        d3.select('p#value-step').text(d3.timeFormat('%Y')(val));
+    });
+
+var gTime = svg
+    .append('g')
+    .attr("transform", `translate(${margin.left},${height - margin.bottom})`);
+
+gTime.call(sliderTime);
+
+d3.select('p#value-step').text(d3.timeFormat('%Y')(sliderTime.value()));
 
 //get the data in the right format
 function parse(d) {
