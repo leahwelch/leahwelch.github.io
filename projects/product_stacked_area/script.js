@@ -114,27 +114,49 @@ d3.csv("./data/products_rise_run.csv", parseProducts).then(function (data) {
 
 //SLIDER
 
-var sliderData = [1100, 1500, 1700, 1900, 1950, 2020];
+var sliderData = [{
+    year: 1100,
+    name: "Medieval Europe"
+},{
+    year: 1500,
+    name: "Renaissance"
+},{
+    year: 1700,
+    name: "French Revolution"
+},{
+    year: 1900,
+    name: "Industrial Revolution"
+},{
+    year: 1950,
+    name: "Modern"
+},{
+    year: 2020,
+    name: "Post-Modern"
+},
+    ];
+
+    d3.select('p#value-step').text("Medieval Europe")
 
 var sliderStep = d3
     .sliderBottom()
-    // .domain(["1100", "1500", "1700", "1900", "1950", "2020"])
     .min(1100)
     .max(2020)
     .width(width - margin.left - margin.right)
-    // .tickFormat(d3.format('.2%'))
     .tickFormat(d3.format("d"))
     .ticks(6)
-    // .step((20))
     .marks([1100, 1500, 1700, 1900, 1950, 2020])
     .tickValues([1100, 1500, 1700, 1900, 1950, 2020])
     .displayValue([1100, 1500, 1700, 1900, 1950, 2020])
-    // .silentValue([1120,1480])
     .default(1100)
-    .on('onchange', val => {
-        d3.select('p#value-step').text((val));
+    .on('onchange', (val) => {
+        d3.select('p#value-step').text((function() {
+            for(let i = 0; i < sliderData.length; i++) {
+                if(val === sliderData[i].year) {
+                    return sliderData[i].name;
+                }
+            }
+        }));
     });
-
 
 
 var gStep = svg.append('g')
@@ -142,11 +164,7 @@ var gStep = svg.append('g')
 
 gStep.call(sliderStep);
 gStep.selectAll(".tick text").attr("transform", function (d) { return ("translate(25,25)rotate(90)") })
-// gStep.selectAll(".parameter-value text")
-//     .attr("transform", function (d) { return ("translate(35,20)rotate(60)") })
-//     .style("font-size", "9pt")
 
-d3.select('p#value-step').text((sliderStep.value()))
 
 
 //get the data in the right format
