@@ -1,7 +1,7 @@
 /* defining variables for the width and heigth of the SVG */
 const width = document.querySelector("#chart").clientWidth;
 const height = document.querySelector("#chart").clientHeight;
-const margin = { top: 100, left: 50, right: 1250, bottom: 100 };
+const margin = { top: 20, left: 50, right: 50, bottom: 50 };
 
 /*creating the actual SVG */
 const svg = d3.select("#chart")
@@ -78,64 +78,51 @@ d3.csv("./data/products_rise_run.csv", parseProducts).then(function (data) {
             // .curve(d3.curveBasis)
         )
 
-    // //draw the x and y axis
-    // const xAxis = svg.append("g")
-    //     .attr("class", "axis")
-    //     .attr("transform", `translate(0,${height - margin.bottom})`)
-    //     .call(d3.axisBottom().scale(xScale).tickFormat(d3.format("Y")));
+    svg.selectAll(".slider_indicator")
+        .data(stackedData)
+        .enter()
+        .append("line")
+        .attr("class", "slider_indicator")
+        .attr('x1', () => xScale(1100))
+        .attr('y1', margin.top)
+        .attr('x2', () => xScale(1100))
+        .attr('y2', height - margin.bottom - 8)
+        .attr('stroke', 'black');
 
-    // const xAxisLabel = svg.append("text")
-    //     .attr("class", "axisLabel")
-    //     .attr("x", width / 2)
-    //     .attr("y", height - margin.bottom / 3)
-    //     .text("Year");
+    svg.selectAll("circle")
+        .data(stackedData)
+        .enter()
+        .append("circle")
+        .attr('cx', () => xScale(1100))
+        .attr('cy', d => yScale(d[0][1]))
+        .attr("r", 4)
+        .attr('fill', 'black')
+        .attr("stroke", "white")
 
-    // //draw the legend
-    // const legendRects = legend.selectAll("rect")
-    //     .data(keys)
-    //     .enter()
-    //     .append("rect")
-    //     .attr("x", 0)
-    //     .attr("y", (d, i) => i * 30)
-    //     .attr("width", 20)
-    //     .attr("height", 20)
-    //     .attr("fill", d => colorScale(d))
-
-    // const legendLabels = legend.selectAll("text")
-    //     .data(keys)
-    //     .enter()
-    //     .append("text")
-    //     .attr("class", "legendLabel")
-    //     .attr("x", 27)
-    //     .attr("y", (d, i) => i * 30 + 15)
-    //     .text(d => d)
-
-});
-
-//SLIDER
+    //SLIDER
 
 var sliderData = [{
     year: 1100,
-    name: "Medieval Europe"
-},{
+    name: "Ancient & Medieval Europe"
+}, {
     year: 1500,
-    name: "Renaissance"
-},{
+    name: "Italian Renaissance"
+}, {
     year: 1700,
-    name: "French Revolution"
-},{
+    name: "French Revolution – Beaux Arts"
+}, {
     year: 1900,
-    name: "Industrial Revolution"
-},{
+    name: "Industrial Revolution – Garden City"
+}, {
     year: 1950,
-    name: "Modern"
-},{
+    name: "American Post-War – Information Age"
+}, {
     year: 2020,
-    name: "Post-Modern"
+    name: "Post-Digital Age"
 },
-    ];
+];
 
-    d3.select('p#value-step').text("Medieval Europe")
+d3.select('p#value-step').text("Ancient & Medieval Europe")
 
 var sliderStep = d3
     .sliderBottom()
@@ -148,14 +135,35 @@ var sliderStep = d3
     .tickValues([1100, 1500, 1700, 1900, 1950, 2020])
     .displayValue([1100, 1500, 1700, 1900, 1950, 2020])
     .default(1100)
+    .handle(
+        d3
+            .symbol()
+            .type(d3.symbolCircle)
+            .size(200)()
+    )
     .on('onchange', (val) => {
-        d3.select('p#value-step').text((function() {
-            for(let i = 0; i < sliderData.length; i++) {
-                if(val === sliderData[i].year) {
+        d3.select('p#value-step').text((function () {
+            for (let i = 0; i < sliderData.length; i++) {
+                if (val === sliderData[i].year) {
                     return sliderData[i].name;
                 }
             }
         }));
+        d3.selectAll(".slider_indicator")
+            // .transition()
+            .attr("x1", () => xScale(val))
+            .attr("x2", () => xScale(val))
+        d3.selectAll("circle")
+            .attr('cx', () => xScale(val))
+            .attr('cy', (d) => {
+                for (let i = 0; i < sliderData.length; i++) {
+                    if (val === sliderData[i].year) {
+                        return yScale(d[i][1]);
+                    }
+                }
+            })
+            
+            
     });
 
 
@@ -163,7 +171,13 @@ var gStep = svg.append('g')
     .attr("transform", `translate(${margin.left},${height - margin.bottom})`);
 
 gStep.call(sliderStep);
-gStep.selectAll(".tick text").attr("transform", function (d) { return ("translate(25,25)rotate(90)") })
+gStep.selectAll(".tick text").attr("transform", function (d) { return ("translate(24,25)rotate(90)") })
+
+});
+
+
+
+
 
 
 
