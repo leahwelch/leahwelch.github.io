@@ -7,6 +7,9 @@ html, body {
   padding: 0px;
   background-color: black;
 }
+h3 {
+  margin: 5px 0px;
+}
 
 p{
   margin: 10px 0px 0px 0px;
@@ -108,15 +111,26 @@ p{
   position: absolute; 
   /*in absolutely pixel positions relative to the container in which it is located*/
   left: 30%;
-  top: 30%;
+  top: 40%;
   visibility: hidden;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 10pt;
+  width: 200px;
   color: white;
-  background-color:rgba(0,0,0,100);
-  padding: 8px;
+  background-color:black;
+  padding: 15px;
   pointer-events: none; /*tells the browser to ignore interactions with the element*/
   text-transform: capitalize;
+  border: 1px solid white;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+        "colors tooltipText"
+}
+
+.tooltipText {
+  grid-area: tooltipText;
 }
 
 
