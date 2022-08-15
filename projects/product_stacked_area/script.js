@@ -1,7 +1,7 @@
 /* defining variables for the width and heigth of the SVG */
 const width = document.querySelector("#stackedArea").clientWidth;
 const height = document.querySelector("#stackedArea").clientHeight;
-const margin = { top: 20, left: 50, right: 50, bottom: 50 };
+const margin = { top: 20, left: 50, right: 50, bottom: 70 };
 
 /*creating the actual SVG */
 const context = d3.select("#stackedArea")
@@ -26,6 +26,15 @@ const legend = d3.select("#legend")
     .append("svg")
     .attr("width", legendWidth - focusMargin.left)
     .attr("height", legendHeight);
+
+
+/* filter subset of data, grabbing only the rows where the country = China or the US */
+const keys = ["model", "drawing", "code", "image", "text", "profession", "building"]
+
+//set out colors based on our list of keys
+const colorScale = d3.scaleOrdinal()
+    .domain(keys)
+    .range(["#03ac4b", "#de2528", "#00add7", "#c474af", "#425ba8", "#f1783b", "#f2c918"])
 
 // Function to offset each layer by the maximum of the previous layer
 function offset(series, order) {
@@ -62,6 +71,7 @@ Promise.all(promises).then(function (data) {
         for (let i = 0; i < d.values.length; i++) {
             for (let j = 0; j < d.values[i].value; j++) {
                 expanded.push({
+                    product: d.values[i].product,
                     period: +d.key,
                     id: d.values[i].sub_product,
                     color: d.values[i].color,
@@ -71,6 +81,7 @@ Promise.all(promises).then(function (data) {
             }
         }
     })
+    console.log(expanded)
 
     let filtered = expanded.filter(d => d.period == 1100)
 
@@ -82,6 +93,7 @@ Promise.all(promises).then(function (data) {
             for (let j = m; j < dataset.length; j += gridHeight) {
                 expandedData.push({
                     id: dataset[j].id,
+                    product: dataset[j].product,
                     color: dataset[j].color,
                     y: m,
                     innovation: dataset[j].innovation,
@@ -89,23 +101,22 @@ Promise.all(promises).then(function (data) {
                 })
             }
         }
+        console.log(expandedData)
 
-        let idNest = d3.nest()
+        let legendNest = d3.nest()
+            .key(d => d.product)
             .key(d => d.id)
             .rollup()
             .entries(expandedData)
-        let colorNest = d3.nest()
-            .key(d => d.color)
-            .rollup()
-            .entries(expandedData)
+        console.log(legendNest)
 
-        let legendData = [];
-        for (let i = 0; i < idNest.length; i++) {
-            legendData.push({
-                id: idNest[i].key,
-                color: colorNest[i].key
-            })
-        }
+        // let legendData = [];
+        // for (let i = 0; i < idNest.length; i++) {
+        //     legendData.push({
+        //         id: idNest[i].key,
+        //         color: colorNest[i].key
+        //     })
+        // }
 
         let nested = d3.nest()
             .key(d => d.y)
@@ -181,20 +192,47 @@ Promise.all(promises).then(function (data) {
             .transition()
             .remove();
 
-        //draw the legend
-        let legendRects = legend.selectAll("rect")
-            .data(legendData)
+        //define the tooltip
+        let tooltip = d3.select("#chart")
+            .append("div")
+            .attr("class", "tooltip");
+
+
+        let legendRects = legend.selectAll("rect").data(legendNest)
         legendRects
             .enter()
             .append("rect")
             .attr("y", 10)
-            .attr("x", (d, i) => legendMargin.left + i * 100)
-            .attr("width", 50)
-            .attr("height", 5)
+            .attr("x", (d, i) => legendMargin.left + i * 130)
+            .attr("width", 120)
+            .attr("height", 35)
             .merge(legendRects)
             .transition()
             .duration(500)
-            .attr("fill", d => d.color)
+            .attr("stroke", d => colorScale(d.key))
+            .attr("stroke-width", 2)
+            .attr("fill", "black")
+        legend.selectAll("rect").on("mouseover", function (d) {
+            d3.select(this).attr("fill", d => colorScale(d.key))
+            d3.selectAll(".barGroup").selectAll("rect")
+                .transition()
+                .duration(250)
+                .attr("opacity", (p) => {
+                    if (p.product === d.key) {
+                        return 1.0;
+                    } else {
+                        return 0.3;
+                    }
+                })
+                //make the tooltip visible
+                tooltip.style("visibility", "visible")
+                    .html(d.key);
+        }).on("mouseout", function (d) {
+            d3.selectAll(".barGroup").selectAll("rect")
+                .attr("opacity", 1)
+            d3.select(this).attr("fill", "black")
+            tooltip.style("visibility", "hidden")
+        })
 
         legendRects.exit()
             .transition()
@@ -202,36 +240,30 @@ Promise.all(promises).then(function (data) {
             .remove()
 
         let legendLabels = legend.selectAll("text")
-            .data(legendData)
+            .data(legendNest)
 
         legendLabels
             .enter()
             .append("text")
             .attr("class", "legendLabel")
-            .attr("y", 30)
-            .attr("x", (d, i) => legendMargin.left + i * 100)
-            .text(d => d.id)
+            .attr("y", 32)
+            .attr("x", (d, i) => legendMargin.left + 10 + i * 130)
             .merge(legendLabels)
             .transition()
             .duration(500)
-            .text(d => d.id)
+            .text(d => d.key)
             .attr("fill", "white")
 
         legendLabels.exit()
             .transition()
             .duration(500)
             .remove()
+
+
     }
 
     showViz(filtered);
 
-    /* filter subset of data, grabbing only the rows where the country = China or the US */
-    const keys = ["model", "drawing", "code", "image", "text", "profession", "building"]
-
-    //set out colors based on our list of keys
-    const colorScale = d3.scaleOrdinal()
-        .domain(keys)
-        .range(["#03ac4b", "#de2528", "#00add7", "#c474af", "#425ba8", "#f1783b", "#f2c918"])
 
     //generate the dataset we'll feed into our chart
     const stackedData = d3.stack()

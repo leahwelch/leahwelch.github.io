@@ -25,7 +25,7 @@ p{
   height: 98vh;
   display: grid;
   grid-template-columns: 1.25fr 5fr;
-  grid-template-rows: 0.5fr 15fr 1fr;
+  grid-template-rows: 0.25fr 15fr 1.5fr;
   grid-template-areas:
         "slider_result spacer"
         "stackedArea chart"
@@ -49,7 +49,7 @@ p{
 #slider_result {
   grid-area: slider_result;
   margin: 0px 20px;
-  height: 10vh;
+  height: 8vh;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 18pt;
   color: white;
@@ -68,8 +68,9 @@ p{
 
 .legendLabel{
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 9pt;
-  color: white;
+  font-size: 12pt;
+  text-transform: capitalize;
+  /* font-weight: bold; */
 
 }
 
@@ -102,5 +103,20 @@ p{
   stroke: white;
   fill: black;
 }
+
+.tooltip {
+  position: absolute; 
+  /*in absolutely pixel positions relative to the container in which it is located*/
+  left: 30%;
+  top: 30%;
+  visibility: hidden;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10pt;
+  color: white;
+  background-color:rgba(0,0,0,100);
+  padding: 8px;
+  pointer-events: none; /*tells the browser to ignore interactions with the element*/
+}
+
 
 
