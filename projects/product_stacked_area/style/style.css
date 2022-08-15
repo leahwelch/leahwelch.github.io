@@ -116,6 +116,7 @@ p{
   background-color:rgba(0,0,0,100);
   padding: 8px;
   pointer-events: none; /*tells the browser to ignore interactions with the element*/
+  text-transform: capitalize;
 }
 
 

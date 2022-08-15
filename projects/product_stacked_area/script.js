@@ -225,8 +225,15 @@ Promise.all(promises).then(function (data) {
                     }
                 })
                 //make the tooltip visible
+                let filteredKeys = []
+                let filteredLegendNest = legendNest.filter(p => p.key === d.key)
+                for(let i = 0; i<filteredLegendNest[0].values.length; i++) {
+                    filteredKeys.push(filteredLegendNest[0].values[i].key + "<br>")
+                }
+                let tooltipText = filteredKeys.join(' ').replace(/_/g, " ")
+                console.log(filteredKeys)
                 tooltip.style("visibility", "visible")
-                    .html(d.key);
+                    .html(d.key + "<br>" + tooltipText);
         }).on("mouseout", function (d) {
             d3.selectAll(".barGroup").selectAll("rect")
                 .attr("opacity", 1)
