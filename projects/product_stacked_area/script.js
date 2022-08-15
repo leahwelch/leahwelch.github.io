@@ -18,6 +18,15 @@ const svg = d3.select("#chart")
     .attr("width", focusWidth - focusMargin.left - focusMargin.right)
     .attr("height", focusHeight - focusMargin.top - focusMargin.bottom);
 
+const legendWidth = document.querySelector("#legend").clientWidth;
+const legendHeight = document.querySelector("#legend").clientHeight;
+const legendMargin = { top: 0, left: 10, right: 0, bottom: 0 };
+
+const legend = d3.select("#legend")
+    .append("svg")
+    .attr("width", legendWidth - focusMargin.left)
+    .attr("height", legendHeight);
+
 // Function to offset each layer by the maximum of the previous layer
 function offset(series, order) {
     if (!((n = series.length) > 1)) return;
@@ -35,11 +44,11 @@ function offset(series, order) {
 }
 
 const promises = [
-    d3.csv("./data/products_rise_run.csv", parseProducts), 
-    d3.csv("./data/all_dimensions.csv", parse) 
+    d3.csv("./data/products_rise_run.csv", parseProducts),
+    d3.csv("./data/all_dimensions.csv", parse)
 ];
 
-Promise.all(promises).then(function(data) {
+Promise.all(promises).then(function (data) {
 
     let nested = d3.nest()
         .key(d => d.year)
@@ -65,13 +74,6 @@ Promise.all(promises).then(function(data) {
 
     let filtered = expanded.filter(d => d.period == 1100)
 
-    // let renData = expanded.filter(d => d.period === "1500")
-    // let contemporaryData = expanded.filter(d => d.period === "2020")
-    // let medievalData = expanded.filter(d => d.period === "1100")
-    // let frenchData = expanded.filter(d => d.period === "1700")
-    // let industrialData = expanded.filter(d => d.period === "1900")
-    // let modernData = expanded.filter(d => d.period === "1950")
-
     const gridHeight = 40;
 
     function showViz(dataset) {
@@ -87,6 +89,24 @@ Promise.all(promises).then(function(data) {
                 })
             }
         }
+
+        let idNest = d3.nest()
+            .key(d => d.id)
+            .rollup()
+            .entries(expandedData)
+        let colorNest = d3.nest()
+            .key(d => d.color)
+            .rollup()
+            .entries(expandedData)
+
+        let legendData = [];
+        for (let i = 0; i < idNest.length; i++) {
+            legendData.push({
+                id: idNest[i].key,
+                color: colorNest[i].key
+            })
+        }
+
         let nested = d3.nest()
             .key(d => d.y)
             .rollup()
@@ -97,20 +117,18 @@ Promise.all(promises).then(function(data) {
                 d.values[i].x = i;
             }
         })
-        // console.log(nested)
-        
+        console.log(nested)
+
 
         let yScale = d3.scaleBand()
             .domain(d3.map(nested, d => d.key))
-            .range([margin.top, focusHeight-focusMargin.top-focusMargin.bottom])
+            .range([margin.top, focusHeight - focusMargin.top - focusMargin.bottom])
             .padding(0.1)
 
         let xScale = d3.scaleBand()
             .domain(d3.map(nested[0].values, d => d.x))
             .range([focusMargin.left, focusWidth - focusMargin.right - focusMargin.left])
             .padding(0.1)
-
-        //  d3.selectAll().data(nested).attr("transform", (d) => `translate(0,${yScale(d.key)})`)
 
         let grouping = svg.selectAll(".barGroup").data(nested)
 
@@ -129,41 +147,80 @@ Promise.all(promises).then(function(data) {
         bars.enter()
             .append("rect")
             .attr("x", function (p) { return xScale(p.x); })
-            // .attr("width", 10)
-            // .attr("height", 10)
             .attr("opacity", 0)
             .merge(bars)
 
             .transition()
             .duration(500)
-            .delay(function(p,i){ return 10*i; }) 
+            .delay(function (p, i) { return 10 * i; })
             .attr("x", function (p) { return xScale(p.x); })
-            .attr("width", function(p) { return xScale.bandwidth() * p.innovation} )
+            .attr("width", function (p) { return xScale.bandwidth() * p.innovation })
             // .attr("width", function(p) {
             //     if(p.innovation < 0.5) {
             //         return xScale.bandwidth() * 0.4;
             //     } else {
             //         return xScale.bandwidth();
             //     }
-                
+
             // } )
             .attr("height", yScale.bandwidth())
             .attr("opacity", 1)
             .attr("fill", p => p.color)
             .attr("transform", (p) => {
-                if(p.wax_wane === "X") {
+                if (p.wax_wane === "X") {
                     return "skewX(-20)";
                 } else {
                     return "skewX(20)";
                 }
             }
             )
-            
+
 
 
         bars.exit()
             .transition()
             .remove();
+
+        //draw the legend
+        let legendRects = legend.selectAll("rect")
+            .data(legendData)
+        legendRects
+            .enter()
+            .append("rect")
+            .attr("y", 10)
+            .attr("x", (d, i) => legendMargin.left + i * 100)
+            .attr("width", 50)
+            .attr("height", 5)
+            .merge(legendRects)
+            .transition()
+            .duration(500)
+            .attr("fill", d => d.color)
+
+        legendRects.exit()
+            .transition()
+            .duration(500)
+            .remove()
+
+        let legendLabels = legend.selectAll("text")
+            .data(legendData)
+
+        legendLabels
+            .enter()
+            .append("text")
+            .attr("class", "legendLabel")
+            .attr("y", 30)
+            .attr("x", (d, i) => legendMargin.left + i * 100)
+            .text(d => d.id)
+            .merge(legendLabels)
+            .transition()
+            .duration(500)
+            .text(d => d.id)
+            .attr("fill", "white")
+
+        legendLabels.exit()
+            .transition()
+            .duration(500)
+            .remove()
     }
 
     showViz(filtered);
@@ -282,7 +339,7 @@ Promise.all(promises).then(function(data) {
                     }
                 }
             }));
-            filtered = expanded.filter(d=>d.period == val)
+            filtered = expanded.filter(d => d.period == val)
             showViz(filtered)
             d3.selectAll(".slider_indicator")
                 .attr("x1", () => xScale(val))
