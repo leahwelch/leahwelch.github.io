@@ -1,7 +1,7 @@
 /* defining variables for the width and heigth of the SVG */
 const width = document.querySelector("#stackedArea").clientWidth;
 const height = document.querySelector("#stackedArea").clientHeight;
-const margin = { top: 20, left: 50, right: 40, bottom: 70 };
+const margin = { top: 20, left: 50, right: 20, bottom: 70 };
 
 /*creating the actual SVG */
 const context = d3.select("#stackedArea")
