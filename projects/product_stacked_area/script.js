@@ -108,15 +108,6 @@ Promise.all(promises).then(function (data) {
             .key(d => d.id)
             .rollup()
             .entries(expandedData)
-        console.log(legendNest)
-
-        // let legendData = [];
-        // for (let i = 0; i < idNest.length; i++) {
-        //     legendData.push({
-        //         id: idNest[i].key,
-        //         color: colorNest[i].key
-        //     })
-        // }
 
         let nested = d3.nest()
             .key(d => d.y)
@@ -168,7 +159,7 @@ Promise.all(promises).then(function (data) {
             // .attr("width", function (p) { return xScale.bandwidth() * p.innovation })
             .attr("width", function(p) {
                 if(p.innovation < 0.5) {
-                    return xScale.bandwidth() * 0.4;
+                    return xScale.bandwidth() * 0.3;
                 } else {
                     return xScale.bandwidth();
                 }
@@ -224,17 +215,24 @@ Promise.all(promises).then(function (data) {
                         return 0.3;
                     }
                 })
-                //make the tooltip visible
-                let filteredKeys = []
-                let filteredLegendNest = legendNest.filter(p => p.key === d.key)
-                for(let i = 0; i<filteredLegendNest[0].values.length; i++) {
-                    filteredKeys.push(filteredLegendNest[0].values[i].key + "<br>")
-                }
-                let tooltipText = filteredKeys.join(' ').replace(/_/g, " ")
-                console.log(filteredKeys)
-                tooltip.style("visibility", "visible")
-                    .html("<div class=tooltipText>" + "<h3>" + d.key + "</h3>" + "<br>" + tooltipText + "</div>" + "<div class=colors>" + "</div>");
-                tooltip.selectAll(".colors").data(filteredLegendNest[0].values).append("div").attr("id", d=>d.key)
+            //make the tooltip visible
+            let filteredKeys = []
+            let filteredLegendNest = legendNest.filter(p => p.key === d.key)
+            for (let i = 0; i < filteredLegendNest[0].values.length; i++) {
+                filteredKeys.push(filteredLegendNest[0].values[i].key + "<br>")
+            }
+            let tooltipText = filteredKeys.join(' ').replace(/_/g, " ")
+            console.log(filteredKeys)
+            tooltip.style("visibility", "visible")
+                .html("<div class=tooltipText>" + "<h3>" + d.key + "</h3>" + "<br>" + tooltipText + "</div>" + "<div class=colors>" + "</div>");
+            tooltip.selectAll(".colors").selectAll(".uniqueDiv")
+                .data(filteredLegendNest[0].values)
+                .enter()
+                .append("div")
+                .attr("class", "uniqueDiv")
+                // .style("fill", )
+                .attr("id", d => d.key)
+                .attr("top", (d, i) => i * 15)
         }).on("mouseout", function (d) {
             d3.selectAll(".barGroup").selectAll("rect")
                 .attr("opacity", 1)
@@ -308,6 +306,9 @@ Promise.all(promises).then(function (data) {
             .y0(d => yScale(d[1]))
         )
 
+    
+        
+
     context.selectAll(".slider_indicator")
         .data(stackedData)
         .enter()
@@ -329,6 +330,18 @@ Promise.all(promises).then(function (data) {
         .attr('fill', 'white')
         .attr("stroke", "black")
 
+    // context.selectAll(".stackLabels")
+    //     .data(stackedData)
+    //     .enter()
+    //     .append("text")
+    //     .attr("class", "stackLabels")
+    //     .attr("x", 300)
+    //     .attr("y", 200)
+    //     // .attr("y", (d,i) => i * 200)
+    //     // .attr("y", d => yScale(d[0][1]))
+    //     .attr("text", d => d.key)
+    //     .attr("transform", function (d) { return ("translate(24,25)rotate(90)") })
+
     //SLIDER
 
     var sliderData = [{
@@ -339,13 +352,13 @@ Promise.all(promises).then(function (data) {
         name: "Italian Renaissance"
     }, {
         year: 1700,
-        name: "French Revolution – Beaux Arts"
+        name: "French Revolution | Beaux Arts"
     }, {
         year: 1900,
-        name: "Industrial Revolution – Garden City"
+        name: "Industrial Revolution | Garden City"
     }, {
         year: 1950,
-        name: "American Post-War – Information Age"
+        name: "American Post-War | Information Age"
     }, {
         year: 2020,
         name: "Post-Digital Age"
