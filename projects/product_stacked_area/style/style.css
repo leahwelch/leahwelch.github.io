@@ -52,7 +52,7 @@ p{
 
 #slider_result {
   grid-area: slider_result;
-  padding: 20px 40px 0px 45px;
+  padding: 10px 40px 0px 45px;
   height: 8vh;
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 12pt;
