@@ -8,21 +8,24 @@ const svg = d3.select("#chart")
     .attr("width", width)
     .attr("height", height);
 
-d3.csv("./data/gapminder.csv", parse).then(function (data) {
+d3.csv("./data/home_prices.csv", parsePrices).then(function (data) {
+    console.log(data)
 
     /* filter subset of data, grabbing only the rows where the year = 1957 */
-    const filtered = data.filter(d => d.year == 1957);
+    const filtered = data.filter(d => d.medianRecordedSalesPrice != 0 && d.date === "2022-03-01");
+    console.log(filtered)
+    console.log(JSON.stringify(filtered));
 
     //before we create our distribution, we need to set the xScale based on the possible values
     const xScale = d3.scaleLinear()
-        .domain([0, d3.max(filtered, d => d.gdpPercap)])
+        .domain([d3.min(filtered, d => d.priceDiff), d3.max(filtered, d => d.priceDiff)])
         .range([margin.left, width - margin.right])
 
     //we need to create a binned dataset using the d3.histogram() method
     const histogramValues = d3.histogram()
-        .value(d => d.gdpPercap) //sets the distribution based on a dimension of the data - GDP Per Capita
+        .value(d => d.priceDiff) //sets the distribution based on a dimension of the data - GDP Per Capita
         .domain(xScale.domain()) //based on the xScale
-        .thresholds(xScale.ticks(100)) //how many bins
+        .thresholds(xScale.ticks(50)) //how many bins
 
     const bins = histogramValues(filtered)
     console.log(bins)
@@ -74,6 +77,22 @@ function parse(d) {
         year: +d.year,
         lifeExp: +d.lifeExp,
         gdpPercap: +d.gdpPercap
+    }
+}
+
+function parsePrices(d) {
+    return {
+        neighborhood: d.neighborhood,
+        borough: d.borough,
+        date: d.date,
+        medianDaysOnMarket: +d.medianDaysOnMarket,
+        medianAskingPrice: +d.medianAskingPrice,
+        medianRecordedSalesPrice: +d.medianRecordedSalesPrice,
+        priceCutShare: +d.priceCutShare,
+        recordedSalesVolume: +d.recordedSalesVolume,
+        saleListRatio: +d.saleListRatio,
+        totalInventory: +d.totalInventory,
+        priceDiff: +d.medianRecordedSalesPrice - +d.medianAskingPrice
     }
 }
 

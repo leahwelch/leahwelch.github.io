@@ -156,26 +156,26 @@ Promise.all(promises).then(function (data) {
             .duration(500)
             .delay(function (p, i) { return 10 * i; })
             .attr("x", function (p) { return xScale(p.x); })
-            // .attr("width", function (p) { return xScale.bandwidth() * p.innovation })
-            .attr("width", function(p) {
-                if(p.innovation < 0.5) {
-                    return xScale.bandwidth() * 0.3;
-                } else {
-                    return xScale.bandwidth();
-                }
+            .attr("width", function (p) { return xScale.bandwidth() * p.innovation })
+            // .attr("width", function(p) {
+            //     if(p.innovation < 0.5) {
+            //         return xScale.bandwidth() * 0.3;
+            //     } else {
+            //         return xScale.bandwidth();
+            //     }
 
-            } )
+            // } )
             .attr("height", yScale.bandwidth())
             .attr("opacity", 1)
             .attr("fill", p => p.color)
-            // .attr("transform", (p) => {
-            //     if (p.wax_wane === "X") {
-            //         return "skewX(-20)";
-            //     } else {
-            //         return "skewX(20)";
-            //     }
-            // }
-            // )
+            .attr("transform", (p) => {
+                if (p.wax_wane === "X") {
+                    return "skewX(-20)";
+                } else {
+                    return "skewX(20)";
+                }
+            }
+            )
 
 
 

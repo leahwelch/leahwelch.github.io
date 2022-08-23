@@ -1,0 +1,53 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0px;
+  padding: 0px;
+}
+
+
+#chart {
+  width: 100%;
+  height: 90vh;
+  background-color: #f2f2f2;
+}
+
+.axisLabel {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14pt;
+}
+
+.axis {
+  font-size: 9pt;
+}
+
+button {
+  width: 100px;
+  background-color: white;
+  border: 1px solid black;
+  font-size: 10pt;
+  color: black;
+  text-align: center;
+  padding: 10px 10px;
+  margin: 0px;
+}
+
+button:hover {
+  background-color: black;
+  color: white;
+}
+
+button:focus {
+  background-color: black;
+  color: white;
+  outline:0;
+}
+
+button.active {
+  background-color: black;
+  color: white;
+  outline:0;
+}
+
