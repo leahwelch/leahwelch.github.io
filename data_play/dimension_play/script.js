@@ -148,17 +148,44 @@ d3.csv("./data/home_prices.csv", parsePrices).then(function (data) {
     }
 
     function update5() {
-        xScale.domain(d3.extent(filtered, d => d.medianRecordedSalesPrice))
         yScale.domain(d3.extent(filtered, d => d.medianDaysOnMarket))
+        simulation = d3.forceSimulation(filtered)
+            .force("y", d3.forceY((d) => {
+                return yScale(+d["medianDaysOnMarket"])
+            }).strength(0.1))
+            .force("x", d3.forceX((width / 2 - margin.left / 2)).strength(0.1))
+            .force("collide", d3.forceCollide(10.5))
+
+        for (let i = 0; i < filtered.length; i++) {
+            simulation.tick(10);
+        }
         svg.selectAll(".nodes").transition().duration(500)
-            .attr("fill", d => colorScale(d.borough))
+            .attr("fill", "black")
             .attr("opacity", 1)
-            .attr("cx", d => xScale(d.medianRecordedSalesPrice))
-            .attr("cy", d => yScale(d.medianDaysOnMarket))
+            .attr("cx", d => d.x)
+            .attr("cy", d => d.y)
             .attr("r", 10)
     }
 
     function update6() {
+
+        yScale.domain(d3.extent(filtered, d => d.medianDaysOnMarket))
+        simulation = d3.forceSimulation(filtered)
+            .force("y", d3.forceY((d) => {
+                return yScale(+d["medianDaysOnMarket"])
+            }).strength(0.1))
+            .force("x", d3.forceX((width / 2 - margin.left / 2)).strength(0.1))
+            .force('collide', d3.forceCollide(d => rScale(d.recordedSalesVolume) + 0.5))
+
+        for (let i = 0; i < filtered.length; i++) {
+            simulation.tick(10);
+        }
+        svg.selectAll(".nodes").transition().duration(500)
+            .attr("fill", "black")
+            .attr("opacity", 1)
+            .attr("cx", d => d.x)
+            .attr("cy", d => d.y)
+            .attr("r", d=>rScale(d.recordedSalesVolume))
     }
 
     function update7() {
