@@ -205,6 +205,16 @@ Promise.all(promises).then(function (data) {
             .attr("fill", "black")
         legend.selectAll("rect").on("mouseover", function (d) {
             d3.select(this).attr("fill", d => colorScale(d.key))
+            context.selectAll(".path")
+                .transition()
+                .duration(500)
+                .attr("opacity", (p) => {
+                    if (p.key === d.key) {
+                        return 1.0;
+                    } else {
+                        return 0.3;
+                    }
+                })
             d3.selectAll(".barGroup").selectAll("rect")
                 .transition()
                 .duration(250)
@@ -238,6 +248,7 @@ Promise.all(promises).then(function (data) {
                 .attr("opacity", 1)
             d3.select(this).attr("fill", "black")
             tooltip.style("visibility", "hidden")
+            context.selectAll(".path").attr("opacity", 1)
         })
 
         legendRects.exit()
