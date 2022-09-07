@@ -37,6 +37,7 @@ const btn9 = d3.select("#btn9");
 d3.csv("./data/home_prices.csv", parsePrices).then(function (data) {
     console.log(data)
     const filtered = data.filter(d => d.medianRecordedSalesPrice != 0 && d.date === "2022-03-01");
+    const oneBorough = filtered.filter(d => d.borough === "Manhattan");
     console.log(filtered)
     let rScale = d3.scaleSqrt()
         .domain(d3.extent(filtered, d => d.recordedSalesVolume))
@@ -53,7 +54,7 @@ d3.csv("./data/home_prices.csv", parsePrices).then(function (data) {
         .domain(keys)
         .range(["#25CED1", "#6457A6", "#EE2E31", "#F8C648"])
     let nodes = svg.selectAll(".nodes")
-        .data(filtered)
+        .data(oneBorough)
 
     nodes.enter()
         .append("circle")
@@ -108,9 +109,12 @@ d3.csv("./data/home_prices.csv", parsePrices).then(function (data) {
         svg.selectAll(".nodes").transition().duration(500)
             .attr("fill", "black")
             .attr("opacity", 1)
-            .attr("cx", d => d.x)
-            .attr("cy", d => d.y)
+            // .attr("cx", d => d.x)
+            .attr("cx", d=> xScale(d.medianRecordedSalesPrice))
+            .attr("cy", height/2)
+            // .attr("cy", d => d.y)
             .attr("r", 10)
+            .attr("opacity", 0.3)
     }
 
     function update3() {

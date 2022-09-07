@@ -13,26 +13,26 @@ d3.csv("./data/home_prices.csv", parsePrices).then(function (data) {
 
     /* filter subset of data, grabbing only the rows where the year = 1957 */
     const filtered = data.filter(d => d.medianRecordedSalesPrice != 0 && d.date === "2022-03-01");
+    const oneBorough = filtered.filter(d => d.borough === "Bronx")
     console.log(filtered)
-    console.log(JSON.stringify(filtered));
 
     //before we create our distribution, we need to set the xScale based on the possible values
     const xScale = d3.scaleLinear()
-        .domain([d3.min(filtered, d => d.priceDiff), d3.max(filtered, d => d.priceDiff)])
+        .domain([d3.min(filtered, d => d.medianRecordedSalesPrice), d3.max(filtered, d => d.medianRecordedSalesPrice)])
         .range([margin.left, width - margin.right])
 
     //we need to create a binned dataset using the d3.histogram() method
     const histogramValues = d3.histogram()
-        .value(d => d.priceDiff) //sets the distribution based on a dimension of the data - GDP Per Capita
+        .value(d => d.medianRecordedSalesPrice) //sets the distribution based on a dimension of the data - GDP Per Capita
         .domain(xScale.domain()) //based on the xScale
-        .thresholds(xScale.ticks(50)) //how many bins
+        .thresholds(xScale.ticks(10)) //how many bins
 
-    const bins = histogramValues(filtered)
+    const bins = histogramValues(oneBorough)
     console.log(bins)
 
     //our yScale is based off of the new binned dataset - the max value is the bin with the most records
     const yScale = d3.scaleLinear()
-        .domain([0, d3.max(bins, d => d.length)])
+        .domain([0, 20])
         .range([height - margin.bottom, margin.top]);
 
     let bar = svg.selectAll("rect")
