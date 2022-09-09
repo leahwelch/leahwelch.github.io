@@ -13,7 +13,7 @@ d3.csv("./data/ieee_viz.csv", parse).then(function (data) {
     let allKeywords = [];
     for(let i = 0; i < data.length; i++) {
         for(let j = 0; j < data[i].keywords.length; j++) {
-            allKeywords.push({year: data[i].year, word: data[i].keywords[j]})
+            allKeywords.push({year: data[i].year, word: data[i].keywords[j], paper: data[i].conference, title: data[i].title})
         }
     }
     let nested = d3.nest()
@@ -24,15 +24,23 @@ d3.csv("./data/ieee_viz.csv", parse).then(function (data) {
         
     nested.forEach(d => d.key = +d.key)
     nested.sort((a,b) => { return a.key - b.key})
+    nested.forEach((d) => {
+        d.values.sort((a,b) => {return b.values.length - a.values.length});
+    })
     console.log(nested)
+    
+    
 });
 
 
 
 function parse(d) {
     return {
-        keywords: d.AuthorKeywords.toLowerCase().split(", "), //split with multiple delimiters
-        year: +d.Year
+        // keywords: d.AuthorKeywords.toLowerCase().split(/[,\s]+/), //split with multiple delimiters
+        keywords: d.AuthorKeywords.toLowerCase().split(","),
+        year: +d.Year,
+        conference: d.Conference,
+        title: d.Title
     }
 }
 
