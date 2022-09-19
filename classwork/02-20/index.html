@@ -1,50 +1,52 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Loading Data</title>
-        <script src="https://d3js.org/d3.v4.min.js"></script>
-        <style>
-            body {
-                margin: 0px;
-            }
 
-            #x .tick text {
-                fill: green;
-            }
+<head>
+    <meta charset="utf-8" />
+    <title>Loading Data</title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <style>
+        body {
+            margin: 0px;
+        }
 
-            #y .tick text {
-                fill: red;
-            }
+        #x .tick text {
+            fill: green;
+        }
 
-            #scaleRect {
-                stroke: black;
-            }
-        </style>
-    </head>
-    <body>
-        <svg id="chart">
-            <defs>
-                <linearGradient id="colorGradient">
-                </linearGradient>
-            </defs>
-            <g id="shapes"></g>
-            <g id="x"></g>
-            <g id="y"></g>
-            <g id="scale">
-                <rect id="scaleRect" fill="url(#colorGradient)"/>
-                <g id="scaleAxis"></g>
-            </g>
-            <g id="legend"></g>
-        </svg>
-        <script>
-        
+        #y .tick text {
+            fill: red;
+        }
+
+        #scaleRect {
+            stroke: black;
+        }
+    </style>
+</head>
+
+<body>
+    <svg id="chart">
+        <defs>
+            <linearGradient id="colorGradient">
+            </linearGradient>
+        </defs>
+        <g id="shapes"></g>
+        <g id="x"></g>
+        <g id="y"></g>
+        <g id="scale">
+            <rect id="scaleRect" fill="url(#colorGradient)" />
+            <g id="scaleAxis"></g>
+        </g>
+        <g id="legend"></g>
+    </svg>
+    <script>
+
         var width = window.innerWidth;
         var height = window.innerHeight;
         var margin = {
-            top: 20, 
-            right: 150, 
-            bottom: 100, 
+            top: 20,
+            right: 150,
+            bottom: 100,
             left: 50
         };
 
@@ -57,7 +59,7 @@
 
         var scaleWidth = 300;
         var scaleHeight = 20;
-        var scaleX = margin.left + chartWidth/2 - (scaleWidth/2);
+        var scaleX = margin.left + chartWidth / 2 - (scaleWidth / 2);
         var scaleY = margin.top + chartHeight + 40;
 
         var scale = svg.select("#scale")
@@ -66,7 +68,7 @@
         scale.select("#scaleRect")
             .attr("width", scaleWidth)
             .attr("height", scaleHeight);
-        
+
         var legendX = margin.left + chartWidth;
         var legendY = margin.top;
 
@@ -74,7 +76,7 @@
             .attr("transform", "translate(" + legendX + ", " + legendY + ")");
 
         var legendSize = 20;
-        
+
         var realTimeURL = "https://whiteboard.datawheel.us/api/google-analytics/realtime/random";
         var frequency = 1 * 1000; //20 seconds
         var dataMax = 5;
@@ -91,34 +93,36 @@
         var barWidth = x.bandwidth();
 
         function fetchData() {
-            d3.json(realTimeURL, function(error,users) {
-                
+            d3.json(realTimeURL, function (error, users) {
+
                 var dataObject = {
                     users: users,
                     timestamp: new Date()
                 };
 
                 console.log(dataObject);
-                
+
                 data.unshift(dataObject);
                 if (data.length > dataMax) data.pop();
 
-                if(data.length === dataMax) clearInterval(myInterval);
-                
-                var max = d3.max(data, function(d) {
+                if (data.length === dataMax) clearInterval(myInterval);
+
+                var max = d3.max(data, function (d) {
                     return d.users;
                 });
 
                 //returns only the value that is d.users, goes into a new array of the same length
-                var legendData = data.map(function(d) {
+                var legendData = data.map(function (d) {
                     return d.users;
                 });
 
+                console.log(legendData)
+
                 legendData = legendData
-                    .filter(function(d,i) {
+                    .filter(function (d, i) {
                         return legendData.indexOf(d) === i;
                     })
-                    .sort(function(a, b) {
+                    .sort(function (a, b) {
                         return a - b;
                     });
 
@@ -132,10 +136,12 @@
                 svg.select("#colorGradient").selectAll("stop")
                     .data(stops).enter()
                     .append("stop")
-                        .attr("offset", function(d) {
-                        return d * 100 + "%"; })
-                        .attr("stop-color", function(d) {
-                        return barColor(d * max); });
+                    .attr("offset", function (d) {
+                        return d * 100 + "%";
+                    })
+                    .attr("stop-color", function (d) {
+                        return barColor(d * max);
+                    });
 
                 var legendRects = legend.selectAll("rect")
                     .data(legendData);
@@ -144,7 +150,7 @@
 
                 legendRects.merge(legendRectsEnter)
                     .attr("x", 0)
-                    .attr("y", function(d, i) {
+                    .attr("y", function (d, i) {
                         return i * legendSize + i * 10;
                     })
                     .attr("fill", barColor)
@@ -159,10 +165,10 @@
 
                 legendTexts.merge(legendTextsEnter)
                     .attr("x", legendSize + 5)
-                    .attr("y", function(d, i) {
+                    .attr("y", function (d, i) {
                         return i * legendSize + i * 10;
                     })
-                    .text(function(d) {
+                    .text(function (d) {
                         return d;
                     });
 
@@ -175,17 +181,17 @@
                     .range([margin.top + chartHeight, margin.top]);
 
                 var yAxis = d3.axisLeft(y);
-                    svg.select("#y")
-                        .attr("transform", "translate(" + margin.left + ", 0)")
-                        .call(yAxis);
+                svg.select("#y")
+                    .attr("transform", "translate(" + margin.left + ", 0)")
+                    .call(yAxis);
 
                 var xAxis = d3.axisBottom(x)
-                    .tickFormat(function(d) {
-                        var tickData = data[d-1];
+                    .tickFormat(function (d) {
+                        var tickData = data[d - 1];
                         if (tickData) {
-                            var now = new Date ();
+                            var now = new Date();
                             var millisecondsAgo = now - tickData.timestamp;
-                            var secondsAgo = Math.round(millisecondsAgo/1000);
+                            var secondsAgo = Math.round(millisecondsAgo / 1000);
                             if (secondsAgo == 0) {
                                 return "Now";
                             } else {
@@ -198,7 +204,7 @@
                     });
                 svg.select("#x")
                     .attr("transform", "translate(0, " + (chartHeight + margin.top) + ")")
-                    .transition().duration(frequency/2)
+                    .transition().duration(frequency / 2)
                     .call(xAxis);
 
                 var scaleX = d3.scaleLinear()
@@ -213,7 +219,7 @@
                     .call(scaleAxis);
 
                 var bars = svg.select("#shapes").selectAll(".bar")
-                    .data(data, function(d) {
+                    .data(data, function (d) {
                         return d.timestamp;
                     });
 
@@ -221,10 +227,10 @@
                     selection
                         .attr("height", 0)
                         .attr("y", y(0));
-                    }
+                }
 
                 var labels = svg.selectAll(".label")
-                    .data(data, function(d) {
+                    .data(data, function (d) {
                         return d.timestamp;
                     });
 
@@ -232,7 +238,7 @@
                     .attr("class", "bar")
                     .attr("width", barWidth)
                     .call(zeroState)
-                    .attr("x", function(d, i) {
+                    .attr("x", function (d, i) {
                         return x(i + 1);
                     })
                     .attr("fill", "transparent")
@@ -240,68 +246,69 @@
 
                 bars.merge(enter)
                     .transition()
-                    .duration(frequency/2)
-                    .attr("height", function(d) {
+                    .duration(frequency / 2)
+                    .attr("height", function (d) {
                         return barHeight(d.users);
                     })
-                    .attr("y", function(d) {
+                    .attr("y", function (d) {
                         return y(d.users);
                     })
-                    .attr("x", function(d, i) {
+                    .attr("x", function (d, i) {
                         return x(i + 1);
                     })
-                    .attr("fill", function(d) {
+                    .attr("fill", function (d) {
                         return barColor(d.users);
                     })
                     .attr("stroke", "white");
 
                 var labelEnter = labels.enter().append("text")
                     .attr("class", "label")
-                    .text(function(d) {
+                    .text(function (d) {
                         return d.users;
                     })
-                    .attr("x", function(d, i) {
-                        return (x(i + 1))+(barWidth/2);
+                    .attr("x", function (d, i) {
+                        return (x(i + 1)) + (barWidth / 2);
                     })
                     .style("text-anchor", "middle")
                     .attr("y", height)
-                
+
                 labels.merge(labelEnter)
                     .transition()
-                    .duration(frequency/2)
-                    .text(function(d) {
+                    .duration(frequency / 2)
+                    .text(function (d) {
                         return d.users;
                     })
-                    .attr("y", function(d, i) {
+                    .attr("y", function (d, i) {
                         var h = barHeight(d.users);
-                        return height - (h-20);
+                        return height - (h - 20);
                     })
-                    .attr("x", function(d, i) {
-                        return (x(i + 1))+(barWidth/2);
+                    .attr("x", function (d, i) {
+                        return (x(i + 1)) + (barWidth / 2);
                     })
                     .style("text-anchor", "middle")
                     .attr("fill", "white");
 
                 bars.exit()
                     .transition()
-                    .duration(frequency/2)
+                    .duration(frequency / 2)
                     .call(zeroState)
                     .remove();
 
                 labels.exit()
                     .transition()
-                    .duration(frequency/2)
+                    .duration(frequency / 2)
                     .attr("y", height)
                     .remove();
 
             });
         }
-    
+
 
         fetchData();
         var myInterval = setInterval(fetchData, frequency);
 
 
-        </script>
-    </body>
+    </script>
+</body>
+
 </html>

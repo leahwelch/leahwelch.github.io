@@ -80,6 +80,8 @@ d3.csv("./data/all_dimensions.csv", parse).then(function (data) {
                 })
             }
         }
+
+        console.log(expandedData)
         let nested = d3.nest()
             .key(d => d.y)
             .rollup()
