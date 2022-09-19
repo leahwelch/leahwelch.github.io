@@ -183,7 +183,7 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
     let root = treemap(hierarchy);
 
     const xScale = d3.scaleLinear()
-        .domain([1,99])
+        .domain([1,104])
         .range([margin.left, width-margin.right])
 
     const dateScale = d3.scaleTime()
