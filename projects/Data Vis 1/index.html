@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="https://d3js.org/d3-array.v2.min.js"></script>
+        <!--extra js library to handle some special data wrangling for the stacked layout-->
+        <script src="./arquero.js"></script>
+    </head>
+    <body>
+        <div class="row">
+            <div class="column">
+                <h2>US Clothing Waste</h2>
+                <div id="container">
+                    <div id="chart"></div>
+                    <div id="legend"></div>
+                </div>
+            </div>
+            <div class="column">
+                <h2>Relationship</h2>
+                <div id='grid-container'>
+                    <div id='grid-chart'></div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="./stacked.js"></script>
+        <script src="./size.js"></script>
+    </body>
+</html>
