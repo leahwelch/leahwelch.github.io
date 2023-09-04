@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;300;400&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0px;
+  padding: 0px;
+  background-color: white;
+  font-family: 'Roboto Mono', monospace;
+}
+
+#container {
+  width: 100%;
+  max-height: 100vh;
+ 
+}
+
+#chart {
+  height: 90vh;
+  width: 100%;
+}
+
+#slider {
+  padding: 20px;
+  width: 100%;
+}
+
+#selectDate {
+  width: 100%;
+}
+
+.label{
+  text-anchor: middle;
+  font-size: 9pt;
+}

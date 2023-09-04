@@ -13,7 +13,7 @@
   top: 0;
   left: 0;
   z-index: 9;
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.9);
   border: 1px solid #b9b8b9;
   text-align: left;
   color: #808080;
@@ -21,16 +21,41 @@
   font-size: 9pt;
   padding: 20px;
   border-radius: 5px;
+  width: 250px;
 
 }
 
 #mydivheader {
-  padding: 10px;
+  padding: 10px 0px;
   cursor: move;
   z-index: 10;
   color: #808080;
   border-bottom: 1px solid #b9b8b9;
   font-size: 12pt;
+}
+
+.info {
+  background-color: rgba(255,255,255,0);
+  border: none;
+  font-family: 'Space Grotesk';
+  font-size: 10pt;
+  color: #555555;
+  padding: 0px;
+  cursor: pointer;
+}
+
+h2 {
+  font-size: 12pt;
+  font-weight: normal;
+}
+
+.header_container {
+  display: flex;
+}
+
+#supplement {
+  background-color: rgba(255,255,255);
+  display: none;
 }
 
 .slider {
@@ -44,14 +69,21 @@
 
 .sliderLabels {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   grid-template-areas:
-      "left right";
+      "left middle right";
 }
 
 .labelLeft {
   grid-area: left;
+  font-size: 7pt;
+  margin-top: 5px;
+}
+
+.labelMiddle {
+  grid-area: middle;
+  text-align: center;
   font-size: 7pt;
   margin-top: 5px;
 }

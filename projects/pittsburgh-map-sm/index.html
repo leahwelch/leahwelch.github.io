@@ -1,64 +1,87 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js" charset-"utf-8"></script>
-    <link rel="stylesheet" type="text/css" href="./style.css">
-    <script src="lib/d3.js"></script>
-    <title>Urban Stack</title>
-  </head>
-  <body>
-    <div id='map'></div>
-    <!-- Draggable DIV -->
-    <div id="mydiv">
-        
-        <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-        <div id="mydivheader">Drag to Adjust Weighting</div>
-        <br>
-        <p>Dense</p>
-        <input type="range" min="0" max="10" value="10" class="slider" id="dense">
-        <div class="sliderLabels">
-          <p class="labelLeft">Less Important</p>
-          <p class="labelRight">More Important</p>
-        </div>
-        <p>Diverse</p>
-        <input type="range" min="0" max="10" value="10" class="slider" id="diverse">
-        <div class="sliderLabels">
-          <p class="labelLeft">Less Important</p>
-          <p class="labelRight">More Important</p>
-        </div>
-        <p>Walkable</p>
-        <input type="range" min="0" max="10" value="10" class="slider" id="walkable">
-        <div class="sliderLabels">
-          <p class="labelLeft">Less Important</p>
-          <p class="labelRight">More Important</p>
-        </div>
-        <p>Drivable</p>
-        <input type="range" min="0" max="10" value="10" class="slider" id="drivable">
-        <div class="sliderLabels">
-          <p class="labelLeft">Less Important</p>
-          <p class="labelRight">More Important</p>
-        </div>
-        <!-- <div id="chart"></div> -->
-        
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js" charset-"utf-8"></script>
+  <link rel="stylesheet" type="text/css" href="./style.css">
+  <script src="lib/d3.js"></script>
+  <title>Urban Stack</title>
+</head>
+
+<body>
+  <div id='map'></div>
+  <!-- Draggable DIV -->
+  <div id="mydiv">
+
+    <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+    <div id="mydivheader">Drag to Adjust Weighting</div>
+    <br>
+
+
+    <button class="info" id="dense_info">Dense</button>
+    <input type="range" min="-10" max="10" value="10" class="slider" id="dense">
+    <div class="sliderLabels">
+      <p class="labelLeft">Undesirable</p>
+      <p class="labelMiddle">Unimportant</p>
+      <p class="labelRight">Desirable</p>
     </div>
-    <script>mapboxgl.accessToken = 'pk.eyJ1IjoibGVhaHdlbGNoIiwiYSI6ImNsMXdhd3UzNDB6b28zY3FmdDJ2M3FjcTMifQ.oXAHRvEr5YjZjXvNnr2cWQ';
-        const map = new mapboxgl.Map({
-            container: 'map', // container ID
-            style: 'mapbox://styles/leahwelch/cl4su86c6000m14k1hx8qlrom', // style URL
-            // center: [-79.99990573744087, 40.43164575415095], // starting position [lng, lat]
-            center: [-80.02, 40.43164575415095],
-            zoom: 13.4 // starting zoom
-        });
-        map.addControl(new mapboxgl.NavigationControl());
-        
-    </script>
-    <script src="sliders.js" type="text/javascript"></script>
-    <!-- <script type="text/javascript" src="radarChart.js"></script> -->
-    <!-- <script type="text/javascript" src="radarScript.js"></script> -->
+    <br>
+
+    <button class="info" id="diverse_info">Diverse</button>
+    <input type="range" min="-10" max="10" value="10" class="slider" id="diverse">
+    <div class="sliderLabels">
+      <p class="labelLeft">Undesirable</p>
+      <p class="labelMiddle">Unimportant</p>
+      <p class="labelRight">Desirable</p>
+    </div>
+    <br>
+
+    <button class="info" id="walkable_info">Walkable</button>
+    <input type="range" min="-10" max="10" value="10" class="slider" id="walkable">
+    <div class="sliderLabels">
+      <p class="labelLeft">Undesirable</p>
+      <p class="labelMiddle">Unimportant</p>
+      <p class="labelRight">Desirable</p>
+    </div>
+    <br>
+
+    <button class="info" id="drivable_info">Drivable</button>
+    <input type="range" min="-10" max="10" value="10" class="slider" id="drivable">
+    <div class="sliderLabels">
+      <p class="labelLeft">Undesirable</p>
+      <p class="labelMiddle">Unimportant</p>
+      <p class="labelRight">Desirable</p>
+    </div>
+    <br>
+
+    <div id="supplement">
+      <h2 id="supplement_header"></h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Tempor orci dapibus ultrices in iaculis nunc sed. Sed odio morbi quis commodo odio.</p>
+      <div id="supplement_chart"></div>
+    </div>
+    <!-- <div id="chart"></div> -->
+
+  </div>
+  <script>mapboxgl.accessToken = 'pk.eyJ1IjoibGVhaHdlbGNoIiwiYSI6ImNsMXdhd3UzNDB6b28zY3FmdDJ2M3FjcTMifQ.oXAHRvEr5YjZjXvNnr2cWQ';
+    const map = new mapboxgl.Map({
+      container: 'map', // container ID
+      style: 'mapbox://styles/leahwelch/cl4su86c6000m14k1hx8qlrom', // style URL
+      // center: [-79.99990573744087, 40.43164575415095], // starting position [lng, lat]
+      center: [-80.02, 40.43164575415095],
+      zoom: 13.4 // starting zoom
+    });
+    map.addControl(new mapboxgl.NavigationControl());
+
+  </script>
+  <script src="sliders.js" type="text/javascript"></script>
+  <!-- <script type="text/javascript" src="radarChart.js"></script> -->
+  <!-- <script type="text/javascript" src="radarScript.js"></script> -->
 
 
-  </body>
+</body>
+
 </html>

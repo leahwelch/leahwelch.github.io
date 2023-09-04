@@ -53,22 +53,6 @@ d3.csv("./data/wearlog.csv", parse).then(function(data) {
         .attr("transform", `translate(0, ${height-margin.bottom})`)
         .call(d3.axisBottom().scale(xScale));
 
-    // var line = d3.area()
-    //     .x(function(d) { return scaleDate(d.x0); })
-    //     .y1(function(d) { return yScale(d.length); })
-    //     .y0(height - margin.bottom)
-    //     .curve(d3.curveBasis);
-
-    // wearLine = svg.selectAll(".path").data([bins])
-
-    // wearLine.enter().append("path")
-    //     .attr("class", "path")
-    //     .merge(wearLine)
-    //     .attr("d", line)
-    //     .attr("stroke", "#cccccc")
-    //     .attr("fill", "#cccccc")
-    //     .attr("stroke-width", 1)
-
     svg.selectAll("rect")
         .data(bins)
         .enter()

@@ -64,7 +64,7 @@ Promise.all(promises).then(function (data) {
         .rollup()
         .entries(data[1])
 
-    // console.log(nested)
+    console.log(nested)
 
     let expanded = [];
     nested.forEach(d => {
