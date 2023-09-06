@@ -17,7 +17,7 @@
   border: 1px solid #b9b8b9;
   text-align: left;
   color: #808080;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 9pt;
   padding: 20px;
   border-radius: 5px;
@@ -37,7 +37,7 @@
 .info {
   background-color: rgba(255,255,255,0);
   border: none;
-  font-family: 'Space Grotesk';
+  font-family: 'Roboto', sans-serif;
   font-size: 10pt;
   color: #555555;
   padding: 0px;

@@ -3204,3 +3204,10 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 9/2/2023,152,6,,shirt,Double-breasted grid pattern,Woven Tops,369,Y,,,,,,,Y
 9/2/2023,152,6,Levi,tee,Ribbed scoop neck,Knit Tops,371,Y,,,,,,,N
 9/3/2023,152,7,Alex Mill,romper,Belted twill,Rompers & Jumpsuits,205,Y,#77592a,#6b4e21,#5e4117,#4b2f0d,#826334,,N
+9/4/2023,153,1,Agolde,shorts,Denim cutoff,Shorts & Skirts,110,Y,#010103,#050710,#13131e,#272932,#4e4c53,,N
+9/4/2023,153,1,H & M,tank,Ribbed halter,Knit Tops,312,N,#e8e9e9,#dfe0df,#d1d1d1,#c1c0c1,#a7a7a5,,N
+9/4/2023,153,1,J. Crew,jacket,Denim,Jackets,402,N,#717f8f,#86929f,#5f6e7e,#3f4e5e,#a2adb5,,Y
+9/5/2023,153,2,Staud,shorts,Flag print,Shorts & Skirts,115,Y,#588a4a,#c6c8ca,#b8583d,#bd7795,#355090,,N
+9/5/2023,153,2,The Reformation,tank,Ribbed open-back,Knit Tops,344,Y,#010203,#020304,#000000,#050505,#262227,,N
+9/6/2023,153,3,Lett,shorts,Ribbed bike,Shorts & Skirts,111,N,#000002,#020204,#000000,#010204,#030405,,N
+9/6/2023,153,3,Everlane,shirt,Cotton button-down,Woven Tops,325,Y,#eef1f2,#e4e7e8,#f9fafa,#efefef,#eaeaea,,N
