@@ -21,6 +21,7 @@ d3.csv("./data/wearlog.csv", parse).then(function (data) {
         .key(d => d.id)
         .rollup()
         .entries(pre)
+        .sort((a,b) => d3.descending(a.values.length, b.values.length))
     console.log(preNest)
 
     let bt = data.filter(d => d.date >= new Date("2021-02-01") && d.date < new Date("2022-08-03"))
@@ -29,6 +30,7 @@ d3.csv("./data/wearlog.csv", parse).then(function (data) {
         .key(d => d.id)
         .rollup()
         .entries(bt)
+        .sort((a,b) => d3.descending(a.values.length, b.values.length))
     console.log(btNest)
 
     let unemployed = data.filter(d => d.date >= new Date("2022-08-03") && d.date < new Date("2022-10-17"))
@@ -37,6 +39,7 @@ d3.csv("./data/wearlog.csv", parse).then(function (data) {
         .key(d => d.id)
         .rollup()
         .entries(unemployed)
+        .sort((a,b) => d3.descending(a.values.length, b.values.length))
     console.log(unemployedNest)
 
     let capOne = data.filter(d => d.date >= new Date("2022-10-17") && d.date < new Date("2023-04-30"))
@@ -45,6 +48,7 @@ d3.csv("./data/wearlog.csv", parse).then(function (data) {
         .key(d => d.id)
         .rollup()
         .entries(capOne)
+        .sort((a,b) => d3.descending(a.values.length, b.values.length))
     console.log(capNest)
 
     let ps = data.filter(d => d.date >= new Date("2023-05-01"))
@@ -53,6 +57,7 @@ d3.csv("./data/wearlog.csv", parse).then(function (data) {
         .key(d => d.id)
         .rollup()
         .entries(ps)
+        .sort((a,b) => d3.descending(a.values.length, b.values.length))
     console.log(psNest)
 
     let combined = [

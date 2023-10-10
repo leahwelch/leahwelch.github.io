@@ -13,7 +13,7 @@
     rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="./style.css">
   <script src="lib/d3.js"></script>
-  <title>Urban Stack</title>
+  <title>Values Driven Siting</title>
 </head>
 
 <body>
@@ -22,11 +22,12 @@
   <div id="mydiv">
 
     <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-    <div id="mydivheader">Drag to Adjust Weighting</div>
+    <div id="mydivheader">Values-Driven Siting Tool for Housing Development</div>
+    <div id="subtext">Explore places where the addition of housing would allow future residents to live in areas with access to jobs, parks, and other key factors of urban quality. Drag to adjust weighting based upon essential priorities.</div>
     <br>
 
 
-    <button class="info" id="dense_info">Dense</button>
+    <button class="info" id="dense_info">Accessibility by cycling</button>
     <input type="range" min="-10" max="10" value="10" class="slider" id="dense">
     <div class="sliderLabels">
       <p class="labelLeft">Undesirable</p>
@@ -35,7 +36,7 @@
     </div>
     <br>
 
-    <button class="info" id="diverse_info">Diverse</button>
+    <button class="info" id="diverse_info">Diversity of people and buildings</button>
     <input type="range" min="-10" max="10" value="10" class="slider" id="diverse">
     <div class="sliderLabels">
       <p class="labelLeft">Undesirable</p>
@@ -44,7 +45,7 @@
     </div>
     <br>
 
-    <button class="info" id="walkable_info">Walkable</button>
+    <button class="info" id="walkable_info">Accessibility by walking</button>
     <input type="range" min="-10" max="10" value="10" class="slider" id="walkable">
     <div class="sliderLabels">
       <p class="labelLeft">Undesirable</p>
@@ -53,7 +54,7 @@
     </div>
     <br>
 
-    <button class="info" id="drivable_info">Drivable</button>
+    <button class="info" id="drivable_info">Accessibility by driving</button>
     <input type="range" min="-10" max="10" value="10" class="slider" id="drivable">
     <div class="sliderLabels">
       <p class="labelLeft">Undesirable</p>
@@ -61,12 +62,23 @@
       <p class="labelRight">Desirable</p>
     </div>
     <br>
-
     <div id="supplement">
       <h2 id="supplement_header"></h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      <p id="supplement_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Tempor orci dapibus ultrices in iaculis nunc sed. Sed odio morbi quis commodo odio.</p>
       <div id="supplement_chart"></div>
+    </div>
+    <div id="ramp_container">
+      <svg id="ramp">
+        <defs>
+          <linearGradient id="colorGradient">
+          </linearGradient>
+        </defs>
+        <g id="scale">
+          <rect id="scaleRect" fill="url(#colorGradient)" />
+          <g id="scaleAxis"></g>
+        </g>
+      </svg>
     </div>
     <!-- <div id="chart"></div> -->
 
@@ -75,8 +87,8 @@
     const map = new mapboxgl.Map({
       container: 'map', // container ID
       style: 'mapbox://styles/leahwelch/cl4su86c6000m14k1hx8qlrom', // style URL
-      // center: [-79.99990573744087, 40.43164575415095], // starting position [lng, lat]
-      center: [-80.02, 40.43164575415095],
+      center: [-79.975278, 40.445278], // starting position [lng, lat]
+      // center: [-80.02, 40.43164575415095],
       zoom: 13.4 // starting zoom
     });
     map.addControl(new mapboxgl.NavigationControl());

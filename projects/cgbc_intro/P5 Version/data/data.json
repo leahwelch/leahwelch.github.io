@@ -1,0 +1,314 @@
+{
+    "projects" : [
+        {
+            "id": "2019.1 ENERGIES OF NIGHT",
+            "discipline": "LANDSCAPE",
+            "degrowth": 5,
+            "methods": 5,
+            "becoming": 0,
+            "scalability": 5,
+            "size": 6,
+            "primary": "degrowth"
+        },
+        {
+            "id": "2019.2 INFRASTRUCTURE DESIGN PROTOCOLS",
+            "discipline": "LANDSCAPE",
+            "degrowth": 0,
+            "methods": 10,
+            "becoming": 0,
+            "scalability": 8,
+            "size": 10,
+            "primary": "methods"
+        },
+        {
+            "id": "2019.3 INDUSTRIAL ECOLOGY",
+            "discipline": "LANDSCAPE",
+            "degrowth": 2,
+            "methods": 8,
+            "becoming": 0,
+            "scalability": 4,
+            "size": 9,
+            "primary": "methods"
+        },
+        {
+            "id": "2020.1 AGING, HOUSING, AND CLIMATE",
+            "discipline": "PLANNING",
+            "degrowth": 8,
+            "methods": 2,
+            "becoming": 0,
+            "scalability": 7,
+            "size": 8,
+            "primary": "degrowth"
+        },
+        {
+            "id": "2020.2 ALGAE BIOMATERIALS",
+            "discipline": "ARCHITECTURE",
+            "degrowth": 9,
+            "methods": 0,
+            "becoming": 1,
+            "scalability": 7,
+            "size": 1,
+            "primary": "degrowth"
+        },
+        {
+            "id": "2020.3 BUILDING HEAT MITIGATION",
+            "discipline": "ARCHITECTURE",
+            "degrowth": 3,
+            "methods": 3,
+            "becoming": 4,
+            "scalability": 8,
+            "size": 3,
+            "primary": "becoming"
+        },
+        {
+            "id": "2020.4 ECO-FOLLY",
+            "discipline": "ARCHITECTURE",
+            "degrowth": 7,
+            "methods": 0,
+            "becoming": 3,
+            "scalability": 1,
+            "size": 3,
+            "primary": "degrowth"
+        },
+        {
+            "id": "2020.5 METHODS FOR SITE LEVEL VMT",
+            "discipline": "PLANNING",
+            "degrowth": 1,
+            "methods": 9,
+            "becoming": 0,
+            "scalability": 8,
+            "size": 9,
+            "primary": "methods"
+        },
+        {
+            "id": "2020.6 TOPOLOGIES FOR COOLING",
+            "discipline": "ARCHITECTURE",
+            "degrowth": 0,
+            "methods": 10,
+            "becoming": 0,
+            "scalability": 7,
+            "size": 2,
+            "primary": "methods"
+        },
+        {
+            "id": "2020.7 SENSING THE LANDSCAPE",
+            "discipline": "LANDSCAPE",
+            "degrowth": 0,
+            "methods": 3,
+            "becoming": 7,
+            "scalability": 7,
+            "size": 7,
+            "primary": "becoming"
+        },
+        {
+            "id": "2020.8 THERMAL LANDSCAPES",
+            "discipline": "LANDSCAPE",
+            "degrowth": 5,
+            "methods": 0,
+            "becoming": 5,
+            "scalability": 7,
+            "size": 7,
+            "primary": "becoming"
+        },
+        {
+            "id": "2021.1 CHROMATIC RESILIENCE",
+            "discipline": "LANDSCAPE",
+            "degrowth": 6,
+            "methods": 4,
+            "becoming": 0,
+            "scalability": 8,
+            "size": 6,
+            "primary": "degrowth"
+        },
+        {
+            "id": "2021.2 VALUES-DRIVEN SITING",
+            "discipline": "ARCHITECTURE",
+            "degrowth": 2,
+            "methods": 8,
+            "becoming": 0,
+            "scalability": 10,
+            "size": 6,
+            "primary": "methods"
+        },
+        {
+            "id": "2021.3 SUSTAINABILITY AND PERCEPTION",
+            "discipline": "ARCHITECTURE",
+            "degrowth": 0,
+            "methods": 10,
+            "becoming": 0,
+            "scalability": 9,
+            "size": 2,
+            "primary": "methods"
+        },
+        {
+            "id": "2021.4 GREENHOUSE GAS EMISSIONS",
+            "discipline": "ARCHITECTURE",
+            "degrowth": 1,
+            "methods": 9,
+            "becoming": 0,
+            "scalability": 9,
+            "size": 7,
+            "primary": "methods"
+        },
+        {
+            "id": "2022.1 COMMONS GOVERNANCE FRAMEWORK",
+            "discipline": "LANDSCAPE",
+            "degrowth": 3,
+            "methods": 7,
+            "becoming": 0,
+            "scalability": 6,
+            "size": 10,
+            "primary": "methods"
+        },
+        {
+            "id": "2022.3 TECHNOLOGICAL IMAGINATION",
+            "discipline": "LANDSCAPE",
+            "degrowth": 6,
+            "methods": 4,
+            "becoming": 0,
+            "scalability": 6,
+            "size": 6,
+            "primary": "degrowth"
+        },
+        {
+            "id": "2022.4 WILDFIRES AND RISK",
+            "discipline": "PLANNING",
+            "degrowth": 0,
+            "methods": 10,
+            "becoming": 0,
+            "scalability": 8,
+            "size": 9,
+            "primary": "methods"
+        },
+        {
+            "id": "2022.5 SPATIAL CUES, SUSTAINABLE BEHAVIORS",
+            "discipline": "ARCHITECTURE",
+            "degrowth": 5,
+            "methods": 5,
+            "becoming": 0,
+            "scalability": 9,
+            "size": 2,
+            "primary": "degrowth"
+        },
+        {
+            "id": "2022.6 CARBON-FREE GRID",
+            "discipline": "ARCHITECTURE",
+            "degrowth": 10,
+            "methods": 0,
+            "becoming": 0,
+            "scalability": 5,
+            "size": 3,
+            "primary": "degrowth"
+        },
+        {
+            "id": "2022.7 NEIGHBORHOOD LEVEL FLOWS",
+            "discipline": "PLANNING",
+            "degrowth": 6,
+            "methods": 4,
+            "becoming": 0,
+            "scalability": 6,
+            "size": 8,
+            "primary": "degrowth"
+        },
+        {
+            "id": "2023.5 URBAN METABOLISM",
+            "discipline": "PLANNING",
+            "degrowth": 1,
+            "methods": 9,
+            "becoming": 0,
+            "scalability": 9,
+            "size": 8,
+            "primary": "methods"
+        },
+        {
+            "id": "2023.1 WINDOW CODE RESTRICTIONS",
+            "discipline": "ARCHITECTURE",
+            "degrowth": 0,
+            "methods": 10,
+            "becoming": 0,
+            "scalability": 10,
+            "size": 1,
+            "primary": "methods"
+        },
+        {
+            "id": "2023.2 LOW ENERGY ADU",
+            "discipline": "ARCHITECTURE",
+            "degrowth": 3,
+            "methods": 3,
+            "becoming": 4,
+            "scalability": 8,
+            "size": 2,
+            "primary": "becoming"
+        },
+        {
+            "id": "2023.3 DECARBONIZING COOLING",
+            "discipline": "ARCHITECTURE",
+            "degrowth": 2,
+            "methods": 2,
+            "becoming": 6,
+            "scalability": 6,
+            "size": 1,
+            "primary": "becoming"
+        },
+        {
+            "id": "2023.4 RECEIVING COMMUNITIES",
+            "discipline": "PLANNING",
+            "degrowth": 4,
+            "methods": 6,
+            "becoming": 0,
+            "scalability": 6,
+            "size": 10,
+            "primary": "methods"
+        },
+        {
+            "id": "2023.6 SOIL FUNGI",
+            "discipline": "LANDSCAPE",
+            "degrowth": 7,
+            "methods": 0,
+            "becoming": 3,
+            "scalability": 9,
+            "size": 10,
+            "primary": "degrowth"
+        },
+        {
+            "id": "2023.7 OASIS EFFECT",
+            "discipline": "LANDSCAPE",
+            "degrowth": 4,
+            "methods": 2,
+            "becoming": 4,
+            "scalability": 6,
+            "size": 8,
+            "primary": "becoming"
+        },
+        {
+            "id": "2023.8, URBAN NATURES, TECHNOLOGY, AND POLITICS",
+            "discipline": "ARCHITECTURE",
+            "degrowth": 8,
+            "methods": 0,
+            "becoming": 2,
+            "scalability": 3,
+            "size": 7,
+            "primary": "degrowth"
+        },
+        {
+            "id": "2014.1 HOUSE ZERO",
+            "discipline": "ARCHITECTURE",
+            "degrowth": 1,
+            "methods": 1,
+            "becoming": 8,
+            "scalability": 6,
+            "size": 3,
+            "primary": "becoming"
+        },
+        {
+            "id": "2017.1 ZERO ENERGY HIGHRISE",
+            "discipline": "ARCHITECTURE",
+            "degrowth": 2,
+            "methods": 8,
+            "becoming": 0,
+            "scalability": 7,
+            "size": 5,
+            "primary": "methods"
+        }
+    ]
+}

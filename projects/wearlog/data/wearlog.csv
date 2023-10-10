@@ -3211,3 +3211,80 @@ date,week,day,Brand,Sub_Category,Description,group,garmentId,new,hex1,hex2,hex3,
 9/5/2023,153,2,The Reformation,tank,Ribbed open-back,Knit Tops,344,Y,#010203,#020304,#000000,#050505,#262227,,N
 9/6/2023,153,3,Lett,shorts,Ribbed bike,Shorts & Skirts,111,N,#000002,#020204,#000000,#010204,#030405,,N
 9/6/2023,153,3,Everlane,shirt,Cotton button-down,Woven Tops,325,Y,#eef1f2,#e4e7e8,#f9fafa,#efefef,#eaeaea,,N
+9/7/2023,153,4,Madewell,shorts,Cuffed,Shorts & Skirts,121,Y,#3e4b68,#535f7a,#2a354f,#6c778e,#a6aab4,,N
+9/7/2023,153,4,Gilden,tee,Basic crewneck,Knit Tops,358,Y,#e1dcd4,#d7d1ca,#e9e6df,#baafa3,#cac1b8,,N
+9/8/2023,153,5,Everlane,pants,Utility barrel leg,Pants,131,Y,,,,,,,N
+9/8/2023,153,5,Levi,tee,Ribbed scoop neck,Knit Tops,371,Y,,,,,,,N
+9/8/2023,153,5,J. Crew,jacket,Denim,Jackets,402,N,#717f8f,#86929f,#5f6e7e,#3f4e5e,#a2adb5,,Y
+9/9/2023,153,6,Levi,jeans,Ribcage,Jeans,117,Y,#202b41,#2e3954,#3b4868,#121827,#4c5976,,N
+9/9/2023,153,6,Scout,vest,Tailored,Woven Tops,340,Y,#4f4a4b,#686464,#807d7d,#302d30,#9b9794,,N
+9/10/2023,153,7,AllSaints,dress,Full-length slip,Dresses,208,Y,#250c0d,#281014,#230a0d,#180405,#030000,,Y
+9/10/2023,153,7,H & M,tank,Ribbed halter,Knit Tops,312,N,#e8e9e9,#dfe0df,#d1d1d1,#c1c0c1,#a7a7a5,,N
+9/10/2023,153,7,J. Crew,jacket,Denim,Jackets,402,N,#717f8f,#86929f,#5f6e7e,#3f4e5e,#a2adb5,,Y
+9/11/2023,154,1,Levi,jeans,Black stretchy ribcage,Jeans,130,Y,,,,,,,N
+9/11/2023,154,1,The Reformation,tee,Ruched,Knit Tops,353,Y,#e1dcd4,#d7d1ca,#e9e6df,#baafa3,#cac1b8,,N
+9/11/2023,154,1,RAINS,coat,Long hooded,Coats,417,Y,,,,,,,N
+9/11/2023,154,1,Yan Yan,top,Tweedle cropped,Knit Tops,332,Y,#5e4b47,#74615b,#595865,#757780,#dde35b,,N
+9/11/2023,154,1,J. Crew,jacket,Denim,Jackets,402,N,#717f8f,#86929f,#5f6e7e,#3f4e5e,#a2adb5,,Y
+9/12/2023,154,2,Everlane,pants,Utility barrel leg,Pants,131,Y,,,,,,,N
+9/12/2023,154,2,,tee,Running of the bulls,Knit Tops,335,N,#eceaea,#d56254,#dcd5d8,#5a5a5e,#bf5549,,Y
+9/12/2023,154,2,J. Crew,jacket,Denim,Jackets,402,N,#717f8f,#86929f,#5f6e7e,#3f4e5e,#a2adb5,,Y
+9/13/2023,154,3,Urban Outfitters,jeans,High loose,Jeans,118,Y,#b5967c,#a78369,#c5a88f,#d6bea8,#8c6447,,N
+9/13/2023,154,3,,vest,90s square neckline,Knit Tops,337,N,#9d9ba2,#8e8d94,#7d7b84,#adacb4,#605e65,,Y
+9/14/2023,154,4,The Reformation,pants,Ribbed stretchy,Pants,119,Y,#000001,#000002,#010203,#05060a,#020204,,N
+9/14/2023,154,4,,tee,Terrycloth,Knit Tops,343,Y,#ab2e19,#9a2915,#ba3621,#832212,#61180d,,Y
+9/15/2023,154,5,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,,N
+9/15/2023,154,5,,shirt,Double-breasted grid pattern,Woven Tops,369,Y,,,,,,,Y
+9/15/2023,154,5,,jacket,Pinewale corduroy,Jackets,418,Y,,,,,,,Y
+9/16/2023,154,6,Levi,jeans,Black stretchy ribcage,Jeans,130,Y,,,,,,,N
+9/16/2023,154,6,,tee,Thermal,Knit Tops,368,Y,,,,,,,Y
+9/16/2023,154,6,RAINS,coat,Long hooded,Coats,417,Y,,,,,,,N
+9/17/2023,154,7,Levi,jeans,Ribcage,Jeans,117,Y,#202b41,#2e3954,#3b4868,#121827,#4c5976,,N
+9/17/2023,154,7,,tee,Cowboy printed polo,Knit Tops,370,Y,,,,,,,Y
+9/18/2023,155,1,Everlane,pants,Utility barrel leg,Pants,131,Y,,,,,,,N
+9/18/2023,155,1,The Reformation,tee,Long-sleeved cathedral print mock-neck,Knit Tops,308,N,#5b6278,#828899,#454d62,#989ca9,#d8d7d8,,N
+9/18/2023,155,1,RAINS,coat,Long hooded,Coats,417,Y,,,,,,,N
+9/19/2023,155,2,The Reformation,jeans,Cowboy,Jeans,116,Y,#233222,#293b27,#1e2a1c,#314330,#737c72,,N
+9/19/2023,155,2,J. Crew,shirt,Chambray denim,Woven Tops,372,Y,,,,,,,N
+9/20/2023,155,3,Urban Outfitters,jeans,High loose,Jeans,118,Y,#b5967c,#a78369,#c5a88f,#d6bea8,#8c6447,,N
+9/20/2023,155,3,Agnes B,tee,Signature graphic,Knit Tops,301,N,#000103,#000100,#030305,#dddee3,#14171b,,Y
+9/20/2023,155,3,Ganni,sweater,Smiley cardigan,Sweaters & Sweatshirts,348,Y,#949b68,#e7d792,#6a3226,#392822,#ebe8e3,,N
+9/21/2023,155,4,The Reformation,pants,Ribbed stretchy,Pants,119,Y,#000001,#000002,#010203,#05060a,#020204,,N
+9/21/2023,155,4,,shirt,Striped,Woven Tops,305,N,#c33a2b,#a79380,#a03228,#631e12,#94766a,,Y
+9/22/2023,155,5,Kapital,jumpsuit,Embroidered denim,Rompers & Jumpsuits,203,N,#5c7387,#3e5569,#81919f,#8a9e78,#883b30,,N
+9/22/2023,155,5,The Reformation,tee,Long-sleeved seamed turtleneck,Knit Tops,327,Y,#f0f1f0,#ebecec,#e6e6e6,#ccc1ba,#f5f7f6,,N
+9/23/2023,155,6,Levi,jeans,Black stretchy ribcage,Jeans,130,Y,,,,,,,N
+9/23/2023,155,6,AllSaints,sweater,Cropped ribbed,Sweaters & Sweatshirts,346,Y,#230503,#290606,#170201,#050000,#2f0808,,Y
+9/23/2023,155,6,Ulla Johnson,jacket,Thick corduroy blazer,Jackets,416,Y,,,,,,,Y
+9/24/2023,155,7,Mijeong Park,pants,Khaki,Pants,129,Y,,,,,,,N
+9/24/2023,155,7,Leset,top,Long-sleeved wrap,Knit Tops,307,Y,#172c1e,#102417,#0c1d0f,#010303,#333837,,N
+9/24/2023,155,7,J. Crew,jacket,Denim,Jackets,402,N,#717f8f,#86929f,#5f6e7e,#3f4e5e,#a2adb5,,Y
+9/25/2023,156,1,Paloma Wool,jumpsuit,Front-zip corduroy,Rompers & Jumpsuits,201,N,#1c4349,#15343a,#285a60,#32676c,#6d6b67,,N
+9/26/2023,156,2,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,,N
+9/26/2023,156,2,Who What Wear Collection,sweater,Striped mock neck,Knit Tops,352,Y,#534f64,#767384,#e9e7ec,#9e9ca7,#c6c4cc,,N
+9/26/2023,156,2,,shawl,Houndstooth blanket,Jackets,403,N,#020201,#5e160a,#721c0f,#290603,#480f06,,Y
+9/27/2023,156,3,The Reformation,pants,Ribbed stretchy,Pants,119,Y,#000001,#000002,#010203,#05060a,#020204,,N
+9/27/2023,156,3,J. Crew,shirt,Chambray denim,Woven Tops,372,Y,,,,,,,N
+9/27/2023,156,3,Topshop,tee,Matelasse mock-neck,Knit Tops,306,N,#0a1330,#161f3b,#030821,#010108,#232d49,,N
+9/28/2023,156,4,Everlane,pants,Utility barrel leg,Pants,131,Y,,,,,,,N
+9/28/2023,156,4,AllSaints,sweater,Cropped ribbed,Sweaters & Sweatshirts,346,Y,#230503,#290606,#170201,#050000,#2f0808,,Y
+9/28/2023,156,4,J. Crew,jacket,Denim,Jackets,402,N,#717f8f,#86929f,#5f6e7e,#3f4e5e,#a2adb5,,Y
+9/29/2023,156,5,Urban Outfitters,jeans,High loose,Jeans,118,Y,#b5967c,#a78369,#c5a88f,#d6bea8,#8c6447,,N
+9/29/2023,156,5,Sweaty Betty,tee,Jacquard turtleneck,Knit Tops,350,Y,#000001,#000002,#010203,#05060a,#020204,,N
+9/30/2023,156,6,Levi,jeans,Ribcage,Jeans,117,Y,#202b41,#2e3954,#3b4868,#121827,#4c5976,,N
+9/30/2023,156,6,,sweater,Multi-rib polo collar,Knit Tops,357,Y,#8e2622,#982d2b,#822119,#a13436,#ae3f43,,Y
+10/1/2023,156,7,Levi,jeans,Black stretchy ribcage,Jeans,130,Y,,,,,,,N
+10/1/2023,156,7,,shirt,Double-breasted grid pattern,Woven Tops,369,Y,,,,,,,Y
+10/1/2023,156,7,J. Crew,jacket,Denim,Jackets,402,N,#717f8f,#86929f,#5f6e7e,#3f4e5e,#a2adb5,,Y
+10/2/2023,157,1,Paloma Wool,jumpsuit,Front-zip corduroy,Rompers & Jumpsuits,201,N,#1c4349,#15343a,#285a60,#32676c,#6d6b67,,N
+10/3/2023,157,2,The Reformation,jeans,Cowboy,Jeans,116,Y,#233222,#293b27,#1e2a1c,#314330,#737c72,,N
+10/3/2023,157,2,Gilden,tee,Basic crewneck,Knit Tops,358,Y,#e1dcd4,#d7d1ca,#e9e6df,#baafa3,#cac1b8,,N
+10/3/2023,157,2,J. Crew,shirt,Chambray denim,Woven Tops,372,Y,,,,,,,N
+10/4/2023,157,3,The Reformation,jeans,Saddle,Jeans,106,Y,#121b2a,#526479,#374556,#6e7f94,#a4aeb9,,N
+10/4/2023,157,3,Everlane,shirt,Oxford,Woven Tops,354,Y,#efeff1,#f3f3f5,#eaeaed,#e4e5e8,#d7d7d9,,N
+10/4/2023,157,3,Staud,shorts,Flag print,Shorts & Skirts,115,Y,#588a4a,#c6c8ca,#b8583d,#bd7795,#355090,,N
+10/5/2023,157,4,Urban Outfitters,jeans,High loose,Jeans,118,Y,#b5967c,#a78369,#c5a88f,#d6bea8,#8c6447,,N
+10/5/2023,157,4,Topshop,tee,Matelasse mock-neck,Knit Tops,306,N,#0a1330,#161f3b,#030821,#010108,#232d49,,N
+10/5/2023,157,4,J. Crew,jacket,Denim,Jackets,402,N,#717f8f,#86929f,#5f6e7e,#3f4e5e,#a2adb5,,Y
+10/6/2023,157,5,Everlane,pants,Utility barrel leg,Pants,131,Y,,,,,,,N
+10/6/2023,157,5,The Reformation,tee,Long-sleeved cathedral print mock-neck,Knit Tops,308,N,#5b6278,#828899,#454d62,#989ca9,#d8d7d8,,N

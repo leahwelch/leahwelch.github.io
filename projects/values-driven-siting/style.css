@@ -31,8 +31,12 @@
   cursor: move;
   z-index: 10;
   color: #808080;
-  border-bottom: 1px solid #b9b8b9;
   font-size: 12pt;
+}
+
+#subtext {
+  padding: 10px 0px;
+  border-bottom: 1px solid #b9b8b9;
 }
 
 .info {
@@ -107,6 +111,17 @@ h2 {
 
 p {
   margin: 15px 0px 5px 0px;
+}
+
+#ramp_container{
+  border-top: 1px solid #b9b8b9;
+  padding-top: 10px;
+}
+
+.ramp_label{
+  font-family: 'Roboto', sans-serif;
+  font-size: 7pt;
+  color: #808080;
 }
 
 body .update-value {

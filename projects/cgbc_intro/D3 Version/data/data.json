@@ -1,0 +1,229 @@
+{
+    "projects" : [
+        {
+            "id": "2019.1, DOHERTY, ENERGIES OF NIGHT",
+            "discipline": "LANDSCAPE",
+            "degrowth": 5,
+            "methods": 5,
+            "becoming": 0,
+            "scalability": 5,
+            "size": 6
+        },
+        {
+            "id": "2019.2, MONACELLA, INFRASTRUCTURE DESIGN PROTOCOLS",
+            "discipline": "LANDSCAPE",
+            "degrowth": 0,
+            "methods": 10,
+            "becoming": 0,
+            "scalability": 8,
+            "size": 10
+        },
+        {
+            "id": "2019.3, KIRKWOOD, INDUSTRIAL ECOLOGY",
+            "discipline": "LANDSCAPE",
+            "degrowth": 2,
+            "methods": 8,
+            "becoming": 0,
+            "scalability": 4,
+            "size": 9
+        },
+        {
+            "id": "2020.1, FORSYTH, AGING, HOUSING, AND CLIMATE",
+            "discipline": "PLANNING",
+            "degrowth": 8,
+            "methods": 2,
+            "becoming": 0,
+            "scalability": 7,
+            "size": 8
+        },
+        {
+            "id": "2020.2, BECHTHOLD, ALGAE BIOMATERIALS",
+            "discipline": "ARCHITECTURE",
+            "degrowth": 9,
+            "methods": 0,
+            "becoming": 1,
+            "scalability": 7,
+            "size": 1
+        },
+        {
+            "id": "2020.3, SAMUELSON, BUILDING HEAT MITIGATION",
+            "discipline": "ARCHITECTURE",
+            "degrowth": 3,
+            "methods": 3,
+            "becoming": 4,
+            "scalability": 8,
+            "size": 3
+        },
+        {
+            "id": "2020.4, LA, NAGINSKI, ECO-FOLLY",
+            "discipline": "ARCHITECTURE",
+            "degrowth": 7,
+            "methods": 0,
+            "becoming": 3,
+            "scalability": 1,
+            "size": 3
+        },
+        {
+            "id": "2020.5, VOULGARIS, METHODS FOR SITE LEVEL VMT",
+            "discipline": "PLANNING",
+            "degrowth": 1,
+            "methods": 9,
+            "becoming": 0,
+            "scalability": 8,
+            "size": 9
+        },
+        {
+            "id": "2020.6, GRINHAM, WITT, LAMINATE TOPOLOGIES FOR COOLING",
+            "discipline": "ARCHITECTURE",
+            "degrowth": 0,
+            "methods": 10,
+            "becoming": 0,
+            "scalability": 7,
+            "size": 2
+        },
+        {
+            "id": "2020.7, DOUGLAS, SENSING THE LANDSCAPE",
+            "discipline": "LANDSCAPE",
+            "degrowth": 0,
+            "methods": 3,
+            "becoming": 7,
+            "scalability": 7,
+            "size": 7
+        },
+        {
+            "id": "2020.8, PEREZ-RAMOS, THERMAL GRADIENT LANDSCAPE",
+            "discipline": "LANDSCAPE",
+            "degrowth": 5,
+            "methods": 0,
+            "becoming": 5,
+            "scalability": 7,
+            "size": 7
+        },
+        {
+            "id": "2021.1, DOHERTY, COLORFUL CITIES",
+            "discipline": "LANDSCAPE",
+            "degrowth": 6,
+            "methods": 4,
+            "becoming": 0,
+            "scalability": 8,
+            "size": 6
+        },
+        {
+            "id": "2021.2, CHRISTOFORETTI, VOULARES, VALUES-DRIVEN SITING",
+            "discipline": "ARCHITECTURE | URBANISM",
+            "degrowth": 2,
+            "methods": 8,
+            "becoming": 0,
+            "scalability": 10,
+            "size": 6
+        },
+        {
+            "id": "2021.3, BECHTHOLD, SUSTAINABILITY AND PERCEPTION",
+            "discipline": "ARCHITECTURE",
+            "degrowth": 0,
+            "methods": 10,
+            "becoming": 0,
+            "scalability": 9,
+            "size": 2
+        },
+        {
+            "id": "2022.1, DOUGLAS, SHOSHAN, MONACELLA, COMMONS GOVERNANCE FRAMEWORK",
+            "discipline": "LANDSCAPE",
+            "degrowth": 3,
+            "methods": 7,
+            "becoming": 0,
+            "scalability": 6,
+            "size": 10
+        },
+        {
+            "id": "2022.2, ROWE, URBAN METABOLISM",
+            "discipline": "PLANNING",
+            "degrowth": 1,
+            "methods": 9,
+            "becoming": 0,
+            "scalability": 9,
+            "size": 8
+        },
+        {
+            "id": "2022.3, DOHERTY, CHROMATIC RESILIENCE",
+            "discipline": "LANDSCAPE",
+            "degrowth": 5,
+            "methods": 5,
+            "becoming": 0,
+            "scalability": 7,
+            "size": 6
+        },
+        {
+            "id": "2022.4, KIRKWOOD, REMADE",
+            "discipline": "LANDSCAPE",
+            "degrowth": 6,
+            "methods": 4,
+            "becoming": 0,
+            "scalability": 6,
+            "size": 6
+        },
+        {
+            "id": "2022.5, MELTZER, WILDFIRES AND RISK",
+            "discipline": "PLANNING",
+            "degrowth": 0,
+            "methods": 10,
+            "becoming": 0,
+            "scalability": 8,
+            "size": 9
+        },
+        {
+            "id": "2023.1, SAMUELSON, WINDOW CODE RESTRICTIONS",
+            "discipline": "ARCHITECTURE",
+            "degrowth": 0,
+            "methods": 10,
+            "becoming": 0,
+            "scalability": 10,
+            "size": 1
+        },
+        {
+            "id": "2023.2, LOW ENERGY DWELLING",
+            "discipline": "ARCHITECTURE",
+            "degrowth": 3,
+            "methods": 3,
+            "becoming": 4,
+            "scalability": 8,
+            "size": 2
+        },
+        {
+            "id": "2023.3, GRINHAM, DECARBONIZING COOLING",
+            "discipline": "ARCHITECTURE",
+            "degrowth": 2,
+            "methods": 2,
+            "becoming": 6,
+            "scalability": 6,
+            "size": 1
+        },
+        {
+            "id": "2023.4, TEICHER, US RECEIVING COMMUNITIES",
+            "discipline": "PLANNING",
+            "degrowth": 4,
+            "methods": 6,
+            "becoming": 0,
+            "scalability": 6,
+            "size": 10
+        },
+        {
+            "id": "2014.1, MALKAWI, HOUSE ZERO",
+            "discipline": "ARCHITECTURE",
+            "degrowth": 1,
+            "methods": 1,
+            "becoming": 8,
+            "scalability": 6,
+            "size": 3
+        },
+        {
+            "id": "2017.1, MALKAWI, ZERO ENERGY HIGHRISE",
+            "discipline": "ARCHITECTURE",
+            "degrowth": 2,
+            "methods": 8,
+            "becoming": 0,
+            "scalability": 7,
+            "size": 5
+        }
+    ]
+}

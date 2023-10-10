@@ -11,7 +11,7 @@ const svg = d3.select(container)
   .style("position", "absolute")
   .style("z-index", 2)
 
-const supplement_width = 240;
+const supplement_width = 250;
 const supplement_height = 120;
 const supplement_margin = { top: 10, left: 10, right: 10, bottom: 20 };
 const supplement_svg = d3.select("#supplement_chart")
@@ -31,6 +31,8 @@ let drivableVal = 1;
 
 
 let colorScale = d3.scaleSequential(d3.interpolateViridis)
+// let colorScale = d3.scaleLinear()
+//   .range(['white', 'red'])
 
 let rScale = d3.scaleSqrt()
   .domain([1, 5])
@@ -54,7 +56,7 @@ const promises = [
 
 Promise.all(promises).then(function (geoData) {
   const xMin = -80.10000;
-  const xMax = -79.94796;
+  const xMax = -79.44796;
   const yMin = 40.38783;
   const yMax = 40.50548;
   // const xMin = -79.98929;
@@ -80,6 +82,46 @@ Promise.all(promises).then(function (geoData) {
 
   colorScale.domain([scoreMin, scoreMax])
   rScale.domain([scoreMin, scoreMax])
+
+  const ramp_svg = d3.select("#ramp")
+    .attr("width", 250)
+    .attr("height", 30);
+
+  const scaleWidth = 250;
+  const scaleHeight = 10;
+
+  const scale = ramp_svg.select("#scale")
+    .attr("transform", "translate(0,0)");
+
+  scale.select("#scaleRect")
+    .attr("width", scaleWidth)
+    .attr("height", scaleHeight);
+
+  var barColor = d3.scaleSequential(d3.interpolateViridis)
+    .domain([0,10]);
+
+  var stops = d3.range(0, 1.25, 0.25);
+  ramp_svg.select("#colorGradient").selectAll("stop")
+    .data(stops).enter()
+    .append("stop")
+    .attr("offset", function (d) {
+      return d * 100 + "%";
+    })
+    .attr("stop-color", function (d) {
+      return barColor(d * 10);
+    });
+
+  ramp_svg.append("text")
+    .attr("x", 0)
+    .attr("y", 25)
+    .attr("class", "ramp_label")
+    .text("Lower Scoring")
+
+    ramp_svg.append("text")
+    .attr("x", 187)
+    .attr("y", 25)
+    .attr("class", "ramp_label")
+    .text("Higher Scoring")
 
   updateFilters();
 
@@ -113,8 +155,9 @@ Promise.all(promises).then(function (geoData) {
   render();
 
   const xScale = d3.scaleLinear()
-    .domain([-3, 3])
-    .range([supplement_margin.left, supplement_width - supplement_margin.right])
+    .domain([scoreMin, scoreMax])
+    // .range([supplement_margin.left, supplement_width - supplement_margin.right])
+    .range([0,250])
 
   // DRAGGABLE CONTROL PANEL
   dragElement(document.getElementById("mydiv"));
@@ -225,14 +268,15 @@ Promise.all(promises).then(function (geoData) {
 
 
 
-  var dense_xAxis = supplement_svg.append("g")
-    .attr("class", "xaxis")
-    .attr("transform", `translate(0, ${supplement_height - supplement_margin.bottom})`)
-    .call(d3.axisBottom().scale(xScale).tickValues([-3,0,3]));
+  // var dense_xAxis = supplement_svg.append("g")
+  //   .attr("class", "xaxis")
+  //   .attr("transform", `translate(0, ${supplement_height - supplement_margin.bottom})`)
+  //   .call(d3.axisBottom().scale(xScale));
 
   d3.select("#dense_info").on("click", function () {
     d3.select("#supplement").style("display", "block")
-    d3.select("#supplement_header").html("Density")
+    d3.select("#supplement_header").html("Accessibility by cycling")
+    d3.select("#supplement_text").html("Locations with higher scores have shorter travel times by bike to a variety of destinations, especially school, parks, and grocery stores.")
 
     const dense_histogram = d3.histogram()
       .value(function (d) { return d.dense })
@@ -252,7 +296,7 @@ Promise.all(promises).then(function (geoData) {
       .attr("x", d => xScale(d.x0))
       .attr("width", (supplement_width - supplement_margin.left - supplement_margin.right) / dense_bins.length - 1)
       .attr("y", dense_yScale(0))
-      // .attr("height", dense_yScale(0))
+    // .attr("height", dense_yScale(0))
     bars.merge(enter)
       .transition()
       .duration(500)
@@ -267,7 +311,8 @@ Promise.all(promises).then(function (geoData) {
 
   d3.select("#diverse_info").on("click", function () {
     d3.select("#supplement").style("display", "block")
-    d3.select("#supplement_header").html("Diversity")
+    d3.select("#supplement_header").html("Diversity of people and buildings")
+    d3.select("#supplement_text").html("Locations with higher scores have a greater number of different land uses in the immediate vicinity, a higher proportion of Black residents in the immediate vicinity, lower lot sizes, and are located further from undesirable land uses (such as coal mines and poultry farms).")
 
     const diverse_histogram = d3.histogram()
       .value(function (d) { return d.diverse })
@@ -300,7 +345,8 @@ Promise.all(promises).then(function (geoData) {
 
   d3.select("#walkable_info").on("click", function () {
     d3.select("#supplement").style("display", "block")
-    d3.select("#supplement_header").html("Walkability")
+    d3.select("#supplement_header").html("Accessibility by walking")
+    d3.select("#supplement_text").html("Locations with higher scores have shorter travel times by walking and transit to a variety of destinations, especially commercial locations and employment centers.")
 
     const walkable_histogram = d3.histogram()
       .value(function (d) { return d.walkable })
@@ -333,14 +379,15 @@ Promise.all(promises).then(function (geoData) {
 
   d3.select("#drivable_info").on("click", function () {
     d3.select("#supplement").style("display", "block")
-    d3.select("#supplement_header").html("Drivability")
+    d3.select("#supplement_header").html("Accessibility by driving")
+    d3.select("#supplement_text").html("Locations with higher scores have shorter travel times by car to a variety of destinations, especially commercial locations and employment centers.")
 
     const drivable_histogram = d3.histogram()
       .value(function (d) { return d.drivable })
       .domain(xScale.domain())
       .thresholds(xScale.ticks(100))
 
-      drivable_bins = drivable_histogram(filtered);
+    drivable_bins = drivable_histogram(filtered);
 
     const drivable_yScale = d3.scaleLinear()
       .domain([0, d3.max(drivable_bins, function (d) { return d.length; })])
