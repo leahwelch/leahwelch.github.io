@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Impact Map Test</title>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.9.3/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.9.3/mapbox-gl.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+
+    #control_panel {
+      /* position: absolute; */
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 9;
+      background-color: rgba(255, 255, 255, 0.85);
+      border: 1px solid #b9b8b9;
+      text-align: left;
+      color: white;
+      font-size: 9pt;
+      padding: 20px;
+      border-radius: 5px;
+    }
+
+    .tooltip {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      visibility: hidden;
+      color: white;
+      background-color: rgba(0,0,0,100);
+      z-index: 7;
+      padding: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <div id="control_panel">
+    <button type="button" id="update">Update Data</button>
+  </div>
+  <script src="script.js" type="text/javascript"></script>
+
+</body>
+
+</html>
