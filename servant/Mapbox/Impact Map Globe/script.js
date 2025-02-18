@@ -13,23 +13,27 @@ Promise.all(loadFiles).then(function (csv) {
   let walks = csv[0]
   let partners = csv[1]
 
-  let by_county = d3.groups(partners, d => d.county).sort((a, b) => d3.descending(a[1], b[1]))
+  let by_county = d3.groups(partners, d => d.category, d => d.county).sort((a, b) => d3.descending(a[1], b[1]))
   by_county.forEach((d) => {
-    d.lat = d3.mean(d[1], p => p.lat)
-    d.lon = d3.mean(d[1], p => p.lon)
-    d.n = d[1].length,
-    d.category = "partner"
+    d[1].forEach((p) => {
+      p.lat = d3.mean(p[1], m => m.lat)
+      p.lon = d3.mean(p[1], m => m.lon)
+      p.n = p[1].length,
+      p.category = d[0]
+    })
   })
 
-  let combined = []
-  for(let i = 0; i < walks.length; i++) {
-    combined.push(walks[i])
+  let by_category = []
+  for (let i = 0; i < by_county.length; i++) {
+    for (let j = 0; j < by_county[i][1].length; j++) {
+      by_category.push({
+        lat: by_county[i][1][j].lat,
+        lon: by_county[i][1][j].lon,
+        n: by_county[i][1][j].n,
+        category: by_county[i][1][j].category
+      })
+    }
   }
-  for(let i = 0; i < by_county.length; i++) {
-    combined.push(by_county[i])
-  }
-  console.log(combined)
-
 
   let centerLat = d3.mean(csv[1], d => d.lat)
   let centerLon = d3.mean(csv[1], d => d.lon)
@@ -96,13 +100,16 @@ Promise.all(loadFiles).then(function (csv) {
   spinGlobe();
 
   //extract categories for color-coding the towers
-  // let byCategory = d3.groups(csv[0], d => d.continent)
-  // let categories = byCategory.map(d => d[0])
-  let categories = ["prayer_walk", "partner"]
+  let categories = by_county.map(d => d[0])
 
   let colorScale = d3.scaleOrdinal()
     .domain(categories)
-    .range(["#f6c414", "#00A469"])
+    .range(["#F6C414",
+      "#90640A",
+      "#00A469",
+      "#1492FC",
+      "#C581FF",
+      "#5D198A"])
 
   //scales for dynamically adjusting tower radius and height
   const heightScale = d3.scaleLinear()
@@ -177,8 +184,7 @@ Promise.all(loadFiles).then(function (csv) {
     //create a geojson dataset to draw the towers
     let geojson = {
       "type": "FeatureCollection",
-      "features": combined.map(function (d) {
-        // "features": csv[0].map(function (d) {
+      "features": by_category.map(function (d) {
         return {
           type: "Feature",
           properties: {
@@ -243,7 +249,6 @@ Promise.all(loadFiles).then(function (csv) {
       let qfs = map.queryRenderedFeatures({
         layers: [`tower_points`]
       });
-      // console.log(qfs)
       let data = {
         "type": "FeatureCollection",
         "features": []
@@ -253,11 +258,10 @@ Promise.all(loadFiles).then(function (csv) {
 
       //tower height reduces when users zoom in
 
-      let height_multiplier = 1000 / heightScale(zoom_level);
+      let height_multiplier = 2000 / heightScale(zoom_level);
       const radiusPX = 2 / radiusZoomScale(zoom_level)
 
       qfs.forEach(function (object, i) {
-        console.log(object.properties)
         const center = object.geometry.coordinates
 
         let xy = map.project(center);
@@ -301,7 +305,7 @@ Promise.all(loadFiles).then(function (csv) {
   })
 
   map.on('mousemove', 'extrusion', function (e) {
-    console.log(e.features[0].properties.name)
+    // console.log(e.features[0].properties.name)
     map.getCanvasContainer().style.cursor = 'pointer';
 
     if (hoveredTowerId) {
@@ -338,7 +342,7 @@ Promise.all(loadFiles).then(function (csv) {
 
   //proxy for dropdown selection to filter data
   updateBtn.on("click", function () {
-    let filtered = csv[0].filter(d => d.continent === "NA")
+    let filtered = by_category.filter(d => d.category === "Faith-Based Initiatives")
 
     //override geojson to only include filtered values
     geojson = {
@@ -390,7 +394,6 @@ function parse_partners(d) {
     lat: +d.LAT,
     lon: +d.LNG,
     county: d.COUNTY,
-    n: 1,
-    category: "partner"
+    n: 1
   }
 }
