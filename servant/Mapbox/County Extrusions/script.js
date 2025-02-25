@@ -23,19 +23,19 @@ Promise.all(loadFiles).then(function (data) {
 
     let colorScale = d3.scaleLinear()
         .domain(bins.map(d => d.x0))
-        .range(['#00150f', '#002b1e', '#00402c', '#00553b', "#006747", "#00a469", "#00c980", "#25e297", '#cdfee3', '#ffffff'])
+        .range(['#002b1e', '#00402c', '#00553b', "#006747", "#00a469", "#00c980", "#25e297", '#cdfee3', '#ffffff'])
 
     mapboxgl.accessToken = 'pk.eyJ1IjoibHdlbGNoIiwiYSI6ImNtNjZ6MmtraDA1aXoybHB6YXV6bm45dzMifQ.MBGZ3-bqIZtaF5-UbfkkaA';
     const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/lwelch/cm7jliui4006801r484ev9g8c',
         projection: 'globe',
-        zoom: 3,
+        zoom: 3.5,
         maxZoom: 6,
         minZoom: 2,
         pitch: 20.00,
         bearing: 0,
-        center: [-97.5164, 35.4676]
+        center: [-82.9988, 36.9612]
     });
 
 
@@ -62,6 +62,7 @@ Promise.all(loadFiles).then(function (data) {
             })
         }
 
+
         map.addSource("data", {
             type: "geojson",
             data: geojson,
@@ -73,21 +74,20 @@ Promise.all(loadFiles).then(function (data) {
             'source': 'data',
             "paint": {
                 'fill-extrusion-color': ['get', 'fill'],
-                'fill-extrusion-height': ['get', 'height'],
+                'fill-extrusion-height': ['get', 'height']
             }
         });
 
-        console.log(geojson)
     });
 
     updateBtn.on("click", function () {
 
         bins = d3.bin()
-        .thresholds(9)
-        .value(d => d.properties['Arts, Culture, and Media'])
-        (data[0].features)
-        
-  
+            .thresholds(9)
+            .value(d => d.properties['Arts, Culture, and Media'])
+            (data[0].features)
+
+
         data[0].features.forEach((d) => {
             for (let i = 0; i < bins.length; i++) {
                 if (d.properties.VALUE >= bins[i].x0 && d.properties.VALUE < bins[i].x1) {
@@ -97,7 +97,7 @@ Promise.all(loadFiles).then(function (data) {
         })
 
         heightScale.domain([0, d3.max(data[0].features, d => d.properties['Arts, Culture, and Media'])])
-        
+
         geojson = {
             "type": "FeatureCollection",
             "features": data[0].features.map(function (d) {
