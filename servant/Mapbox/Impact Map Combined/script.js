@@ -21,7 +21,7 @@ Promise.all(loadFiles).then(function (data) {
         .range([0, 400000])
 
     let bins = d3.bin()
-        .thresholds(9)
+        .thresholds(10)
         .value(d => d.properties.VALUE)
         (data[0].features)
 
@@ -32,10 +32,11 @@ Promise.all(loadFiles).then(function (data) {
             }
         }
     })
+    console.log(bins)
 
     let colorScale = d3.scaleLinear()
         .domain(bins.map(d => d.x0))
-        .range(['#002b1e', '#00402c', '#00553b', "#006747", "#00a469", "#00c980", "#25e297", '#cdfee3', '#ffffff'])
+        .range(['#002b1e', "#006747", "#00a469", "#00c980", "#25e297", '#cdfee3', '#ffffff'])
 
     mapboxgl.accessToken = 'pk.eyJ1IjoibHdlbGNoIiwiYSI6ImNtNjZ6MmtraDA1aXoybHB6YXV6bm45dzMifQ.MBGZ3-bqIZtaF5-UbfkkaA';
     const map = new mapboxgl.Map({
@@ -44,8 +45,8 @@ Promise.all(loadFiles).then(function (data) {
         projection: 'globe',
         zoom: 3.5,
         minZoom: 2,
-        pitch: 20.00,
-        bearing: 10,
+        pitch: 20,
+        bearing: 0,
         center: [-82.9988, 36.9612]
     });
 
@@ -87,17 +88,22 @@ Promise.all(loadFiles).then(function (data) {
             'type': 'circle',
             'source': "point_data",
             'paint': {
-                'circle-color': ['get', 'fill'],
-                'circle-radius': 2,
+                'circle-color': [
+                    'case',
+                    ['boolean', ['feature-state', 'hover'], false],
+                    'white',
+                    ['get', 'fill']
+                ],
+                'circle-radius': 4,
                 'circle-opacity': [
-                    'interpolate',
-                    ['linear'],
-                    ['zoom'],
-                    5.95,
-                    0,
-                    6,
-                    1
+                    'case', 
+                    ['boolean', ['feature-state', 'hover'], false],
+                    1.0,
+                    0.5
                 ]
+            },
+            layout: {
+                'visibility': "none"
             }
         });
 
@@ -143,19 +149,12 @@ Promise.all(loadFiles).then(function (data) {
                     'white',
                     ['get', 'fill']
                 ],
-                'fill-extrusion-height': ['get', 'height'],
-                'fill-extrusion-opacity': [
-                    'interpolate',
-                    ['linear'],
-                    ['zoom'],
-                    5.95,
-                    1,
-                    6,
-                    0
-                ]
+                'fill-extrusion-height': ['get', 'height']
+            },
+            layout: {
+                'visibility': "visible"
             }
         });
-
 
     });
 
@@ -213,24 +212,73 @@ Promise.all(loadFiles).then(function (data) {
             hoveredTowerId = null;
         });
     }
-    if (map.getZoom() < 5.95) {
-        handleExtrusionTooltip()
+
+    function handlePointTooltip() {
+        map.on('mousemove', 'points', function (e) {
+            map.getCanvasContainer().style.cursor = 'pointer';
+
+            if (hoveredCircleId) {
+                map.removeFeatureState(
+                    { source: 'point_data', id: hoveredCircleId }
+                );
+            }
+            hoveredCircleId = e.features[0].id;
+            map.setFeatureState(
+                { source: 'point_data', id: hoveredCircleId },
+                { hover: true }
+            );
+
+            let cx = e.originalEvent.clientX + 10;
+            let cy = e.originalEvent.clientY - 10;
+
+            tooltip.style("visibility", "visible")
+                .style("left", cx + "px")
+                .style("top", cy + "px")
+                .html("hello")
+                .html(
+                    e.features[0].properties.name + "<br>" +
+                    e.features[0].properties.category
+                )
+        });
+
+        map.on('mouseleave', 'points', function () {
+            tooltip.style("visibility", "hidden")
+            map.getCanvasContainer().style.cursor = 'default';
+
+            map.setFeatureState(
+                { source: 'point_data', id: hoveredCircleId },
+                { hover: false }
+            );
+            hoveredCircleId = null;
+        });
     }
 
+    if (map.getZoom() < 6.95) {
+        handleExtrusionTooltip()
+    }
 
     map.on('zoomstart', () => {
         let zoomLevel = map.getZoom()
         if (zoomLevel >= 5) {
             map.setPitch(0)
-            map.setBearing(0)
+            // map.setBearing(0)
         }
         if (zoomLevel < 5) {
             map.setPitch(20)
-            map.setBearing(10)
+            // map.setBearing(10)
         }
-        if (zoomLevel < 5.95) {
+        if (zoomLevel < 6) {
+            map.setLayoutProperty('3d-buildings', 'visibility','visible')
+            map.setLayoutProperty('points', 'visibility', 'none')
             handleExtrusionTooltip()
         } 
+            
+        if(zoomLevel >=5.95) {
+            map.setLayoutProperty('3d-buildings', 'visibility','none')
+            map.setLayoutProperty('points', 'visibility', 'visible')
+            handlePointTooltip()
+        }
+        
 
     });
 
