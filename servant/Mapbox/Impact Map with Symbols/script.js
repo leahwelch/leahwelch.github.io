@@ -614,7 +614,7 @@ Promise.all(loadFiles).then(function (data) {
         });
     }
 
-    if (map.getZoom() < 6.95) {
+    if (map.getZoom() < 5) {
         handleExtrusionTooltip()
     }
 
