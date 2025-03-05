@@ -53,6 +53,11 @@ Promise.all(loadFiles).then(function (data) {
         .domain(bins.map(d => d.x0))
         .range(['#002b1e', "#006747", "#00a469", "#00c980", "#25e297", '#cdfee3', '#ffffff'])
 
+    const bounds = [
+        [-101.0, 30.5],
+        [-80.1, 40.0]
+    ]
+
     mapboxgl.accessToken = 'pk.eyJ1IjoibHdlbGNoIiwiYSI6ImNtNjZ6MmtraDA1aXoybHB6YXV6bm45dzMifQ.MBGZ3-bqIZtaF5-UbfkkaA';
     const map = new mapboxgl.Map({
         container: 'map',
@@ -62,8 +67,10 @@ Promise.all(loadFiles).then(function (data) {
         minZoom: 2,
         pitch: 20,
         bearing: 0,
-        center: [-82.9988, 36.9612]
+        center: [-82.9988, 36.9612],
+        maxBounds: bounds
     });
+    console.log(map.getBounds().toArray())
 
     map.addControl(new mapboxgl.NavigationControl());
     map.scrollZoom.disable();
@@ -332,12 +339,12 @@ Promise.all(loadFiles).then(function (data) {
                     'white',
                     ['get', 'fill']
                 ],
-                'circle-radius': 4,
+                'circle-radius': 3,
                 'circle-opacity': [
                     'case',
                     ['boolean', ['feature-state', 'hover'], false],
                     1.0,
-                    0.5
+                    0.3
                 ]
             },
             layout: {
@@ -614,7 +621,7 @@ Promise.all(loadFiles).then(function (data) {
         });
     }
 
-    if (map.getZoom() < 5) {
+    if (map.getZoom() < 6.95) {
         handleExtrusionTooltip()
     }
 
@@ -630,8 +637,8 @@ Promise.all(loadFiles).then(function (data) {
             map.setLayoutProperty('points', 'visibility', 'none')
             handleExtrusionTooltip()
         }
-        
-        if (zoomLevel >= 5) {
+
+        if (zoomLevel >= 5 && zoomLevel < 10.5) {
             map.setPitch(0)
             //only render the points that are in bounds
             map.on('moveend', () => {
@@ -650,18 +657,25 @@ Promise.all(loadFiles).then(function (data) {
             map.setLayoutProperty('3d-buildings', 'visibility', 'none')
             map.setLayoutProperty('points', 'visibility', 'visible')
             handlePointTooltip()
+            map.setLayoutProperty('arts_icons', 'visibility', 'none')
+            map.setLayoutProperty('community_icons', 'visibility', 'none')
+            map.setLayoutProperty('education_icons', 'visibility', 'none')
+            map.setLayoutProperty('faith_icons', 'visibility', 'none')
+            map.setLayoutProperty('health_icons', 'visibility', 'none')
+            map.setLayoutProperty('international_icons', 'visibility', 'none')
         }
 
         if (zoomLevel >= 10.5) {
             map.setLayoutProperty('points', 'visibility', 'none')
-            map.setLayoutProperty('arts_icons', 'visibility', 'visible')
             handleIconTooltip()
+            map.setLayoutProperty('arts_icons', 'visibility', 'visible')
             map.setLayoutProperty('community_icons', 'visibility', 'visible')
             map.setLayoutProperty('education_icons', 'visibility', 'visible')
             map.setLayoutProperty('faith_icons', 'visibility', 'visible')
             map.setLayoutProperty('health_icons', 'visibility', 'visible')
             map.setLayoutProperty('international_icons', 'visibility', 'visible')
         }
+
 
 
     });
