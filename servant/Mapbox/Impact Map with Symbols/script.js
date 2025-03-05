@@ -624,21 +624,15 @@ Promise.all(loadFiles).then(function (data) {
 
 
         let zoomLevel = map.getZoom()
-        if (zoomLevel >= 5) {
-            map.setPitch(0)
-            // map.setBearing(0)
-        }
         if (zoomLevel < 5) {
             map.setPitch(20)
-            // map.setBearing(10)
-        }
-        if (zoomLevel < 6) {
             map.setLayoutProperty('3d-buildings', 'visibility', 'visible')
             map.setLayoutProperty('points', 'visibility', 'none')
             handleExtrusionTooltip()
         }
-
-        if (zoomLevel >= 5.95) {
+        
+        if (zoomLevel >= 5) {
+            map.setPitch(0)
             //only render the points that are in bounds
             map.on('moveend', () => {
                 let currentBounds = map.getBounds().toArray()
