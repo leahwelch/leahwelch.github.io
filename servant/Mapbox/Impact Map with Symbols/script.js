@@ -20,6 +20,7 @@ const images = [
 
 let hoveredTowerId;
 let hoveredCircleId;
+let hoveredIconId;
 
 Promise.all(loadFiles).then(function (data) {
     //data manipulation for local map
@@ -80,6 +81,10 @@ Promise.all(loadFiles).then(function (data) {
                         'features': arts_data.map(function (d) {
                             return {
                                 'type': 'Feature',
+                                properties: {
+                                    name: d.name,
+                                    category: d.category,
+                                },
                                 'geometry': {
                                     'type': 'Point',
                                     'coordinates': [
@@ -90,7 +95,8 @@ Promise.all(loadFiles).then(function (data) {
                             }
                         })
 
-                    }
+                    },
+                    generateId: true
                 });
 
                 map.addSource('community_icons', {
@@ -100,6 +106,10 @@ Promise.all(loadFiles).then(function (data) {
                         'features': community_data.map(function (d) {
                             return {
                                 'type': 'Feature',
+                                properties: {
+                                    name: d.name,
+                                    category: d.category,
+                                },
                                 'geometry': {
                                     'type': 'Point',
                                     'coordinates': [
@@ -110,7 +120,8 @@ Promise.all(loadFiles).then(function (data) {
                             }
                         })
 
-                    }
+                    },
+                    generateId: true
                 });
 
                 map.addSource('education_icons', {
@@ -120,6 +131,10 @@ Promise.all(loadFiles).then(function (data) {
                         'features': education_data.map(function (d) {
                             return {
                                 'type': 'Feature',
+                                properties: {
+                                    name: d.name,
+                                    category: d.category,
+                                },
                                 'geometry': {
                                     'type': 'Point',
                                     'coordinates': [
@@ -130,7 +145,8 @@ Promise.all(loadFiles).then(function (data) {
                             }
                         })
 
-                    }
+                    },
+                    generateId: true
                 });
 
                 map.addSource('faith_icons', {
@@ -140,6 +156,10 @@ Promise.all(loadFiles).then(function (data) {
                         'features': faith_data.map(function (d) {
                             return {
                                 'type': 'Feature',
+                                properties: {
+                                    name: d.name,
+                                    category: d.category,
+                                },
                                 'geometry': {
                                     'type': 'Point',
                                     'coordinates': [
@@ -150,7 +170,8 @@ Promise.all(loadFiles).then(function (data) {
                             }
                         })
 
-                    }
+                    },
+                    generateId: true
                 });
 
                 map.addSource('health_icons', {
@@ -160,6 +181,10 @@ Promise.all(loadFiles).then(function (data) {
                         'features': health_data.map(function (d) {
                             return {
                                 'type': 'Feature',
+                                properties: {
+                                    name: d.name,
+                                    category: d.category,
+                                },
                                 'geometry': {
                                     'type': 'Point',
                                     'coordinates': [
@@ -170,7 +195,8 @@ Promise.all(loadFiles).then(function (data) {
                             }
                         })
 
-                    }
+                    },
+                    generateId: true
                 });
 
                 map.addSource('international_icons', {
@@ -180,6 +206,10 @@ Promise.all(loadFiles).then(function (data) {
                         'features': international_data.map(function (d) {
                             return {
                                 'type': 'Feature',
+                                properties: {
+                                    name: d.name,
+                                    category: d.category,
+                                },
                                 'geometry': {
                                     'type': 'Point',
                                     'coordinates': [
@@ -190,7 +220,8 @@ Promise.all(loadFiles).then(function (data) {
                             }
                         })
 
-                    }
+                    },
+                    generateId: true
                 });
 
                 map.addLayer({
@@ -283,8 +314,6 @@ Promise.all(loadFiles).then(function (data) {
             })
         }
 
-        console.log(point_data)
-
         map.addSource("point_data", {
             id: "point_data",
             type: "geojson",
@@ -369,6 +398,7 @@ Promise.all(loadFiles).then(function (data) {
 
     hoveredTowerId = null;
     hoveredCircleId = null;
+    hoveredIconId = null;
 
     function handleExtrusionTooltip() {
         map.on('mousemove', '3d-buildings', function (e) {
@@ -462,6 +492,128 @@ Promise.all(loadFiles).then(function (data) {
         });
     }
 
+    function handleIconTooltip() {
+        map.on('mousemove', 'arts_icons', function (e) {
+            map.getCanvasContainer().style.cursor = 'pointer';
+
+            let cx = e.originalEvent.clientX + 10;
+            let cy = e.originalEvent.clientY - 10;
+
+            tooltip.style("visibility", "visible")
+                .style("left", cx + "px")
+                .style("top", cy + "px")
+                .html("hello")
+                .html(
+                    e.features[0].properties.name + "<br>" +
+                    e.features[0].properties.category
+                )
+        });
+
+        map.on('mouseleave', 'arts_icons', function () {
+            tooltip.style("visibility", "hidden")
+        });
+
+        map.on('mousemove', 'community_icons', function (e) {
+            map.getCanvasContainer().style.cursor = 'pointer';
+
+            let cx = e.originalEvent.clientX + 10;
+            let cy = e.originalEvent.clientY - 10;
+
+            tooltip.style("visibility", "visible")
+                .style("left", cx + "px")
+                .style("top", cy + "px")
+                .html("hello")
+                .html(
+                    e.features[0].properties.name + "<br>" +
+                    e.features[0].properties.category
+                )
+        });
+
+        map.on('mouseleave', 'community_icons', function () {
+            tooltip.style("visibility", "hidden")
+        });
+
+        map.on('mousemove', 'education_icons', function (e) {
+            map.getCanvasContainer().style.cursor = 'pointer';
+
+            let cx = e.originalEvent.clientX + 10;
+            let cy = e.originalEvent.clientY - 10;
+
+            tooltip.style("visibility", "visible")
+                .style("left", cx + "px")
+                .style("top", cy + "px")
+                .html("hello")
+                .html(
+                    e.features[0].properties.name + "<br>" +
+                    e.features[0].properties.category
+                )
+        });
+
+        map.on('mouseleave', 'education_icons', function () {
+            tooltip.style("visibility", "hidden")
+        });
+
+        map.on('mousemove', 'faith_icons', function (e) {
+            map.getCanvasContainer().style.cursor = 'pointer';
+
+            let cx = e.originalEvent.clientX + 10;
+            let cy = e.originalEvent.clientY - 10;
+
+            tooltip.style("visibility", "visible")
+                .style("left", cx + "px")
+                .style("top", cy + "px")
+                .html("hello")
+                .html(
+                    e.features[0].properties.name + "<br>" +
+                    e.features[0].properties.category
+                )
+        });
+
+        map.on('mouseleave', 'faith_icons', function () {
+            tooltip.style("visibility", "hidden")
+        });
+
+        map.on('mousemove', 'health_icons', function (e) {
+            map.getCanvasContainer().style.cursor = 'pointer';
+
+            let cx = e.originalEvent.clientX + 10;
+            let cy = e.originalEvent.clientY - 10;
+
+            tooltip.style("visibility", "visible")
+                .style("left", cx + "px")
+                .style("top", cy + "px")
+                .html("hello")
+                .html(
+                    e.features[0].properties.name + "<br>" +
+                    e.features[0].properties.category
+                )
+        });
+
+        map.on('mouseleave', 'health_icons', function () {
+            tooltip.style("visibility", "hidden")
+        });
+
+        map.on('mousemove', 'international_icons', function (e) {
+            map.getCanvasContainer().style.cursor = 'pointer';
+
+            let cx = e.originalEvent.clientX + 10;
+            let cy = e.originalEvent.clientY - 10;
+
+            tooltip.style("visibility", "visible")
+                .style("left", cx + "px")
+                .style("top", cy + "px")
+                .html("hello")
+                .html(
+                    e.features[0].properties.name + "<br>" +
+                    e.features[0].properties.category
+                )
+        });
+
+        map.on('mouseleave', 'international_icons', function () {
+            tooltip.style("visibility", "hidden")
+        });
+    }
+
     if (map.getZoom() < 6.95) {
         handleExtrusionTooltip()
     }
@@ -509,6 +661,7 @@ Promise.all(loadFiles).then(function (data) {
         if (zoomLevel >= 10.5) {
             map.setLayoutProperty('points', 'visibility', 'none')
             map.setLayoutProperty('arts_icons', 'visibility', 'visible')
+            handleIconTooltip()
             map.setLayoutProperty('community_icons', 'visibility', 'visible')
             map.setLayoutProperty('education_icons', 'visibility', 'visible')
             map.setLayoutProperty('faith_icons', 'visibility', 'visible')
