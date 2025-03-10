@@ -50,9 +50,9 @@ button.active {
 }
 
 .state {
-  fill: #ffffff;
+  fill: #71a896;
   stroke: #71a896;
-  /* #93cebb */
+  fill-opacity: 0.1;
 }
 
 .axis {
