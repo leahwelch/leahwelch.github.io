@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0px;
+  padding: 0px;
+}
+
+h2 {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  margin:30px 50px;
+  font-size: 14pt;
+}
+
+button {
+    
+  margin-top: 5px;
+  background-color: #ffffff;
+  border: 1px solid #00A469;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 9pt;
+  color: #00A469;
+  text-align: center;
+  padding: 5px 10px;
+  /* border-radius: 50%; */
+  display: inline-block;
+}
+
+button:hover {
+  background-color: #00A469;
+  color: #fff9f2;
+}
+
+button:focus {
+  background-color: #00A469;
+  color: #fff9f2;
+  outline:0;
+}
+
+button.active {
+  background-color: #00A469;
+  color: #fff9f2;
+  outline:0;
+}
+
+#chart {
+  width: 100%;
+  height: 90vh;
+}
+
+.state {
+  fill: #ffffff;
+  stroke: #71a896;
+  /* #93cebb */
+}
+
+.axis {
+  font-size: 9pt;
+}
+
+.axis path {
+  visibility: hidden;
+}
+
+.axis line {
+  stroke: white;
+  opacity: 0.4;
+}
+
+.label {
+  font-family: sans-serif;
+  font-size: 9pt;
+}
+
+.axis text {
+  color: white;
+  font-size: 8pt;
+}
+
+.axisLabel {
+  font-family: sans-serif;
+  font-size: 9pt;
+}
