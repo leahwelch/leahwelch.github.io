@@ -6,10 +6,10 @@ const promises = [
 const width = document.querySelector("#chart").clientWidth;
 const height = document.querySelector("#chart").clientHeight;
 const margin = { top: 50, left: 100, right: 100, bottom: 30 };
-const radius = 200
+const radius = 225
 
 const rScale = d3.scaleLinear()
-    .domain([0, 4.25])
+    .domain([0, 4])
     .range([0, radius])
 
 const svg = d3.select("#chart")
@@ -18,6 +18,10 @@ const svg = d3.select("#chart")
     .attr("height", height)
     .append("g")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+
+let tooltip = d3.select("#chart")
+    .append("div")
+    .attr("class", "tooltip")
 
 Promise.all(promises).then(function (data) {
     const one_city = data[0].filter(d => d.city === "Boston")
@@ -79,7 +83,7 @@ Promise.all(promises).then(function (data) {
     console.log(root.descendants())
     let nodeScale = d3.scaleSqrt()
         .domain([1, d3.max(root.descendants(), d => d.data.value)])
-        .range([1, 10])
+        .range([2.5, 10])
 
     // Add a circle for each node.
     svg.selectAll("g")
@@ -90,14 +94,42 @@ Promise.all(promises).then(function (data) {
           translate(${d.y})`;
         })
         .append("circle")
+        .attr("class", "node")
         .attr("r", (d) => {
             if (d.data.value) {
                 return nodeScale(d.data.value)
             } else {
-                return 1.5
+                return 2
             }
         })
         .style("fill", "#00A469")
+        .attr("stroke", "white")
+        .on("mouseover", function (d, e) {
+            svg.selectAll(".node")
+            d3.select(this)
+                .attr("r", 5)
+
+            let cx = d.clientX + 15;
+            let cy = d.clientY - 15;
+
+            tooltip.style("visibility", "visible")
+                .style("left", cx + "px")
+                .style("top", cy + "px")
+                .html(e.data.name + "<br>" + e.data.category)
+
+        })
+        .on("mouseout", function () {
+            svg.selectAll(".node")
+                .attr("r", (d) => {
+                    if (d.data.value) {
+                        return nodeScale(d.data.value)
+                    } else {
+                        return 2
+                    }
+                })
+
+            tooltip.style("visibility", "hidden")
+        })
 
     let faith_points = root.descendants().filter(d => d.data.category === "Faith-Based Initiatives")
     let faith_angles = [
