@@ -115,7 +115,15 @@ Promise.all(promises).then(function (data) {
             tooltip.style("visibility", "visible")
                 .style("left", cx + "px")
                 .style("top", cy + "px")
-                .html(e.data.name + "<br>" + e.data.category)
+                .html(() => {
+                    if(e.data.name && e.data.category) {
+                        return e.data.name + "<br>" + e.data.category
+                    } else if(e.data.category) {
+                        return e.data.category + "<br>" + e.data.value + " partners"
+                    } else {
+                        return e.data.value + " partners"
+                    }
+                })
 
         })
         .on("mouseout", function () {
