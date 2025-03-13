@@ -19,18 +19,15 @@ Promise.all(promises).then(function (data) {
 
     let messages_data = data[0].sort((a, b) => d3.ascending(a.month, b.month)).filter(d => d.city === "Chicago")
 
-    //MESSAGES DATA DISCOVERY
-    let messages_by_name = d3.groups(messages_data, d => d.name)
-    messages_by_name.forEach((d) => {
+    let messages_by_month = d3.groups(messages_data, d => d.month)
+    messages_by_month.forEach((d) => {
         d.total = d3.sum(d[1], v => v.count)
     })
-    const min_messages = d3.min(messages_by_name, d => d.total)
-    const max_messages = d3.max(messages_by_name, d => d.total)
 
-    let messages_by_month = d3.groups(messages_data, d => d.month)
+    console.log(messages_by_month)
     let messages_total = 0;
     for (let i = 0; i < messages_by_month.length; i++) {
-        messages_total += messages_by_month[i][1].length
+        messages_total += messages_by_month[i].total
         messages_by_month[i].val = messages_total
     }
     console.log(messages_by_month)
