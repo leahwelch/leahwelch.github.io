@@ -19,18 +19,15 @@ Promise.all(promises).then(function (data) {
     let messages_data = data[0].sort((a, b) => d3.ascending(a.month, b.month))
     let users_data = data[1].filter(d => d.id != "17754").sort((a, b) => d3.ascending(a.month, b.month))
 
-    //MESSAGES DATA DISCOVERY
-    let messages_by_name = d3.groups(messages_data, d => d.name)
-    messages_by_name.forEach((d) => {
+    let messages_by_month = d3.groups(messages_data, d => d.month)
+
+    messages_by_month.forEach((d) => {
         d.total = d3.sum(d[1], v => v.count)
     })
-    const min_messages = d3.min(messages_by_name, d => d.total)
-    const max_messages = d3.max(messages_by_name, d => d.total)
 
-    let messages_by_month = d3.groups(messages_data, d => d.month)
     let messages_total = 0;
     for (let i = 0; i < messages_by_month.length; i++) {
-        messages_total += messages_by_month[i][1].length
+        messages_total += messages_by_month[i].total
         messages_by_month[i].val = messages_total
     }
     console.log(messages_by_month)
@@ -49,7 +46,8 @@ Promise.all(promises).then(function (data) {
         .range([margin.left, width - margin.right])
 
     let yScale = d3.scaleLinear()
-        .domain([0, d3.max(by_month, d => d.val)])
+        .domain([0, 10000000])
+        // .domain([0, d3.max(messages_by_month, d => d.val)])
         .range([height - margin.bottom, margin.top])
 
     let line = d3.line()
