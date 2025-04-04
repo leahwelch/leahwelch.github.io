@@ -54,8 +54,8 @@ Promise.all(loadFiles).then(function (data) {
         .range(['#002b1e', "#006747", "#00a469", "#00c980", "#25e297", '#cdfee3', '#ffffff'])
 
     const bounds = [
-        [-101.0, 30.5],
-        [-80.1, 40.0]
+        [-140.0, 30.5],
+        [-80.1, 60.0]
     ]
 
     mapboxgl.accessToken = 'pk.eyJ1IjoibHdlbGNoIiwiYSI6ImNtNjZ6MmtraDA1aXoybHB6YXV6bm45dzMifQ.MBGZ3-bqIZtaF5-UbfkkaA';
@@ -64,7 +64,7 @@ Promise.all(loadFiles).then(function (data) {
         style: 'mapbox://styles/lwelch/cm7jliui4006801r484ev9g8c',
         projection: 'globe',
         zoom: 3.5,
-        minZoom: 2,
+        minZoom: 1,
         pitch: 20,
         bearing: 0,
         center: [-82.9988, 36.9612],
