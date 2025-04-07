@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+#chart {
+  width: 100%;
+  height: 100vh;
+}
+
+.tooltip {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  visibility: hidden;
+  color: #00A469;
+  background-color: white;
+  border:1px solid #93cebb;
+  z-index: 7;
+  padding: 8px;
+  font-family: sans-serif;
+  font-size: 8pt;
+}
+
+.partner_label, .value_label {
+  font-family: sans-serif;
+  font-size: 9pt;
+}
+
+.label {
+  position: absolute;
+  transform-origin: center left;
+  top: 50%;
+  left: 50%;
+  color: #00A469;
+  z-index: 7;
+  max-width: 200px;
+  font-family: sans-serif;
+  font-size: 8pt;
+}
+
+.artsLabel {
+  position: absolute;
+  transform-origin: center left;
+  top: 50%;
+  left: 50%;
+  color: #00A469;
+  z-index: 7;
+  max-width: 200px;
+  font-family: sans-serif;
+  font-size: 8pt;
+
+}
+
+.category_label {
+  font-family: sans-serif;
+  font-size: 10pt;
+}
+
+.city_label, .value_label {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 9pt;
+}
+
+.my_value_label {
+  font-family: sans-serif;
+  font-size: 8pt;
+}
+
+.axis path{
+  visibility: hidden;
+}
+
+.axis line {
+  stroke: white;
+  opacity: 0.5;
+}
+
+.axis text {
+  font-family: sans-serif;
+  font-size: 8pt;
+  color: white;
+}
+
+
