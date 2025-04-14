@@ -55,7 +55,7 @@ Promise.all(loadFiles).then(function (data) {
 
     const bounds = [
         [-140.0, 20.5],
-        [-80.1, 60.0]
+        [-60.1, 60.0]
     ]
 
     mapboxgl.accessToken = 'pk.eyJ1IjoibHdlbGNoIiwiYSI6ImNtNjZ6MmtraDA1aXoybHB6YXV6bm45dzMifQ.MBGZ3-bqIZtaF5-UbfkkaA';
