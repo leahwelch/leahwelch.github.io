@@ -54,7 +54,7 @@ Promise.all(loadFiles).then(function (data) {
         .range(['#002b1e', "#006747", "#00a469", "#00c980", "#25e297", '#cdfee3', '#ffffff'])
 
     const bounds = [
-        [-140.0, 30.5],
+        [-140.0, 20.5],
         [-80.1, 60.0]
     ]
 
