@@ -670,7 +670,7 @@ Promise.all(loadFiles).then(function (data) {
                 })
                 top_cities_by_name.sort((a, b) => d3.descending(a[1].length, b[1].length))
                 panel.html(
-                    "<h3>Top Cities</h3><br><h2>" + top_cities_by_name[0][0] + ", " + top_cities_by_name[0][1][0].properties.state + "</h2>" + top_cities_by_name[0][1].length +
+                    "<h3>Top Cities in this Region</h3><br><h2>" + top_cities_by_name[0][0] + ", " + top_cities_by_name[0][1][0].properties.state + "</h2>" + top_cities_by_name[0][1].length +
                     " partners<br><br><h2>" + top_cities_by_name[1][0] + ", " + top_cities_by_name[1][1][0].properties.state + "</h2>" + top_cities_by_name[1][1].length +
                     " partners<br><br><h2>" + top_cities_by_name[2][0] + ", " + top_cities_by_name[2][1][0].properties.state + "</h2>" + top_cities_by_name[2][1].length +
                     " partners<br><br><h2>" + top_cities_by_name[3][0] + ", " + top_cities_by_name[3][1][0].properties.state + "</h2>" + top_cities_by_name[3][1].length +
