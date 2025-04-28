@@ -6,7 +6,7 @@ let tooltip = d3.select("#map")
 
 let panel = d3.select("#map")
     .append("div")
-    .attr("class", "panel")
+    .attr("id", "panel")
 
 const loadFiles = [
     d3.json("./data/partner_categories_by_county.geojson"),
@@ -67,7 +67,7 @@ Promise.all(loadFiles).then(function (data) {
         container: 'map',
         style: 'mapbox://styles/lwelch/cm7jliui4006801r484ev9g8c',
         projection: 'globe',
-        zoom: 3.5,
+        zoom: 3,
         minZoom: 1,
         pitch: 20,
         bearing: 0,
@@ -632,51 +632,50 @@ Promise.all(loadFiles).then(function (data) {
 
     //use this to filter the data
 
-    map.on('zoomstart', () => {
+    map.on('zoomend', () => {
 
         let zoomLevel = map.getZoom()
 
-        if (zoomLevel < 5) {
+        if (zoomLevel < 6) {
+            console.log(zoomLevel)
             map.setPitch(20)
             map.setLayoutProperty('3d-buildings', 'visibility', 'visible')
             map.setLayoutProperty('points', 'visibility', 'none')
             handleExtrusionTooltip()
             panel.style("visibility", "hidden")
-        }
-
-        if (zoomLevel >= 5 && zoomLevel < 10) {
+        } else if (zoomLevel >= 6 && zoomLevel < 8) {
+            console.log(zoomLevel)
             map.setPitch(0)
             panel.style("visibility", "visible")
             //only render the points that are in bounds
             map.on('moveend', () => {
                 let currentBounds = map.getBounds().toArray()
-                let currentCenter = map.getCenter().toArray()
 
                 let filtered = point_data.features.filter(d => d.geometry.coordinates[0] > currentBounds[0][0] &&
                     d.geometry.coordinates[0] < currentBounds[1][0] &&
                     d.geometry.coordinates[1] > currentBounds[0][1] &&
                     d.geometry.coordinates[1] < currentBounds[1][1])
 
-                let close_to_center = findClosest(filtered, currentCenter)
+                let filtered_by_city = d3.groups(filtered, d => d.properties.city).sort((a, b) => d3.descending(a[1].length, b[1].length))
 
-                console.log(close_to_center)
-                let filtered_by_city = d3.groups(filtered, d => d.properties.city).sort((a,b) => d3.descending(a[1].length, b[1].length))
-                console.log(filtered_by_city)
-
-                let top_city = filtered_by_city.filter((d,i) => i == 0)
-                // console.log(top_city[0][0])
-                console.log(point_data)
-                let top_city_all_points = point_data.features.filter(d => d.properties.city === top_city[0][0])
-                console.log(top_city_all_points)
-                top_city[0].by_category = d3.groups(top_city[0][1], d => d.properties.category)
-                    .sort((a,b) => d3.descending(a[1].length, b[1].length))
-                console.log(top_city)
+                let top_cities = filtered_by_city.filter((d, i) => i <= 4)
+                let top_cities_all_points = point_data.features.filter(d => d.properties.city === top_cities[0][0] ||
+                    d.properties.city === top_cities[1][0] || d.properties.city === top_cities[2][0] ||
+                    d.properties.city === top_cities[3][0] || d.properties.city === top_cities[4][0]
+                )
+                let top_cities_by_name = d3.groups(top_cities_all_points, d => d.properties.city)
+                top_cities_by_name.forEach((d) => {
+                    d.by_category = d3.groups(d[1], d => d.properties.category)
+                        .sort((a, b) => d3.descending(a[1].length, b[1].length))
+                })
+                top_cities_by_name.sort((a, b) => d3.descending(a[1].length, b[1].length))
                 panel.html(
-                    "<h2>" + top_city[0][0] + ", " + top_city[0][1][0].properties.state + "</h2>" + 
-                    "<br><h3>Reach</h3><span>" + top_city_all_points.length + "</span> Partners<br><br><h3>TOP AREAS OF IMPACT</h3>" +
-                    top_city[0].by_category[0][0] + "<br>" + top_city[0].by_category[1][0] + "<br>" +
-                    top_city[0].by_category[2][0] + "<br>" + top_city[0].by_category[3][0] + "<br>" +
-                    top_city[0].by_category[4][0]
+                    "<h3>Top Cities</h3><br><h2>" + top_cities_by_name[0][0] + ", " + top_cities_by_name[0][1][0].properties.state + "</h2>" + top_cities_by_name[0][1].length +
+                    " partners<br><br><h2>" + top_cities_by_name[1][0] + ", " + top_cities_by_name[1][1][0].properties.state + "</h2>" + top_cities_by_name[1][1].length +
+                    " partners<br><br><h2>" + top_cities_by_name[2][0] + ", " + top_cities_by_name[2][1][0].properties.state + "</h2>" + top_cities_by_name[2][1].length +
+                    " partners<br><br><h2>" + top_cities_by_name[3][0] + ", " + top_cities_by_name[3][1][0].properties.state + "</h2>" + top_cities_by_name[3][1].length +
+                    " partners<br><br><h2>" + top_cities_by_name[4][0] + ", " + top_cities_by_name[4][1][0].properties.state + "</h2>" + top_cities_by_name[4][1].length +
+                    " partners"
                 )
 
                 let newData = {
@@ -694,9 +693,127 @@ Promise.all(loadFiles).then(function (data) {
             map.setLayoutProperty('faith_icons', 'visibility', 'none')
             map.setLayoutProperty('health_icons', 'visibility', 'none')
             map.setLayoutProperty('international_icons', 'visibility', 'none')
-        }
 
-        if (zoomLevel >= 10) {
+            d3.selectAll(".panel_svg").remove()
+        } else if (zoomLevel >= 8 && zoomLevel < 10) {
+            console.log(zoomLevel)
+            map.setLayoutProperty('3d-buildings', 'visibility', 'none')
+            map.setLayoutProperty('points', 'visibility', 'visible')
+            handlePointTooltip()
+            map.setLayoutProperty('arts_icons', 'visibility', 'none')
+            map.setLayoutProperty('community_icons', 'visibility', 'none')
+            map.setLayoutProperty('education_icons', 'visibility', 'none')
+            map.setLayoutProperty('faith_icons', 'visibility', 'none')
+            map.setLayoutProperty('health_icons', 'visibility', 'none')
+            map.setLayoutProperty('international_icons', 'visibility', 'none')
+            map.on('moveend', () => {
+                let currentBounds = map.getBounds().toArray()
+
+                let filtered = point_data.features.filter(d => d.geometry.coordinates[0] > currentBounds[0][0] &&
+                    d.geometry.coordinates[0] < currentBounds[1][0] &&
+                    d.geometry.coordinates[1] > currentBounds[0][1] &&
+                    d.geometry.coordinates[1] < currentBounds[1][1])
+
+                let filtered_by_city = d3.groups(filtered, d => d.properties.city).sort((a, b) => d3.descending(a[1].length, b[1].length))
+
+                let top_city = filtered_by_city.filter((d, i) => i == 0)
+                let top_city_all_points = point_data.features.filter(d => d.properties.city === top_city[0][0])
+
+                top_city[0].by_category = d3.groups(top_city[0][1], d => d.properties.category)
+                    .sort((a, b) => d3.descending(a[1].length, b[1].length))
+
+                panel.html(
+                    "<h2>" + top_city[0][0] + ", " + top_city[0][1][0].properties.state + "</h2>" +
+                    "<br><h3>Reach</h3><span>" + top_city_all_points.length + "</span> Partners<br><br><h3>AREAS OF IMPACT</h3>"
+                )
+
+                const panel_svg_width = 250;
+                const panel_svg_height = 250;
+                const panel_svg_margin = {
+                    top: 10,
+                    right: 20,
+                    bottom: 10,
+                    left: 0
+                }
+
+                let panel_svg = panel.append("svg")
+                    .attr("class", "panel_svg")
+                    .attr("width", panel_svg_width)
+                    .attr("height", panel_svg_height)
+
+                let panel_xScale = d3.scaleLinear()
+                    .domain([0, d3.max(top_city[0].by_category, d => d[1].length)])
+                    .range([panel_svg_margin.left, panel_svg_width - panel_svg_margin.right])
+
+                let panel_rScale = d3.scaleSqrt()
+                    .domain([d3.min(top_city[0].by_category, d => d[1].length), d3.max(top_city[0].by_category, d => d[1].length)])
+                    .range([3, 10])
+
+                let panel_yScale = d3.scaleBand()
+                    .domain(top_city[0].by_category.map(d => d[0]))
+                    .range([panel_svg_margin.top, panel_svg_height - panel_svg_margin.bottom])
+                    .padding(0.2)
+
+                const panel_colorScale = d3.scaleOrdinal()
+                    .domain(top_city[0].by_category.map(d => d[0]))
+                    .range(["#cdfee3", "#25E297", "#00C980", "#00A469", "#006747", "#00553B"]);
+
+                // let panel_circles = panel_svg.selectAll("circle")
+                //     .data(top_city[0].by_category)
+
+                // panel_circles.enter()
+                //     .append("circle")
+                //     .attr("cx", panel_xScale(0) + 15)
+                //     .attr("cy", p => panel_yScale(p[0]))
+                //     .attr("r", p => panel_rScale(p[1].length))
+                //     .attr("fill", p => panel_colorScale(p[0]))
+
+
+                let panel_bars = panel_svg.selectAll("rect")
+                    .data(top_city[0].by_category)
+                panel_bars.enter()
+                    .append("rect")
+                    .attr("x", panel_xScale(0))
+                    .attr("height", panel_yScale.bandwidth() / 2)
+                    .attr("y", p => panel_yScale(p[0]) + panel_yScale.bandwidth() / 4)
+                    .attr("fill", p => panel_colorScale(p[0]))
+                    // .merge(panel_bars)
+                    // .transition()
+                    // .duration(500)
+                    .attr("width", p => panel_xScale(p[1].length) - panel_xScale(0))
+
+                let panel_categories = panel_svg.selectAll(".category_label")
+                    .data(top_city[0].by_category)
+
+                panel_categories.enter()
+                    .append("text")
+                    .attr("class", "category_label")
+                    .attr("x", panel_svg_margin.left)
+                    .attr("y", p => panel_yScale(p[0]))
+                    .attr("dominant-baseline", "middle")
+                    .attr("fill", "white")
+                    .text(p => p[0])
+
+                let panel_values = panel_svg.selectAll(".value_label")
+                    .data(top_city[0].by_category)
+
+                panel_values.enter()
+                    .append("text")
+                    .attr("class", "value_label")
+                    .attr("x", p => panel_xScale(p[1].length) + 5)
+                    .attr("y", p => panel_yScale(p[0]) + panel_yScale.bandwidth() / 2)
+                    .attr("dominant-baseline", "middle")
+                    .attr("fill", "white")
+                    .text(p => p[1].length)
+
+                let newData = {
+                    "type": "FeatureCollection",
+                    "features": filtered
+                }
+                map.getSource("point_data").setData(newData)
+            })
+        } else {
+            console.log(zoomLevel)
             map.setLayoutProperty('points', 'visibility', 'none')
             handleIconTooltip()
             map.setLayoutProperty('arts_icons', 'visibility', 'visible')
@@ -729,11 +846,6 @@ Promise.all(loadFiles).then(function (data) {
         })
 
         heightScale.domain([0, d3.max(data[0].features, d => d.properties['Arts, Culture, and Media'])])
-        //yellows
-        //colorScale.range(['#483205', '#6c4b08', '#90640a', "#cf8a11", "#f6c414", "#ffd727", "#ffde4b", '#fff0b1', '#ffffff'])
-
-        //blues
-        // colorScale.range(['#0b294a', '#103e6e', '#155293', "#1264c3", "#1492fc", "#2bafff", "#53cbff", '#d8f3ff', '#ffffff'])
 
         //purples
         colorScale.range(['#2f0d45', '#461368', '#5d198a', "#711dac", "#9b2eef", "#af51fb", "#c581ff", '#f4e7ff', '#ffffff'])
@@ -791,40 +903,34 @@ Promise.all(loadFiles).then(function (data) {
 
 function findClosest(arr, target) {
     if (!arr || arr.length === 0) {
-      return null;
+        return null;
     }
-  
-    // let closest = arr[0].geometry.coordinates[0];
     let closestx = arr[0]
     let closesty = arr[0]
     let closest = []
     let minDiffx = Math.abs(target[0] - closestx);
     let minDiffy = Math.abs(target[1] - closesty);
-  
+
     for (let i = 1; i < arr.length; i++) {
-      const currentDiffx = Math.abs(target[0] - arr[i].geometry.coordinates[0]);
-      const currentDiffy = Math.abs(target[1] - arr[i].geometry.coordinates[1]);
-      if (currentDiffx < minDiffx) {
-        minDiffx = currentDiffx;
-        // closest = arr[i].geometry.coordinates[0];
-        closestx = arr[i]
-      } else if (currentDiffx === minDiffx && arr[i].geometry.coordinates[0] < closest) {
-        //   closest = arr[i].geometry.coordinates[0];
-        closestx = arr[i]
-      }
-      if (currentDiffy < minDiffy) {
-        minDiffy = currentDiffy;
-        // closest = arr[i].geometry.coordinates[0];
-        closesty = arr[i]
-      } else if (currentDiffy === minDiffy && arr[i].geometry.coordinates[1] < closest) {
-        //   closest = arr[i].geometry.coordinates[0];
-        closesty = arr[i]
-      }
+        const currentDiffx = Math.abs(target[0] - arr[i].geometry.coordinates[0]);
+        const currentDiffy = Math.abs(target[1] - arr[i].geometry.coordinates[1]);
+        if (currentDiffx < minDiffx) {
+            minDiffx = currentDiffx;
+            closestx = arr[i]
+        } else if (currentDiffx === minDiffx && arr[i].geometry.coordinates[0] < closest) {
+            closestx = arr[i]
+        }
+        if (currentDiffy < minDiffy) {
+            minDiffy = currentDiffy;
+            closesty = arr[i]
+        } else if (currentDiffy === minDiffy && arr[i].geometry.coordinates[1] < closest) {
+            closesty = arr[i]
+        }
     }
     closest.push(closestx)
     closest.push(closesty)
     return closest;
-  }
+}
 
 function parse(d) {
     return {
