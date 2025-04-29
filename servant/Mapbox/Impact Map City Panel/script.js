@@ -731,7 +731,7 @@ Promise.all(loadFiles).then(function (data) {
                 const panel_svg_height = 250;
                 const panel_svg_margin = {
                     top: 10,
-                    right: 20,
+                    right: 30,
                     bottom: 10,
                     left: 0
                 }
