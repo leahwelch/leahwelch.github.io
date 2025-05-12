@@ -47,82 +47,72 @@ Promise.all(promises).then(function (data) {
     }
     console.log(selected_data)
 
-    let xScale = d3.scaleBand()
-        .domain(selected_data.map(d => d.year))
-        .range([margin, width - margin])
-        .padding(0.1)
-
     let yScale = d3.scaleLinear()
         .domain([0, 100])
         .range([height - margin, margin])
 
-    svg.selectAll(".base_rect")
-        .data(selected_data)
-        .enter()
-        .append("rect")
+    svg.append("rect")
         .attr("class", "base_rect")
-        .attr("x", d => xScale(d.year))
+        .attr("x", width / 4)
         .attr("y", yScale(100))
-        .attr("width", xScale.bandwidth())
+        .attr("width", width / 2)
         .attr("height", height - margin - yScale(100))
         .attr('fill', "#4d4d4d")
 
-    svg.selectAll(".top_rect")
-        .data(selected_data)
-        .enter()
-        .append("rect")
-        .attr("class", "base_rect")
-        .attr("x", d => xScale(d.year))
-        .attr("width", xScale.bandwidth())
-        .attr("y", (d) => {
-            if (d.year === '2025') {
-                return height - margin
-            } else {
-                return yScale(d.metric_value)
-            }
-        })
-        .attr("height", (d) => {
-            if (d.year === '2025') {
-                return 0
-            } else {
-                return height - margin - yScale(d.metric_value)
-            }
-        })
+    svg.append("rect")
+        .attr("class", "top_rect")
+        .attr("x", width / 4)
+        .attr("y", yScale(selected_data[0].metric_value))
+        .attr("width", width / 2)
+        .attr("height", height - margin - yScale(selected_data[0].metric_value))
+        .attr('fill', "#00c980")
         .transition()
         .duration(1000)
-        .attr("y", d => yScale(d.metric_value))
-        .attr("height", d => height - margin - yScale(d.metric_value))
-        .attr('fill', "#00c980")
+        .attr("y", yScale(selected_data[1].metric_value))
+        .attr("height", height - margin - yScale(selected_data[1].metric_value))
 
-    const xAxis = svg.append("g")
-        .attr("class", "axis")
-        .attr("transform", `translate(0, ${height - margin})`)
-        .call(d3.axisBottom().scale(xScale))
+    let label = svg.append("text")
+        .attr("class", "year_label")
+        .attr("x", width * .75 + 10)
+        .attr("y", yScale(selected_data[0].metric_value))
+        .attr("dominant-baseline", "middle")
+        .attr("fill", "white")
+        .text("2015")
+    label.transition()
+        .tween("text", function () {
+            var selection = d3.select(this);    // selection of node being transitioned
+            var start = d3.select(this).text(); // start value prior to transition
+            var end = 2025;                     // specified end value
+            var interpolator = d3.interpolateNumber(start, end); // d3 interpolator
 
-    svg.selectAll(".percent_label")
-        .data(selected_data)
-        .enter()
-        .append("text")
+            return function (t) { selection.text(Math.round(interpolator(t))); };  // return value
+
+        })
+        .duration(1000)
+        .attr("y", yScale(selected_data[1].metric_value))
+
+    let percent_label = svg.append("text")
         .attr("class", "percent_label")
-        .attr("x", d => xScale(d.year) + xScale.bandwidth() / 2)
+        .attr("x", width / 2)
+        .attr("y", yScale(selected_data[0].metric_value) - 10)
         .attr("text-anchor", "middle")
         .attr("fill", "white")
-        .attr("y", (d) => {
-            if (d.year === '2025') {
-                return height - margin - 10
-            } else {
-                return yScale(d.metric_value) - 10
-            }
+        .text(selected_data[0].metric_value + "%")
+    percent_label.transition()
+        .tween("text", function () {
+            var selection = d3.select(this);    // selection of node being transitioned
+            var start = selected_data[0].metric_value; // start value prior to transition
+            var end = selected_data[1].metric_value;                     // specified end value
+            var interpolator = d3.interpolateNumber(start, end); // d3 interpolator
+
+            return function (t) { selection.text(Math.round(interpolator(t)) + "%"); };  // return value
+
         })
-        .text(d => d.metric_value + "%")
-        .transition()
         .duration(1000)
-        .attr("y", d => yScale(d.metric_value) - 10)
-
-
+        .attr("y", yScale(selected_data[1].metric_value) - 10)
 
     //ANIMATED NUMBER COUNTER
-    let startNumber = 0;
+    let startNumber = selected_data[0].metric_value;
     let endNumber = selected_data[1].metric_value;
 
     d3.select("#bar_header")
@@ -131,7 +121,7 @@ Promise.all(promises).then(function (data) {
         .tween("number", function () {
             let interpolate = d3.interpolateRound(startNumber, endNumber);
             return function (t) {
-                d3.select(this).text(selected_data[1].metric_description.slice(0, -1) + ": " + d3.format(",")(interpolate(t)) + "%")
+                d3.select(this).html("<span>" + selected_data[1].metric_description.slice(0, -1) + ": </span><h3>" + d3.format(",")(interpolate(t)) + "%</h3>")
             };
         });
 
