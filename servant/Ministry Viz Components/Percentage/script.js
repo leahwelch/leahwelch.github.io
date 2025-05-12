@@ -63,7 +63,7 @@ Promise.all(promises).then(function (data) {
     // The arc generator
     const arc = d3.arc()
         .innerRadius(radius * 0.5)         // This is the size of the donut hole
-        .outerRadius(radius * 0.8)
+        .outerRadius(radius * 0.7)
 
     // Another arc that won't be drawn. Just for labels positioning
     const outerArc = d3.arc()
@@ -77,8 +77,8 @@ Promise.all(promises).then(function (data) {
         .join('path')
         .attr('d', arc)
         .attr('fill', "#4d4d4d")
-        // .attr("stroke", "black")
-        // .style("stroke-width", "3px")
+    // .attr("stroke", "black")
+    // .style("stroke-width", "3px")
 
 
     svg
@@ -88,7 +88,7 @@ Promise.all(promises).then(function (data) {
         .attr('d', arc)
         .attr('fill', d => color(d.data[1]))
         .attr("opacity", (d) => {
-            if(d.data[0] === "this") {
+            if (d.data[0] === "this") {
                 return 1;
             } else {
                 return 0;
@@ -111,13 +111,25 @@ Promise.all(promises).then(function (data) {
     let startNumber = 0;
     let endNumber = selected_data.metric_value;
 
-    d3.select("#donut_header")
+    d3.select("#chart")
+        .append("div")
+        .attr("id", "donut_header")
+        .style("top",-radius*1.25 + "px")
+        .style("left", -radius*1.94 + "px")
+        // .style("top", radius + "px")
+        // .style("left", radius + "px")
         .transition()
         .duration(1000)
         .tween("number", function () {
             let interpolate = d3.interpolateRound(startNumber, endNumber);
             return function (t) {
-                d3.select(this).text(d3.format(",")(interpolate(t)) + "% " + selected_data.metric_label);
+                d3.select(this)
+                .html(
+                    "<h3>" + 
+                    d3.format(",")(interpolate(t)) + 
+                    "% </h3><span> " + selected_data.metric_label + "</span>"
+                )
+                // .text(d3.format(",")(interpolate(t)) + "% " + selected_data.metric_label);
             };
         });
 
