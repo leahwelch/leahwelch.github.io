@@ -1,0 +1,27 @@
+body {
+    background-color: black;
+}
+
+h3 {
+    margin: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.axis text{
+    color: white;
+}
+
+.axis line {
+    visibility: hidden;
+}
+
+.axis path {
+    visibility: hidden;
+}
+
+.percent_label {
+    font-family: Arial, Helvetica, sans-serif;
+    opacity: 0.8;
+  
+}
