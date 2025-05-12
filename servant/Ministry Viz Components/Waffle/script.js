@@ -1,11 +1,11 @@
 const promises = [
     d3.json("./data/metrics.json"),
+
     d3.csv("./data/counter_icons.csv")
 ];
 
 Promise.all(promises).then(function (data) {
     console.log(data[0].companies)
-    console.log(data[1])
     let all_metrics = []
     for (let i = 0; i < data[0].companies.length; i++) {
         for (let j = 0; j < data[0].companies[i].metrics.length; j++) {
@@ -38,7 +38,7 @@ Promise.all(promises).then(function (data) {
     console.log(counter_only)
 
     //set thresholds so very large values don't return gigantic waffle charts
-    const boxScale = d3.scaleThreshold([500, 5000, 500000, 5000000, 50000000, 500000000], [10, 100, 1000, 10000, 100000, 1000000]);
+    const boxScale = d3.scaleThreshold([500, 5000, 500000, 5000000, 50000000, 500000000], [50, 500, 5000, 50000, 500000, 5000000]);
     let max = 500;
 
     function set_box_count(val) {
@@ -61,7 +61,7 @@ Promise.all(promises).then(function (data) {
         .style("opacity", 0)
         .merge(icons)
         .transition()
-        .delay(function (p, i) { return 20 * i; })
+        .delay(function (p, i) { return 50 * i; })
         .style("opacity", 1)
 
     let label_container = d3.select("#label_container")
@@ -80,11 +80,15 @@ Promise.all(promises).then(function (data) {
 
     d3.select("#waffle_header")
         .transition()
-        .duration(2500) 
+        .duration(2000) 
         .tween("number", function () {
             let interpolate = d3.interpolateRound(startNumber, endNumber);
             return function (t) {
-                d3.select(this).text(d3.format(",")(interpolate(t)) + " " + selected_data.metric_label);
+                d3.select(this).html(
+                    "<h3>" + 
+                    d3.format(",")(interpolate(t)) + 
+                    "</h3><span> " + selected_data.metric_label + "</span>"
+                );
             };
         });
 
