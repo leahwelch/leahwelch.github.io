@@ -77,12 +77,8 @@ Promise.all(promises).then(function (data) {
         .join('path')
         .attr('d', arc)
         .attr('fill', "#4d4d4d")
-    // .attr("stroke", "black")
-    // .style("stroke-width", "3px")
 
-
-    svg
-        .selectAll('allSlices')
+    svg.selectAll('allSlices')
         .data(data_ready)
         .join('path')
         .attr('d', arc)
@@ -94,8 +90,6 @@ Promise.all(promises).then(function (data) {
                 return 0;
             }
         })
-        // .attr("stroke", "black")
-        // .style("stroke-width", "3px")
         .transition()
         .delay(function (d, i) { return i * 500; })
         .duration(1000)
@@ -107,31 +101,32 @@ Promise.all(promises).then(function (data) {
             }
         });
 
-    //ANIMATED NUMBER COUNTER
-    let startNumber = 0;
-    let endNumber = selected_data.metric_value;
+    let label = svg.append("text")
+        .attr("class", "percent_label")
+        .attr("x", 0)
+        .attr("y", -10)
+        .attr("text-anchor", "middle")
+        .attr("fill", "white")
+        .text("0%")
+    label.transition()
+        .tween("text", function () {
+            var selection = d3.select(this);    // selection of node being transitioned
+            var start = 0; // start value prior to transition
+            var end = selected_data.metric_value;                     // specified end value
+            var interpolator = d3.interpolateNumber(start, end); // d3 interpolator
 
-    d3.select("#chart")
-        .append("div")
-        .attr("id", "donut_header")
-        .style("top",-radius*1.25 + "px")
-        .style("left", -radius*1.94 + "px")
-        // .style("top", radius + "px")
-        // .style("left", radius + "px")
-        .transition()
+            return function (t) { selection.text(Math.round(interpolator(t)) + "%"); };  // return value
+
+        })
         .duration(1000)
-        .tween("number", function () {
-            let interpolate = d3.interpolateRound(startNumber, endNumber);
-            return function (t) {
-                d3.select(this)
-                .html(
-                    "<h3>" + 
-                    d3.format(",")(interpolate(t)) + 
-                    "% </h3><span> " + selected_data.metric_label + "</span>"
-                )
-                // .text(d3.format(",")(interpolate(t)) + "% " + selected_data.metric_label);
-            };
-        });
+
+    svg.append("text")
+        .attr("x", 0)
+        .attr("y", 15)
+        .attr("class", "unit_label")
+        .attr("text-anchor", "middle")
+        .attr("fill", "white")
+        .text(selected_data.metric_label)
 
 
 });
