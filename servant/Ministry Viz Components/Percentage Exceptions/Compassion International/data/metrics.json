@@ -1,0 +1,827 @@
+{
+  "companies": [
+    {
+      "company_name": "Alpha USA",
+      "metrics": [
+        {
+          "metric_description": "Total number of participants in Alpha programs in 2024, showing a 9.9% year-over-year increase.",
+          "metric_label": "Participants",
+          "metric_unit": "people",
+          "metric_value": 505238,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "Total number of Alpha courses offered in 2024, reflecting a 5.3% year-over-year increase.",
+          "metric_label": "Courses Offered",
+          "metric_unit": "courses",
+          "metric_value": 15876,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "Estimated number of churches and ministries running Alpha in 2024.",
+          "metric_label": "Churches Running Alpha",
+          "metric_unit": "churches",
+          "metric_value": 7491,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of Alpha courses currently being offered in the Mid Atlantic region.",
+          "metric_label": "Alpha Courses Offered",
+          "metric_unit": "courses",
+          "metric_value": 50,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of churches actively running Alpha courses in the region.",
+          "metric_label": "Churches Engaged",
+          "metric_unit": "churches",
+          "metric_value": 30,
+          "recommended_visualization_component": "counter"
+        }
+      ]
+    },
+{
+      "company_name": "Best Christian Workplaces",
+      "metrics": [
+        {
+          "metric_description": "The percentage of employees engaged in their work, indicating a healthy workplace culture.",
+          "metric_label": "Employee Engagement Rate",
+          "metric_unit": "%",
+          "metric_value": 79,
+          "recommended_visualization_component": "percentage"
+        },
+        {
+          "metric_description": "The number of organizations recognized as Certified Best Christian Workplaces for the first half of 2022.",
+          "metric_label": "Organizations Honored",
+          "metric_unit": "organizations",
+          "metric_value": 109,
+          "recommended_visualization_component": "counter"
+        }
+      ]
+    },
+{
+      "company_name": "Christian Care Ministries Inc.",
+      "metrics": [
+        {
+          "metric_description": "Total amount of medical bills shared among members since 1993.",
+          "metric_label": "Medical Bills Shared",
+          "metric_unit": "USD",
+          "metric_value": 8000000000,
+          "recommended_visualization_component": "currency"
+        },
+        {
+          "metric_description": "Total number of members participating in Medi-Share.",
+          "metric_label": "Members",
+          "metric_unit": "members",
+          "metric_value": 350000,
+          "recommended_visualization_component": "counter"
+        }
+      ]
+    },
+{
+      "company_name": "Christianity Today",
+      "metrics": [
+        {
+          "metric_description": "The total number of people reached annually by Christianity Today.",
+          "metric_label": "Annual Reach",
+          "metric_unit": "people",
+          "metric_value": 35000000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of readers who engage with Christianity Today content in languages other than English.",
+          "metric_label": "Annual Non-English Readers",
+          "metric_unit": "people",
+          "metric_value": 1500000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The total number of listeners to Christianity Today podcasts each year.",
+          "metric_label": "Annual Podcast Listeners",
+          "metric_unit": "people",
+          "metric_value": 6500000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "Percentage of the audience that falls within the age range of 18 to 34 years old.",
+          "metric_label": "Audience Aged 18-34",
+          "metric_unit": "%",
+          "metric_value": 40,
+          "recommended_visualization_component": "percentage"
+        },
+        {
+          "metric_description": "Percentage of the audience that is located outside the United States.",
+          "metric_label": "Audience Outside the US",
+          "metric_unit": "%",
+          "metric_value": 38,
+          "recommended_visualization_component": "percentage"
+        }
+      ]
+    },
+{
+      "company_name": "Compassion International, Inc.",
+      "metrics": [
+        {
+          "metric_description": "The number of children currently sponsored through Compassion International, providing them with essential support and resources.",
+          "metric_label": "Children Sponsored",
+          "metric_unit": "children",
+          "metric_value": 2300000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The total number of children and youth served by Compassion International across various programs.",
+          "metric_label": "Program Participants",
+          "metric_unit": "children",
+          "metric_value": 2400000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of countries where Compassion operates its child development programs.",
+          "metric_label": "Program Countries",
+          "metric_unit": "countries",
+          "metric_value": 29,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of letters of encouragement written by sponsors to their sponsored children.",
+          "metric_label": "Letters Written To Children",
+          "metric_unit": "letters",
+          "metric_value": 1300000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of food packs provided to families in need to ensure they receive vital nutrition.",
+          "metric_label": "Family Food Packs",
+          "metric_unit": "packs",
+          "metric_value": 10600000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The amount of money supplied to local churches for disaster relief efforts.",
+          "metric_label": "Disaster Relief Given",
+          "metric_unit": "USD",
+          "metric_value": 16000000,
+          "recommended_visualization_component": "currency"
+        },
+        {
+          "metric_description": "Total revenues for Compassion International in fiscal year 2023, marking the highest in the organization's history.",
+          "metric_label": "Total Revenue",
+          "metric_unit": "USD",
+          "metric_value": 1190000000,
+          "recommended_visualization_component": "currency"
+        },
+        {
+          "metric_description": "The number of new children who are now receiving life-changing care through Compassion's programs.",
+          "metric_label": "New Children Receiving Care",
+          "metric_unit": "children",
+          "metric_value": 110267,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The total number of individual supporters contributing to Compassion's mission globally.",
+          "metric_label": "Supporters",
+          "metric_unit": "supporters",
+          "metric_value": 1700000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of medical care interventions provided to vulnerable children, including emergency surgeries and trauma counseling.",
+          "metric_label": "Medical Interventions",
+          "metric_unit": "interventions",
+          "metric_value": 1500000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The estimated number of households that have received emergency food support to combat food insecurity.",
+          "metric_label": "Households Receiving Emergency Food Support",
+          "metric_unit": "households",
+          "metric_value": 113000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of mothers and babies who received care during a crucial period of their lives through Compassion's programs.",
+          "metric_label": "Mothers and Babies Cared For",
+          "metric_unit": "mothers and babies",
+          "metric_value": 60190,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "Percentage increase in grant spending compared to the previous year, reflecting the organization's commitment to serving more children.",
+          "metric_label": "Grant Spending Increase",
+          "metric_unit": "%",
+          "metric_value": 4.3,
+          "recommended_visualization_component": "percentage"
+        },
+        {
+          "metric_description": "The number of children and youth supported through Compassion's programs in fiscal year 2024.",
+          "metric_label": "Children Served",
+          "metric_unit": "children",
+          "metric_value": 2000000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of hygiene kits delivered to children to combat diseases, including during the COVID-19 pandemic.",
+          "metric_label": "Hygiene Kits",
+          "metric_unit": "kits",
+          "metric_value": 7600000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of children who graduated from the Compassion program.",
+          "metric_label": "Children Graduated",
+          "metric_unit": "children",
+          "metric_value": 147000,
+          "recommended_visualization_component": "counter"
+        }
+      ]
+    },
+{
+      "company_name": "ECFA",
+      "metrics": [
+        {
+          "metric_description": "Total revenue generated by the organization for the year.",
+          "metric_label": "Total Revenue",
+          "metric_unit": "USD",
+          "metric_value": 1812392,
+          "recommended_visualization_component": "currency"
+        },
+        {
+          "metric_description": "Total expenses incurred by the organization for the year.",
+          "metric_label": "Total Expenses",
+          "metric_unit": "USD",
+          "metric_value": 1510048,
+          "recommended_visualization_component": "currency"
+        },
+        {
+          "metric_description": "Total number of meals served to individuals in need each year.",
+          "metric_label": "Meals Served Annually",
+          "metric_unit": "meals",
+          "metric_value": 139989,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The total net assets of the organization, indicating financial health.",
+          "metric_label": "Net Assets",
+          "metric_unit": "USD",
+          "metric_value": 3544672,
+          "recommended_visualization_component": "currency"
+        },
+        {
+          "metric_description": "Number of individuals who successfully graduated from the recovery program in the past year.",
+          "metric_label": "Graduates from Recovery Program",
+          "metric_unit": "people",
+          "metric_value": 41,
+          "recommended_visualization_component": "counter"
+        }
+      ]
+    },
+{
+      "company_name": "Fellowship Of Catholic University Students",
+      "metrics": [
+        {
+          "metric_description": "The number of colleges and university campuses served by FOCUS in the United States and internationally.",
+          "metric_label": "Total Campuses Served",
+          "metric_unit": "campuses",
+          "metric_value": 202,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of missionaries trained to spread the Catholic faith and evangelize.",
+          "metric_label": "Missionaries Trained",
+          "metric_unit": "missionaries",
+          "metric_value": 1000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of priestly and religious vocations inspired by FOCUS.",
+          "metric_label": "Priestly and Religious Vocations Inspired",
+          "metric_unit": "vocations",
+          "metric_value": 1206,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of missionary and student alumni from FOCUS.",
+          "metric_label": "Missionary and Student Alumni",
+          "metric_unit": "alumni",
+          "metric_value": 70000,
+          "recommended_visualization_component": "counter"
+        }
+      ]
+    },
+{
+      "company_name": "For Charlotte",
+      "metrics": [
+        {
+          "metric_description": "Percentage of third graders reading at grade level in 2015.",
+          "metric_label": "3rd Graders Reading at Grade Level",
+          "metric_unit": "%",
+          "metric_value": 39,
+          "recommended_visualization_component": "percentage"
+        },
+        {
+          "metric_description": "Target percentage of third graders reading at grade level by 2025.",
+          "metric_label": "3rd Graders Reading at Grade Level",
+          "metric_unit": "%",
+          "metric_value": 80,
+          "recommended_visualization_component": "percentage"
+        }
+      ]
+    },
+{
+      "company_name": "For Columbus",
+      "metrics": [
+        {
+          "metric_description": "The total number of community members actively participating in events and initiatives.",
+          "metric_label": "Community Members Engaged",
+          "metric_unit": "members",
+          "metric_value": 1000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of different churches participating in the For Columbus initiative.",
+          "metric_label": "Churches Involved",
+          "metric_unit": "churches",
+          "metric_value": 50,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of community events organized to engage and unite the Church and city.",
+          "metric_label": "Events Held",
+          "metric_unit": "events",
+          "metric_value": 25,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of unifying gatherings hosted for renewal and inspiration.",
+          "metric_label": "Gatherings Hosted",
+          "metric_unit": "events",
+          "metric_value": 10,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of stories curated and produced highlighting collaborative ministry.",
+          "metric_label": "Stories Curated",
+          "metric_unit": "stories",
+          "metric_value": 25,
+          "recommended_visualization_component": "counter"
+        }
+      ]
+    },
+{
+      "company_name": "Great Commandment Network",
+      "metrics": [
+        {
+          "metric_description": "The number of individuals subscribed to our monthly newsletter for updates and resources.",
+          "metric_label": "Monthly Newsletter Subscribers",
+          "metric_unit": "subscribers",
+          "metric_value": 1000,
+          "recommended_visualization_component": "counter"
+        }
+      ]
+    },
+{
+      "company_name": "Outreach",
+      "metrics": [
+        {
+          "metric_description": "Churches served across various platforms and services.",
+          "metric_label": "Churches Served",
+          "metric_unit": "churches",
+          "metric_value": 163000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "Guided digital products for effective outreach.",
+          "metric_label": "Digital Products",
+          "metric_unit": "products",
+          "metric_value": 10000,
+          "recommended_visualization_component": "counter"
+        }
+      ]
+    },
+{
+      "company_name": "Partners for Strong Families",
+      "metrics": [
+        {
+          "metric_description": "The total amount of scholarships provided to families to access counseling services, demonstrating financial support for those in need.",
+          "metric_label": "Scholarships Funded",
+          "metric_unit": "USD",
+          "metric_value": 500000,
+          "recommended_visualization_component": "currency"
+        },
+        {
+          "metric_description": "The total number of hours of counseling provided to families, showcasing the organization's impact.",
+          "metric_label": "Counseling Hours Provided",
+          "metric_unit": "hours",
+          "metric_value": 30000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of families that have received counseling services since the organization's inception.",
+          "metric_label": "Families Served",
+          "metric_unit": "families",
+          "metric_value": 2500,
+          "recommended_visualization_component": "counter"
+        }
+      ]
+    },
+{
+      "company_name": "PastorServe INC",
+      "metrics": [
+        {
+          "metric_description": "PastorServe has been serving ministry leaders since 1999, providing support and resources for over two decades.",
+          "metric_label": "Years of Service",
+          "metric_unit": "years",
+          "metric_value": 26,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "PastorServe has produced numerous podcast episodes aimed at supporting ministry leaders with valuable insights and discussions.",
+          "metric_label": "Podcast Episodes",
+          "metric_unit": "episodes",
+          "metric_value": 157,
+          "recommended_visualization_component": "counter"
+        }
+      ]
+    },
+{
+      "company_name": "Pulse Outreach",
+      "metrics": [
+        {
+          "metric_description": "Pulse Evangelism has shared the hope of Jesus to over 330 million people through live events, digital ministry, local revival gatherings, and evangelism training.",
+          "metric_label": "People Reached",
+          "metric_unit": "people",
+          "metric_value": 330000000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "More than two million people have responded to the Gospel and been connected back to discipleship through the local Church.",
+          "metric_label": "Gospel Responses",
+          "metric_unit": "people",
+          "metric_value": 2000000,
+          "recommended_visualization_component": "counter"
+        }
+      ]
+    },
+{
+      "company_name": "RightNow Ministries International",
+      "metrics": [
+        {
+          "metric_description": "The number of churches that utilize RightNow Media's resources.",
+          "metric_label": "Churches Served",
+          "metric_unit": "churches",
+          "metric_value": 25000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of countries where RightNow Media operates.",
+          "metric_label": "Countries Served",
+          "metric_unit": "countries",
+          "metric_value": 25,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The total number of biblical videos available on the platform.",
+          "metric_label": "Videos Available",
+          "metric_unit": "videos",
+          "metric_value": 25000,
+          "recommended_visualization_component": "counter"
+        }
+      ]
+    },
+{
+      "company_name": "Safe House Project Inc",
+      "metrics": [
+        {
+          "metric_description": "Total number of trafficking survivors served by Safe House Project since its founding.",
+          "metric_label": "Survivors Served",
+          "metric_unit": "survivors",
+          "metric_value": 2763,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of individuals trained to identify and report trafficking.",
+          "metric_label": "People Trained",
+          "metric_unit": "people",
+          "metric_value": 400000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The total number of safe nights provided to survivors through safe house programs.",
+          "metric_label": "Safe Nights Provided",
+          "metric_unit": "nights",
+          "metric_value": 227760,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of new spaces added in safe house programs across the country.",
+          "metric_label": "New Safe House Spaces",
+          "metric_unit": "spaces",
+          "metric_value": 624,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of survivors supported by Safe House Project in 2025, reflecting the organization's commitment to providing care and resources.",
+          "metric_label": "Survivors Supported",
+          "metric_unit": "survivors",
+          "metric_value": 1529,
+          "recommended_visualization_component": "counter"
+        }
+      ]
+    },
+{
+      "company_name": "Salem Media Group",
+      "metrics": [
+        {
+          "metric_description": "The total number of app and web sessions per month, indicating the high level of engagement with Salem's digital content.",
+          "metric_label": "Monthly App and Web Sessions",
+          "metric_unit": "sessions",
+          "metric_value": 80000000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of radio stations owned and operated by Salem Media Group, showcasing its extensive reach in the media landscape.",
+          "metric_label": "Radio Stations Operated",
+          "metric_unit": "stations",
+          "metric_value": 82,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of nationally syndicated talk shows produced by Salem, reflecting its influence in the media industry.",
+          "metric_label": "National Programming Shows",
+          "metric_unit": "shows",
+          "metric_value": 7,
+          "recommended_visualization_component": "counter"
+        }
+      ]
+    },
+{
+      "company_name": "The Flourish Cooperative",
+      "metrics": [
+        {
+          "metric_description": "The total number of individuals connected through our services, reflecting our reach and impact.",
+          "metric_label": "People Connected",
+          "metric_unit": "people",
+          "metric_value": 350000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of churches and organizations actively participating in our network to provide support.",
+          "metric_label": "Churches Involved",
+          "metric_unit": "churches",
+          "metric_value": 2000,
+          "recommended_visualization_component": "counter"
+        }
+      ]
+    },
+{
+      "company_name": "The Global Orphan Project",
+      "metrics": [
+        {
+          "metric_description": "Total number of children who have received assistance through CarePortal.",
+          "metric_label": "Children Served",
+          "metric_unit": "children",
+          "metric_value": 364999,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "Total economic impact generated by the services provided through CarePortal.",
+          "metric_label": "Economic Impact",
+          "metric_unit": "USD",
+          "metric_value": 136676896,
+          "recommended_visualization_component": "currency"
+        },
+        {
+          "metric_description": "Total number of requests that have been met through the CarePortal system.",
+          "metric_label": "Requests Met",
+          "metric_unit": "requests",
+          "metric_value": 138100,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "Total number of responses to needs by local churches and community members through CarePortal.",
+          "metric_label": "Responses to Needs",
+          "metric_unit": "responses",
+          "metric_value": 287061,
+          "recommended_visualization_component": "counter"
+        }
+      ]
+    },
+{
+      "company_name": "The International Bible Society",
+      "metrics": [
+        {
+          "metric_description": "The total number of people who received God's Word through Biblica's efforts in 2021, reflecting a 53% increase from the previous year.",
+          "metric_label": "Total People Reached",
+          "metric_unit": "people",
+          "metric_value": 145900000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of young people reached through the Reach4Life program in 2021, addressing their unique challenges and needs.",
+          "metric_label": "Young People Reached",
+          "metric_unit": "young people",
+          "metric_value": 24500000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of languages in which the Reach4Life materials are available.",
+          "metric_label": "Languages Available",
+          "metric_unit": "languages",
+          "metric_value": 10,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The total impact of Biblica's ministry efforts in 2021, including various outreach programs and partnerships.",
+          "metric_label": "Total Ministry Impact",
+          "metric_unit": "people",
+          "metric_value": 121400000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of new full Bible translations launched in 2021, expanding access to God's Word in various languages.",
+          "metric_label": "New Bible Translations Launched",
+          "metric_unit": "Bibles",
+          "metric_value": 6,
+          "recommended_visualization_component": "counter"
+        }
+      ]
+    },
+{
+      "company_name": "The MomCo",
+      "metrics": [
+        {
+          "metric_description": "MomCo influences over a million moms annually, providing resources and community support.",
+          "metric_label": "Moms Influenced Annually",
+          "metric_unit": "moms",
+          "metric_value": 1000000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "MomCo hosts over 72,000 meetings a year, fostering community and support among moms.",
+          "metric_label": "Meetings Annually",
+          "metric_unit": "meetings",
+          "metric_value": 72000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "MomCo extends its reach to over 101 countries, providing support and community for moms globally.",
+          "metric_label": "Countries Served",
+          "metric_unit": "countries",
+          "metric_value": 101,
+          "recommended_visualization_component": "counter"
+        }
+      ]
+    },
+{
+      "company_name": "The Pastors Collective",
+      "metrics": [
+        {
+          "metric_description": "Percentage of retreat attendees who reported the experience as life changing or very helpful.",
+          "metric_label": "Life Changing Feedback",
+          "metric_unit": "%",
+          "metric_value": 97,
+          "recommended_visualization_component": "percentage"
+        },
+        {
+          "metric_description": "Total number of pastors and leaders who have attended retreats since 2021.",
+          "metric_label": "Pastors Served",
+          "metric_unit": "pastors",
+          "metric_value": 2110,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "Total number of retreats held across various locations.",
+          "metric_label": "Retreats Held",
+          "metric_unit": "retreats",
+          "metric_value": 167,
+          "recommended_visualization_component": "counter"
+        }
+      ]
+    },
+{
+      "company_name": "Transforming the Bay for Christ",
+      "metrics": [
+        {
+          "metric_description": "The total population of the San Francisco Bay Area, which TBC aims to impact through its initiatives.",
+          "metric_label": "Population Served",
+          "metric_unit": "people",
+          "metric_value": 7800000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of cities in the San Francisco Bay Area that TBC focuses on for transformation efforts.",
+          "metric_label": "Count of Cities",
+          "metric_unit": "cities",
+          "metric_value": 256,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The number of counties in the San Francisco Bay Area that TBC serves.",
+          "metric_label": "Count of Counties",
+          "metric_unit": "counties",
+          "metric_value": 11,
+          "recommended_visualization_component": "counter"
+        }
+      ]
+    },
+{
+      "company_name": "UPWARD UNLIMITED",
+      "metrics": [
+        {
+          "metric_description": "Percentage of children in the sports leagues who come from outside the church congregation, indicating community outreach.",
+          "metric_label": "Children Participating",
+          "metric_unit": "%",
+          "metric_value": 70,
+          "recommended_visualization_component": "percentage"
+        },
+        {
+          "metric_description": "Number of different nations represented by children participating in the sports leagues, showcasing the diversity of the community.",
+          "metric_label": "Diverse Nations Represented",
+          "metric_unit": "nations",
+          "metric_value": 50,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "Estimated number of children participating in Upward Sports programs through church partnerships.",
+          "metric_label": "Youth Participants",
+          "metric_unit": "children",
+          "metric_value": 100,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "Total amount of financial assistance provided to young athletes who cannot afford to participate in sports leagues.",
+          "metric_label": "Financial Assistance Provided",
+          "metric_unit": "USD",
+          "metric_value": 1000,
+          "recommended_visualization_component": "currency"
+        },
+        {
+          "metric_description": "Over 7 million participants have played various sports through Upward Sports programs.",
+          "metric_label": "Participants",
+          "metric_unit": "participants",
+          "metric_value": 7000000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "Total number of churches partnered with Upward Sports to implement sports ministry programs.",
+          "metric_label": "Church Partnerships",
+          "metric_unit": "churches",
+          "metric_value": 1000,
+          "recommended_visualization_component": "counter"
+        }
+      ]
+    },
+{
+      "company_name": "Wesleyan Investment Foundation",
+      "metrics": [
+        {
+          "metric_description": "The total number of investors who trust WIF as their faith-based investment organization.",
+          "metric_label": "Investors",
+          "metric_unit": "investors",
+          "metric_value": 10000,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "The total number of loans provided to churches and church-related organizations across North America.",
+          "metric_label": "Loans Provided",
+          "metric_unit": "loans",
+          "metric_value": 1400,
+          "recommended_visualization_component": "counter"
+        }
+      ]
+    },
+{
+      "company_name": "Wycliffe Associates, Inc",
+      "metrics": [
+        {
+          "metric_description": "Wycliffe Associates is currently accelerating Bible translations in 108 countries.",
+          "metric_label": "Countries Served",
+          "metric_unit": "countries",
+          "metric_value": 108,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "New Testament translations were completed in 141 languages in 2020, marking a record number of translations in a single year.",
+          "metric_label": "Bible Translations Completed",
+          "metric_unit": "languages",
+          "metric_value": 141,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "In 2020, Wycliffe Associates helped launch 294 new Bible translation projects, contributing to the global effort of making the Bible accessible in various languages.",
+          "metric_label": "Bible Translation Projects Launched",
+          "metric_unit": "projects",
+          "metric_value": 294,
+          "recommended_visualization_component": "counter"
+        },
+        {
+          "metric_description": "Currently, Wycliffe Associates has 773 Bible translations in progress, indicating ongoing efforts to expand access to the Scriptures.",
+          "metric_label": "Bible Translations in Progress",
+          "metric_unit": "translations",
+          "metric_value": 773,
+          "recommended_visualization_component": "counter"
+        }
+      ]
+    }
+  ]
+}

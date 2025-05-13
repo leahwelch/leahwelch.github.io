@@ -1,0 +1,50 @@
+body {
+    background-color: black;
+}
+
+h3 {
+    font-size: 20pt;
+    font-weight: bolder;
+    margin: 0px 5px 0px 0px;
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+#header {
+    margin: 20px 0px 0px 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+#description {
+    margin: 20px 0px 0px 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    max-width: 300px;
+}
+
+.axis text{
+    color: white;
+}
+
+.axis line {
+    visibility: hidden;
+}
+
+.axis path {
+    visibility: hidden;
+}
+
+.percent_label {
+    font-family: Arial, Helvetica, sans-serif;
+    opacity: 0.8;
+    font-size: 24pt;
+    font-weight: bold;
+  
+}
+
+.year_label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt; 
+}
