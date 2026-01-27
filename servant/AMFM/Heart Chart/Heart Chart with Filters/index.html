@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <div id="chart"></div>
+        <div id="controls">
+            <div class="button_group">
+                <p>Relationship Status</p>
+                <button class="status_tabs active" onclick="status(event)" id="status_all" value="all">All</button>
+                <button class="status_tabs" onclick="status(event)" id="married" value="married">Married</button>
+                <button class="status_tabs" onclick="status(event)" id="remarried" value="remarried">Remarried</button>
+                <button class="status_tabs" onclick="status(event)" id="dating" value="dating">Dating</button>
+                <button class="status_tabs" onclick="status(event)" id="engaged" value="engaged">Engaged</button>
+                <button class="status_tabs" onclick="status(event)" id="living_together" value="living_together">Living togther (not married)</button>
+            </div>
+            <div class="button_group">
+                <p>Relationship Length</p>
+                <button class="length_tabs active" onclick="length(event)" id="length_all" value="all">All</button>
+                <button class="length_tabs" onclick="length(event)" id="under_two" value="under_two">0-2 years</button>
+                <button class="length_tabs" onclick="length(event)" id="three_to_five" value="three_to_five">3-5 years</button>
+                <button class="length_tabs" onclick="length(event)" id="six_to_ten" value="six_to_ten">6-10 years</button>
+                <button class="length_tabs" onclick="length(event)" id="eleven_to_twenty" value="eleven_to_twenty">11-20 years</button>
+                <button class="length_tabs" onclick="length(event)" id="twentyone_to_thirty" value="twentyone_to_thirty">21-30 years</button>
+                <button class="length_tabs" onclick="length(event)" id="over_thirty" value="over_thirty">31-40 years</button>
+            </div>
+            <div class="button_group">
+                <p>Kids</p>
+                <button class="kids_tabs active" onclick="kids(event)" id="kids_all" value="all">All</button>
+                <button class="kids_tabs" onclick="kids(event)" id="kids_none" value="kids_none">None</button>
+                <button class="kids_tabs" onclick="kids(event)" id="kids_under_five" value="kids_under_five">Kids 0-5</button>
+                <button class="kids_tabs" onclick="kids(event)" id="kids_to_fifth" value="kids_to_fifth">Kids k-5th grade</button>
+                <button class="kids_tabs" onclick="kids(event)" id="kids_to_twelfth" value="kids_to_twelfth">Kids 6th-12th grade</button>
+                <button class="kids_tabs" onclick="kids(event)" id="adult_children" value="adult_children">Adult Children</button>
+            </div>
+            <div class="button_group">
+                <p>Respondent Age</p>
+                <button class="age_tabs active" onclick="age(event)" id="age_all" value="all">All</button>
+                <button class="age_tabs" onclick="age(event)" id="under_eighteen" value="under_eighteen">Under 18</button>
+                <button class="age_tabs" onclick="age(event)" id="to_twentyfour" value="to_twentyfour">18-24</button>
+                <button class="age_tabs" onclick="age(event)" id="to_thirty" value="to_thirty">25-30</button>
+                <button class="age_tabs" onclick="age(event)" id="to_forty" value="to_forty">31-40</button>
+                <button class="age_tabs" onclick="age(event)" id="to_fifty" value="to_fifty">41-50</button>
+                <button class="age_tabs" onclick="age(event)" id="to_sixty" value="to_sixty">51-60</button>
+                <button class="age_tabs" onclick="age(event)" id="to_seventy" value="to_seventy">61-70</button>
+            </div>
+            <div class="button_group">
+                <p>Respondent Gender</p>
+                <button class="gender_tabs active" onclick="gender(event)" id="gender_all" value="all">All</button>
+                <button class="gender_tabs" onclick="gender(event)" id="male" value="male">Male</button>
+                <button class="gender_tabs" onclick="gender(event)" id="female" value="female">Female</button>
+            </div>
+        </div>
+    </div>
+    <script src="./script2.js"></script>
+</body>
+
+</html>
